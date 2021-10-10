@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="CategoryController">
+
+    <!--Add Popup-->
+    <div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title danger">Add Category</h4>
+                </div>
+                <div class="scroller" style="height:200px" data-always-visible="0" data-rail-visible1="1">
+                    <div class="modal-body">
+                        <div class="col-md-9">
+                            <span>Name</span>
+                            <div class="input-icon">
+                                <i class="fa fa-bell-o"></i>
+                                <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top:20%;">
+                        <input type="hidden" />
+                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn red" ng-click="AddCategory()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-10">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Categories
+                </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                        Add Category
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-show="RegisterCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col />
+                            <col />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+
+                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="input-icon">
+                                        <input ng-model="_.Name" type="text" class="form-control">
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="btn-group absoluteitem">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateCategory(_)">
+                                                    <i class="fa fa-edit "></i>Update
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Telefon Güncelle" data-toggle="modal" ng-click="DeleteCategory(_)">
+                                                    <i class="fa fa-phone "></i>Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                </td>
+                            </tr>
+
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/CategoryService.js"></script>
+    <script src="~/AngularControllers/Controllers/CategoryController.js"></script>
+}
+

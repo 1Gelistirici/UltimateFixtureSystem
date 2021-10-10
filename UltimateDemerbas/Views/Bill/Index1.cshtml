@@ -1,0 +1,155 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div ng-controller="BillController" style=" width:100%; background-color:white">
+
+    <!--Buttons-->
+    <div style="background-color:white">
+        <a href="javascript:;" data-toggle="modal" data-target="#myModal" class="btn blue" style="float:right; margin-bottom:10px;" ng-click="PopupForm()"> Add License </a>
+    </div>
+
+    <!--Table-->
+    <div style="{{TableColor}}">
+        <table id="example" class="" style="width:100%; ">
+            <thead style="color:white">
+                <tr style="">
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Donna Snider</td>
+                    <td>Customer Support</td>
+                    <td>New York</td>
+                    <td>27</td>
+                    <td>2011/01/25</td>
+                    <td>$112,000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!--Popup-->
+    <div class="container">
+        <!-- Trigger the modal with a button -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+
+                    <div class="modal-header">
+                        <h4 class="modal-title"> ADD LICENSE</h4>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Text</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" placeholder="Enter text">
+                                        <span class="help-block"> A block of help text. </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Email Address</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="email" class="form-control input-circle-right" placeholder="Email Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control input-circle-left" placeholder="Password">
+                                            <span class="input-group-addon input-circle-right">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Left Icon</label>
+                                    <div class="col-md-4">
+                                        <div class="input-icon">
+                                            <i class="fa fa-bell-o"></i>
+                                            <input type="text" class="form-control input-circle" placeholder="Left icon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Right Icon</label>
+                                    <div class="col-md-4">
+                                        <div class="input-icon right">
+                                            <i class="fa fa-microphone"></i>
+                                            <input type="text" class="form-control input-circle" placeholder="Right icon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Input With Spinner</label>
+                                    <div class="col-md-4">
+                                        <input type="password" class="form-control spinner input-circle" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-circle green">Submit</button>
+                        <button type="button" class="btn btn-circle grey-salsa btn-outline" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    @section PageScript
+    {
+        <script src="~/AngularControllers/Controllers/BillController.js"></script>
+    }
+
+
+
+
+
+</div>
+
+
+

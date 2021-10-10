@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UltimateAPI", "UltimateAPI\UltimateAPI.csproj", "{8105CEB5-67B4-47A2-AB79-ECCD35A6AE95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR_Server", "SignalR_Server\SignalR_Server.csproj", "{1BB5EC5C-FF8F-436A-A33E-BC3EC1DED66F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR_Server", "SignalR_Server\SignalR_Server.csproj", "{1BB5EC5C-FF8F-436A-A33E-BC3EC1DED66F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UltimateDemerbas", "UltimateDemerbas\UltimateDemerbas.csproj", "{965E81EA-6822-43A4-8B92-83547BBD234D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1BB5EC5C-FF8F-436A-A33E-BC3EC1DED66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BB5EC5C-FF8F-436A-A33E-BC3EC1DED66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BB5EC5C-FF8F-436A-A33E-BC3EC1DED66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965E81EA-6822-43A4-8B92-83547BBD234D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965E81EA-6822-43A4-8B92-83547BBD234D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965E81EA-6822-43A4-8B92-83547BBD234D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965E81EA-6822-43A4-8B92-83547BBD234D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

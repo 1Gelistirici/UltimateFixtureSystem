@@ -1,0 +1,116 @@
+﻿
+<div class="col-lg-6 col-xs-12 col-sm-12">
+    <div class="portlet light tasks-widget bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-share font-dark hide"></i>
+                <span class="caption-subject font-dark bold uppercase">Tasks</span>
+                <span class="caption-helper">tasks summary...</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group">
+
+                    <a class="btn blue-oleo btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        More
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:;" data-toggle="modal" data-target="#AddTask"> Add Task </a>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:;"> AirAsia </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> Cruise </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> HSBC </a>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:;">
+                                Pending
+                                <span class="badge badge-danger"> 4 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                Completed
+                                <span class="badge badge-success"> 12 </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                Overdue
+                                <span class="badge badge-warning"> 9 </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="task-content">
+                <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
+                    <!-- START TASK LIST -->
+                    <ul class="task-list" ng-repeat="x in Tasks">
+                        <li>
+                            <div class="task-checkbox">
+                                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                    <input type="checkbox" class="checkboxes" value="1" />
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="task-title">
+                                <span class="task-title-sp"> {{x.TaskDetail}} </span>
+                                <span ng-class="DateCalc(x.StartDate,x.EndDate) <= 0 ? 'label label-sm label-danger' : (DateCalc(x.StartDate,x.EndDate) <= 3 ? 'label label-sm label-warning' : 'label label-sm label-success')">{{DateCalc(x.StartDate,x.EndDate)}} Day</span>
+                                <span class="task-bell">
+                                    <i class="fa fa-bell-o"></i>
+                                </span>
+                            </div>
+                            <div class="task-config">
+                                <div class="task-config-btn btn-group">
+                                    <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <i class="fa fa-cog"></i>
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a href="javascript:;" data-toggle="modal" data-target="#DetailTask" ng-click="GetDetail(x)">
+                                                <i class="fa fa-external-link"></i> Detail
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <i class="fa fa-check"></i> Complete
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;"data-toggle="modal" data-target="#UpdateTask" ng-click="GetTask(x)">
+                                                <i class="fa fa-pencil"></i> Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" ng-click="DeleteTask(x.Id)">
+                                                <i class="fa fa-trash-o"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- END START TASK LIST -->
+                </div>
+            </div>
+            <div class="task-footer">
+                <div class="btn-arrow-link pull-right">
+                    <a href="javascript:;">See All Records</a>
+                    <i class="icon-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

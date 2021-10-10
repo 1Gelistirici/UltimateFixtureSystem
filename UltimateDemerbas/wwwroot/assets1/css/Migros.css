@@ -1,0 +1,188 @@
+﻿
+li.liste {
+    float: left;
+    margin-left: 30px;
+}
+
+body {
+}
+@import "compass/css3";
+
+// Tested on Chrome 35, FF 29, IE10 +
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 50%;
+    padding: 50px;
+    float: left;
+}
+
+.range {
+    -webkit-appearance: none;
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+    .range::-webkit-slider-runnable-track {
+        background-color: #d7dbdd;
+        height: 6px;
+        border-radius: 3px;
+        border: 1px solid transparent;
+    }
+
+    .range[disabled]::-webkit-slider-runnable-track {
+        border: 1px solid #d7dbdd;
+        background-color: transparent;
+        opacity: 0.4;
+    }
+
+    .range::-moz-range-track {
+        background-color: #d7dbdd;
+        height: 6px;
+        border-radius: 3px;
+        border: none;
+    }
+
+    .range::-ms-track {
+        color: transparent;
+        border: none;
+        background: none;
+        height: 6px;
+    }
+
+    .range::-ms-fill-lower {
+        background-color: #d7dbdd;
+        border-radius: 3px;
+    }
+
+    .range::-ms-fill-upper {
+        background-color: #d7dbdd;
+        border-radius: 3px;
+    }
+
+    .range::-ms-tooltip {
+        display: none; /* display and visibility only */
+    }
+
+    .range::-moz-range-thumb {
+        border-radius: 20px;
+        height: 18px;
+        width: 18px;
+        border: none;
+        background: none;
+        background-color: #606670;
+    }
+
+    .range:active::-moz-range-thumb {
+        outline: none;
+    }
+
+    .range::-webkit-slider-thumb {
+        -webkit-appearance: none !important;
+        border-radius: 100%;
+        background-color: #606670;
+        height: 18px;
+        width: 18px;
+        margin-top: -7px;
+    }
+
+    .range[disabled]::-webkit-slider-thumb {
+        background-color: transparent;
+        border: 1px solid #d7dbdd;
+    }
+
+    .range:active::-webkit-slider-thumb {
+        outline: none;
+    }
+
+    .range::-ms-thumb {
+        border-radius: 100%;
+        background-color: #606670;
+        height: 18px;
+        width: 18px;
+        border: none;
+    }
+
+    .range:active::-ms-thumb {
+        border: none;
+    }
+
+output {
+    border: 1px solid #d7dbdd;
+    color: #333;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    padding: .4em .6em;
+    border-radius: 3px;
+}
+
+.container--dark {
+    background-color: #11181d;
+    h6
+
+{
+    color: #ccc;
+}
+
+.range::-webkit-slider-runnable-track {
+    background-color: #606670;
+}
+
+.range[disabled]::-webkit-slider-runnable-track {
+    border: 1px solid #606670;
+    background-color: transparent;
+}
+
+.range::-moz-range-track {
+    background-color: #606670;
+    border: none;
+}
+
+.range::-ms-fill-lower {
+    background-color: #606670;
+}
+
+.range::-ms-fill-upper {
+    background-color: #606670;
+}
+
+output {
+    border: 1px solid #2b3039;
+    color: #aaa;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    padding: .4em .6em;
+    border-radius: 3px;
+}
+
+.range::-webkit-slider-thumb {
+    background-color: #aaa;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+.range[disabled]::-webkit-slider-thumb {
+    background-color: transparent;
+    border: 1px solid #606670;
+    box-shadow: none;
+}
+
+.range::-moz-range-thumb {
+    background-color: #aaa;
+}
+
+.range::-ms-thumb {
+    background-color: #aaa;
+}
+}

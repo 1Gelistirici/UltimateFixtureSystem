@@ -1,0 +1,373 @@
+﻿<link href="~/assets/pages/css/profile.min.css" rel="stylesheet" />
+<div class="row" ng-controller="ProfileController">
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet bordered">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> {{User.Name}}&nbsp;&nbsp;{{User.Surname}} </div>
+                    <div class="profile-usertitle-job"> {{User.Title}} || {{User.Department}}</div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-circle green btn-sm">Follow</button>
+                    <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="page_user_profile_1.html">
+                                <i class="icon-home"></i> Overview
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="page_user_profile_1_account.html">
+                                <i class="icon-settings"></i> Account Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="page_user_profile_1_help.html">
+                                <i class="icon-info"></i> Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+            <!-- END PORTLET MAIN -->
+            <!-- PORTLET MAIN -->
+            <div class="portlet light bordered">
+                <!-- STAT -->
+                <div class="row list-separated profile-stat">
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> 37 </div>
+                        <div class="uppercase profile-stat-text"> Projects </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> {{TaskLength}} </div>
+                        <div class="uppercase profile-stat-text"> Tasks </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> 61 </div>
+                        <div class="uppercase profile-stat-text"> Uploads </div>
+                    </div>
+                </div>
+                <!-- END STAT -->
+                <div>
+                    <h4 class="profile-desc-title">About Marcus Doe</h4>
+                    <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                    <div class="margin-top-20 profile-desc-link">
+                        <i class="fa fa-globe"></i>
+                        <a href="http://www.keenthemes.com">www.keenthemes.com</a>
+                    </div>
+                    <div class="margin-top-20 profile-desc-link">
+                        <i class="fa fa-twitter"></i>
+                        <a href="http://www.twitter.com/keenthemes/">keenthemes</a>
+                    </div>
+                    <div class="margin-top-20 profile-desc-link">
+                        <i class="fa fa-facebook"></i>
+                        <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">Personal Info</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">Accessories</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">Change Password</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_1_4" data-toggle="tab" aria-expanded="false">Privacy Settings</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    <form role="form" action="#">
+                                        <div class="form-group">
+                                            <label class="control-label">First Name</label>
+                                            <input type="text" placeholder="John" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Last Name</label>
+                                            <input type="text" placeholder="Doe" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Mobile Number</label>
+                                            <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Interests</label>
+                                            <input type="text" placeholder="Design, Web etc." class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Occupation</label>
+                                            <input type="text" placeholder="Web Developer" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">About</label>
+                                            <textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Website Url</label>
+                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control">
+                                        </div>
+                                        <div class="margiv-top-10">
+                                            <a href="javascript:;" class="btn green"> Save Changes </a>
+                                            <a href="javascript:;" class="btn default"> Cancel </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CHANGE AVATAR TAB -->
+                                <div class="tab-pane" id="tab_1_2">
+
+
+
+                                    <div ng-show="AccessoryCount==0">
+                                        <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+                                    </div>
+
+                                    <!--Table Body-->
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable table-scrollable-borderless" ng-show="AccessoryCount>0">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-light" ng-table="AccessoryTable" style="margin-bottom: 50px !important;">
+
+                                                    <colgroup>
+                                                        <col />
+                                                        <col />
+                                                        <col />
+                                                        <col />
+                                                        <col />
+                                                        <col />
+                                                    </colgroup>
+
+                                                    <tbody>
+                                                        <tr ng-repeat="_ in $data">
+
+                                                            <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                                                <div class="input-icon">
+                                                                    <span>{{_.Name}}</span>
+                                                                </div>
+                                                            </td>
+
+                                                            <td data-title="TableCol.Piece" filter="{ Piece: 'text'}" sortable="'Piece'">
+                                                                <div class="input-icon">
+                                                                    <span>{{_.Piece}}</span>
+                                                                </div>
+                                                            </td>
+
+                                                            <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                                                <div class="input-icon">
+                                                                    <span>{{_.BillNo}}</span>
+                                                                </div>
+                                                            </td>
+
+                                                            <td data-title="TableCol.ModelNo" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
+                                                                <span>{{GetAccessoryModels(_.ModelNo)}} {{AccessoryModelreturn}}</span>
+                                                            </td>
+
+                                                            <td data-title="TableCol.CategoryNo" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
+                                                                <span>{{GetCategoryNo(_.CategoryNo)}} {{CategoryNoreturn}}</span>
+                                                            </td>
+
+                                                            <td>
+                                                                <div class="btn-group absoluteitem">
+                                                                    <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                                        <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;" data-toggle="modal" data-target="#ReportPopup"></span>Report
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="6" class="no-margin no-padding">
+                                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{AccessoryCount}}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tfoot>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END CHANGE AVATAR TAB -->
+                                <!-- CHANGE PASSWORD TAB -->
+                                <div class="tab-pane" id="tab_1_3">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label class="control-label">Current Password</label>
+                                            <input type="text" ng-model="OldPassword" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">New Password</label>
+                                            <input type="text" ng-model="Password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Re-type New Password</label>
+                                            <input type="text" ng-model="PasswordTry" class="form-control">
+                                        </div>
+                                        <div class="margin-top-10">
+                                            <a href="javascript:;" ng-click="ChangePassword()" class="btn green"> Change Password </a>
+                                            <a href="javascript:;" class="btn default"> Cancel </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END CHANGE PASSWORD TAB -->
+                                <!-- PRIVACY SETTINGS TAB -->
+                                <div class="tab-pane" id="tab_1_4">
+                                    <form action="#">
+                                        <table class="table table-light table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <td> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus.. </td>
+                                                    <td>
+                                                        <div class="mt-radio-inline">
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios1" value="option1"> Yes
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios1" value="option2" checked=""> No
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
+                                                    <td>
+                                                        <div class="mt-radio-inline">
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios11" value="option1"> Yes
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios11" value="option2" checked=""> No
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
+                                                    <td>
+                                                        <div class="mt-radio-inline">
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios21" value="option1"> Yes
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios21" value="option2" checked=""> No
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
+                                                    <td>
+                                                        <div class="mt-radio-inline">
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios31" value="option1"> Yes
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="optionsRadios31" value="option2" checked=""> No
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--end profile-settings-->
+                                        <div class="margin-top-10">
+                                            <a href="javascript:;" class="btn red"> Save Changes </a>
+                                            <a href="javascript:;" class="btn default"> Cancel </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END PRIVACY SETTINGS TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>
+
+<div id="ReportPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 350px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Report</h4>
+            </div>
+            <div class="scroller" style="height:170px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="input-icon">
+                            <i class="fa fa-bell-o"></i>
+                            <textarea ng-model="Pop.taskDetail" rows="4" style="font-size: 14px;" type="text" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:25%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-click="AddTask()">Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    @section PageScript
+    {
+        <script src="~/AngularControllers/Services/CategoryService.js"></script>
+        <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+        <script src="~/AngularControllers/Services/TaskService.js"></script>
+        <script src="~/AngularControllers/Services/AccessoryService.js"></script>
+        <script src="~/AngularControllers/Services/UserService.js"></script>
+        <script src="~/AngularControllers/Services/ProfileService.js"></script>
+        <script src="~/AngularControllers/Controllers/ProfileController.js"></script>
+        <script src="~/assets/pages/scripts/profile.min.js"></script>
+    }

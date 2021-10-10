@@ -1,0 +1,75 @@
+﻿MainApp.controller("BillTypeController", ["$scope", "BillTypeService", "$http", "NgTableParams", function ($scope, BillTypeService, $http, NgTableParams) {
+    $scope.RegisterCount = 0;
+    $scope.Pop = [];
+
+    $scope.TableCol = {
+        Name: "Component Model Name",
+    };
+
+    $scope.GetBillTypes = function () {
+        BillTypeService.GetBillTypes(
+            function success(result) {
+                if (result.IsSuccess) {
+                    console.log("result.Data");
+                    console.log(result.Data);
+                    $scope.Data = result.Data;
+                    $scope.RegisterCount = $scope.Data.length;
+                    $scope.TableParams = new NgTableParams({
+                        sorting: { name: 'adc' },
+                        count: 20
+                    }, {
+                        counts: [10, 20, 50],
+                        dataset: $scope.Data
+                    });
+                } else {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                }
+            }, function error() {
+                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            });
+    }
+    $scope.GetBillTypes();
+
+    $scope.DeleteBillType = function (data) {
+        BillTypeService.DeleteBillType(data.Id,
+            function success(result) {
+                if (result.IsSuccess) {
+                } else {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                }
+            }, function error() {
+                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            });
+    }
+
+    $scope.UpdateBillType = function (data) {
+        BillTypeService.UpdateBillType(data,
+            function success(result) {
+                if (result.IsSuccess) {
+                } else {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                }
+            }, function error() {
+                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            });
+    }
+
+    $scope.AddBillType = function () {
+
+        var data = {
+            "Name": $scope.Pop.Name,
+        }
+
+        BillTypeService.AddBillType(data,
+            function success(result) {
+                if (result.IsSuccess) {
+                } else {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                }
+            }, function error() {
+                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            });
+
+    }
+
+}]);
