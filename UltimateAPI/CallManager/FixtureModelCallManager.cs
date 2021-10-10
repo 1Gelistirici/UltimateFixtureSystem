@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UltimateAPI.Entities;
+using UltimateAPI.Manager;
+
+namespace UltimateAPI.CallManager
+{
+    public class FixtureModelCallManager
+    {
+        public UltimateResult<List<FixtureModel>> GetFixtureModels()
+        {
+            return FixtureModelManager.Instance.GetFixtureModels();
+        }
+
+        public UltimateResult<List<FixtureModel>> DeleteFixtureModel(FixtureModel parameter)
+        {
+            return FixtureModelManager.Instance.DeleteFixtureModel(parameter);
+        }
+
+        public UltimateResult<List<FixtureModel>> AddFixtureModel(FixtureModel parameter)
+        {
+            return FixtureModelManager.Instance.AddFixtureModel(parameter);
+        }
+
+        public UltimateResult<List<FixtureModel>> UpdateFixtureModel(FixtureModel parameter)
+        {
+            return FixtureModelManager.Instance.UpdateFixtureModel(parameter);
+        }
+    }
+}
