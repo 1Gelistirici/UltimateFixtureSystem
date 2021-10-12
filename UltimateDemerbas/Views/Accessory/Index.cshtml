@@ -6,65 +6,6 @@
 
 <div ng-controller="AccessoryController">
 
-    <!--Add Popup-->
-    <div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title danger">Add Accessory</h4>
-                </div>
-                <div class="scroller" style="height:350px" data-always-visible="0" data-rail-visible1="1">
-                    <div class="modal-body">
-                        <div class="col-md-9">
-                            <span>Name</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-9">
-                            <span>Piece</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Piece" style="font-size: 14px;" type="number" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-9">
-                            <span>Bill No</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-9">
-                            <span>Model No</span>
-                            <select class="form-control" ng-model="Pop.ModelNo">
-                                <option ng-repeat="x in AccessoryModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-9">
-                            <span>Category No</span>
-                            <select class="form-control" ng-model="Pop.CategoryNo">
-                                <option ng-repeat="x in  Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer" style="margin-top:60%;">
-                        <input type="hidden" />
-                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn red" ng-click="AddAccessory()">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
@@ -176,7 +117,7 @@
     </div>
 </div>
 
-
+<partial name="~/Views/Shared/Partials/Accessory/AddAccessoryPopup.cshtml" />
 
 @section PageScript
     {
@@ -185,4 +126,3 @@
     <script src="~/AngularControllers/Services/AccessoryService.js"></script>
     <script src="~/AngularControllers/Controllers/AccessoryController.js"></script>
 }
-
