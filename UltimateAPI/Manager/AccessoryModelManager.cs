@@ -37,7 +37,7 @@ namespace UltimateAPI.Manager
 
             try
             {
-                using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
+                using (sqlConnection = Global.GetSqlConnection())
                 {
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
 
@@ -84,7 +84,7 @@ namespace UltimateAPI.Manager
 
             try
             {
-                using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
+                using (sqlConnection = Global.GetSqlConnection())
                 {
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
 
@@ -123,7 +123,7 @@ namespace UltimateAPI.Manager
 
             try
             {
-                using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
+                using (sqlConnection = Global.GetSqlConnection())
                 {
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
 
@@ -162,7 +162,7 @@ namespace UltimateAPI.Manager
 
             try
             {
-                using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
+                using (sqlConnection = Global.GetSqlConnection())
                 {
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
 
