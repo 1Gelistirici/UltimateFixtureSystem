@@ -5,54 +5,6 @@
 }
 
 <div ng-controller="TonerController">
-
-    <!--Add Popup-->
-    <div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title danger">Add Accessory Model</h4>
-                </div>
-                <div class="scroller" style="height:370px" data-always-visible="0" data-rail-visible1="1">
-                    <div class="modal-body">
-                        <div class="col-md-9">
-                            <span>Name</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
-                            </div>
-                            <br />
-                            <span>Piece</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Piece" style="font-size: 14px;" type="number" class="form-control">
-                            </div>
-                            <br />
-                            <span>Boundary</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Boundary" style="font-size: 14px;" type="number" class="form-control">
-                            </div>
-                            <br />
-                            <span>Price</span>
-                            <div class="input-icon">
-                                <i class="fa fa-bell-o"></i>
-                                <input ng-model="Pop.Price" style="font-size: 14px;" type="number" class="form-control">
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer" style="margin-top:70%;">
-                        <input type="hidden" />
-                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn red" ng-click="AddToner()">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
@@ -95,10 +47,10 @@
 
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
-                                            <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
+                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>
                                 </td>
-                                
+
                                 <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
@@ -107,7 +59,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                
+
                                 <td data-title="TableCol.Boundary" filter="{ Boundary: 'number'}" sortable="'Boundary'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
@@ -116,7 +68,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                
+
                                 <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
@@ -166,7 +118,7 @@
     </div>
 </div>
 
-
+<partial name="~/Views/Shared/Partials/Toner/AddTonerPopup.cshtml" />
 
 @section PageScript
     {
