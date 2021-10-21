@@ -1,5 +1,4 @@
-﻿MainApp.controller("BodyController", ["$scope","$http","$window", function ($scope, $http, $window) {
-
+﻿MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($scope, $http, $window) {
 
     $scope.backgroundColor = 'background-color:#1b243b';
     $scope.sideMenu = 'background-color:#f35ad2eb';
@@ -11,12 +10,11 @@
     var Menus = null;
 
     $scope.Nav = function (x) {
-        if (x=='') {
+        if (x == '') {
             return;
         }
 
         $window.location.href = x;
-
     }
 
     $http.get("/Layout/GetMenus").then(function (response) {
@@ -34,7 +32,7 @@
 
             if (element.Area == "Main Title") {
                 $scope.MenuTitle.push(element);
-                console.log("Main Title",$scope.MenuTitle);
+                console.log("Main Title", $scope.MenuTitle);
             }
 
             if (element.Area == "Main SubMenu") {
@@ -45,24 +43,9 @@
     });
 
 
+    $scope.LogOut = function () {
+        Cookies.remove("id");
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }]);
+}]);
