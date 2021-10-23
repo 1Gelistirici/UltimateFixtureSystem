@@ -8,9 +8,16 @@
                         success(response.data);
                 }, error);
         }
-        
-        this.ChangePassword = function (parameter,success, error) {
+
+        this.ChangePassword = function (parameter, success, error) {
             $http.post("/User/ChangePassword", JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+        this.UpdateProfile = function (parameter, success, error) {
+            $http.post("/User/UpdateProfile", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

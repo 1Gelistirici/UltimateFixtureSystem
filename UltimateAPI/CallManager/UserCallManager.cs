@@ -39,10 +39,13 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.GetUser(parameter);
         }
-
         public UltimateResult<List<User>> ChangePassword(User parameter)
         {
             return UserManager.Instance.ChangePassword(parameter);
+        }
+        public UltimateResult<User> UpdateProfile(User parameter)
+        {
+            return UserManager.Instance.UpdateProfile(parameter);
         }
     }
 }

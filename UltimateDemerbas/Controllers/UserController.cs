@@ -29,10 +29,10 @@ namespace UltimateDemerbas.Controllers
         {
             UserManager user = new UserManager(_httpClientFactory);
             var result = user.CheckUser(parameter);
-            
+
             return Content(result.Result);
         }
-        
+
         public IActionResult GetUser()
         {
             User parameter = new User();
@@ -40,17 +40,25 @@ namespace UltimateDemerbas.Controllers
 
             UserManager user = new UserManager(_httpClientFactory);
             var result = user.GetUser(parameter);
-            
+
             return Content(result.Result);
         }
-        
+        public IActionResult UpdateProfile([FromBody] User parameter)
+        {
+            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+
+            UserManager user = new UserManager(_httpClientFactory);
+            var result = user.UpdateProfile(parameter);
+
+            return Content(result.Result);
+        }
         public IActionResult ChangePassword([FromBody] User parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
             UserManager user = new UserManager(_httpClientFactory);
             var result = user.ChangePassword(parameter);
-            
+
             return Content(result.Result);
         }
 

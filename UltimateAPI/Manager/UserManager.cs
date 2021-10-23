@@ -118,6 +118,10 @@ namespace UltimateAPI.Manager
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
                                     user.Department = read["department"].ToString();
+                                    user.Linkedin = read["linkedin"].ToString();
+                                    user.Facebook = read["facebook"].ToString();
+                                    user.Twitter = read["twitter"].ToString();
+                                    user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
 
                                     users.Add(user);
@@ -184,6 +188,43 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<User> UpdateProfile(User parameter)
+        {
+            UltimateResult<User> result = new UltimateResult<User>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[users_UpdateProfile]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.UserId);
+                        sqlCommand.Parameters.AddWithValue("@linkedin", parameter.Linkedin);
+                        sqlCommand.Parameters.AddWithValue("@facebook", parameter.Facebook);
+                        sqlCommand.Parameters.AddWithValue("@twitter", parameter.Twitter);
+                        sqlCommand.Parameters.AddWithValue("@about", parameter.About);
+
+                        sqlCommand.ExecuteReader();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
         //public UltimateResult<List<User>> GetAccessories()
         //{

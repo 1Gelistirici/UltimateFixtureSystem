@@ -6,8 +6,8 @@
             <!-- PORTLET MAIN -->
             <div class="portlet light profile-sidebar-portlet bordered">
                 <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                <div class="profile-userpic" style="width:100%; height:20%;">
+                    <img style="width: 80%; height: 100%;" src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
@@ -64,19 +64,19 @@
                 </div>
                 <!-- END STAT -->
                 <div>
-                    <h4 class="profile-desc-title">About Marcus Doe</h4>
-                    <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                    <h4 class="profile-desc-title">About&nbsp;&nbsp;{{User.Name}}&nbsp;&nbsp;{{User.Surname}}</h4>
+                    <span class="profile-desc-text"> {{User.About}} </span>
                     <div class="margin-top-20 profile-desc-link">
-                        <i class="fa fa-globe"></i>
-                        <a href="http://www.keenthemes.com">www.keenthemes.com</a>
+                        <i class="fa fa-linkedin-square"></i>
+                        <a target="_blank" href="{{User.Linkedin}}">Linkedin</a>
                     </div>
                     <div class="margin-top-20 profile-desc-link">
                         <i class="fa fa-twitter"></i>
-                        <a href="http://www.twitter.com/keenthemes/">keenthemes</a>
+                        <a target="_blank" href="{{User.Twitter}}">Twitter</a>
                     </div>
                     <div class="margin-top-20 profile-desc-link">
                         <i class="fa fa-facebook"></i>
-                        <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
+                        <a target="_blank" href="{{User.Facebook}}">Facebook</a>
                     </div>
                 </div>
             </div>
@@ -103,9 +103,6 @@
                                 <li class="">
                                     <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">Change Password</a>
                                 </li>
-                                <li class="">
-                                    <a href="#tab_1_4" data-toggle="tab" aria-expanded="false">Privacy Settings</a>
-                                </li>
                             </ul>
                         </div>
                         <div class="portlet-body">
@@ -113,36 +110,25 @@
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane active" id="tab_1_1">
                                     <form role="form" action="#">
+
                                         <div class="form-group">
-                                            <label class="control-label">First Name</label>
-                                            <input type="text" placeholder="John" class="form-control">
+                                            <label class="control-label">Linkedin Adress</label>
+                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Linkedin">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Last Name</label>
-                                            <input type="text" placeholder="Doe" class="form-control">
+                                            <label class="control-label">Twitter Adress</label>
+                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Twitter">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Mobile Number</label>
-                                            <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Interests</label>
-                                            <input type="text" placeholder="Design, Web etc." class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Occupation</label>
-                                            <input type="text" placeholder="Web Developer" class="form-control">
+                                            <label class="control-label">Facebook Adress</label>
+                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Facebook">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">About</label>
-                                            <textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Website Url</label>
-                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control">
+                                            <textarea class="form-control" rows="3" placeholder="About Yourself" ng-model="About"></textarea>
                                         </div>
                                         <div class="margiv-top-10">
-                                            <a href="javascript:;" class="btn green"> Save Changes </a>
+                                            <a href="javascript:;" class="btn green" ng-click="UpdateProfile()"> Save Changes </a>
                                             <a href="javascript:;" class="btn default"> Cancel </a>
                                         </div>
                                     </form>
@@ -238,7 +224,7 @@
                                             <input type="text" ng-model="Password" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Re-type New Password</label>
+                                            <label class="control-label">Try New Password</label>
                                             <input type="text" ng-model="PasswordTry" class="form-control">
                                         </div>
                                         <div class="margin-top-10">
@@ -248,81 +234,6 @@
                                     </form>
                                 </div>
                                 <!-- END CHANGE PASSWORD TAB -->
-                                <!-- PRIVACY SETTINGS TAB -->
-                                <div class="tab-pane" id="tab_1_4">
-                                    <form action="#">
-                                        <table class="table table-light table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus.. </td>
-                                                    <td>
-                                                        <div class="mt-radio-inline">
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios1" value="option1"> Yes
-                                                                <span></span>
-                                                            </label>
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios1" value="option2" checked=""> No
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                    <td>
-                                                        <div class="mt-radio-inline">
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios11" value="option1"> Yes
-                                                                <span></span>
-                                                            </label>
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios11" value="option2" checked=""> No
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                    <td>
-                                                        <div class="mt-radio-inline">
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios21" value="option1"> Yes
-                                                                <span></span>
-                                                            </label>
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios21" value="option2" checked=""> No
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                    <td>
-                                                        <div class="mt-radio-inline">
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios31" value="option1"> Yes
-                                                                <span></span>
-                                                            </label>
-                                                            <label class="mt-radio">
-                                                                <input type="radio" name="optionsRadios31" value="option2" checked=""> No
-                                                                <span></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--end profile-settings-->
-                                        <div class="margin-top-10">
-                                            <a href="javascript:;" class="btn red"> Save Changes </a>
-                                            <a href="javascript:;" class="btn default"> Cancel </a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- END PRIVACY SETTINGS TAB -->
                             </div>
                         </div>
                     </div>
@@ -360,14 +271,14 @@
 
 </div>
 
-    @section PageScript
+@section PageScript
     {
-        <script src="~/AngularControllers/Services/CategoryService.js"></script>
-        <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
-        <script src="~/AngularControllers/Services/TaskService.js"></script>
-        <script src="~/AngularControllers/Services/AccessoryService.js"></script>
-        <script src="~/AngularControllers/Services/UserService.js"></script>
-        <script src="~/AngularControllers/Services/ProfileService.js"></script>
-        <script src="~/AngularControllers/Controllers/ProfileController.js"></script>
-        <script src="~/assets/pages/scripts/profile.min.js"></script>
-    }
+    <script src="~/AngularControllers/Services/CategoryService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+    <script src="~/AngularControllers/Services/TaskService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/ProfileService.js"></script>
+    <script src="~/AngularControllers/Controllers/ProfileController.js"></script>
+    <script src="~/assets/pages/scripts/profile.min.js"></script>
+}

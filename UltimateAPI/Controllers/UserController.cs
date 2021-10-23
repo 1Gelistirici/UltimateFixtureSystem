@@ -29,6 +29,12 @@ namespace UltimateAPI.Controllers
             var result = UserCallManager.Instance.ChangePassword(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        [HttpPost("UpdateProfile")]
+        public IActionResult UpdateProfile(User parameter)
+        {
+            var result = UserCallManager.Instance.UpdateProfile(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
 
 
 
