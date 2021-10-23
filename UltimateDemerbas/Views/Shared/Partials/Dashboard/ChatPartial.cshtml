@@ -4,20 +4,20 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-bubble font-hide hide"></i>
-                <span class="caption-subject font-hide bold uppercase">Chats</span>
+                <span class="caption-subject font-hide bold uppercase">Chat</span>
             </div>
-            <div class="actions">
+            @*<div class="actions">
                 <div class="portlet-input input-inline">
                     <div class="input-icon right">
                         <i class="icon-magnifier"></i>
                         <input type="text" class="form-control input-circle" placeholder="search...">
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="portlet-body" id="chats">
-            <div class="scroller" style="height: 525px;" data-always-visible="1" data-rail-visible1="1">
-                <ul class="chats" ng-repeat="x in Messages">
+            <div class="scroller downScrool" style="height: 525px;" data-always-visible="1" data-rail-visible1="1">
+                <ul class="chats " ng-repeat="x in Messages">
                     <li ng-class="x.UserId != UserId ? 'in' : 'out'">
                         <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg" />
                         <div class="message">

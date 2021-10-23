@@ -8,6 +8,7 @@
         Piece: "Piece",
         Boundary: "Boundary",
         Price: "Price",
+        MinStock: "Min Stock",
     };
 
     $scope.GetToners = function () {

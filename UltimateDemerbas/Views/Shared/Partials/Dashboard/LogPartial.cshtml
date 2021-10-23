@@ -7,36 +7,6 @@
                 <i class="icon-share font-dark hide"></i>
                 <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
             </div>
-            <div class="actions">
-                <div class="btn-group">
-                    <a class="btn btn-sm blue btn-outline btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        Filter By
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-                        <label class="mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" /> Finance
-                            <span></span>
-                        </label>
-                        <label class="mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" checked="" /> Membership
-                            <span></span>
-                        </label>
-                        <label class="mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" /> Customer Support
-                            <span></span>
-                        </label>
-                        <label class="mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" checked="" /> HR
-                            <span></span>
-                        </label>
-                        <label class="mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" /> System
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="portlet-body">
             <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
@@ -51,7 +21,7 @@
                                 </div>
                                 <div class="cont-col2">
                                     <div class="desc">
-                                       {{x.Detail}} ({{x.UserName}})
+                                        {{x.Detail}} ({{x.UserName}})
                                         <span class="label label-sm label-warning ">
                                             Take action
                                             <i class="fa fa-share"></i>
@@ -59,18 +29,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="date pull-right">{{x.Time}} </div>
                         </div>
-                        <div class="col2">
-                            <div class="date">{{x.Time}} </div>
-                        </div>
+                        @*<div class="col2">
+                                <div class="date">{{x.Time}} </div>
+                            </div>*@
                     </li>
 
-               
+
                 </ul>
             </div>
             <div class="scroller-footer">
                 <div class="btn-arrow-link pull-right">
-                    <a href="javascript:;">See All Records</a>
+                    <a href="\Log\">See All Records</a>
                     <i class="icon-arrow-right"></i>
                 </div>
             </div>

@@ -1,17 +1,28 @@
 ﻿MainApp.controller("HomeController", ["$scope", "$http", "$window", "LogService", "MessageService", "TaskService", "UserService", function ($scope, $http, $window, LogService, MessageService, TaskService, UserService) {
 
-    $scope.Tasks = [];
+    $scope.Pop = [];
     $scope.Messages = [];
     $scope.UserId = Cookies.get('id');
     $scope.MessageDetail = '';
     $scope.lateTask = 0;
 
+    $scope.Tasks = [];
+    $scope.Pop.startDate = new Date();
+    $scope.Pop.endDate = new Date();
+    $scope.Pop.count = 0;
 
     $scope.GetLogs = function () {
         LogService.GetLogs(
             function success(result) {
                 if (result.IsSuccess) {
                     $scope.Logs = result.Data;
+                    $.each(result.Data, function (index, value) {
+                        $scope.Logs[index].Time = new Date(value.Time).toLocaleString();
+                    });
+
+                    //Down Scrool
+                    var bottomCoord = $('.downScrool')[0].scrollHeight;
+                    $('.downScrool').slimScroll({ scrollTo: bottomCoord });
                 } else {
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 }
@@ -25,8 +36,10 @@
         MessageService.GetMessages(
             function success(result) {
                 if (result.IsSuccess) {
-                    $scope.Messages = [];
                     $scope.Messages = result.Data;
+                    $.each(result.Data, function (index, value) {
+                        $scope.Messages[index].Time = new Date(value.Time).toLocaleString();
+                    });
                 } else {
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 }
@@ -97,8 +110,6 @@
         $scope.Task.isActive = task.IsActive;
     }
 
-
-
     const connection = new signalR.HubConnectionBuilder()
         .withUrl("https://localhost:5001/chathub")
         .build();
@@ -113,7 +124,6 @@
             $scope.Messages.push(data);
         });
     });
-
 
     $scope.AddMessage = function () {
         var d = new Date();
@@ -135,6 +145,11 @@
             }, function error() {
                 toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
             });
+
+
+        //Down Scrool
+        var bottomCoord = $('.downScrool')[0].scrollHeight;
+        $('.downScrool').slimScroll({ scrollTo: bottomCoord });
     }
 
 
@@ -213,7 +228,5 @@
 
         return result;
     }
-
-
 
 }]);

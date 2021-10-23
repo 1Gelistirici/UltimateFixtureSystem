@@ -36,17 +36,19 @@
                     <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
                         <colgroup>
-                            <col />
-                            <col />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
                         </colgroup>
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
 
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="input-icon">
                                         <input ng-model="_.Name" type="text" class="form-control">
-                                    </div>
                                 </td>
 
                                 <td>
