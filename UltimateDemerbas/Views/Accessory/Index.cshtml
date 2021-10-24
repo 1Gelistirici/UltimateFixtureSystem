@@ -84,14 +84,19 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="Assign(_)" >
+                                                    <i class="fa fa-eject"></i>Assign
+                                                </a>
+                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateAccessory(_)">
-                                                    <i class="fa fa-edit "></i>Update
+                                                    <i class="fa fa-edit"></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
                                                 <a class="addphone" title="Telefon Güncelle" data-toggle="modal" ng-click="DeleteAccessory(_)">
-                                                    <i class="fa fa-phone "></i>Delete
+                                                    <i class="fa fa-phone"></i>Delete
                                                 </a>
                                             </li>
                                         </ul>
@@ -118,10 +123,12 @@
 </div>
 
 <partial name="~/Views/Shared/Partials/Accessory/AddAccessoryPopup.cshtml" />
+<partial name="~/Views/Shared/Partials/Global/AddAssignmentPartial.cshtml" />
 
 @section PageScript
     {
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryService.js"></script>
     <script src="~/AngularControllers/Controllers/AccessoryController.js"></script>

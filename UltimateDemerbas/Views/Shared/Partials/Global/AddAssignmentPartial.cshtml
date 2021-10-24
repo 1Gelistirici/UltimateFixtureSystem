@@ -1,0 +1,31 @@
+﻿<!--Add Popup-->
+<div id="AddAssignment" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Assignment</h4>
+            </div>
+            <div class="scroller" style="height:200px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <div class="col-md-9">
+                        <span>User</span>
+                        <select class="form-control" ng-model="Pop.user">
+                            <option ng-repeat="x in Users" value="{{x.Id}}">{{x.Name}}</option>
+                        </select>
+                        {{Users}}
+                    </div>
+                    <div class="col-md-9">
+                        <span>Piece</span>
+                        <input ng-model="Pop.piece" style="font-size: 14px;" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:25%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-click="Assign()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

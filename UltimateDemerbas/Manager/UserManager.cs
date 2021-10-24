@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using UltimateDemerbas.Entities;
+using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
@@ -37,6 +37,24 @@ namespace UltimateDemerbas.Manager
         public async Task<string> GetUser(User parameter)
         {
             var url = apiAdress + $"/User/GetUser";
+            var httpClient = _httpClientFactory.CreateClient("Test");
+            var JsonData = GetSerilizatiob<User>(parameter);
+
+            try
+            {
+                var response = await httpClient.PostAsync(url, JsonData);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+        
+        public async Task<string> GetUsers(User parameter)
+        {
+            var url = apiAdress + $"/User/GetUsers";
             var httpClient = _httpClientFactory.CreateClient("Test");
             var JsonData = GetSerilizatiob<User>(parameter);
 

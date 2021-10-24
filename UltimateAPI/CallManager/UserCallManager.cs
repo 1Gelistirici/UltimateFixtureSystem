@@ -34,10 +34,13 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.CheckUser(parameter);
         }
-
         public UltimateResult<List<User>> GetUser(User parameter)
         {
             return UserManager.Instance.GetUser(parameter);
+        }
+        public UltimateResult<List<User>> GetUsers(User parameter)
+        {
+            return UserManager.Instance.GetUsers(parameter);
         }
         public UltimateResult<List<User>> ChangePassword(User parameter)
         {

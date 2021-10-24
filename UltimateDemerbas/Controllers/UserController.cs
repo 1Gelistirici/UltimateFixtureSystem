@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net.Http;
-using UltimateDemerbas.Entities;
+using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
@@ -32,7 +32,6 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-
         public IActionResult GetUser()
         {
             User parameter = new User();
@@ -40,6 +39,16 @@ namespace UltimateDemerbas.Controllers
 
             UserManager user = new UserManager(_httpClientFactory);
             var result = user.GetUser(parameter);
+
+            return Content(result.Result);
+        }
+        public IActionResult GetUsers()
+        {
+            User parameter = new User();
+            parameter.CompanyId = 1; //ToDo : Bakılacak
+
+            UserManager user = new UserManager(_httpClientFactory);
+            var result = user.GetUsers(parameter);
 
             return Content(result.Result);
         }
