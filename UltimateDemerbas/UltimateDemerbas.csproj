@@ -24,4 +24,8 @@
     <Folder Include="wwwroot\assets1\test\css\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UltimateAPI\UltimateAPI.csproj" />
+  </ItemGroup>
+
 </Project>
