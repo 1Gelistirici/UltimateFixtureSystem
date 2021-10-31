@@ -85,7 +85,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="Assign(_)" >
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetPiece(_.Piece)">
                                                     <i class="fa fa-eject"></i>Assign
                                                 </a>
                                             </li>
@@ -120,14 +120,16 @@
         </div>
 
     </div>
-</div>
 
-<partial name="~/Views/Shared/Partials/Accessory/AddAccessoryPopup.cshtml" />
-<partial name="~/Views/Shared/Partials/Global/AddAssignmentPartial.cshtml" />
+
+    <partial name="~/Views/Shared/Partials/Accessory/AddAccessoryPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Global/AddAssignmentPartial.cshtml" />
+</div>
 
 @section PageScript
     {
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+    <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryService.js"></script>

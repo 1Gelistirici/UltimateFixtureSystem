@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class BaseController
+    public class BaseController : Controller
     {
-
+        public int WorkingUser { get { return Convert.ToInt32(Request.Cookies["id"]); } }
     }
 }

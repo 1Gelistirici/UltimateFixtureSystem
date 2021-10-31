@@ -2,12 +2,11 @@
 using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
-using UltimateDemerbas.Entities;
 using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class AssignmentController : Controller
+    public class AssignmentController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
         public AssignmentController(IHttpClientFactory httpClientFactory)
@@ -20,10 +19,10 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        public IActionResult GetComponentModels()
+        public IActionResult GetAssignments()
         {
             Assignment parameter = new Assignment();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
             var result = componentModel.GetAssignments();
@@ -31,7 +30,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult DeleteComponentModel([FromBody] Assignment parameter)
+        public IActionResult DeleteAssignment([FromBody] Assignment parameter)
         {
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
             var result = componentModel.DeleteAssignment(parameter);
@@ -39,15 +38,17 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult AddComponentModel([FromBody] Assignment parameter)
+        public IActionResult AddAssignment([FromBody] Assignment parameter)
         {
+            parameter.AppointerId = WorkingUser;
+
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
             var result = componentModel.AddAssignment(parameter);
 
             return Content(result.Result);
         }
 
-        public IActionResult UpdateComponentModel([FromBody] Assignment parameter)
+        public IActionResult UpdateAssignment([FromBody] Assignment parameter)
         {
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
             var result = componentModel.UpdateAssignment(parameter);
