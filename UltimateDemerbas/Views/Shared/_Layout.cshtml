@@ -25,10 +25,21 @@
     <link href="~/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css">
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- bootstrap-colorpicker -->
+    <link href="~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" />
+
     <link href="~/assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css">
     <link href="~/assets/layouts/layout4/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color">
     <link href="~/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css">
     <!-- END THEME LAYOUT STYLES -->
+    <!-- Begin toaster STYLES -->
+    <link href="~/Content/toaster.css" rel="stylesheet" />
+    <!-- End toaster STYLES-->
+    
+
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+
 
     <link href="~/Angularjs/ng-table/ng-table.min.css" rel="stylesheet" />
 
@@ -61,6 +72,9 @@
 <!-- END HEAD -->
 
 <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" ng-app="MainApp" ng-controller="BodyController">
+    <toaster-container toaster-options="{ 'time-out': 10000, 'close-button':true, 'close-button':true, 'position-class': 'toast-top-right' }">
+    </toaster-container>
+
     <!-- BEGIN HEADER -->
     <div class="page-header navbar navbar-fixed-top">
         <!-- BEGIN HEADER INNER -->
@@ -491,26 +505,24 @@
                 <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
                 <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                @*<li class="nav-item start ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-home"></i>
+                            <span class="title">Dashboard</span>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item start ">
+                                <a href="index.html" class="nav-link ">
+                                    <i class="icon-bar-chart"></i>
+                                    <span class="title">Dashboard 1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
 
-
-                    @*<li class="nav-item start ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-home"></i>
-                <span class="title">Dashboard</span>
-                <span class="selected"></span>
-                <span class="arrow open"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item start ">
-                    <a href="index.html" class="nav-link ">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">Dashboard 1</span>
-                    </a>
-                </li>
-            </ul>
-        </li>*@
-                   
-                    @Html.Partial("~/Views/Shared/Partials/Global/SlideMenu.cshtml")
+                @Html.Partial("~/Views/Shared/Partials/Global/SlideMenu.cshtml")
 
 
                 <!-- END SIDEBAR MENU -->
@@ -1259,6 +1271,10 @@
     <script src="~/AngularControllers/root.js" type="text/javascript"></script>
     <script src="~/AngularControllers/Controllers/_LayoutController.js" type="text/javascript"></script>
     <script src="~/AngularControllers/Common.js"></script>
+
+    <!-- Begin toaster Js -->
+    <script src="~/Scripts/General/toaster.js"></script>
+    <!-- End toaster Js-->
 
     @RenderSection("PageScript", required: false)
 

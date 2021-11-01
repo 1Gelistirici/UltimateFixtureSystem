@@ -1,2 +1,2 @@
 ﻿
-var MainApp = angular.module('MainApp', ['ngTable']);
+var MainApp = angular.module('MainApp', ['toaster','ngTable']);

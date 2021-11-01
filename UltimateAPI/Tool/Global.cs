@@ -6,7 +6,8 @@ namespace UltimateAPI.Manager
     {
         public static SqlConnection GetSqlConnection()
         {
-            return new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True");
+            return new SqlConnection(@"Data Source=YAZ31;Initial Catalog=UDemirbas;Integrated Security=True");
+            //@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"
         }
     }
 }
