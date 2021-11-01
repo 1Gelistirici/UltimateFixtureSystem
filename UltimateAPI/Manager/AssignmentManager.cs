@@ -100,6 +100,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@userId", parameter.UserId);
                         sqlCommand.Parameters.AddWithValue("@appointerId", parameter.AppointerId);
                         sqlCommand.Parameters.AddWithValue("@itemType", parameter.ItemType);
+                        sqlCommand.Parameters.AddWithValue("@itemId", parameter.ItemId);
                         sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@recallDate", parameter.RecallDate);
 

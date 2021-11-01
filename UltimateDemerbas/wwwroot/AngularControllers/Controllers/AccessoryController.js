@@ -131,12 +131,11 @@
             //}
 
             parameter = {
-                UserId: $scope.Pop.user,
+                UserId: parseInt($scope.Pop.user),
                 RecallDate: $scope.Pop.recallDate,
-                ItemType: 2 // ToDo : Ortak enumdan çekilecek.
+                ItemType: 2, // ToDo : Ortak enumdan çekilecek.
+                ItemId: $scope.Pop.Id
             }
-
-            return;
 
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
@@ -151,9 +150,10 @@
         }
 
         $scope.SetPiece = function (x) {
-            $scope.piece = x;
+            $scope.piece = x.Piece;
             $scope.Pop = [];
             $scope.Pop.piece = 0;
+            $scope.Pop.Id = x.Id;
         }
 
     }]);

@@ -6,6 +6,7 @@ namespace UltimateAPI.Entities
     {
         public int AppointerId { get; set; }
         public int ItemType { get; set; }
+        public int ItemId { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime RecallDate { get; set; }
     }
