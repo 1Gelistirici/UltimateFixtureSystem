@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using UltimateDemerbas.Controllers;
 
 namespace UltimateDemerbas.Manager
 {
-    public class LayoutManager:BaseManager
+    public class LayoutManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -30,6 +27,7 @@ namespace UltimateDemerbas.Manager
             }
             catch (Exception ex)
             {
+                Error(ex);
                 return null;
             }
         }

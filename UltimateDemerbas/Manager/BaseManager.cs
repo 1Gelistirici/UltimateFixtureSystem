@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -38,18 +39,29 @@ namespace UltimateDemerbas.Manager
         {
             try
             {
-                string fileName = "UltimateDemirbasUI.txt";
-                string filePath = @"c:\";
-                string targetFile = System.IO.Path.Combine(filePath, fileName);
+                string root = @"C:\UFS";
+                string subdir = @"C:\UFS\UI";
+
+                if (!Directory.Exists(root))
+                {
+                    Directory.CreateDirectory(root);
+                }
+
+
+                if (!Directory.Exists(subdir))
+                {
+                    Directory.CreateDirectory(subdir);
+                }
+
+                string fileName = "ErrorUltimateUI.txt";
+                string targetFile = System.IO.Path.Combine(subdir, fileName);
 
                 if (!System.IO.File.Exists(targetFile))
                 {
                     var file = System.IO.File.Create(targetFile);
                     file.Close();
                 }
-
                 System.IO.File.WriteAllText(targetFile, ex.ToString());
-
             }
             catch (Exception)
             {
@@ -57,23 +69,8 @@ namespace UltimateDemerbas.Manager
             }
         }
 
-        public int ActiveUserId { get { return GetId(); } }
-        public string ActiveUserCompany { get { return GetCompany(); } }
-
-        
-        public int GetId()
-        {
-            var id = Request.Cookies["id"];
-            return Convert.ToInt32(id);
-        }
-
-        public string GetCompany()
-        {
-            var company = Request.Cookies["company"];
-            return company;
-        }
-
-  
+        public int ActiveUserId { get { return Convert.ToInt32(Request.Cookies["id"]); } }
+        public string ActiveUserCompany { get { return Request.Cookies["company"]; } }
 
     }
 }
