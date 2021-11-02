@@ -27,7 +27,6 @@ namespace UltimateAPI.Manager
                 }
                 return _instance;
             }
-
         }
 
         public UltimateResult<List<Layout>> GetMenus()
@@ -81,11 +80,6 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-
-
-
-
-
 
     }
 }

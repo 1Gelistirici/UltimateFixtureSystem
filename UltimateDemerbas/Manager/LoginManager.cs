@@ -31,6 +31,7 @@ namespace UltimateDemerbas.Manager
             }
             catch (Exception ex)
             {
+                Error(ex);
                 return null;
             }
         }

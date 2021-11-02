@@ -7,7 +7,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class LicenseManager:BaseManager
+    public class LicenseManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile LicenseManager _instance;
@@ -27,7 +27,6 @@ namespace UltimateAPI.Manager
                 }
                 return _instance;
             }
-
         }
 
 
@@ -64,6 +63,7 @@ namespace UltimateAPI.Manager
             catch (Exception ex)
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
                 return result;
             }
 
@@ -117,6 +117,7 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                return result;
             }
 
             return result;
@@ -152,6 +153,7 @@ namespace UltimateAPI.Manager
             catch (Exception ex)
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
                 return result;
             }
 
@@ -192,6 +194,7 @@ namespace UltimateAPI.Manager
             catch (Exception ex)
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
                 return result;
             }
 

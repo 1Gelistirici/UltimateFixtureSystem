@@ -59,10 +59,11 @@ namespace UltimateAPI.Manager
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
             }
 
             return result;

@@ -76,6 +76,7 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                return result;
             }
 
             return result;
@@ -131,6 +132,7 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                return result;
             }
 
             return result;
@@ -257,6 +259,7 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                return result;
             }
 
             AddLog(parameter.UserId, "Aksesuar Güncellendi");

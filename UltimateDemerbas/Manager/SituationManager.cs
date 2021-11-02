@@ -29,7 +29,8 @@ namespace UltimateDemerbas.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                Error(ex);
+                return null;
                 }
             }
 
@@ -46,7 +47,8 @@ namespace UltimateDemerbas.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                Error(ex);
+                return null;
                 }
             }
 
@@ -63,7 +65,8 @@ namespace UltimateDemerbas.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                Error(ex);
+                return null;
                 }
             }
 
@@ -80,7 +83,8 @@ namespace UltimateDemerbas.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                Error(ex);
+                return null;
                 }
             }
     }
