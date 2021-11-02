@@ -6,7 +6,7 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class ReportController :Controller
+    public class ReportController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
         public ReportController(IHttpClientFactory httpClientFactory)
@@ -19,20 +19,20 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        public IActionResult GetBills()
+        public IActionResult GetReports()
         {
-            BillManager bill = new BillManager(_httpClientFactory);
-            var result = bill.GetBills();
+            ReportManager report = new ReportManager(_httpClientFactory);
+            var result = report.GetReports();
 
             return Content(result.Result);
         }
 
-        public IActionResult AddBill([FromBody] Bill parameter)
+        public IActionResult AddReport([FromBody] Report parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
-            BillManager bill = new BillManager(_httpClientFactory);
-            var result = bill.AddBill(parameter);
+            ReportManager report = new ReportManager(_httpClientFactory);
+            var result = report.AddReport(parameter);
 
             return Content(result.Result);
         }

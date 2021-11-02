@@ -58,6 +58,7 @@ namespace UltimateAPI.Manager
                                     report.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
                                     report.ItemKind = Convert.ToInt32(read["itemKind"]);
+                                    report.ReportSubject = read["reportSubject"].ToString();
 
                                     reports.Add(report);
                                 }
@@ -98,9 +99,10 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@userId", parameter.UserId);
                         sqlCommand.Parameters.AddWithValue("@reportDetail", parameter.ReportDetail);
-                        sqlCommand.Parameters.AddWithValue("@insertDate", parameter.InsertDate);
+                        sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@itemId", parameter.ItemId);
                         sqlCommand.Parameters.AddWithValue("@itemKind", parameter.ItemKind);
+                        sqlCommand.Parameters.AddWithValue("@reportSubject", parameter.ReportSubject);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

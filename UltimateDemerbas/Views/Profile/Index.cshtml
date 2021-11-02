@@ -188,10 +188,12 @@
                                                             </td>
 
                                                             <td>
-                                                                <div class="btn-group absoluteitem">
-                                                                    <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                                        <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;" data-toggle="modal" data-target="#ReportPopup"></span>Report
-                                                                    </button>
+                                                                <div class="actions">
+                                                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                                        <a class="btn btn-warning addnewuserbtn" data-toggle="modal" data-target="#ReportPopup" ng-click="OpenReport(_)">
+                                                                            Report
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -242,37 +244,13 @@
         </div>
         <!-- END PROFILE CONTENT -->
     </div>
-</div>
 
-<div id="ReportPopup" class="modal fade" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="width: 350px;z-index:10052!important;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Report</h4>
-            </div>
-            <div class="scroller" style="height:170px" data-always-visible="0" data-rail-visible1="1">
-                <div class="modal-body">
-                    <div class="col-md-12">
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
-                            <textarea ng-model="Pop.taskDetail" rows="4" style="font-size: 14px;" type="text" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer" style="margin-top:25%;">
-                    <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddTask()">Report</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <partial name="~/Views/Shared/Partials/Report/ReportPopupPartial.cshtml" />
 </div>
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/ReportService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
     <script src="~/AngularControllers/Services/TaskService.js"></script>

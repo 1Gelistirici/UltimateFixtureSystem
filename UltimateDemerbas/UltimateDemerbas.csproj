@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Shared\Partials\Profile\" />
     <Folder Include="wwwroot\assets1\test\js\" />
     <Folder Include="wwwroot\assets1\test\css\" />
   </ItemGroup>
