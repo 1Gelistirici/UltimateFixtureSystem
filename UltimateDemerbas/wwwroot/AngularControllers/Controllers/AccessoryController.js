@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "UserService", "AssignmentService", "$http", "NgTableParams",
-    function ($scope, AccessoryService, CategoryService, AccessoryModelService, UserService, AssignmentService, $http, NgTableParams) {
+﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "UserService", "NgTableParams", "toaster",
+    function ($scope, AccessoryService, CategoryService, AccessoryModelService, UserService, NgTableParams, toaster,) {
 
         $scope.test = null;
 
@@ -124,29 +124,8 @@
 
         }
 
-        $scope.Assign = function () {
-
-            //if (!$scope.Pop.checkRecallDate) {
-            //    $scope.Pop.recallDate = null
-            //}
-
-            parameter = {
-                UserId: parseInt($scope.Pop.user),
-                RecallDate: $scope.Pop.recallDate,
-                ItemType: 2, // ToDo : Ortak enumdan çekilecek.
-                ItemId: $scope.Pop.Id
-            }
-
-            AssignmentService.AddAssignment(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
+        $scope.Refresh = function () {
+            $scope.GetAccessories();
         }
 
         $scope.SetPiece = function (x) {
@@ -154,6 +133,8 @@
             $scope.Pop = [];
             $scope.Pop.piece = 0;
             $scope.Pop.Id = x.Id;
+            $scope.Pop.UserName = x.Name;
+            $scope.Pop.ItemType = 2; // ToDO : Enumdan çekilebilir
         }
 
     }]);

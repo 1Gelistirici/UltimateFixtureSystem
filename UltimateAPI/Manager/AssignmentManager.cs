@@ -102,7 +102,9 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@itemType", parameter.ItemType);
                         sqlCommand.Parameters.AddWithValue("@itemId", parameter.ItemId);
                         sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
-                        sqlCommand.Parameters.AddWithValue("@recallDate", parameter.RecallDate);
+                        sqlCommand.Parameters.AddWithValue("@recallDate", parameter.RecallDate < DateTime.Now ? DateTime.Now : parameter.RecallDate);
+                        sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@isRecall", parameter.IsRecall);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

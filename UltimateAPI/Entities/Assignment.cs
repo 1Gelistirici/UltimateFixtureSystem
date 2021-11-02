@@ -2,12 +2,14 @@
 
 namespace UltimateAPI.Entities
 {
-    public class Assignment:BaseProperty
+    public class Assignment : BaseProperty
     {
         public int AppointerId { get; set; }
         public int ItemType { get; set; }
         public int ItemId { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime RecallDate { get; set; }
+        public int Piece { get; set; }
+        public bool IsRecall { get; set; }
     }
 }
