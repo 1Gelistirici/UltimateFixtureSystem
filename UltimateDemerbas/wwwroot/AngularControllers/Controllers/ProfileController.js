@@ -161,9 +161,30 @@
         }
 
         $scope.OpenReport = function (x) {
-
+            $scope.Pop = [];
+            $scope.Pop = x
         }
 
+        //AddReport
+        $scope.AddReport = function () {
+
+            var parameter = {
+                ReportSubject: $scope.Pop.reportSubject,
+                ReportDetail: $scope.Pop.reportDetail,
+                ItemId: $scope.Pop.Id,
+            }
+
+            ReportService.AddReport(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
 
     }]);

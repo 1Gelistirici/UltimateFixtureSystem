@@ -8,16 +8,13 @@
             <div class="scroller" style="height:350px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <div class="input-icon">
+                        <label>Subject</label>
+                        <input ng-model="Pop.reportSubject" style="font-size: 14px;" type="text" class="form-control" placeholder="subject...">
 
-                            <label>Subject</label>
-                            <input ng-model="Pop.reportSubject" style="font-size: 14px;" type="text" class="form-control" placeholder="subject...">
+                        <br />
 
-                            <br />
-
-                            <label>Content</label>
-                            <textarea ng-model="Pop.reportDetail" rows="6" style="font-size: 16px;" type="text" class="form-control" placeholder="content..."></textarea>
-                        </div>
+                        <label>Content</label>
+                        <textarea ng-model="Pop.reportDetail" rows="6" style="font-size: 16px;" type="text" class="form-control" placeholder="content..."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-top:70%;">
