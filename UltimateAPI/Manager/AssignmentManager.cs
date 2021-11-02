@@ -205,5 +205,60 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Assignment>> GetAssignmentUser(Assignment parameter)
+        {
+            List<Assignment> assignments = new List<Assignment>();
+            UltimateResult<List<Assignment>> result = new UltimateResult<List<Assignment>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[assignment_GetAssignmentsUser]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@userId", parameter.UserId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Assignment assignment = new Assignment();
+                                    assignment.Id = Convert.ToInt32(read["id"]);
+                                    assignment.UserId = Convert.ToInt32(read["userId"]);
+                                    assignment.InsertDate = Convert.ToDateTime(read["insertDate"]);
+                                    assignment.AppointerId = Convert.ToInt32(read["appointerId"]);
+                                    assignment.ItemType = Convert.ToInt32(read["itemType"]);
+                                    assignment.ItemId = Convert.ToInt32(read["itemId"]);
+                                    assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
+                                    assignment.Piece = Convert.ToInt32(read["piece"]);
+                                    assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
+
+                                    assignments.Add(assignment);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = assignments;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
     }
 }

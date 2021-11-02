@@ -31,7 +31,7 @@ namespace UltimateAPI.CallManager
         {
             return AssignmentManager.Instance.GetAssignments(parameter);
         }
-
+    
         public UltimateResult<List<Assignment>> DeleteAssignment(Assignment parameter)
         {
             return AssignmentManager.Instance.DeleteAssignment(parameter);
@@ -45,6 +45,11 @@ namespace UltimateAPI.CallManager
         public UltimateResult<List<Assignment>> UpdateAssignment(Assignment parameter)
         {
             return AssignmentManager.Instance.UpdateAssignment(parameter);
+        }
+
+        public UltimateResult<List<Assignment>> GetAssignmentUser(Assignment parameter)
+        {
+            return AssignmentManager.Instance.GetAssignmentUser(parameter);
         }
     }
 }

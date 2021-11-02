@@ -80,5 +80,22 @@ namespace UltimateDemerbas.Manager
                 return null;
             }
         }
+
+        public async Task<string> GetAssignmentUser()
+        {
+            var url = apiAdress + $"/Assignment/GetAssignmentUser";
+            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+
+            try
+            {
+                var response = await httpClient.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

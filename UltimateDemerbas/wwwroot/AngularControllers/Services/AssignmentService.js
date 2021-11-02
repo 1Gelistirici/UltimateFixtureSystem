@@ -33,4 +33,12 @@
                 }, error);
         };
 
+        this.GetAssignmentUser = function (success, error) {
+            $http.get("/Assignment/GetAssignmentUser").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
     }]);

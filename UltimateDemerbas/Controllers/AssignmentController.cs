@@ -29,7 +29,7 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-
+       
         public IActionResult DeleteAssignment([FromBody] Assignment parameter)
         {
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
@@ -55,5 +55,17 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+
+        public IActionResult GetAssignmentUser()
+        {
+            Assignment parameter = new Assignment();
+            parameter.UserId = WorkingUser;
+
+            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
+            var result = componentModel.GetAssignmentUser();
+
+            return Content(result.Result);
+        }
+
     }
 }

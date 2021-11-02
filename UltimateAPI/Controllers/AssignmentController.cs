@@ -23,7 +23,7 @@ namespace UltimateAPI.Controllers
             var result = assignment.GetAssignments(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-
+    
         [HttpPost("DeleteAssignment")]
         public IActionResult DeleteAssignment(Assignment parameter)
         {
@@ -37,6 +37,14 @@ namespace UltimateAPI.Controllers
         {
             AssignmentCallManager assignment = new AssignmentCallManager();
             var result = assignment.UpdateAssignment(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpGet("GetAssignmentUser")]
+        public IActionResult GetAssignmentUser(Assignment parameter)
+        {
+            AssignmentCallManager assignment = new AssignmentCallManager();
+            var result = assignment.GetAssignmentUser(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
     }

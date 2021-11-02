@@ -1,5 +1,5 @@
-﻿MainApp.controller("ProfileController", ["$scope", "ProfileService", "UserService", "TaskService", "AccessoryService", "CategoryService", "AccessoryModelService", "ReportService", "NgTableParams",
-    function ($scope, ProfileService, UserService, TaskService, AccessoryService, CategoryService, AccessoryModelService, ReportService, NgTableParams) {
+﻿MainApp.controller("ProfileController", ["$scope", "ProfileService", "UserService", "TaskService", "AccessoryService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "NgTableParams", "toaster",
+    function ($scope, ProfileService, UserService, TaskService, AccessoryService, CategoryService, AccessoryModelService, ReportService, AssignmentService, NgTableParams, toaster) {
 
         $scope.AccessoryCount = 0;
         $scope.TableCol = {
@@ -9,6 +9,22 @@
             Piece: "Piece",
             BillNo: "Bill",
         };
+
+
+        //GetAssignmentUser
+        $scope.GetAssignmentUser = function () {
+            AssignmentService.GetAssignmentUser(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log("te", result.Data);
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetAssignmentUser();
 
         //Get User
         $scope.GetUser = function () {
