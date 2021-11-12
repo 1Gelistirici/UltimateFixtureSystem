@@ -40,7 +40,7 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpGet("GetAssignmentUser")]
+        [HttpPost("GetAssignmentUser")]
         public IActionResult GetAssignmentUser(Assignment parameter)
         {
             AssignmentCallManager assignment = new AssignmentCallManager();

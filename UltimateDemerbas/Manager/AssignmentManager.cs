@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
-using UltimateDemerbas.Entities;
 
 namespace UltimateDemerbas.Manager
 {
@@ -85,14 +84,15 @@ namespace UltimateDemerbas.Manager
             }
         }
 
-        public async Task<string> GetAssignmentUser()
+        public async Task<string> GetAssignmentUser(Assignment parameter)
         {
             var url = apiAdress + $"/Assignment/GetAssignmentUser";
             var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var JsonData = GetSerilizatiob<Assignment>(parameter);
 
             try
             {
-                var response = await httpClient.GetAsync(url);
+                var response = await httpClient.PostAsync(url, JsonData);
                 return await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)

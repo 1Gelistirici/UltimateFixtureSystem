@@ -69,8 +69,8 @@ namespace UltimateAPI.Manager
 
         public void Dispose(SqlConnection sqlcon)
         {
-            sqlcon.Dispose();
             sqlcon.Close();
+            sqlcon.Dispose();
         }
 
         //public static SqlConnection GetSqlConnection(string Adress)

@@ -16,15 +16,15 @@
             AssignmentService.GetAssignmentUser(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("te", result.Data);
+                        $scope.AccessoryData = result.Data.filter(x => x.Accessories != null);
+                        RefreshAccessoryTable();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetAssignmentUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetAssignmentUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetAssignmentUser();
 
         //Get User
         $scope.GetUser = function () {
@@ -38,10 +38,10 @@
                         $scope.Linkedin = result.Data[0].Linkedin;
                         $scope.About = result.Data[0].About;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUser();
@@ -53,10 +53,10 @@
                     if (result.IsSuccess) {
                         $scope.TaskLength = result.Data.length;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetTasks();
@@ -68,10 +68,10 @@
                     if (result.IsSuccess) {
                         $scope.Categories = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetCategories();
@@ -82,41 +82,53 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.AccessoryModels = result.Data;
+                        $scope.GetAssignmentUser();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetAccessoryModels();
 
         //Get Accessory
-        $scope.GetAccessory = function () {
-            AccessoryService.GetAccessory(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.AccessoryData = result.Data;
-                        $scope.AccessoryCount = $scope.AccessoryData.length;
-                        $scope.AccessoryTable = new NgTableParams({
-                            sorting: { name: 'adc' },
-                            count: 20
-                        }, {
-                            counts: [10, 20, 50],
-                            dataset: $scope.AccessoryData
-                        });
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
+        //$scope.GetAccessory = function () {
+            //AccessoryService.GetAccessory(
+            //    function success(result) {
+            //        if (result.IsSuccess) {
+            //            $scope.AccessoryData = result.Data;
+            //            $scope.AccessoryCount = $scope.AccessoryData.length;
+
+
+            //$scope.AccessoryTable = new NgTableParams({
+            //    sorting: { name: 'adc' },
+            //    count: 20
+            //}, {
+            //    counts: [10, 20, 50],
+            //    dataset: $scope.AccessoryData
+            //});
+            //    } else {
+            //        toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            //    }
+            //}, function error() {
+            //    toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+            //});
+        //}
+        //$scope.GetAccessory();
+
+        function RefreshAccessoryTable() {
+            $scope.AccessoryTable = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 20
+            }, {
+                counts: [10, 20, 50],
+                dataset: $scope.AccessoryData
+            });
         }
-        $scope.GetAccessory();
 
         //Change Password
         $scope.ChangePassword = function () {
-
             var parameter = {
                 "PasswordTry": $scope.PasswordTry,
                 "Password": $scope.Password,
@@ -178,7 +190,7 @@
 
         $scope.OpenReport = function (x) {
             $scope.Pop = [];
-            $scope.Pop = x
+            $scope.Pop = x.Accessories
         }
 
         //AddReport

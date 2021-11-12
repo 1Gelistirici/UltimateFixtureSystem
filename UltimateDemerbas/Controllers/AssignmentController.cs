@@ -62,7 +62,7 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.GetAssignmentUser();
+            var result = componentModel.GetAssignmentUser(parameter);
 
             return Content(result.Result);
         }

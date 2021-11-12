@@ -137,19 +137,18 @@
                                 <!-- CHANGE AVATAR TAB -->
                                 <div class="tab-pane" id="tab_1_2">
 
-
-
-                                    <div ng-show="AccessoryCount==0">
+                                    <div ng-show="AccessoryData.length==0">
                                         <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
                                     </div>
 
                                     <!--Table Body-->
                                     <div class="portlet-body">
-                                        <div class="table-scrollable table-scrollable-borderless" ng-show="AccessoryCount>0">
+                                        <div class="table-scrollable table-scrollable-borderless" ng-show="AccessoryData.length>0">
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-light" ng-table="AccessoryTable" style="margin-bottom: 50px !important;">
 
                                                     <colgroup>
+                                                        <col />
                                                         <col />
                                                         <col />
                                                         <col />
@@ -163,7 +162,7 @@
 
                                                             <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                                                 <div class="input-icon">
-                                                                    <span>{{_.Name}}</span>
+                                                                    <span>{{_.Accessories.Name}}</span>
                                                                 </div>
                                                             </td>
 
@@ -175,16 +174,22 @@
 
                                                             <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
                                                                 <div class="input-icon">
-                                                                    <span>{{_.BillNo}}</span>
+                                                                    <span>{{_.Accessories.BillNo}}</span>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                                                <div class="input-icon">
+                                                                    <span>{{_.IsRecall}}</span>
                                                                 </div>
                                                             </td>
 
                                                             <td data-title="TableCol.ModelNo" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
-                                                                <span>{{GetAccessoryModels(_.ModelNo)}} {{AccessoryModelreturn}}</span>
+                                                                <span>{{GetAccessoryModels(_.Accessories.ModelNo)}} {{AccessoryModelreturn}}</span>
                                                             </td>
 
                                                             <td data-title="TableCol.CategoryNo" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
-                                                                <span>{{GetCategoryNo(_.CategoryNo)}} {{CategoryNoreturn}}</span>
+                                                                <span>{{GetCategoryNo(_.Accessories.CategoryNo)}} {{CategoryNoreturn}}</span>
                                                             </td>
 
                                                             <td>
@@ -202,7 +207,7 @@
                                                     <tfoot>
                                                         <tr>
                                                             <td colspan="6" class="no-margin no-padding">
-                                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{AccessoryCount}}</span>
+                                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{AccessoryData.length}}</span>
                                                             </td>
                                                         </tr>
 

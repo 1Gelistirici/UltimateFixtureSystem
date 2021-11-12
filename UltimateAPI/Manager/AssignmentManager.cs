@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -214,6 +215,12 @@ namespace UltimateAPI.Manager
 
             try
             {
+                List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data;
+                List<Bill> bills = BillManager.Instance.GetBills().Data;
+                List<Component> components = ComponentManager.Instance.GetComponents().Data;
+                List<License> licenses = LicenseManager.Instance.GetLicenses().Data;
+                List<Toner> toners= TonerManager.Instance.GetToners().Data;
+
                 using (sqlConnection = Global.GetSqlConnection())
                 {
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
@@ -239,6 +246,30 @@ namespace UltimateAPI.Manager
                                     assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
                                     assignment.Piece = Convert.ToInt32(read["piece"]);
                                     assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
+
+                                    if (assignment.ItemType == (int)ItemType.Accessory)
+                                    {
+                                        assignment.Accessories=(accessories.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    if (assignment.ItemType == (int)ItemType.Bill)
+                                    {
+                                        assignment.Bills=(bills.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    if (assignment.ItemType == (int)ItemType.Companent)
+                                    {
+                                        assignment.Components=(components.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    if (assignment.ItemType == (int)ItemType.Fixture)
+                                    {
+                                    }
+                                    if (assignment.ItemType == (int)ItemType.Licence)
+                                    {
+                                        assignment.Licences=(licenses.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    if (assignment.ItemType == (int)ItemType.Toner)
+                                    {
+                                        assignment.Toners=(toners.Find(x => x.Id == assignment.ItemId));
+                                    }
 
                                     assignments.Add(assignment);
                                 }
