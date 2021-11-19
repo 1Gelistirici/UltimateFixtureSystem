@@ -1,7 +1,19 @@
-﻿MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($scope, $http, $window) {
+﻿var themplateMode = 1;
+
+MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($scope, $http, $window) {
 
     $scope.backgroundColor = 'background-color:#1b243b';
     $scope.sideMenu = 'background-color:#f35ad2eb';
+
+    $(document).ready(function () {
+        //themplateMode ==null db ye istek at
+
+        if (themplateMode == 1) {
+            $("body").css("background-color", "black");
+            $("#pageSubContainer").css("filter","invert(100%) hue-rotate(180deg) brightness(150%)")
+        }
+    });
+
 
     $scope.MenuTitle = [];
     $scope.MenuSub = [];
