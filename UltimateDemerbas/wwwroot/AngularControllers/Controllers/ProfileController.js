@@ -94,26 +94,26 @@
 
         //Get Accessory
         //$scope.GetAccessory = function () {
-            //AccessoryService.GetAccessory(
-            //    function success(result) {
-            //        if (result.IsSuccess) {
-            //            $scope.AccessoryData = result.Data;
-            //            $scope.AccessoryCount = $scope.AccessoryData.length;
+        //AccessoryService.GetAccessory(
+        //    function success(result) {
+        //        if (result.IsSuccess) {
+        //            $scope.AccessoryData = result.Data;
+        //            $scope.AccessoryCount = $scope.AccessoryData.length;
 
 
-            //$scope.AccessoryTable = new NgTableParams({
-            //    sorting: { name: 'adc' },
-            //    count: 20
-            //}, {
-            //    counts: [10, 20, 50],
-            //    dataset: $scope.AccessoryData
-            //});
-            //    } else {
-            //        toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
-            //    }
-            //}, function error() {
-            //    toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
-            //});
+        //$scope.AccessoryTable = new NgTableParams({
+        //    sorting: { name: 'adc' },
+        //    count: 20
+        //}, {
+        //    counts: [10, 20, 50],
+        //    dataset: $scope.AccessoryData
+        //});
+        //    } else {
+        //        toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //    }
+        //}, function error() {
+        //    toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //});
         //}
         //$scope.GetAccessory();
 
@@ -205,12 +205,13 @@
             ReportService.AddReport(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.success("Rapor Oluşturuldu.", "En kısa zamanda yetkililer sizinler iletişime geçecektir.");
+                        $("#ReportPopup").modal("hide");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Rapor Oluşturulamadı", "Teknik bir hata yüzünden rapor oluşturulamadı.");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Rapor Oluşturulamadı", "Teknik bir hata yüzünden rapor oluşturulamadı.");
                 });
         }
 
