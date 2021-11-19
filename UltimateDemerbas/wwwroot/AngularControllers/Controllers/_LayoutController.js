@@ -1,4 +1,4 @@
-﻿var themplateMode = 1;
+﻿var themplateMode = 0;
 
 MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($scope, $http, $window) {
 
@@ -10,7 +10,7 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($s
 
         if (themplateMode == 1) {
             $("body").css("background-color", "black");
-            $("#pageSubContainer").css("filter","invert(100%) hue-rotate(180deg) brightness(150%)")
+            $("#pageSubContainer").css("filter", "invert(100%) hue-rotate(180deg) brightness(150%)");
         }
     });
 
