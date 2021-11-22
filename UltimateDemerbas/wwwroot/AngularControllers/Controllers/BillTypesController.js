@@ -16,9 +16,6 @@
         });
     });
 
-    console.log("sad");
-
-
     $scope.PopupForm = function () {
         if (IsOpen) {
             document.getElementById("myForm").style.display = "block";

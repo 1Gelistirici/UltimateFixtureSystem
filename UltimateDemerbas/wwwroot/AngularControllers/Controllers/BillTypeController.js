@@ -10,8 +10,6 @@
         BillTypeService.GetBillTypes(
             function success(result) {
                 if (result.IsSuccess) {
-                    console.log("result.Data");
-                    console.log(result.Data);
                     $scope.Data = result.Data;
                     $scope.RegisterCount = $scope.Data.length;
                     $scope.TableParams = new NgTableParams({

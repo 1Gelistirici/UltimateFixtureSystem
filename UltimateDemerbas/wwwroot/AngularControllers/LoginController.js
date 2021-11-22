@@ -10,20 +10,14 @@ LoginApp.controller("LoginController", ["$scope", "$http", "LoginService", "$win
             Company: $scope.User.Company
         }
 
-        console.log($scope.User);
-
         LoginService.CheckUser(parameter,
             function success(result) {
                 if (result.IsSuccess) {
                     if (result.Data.length > 0) {
-
-                        console.log("Başarılı", result);
-
-                        Cookies.set('id', result.Data[0].Id);
-
+                        setCookie("id", result.Data[0].Id, 315);
+                        //Cookies.set('id', result.Data[0].Id);
                         $window.location.href = '/Home/Index';
                     } else {
-                        console.log("Başarısız", result);
                     }
 
                 } else {
@@ -43,3 +37,11 @@ LoginApp.controller("LoginController", ["$scope", "$http", "LoginService", "$win
     });
 
 }]);
+
+//cookie ekler
+function setCookie(cname, cvalue, exminutes) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exminutes * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}

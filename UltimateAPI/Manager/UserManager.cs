@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -69,8 +70,21 @@ namespace UltimateAPI.Manager
                             }
                             read.Close();
                         }
-                        sqlCommand.Dispose();
+
+                        //if (users.Count > 0)
+                        //{
+                        //    CookieOptions option = new CookieOptions();
+                        //    option.Expires = DateTime.Now.AddDays(1);
+                        //    Response.Cookies.Append("id", users[0].Id.ToString(), option);
+                        //    result.IsSuccess = true;
+                        //}
+                        //else
+                        //{
+                        //    result.IsSuccess = false;
+                        //}
+
                         result.Data = users;
+                        sqlCommand.Dispose();
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
@@ -144,7 +158,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-        
+
         public UltimateResult<List<User>> GetUsers(User parameter)
         {
             List<User> users = new List<User>();

@@ -18,8 +18,6 @@
                         $scope.Data = result.Data;
                         $scope.tt = "1";
                         $scope.RegisterCount = $scope.Data.length;
-                        console.log("$scope.Data");
-                        console.log($scope.Data);
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20
@@ -37,9 +35,6 @@
 
         $scope.DeleteLicense = function (data) {
 
-            console.log(data);
-            console.log(data.Id);
-
             LicenseService.DeleteLicense(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -53,9 +48,6 @@
 
         $scope.UpdateLicense = function (data) {
 
-            console.log(data);
-            console.log(data.Id);
-
             LicenseService.UpdateLicense(data,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -68,7 +60,6 @@
         }
 
         $scope.AddLicense = function () {
-            console.log($scope.Pop);
 
             var data = {
                 "Name": $scope.Pop.Name,
@@ -96,8 +87,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.LicenseTypes = result.Data;
-                        console.log("$scope.LicenseTypes");
-                        console.log($scope.LicenseTypes);
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20

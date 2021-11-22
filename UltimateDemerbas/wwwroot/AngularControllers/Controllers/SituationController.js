@@ -10,8 +10,6 @@
        SituationService.GetSituations(
             function success(result) {
                 if (result.IsSuccess) {
-                    console.log("result.Data");
-                    console.log(result.Data);
                     $scope.Data = result.Data;
                     $scope.RegisterCount = $scope.Data.length;
                     $scope.TableParams = new NgTableParams({
@@ -32,9 +30,6 @@
 
     $scope.DeleteSituation = function (data) {
 
-        console.log(data);
-        console.log(data.Id);
-
         SituationService.DeleteSituation(data.Id,
             function success(result) {
                 if (result.IsSuccess) {
@@ -47,9 +42,6 @@
     }
 
     $scope.UpdateSituation = function (data) {
-
-        console.log(data);
-        console.log(data.Id);
 
         SituationService.UpdateSituation(data,
             function success(result) {

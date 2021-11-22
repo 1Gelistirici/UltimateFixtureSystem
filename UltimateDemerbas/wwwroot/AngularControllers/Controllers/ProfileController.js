@@ -31,7 +31,6 @@
             UserService.GetUser(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("GetUser", result.Data);
                         $scope.User = result.Data[0];
                         $scope.Facebook = result.Data[0].Facebook;
                         $scope.Twitter = result.Data[0].Twitter;

@@ -44,7 +44,6 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", function ($s
 
             if (element.Area == "Main Title") {
                 $scope.MenuTitle.push(element);
-                console.log("Main Title", $scope.MenuTitle);
             }
 
             if (element.Area == "Main SubMenu") {

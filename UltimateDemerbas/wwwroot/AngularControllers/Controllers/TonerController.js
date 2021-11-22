@@ -15,8 +15,6 @@
         TonerService.GetToners(
             function success(result) {
                 if (result.IsSuccess) {
-                    console.log("result.Data");
-                    console.log(result.Data);
                     $scope.Data = result.Data;
                     $scope.RegisterCount = $scope.Data.length;
                     $scope.TableParams = new NgTableParams({
@@ -89,9 +87,6 @@
     //        alert('You clicked on ' + data[0] + '\'s row');
     //    });
     //});
-
-    //console.log("sad");
-
 
     //$scope.PopupForm = function () {
     //    if (IsOpen) {
