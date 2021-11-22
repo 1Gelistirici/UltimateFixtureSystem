@@ -10,7 +10,6 @@ namespace UltimateAPI.Manager
         private static readonly object Lock = new object();
         private static volatile ConnectionManager _instance;
 
-        private static SqlConnection sqlConnection;
         private static SqlCommand sqlCommand;
 
         public static ConnectionManager Instance
