@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace UltimateAPI.Entities
 {
@@ -12,6 +11,7 @@ namespace UltimateAPI.Entities
         public DateTime RecallDate { get; set; }
         public int Piece { get; set; }
         public bool IsRecall { get; set; }
+        public bool Report { get; set; }
         public Accessory Accessories { get; set; }
         public Bill Bills { get; set; }
         public Component Components { get; set; }

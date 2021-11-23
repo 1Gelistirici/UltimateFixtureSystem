@@ -96,6 +96,7 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@userId", parameter.UserId);
                         sqlCommand.Parameters.AddWithValue("@reportDetail", parameter.ReportDetail);
                         sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);

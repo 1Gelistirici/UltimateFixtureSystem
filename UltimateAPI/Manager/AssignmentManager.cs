@@ -60,6 +60,7 @@ namespace UltimateAPI.Manager
                                     assignment.ItemType = Convert.ToInt32(read["itemType"]);
                                     assignment.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
+                                    assignment.Report = Convert.ToBoolean(read["report"]);
 
                                     assignments.Add(assignment);
                                 }
@@ -246,6 +247,7 @@ namespace UltimateAPI.Manager
                                     assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
                                     assignment.Piece = Convert.ToInt32(read["piece"]);
                                     assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
+                                    assignment.Report = Convert.ToBoolean(read["report"]);
 
                                     if (assignment.ItemType == (int)ItemType.Accessory)
                                     {

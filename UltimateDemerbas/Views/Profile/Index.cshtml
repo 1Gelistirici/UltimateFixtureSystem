@@ -195,8 +195,13 @@
                                                             <td>
                                                                 <div class="actions">
                                                                     <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                                                        <a class="btn btn-warning addnewuserbtn" data-toggle="modal" data-target="#ReportPopup" ng-click="OpenReport(_)">
+                                                                        <a class="btn btn-warning addnewuserbtn" data-toggle="modal" data-target="#ReportPopup" 
+                                                                           ng-click="OpenReport(_)" ng-show="_.Report==false">
                                                                             Report
+                                                                        </a>  
+                                                                        <a class="btn btn-danger addnewuserbtn disabled" data-toggle="modal" data-target="#ReportPopup" 
+                                                                            ng-show="_.Report==true">
+                                                                            Reported
                                                                         </a>
                                                                     </div>
                                                                 </div>
