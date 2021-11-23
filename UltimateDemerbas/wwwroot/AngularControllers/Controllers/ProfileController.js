@@ -4,11 +4,40 @@
         $scope.AccessoryCount = 0;
         $scope.TableCol = {
             Name: "Component Name",
+            ItemType: "Item Type",
             ModelNo: "Model",
             CategoryNo: "Category",
             Piece: "Piece",
             BillNo: "Bill",
         };
+
+        // ToDo : Enumdan çekilecek.
+        $scope.ItemTypes = [
+            {
+                Text: "Bill",
+                Value: 1
+            },
+            {
+                Text: "Accessory",
+                Value: 2
+            },
+            {
+                Text: "Companent",
+                Value: 3
+            },
+            {
+                Text: "Fixture",
+                Value: 4
+            },
+            {
+                Text: "Licence",
+                Value: 5
+            },
+            {
+                Text: "Toner",
+                Value: 6
+            }
+        ]
 
 
         //GetAssignmentUser
@@ -16,7 +45,27 @@
             AssignmentService.GetAssignmentUser(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.AccessoryData = result.Data.filter(x => x.Accessories != null);
+                        //$scope.AccessoryData = result.Data.filter(x => x.Accessories != null);
+                        $scope.AccessoryData = result.Data;
+                        $.each($scope.AccessoryData, function (index, value) {
+                            //ItemType texti bulunur.
+                            $scope.AccessoryData[index].ItemType = $scope.ItemTypes.find(x => x.Value == value.ItemType);
+
+                            //Servisden datalar ayrıştırılarak geliyor. Herbiri için farklı tab açmak yerine aynı tab altında toplanılacağı için uı da Accessories içerisinde toplanıyor.
+                            if ($scope.AccessoryData[index].Components != null) {
+                                $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Components;
+                            }
+                            else if ($scope.AccessoryData[index].Bills != null) {
+                                $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Bills;
+                            }
+                            else if ($scope.AccessoryData[index].Licences != null) {
+                                $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Licences;
+                            }
+                            else if ($scope.AccessoryData[index].Toners != null) {
+                                $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Toners;
+                            }
+                        });
+
                         RefreshAccessoryTable();
                     } else {
                         toaster.error("GetAssignmentUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
