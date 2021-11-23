@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "UserService", "NgTableParams", "toaster",
-    function ($scope, AccessoryService, CategoryService, AccessoryModelService, UserService, NgTableParams, toaster,) {
+﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "NgTableParams", "toaster",
+    function ($scope, AccessoryService, CategoryService, AccessoryModelService, NgTableParams, toaster,) {
 
         $scope.test = null;
 
@@ -12,20 +12,6 @@
             Piece: "Piece",
             BillNo: "Bill",
         };
-
-        $scope.GetUsers = function () {
-            UserService.GetUsers(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.Users = result.Data;
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetUsers();
 
         $scope.GetCategories = function () {
             CategoryService.GetCategories(
