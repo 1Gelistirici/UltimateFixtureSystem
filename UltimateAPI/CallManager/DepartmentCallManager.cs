@@ -35,8 +35,17 @@ namespace UltimateAPI.CallManager
         {
             return DepartmentManager.Instance.GetDepartments(parameter);
         }
-
-
-
+        public UltimateResult<List<Department>> AddDepartment(Department parameter)
+        {
+            return DepartmentManager.Instance.AddDepartment(parameter);
+        }
+        public UltimateResult<List<Department>> DeleteDepartment(Department parameter)
+        {
+            return DepartmentManager.Instance.DeleteDepartment(parameter);
+        }
+        public UltimateResult<List<Department>> UpdateDepartment(Department parameter)
+        {
+            return DepartmentManager.Instance.UpdateDepartment(parameter);
+        }
     }
 }

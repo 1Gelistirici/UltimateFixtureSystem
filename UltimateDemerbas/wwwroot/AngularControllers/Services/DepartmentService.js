@@ -9,5 +9,28 @@
                 }, error);
         }
 
+        this.AddDepartment = function (parameter, success, error) {
+            $http.post('/Department/AddDepartment', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
+        this.UpdateDepartment = function (parameter, success, error) {
+            $http.post('/Department/UpdateDepartment', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
+        this.DeleteDepartment = function (parameter, success, error) {
+            $http.post('/Department/DeleteDepartment', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
 
     }]);

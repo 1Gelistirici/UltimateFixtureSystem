@@ -81,18 +81,123 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Department>> AddDepartment(Department parameter)
+        {
+            UltimateResult<List<Department>> result = new UltimateResult<List<Department>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[department_AddDepartment]";
 
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
 
+                        sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
 
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
 
+            AddLog(parameter.UserId, "Bileşen Eklendi");
 
+            return result;
+        }
 
+        public UltimateResult<List<Department>> DeleteDepartment(Department parameter)
+        {
+            UltimateResult<List<Department>> result = new UltimateResult<List<Department>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[department_DeleteDepartment]";
 
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
 
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
 
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            AddLog(parameter.UserId, "Bileşen Silindi");
+
+            return result;
+        }
+
+        public UltimateResult<List<Department>> UpdateDepartment(Department parameter)
+        {
+            UltimateResult<List<Department>> result = new UltimateResult<List<Department>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[department_UpdateDepartment]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            AddLog(parameter.UserId, "Bileşen Güncellendi");
+
+            return result;
+        }
 
     }
 }

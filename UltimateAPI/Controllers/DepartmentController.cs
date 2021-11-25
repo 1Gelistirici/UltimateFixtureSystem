@@ -8,10 +8,31 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        [HttpGet("GetDepartments")]
+        [HttpPost("GetDepartments")]
         public IActionResult GetDepartments(Department parameter)
         {
             var result = DepartmentCallManager.Instance.GetDepartments(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("AddDepartment")]
+        public IActionResult AddDepartment(Department parameter)
+        {
+            var result = DepartmentCallManager.Instance.AddDepartment(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("DeleteDepartment")]
+        public IActionResult DeleteDepartment(Department parameter)
+        {
+            var result = DepartmentCallManager.Instance.DeleteDepartment(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpGet("UpdateDepartment")]
+        public IActionResult UpdateDepartment(Department parameter)
+        {
+            var result = DepartmentCallManager.Instance.UpdateDepartment(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

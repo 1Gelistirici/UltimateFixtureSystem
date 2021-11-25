@@ -29,5 +29,38 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult AddDepartment()
+        {
+            Department parameter = new Department();
+            parameter.UserId = WorkingUser;
+
+            DepartmentManager department = new DepartmentManager(_httpClientFactory);
+            var result = department.AddDepartment(parameter);
+
+            return Content(result.Result);
+        }
+
+        public IActionResult UpdateDepartment()
+        {
+            Department parameter = new Department();
+            parameter.UserId = WorkingUser;
+
+            DepartmentManager department = new DepartmentManager(_httpClientFactory);
+            var result = department.UpdateDepartment(parameter);
+
+            return Content(result.Result);
+        }
+
+        public IActionResult DeleteDepartment()
+        {
+            Department parameter = new Department();
+            parameter.UserId = WorkingUser;
+
+            DepartmentManager department = new DepartmentManager(_httpClientFactory);
+            var result = department.DeleteDepartment(parameter);
+
+            return Content(result.Result);
+        }
+
     }
 }
