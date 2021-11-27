@@ -247,6 +247,5 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-
     }
 }
