@@ -112,6 +112,11 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetPiece(_)">
+                                                    <i class="fa fa-eject"></i>Assign
+                                                </a>
+                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateBill(_)">
                                                     <i class="fa fa-edit "></i>Update
@@ -119,7 +124,7 @@
                                             </li>
                                             <li class="ms-hover">
                                                 <a class="addphone" title="Telefon Güncelle" data-toggle="modal" ng-click="DeleteBill(_)">
-                                                    <i class="fa fa-phone "></i>Delete
+                                                    <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
                                         </ul>
@@ -136,20 +141,24 @@
                             </tr>
 
                         </tfoot>
-
                     </table>
+
                 </div>
             </div>
         </div>
-
     </div>
+
+    <partial name="~/Views/Shared/Partials/Bill/AddBillPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Bill/AddAssignmentPartial.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/Bill/AddBillPopup.cshtml" />
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/AssignmentService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/BillTypeService.js"></script>
     <script src="~/AngularControllers/Services/BillService.js"></script>
+    <script src="~/AngularControllers/Controllers/AssignmentController.js"></script>
     <script src="~/AngularControllers/Controllers/BillController.js"></script>
 }
