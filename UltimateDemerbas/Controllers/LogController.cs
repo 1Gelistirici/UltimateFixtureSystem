@@ -46,7 +46,5 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-
-     
     }
 }
