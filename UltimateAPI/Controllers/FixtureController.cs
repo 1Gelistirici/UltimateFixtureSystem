@@ -8,7 +8,7 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class FixtureController : ControllerBase
     {
-        [HttpPost("GetFixtures")]
+        [HttpGet("GetFixtures")]
         public IActionResult GetFixtures()
         {
             FixtureCallManager fixture = new FixtureCallManager();

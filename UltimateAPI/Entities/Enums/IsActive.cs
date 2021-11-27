@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace UltimateAPI.Entities.Enums
 {
-    public enum IsActive
+    public enum IsActive //Task önem çeşitleri
     {
         NotSerious = 1 << 0,
         Urgent = 1 << 1,

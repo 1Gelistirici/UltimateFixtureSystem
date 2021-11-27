@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -56,12 +57,14 @@ namespace UltimateAPI.Manager
                                 {
                                     Fixture fixture = new Fixture();
                                     fixture.Id = Convert.ToInt32(read["id"]);
+                                    fixture.Name = read["name"].ToString();
                                     fixture.LoginSystem = read["loginSystem"].ToString();
-                                    fixture.ModelNo = Convert.ToInt32(read["modelNo"]);
-                                    fixture.BillNo = Convert.ToInt32(read["billNo"]);
-                                    fixture.StatuNo = Convert.ToInt32(read["statuNo"]);
-                                    fixture.CategoryNo = Convert.ToInt32(read["categoryNo"]);
-                                    fixture.UserNo = Convert.ToInt32(read["userNo"]);
+                                    fixture.ModelNo = Convert.ToInt32(read["model_no"]);
+                                    fixture.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    fixture.StatuNo = Convert.ToInt32(read["statu_no"]);
+                                    fixture.CategoryNo = Convert.ToInt32(read["category_no"]);
+                                    fixture.UserNo = Convert.ToInt32(read["user_no"]);
+                                    //fixture.Piece = Convert.ToInt32(read["piece"]);
 
                                     fixtures.Add(fixture);
                                 }
@@ -117,6 +120,7 @@ namespace UltimateAPI.Manager
                                     fixture.StatuNo = Convert.ToInt32(read["statuNo"]);
                                     fixture.CategoryNo = Convert.ToInt32(read["categoryNo"]);
                                     fixture.UserNo = Convert.ToInt32(read["userNo"]);
+                                    //fixture.Piece = Convert.ToInt32(read["piece"]);
 
                                     fixtures.Add(fixture);
                                 }
@@ -138,7 +142,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-        
+
         public UltimateResult<List<Fixture>> GetFixtureByUser(Fixture parameter)
         {
             List<Fixture> fixtures = new List<Fixture>();
@@ -172,6 +176,7 @@ namespace UltimateAPI.Manager
                                     fixture.StatuNo = Convert.ToInt32(read["statuNo"]);
                                     fixture.CategoryNo = Convert.ToInt32(read["categoryNo"]);
                                     fixture.UserNo = Convert.ToInt32(read["userNo"]);
+                                    //fixture.Piece = Convert.ToInt32(read["piece"]);
 
                                     fixtures.Add(fixture);
                                 }
@@ -248,12 +253,13 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
-                        sqlCommand.Parameters.AddWithValue("@loginSystem", parameter.LoginSystem);
+                        sqlCommand.Parameters.AddWithValue("@loginSystem", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
-                        sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
+                        sqlCommand.Parameters.AddWithValue("@user_no", (ItemStatu)parameter.StatuNo == ItemStatu.Assigned ? parameter.UserNo : 0);
+                        //sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -299,6 +305,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
+                        //sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

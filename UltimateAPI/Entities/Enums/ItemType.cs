@@ -1,6 +1,6 @@
 ﻿namespace UltimateAPI.Entities.Enums
 {
-    public enum ItemType
+    public enum ItemType //Assign Tİpi
     {
         Bill = 1,
         Accessory = 2,

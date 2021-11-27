@@ -88,7 +88,6 @@
         }
 
         $scope.AddAccessory = function () {
-
             var data = {
                 "Name": $scope.Pop.Name,
                 "Piece": $scope.Pop.Piece,
@@ -106,7 +105,6 @@
                 }, function error() {
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
-
         }
 
         $scope.Refresh = function () {

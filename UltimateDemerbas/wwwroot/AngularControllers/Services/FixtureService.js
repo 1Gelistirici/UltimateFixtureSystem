@@ -10,7 +10,7 @@
         }
 
         this.GetFixture = function (parameter, success, error) {
-            $http.get("/Fixture/GetFixture", JSON.stringify(parameter)).then(
+            $http.post("/Fixture/GetFixture", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
@@ -18,7 +18,7 @@
         }
 
         this.GetFixtureByUser = function (parameter, success, error) {
-            $http.get("/Fixture/GetFixtureByUser", JSON.stringify(parameter)).then(
+            $http.post("/Fixture/GetFixtureByUser", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
