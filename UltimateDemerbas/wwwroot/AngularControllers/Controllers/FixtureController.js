@@ -1,5 +1,5 @@
-﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "UserService", "NgTableParams", "toaster",
-    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, UserService, NgTableParams, toaster,) {
+﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "NgTableParams", "toaster",
+    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, NgTableParams, toaster,) {
 
         $scope.test = null;
 
@@ -78,18 +78,6 @@
         }
         $scope.GetUsers();
 
-
-
-
-
-
-        RefreshData = function () {
-            $scope.GetFixtures();
-        }
-
-
-
-
         $scope.GetFixtures = function () {
             FixtureService.GetFixtures(
                 function success(result) {
@@ -164,15 +152,41 @@
                 });
         }
 
+        RefreshData = function () {
+            $scope.GetFixtures();
+        }
 
+        $scope.SetAssign = function (x) {
+            $scope.Assign = x;
+            $scope.Assign.Id = x.Id;
+            $scope.Assign.UserName = x.Name;
+        }
 
-        //$scope.SetPiece = function (x) {
-        //    $scope.piece = x.Piece;
-        //    $scope.Pop = [];
-        //    $scope.Pop.piece = 0;
-        //    $scope.Pop.Id = x.Id;
-        //    $scope.Pop.UserName = x.Name;
-        //    $scope.Pop.ItemType = 2; // ToDO : Enumdan çekilebilir
-        //}
+        $scope.Assign = function () {
+            if ($scope.Pop.checkRecallDate === undefined) {
+                $scope.Pop.checkRecallDate = false;
+            }
+
+            var parameter = {
+                UserId: parseInt($scope.Pop.user),
+                RecallDate: $scope.Pop.recallDate,
+                ItemType: 4, // ToDO : Enumdan çekilebilir
+                ItemId: $scope.Assign.Id,
+                IsRecall: $scope.Pop.checkRecallDate,
+            }
+
+            AssignmentService.AddAssignment(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        $('#AddAssignment').modal('hide');
+                        $scope.$parent.Refresh();
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
     }]);

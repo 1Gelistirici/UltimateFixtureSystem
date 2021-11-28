@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
 
@@ -326,6 +324,5 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-
     }
 }
