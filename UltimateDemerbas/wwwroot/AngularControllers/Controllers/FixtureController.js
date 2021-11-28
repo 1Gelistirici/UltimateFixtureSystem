@@ -54,7 +54,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Bills = result.Data;
-                        console.log($scope.Bills);
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -158,29 +157,27 @@
 
         $scope.SetAssign = function (x) {
             $scope.Assign = x;
-            $scope.Assign.Id = x.Id;
-            $scope.Assign.UserName = x.Name;
         }
 
-        $scope.Assign = function () {
-            if ($scope.Pop.checkRecallDate === undefined) {
-                $scope.Pop.checkRecallDate = false;
+        $scope.AssignFixture = function () {
+            if ($scope.Assign.checkRecallDate === undefined) {
+                $scope.Assign.checkRecallDate = false;
             }
 
             var parameter = {
-                UserId: parseInt($scope.Pop.user),
-                RecallDate: $scope.Pop.recallDate,
-                ItemType: 4, // ToDO : Enumdan çekilebilir
+                UserId: parseInt($scope.Assign.user),
+                RecallDate: $scope.Assign.recallDate,
+                ItemType: 4, // ToDo : Enumdan çekilebilir
                 ItemId: $scope.Assign.Id,
-                IsRecall: $scope.Pop.checkRecallDate,
+                IsRecall: $scope.Assign.checkRecallDate,
             }
 
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                        $('#AddAssignment').modal('hide');
-                        $scope.$parent.Refresh();
+                        $('#FixtureAssignmentPopup').modal('hide');
+                        RefreshData();
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

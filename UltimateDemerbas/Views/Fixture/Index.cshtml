@@ -73,7 +73,7 @@
                                 </td>
 
                                 <td data-title="TableCol.Statu" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
-                                    <select class="form-control" ng-model="_.StatuNo">
+                                    <select class="form-control" ng-disabled="_.UserNo>0" ng-model="_.StatuNo">
                                         <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
                                 </td>
@@ -132,6 +132,7 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/FixtureModelService.js"></script>
     <script src="~/AngularControllers/Services/BillService.js"></script>
