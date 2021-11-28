@@ -98,6 +98,11 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" ng-show="_.Price>0" data-toggle="modal" data-target="#FixtureAssignmentPopup">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
+                                                    <i class="fa fa-eject"></i>Assign
+                                                </a>
+                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateToner(_)">
                                                     <i class="fa fa-edit "></i>Update

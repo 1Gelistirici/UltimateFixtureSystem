@@ -12,13 +12,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Accessory Models
+                    Bill
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
-                        Add Accessory Model
+                        Add Bill
                     </a>
                 </div>
 
@@ -36,73 +36,50 @@
                     <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
                         <colgroup>
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
                         </colgroup>
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
 
                                 <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
                                             <input ng-model="_.BillNo" style="font-size: 14px;" type="text" class="form-control" value="{{ _.BillNo }}">
-                                        </div>
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.BillDate" filter="{ BillDate: 'text'}" sortable="'BillDate'">
-                                    <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
                                             <input ng-model="_.BillDate" style="font-size: 14px;" type="date" class="form-control" value="{{ _.BillDate }}">
-                                        </div>
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.Comment" style="width:20%;" filter="{ Comment: 'text'}" sortable="'Comment'">
-                                    <div class="col-md-12">
                                         <textarea class="form-control" ng-model="_.Comment" rows="2" value="{{ _.Comment }}"></textarea>
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
-                                    <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
                                             <input ng-model="_.Piece" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Piece }}">
-                                        </div>
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.TypeNo" filter="{ Type: 'number'}" sortable="'Type'">
-                                    <div class="col-md-9">
                                         <select class="form-control" ng-model="_.TypeNo">
                                             <option ng-repeat="x in BillTypes" type="number" value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
-                                    <div class="col-md-9">
                                         <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}">
-                                    </div>
                                 </td>
 
                                 <td data-title="TableCol.Items">
-                                    <div class="col-md-9">
                                         <button class="btn blue">
                                             Items
                                             <i class="fa fa-share"></i>
                                         </button>
-                                    </div>
                                 </td>
 
                                 <td>

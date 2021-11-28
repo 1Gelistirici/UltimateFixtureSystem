@@ -17,7 +17,7 @@
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddCategoryPopup">
                         Add Category
                     </a>
                 </div>
@@ -48,7 +48,7 @@
                             <tr ng-repeat="_ in $data">
 
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                        <input ng-model="_.Name" type="text" class="form-control">
+                                    <input ng-model="_.Name" type="text" class="form-control">
                                 </td>
 
                                 <td>
@@ -87,11 +87,11 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <partial name="~/Views/Shared/Partials/Category/AddCategoryPopup.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/Category/AddCategoryPopup.cshtml" />
 
 @section PageScript
     {
