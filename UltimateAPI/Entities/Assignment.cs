@@ -17,7 +17,6 @@ namespace UltimateAPI.Entities
         public Component Components { get; set; }
         public License Licences { get; set; }
         public Toner Toners { get; set; }
-
-        //public Fixture Fixtures { get; set; }
+        public Fixture Fixtures { get; set; }
     }
 }

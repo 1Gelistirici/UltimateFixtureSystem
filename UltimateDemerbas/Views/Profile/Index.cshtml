@@ -167,7 +167,7 @@
                                                                 </div>
                                                             </td>
 
-                                                            <td data-title="TableCol.ItemType" filter="{ ItemTypes: 'select'}" sortable="'ItemTypes'"> 
+                                                            <td data-title="TableCol.ItemType" filter="{ ItemTypes: 'select'}" sortable="'ItemTypes'">
                                                                 <div class="input-icon">
                                                                     <span>{{_.ItemType.Text}}</span>
                                                                 </div>
@@ -185,9 +185,9 @@
                                                                 </div>
                                                             </td>
 
-                                                            <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                                                <div class="input-icon">
-                                                                    <span>{{_.IsRecall}}</span>
+                                                            <td data-title="TableCol.Recall" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                                                <div class="input-icon" ng-show="_.IsRecall==true">
+                                                                    <span>{{_.RecallDate}}</span>
                                                                 </div>
                                                             </td>
 

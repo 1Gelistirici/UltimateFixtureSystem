@@ -9,6 +9,7 @@
             CategoryNo: "Category",
             Piece: "Piece",
             BillNo: "Bill",
+            Recall: "Recall",
         };
 
         // ToDo : Enumdan çekilecek.
@@ -48,9 +49,11 @@
                         //$scope.AccessoryData = result.Data.filter(x => x.Accessories != null);
                         $scope.AccessoryData = result.Data;
                         $.each($scope.AccessoryData, function (index, value) {
+
+                            $scope.AccessoryData[index].RecallDate = new Date($scope.AccessoryData[index].RecallDate).toLocaleString();
+
                             //ItemType texti bulunur.
                             $scope.AccessoryData[index].ItemType = $scope.ItemTypes.find(x => x.Value == value.ItemType);
-
                             //Servisden datalar ayrıştırılarak geliyor. Herbiri için farklı tab açmak yerine aynı tab altında toplanılacağı için uı da Accessories içerisinde toplanıyor.
                             if ($scope.AccessoryData[index].Components != null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Components;
@@ -63,6 +66,9 @@
                             }
                             else if ($scope.AccessoryData[index].Toners != null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Toners;
+                            }
+                            else if ($scope.AccessoryData[index].Fixtures != null) {
+                                $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Fixtures;
                             }
                         });
 
@@ -266,5 +272,8 @@
                 });
         }
 
+        $scope.CheckRecallDate = function (recalDate) {
+            return new Date(recalDate).toLocaleString() > new Date().toLocaleString() ? false : true;
+        }
 
     }]);
