@@ -30,17 +30,24 @@
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
+    <link href="~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/toaster.css" rel="stylesheet" />
+    <script src="~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+
 </head>
 <!-- END HEAD -->
 
-<body class="login">
+<body class="login" ng-app="LoginApp" ng-controller="LoginController">
+    <toaster-container toaster-options="{ 'time-out': 10000, 'close-button':true, 'close-button':true, 'position-class': 'toast-top-right' }">
+    </toaster-container>
+
     <!-- BEGIN LOGO -->
     <div class="logo">
 
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
-    <div class="content" ng-app="LoginApp" ng-controller="LoginController">
+    <div class="content">
         <!-- BEGIN LOGIN FORM -->
         <form name="LoginForm">
             <div class="form-title">
@@ -129,6 +136,11 @@
     <script src="~/Angularjs/angular.js"></script>
     <script src="~/AngularControllers/Services/LoginService.js"></script>
     <script src="~/AngularControllers/LoginController.js"></script>
+
+    <!-- Begin toaster Js -->
+    <script src="~/Scripts/General/toaster.js"></script>
+    <!-- End toaster Js-->
+
     @*<script>
             $(document).ready(function () {
                 $('#clickmewow').click(function () {

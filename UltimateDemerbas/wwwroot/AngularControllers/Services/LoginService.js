@@ -1,4 +1,4 @@
-﻿var LoginApp = angular.module('LoginApp', []);
+﻿var LoginApp = angular.module('LoginApp', ['toaster']);
 
 LoginApp.service("LoginService", ["$http",
     function ($http) {

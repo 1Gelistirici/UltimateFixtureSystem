@@ -1,42 +1,42 @@
-﻿
-LoginApp.controller("LoginController", ["$scope", "$http", "LoginService", "$window", function ($scope, $http, LoginService, $window) {
+﻿LoginApp.controller("LoginController", ["$scope", "LoginService", "$window", "toaster",
+    function ($scope, LoginService, $window, toaster) {
 
+        $scope.CheckUser = function () {
+            var parameter = {
+                UserName: $scope.User.Username,
+                Password: $scope.User.Password,
+                Company: $scope.User.Company
+            }
 
-    $scope.CheckUser = function () {
+            LoginService.CheckUser(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        if (result.Data.length > 0) {
+                            setCookie("id", result.Data[0].Id, 315);
+                            //Cookies.set('id', result.Data[0].Id);
+                            toaster.success("Başarılı", "Sisteme giriş yapıldı.");
+                            $window.location.href = '/Home/Index';
+                        } else {
+                            toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
+                        }
 
-        var parameter = {
-            UserName: $scope.User.Username,
-            Password: $scope.User.Password,
-            Company: $scope.User.Company
-        }
-
-        LoginService.CheckUser(parameter,
-            function success(result) {
-                if (result.IsSuccess) {
-                    if (result.Data.length > 0) {
-                        setCookie("id", result.Data[0].Id, 315);
-                        //Cookies.set('id', result.Data[0].Id);
-                        $window.location.href = '/Home/Index';
                     } else {
+                        toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                     }
-
-                } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                }
-            }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-            });
-    }
-
-    //Enter'a basıldığında
-    $(document).keypress(function (event) {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
-            $scope.CheckUser();
+                }, function error() {
+                    toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
+                });
         }
-    });
 
-}]);
+        //Enter'a basıldığında
+        $(document).keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                $scope.CheckUser();
+            }
+        });
+
+    }]);
 
 //cookie ekler
 function setCookie(cname, cvalue, exminutes) {
