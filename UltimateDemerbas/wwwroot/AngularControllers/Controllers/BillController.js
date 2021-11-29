@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "$http", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, $http, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "NgTableParams", "toaster",
+    function ($scope, BillService, BillTypeService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -25,10 +25,10 @@
                     if (result.IsSuccess) {
                         $scope.BillTypes = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetBillTypes();
@@ -47,10 +47,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Faturalisteleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Faturalisteleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetBills();
@@ -59,11 +59,12 @@
             BillService.DeleteBill(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Fatura silindi.")
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Fatura silme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fatura silme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -71,12 +72,12 @@
             BillService.UpdateBill(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Toner başarıyla güncellendi.");
+                        toaster.success("Başarılı", "Fatura güncellendi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Fatura güncelleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fatura güncelleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -91,12 +92,12 @@
             BillService.AddBill(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Toner başarıyla kaydedildi.");
+                        toaster.success("Başarılı", "Fatura kaydedildi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

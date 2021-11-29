@@ -1,5 +1,5 @@
-﻿MainApp.controller("LicensesTypesController", ["$scope", "LicenseTypeService", "$http", "NgTableParams", function ($scope, LicenseTypeService, $http, NgTableParams)
-{
+﻿MainApp.controller("LicensesTypesController", ["$scope", "LicenseTypeService", "NgTableParams", "toaster",
+    function ($scope, LicenseTypeService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.TableCol = {
@@ -12,12 +12,12 @@
             LicenseTypeService.UpdateLicensesTypes(data,
                 function success(result) {
                     if (result.IsSuccess) {
-
+                        toaster.success("Başarılı", "Lisans tipi güncellendi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Lisans tipi güncelleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Lisans tipi güncelleme işlemi yapılırken bir hata oluştu");
                 });
         };
 
@@ -25,12 +25,12 @@
             LicenseTypeService.DeleteLicensesTypes(x.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-
+                        toaster.success("Başarılı", "Lisans tipi silindi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Lisins tipi silme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Lisins tipi silme işlemi yapılırken bir hata oluştu");
                 });
         };
 
@@ -39,12 +39,12 @@
             LicenseTypeService.AddLicenseType(data,
                 function success(result) {
                     if (result.IsSuccess) {
-
+                        toaster.success("Başarılı", "Lisans tipi eklendi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Lisins tipi ekleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Lisins tipi ekleme işlemi yapılırken bir hata oluştu");
                 });
         };
 
@@ -62,17 +62,13 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Lisans tipi listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Lisans tipi listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-
         $scope.GetLicensesTypes();
-
-
-
 
     }]);
 
