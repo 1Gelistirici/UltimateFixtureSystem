@@ -18,6 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets1\test\**" />
+    <Content Remove="wwwroot\assets1\test\**" />
+    <EmbeddedResource Remove="wwwroot\assets1\test\**" />
+    <None Remove="wwwroot\assets1\test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\AngularControllers\Controllers\_LayoutController.js" />
     <None Include="wwwroot\AngularControllers\root.js" />
   </ItemGroup>
@@ -32,8 +39,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Shared\Partials\Profile\" />
-    <Folder Include="wwwroot\assets1\test\js\" />
-    <Folder Include="wwwroot\assets1\test\css\" />
   </ItemGroup>
 
   <ItemGroup>
