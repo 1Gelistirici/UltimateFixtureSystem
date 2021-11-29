@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using UltimateDemerbas.Entities;
-using UltimateDemerbas.Models;
+using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {

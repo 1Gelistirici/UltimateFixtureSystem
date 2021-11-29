@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net.Http;
-using UltimateDemerbas.Entities;
+using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers

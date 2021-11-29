@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
-using UltimateDemerbas.Entities;
 
 namespace UltimateDemerbas.Manager
 {

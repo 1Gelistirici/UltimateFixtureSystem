@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Net.Http;
-using UltimateDemerbas.Entities;
+using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
