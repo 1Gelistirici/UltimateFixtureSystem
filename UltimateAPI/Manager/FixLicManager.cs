@@ -112,7 +112,7 @@ namespace UltimateAPI.Manager
                 return result;
             }
 
-            AddLog(parameter.UserId, "Lİsans bir demirbaşa atandı");
+            AddLog(parameter.UserId, "Lisans bir demirbaşa atandı");
 
             return result;
         }

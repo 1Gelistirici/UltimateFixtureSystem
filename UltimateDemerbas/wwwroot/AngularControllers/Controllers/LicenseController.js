@@ -1,5 +1,5 @@
-﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "FixtureService", "NgTableParams", "toaster",
-    function ($scope, LicenseService, LicenseTypeService, FixtureService, NgTableParams, toaster) {
+﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "FixtureService", "FixLicService", "NgTableParams", "toaster",
+    function ($scope, LicenseService, LicenseTypeService, FixtureService, FixLicService, NgTableParams, toaster) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -124,26 +124,23 @@
         }
         $scope.GetFixtures();
 
-        $scope.AssignFixture = function () {
+        $scope.AddFixLic = function () {
             var parameter = {
-                UserId: parseInt($scope.Assign.user),
-                RecallDate: $scope.Assign.recallDate,
-                ItemType: 4, // ToDo : Enumdan çekilebilir
-                ItemId: $scope.Assign.Id,
-                IsRecall: $scope.Assign.checkRecallDate,
+                LicanseId: parseInt($scope.Assign.Id),
+                FixtureId: parseInt($scope.Assign.FixturId)
             }
 
-            AssignmentService.AddAssignment(parameter,
+            FixLicService.AddFixLic(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                        $('#FixtureAssignmentPopup').modal('hide');
-                        RefreshData();
+                        toaster.success("Başarılı", "Lisans atama işlemi yapılırken bir hata oluştu");
+                        $('#LicenseAssignmentPartial').modal('hide');
+                        $scope.Data.find(x => x.Id == $scope.Assign.Id).Piece = ($scope.Assign.Piece - 1)
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Lisans atama işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Lisans atama işlemi yapılırken bir hata oluştu");
                 });
         }
     }]);
