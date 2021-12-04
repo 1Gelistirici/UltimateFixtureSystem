@@ -101,11 +101,12 @@
             ComponentService.AddComponent(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Component", "Component başarıyla eklenmiştir");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
 
         }

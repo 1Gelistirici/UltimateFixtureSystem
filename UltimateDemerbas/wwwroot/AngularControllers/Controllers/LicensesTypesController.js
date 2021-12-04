@@ -26,6 +26,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Lisans tipi silindi.");
+                        $scope.GetLicensesTypes();
                     } else {
                         toaster.error("Başarısız", "Lisins tipi silme işlemi yapılırken bir hata oluştu");
                     }
@@ -40,6 +41,8 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Lisans tipi eklendi.");
+                        $("#AddLicenseType").modal("hide");
+                        $scope.GetLicensesTypes();
                     } else {
                         toaster.error("Başarısız", "Lisins tipi ekleme işlemi yapılırken bir hata oluştu");
                     }

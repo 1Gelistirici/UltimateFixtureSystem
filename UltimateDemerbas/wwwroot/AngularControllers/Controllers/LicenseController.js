@@ -1,5 +1,5 @@
-﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "$http", "NgTableParams", "toaster",
-    function ($scope, LicenseService, LicenseTypeService, $http, NgTableParams, toaster) {
+﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "FixtureService", "NgTableParams", "toaster",
+    function ($scope, LicenseService, LicenseTypeService, FixtureService, NgTableParams, toaster) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -32,35 +32,37 @@
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
+        $scope.GetLicenses();
 
         $scope.DeleteLicense = function (data) {
-
             LicenseService.DeleteLicense(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Delete License", "Lisans silme işlemi başarılı");
+                        $scope.GetLicenses();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
                 });
         }
 
         $scope.UpdateLicense = function (data) {
-
             LicenseService.UpdateLicense(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Update License", "Lisans güncelleme işlemi başarılı");
+
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
         $scope.AddLicense = function () {
-
             var data = {
                 "Name": $scope.Pop.Name,
                 "TypeNo": $scope.Pop.TypeNo,
@@ -70,6 +72,9 @@
             LicenseService.AddLicense(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        $("#AddLicense").modal("hide");
+                        $scope.GetLicenses();
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -78,9 +83,6 @@
                 });
 
         }
-
-        $scope.GetLicenses();
-
 
         $scope.GetLicensesTypes = function () {
             LicenseTypeService.GetLicensesTypes(
@@ -101,32 +103,47 @@
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-
         $scope.GetLicensesTypes();
 
+        $scope.SetAssign = function (x) {
+            $scope.Assign = x;
+        }
 
+        $scope.GetFixtures = function () {
+            FixtureService.GetFixtures(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Fixtures = result.Data.filter(x => x.CategoryNo == 1);
+                        console.log($scope.Fixtures);
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetFixtures();
 
+        $scope.AssignFixture = function () {
+            var parameter = {
+                UserId: parseInt($scope.Assign.user),
+                RecallDate: $scope.Assign.recallDate,
+                ItemType: 4, // ToDo : Enumdan çekilebilir
+                ItemId: $scope.Assign.Id,
+                IsRecall: $scope.Assign.checkRecallDate,
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            AssignmentService.AddAssignment(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        $('#FixtureAssignmentPopup').modal('hide');
+                        RefreshData();
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
     }]);

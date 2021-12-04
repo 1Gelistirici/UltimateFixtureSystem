@@ -18,7 +18,7 @@
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddLicenseType"
-                       ng-click="NewFloor()">
+                       ng-click="popName=''">
                         Add License Type
                     </a>
                 </div>
@@ -87,16 +87,15 @@
                             </tr>
 
                         </tfoot>
-
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <partial name="~/Views/Shared/Partials/LicensesTypes/AddLicensesTypePopup.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/LicensesTypes/AddLicensesTypePopup.cshtml" />
 
 @section PageScript
     {

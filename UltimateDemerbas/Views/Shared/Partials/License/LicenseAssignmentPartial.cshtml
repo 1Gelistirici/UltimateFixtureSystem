@@ -1,0 +1,27 @@
+﻿<!--Add Popup-->
+<div id="LicenseAssignmentPartial" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Assignment License</h4>
+            </div>
+            <div style="height:200px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <div class="col-md-9">
+                        <div style="margin-top:3%;">
+                            <span>Fixture</span>
+                            <select class="form-control" ng-model="Pop.TypeNo">
+                                <option ng-repeat="x in Fixtures" ng-selected="true" value="{{x.Id}}">{{x.Name}}({{x.Id}})</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:28%;">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-click="AddLicense()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

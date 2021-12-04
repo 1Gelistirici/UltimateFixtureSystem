@@ -68,10 +68,6 @@
                                     </div>
                                 </td>
 
-
-
-
-
                                 <td>
                                     <div class="btn-group absoluteitem">
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -79,6 +75,11 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" ng-show="_.Piece>0" data-toggle="modal" data-target="#LicenseAssignmentPartial">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
+                                                    <i class="fa fa-eject"></i>Assign
+                                                </a>
+                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" @*data-target="#AddLicenseTypePopup"*@ ng-click="UpdateLicense(_)">
                                                     <i class="fa fa-edit "></i>Update
@@ -86,7 +87,7 @@
                                             </li>
                                             <li class="ms-hover">
                                                 <a class="addphone" title="Telefon Güncelle" data-toggle="modal" @*data-target="#floorDeletePopup"*@ ng-click="DeleteLicense(_)">
-                                                    <i class="fa fa-phone "></i>Delete
+                                                    <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
                                         </ul>
@@ -108,27 +109,29 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <partial name="~/Views/Shared/Partials/License/AddLicensePopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/License/LicenseAssignmentPartial.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/License/AddLicensePopup.cshtml" />
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
     <script src="~/AngularControllers/Services/LicenseService.js"></script>
     <script src="~/AngularControllers/Controllers/LicenseController.js"></script>
 }
 @*@section PageScript{
-    @if (VpsHelper.IsDebugActive)
-    {
-        <script src="~/Scripts/Service/TagService.js"></script>
-        <script src="~/Scripts/Controller/TagController.js"></script>
-    }
-    else
-    {
-        <script src="~/Scripts/Service/ZoneService.js?@VersionChecker.GetDateVersion()"></script>
-        <script src="~/Scripts/Controller/TagController.js?@VersionChecker.GetDateVersion()"></script>
-    }
-}*@
+        @if (VpsHelper.IsDebugActive)
+        {
+            <script src="~/Scripts/Service/TagService.js"></script>
+            <script src="~/Scripts/Controller/TagController.js"></script>
+        }
+        else
+        {
+            <script src="~/Scripts/Service/ZoneService.js?@VersionChecker.GetDateVersion()"></script>
+            <script src="~/Scripts/Controller/TagController.js?@VersionChecker.GetDateVersion()"></script>
+        }
+    }*@
