@@ -42,17 +42,10 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-
-
                                     <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
                                             <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
-                                        </div>
                                     </div>
-
                                 </td>
 
                                 <td>
@@ -69,7 +62,7 @@
                                             </li>
                                             <li class="ms-hover">
                                                 <a class="addphone" title="Telefon Güncelle" data-toggle="modal" ng-click="DeleteAccessoryModel(_)">
-                                                    <i class="fa fa-phone "></i>Delete
+                                                    <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
                                         </ul>
@@ -84,18 +77,16 @@
                                     <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
                                 </td>
                             </tr>
-
                         </tfoot>
-
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <partial name="~/Views/Shared/Partials/AccessoryModel/AddAccessoryModelPopup.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/AccessoryModel/AddAccessoryModelPopup.cshtml" />
 
 @section PageScript
     {
