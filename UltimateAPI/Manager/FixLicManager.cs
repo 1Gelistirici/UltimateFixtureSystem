@@ -57,8 +57,6 @@ namespace UltimateAPI.Manager
                                     fixLic.Id = Convert.ToInt32(read["id"]);
                                     fixLic.FixtureId = Convert.ToInt32(read["fixtureNo"]);
                                     fixLic.LicanseId = Convert.ToInt32(read["licanceNo"]);
-                                    fixLic.FixtureName = read["fixtureName"].ToString();
-                                    fixLic.LicanseName = read["licanseName"].ToString();
 
                                     fixLics.Add(fixLic);
                                 }
