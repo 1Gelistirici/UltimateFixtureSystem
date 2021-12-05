@@ -17,5 +17,13 @@
                 }, error);
         };
 
+        this.DeleteFixLic = function (parameter, success, error) {
+            $http.post('/FixLic/DeleteFixLic', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

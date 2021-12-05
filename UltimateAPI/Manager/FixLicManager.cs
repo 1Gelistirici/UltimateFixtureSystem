@@ -119,44 +119,43 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        //public UltimateResult<List<FixLic>> DeleteFixtureModel(FixLic parameter)
-        //{
-        //    UltimateResult<List<FixLic>> result = new UltimateResult<List<FixLic>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[fixtureModel_DeleteFixtureModel]";
+        public UltimateResult<List<FixLic>> DeleteFixLic(FixLic parameter)
+        {
+            UltimateResult<List<FixLic>> result = new UltimateResult<List<FixLic>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[fixlic_DeleteFixLic]";
 
-        //    try
-        //    {
-        //        using (sqlConnection = Global.GetSqlConnection())
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
 
-        //                sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
 
-        //                int effectedRow = sqlCommand.ExecuteNonQuery();
-        //                result.IsSuccess = effectedRow > 0;
-        //                sqlConnection.Close();
-        //                sqlCommand.Dispose();
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
 
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //        result.IsSuccess = false;
-        //        return result;
-        //    }
+            AddLog(parameter.UserId, "Demirbaş Modeli Silindi");
 
-        //    AddLog(parameter.UserId, "Demirbaş Modeli Silindi");
-
-        //    return result;
-        //}
+            return result;
+        }
 
 
     }

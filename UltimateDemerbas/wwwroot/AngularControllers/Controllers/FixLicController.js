@@ -63,19 +63,23 @@
         }
         $scope.GetFixtures();
 
-        //$scope.DeleteLicense = function (data) {
-        //    LicenseService.DeleteLicense(data.Id,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Delete License", "Lisans silme işlemi başarılı");
-        //                $scope.GetLicenses();
-        //            } else {
-        //                toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
+        $scope.DeleteFixLic = function (data) {
+            var parameter = {
+                Id:data.Id
+            }
+
+            FixLicService.DeleteFixLic(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "FixLic silme işlemi başarılı");
+                        $scope.GetFixLices();
+                    } else {
+                        toaster.error("Başarısız", "FixLic silme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "FixLic silme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
         //$scope.UpdateLicense = function (data) {
         //    LicenseService.UpdateLicense(data,

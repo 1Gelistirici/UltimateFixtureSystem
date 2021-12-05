@@ -48,6 +48,24 @@ namespace UltimateDemerbas.Manager
                 return null;
             }
         }
+        
+        public async Task<string> DeleteFixLic(FixLic parameter)
+        {
+            var url = apiAdress + $"/FixLic/DeleteFixLic";
+            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var JsonData = GetSerilizatiob<FixLic>(parameter);
+
+            try
+            {
+                var response = await httpClient.PostAsync(url, JsonData);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
 
     }
 }

@@ -22,10 +22,11 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-
-
-
-
-
+        [HttpPost("DeleteFixLic")]
+        public IActionResult DeleteFixLic(FixLic parameter)
+        {
+            var result = FixLitCallManager.Instance.DeleteFixLic(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }
