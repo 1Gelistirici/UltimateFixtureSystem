@@ -1,5 +1,4 @@
-﻿@*@using VPS.UI.Models.Tool*@
-
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -64,7 +63,7 @@
                                                     </a>
                                                 </li>*@
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" ng-click="DeleteLicense(_)">
+                                                <a class="addphone" title="Update" ng-click="DeleteFixLic(_)">
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
@@ -80,9 +79,7 @@
                                     <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
                                 </td>
                             </tr>
-
                         </tfoot>
-
                     </table>
                 </div>
             </div>
