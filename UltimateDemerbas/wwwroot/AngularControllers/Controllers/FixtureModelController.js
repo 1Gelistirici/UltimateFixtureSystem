@@ -1,4 +1,4 @@
-﻿MainApp.controller("FixtureModelController", ["$scope", "FixtureModelService", "$http", "NgTableParams", function ($scope, FixtureModelService, $http, NgTableParams) {
+﻿MainApp.controller("FixtureModelController", ["$scope", "FixtureModelService", "toaster", "NgTableParams", function ($scope, FixtureModelService, toaster, NgTableParams) {
     $scope.RegisterCount = 0;
     $scope.Pop = [];
 
@@ -32,11 +32,13 @@
         FixtureModelService.DeleteFixtureModel(data.Id,
             function success(result) {
                 if (result.IsSuccess) {
+                    toaster.success("Başarılı", "Fixture model silme işlemi yapılırken bir hata oluştu");
+                    $scope.GetSituations();
                 } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.success("Başarısız", "Fixture model silme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.success("Başarısız", "Fixture model silme işlemi yapılırken bir hata oluştu");
             });
     }
 
@@ -44,11 +46,12 @@
         FixtureModelService.UpdateFixtureModel(data,
             function success(result) {
                 if (result.IsSuccess) {
+                    toaster.success("Başarılı", "Fixture model güncelleme işlemi yapılırken bir hata oluştu");
                 } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fixture model güncelleme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.error("Başarısız", "Fixture model güncelleme işlemi yapılırken bir hata oluştu");
             });
     }
 
@@ -61,11 +64,14 @@
         FixtureModelService.AddFixtureModel(data,
             function success(result) {
                 if (result.IsSuccess) {
+                    toaster.success("Başarılı", "Fixture model ekleme işlemi yapılırken bir hata oluştu");
+                    $('#AddSituation').modal('hide');
+                    $scope.GetSituations();
                 } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Fixture model ekleme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.error("Başarısız", "Fixture model ekleme işlemi yapılırken bir hata oluştu");
             });
 
     }
