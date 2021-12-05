@@ -13,6 +13,11 @@ namespace UltimateDemerbas.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult AddFixLic([FromBody] FixLic parameter)
         {
             FixLicManager fixture = new FixLicManager(_httpClientFactory);
