@@ -31,5 +31,23 @@ namespace UltimateDemerbas.Manager
             }
         }
 
+        public async Task<string> GetFixLices(FixLic parameter)
+        {
+            var url = apiAdress + $"/FixLic/GetFixLices";
+            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var JsonData = GetSerilizatiob<FixLic>(parameter);
+
+            try
+            {
+                var response = await httpClient.PostAsync(url, JsonData);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+
     }
 }

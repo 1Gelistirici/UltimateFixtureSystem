@@ -35,12 +35,6 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="col-md-9">
-                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
-                                    </div>
-                                </td>
-
                                 <td data-title="TableCol.Type" filter="{ Type: 'text'}" sortable="'Type'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.TypeNo">
@@ -48,10 +42,12 @@
                                         </select>
                                     </div>
                                 </td>
-
-                                <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
+                                
+                                <td data-title="TableCol.Type" filter="{ Type: 'text'}" sortable="'Type'">
                                     <div class="col-md-9">
-                                        <input ng-model="_.Piece" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Piece }}">
+                                        <select class="form-control" ng-model="_.TypeNo">
+                                            <option ng-repeat="x in LicenseTypes" value="{{x.Id}}">{{x.Name}}</option>
+                                        </select>
                                     </div>
                                 </td>
 
@@ -62,13 +58,13 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
+                                            @*<li class="ms-hover">
                                                 <a class="viewuserbtn" ng-click="UpdateLicense(_)">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
-                                            </li>
+                                            </li>*@
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Telefon Güncelle" ng-click="DeleteLicense(_)">
+                                                <a class="addphone" title="Update" ng-click="DeleteLicense(_)">
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>

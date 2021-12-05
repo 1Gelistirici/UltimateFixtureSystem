@@ -9,5 +9,13 @@
                 }, error);
         };
 
+        this.GetFixLices = function (success, error) {
+            $http.get('/FixLic/GetFixLices').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

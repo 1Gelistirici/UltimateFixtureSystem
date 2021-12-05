@@ -29,53 +29,57 @@ namespace UltimateAPI.Manager
         }
 
 
-        //public UltimateResult<List<FixLic>> GetFixtureModels()
-        //{
-        //    List<FixLic> fixtureModels = new List<FixLic>();
-        //    UltimateResult<List<FixLic>> result = new UltimateResult<List<FixLic>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[fixtureModel_GetFixtureModels]";
+        public UltimateResult<List<FixLic>> GetFixLices(FixLic parameter)
+        {
+            List<FixLic> fixLics = new List<FixLic>();
+            UltimateResult<List<FixLic>> result = new UltimateResult<List<FixLic>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[fixlic_GetFixLices]";
 
-        //    try
-        //    {
-        //        using (sqlConnection = Global.GetSqlConnection())
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
-        //                using (SqlDataReader read = sqlCommand.ExecuteReader())
-        //                {
-        //                    if (read.HasRows)
-        //                    {
-        //                        while (read.Read())
-        //                        {
-        //                            FixLic fixtureModel = new FixLic();
-        //                            fixtureModel.Id = Convert.ToInt32(read["id"]);
-        //                            fixtureModel.Name = read["modelName"].ToString();
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    FixLic fixLic = new FixLic();
+                                    fixLic.Id = Convert.ToInt32(read["id"]);
+                                    fixLic.FixtureId = Convert.ToInt32(read["fixtureNo"]);
+                                    fixLic.LicanseId = Convert.ToInt32(read["licanceNo"]);
+                                    fixLic.FixtureName = read["fixtureName"].ToString();
+                                    fixLic.LicanseName = read["licanseName"].ToString();
 
-        //                            fixtureModels.Add(fixtureModel);
-        //                        }
-        //                    }
-        //                    read.Close();
-        //                }
-        //                sqlCommand.Dispose();
-        //                result.Data = fixtureModels;
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //        result.IsSuccess = false;
-        //        return result;
-        //    }
+                                    fixLics.Add(fixLic);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = fixLics;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
 
-        //    return result;
-        //}
+            return result;
+        }
 
         public UltimateResult<List<FixLic>> AddFixLic(FixLic parameter)
         {

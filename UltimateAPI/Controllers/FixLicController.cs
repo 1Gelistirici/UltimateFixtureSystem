@@ -14,5 +14,18 @@ namespace UltimateAPI.Controllers
             var result = FixLitCallManager.Instance.AddFixLic(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("GetFixLices")]
+        public IActionResult GetFixLices(FixLic parameter)
+        {
+            var result = FixLitCallManager.Instance.GetFixLices(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+
+
+
+
+
     }
 }

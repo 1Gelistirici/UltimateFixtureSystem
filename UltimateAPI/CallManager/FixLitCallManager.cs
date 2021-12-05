@@ -32,6 +32,11 @@ namespace UltimateAPI.CallManager
             return FixLicManager.Instance.AddFixLic(parameter);
         }
 
+        public UltimateResult<List<FixLic>> GetFixLices(FixLic parameter)
+        {
+            return FixLicManager.Instance.GetFixLices(parameter);
+        }
+
 
     }
 }

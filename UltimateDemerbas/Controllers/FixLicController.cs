@@ -25,6 +25,15 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+        public IActionResult GetFixLices()
+        {
+            FixLic parameter = new FixLic();
+            parameter.CompanyId = 1; // ToDo : WorkingCompany'den alınacak
+            FixLicManager fixture = new FixLicManager(_httpClientFactory);
+            var result = fixture.GetFixLices(parameter);
+
+            return Content(result.Result);
+        }
 
     }
 }
