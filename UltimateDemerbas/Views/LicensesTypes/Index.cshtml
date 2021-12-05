@@ -43,17 +43,10 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-
-
                                     <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
-                                            <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
-                                        </div>
+                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>
-
                                 </td>
 
                                 <td>
