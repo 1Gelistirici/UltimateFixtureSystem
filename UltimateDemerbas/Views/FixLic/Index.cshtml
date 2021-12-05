@@ -37,7 +37,7 @@
                                 <td data-title="TableCol.Fixture" filter="{ Fixture: 'text'}" sortable="'Fixture'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.FixtureId">
-                                            <option ng-repeat="x in Fixtures" value="{{x.Id}}">{{x.Name}}</option>
+                                            <option ng-repeat="x in Fixtures" ng-value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
                                     </div>
                                 </td>
@@ -45,7 +45,7 @@
                                 <td data-title="TableCol.License" filter="{ License: 'text'}" sortable="'License'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.LicanseId">
-                                            <option ng-repeat="x in Licenses" value="{{x.Id}}">{{x.Name}}</option>
+                                            <option ng-repeat="x in Licenses" ng-value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
                                     </div>
                                 </td>
