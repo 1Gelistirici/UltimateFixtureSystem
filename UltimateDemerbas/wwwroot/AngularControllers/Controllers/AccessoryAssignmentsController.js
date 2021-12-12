@@ -62,8 +62,21 @@
         }
         $scope.GetUsers();
 
-        $scope.DeleteAssignment = function () {
-
+        $scope.DeleteAssignment = function (x) {
+            var parameter = {
+                Id=x.Id,
+                ItemType=x.ItemType,
+                ItemId=x.ItemId
+            }
+            AssignmentService.DeleteAssignment(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.GetAssignments();
+                        toaster.success("DeleteAssignment", "User listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("DeleteAssignment", "User listeleme işlemi yapılırken bir hata oluştu");
+                });
         }
 
         //$scope.DeleteAccessory = function (data) {

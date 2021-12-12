@@ -183,6 +183,8 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("@itemType", parameter.ItemType);
+                        sqlCommand.Parameters.AddWithValue("@itemId", parameter.ItemId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
