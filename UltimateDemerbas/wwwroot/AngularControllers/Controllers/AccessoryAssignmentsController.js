@@ -18,9 +18,8 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Assignments = result.Data.filter(x => x.ItemType == 2);
-                        console.log($scope.Assignments);
-
                         $scope.RegisterCount = $scope.Assignments.length;
+
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20
@@ -29,10 +28,10 @@
                             dataset: $scope.Assignments
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetAssignments", "Assignment listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetAssignments", "Assignment listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetAssignments();
@@ -56,14 +55,16 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-                        console.log("Users", $scope.Users);
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUsers", "User listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUsers();
+
+        $scope.DeleteAssignment = function () {
+
+        }
 
         //$scope.DeleteAccessory = function (data) {
         //    AccessoryService.DeleteAccessory(data.Id,
