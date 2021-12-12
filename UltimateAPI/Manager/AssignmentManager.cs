@@ -45,7 +45,7 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@userId", parameter.UserId);
+                        sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {

@@ -16,7 +16,7 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpGet("GetAssignments")]
+        [HttpPost("GetAssignments")]
         public IActionResult GetAssignments(Assignment parameter)
         {
             AssignmentCallManager assignment = new AssignmentCallManager();

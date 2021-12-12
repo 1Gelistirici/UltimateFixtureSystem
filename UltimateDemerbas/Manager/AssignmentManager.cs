@@ -13,14 +13,15 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetAssignments()
+        public async Task<string> GetAssignments(Assignment parameter)
         {
             var url = apiAdress + $"/Assignment/GetAssignments";
             var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var JsonData = GetSerilizatiob<Assignment>(parameter);
 
             try
             {
-                var response = await httpClient.GetAsync(url);
+                var response = await httpClient.PostAsync(url, JsonData);
                 return await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)

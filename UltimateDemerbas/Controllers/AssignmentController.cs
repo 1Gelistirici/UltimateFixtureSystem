@@ -21,10 +21,10 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetAssignments()
         {
             Assignment parameter = new Assignment();
-            parameter.UserId = WorkingUser;
+            parameter.CompanyId = 1; // ToDo : WorkingCompany olacak
 
             AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.GetAssignments();
+            var result = componentModel.GetAssignments(parameter);
 
             return Content(result.Result);
         }

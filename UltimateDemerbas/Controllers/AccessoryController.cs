@@ -19,6 +19,11 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        public IActionResult Assignments()
+        {
+            return View();
+        }
+
 
         public IActionResult GetAccessories()
         {
