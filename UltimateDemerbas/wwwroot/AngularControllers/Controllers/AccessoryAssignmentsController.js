@@ -6,11 +6,8 @@
         $scope.RegisterCount = 0;
 
         $scope.TableCol = {
-            Name: "Component Name",
-            ModelNo: "Model",
-            CategoryNo: "Category",
-            Piece: "Piece",
-            BillNo: "Bill",
+            User: "User",
+            Accessory: "Accessory",
         };
 
         $scope.GetAssignments = function () {
@@ -64,10 +61,12 @@
 
         $scope.DeleteAssignment = function (x) {
             var parameter = {
-                Id=x.Id,
-                ItemType=x.ItemType,
-                ItemId=x.ItemId
+                Id: x.Id,
+                ItemType: x.ItemType,
+                ItemId: x.ItemId
             }
+            console.log(x);
+            console.log(parameter);
             AssignmentService.DeleteAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {

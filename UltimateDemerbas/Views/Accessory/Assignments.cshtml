@@ -12,7 +12,7 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Assigned Licenses
+                    Assigned Accessory
                 </span>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Fixture" filter="{ Fixture: 'text'}" sortable="'Fixture'">
+                                <td data-title="TableCol.Accessory" filter="{ Fixture: 'text'}" sortable="'Fixture'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.ItemId">
                                             <option ng-repeat="x in Assignments" ng-value="{{x.Accessories.Id}}">{{x.Accessories.Name}}</option>
@@ -42,7 +42,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.License" filter="{ License: 'text'}" sortable="'License'">
+                                <td data-title="TableCol.User" filter="{ License: 'text'}" sortable="'License'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.UserId">
                                             <option ng-repeat="x in Users" ng-value="{{x.Id}}">{{x.Name + ' ' + x.Surname}} </option>
