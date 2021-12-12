@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryAssignmentsController", ["$scope", "AccessoryService", "AssignmentService", "NgTableParams", "toaster",
-    function ($scope, AccessoryService, AssignmentService, NgTableParams, toaster,) {
+﻿MainApp.controller("AccessoryAssignmentsController", ["$scope", "AccessoryService", "AssignmentService", "UserService", "NgTableParams", "toaster",
+    function ($scope, AccessoryService, AssignmentService, UserService, NgTableParams, toaster,) {
 
         $scope.test = null;
 
@@ -51,18 +51,19 @@
         //}
         //$scope.GetAccessoryModels();
 
-        $scope.GetAccessories = function () {
-            AccessoryService.GetAccessories(
+        $scope.GetUsers = function () {
+            UserService.GetUsers(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Accessories = result.Data;
+                        $scope.Users = result.Data;
+                        console.log("Users", $scope.Users);
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetAccessories();
+        $scope.GetUsers();
 
         //$scope.DeleteAccessory = function (data) {
         //    AccessoryService.DeleteAccessory(data.Id,

@@ -45,7 +45,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetUsers()
         {
             User parameter = new User();
-            parameter.CompanyId = 1; //ToDo : WorkingCompany Bakılacak
+            parameter.CompanyId = 1; // ToDo : WorkingCompany Bakılacak
 
             UserManager user = new UserManager(_httpClientFactory);
             var result = user.GetUsers(parameter);

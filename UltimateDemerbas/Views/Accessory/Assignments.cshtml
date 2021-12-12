@@ -44,8 +44,8 @@
 
                                 <td data-title="TableCol.License" filter="{ License: 'text'}" sortable="'License'">
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="_.LicanseId">
-                                            <option ng-repeat="x in Licenses" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                        <select class="form-control" ng-model="_.UserId">
+                                            <option ng-repeat="x in Users" ng-value="{{x.Id}}">{{x.Name + ' ' + x.Surname}} </option>
                                         </select>
                                     </div>
                                 </td>
@@ -90,7 +90,7 @@
 
 @section PageScript
     {
-
+    <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryService.js"></script>
     <script src="~/AngularControllers/Controllers/AccessoryAssignmentsController.js"></script>
