@@ -112,7 +112,6 @@
         }
 
         $scope.SetPiece = function (x) {
-            console.log(x);
             $scope.piece = x.Piece;
             $scope.Pop = [];
             $scope.Pop.piece = 0;
