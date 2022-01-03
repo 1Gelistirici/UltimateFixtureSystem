@@ -31,6 +31,8 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddDepartment([FromBody] Department parameter)
         {
+            parameter.CompanyId = 1; // ToDo : WorkingCompany'den çekilecek
+
             DepartmentManager department = new DepartmentManager(_httpClientFactory);
             var result = department.AddDepartment(parameter);
 

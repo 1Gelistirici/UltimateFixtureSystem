@@ -18,8 +18,6 @@ namespace UltimateAPI.Controllers
         [HttpPost("AddDepartment")]
         public IActionResult AddDepartment(Department parameter)
         {
-            parameter.CompanyId = 1; // ToDo : WorkingCompany'den çekilecek
-
             var result = DepartmentCallManager.Instance.AddDepartment(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
