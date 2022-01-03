@@ -25,8 +25,8 @@
                 }, error);
         };
 
-        this.DeleteDepartment = function (parameter, success, error) {
-            $http.post('/Department/DeleteDepartment', JSON.stringify(parameter)).then(
+        this.DeleteDepartment = function (Id, success, error) {
+            $http.post('/Department/DeleteDepartment', { Id: Id}).then(
                 function (response) {
                     if (success)
                         success(response.data);

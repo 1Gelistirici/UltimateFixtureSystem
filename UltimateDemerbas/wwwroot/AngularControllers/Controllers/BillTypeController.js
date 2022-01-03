@@ -4,7 +4,7 @@
         $scope.Pop = [];
 
         $scope.TableCol = {
-            Name: "Component Model Name",
+            Name: "Bill Type Name",
         };
 
         $scope.GetBillTypes = function () {

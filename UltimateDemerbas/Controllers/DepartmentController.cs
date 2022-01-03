@@ -21,7 +21,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetDepartments()
         {
             Department parameter = new Department();
-            parameter.UserId = WorkingUser;
+            parameter.CompanyId = 1; // ToDO : WorkingCompany'den alıncaktır
 
             DepartmentManager department = new DepartmentManager(_httpClientFactory);
             var result = department.GetDepartments(parameter);
@@ -29,33 +29,24 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult AddDepartment()
+        public IActionResult AddDepartment([FromBody] Department parameter)
         {
-            Department parameter = new Department();
-            parameter.UserId = WorkingUser;
-
             DepartmentManager department = new DepartmentManager(_httpClientFactory);
             var result = department.AddDepartment(parameter);
 
             return Content(result.Result);
         }
 
-        public IActionResult UpdateDepartment()
+        public IActionResult UpdateDepartment([FromBody] Department parameter)
         {
-            Department parameter = new Department();
-            parameter.UserId = WorkingUser;
-
             DepartmentManager department = new DepartmentManager(_httpClientFactory);
             var result = department.UpdateDepartment(parameter);
 
             return Content(result.Result);
         }
 
-        public IActionResult DeleteDepartment()
+        public IActionResult DeleteDepartment([FromBody] Department parameter)
         {
-            Department parameter = new Department();
-            parameter.UserId = WorkingUser;
-
             DepartmentManager department = new DepartmentManager(_httpClientFactory);
             var result = department.DeleteDepartment(parameter);
 
