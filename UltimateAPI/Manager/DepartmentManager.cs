@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
@@ -85,7 +83,7 @@ namespace UltimateAPI.Manager
         {
             UltimateResult<List<Department>> result = new UltimateResult<List<Department>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[department_AddDepartment]";
+            string Proc = "[dbo].[department_AddDeparment]";
 
             try
             {

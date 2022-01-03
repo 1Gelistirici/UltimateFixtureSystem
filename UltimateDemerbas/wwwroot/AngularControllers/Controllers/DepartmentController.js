@@ -43,36 +43,36 @@
                 });
         }
 
-        //$scope.UpdateBillType = function (data) {
-        //    DepartmentService.UpdateBillType(data,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Başarılı", "Bill type güncelleme işlemi yapılırken bir hata oluştu");
-        //            } else {
-        //                toaster.success("Başarısız", "Bill type güncelleme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.success("Başarısız", "Bill type güncelleme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
+        $scope.UpdateDepartment = function (data) {
+            DepartmentService.UpdateDepartment(data,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Departman güncelleme işlemi yapılırken bir hata oluştu");
+                    } else {
+                        toaster.error("Başarısız", "Departman güncelleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Departman güncelleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
-        //$scope.AddBillType = function () {
-        //    var data = {
-        //        "Name": $scope.Pop.Name,
-        //    }
+        $scope.AddDepartment = function () {
+            var data = {
+                "Name": $scope.Pop.Name,
+            }
 
-        //    DepartmentService.AddBillType(data,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Başarılı", "Bill type ekleme işlemi yapılırken bir hata oluştu");
-        //                $('#AddSituation').modal('hide');
-        //                $scope.GetBillTypes();
-        //            } else {
-        //                toaster.success("Başarısız", "Bill type ekleme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.success("Başarısız", "Bill type ekleme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
+            DepartmentService.AddDepartment(data,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Departman ekleme işlemi yapılırken bir hata oluştu");
+                        $('#AddDepartment').modal('hide');
+                        $scope.GetDepartments();
+                    } else {
+                        toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
     }]);

@@ -18,6 +18,8 @@ namespace UltimateAPI.Controllers
         [HttpPost("AddDepartment")]
         public IActionResult AddDepartment(Department parameter)
         {
+            parameter.CompanyId = 1; // ToDo : WorkingCompany'den çekilecek
+
             var result = DepartmentCallManager.Instance.AddDepartment(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
@@ -29,14 +31,11 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpGet("UpdateDepartment")]
+        [HttpPost("UpdateDepartment")]
         public IActionResult UpdateDepartment(Department parameter)
         {
             var result = DepartmentCallManager.Instance.UpdateDepartment(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-
-
-
     }
 }

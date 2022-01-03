@@ -11,13 +11,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Departman
+                    Department
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
-                        Add Departman
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddDepartment">
+                        Add Department
                     </a>
                 </div>
 
@@ -55,12 +55,12 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateBillType(_)">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateDepartment(_)">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteDepartment(_)">
+                                                <a class="addphone" data-toggle="modal" ng-click="DeleteDepartment(_)">
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <partial name="~/Views/Shared/Partials/BillType/AddBillTypePopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Department/AddDepartmentPopup.cshtml" />
 </div>
 
 
