@@ -114,15 +114,17 @@
                 });
         }
 
-        $scope.SetAssign = function (data) {
-            $scope.Pop = data;
-        }
-
         $scope.AddUsedToner = function () {
+
+            if ($scope.Pop.AssignPiece > $scope.Toners.filter(x => x.Id == $scope.Pop.TonerId)[0].Piece) {
+                toaster.warning("Başarısız", "Toner sayısı yetersiz");
+                return;
+            }
+
             var parameter = {
-                TonerNo: $scope.Pop.Id,
+                Piece: $scope.Pop.AssignPiece,
                 DepartmentNo: $scope.Pop.DepartmentId,
-                Piece: $scope.Pop.AssignPiece
+                TonerNo: $scope.Pop.TonerId
             }
 
             UsedTonerService.AddUsedToner(parameter,
@@ -130,7 +132,7 @@
                     if (result.IsSuccess) {
                         $('#AddUsedTonerPopup').modal('hide');
                         $scope.Pop = [];
-                        $scope.GetToners();
+                        $scope.GetUsedToner();
                         toaster.success("Başarılı", "UsedToner  eklendi.");
                     } else {
                         toaster.error("Başarısız", "UsedToner ekleme işlemi yapılırken bir hata oluştu");
