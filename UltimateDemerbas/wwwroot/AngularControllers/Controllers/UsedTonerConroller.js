@@ -3,6 +3,7 @@
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
+        var usedToners = [];
 
         $scope.TableCol = {
             Piece: "Piece",
@@ -30,11 +31,10 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
-
+                        usedToners = result.Data;
                         $.each($scope.Data, function (index, value) {
                             $scope.Data.filter(x => x.Id == value.Id)[0].InsertDate = new Date(value.InsertDate).toLocaleString();
                         });
-                        console.log($scope.Data);
 
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
@@ -72,45 +72,13 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.GetUsedToner();
+                        $scope.GetToners();
                         toaster.success("Başarılı", "Toner silindi.");
                     } else {
                         toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
                     toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");
-                });
-        }
-
-        $scope.UpdateToner = function (data) {
-            TonerService.UpdateToner(data,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Toner güncellendi.");
-                    } else {
-                        toaster.error("Başarısız", "Toner güncelleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Toner güncelleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-
-        $scope.AddToner = function () {
-            var data = {
-                "Name": $scope.Pop.Name,
-                "Piece": $scope.Pop.Piece,
-                "Boundary": $scope.Pop.Boundary,
-                "Price": $scope.Pop.Price
-            }
-
-            TonerService.AddToner(data,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Toner eklendi.");
-                    } else {
-                        toaster.error("Başarısız", "Toner ekleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Toner ekleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -132,6 +100,46 @@
                     if (result.IsSuccess) {
                         $('#AddUsedTonerPopup').modal('hide');
                         $scope.Pop = [];
+                        $scope.GetUsedToner();
+                        $scope.GetToners();
+                        toaster.success("Başarılı", "UsedToner  eklendi.");
+                    } else {
+                        toaster.error("Başarısız", "UsedToner ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "UsedToner  ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
+        $scope.UpdateUsedToner = function (data) {
+            console.log("data");
+            console.log(data);
+            console.log("usedToners");
+            console.log();
+      
+            return;
+
+
+            console.log("-----------");
+
+            var lastPiece = usedToners.filter(x => x.Id == data.Id)[0].Piece;
+            var nowPiece = data.Piece;
+            var piece = nowPiece - lastPiece;
+
+            if (piece > $scope.Toners.filter(x => x.Id == data.TonerNo)[0].Piece) {
+                toaster.warning("Başarısız", "Toner sayısı yetersiz");
+                return;
+            }
+            var parameter = {
+                Id: data.Id,
+                Piece: data.Piece,
+                DepartmentNo: data.DepartmentNo,
+                TonerNo: data.TonerNo
+            }
+
+            UsedTonerService.UpdateUsedToner(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
                         $scope.GetUsedToner();
                         toaster.success("Başarılı", "UsedToner  eklendi.");
                     } else {
