@@ -8,6 +8,7 @@
             Piece: "Piece",
             Toner: "Toner",
             Department: "Department",
+            InsertDate: "Insert Date",
         };
 
         $scope.GetToners = function () {
@@ -29,6 +30,12 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
+
+                        $.each($scope.Data, function (index, value) {
+                            $scope.Data.filter(x => x.Id == value.Id)[0].InsertDate = new Date(value.InsertDate).toLocaleString();
+                        });
+                        console.log($scope.Data);
+
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
@@ -64,7 +71,7 @@
             UsedTonerService.DeleteUsedToner(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-        $scope.GetUsedToner();
+                        $scope.GetUsedToner();
                         toaster.success("Başarılı", "Toner silindi.");
                     } else {
                         toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");

@@ -44,6 +44,7 @@
                             <col width="600" />
                             <col width="600" />
                             <col width="600" />
+                            <col width="600" />
                         </colgroup>
 
                         <tbody>
@@ -67,6 +68,9 @@
                                     <div class="col-md-9">
                                         <input ng-model="_.Piece" style="font-size: 14px;" type="text" class="form-control">
                                     </div>
+                                </td>
+                                <td data-title="TableCol.InsertDate" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <span> {{_.InsertDate}}</span>
                                 </td>
                                 <td>
                                     <div class="btn-group absoluteitem">
