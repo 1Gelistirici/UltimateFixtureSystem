@@ -1,7 +1,117 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .backRed {
+        background-color: #ff7a7a;
+    }
+</style>
 
-<h2>Index</h2>
+<div ng-controller="TonerController">
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Used Toners
+                </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddUsedTonerPopup">
+                        Add Used Toner
+                    </a>
+                </div>
 
+            </div>
+        </div>
+
+        <div ng-show="RegisterCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col width="600" />
+                            <col width="600" />
+                            <col width="600" />
+                            <col width="600" />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+
+                                <td data-title="TableCol.Toner" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="col-md-9">
+                                        <select class="form-control" ng-model="_.TonerNo" required>
+                                            <option ng-repeat="x in Toners" ng-selected="true" ng-value="x.Id">{{x.Name}}</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td data-title="TableCol.Department" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="col-md-9">
+                                        <select class="form-control" ng-model="_.DepartmentNo" required>
+                                            <option ng-repeat="x in Departments" ng-selected="true" ng-value="x.Id">{{x.Name}}</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td data-title="TableCol.Piece" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="col-md-9">
+                                        <input ng-model="_.Piece" style="font-size: 14px;" type="text" class="form-control">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group absoluteitem">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateUsedToner(_)">
+                                                    <i class="fa fa-edit "></i>Update
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUsedToner(_)">
+                                                    <i class="fa fa-phone "></i>Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="~/Views/Shared/Partials/Toner/AddTonerPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Toner/AddUsedTonerPopup.cshtml" />
+</div>
+
+
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/DepartmentService.js"></script>
+    <script src="~/AngularControllers/Services/UsedTonerService.js"></script>
+    <script src="~/AngularControllers/Services/TonerService.js"></script>
+    <script src="~/AngularControllers/Controllers/UsedTonerConroller.js"></script>
+}

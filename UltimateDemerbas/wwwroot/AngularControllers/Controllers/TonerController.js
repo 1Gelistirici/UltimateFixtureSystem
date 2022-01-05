@@ -39,7 +39,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Departments = result.Data;
-                        console.log("123", $scope.Departments);
                     } else {
                         toaster.error("Toner listeleme", "Toner listeleme işlemi yapılırken bir hata oluştu");
                     }

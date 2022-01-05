@@ -58,6 +58,7 @@ namespace UltimateAPI.Manager
                                     department.DepartmentNo = Convert.ToInt32(read["DepartmentNo"]);
                                     department.TonerNo = Convert.ToInt32(read["TonerNo"]);
                                     department.Piece = Convert.ToInt32(read["UsedPiece"]);
+                                    department.InsertDate = Convert.ToDateTime(read["InsertDate"]);
 
                                     departments.Add(department);
                                 }
@@ -108,6 +109,7 @@ namespace UltimateAPI.Manager
                                     department.DepartmentNo = Convert.ToInt32(read["DepartmentNo"]);
                                     department.TonerNo = Convert.ToInt32(read["TonerNo"]);
                                     department.Piece = Convert.ToInt32(read["UsedPiece"]);
+                                    department.InsertDate = Convert.ToDateTime(read["InsertDate"]);
 
                                     departments.Add(department);
                                 }
@@ -149,6 +151,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@tonerNo", parameter.TonerNo);
                         sqlCommand.Parameters.AddWithValue("@departmentNo", parameter.DepartmentNo);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@insertdate", DateTime.Now);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
