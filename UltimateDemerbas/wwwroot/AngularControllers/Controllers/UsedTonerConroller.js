@@ -3,7 +3,6 @@
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
-        var usedToners = [];
 
         $scope.TableCol = {
             Piece: "Piece",
@@ -31,7 +30,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
-                        usedToners = result.Data;
+
                         $.each($scope.Data, function (index, value) {
                             $scope.Data.filter(x => x.Id == value.Id)[0].InsertDate = new Date(value.InsertDate).toLocaleString();
                         });
@@ -84,7 +83,7 @@
 
         $scope.AddUsedToner = function () {
 
-            if ($scope.Pop.AssignPiece > $scope.Toners.filter(x => x.Id == $scope.Pop.TonerId)[0].Piece) {
+            if ($scope.Pop.AssignPiece > $scope.Toners.filter(x => x.Id == $scope.Pop.TonerId)[0].NewPiece) {
                 toaster.warning("Başarısız", "Toner sayısı yetersiz");
                 return;
             }
@@ -112,27 +111,24 @@
         }
 
         $scope.UpdateUsedToner = function (data) {
-            console.log("data");
-            console.log(data);
-            console.log("usedToners");
-            console.log();
-      
-            return;
 
+            var piece = data.NewPiece - data.Piece;
 
-            console.log("-----------");
-
-            var lastPiece = usedToners.filter(x => x.Id == data.Id)[0].Piece;
-            var nowPiece = data.Piece;
-            var piece = nowPiece - lastPiece;
+            if (!Number.isInteger(piece)) {
+                piece = data.Piece;
+            }
+            if (data.NewPiece === undefined) {
+                data.NewPiece = data.Piece;
+            }
 
             if (piece > $scope.Toners.filter(x => x.Id == data.TonerNo)[0].Piece) {
                 toaster.warning("Başarısız", "Toner sayısı yetersiz");
                 return;
             }
+
             var parameter = {
                 Id: data.Id,
-                Piece: data.Piece,
+                Piece: parseInt(data.NewPiece),
                 DepartmentNo: data.DepartmentNo,
                 TonerNo: data.TonerNo
             }
@@ -141,6 +137,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.GetUsedToner();
+                        $scope.GetToners();
                         toaster.success("Başarılı", "UsedToner  eklendi.");
                     } else {
                         toaster.error("Başarısız", "UsedToner ekleme işlemi yapılırken bir hata oluştu");
