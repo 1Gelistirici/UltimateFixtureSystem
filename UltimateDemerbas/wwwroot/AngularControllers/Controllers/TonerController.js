@@ -1,5 +1,5 @@
-﻿MainApp.controller("TonerController", ["$scope", "TonerService", "NgTableParams", "toaster",
-    function ($scope, TonerService, NgTableParams, toaster) {
+﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "NgTableParams", "toaster",
+    function ($scope, TonerService, UsedTonerService, DepartmentService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -34,11 +34,26 @@
         }
         $scope.GetToners();
 
+        $scope.GetDepartments = function () {
+            DepartmentService.GetDepartments(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Departments = result.Data;
+                        console.log("123", $scope.Departments);
+                    } else {
+                        toaster.error("Toner listeleme", "Toner listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Toner listeleme", "Toner listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetDepartments();
+
         $scope.DeleteToner = function (data) {
             TonerService.DeleteToner(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı","Toner silindi.");
+                        toaster.success("Başarılı", "Toner silindi.");
                     } else {
                         toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");
                     }
@@ -80,24 +95,30 @@
                 });
         }
 
+        $scope.SetAssign = function (data) {
+            $scope.Pop = data;
+        }
 
-        //$(document).ready(function () {
-        //    var table = $('#example').DataTable();
+        $scope.AddUsedToner = function () {
+            var parameter = {
+                TonerNo: $scope.Pop.Id,
+                DepartmentNo: $scope.Pop.DepartmentId,
+                Piece: $scope.Pop.AssignPiece
+            }
 
-        //    $('#example tbody').on('click', 'tr', function () {
-        //        var data = table.row(this).data();
-        //        alert('You clicked on ' + data[0] + '\'s row');
-        //    });
-        //});
-
-        //$scope.PopupForm = function () {
-        //    if (IsOpen) {
-        //        document.getElementById("myForm").style.display = "block";
-        //        IsOpen = false;
-        //    } else {
-        //        document.getElementById("myForm").style.display = "none";
-        //        IsOpen = true;
-        //    }
-        //}
+            UsedTonerService.AddUsedToner(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $('#AddUsedTonerPopup').modal('hide');
+                        $scope.Pop = [];
+                        $scope.GetToners();
+                        toaster.success("Başarılı", "UsedToner  eklendi.");
+                    } else {
+                        toaster.error("Başarısız", "UsedToner ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "UsedToner  ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
     }]);

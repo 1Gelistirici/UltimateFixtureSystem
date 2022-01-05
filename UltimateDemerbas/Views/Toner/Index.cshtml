@@ -21,7 +21,7 @@
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTonerPopup">
                         Add Toner
                     </a>
                 </div>
@@ -98,7 +98,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover" ng-show="_.Price>0" data-toggle="modal" data-target="#FixtureAssignmentPopup">
+                                            <li class="ms-hover" ng-show="_.Piece>0" data-toggle="modal" data-target="#AddUsedTonerPopup">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
                                                     <i class="fa fa-eject"></i>Assign
                                                 </a>
@@ -118,28 +118,28 @@
                                 </td>
                             </tr>
                         </tbody>
-
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
                                     <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
                                 </td>
                             </tr>
-
                         </tfoot>
-
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
+    <partial name="~/Views/Shared/Partials/Toner/AddTonerPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Toner/AddUsedTonerPopup.cshtml" />
 </div>
 
-<partial name="~/Views/Shared/Partials/Toner/AddTonerPopup.cshtml" />
+
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/DepartmentService.js"></script>
+    <script src="~/AngularControllers/Services/UsedTonerService.js"></script>
     <script src="~/AngularControllers/Services/TonerService.js"></script>
     <script src="~/AngularControllers/Controllers/TonerController.js"></script>
 }
