@@ -18,9 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\Partials\Profile\**" />
     <Compile Remove="wwwroot\assets1\test\**" />
+    <Content Remove="Views\Shared\Partials\Profile\**" />
     <Content Remove="wwwroot\assets1\test\**" />
+    <EmbeddedResource Remove="Views\Shared\Partials\Profile\**" />
     <EmbeddedResource Remove="wwwroot\assets1\test\**" />
+    <None Remove="Views\Shared\Partials\Profile\**" />
     <None Remove="wwwroot\assets1\test\**" />
   </ItemGroup>
 
@@ -35,10 +39,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="ngTable" Version="3.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Shared\Partials\Profile\" />
   </ItemGroup>
 
   <ItemGroup>
