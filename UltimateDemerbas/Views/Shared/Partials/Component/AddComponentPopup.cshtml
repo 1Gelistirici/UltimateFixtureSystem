@@ -10,36 +10,23 @@
                 <div class="modal-body">
                     <div class="col-md-9">
                         <span>Name</span>
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
                             <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
-                        </div>
                         <br />
                         <span>Piece</span>
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
                             <input ng-model="Pop.Piece" style="font-size: 14px;" type="number" class="form-control">
-                        </div>
                         <br />
                         <span>Bill</span>
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
                             <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control">
-                        </div>
                         <br />
                         <span>Model</span>
-                        <div class="input-icon">
                             <select class="form-control" ng-model="Pop.ModelNo">
                                 <option ng-repeat="x in Models" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
-                        </div>
                         <br />
                         <span>Category</span>
-                        <div class="input-icon">
                             <select class="form-control" ng-model="Pop.CategoryNo">
                                 <option ng-repeat="x in Categorys" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-top:80%;">

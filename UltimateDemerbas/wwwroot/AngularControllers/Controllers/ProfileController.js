@@ -1,6 +1,7 @@
-﻿MainApp.controller("ProfileController", ["$scope", "ProfileService", "UserService", "TaskService", "AccessoryService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "NgTableParams", "toaster",
-    function ($scope, ProfileService, UserService, TaskService, AccessoryService, CategoryService, AccessoryModelService, ReportService, AssignmentService, NgTableParams, toaster) {
+﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "NgTableParams", "toaster",
+    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, NgTableParams, toaster) {
 
+        $scope.ItemTypesFilter = [];
         $scope.AccessoryCount = 0;
         $scope.TableCol = {
             Name: "Component Name",
@@ -40,6 +41,10 @@
             }
         ]
 
+        $.each($scope.ItemTypes, function (index, value) {
+            var parameter = { id: value.Value, title: value.Text };
+            $scope.ItemTypesFilter.push(parameter);
+        });
 
         //GetAssignmentUser
         $scope.GetAssignmentUser = function () {
