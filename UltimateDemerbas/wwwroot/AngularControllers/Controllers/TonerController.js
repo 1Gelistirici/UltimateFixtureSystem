@@ -52,6 +52,7 @@
             TonerService.DeleteToner(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.GetToners();
                         toaster.success("Başarılı", "Toner silindi.");
                     } else {
                         toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");
@@ -85,6 +86,8 @@
             TonerService.AddToner(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.GetToners();
+                        $('#AddTonerPopup').modal('hide');
                         toaster.success("Başarılı", "Toner eklendi.");
                     } else {
                         toaster.error("Başarısız", "Toner ekleme işlemi yapılırken bir hata oluştu");
