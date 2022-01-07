@@ -16,14 +16,7 @@ namespace UltimateAPI.Controllers
         [HttpGet("GetIsActiveTypes")]
         public ActionResult GetIsActiveTypes()
         {
-            List<TextValue> typeList = new List<TextValue>();
-            List<IsActive> datas = Enum.GetValues(typeof(IsActive)).Cast<IsActive>().ToList();
-            foreach (IsActive logType in datas)
-            {
-                typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<IsActive>(logType.ToString()), Value = (int)logType });
-            }
-
-            return Content(ResultData.Get(true, "", typeList));
+         
         }
 
     }
