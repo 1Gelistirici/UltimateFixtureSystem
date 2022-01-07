@@ -35,12 +35,12 @@ namespace UltimateAPI.CallManager
 
         public UltimateResult<List<TextValue>> GetItemStatuTypes()
         {
-            return EnumManager.Instance.GetIsActiveTypes();
+            return EnumManager.Instance.GetItemStatuTypes();
         }
 
         public UltimateResult<List<TextValue>> GetItemTypeTypes()
         {
-            return EnumManager.Instance.GetIsActiveTypes();
+            return EnumManager.Instance.GetItemTypeTypes();
         }
     }
 }

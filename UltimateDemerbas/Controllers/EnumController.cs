@@ -21,5 +21,21 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetItemStatuTypes()
+        {
+            var toner = new EnumManager(_httpClientFactory);
+            var result = toner.GetItemStatuTypes();
+
+            return Content(result.Result);
+        }
+
+        public IActionResult GetItemTypeTypes()
+        {
+            var toner = new EnumManager(_httpClientFactory);
+            var result = toner.GetItemTypeTypes();
+
+            return Content(result.Result);
+        }
+
     }
 }

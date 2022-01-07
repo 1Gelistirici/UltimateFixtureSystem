@@ -9,6 +9,22 @@
                 }, error);
         }
 
+        this.GetItemStatuTypes = function (success, error) {
+            $http.get("/Enum/GetItemStatuTypes").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
+        this.GetItemTypeTypes = function (success, error) {
+            $http.get("/Enum/GetItemTypeTypes").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
 
     }]);
 

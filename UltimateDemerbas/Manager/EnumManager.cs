@@ -29,5 +29,39 @@ namespace UltimateDemerbas.Manager
             }
         }
 
+        public async Task<string> GetItemStatuTypes()
+        {
+            var url = apiAdress + $"/Enum/GetItemStatuTypes";
+            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+
+            try
+            {
+                var response = await httpClient.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+
+        public async Task<string> GetItemTypeTypes()
+        {
+            var url = apiAdress + $"/Enum/GetItemTypeTypes";
+            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+
+            try
+            {
+                var response = await httpClient.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+
     }
 }
