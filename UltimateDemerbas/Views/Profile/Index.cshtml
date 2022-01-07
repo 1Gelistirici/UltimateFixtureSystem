@@ -167,10 +167,8 @@
                                                                 </div>
                                                             </td>
 
-                                                            <td data-title="TableCol.ItemType" filter="{ ItemTypes: 'select'}" sortable="'ItemTypes'" filter-data="ItemTypesFilter">
-                                                                <div class="input-icon">
-                                                                    <span>{{_.ItemType.Text}}</span>
-                                                                </div>
+                                                            <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                                                <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
                                                             </td>
 
                                                             <td data-title="TableCol.Piece" filter="{ Piece: 'text'}" sortable="'Piece'">
