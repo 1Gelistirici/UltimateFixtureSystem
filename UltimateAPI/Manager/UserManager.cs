@@ -129,6 +129,7 @@ namespace UltimateAPI.Manager
                                     user.Surname = read["surname"].ToString();
                                     user.UserName = read["username"].ToString();
                                     user.MailAdress = read["mailAdress"].ToString();
+                                    user.Telephone = read["telNo"].ToString();
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
                                     user.Department = read["department"].ToString();
@@ -189,6 +190,7 @@ namespace UltimateAPI.Manager
                                     user.Surname = read["surname"].ToString();
                                     user.UserName = read["username"].ToString();
                                     user.MailAdress = read["mailAdress"].ToString();
+                                    user.Telephone = read["telNo"].ToString();
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
                                     user.Department = read["department"].ToString();

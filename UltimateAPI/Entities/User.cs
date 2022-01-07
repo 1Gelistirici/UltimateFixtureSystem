@@ -1,6 +1,4 @@
 ﻿
-using UltimateAPI.CallManager;
-
 namespace UltimateAPI.Entities
 {
     public class User : BaseProperty
@@ -11,6 +9,7 @@ namespace UltimateAPI.Entities
         public string Company { get; set; }
         public string Token { get; set; }
         public string MailAdress { get; set; }
+        public string Telephone { get; set; }
         public string Title { get; set; }
         public string Department { get; set; }
         public string Facebook { get; set; }
