@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
-using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
@@ -14,10 +13,10 @@ namespace UltimateDemerbas.Controllers
         }
 
 
-        public IActionResult GetToners()
+        public IActionResult GetIsActiveTypes()
         {
-            EnumV toner = new TonerManager(_httpClientFactory);
-            var result = toner.GetToners();
+            var toner = new EnumManager(_httpClientFactory);
+            var result = toner.GetIsActiveTypes();
 
             return Content(result.Result);
         }

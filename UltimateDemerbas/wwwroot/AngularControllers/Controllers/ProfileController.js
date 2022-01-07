@@ -1,5 +1,42 @@
-﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "NgTableParams", "toaster",
-    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, NgTableParams, toaster) {
+﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "EnumService", "NgTableParams", "toaster",
+    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, EnumService,NgTableParams, toaster) {
+
+
+        //Get User
+        $scope.GetIsActiveTypes = function () {
+            EnumService.GetIsActiveTypes(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log(result.Data);
+                    } else {
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetIsActiveTypes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $scope.ItemTypesFilter = [];
         $scope.AccessoryCount = 0;

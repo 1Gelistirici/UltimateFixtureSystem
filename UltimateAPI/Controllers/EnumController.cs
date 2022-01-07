@@ -13,6 +13,7 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class EnumController : ControllerBase
     {
+        [HttpGet("GetIsActiveTypes")]
         public ActionResult GetIsActiveTypes()
         {
             List<TextValue> typeList = new List<TextValue>();
