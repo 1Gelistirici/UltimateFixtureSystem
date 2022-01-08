@@ -1,5 +1,5 @@
-﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "NgTableParams", "toaster",
-    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, NgTableParams, toaster,) {
+﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "EnumService", "NgTableParams", "toaster",
+    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster,) {
 
         $scope.test = null;
 
@@ -14,12 +14,28 @@
             User: "User",
         };
 
-        // ToDo : Enumdan çekilecek
-        $scope.ItemStatus = [
-            { Name: 'Ready', Id: 1 },
-            { Name: 'NotReady', Id: 2 },
-            { Name: 'Assigned', Id: 3 }
-        ]
+        $scope.ItemStatus = [];
+        $scope.ItemStatusFilter = [];
+        //Enum ItemStatu
+        $scope.GetItemStatuTypes = function () {
+            EnumService.GetItemStatuTypes(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ItemStatus = result.Data;
+                        $scope.ItemStatus = $scope.ItemStatus.filter(_ => _.Value != 0);
+
+                        $.each($scope.ItemStatus, function (index, value) {
+                            var parameter = { id: value.Value, title: value.Text };
+                            $scope.ItemStatusFilter.push(parameter);
+                        });
+                    } else {
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetItemStatuTypes();
 
         $scope.GetCategories = function () {
             CategoryService.GetCategories(
@@ -81,8 +97,41 @@
             FixtureService.GetFixtures(
                 function success(result) {
                     if (result.IsSuccess) {
+
+
+
+
+
                         $scope.Data = result.Data;
                         $scope.RegisterCount = $scope.Data.length;
+
+
+
+
+
+
+
+                        for (var i = 0; i < result.Data.length; i++) {
+
+                            if ($scope.Data[i].StatuNo != null)
+                                $scope.Data[i].StatuNoo = $scope.ItemStatus.find(_ => _.Value === $scope.Data[i].StatuNo);
+                            console.log("ss", $scope.Data[i].StatuNoo);
+
+
+
+
+
+                        }
+
+
+
+
+
+
+
+
+
+
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20

@@ -1,5 +1,5 @@
-﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "NgTableParams", "toaster",
-    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, NgTableParams, toaster) {
+﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "EnumService", "NgTableParams", "toaster",
+    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, EnumService, NgTableParams, toaster) {
 
         $scope.ItemTypesFilter = [];
         $scope.AccessoryCount = 0;
@@ -13,38 +13,26 @@
             Recall: "Recall",
         };
 
-        // ToDo : Enumdan çekilecek.
-        $scope.ItemTypes = [
-            {
-                Text: "Bill",
-                Value: 1
-            },
-            {
-                Text: "Accessory",
-                Value: 2
-            },
-            {
-                Text: "Companent",
-                Value: 3
-            },
-            {
-                Text: "Fixture",
-                Value: 4
-            },
-            {
-                Text: "Licence",
-                Value: 5
-            },
-            {
-                Text: "Toner",
-                Value: 6
-            }
-        ]
+        //Enum ItemType
+        $scope.GetItemTypeTypes = function () {
+            EnumService.GetItemTypeTypes(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ItemTypes = result.Data;
 
-        $.each($scope.ItemTypes, function (index, value) {
-            var parameter = { id: value.Value, title: value.Text };
-            $scope.ItemTypesFilter.push(parameter);
-        });
+                        $.each($scope.ItemTypes, function (index, value) {
+                            var parameter = { id: value.Value, title: value.Text };
+                            $scope.ItemTypesFilter.push(parameter);
+                        });
+                    } else {
+                        toaster.error("GetItemTypeTypes", "Item Type listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetItemTypeTypes", "Item Type listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetItemTypeTypes();
+
 
         //GetAssignmentUser
         $scope.GetAssignmentUser = function () {
@@ -55,10 +43,13 @@
                         $scope.AccessoryData = result.Data;
                         $.each($scope.AccessoryData, function (index, value) {
 
+
                             $scope.AccessoryData[index].RecallDate = new Date($scope.AccessoryData[index].RecallDate).toLocaleString();
 
-                            //ItemType texti bulunur.
-                            $scope.AccessoryData[index].ItemType = $scope.ItemTypes.find(x => x.Value == value.ItemType);
+                            $scope.AccessoryData[index].TypeItem = $scope.ItemTypes.find(x => x.Value == value.ItemType);
+                            console.log("bulucu", $scope.ItemTypes );
+                            console.log("belirleyici", $scope.AccessoryData[index].TypeItem );
+
                             //Servisden datalar ayrıştırılarak geliyor. Herbiri için farklı tab açmak yerine aynı tab altında toplanılacağı için uı da Accessories içerisinde toplanıyor.
                             if ($scope.AccessoryData[index].Components != null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Components;
@@ -96,6 +87,8 @@
                         $scope.Twitter = result.Data[0].Twitter;
                         $scope.Linkedin = result.Data[0].Linkedin;
                         $scope.About = result.Data[0].About;
+
+                        console.log($scope.User);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

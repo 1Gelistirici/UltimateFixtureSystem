@@ -72,10 +72,8 @@
                                     </select>
                                 </td>
 
-                                <td data-title="TableCol.Statu" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
-                                    <select class="form-control" ng-disabled="_.UserNo>0" ng-model="_.StatuNo">
-                                        <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
+                                <td data-title="TableCol.Statu" filter="{ 'StatuNo': 'select'}" sortable="'StatuNo'" filter-data="ItemStatusFilter">
+                                    <select class="form-control" ng-change="_.Changed=true" ng-model="_.StatuNoo" ng-options="item.Text for item in ItemStatus"></select>
                                 </td>
 
                                 <td data-title="TableCol.User" filter="{ BillNo: 'text'}" sortable="'BillNo'">
@@ -132,6 +130,7 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/FixtureModelService.js"></script>
