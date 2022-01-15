@@ -1,4 +1,5 @@
-﻿MainApp.controller("HomeController", ["$scope", "$http", "$window", "LogService", "MessageService", "TaskService", "UserService", function ($scope, $http, $window, LogService, MessageService, TaskService, UserService) {
+﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService",
+    function ($scope, LogService, MessageService, TaskService, UserService) {
 
     $scope.Pop = [];
     $scope.Messages = [];
