@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -31,6 +28,7 @@ namespace UltimateAPI.Manager
             }
 
         }
+
 
         public UltimateResult<List<User>> CheckUser(User user)
         {
@@ -71,17 +69,26 @@ namespace UltimateAPI.Manager
                             read.Close();
                         }
 
-                        //if (users.Count > 0)
-                        //{
-                        //    CookieOptions option = new CookieOptions();
-                        //    option.Expires = DateTime.Now.AddDays(1);
-                        //    Response.Cookies.Append("id", users[0].Id.ToString(), option);
-                        //    result.IsSuccess = true;
-                        //}
-                        //else
-                        //{
-                        //    result.IsSuccess = false;
-                        //}
+                        Log log = new Log();
+                        log.Time = DateTime.Now;
+
+                        if (users.Count > 0)
+                        {
+                            log.UserNo = user.UserId;
+                            log.Type = LogType.LoginSucess;
+
+                            LogManager.Instance.AddLog(log);
+                            result.IsSuccess = true;
+                        }
+                        else
+                        {
+                            log.Type = LogType.LoginFailed;
+                            log.IncorrectPassword = user.Password;
+                            log.IncorrectUserName = user.UserName;
+
+                            LogManager.Instance.AddLog(log);
+                            result.IsSuccess = false;
+                        }
 
                         result.Data = users;
                         sqlCommand.Dispose();

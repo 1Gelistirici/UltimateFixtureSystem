@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
-    public class LogManager:BaseManager
+    public class LogManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile LogManager _instance;
@@ -27,6 +28,7 @@ namespace UltimateAPI.Manager
             }
 
         }
+
 
         public UltimateResult<List<Log>> GetLogs(Log parameter)
         {
@@ -61,6 +63,7 @@ namespace UltimateAPI.Manager
                                     log.Icon = read["icon"].ToString();
                                     log.Time = Convert.ToDateTime(read["time"]);
                                     log.UserName = read["username"].ToString();
+                                    log.Type = (LogType)Convert.ToInt32(read["logType"]);
 
                                     componentModels.Add(log);
                                 }
@@ -102,6 +105,9 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@icon", parameter.Icon);
                         sqlCommand.Parameters.AddWithValue("@time", parameter.Time);
                         sqlCommand.Parameters.AddWithValue("@userNo", parameter.UserNo);
+                        sqlCommand.Parameters.AddWithValue("@logType", parameter.Type);
+                        sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword);
+                        sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -158,11 +164,5 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-
-
-
-
-
-
     }
 }
