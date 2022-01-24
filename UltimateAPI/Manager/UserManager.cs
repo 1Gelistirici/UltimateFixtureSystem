@@ -78,7 +78,6 @@ namespace UltimateAPI.Manager
                             log.Type = LogType.LoginSucess;
 
                             LogManager.Instance.AddLog(log);
-                            result.IsSuccess = true;
                         }
                         else
                         {
@@ -87,7 +86,6 @@ namespace UltimateAPI.Manager
                             log.IncorrectUserName = user.UserName;
 
                             LogManager.Instance.AddLog(log);
-                            result.IsSuccess = false;
                         }
 
                         result.Data = users;

@@ -103,13 +103,13 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@detail", parameter.Detail);
-                        sqlCommand.Parameters.AddWithValue("@icon", parameter.Icon);
-                        sqlCommand.Parameters.AddWithValue("@time", parameter.Time);
+                        sqlCommand.Parameters.AddWithValue("@detail", parameter.Detail == null ? parameter.Detail : "");
+                        sqlCommand.Parameters.AddWithValue("@icon", parameter.Icon == null ? parameter.Icon : "");
+                        sqlCommand.Parameters.AddWithValue("@time", parameter.Time == null ? parameter.Time : DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@userNo", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@logType", parameter.Type);
-                        sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword);
-                        sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName);
+                        sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword == null ? parameter.IncorrectPassword : "");
+                        sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName == null ? parameter.IncorrectUserName : "");
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
