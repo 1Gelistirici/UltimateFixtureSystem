@@ -9,6 +9,7 @@ namespace UltimateAPI.Entities
         public string Icon { get; set; }
         public string IncorrectPassword { get; set; }
         public string IncorrectUserName { get; set; }
+        public string IncorrectCompany { get; set; }
         public DateTime Time { get; set; }
         public int UserNo { get; set; }
         public LogType Type { get; set; }

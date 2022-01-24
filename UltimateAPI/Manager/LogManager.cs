@@ -66,6 +66,7 @@ namespace UltimateAPI.Manager
                                     log.Type = (LogType)Convert.ToInt32(read["logType"]);
                                     log.IncorrectPassword = read["incorrectPassword"].ToString();
                                     log.IncorrectUserName = read["incorrectUserName"].ToString();
+                                    log.IncorrectCompany = read["incorrectCompany"].ToString();
 
                                     componentModels.Add(log);
                                 }
@@ -103,13 +104,14 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@detail", parameter.Detail == null ? parameter.Detail : "");
-                        sqlCommand.Parameters.AddWithValue("@icon", parameter.Icon == null ? parameter.Icon : "");
-                        sqlCommand.Parameters.AddWithValue("@time", parameter.Time == null ? parameter.Time : DateTime.Now);
+                        sqlCommand.Parameters.AddWithValue("@detail", parameter.Detail == null ? "No Comment" : parameter.Detail);
+                        sqlCommand.Parameters.AddWithValue("@icon", parameter.Icon == null ? "fa fa-check" : parameter.Icon);
+                        sqlCommand.Parameters.AddWithValue("@time", parameter.Time == null ? DateTime.Now : parameter.Time);
                         sqlCommand.Parameters.AddWithValue("@userNo", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@logType", parameter.Type);
-                        sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword == null ? parameter.IncorrectPassword : "");
-                        sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName == null ? parameter.IncorrectUserName : "");
+                        sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword == null ? "" : parameter.IncorrectPassword);
+                        sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName == null ? "" : parameter.IncorrectUserName);
+                        sqlCommand.Parameters.AddWithValue("@incorrectCompany", parameter.IncorrectCompany == null ? "" : parameter.IncorrectCompany);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

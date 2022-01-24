@@ -84,6 +84,7 @@ namespace UltimateAPI.Manager
                             log.Type = LogType.LoginFailed;
                             log.IncorrectPassword = user.Password;
                             log.IncorrectUserName = user.UserName;
+                            log.IncorrectCompany = user.Company;
 
                             LogManager.Instance.AddLog(log);
                         }
