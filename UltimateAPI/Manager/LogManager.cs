@@ -64,6 +64,8 @@ namespace UltimateAPI.Manager
                                     log.Time = Convert.ToDateTime(read["time"]);
                                     log.UserName = read["username"].ToString();
                                     log.Type = (LogType)Convert.ToInt32(read["logType"]);
+                                    log.IncorrectPassword = read["incorrectPassword"].ToString();
+                                    log.IncorrectUserName = read["incorrectUserName"].ToString();
 
                                     componentModels.Add(log);
                                 }
