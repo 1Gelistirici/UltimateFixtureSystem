@@ -9,8 +9,8 @@ namespace UltimateDemerbas.Manager
     {
             private readonly IHttpClientFactory _httpClientFactory;
 
-            public SituationManager(IHttpClientFactory httpClientFactory)
-            {
+            public SituationManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
+        {
                 _httpClientFactory = httpClientFactory;
             }
 

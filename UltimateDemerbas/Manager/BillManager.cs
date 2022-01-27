@@ -9,81 +9,30 @@ namespace UltimateDemerbas.Manager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BillManager(IHttpClientFactory httpClientFactory)
+        public BillManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
 
-        public async Task<string> GetBills()
+        public Task<string> GetBills()
         {
-            var url = apiAdress + $"/Bill/GetBills";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Bill/GetBills");
         }
 
-        public async Task<string> DeleteBill(Bill parameter)
+        public Task<string> DeleteBill(Bill parameter)
         {
-            var url = apiAdress + $"/Bill/DeleteBill";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<Bill>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Bill>("Bill/DeleteBill", parameter);
         }
 
-        public async Task<string> UpdateBill(Bill parameter)
+        public Task<string> UpdateBill(Bill parameter)
         {
-            var url = apiAdress + $"/Bill/UpdateBill";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<Bill>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Bill>("Bill/UpdateBill", parameter);
         }
 
-        public async Task<string> AddBill(Bill parameter)
+        public Task<string> AddBill(Bill parameter)
         {
-            var url = apiAdress + $"/Bill/AddBill";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<Bill>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Bill>("Bill/AddBill", parameter);
         }
     }
 }

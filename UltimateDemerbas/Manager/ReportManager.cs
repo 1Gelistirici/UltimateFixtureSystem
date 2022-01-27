@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Manager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ReportManager(IHttpClientFactory httpClientFactory)
+        public ReportManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

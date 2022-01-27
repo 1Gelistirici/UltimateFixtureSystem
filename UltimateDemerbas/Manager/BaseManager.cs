@@ -3,30 +3,35 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UltimateDemerbas.Manager
 {
     public class BaseManager : Controller
     {
-        //public readonly IHttpClientFactory _httpClientFactory;
 
-        //public BaseManager(IHttpClientFactory httpClientFactory)
-        //{
-        //    _httpClientFactory = httpClientFactory;
-        //}
-        public string apiAdress = "https://localhost:44354/api";
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public BaseManager(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
+
+
+
+
+        public string apiAdress = "https://localhost:44354/api/";
 
         public StringContent GetSerilizatiob<T>(T ConvertData)
         {
-
             var ConvertJson = new StringContent(
                   JsonSerializer.Serialize(ConvertData),
                   Encoding.UTF8,
                   "application/json");
 
             return ConvertJson;
-
         }
 
 
@@ -69,8 +74,47 @@ namespace UltimateDemerbas.Manager
             }
         }
 
-        public int ActiveUserId { get { return Convert.ToInt32(Request.Cookies["id"]); } }
-        public string ActiveUserCompany { get { return Request.Cookies["company"]; } }
+
+        public async Task<string> GetApi(string goUrl)
+        {
+            var url = apiAdress + goUrl;
+            var httpClient = _httpClientFactory.CreateClient("Test");
+
+            try
+            {
+                var response = await httpClient.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+
+        public async Task<string> GetApiParameter<T>(string goUrl, T parameter)
+        {
+            var url = apiAdress + goUrl;
+            var httpClient = _httpClientFactory.CreateClient("Test");
+            var JsonData = GetSerilizatiob<T>(parameter);
+
+            try
+            {
+                var response = await httpClient.PostAsync(url, JsonData);
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                return null;
+            }
+        }
+
+
+
+
+        //public int ActiveUserId { get { return Convert.ToInt32(Request.Cookies["id"]); } }
+        //public string ActiveUserCompany { get { return Request.Cookies["company"]; } }
 
     }
 }

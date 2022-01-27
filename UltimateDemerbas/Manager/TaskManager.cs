@@ -9,15 +9,11 @@ namespace UltimateDemerbas.Manager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public TaskManager(IHttpClientFactory httpClientFactory)
+        public TaskManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        public TaskManager()
-        {
-
-        }
 
         public async Task<string> GetTask(Tasks parameter)
         {

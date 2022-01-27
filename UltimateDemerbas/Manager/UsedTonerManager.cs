@@ -8,7 +8,7 @@ namespace UltimateDemerbas.Manager
     public class UsedTonerManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public UsedTonerManager(IHttpClientFactory httpClientFactory)
+        public UsedTonerManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
