@@ -18,7 +18,7 @@ namespace UltimateDemerbas.Manager
         public async Task<string> GetBills()
         {
             var url = apiAdress + $"/Bill/GetBills";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var httpClient = _httpClientFactory.CreateClient("Test");
 
             try
             {
@@ -35,7 +35,7 @@ namespace UltimateDemerbas.Manager
         public async Task<string> DeleteBill(Bill parameter)
         {
             var url = apiAdress + $"/Bill/DeleteBill";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var httpClient = _httpClientFactory.CreateClient("Test");
             var JsonData = GetSerilizatiob<Bill>(parameter);
 
             try
@@ -53,7 +53,7 @@ namespace UltimateDemerbas.Manager
         public async Task<string> UpdateBill(Bill parameter)
         {
             var url = apiAdress + $"/Bill/UpdateBill";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var httpClient = _httpClientFactory.CreateClient("Test");
             var JsonData = GetSerilizatiob<Bill>(parameter);
 
             try
@@ -71,7 +71,7 @@ namespace UltimateDemerbas.Manager
         public async Task<string> AddBill(Bill parameter)
         {
             var url = apiAdress + $"/Bill/AddBill";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
+            var httpClient = _httpClientFactory.CreateClient("Test");
             var JsonData = GetSerilizatiob<Bill>(parameter);
 
             try
