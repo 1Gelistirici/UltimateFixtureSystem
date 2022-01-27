@@ -1,89 +1,37 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class SituationManager:BaseManager
+    public class SituationManager : BaseManager
     {
-            private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-            public SituationManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
+        public SituationManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-                _httpClientFactory = httpClientFactory;
-            }
+            _httpClientFactory = httpClientFactory;
+        }
 
 
-            public async Task<string> GetSituations()
-            {
-                var url = apiAdress + $"/Situation/GetSituations";
-                var httpClient = _httpClientFactory.CreateClient("Test"); ;
+        public Task<string> GetSituations()
+        {
+            return GetApi("Situation/GetSituations");
+        }
 
-                try
-                {
-                    var response = await httpClient.GetAsync(url);
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex)
-                {
-                Error(ex);
-                return null;
-                }
-            }
+        public Task<string> DeleteSituation(Situation parameter)
+        {
+            return GetApiParameter<Situation>("Situation/DeleteSituation", parameter);
+        }
 
-            public async Task<string> DeleteSituation(Situation parameter)
-            {
-                var url = apiAdress + $"/Situation/DeleteSituation";
-                var httpClient = _httpClientFactory.CreateClient("Test"); ;
-                var JsonData = GetSerilizatiob<Situation>(parameter);
+        public Task<string> UpdateSituation(Situation parameter)
+        {
+            return GetApiParameter<Situation>("Situation/UpdateSituation", parameter);
+        }
 
-                try
-                {
-                    var response = await httpClient.PostAsync(url, JsonData);
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex)
-                {
-                Error(ex);
-                return null;
-                }
-            }
-
-            public async Task<string> UpdateSituation(Situation parameter)
-            {
-                var url = apiAdress + $"/Situation/UpdateSituation";
-                var httpClient = _httpClientFactory.CreateClient("Test"); ;
-                var JsonData = GetSerilizatiob<Situation>(parameter);
-
-                try
-                {
-                    var response = await httpClient.PostAsync(url, JsonData);
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex)
-                {
-                Error(ex);
-                return null;
-                }
-            }
-
-            public async Task<string> AddSituation(Situation parameter)
-            {
-                var url = apiAdress + $"/Situation/AddSituation";
-                var httpClient = _httpClientFactory.CreateClient("Test"); ;
-                var JsonData = GetSerilizatiob<Situation>(parameter);
-
-                try
-                {
-                    var response = await httpClient.PostAsync(url, JsonData);
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex)
-                {
-                Error(ex);
-                return null;
-                }
-            }
+        public Task<string> AddSituation(Situation parameter)
+        {
+            return GetApiParameter<Situation>("Situation/AddSituation", parameter);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
@@ -15,39 +14,14 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetReports()
+        public Task<string> GetReports()
         {
-            var url = apiAdress + $"/Report/GetReports";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Report/GetReports");
         }
 
-        public async Task<string> AddReport(Report parameter)
+        public Task<string> AddReport(Report parameter)
         {
-            var url = apiAdress + $"/Report/AddReport";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Report>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Report>("Report/AddReport", parameter);
         }
     }
 }

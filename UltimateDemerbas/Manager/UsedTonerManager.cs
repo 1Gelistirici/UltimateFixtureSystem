@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
@@ -13,93 +12,29 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetUsedToners()
+        public Task<string> GetUsedToners()
         {
-            var url = apiAdress + $"/UsedToner/GetUsedToners";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("UsedToner/GetUsedToners");
         }
 
-        public async Task<string> GetUsedToner(UsedToner parameter)
+        public Task<string> GetUsedToner(UsedToner parameter)
         {
-            var url = apiAdress + $"/UsedToner/GetUsedToner";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<UsedToner>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<UsedToner>("UsedToner/GetUsedToner", parameter);
         }
 
-        public async Task<string> AddUsedToner(UsedToner parameter)
+        public Task<string> AddUsedToner(UsedToner parameter)
         {
-            var url = apiAdress + $"/UsedToner/AddUsedToner";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<UsedToner>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<UsedToner>("UsedToner/AddUsedToner", parameter);
         }
 
-        public async Task<string> UpdateUsedToner(UsedToner parameter)
+        public Task<string> UpdateUsedToner(UsedToner parameter)
         {
-            var url = apiAdress + $"/UsedToner/UpdateUsedToner";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<UsedToner>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<UsedToner>("UsedToner/UpdateUsedToner", parameter);
         }
 
-        public async Task<string> DeleteUsedToner(UsedToner parameter)
+        public Task<string> DeleteUsedToner(UsedToner parameter)
         {
-            var url = apiAdress + $"/UsedToner/DeleteUsedToner";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<UsedToner>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<UsedToner>("UsedToner/DeleteUsedToner", parameter);
         }
     }
 }

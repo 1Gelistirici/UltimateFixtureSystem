@@ -6,7 +6,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class UserManager:BaseManager
+    public class UserManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -16,64 +16,23 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> CheckUser(User parameter)
+        public Task<string> CheckUser(User parameter)
         {
-            var url = apiAdress + $"/User/CheckUser";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<User>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<User>("User/CheckUser", parameter);
         }
 
-        public async Task<string> GetUser(User parameter)
+        public Task<string> GetUser(User parameter)
         {
-            var url = apiAdress + $"/User/GetUser";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<User>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
-        }
-        
-        public async Task<string> GetUsers(User parameter)
-        {
-            var url = apiAdress + $"/User/GetUsers";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<User>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<User>("User/GetUser", parameter);
         }
 
-        public async Task<string> ChangePassword([FromBody] User parameter)
+        public Task<string> GetUsers(User parameter)
         {
-            
+            return GetApiParameter<User>("User/GetUsers", parameter);
+        }
 
+        public async Task<string> ChangePassword([FromBody] User parameter) //Todo Bakılacak Neden bırada kontroller gerçekleşiyor
+        {
             var url = apiAdress + $"/User/ChangePassword";
             var httpClient = _httpClientFactory.CreateClient("Test");
             var JsonData = GetSerilizatiob<User>(parameter);
@@ -94,22 +53,10 @@ namespace UltimateDemerbas.Manager
                 return null;
             }
         }
-        public async Task<string> UpdateProfile(User parameter)
-        {
-            var url = apiAdress + $"/User/UpdateProfile";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<User>(parameter);
 
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+        public Task<string> UpdateProfile(User parameter)
+        {
+            return GetApiParameter<User>("User/UpdateProfile", parameter);
         }
 
     }

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class LogManager:BaseManager
+    public class LogManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -14,59 +13,19 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetLogs(Log parameter)
+        public Task<string> GetLogs(Log parameter)
         {
-            
-            var url = apiAdress+ $"/Log/GetLogs";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Log>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Log>("Log/GetLogs", parameter);
         }
 
-        public async Task<string> DeleteLog(Log parameter)
+        public Task<string> DeleteLog(Log parameter)
         {
-            var url = apiAdress + $"/Log/DeleteLog";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Log>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Log>("Log/DeleteLog", parameter);
         }
 
-        public async Task<string> AddLog(Log parameter)
+        public Task<string> AddLog(Log parameter)
         {
-            var url = apiAdress + $"/Log/AddLog";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Log>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Log>("Log/AddLog", parameter);
         }
 
     }
