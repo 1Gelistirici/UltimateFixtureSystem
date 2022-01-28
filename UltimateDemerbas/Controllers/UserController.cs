@@ -9,9 +9,12 @@ namespace UltimateDemerbas.Controllers
     public class UserController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        UserManager user;
+
         public UserController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            user = new UserManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -27,7 +30,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult CheckUser([FromBody] User parameter)
         {
-            UserManager user = new UserManager(_httpClientFactory);
             var result = user.CheckUser(parameter);
 
             return Content(result.Result);
@@ -37,7 +39,6 @@ namespace UltimateDemerbas.Controllers
             User parameter = new User();
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            UserManager user = new UserManager(_httpClientFactory);
             var result = user.GetUser(parameter);
 
             return Content(result.Result);
@@ -47,7 +48,6 @@ namespace UltimateDemerbas.Controllers
             User parameter = new User();
             parameter.CompanyId = 1; // ToDo : WorkingCompany Bakılacak
 
-            UserManager user = new UserManager(_httpClientFactory);
             var result = user.GetUsers(parameter);
 
             return Content(result.Result);
@@ -56,7 +56,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            UserManager user = new UserManager(_httpClientFactory);
             var result = user.UpdateProfile(parameter);
 
             return Content(result.Result);
@@ -70,7 +69,6 @@ namespace UltimateDemerbas.Controllers
 
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            UserManager user = new UserManager(_httpClientFactory);
             var result = user.ChangePassword(parameter);
 
             return Content(result.Result);

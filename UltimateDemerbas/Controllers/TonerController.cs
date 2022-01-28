@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class TonerController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        TonerManager toner;
         public TonerController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            toner = new TonerManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -22,7 +24,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetToners()
         {
-            TonerManager toner = new TonerManager(_httpClientFactory);
             var result = toner.GetToners();
 
             return Content(result.Result);
@@ -32,7 +33,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            TonerManager toner = new TonerManager(_httpClientFactory);
             var result = toner.DeleteToner(parameter);
 
             return Content(result.Result);
@@ -42,7 +42,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            TonerManager toner = new TonerManager(_httpClientFactory);
             var result = toner.AddToner(parameter);
 
             return Content(result.Result);
@@ -52,7 +51,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            TonerManager toner = new TonerManager(_httpClientFactory);
             var result = toner.UpdateToner(parameter);
 
             return Content(result.Result);

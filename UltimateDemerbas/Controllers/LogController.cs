@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class LogController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        LogManager log;
         public LogController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            log = new LogManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -25,7 +27,6 @@ namespace UltimateDemerbas.Controllers
             Log parameter = new Log();
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LogManager log = new LogManager(_httpClientFactory);
             var result = log.GetLogs(parameter);
 
             return Content(result.Result);
@@ -33,7 +34,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteLog([FromBody] Log parameter)
         {
-            LogManager log = new LogManager(_httpClientFactory);
             var result = log.DeleteLog(parameter);
 
             return Content(result.Result);
@@ -41,7 +41,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddLog([FromBody] Log parameter)
         {
-            LogManager log = new LogManager(_httpClientFactory);
             var result = log.AddLog(parameter);
 
             return Content(result.Result);

@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class LoginController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        LoginManager login;
         public LoginController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            login = new LoginManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -23,21 +25,9 @@ namespace UltimateDemerbas.Controllers
         {
             user.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LoginManager login = new LoginManager(_httpClientFactory);
             var result = login.Authenticate(user);
 
             return Content(result.Result);
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }

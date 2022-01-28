@@ -9,11 +9,13 @@ namespace UltimateDemerbas.Controllers
     public class SituationController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        SituationManager situation;
         public SituationController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            situation = new SituationManager(_httpClientFactory);
         }
-        
+
         public IActionResult Index()
         {
             return View();
@@ -22,7 +24,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetSituations()
         {
-            SituationManager situation = new SituationManager(_httpClientFactory);
             var result = situation.GetSituations();
 
             return Content(result.Result);
@@ -31,8 +32,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult DeleteSituation([FromBody] Situation parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-        
-            SituationManager situation = new SituationManager(_httpClientFactory);
+
             var result = situation.DeleteSituation(parameter);
 
             return Content(result.Result);
@@ -42,7 +42,6 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            SituationManager situation = new SituationManager(_httpClientFactory);
             var result = situation.UpdateSituation(data);
 
             return Content(result.Result);
@@ -52,7 +51,6 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            SituationManager situation = new SituationManager(_httpClientFactory);
             var result = situation.AddSituation(data);
 
             return Content(result.Result);

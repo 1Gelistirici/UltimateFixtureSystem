@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class LicenseController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        LicenseManager licence;
         public LicenseController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            licence = new LicenseManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -22,18 +24,15 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetLicenses()
         {
-            LicenseManager license = new LicenseManager(_httpClientFactory);
-            var result = license.GetLicenses();
-
+            var result = licence.GetLicenses();
             return Content(result.Result);
         }
 
         public IActionResult DeleteLicense([FromBody] License parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-         
-            LicenseManager licensManager = new LicenseManager(_httpClientFactory);
-            var result = licensManager.DeleteLicense(parameter);
+
+            var result = licence.DeleteLicense(parameter);
 
             return Content(result.Result);
         }
@@ -41,19 +40,17 @@ namespace UltimateDemerbas.Controllers
         public IActionResult UpdateLicense([FromBody] License data)
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
-          
-            LicenseManager licensManager = new LicenseManager(_httpClientFactory);
-            var result = licensManager.UpdateLicense(data);
+
+            var result = licence.UpdateLicense(data);
 
             return Content(result.Result);
         }
-        
+
         public IActionResult AddLicense([FromBody] License data)
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LicenseManager licensManager = new LicenseManager(_httpClientFactory);
-            var result = licensManager.AddLicense(data);
+            var result = licence.AddLicense(data);
 
             return Content(result.Result);
         }

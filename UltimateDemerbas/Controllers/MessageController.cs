@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class MessageController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        MessageManager message;
         public MessageController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            message = new MessageManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -25,7 +27,6 @@ namespace UltimateDemerbas.Controllers
             Message parameter = new Message();
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            MessageManager message = new MessageManager(_httpClientFactory);
             var result = message.GetMessages(parameter);
 
             return Content(result.Result);
@@ -34,8 +35,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult DeleteMessage([FromBody] Message parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-           
-            MessageManager message = new MessageManager(_httpClientFactory);
+
             var result = message.DeleteMessage(parameter);
 
             return Content(result.Result);
@@ -45,7 +45,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            MessageManager message = new MessageManager(_httpClientFactory);
             var result = message.AddMessage(parameter);
 
             return Content(result.Result);

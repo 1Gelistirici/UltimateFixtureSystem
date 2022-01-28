@@ -9,10 +9,13 @@ namespace UltimateDemerbas.Controllers
     public class LicensesTypesController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        LicensesTypeManager licensesTypeManager;
         public LicensesTypesController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
         }
+
 
         public IActionResult Index()
         {
@@ -26,7 +29,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetLicensesType([FromBody] LicensesType parameter)
         {
-            LicensesTypeManager licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
             var result = licensesTypeManager.GetLicensesType(parameter);
 
             return Content(result.Result);
@@ -36,7 +38,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LicensesTypeManager licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
             var result = licensesTypeManager.DeleteLicensesType(parameter);
 
             return Content(result.Result);
@@ -44,7 +45,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetLicensesTypes()
         {
-            LicensesTypeManager licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
             var result = licensesTypeManager.GetLicensesTypes();
 
             return Content(result.Result);
@@ -54,7 +54,6 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LicensesTypeManager licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
             var result = licensesTypeManager.AddLicenseType(data);
 
             return Content(result.Result);
@@ -64,11 +63,9 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            LicensesTypeManager licensesTypeManager = new LicensesTypeManager(_httpClientFactory);
             var result = licensesTypeManager.UpdateLicenseType(data);
 
             return Content(result.Result);
         }
-
     }
 }

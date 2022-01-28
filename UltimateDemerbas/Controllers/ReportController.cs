@@ -8,9 +8,11 @@ namespace UltimateDemerbas.Controllers
     public class ReportController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        ReportManager report;
         public ReportController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            report = new ReportManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -20,7 +22,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetReports()
         {
-            ReportManager report = new ReportManager(_httpClientFactory);
             var result = report.GetReports();
 
             return Content(result.Result);
@@ -30,7 +31,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = WorkingUser;
 
-            ReportManager report = new ReportManager(_httpClientFactory);
             var result = report.AddReport(parameter);
 
             return Content(result.Result);
