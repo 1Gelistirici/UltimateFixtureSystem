@@ -28,6 +28,8 @@
                             var parameter = { id: value.Value, title: value.Text };
                             $scope.ItemStatusFilter.push(parameter);
                         });
+
+                        console.log("123", $scope.ItemStatus);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -188,10 +190,11 @@
             FixtureService.AddFixture(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Data.push(parameter);
+                        //$scope.Data.push(parameter);
                         RefreshData();
                         toaster.success("Başarılı", "Demirbaş başarıyla eklenmiştir.");
                         $("#AddFixturePopup").modal("hide");
+                        $scope.Pop = [];
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
