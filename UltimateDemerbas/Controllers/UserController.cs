@@ -63,6 +63,11 @@ namespace UltimateDemerbas.Controllers
         }
         public IActionResult ChangePassword([FromBody] User parameter)
         {
+            if (parameter.Password != parameter.PasswordTry)
+            {
+                return Content("Şifreler Uyuşmuyor");
+            }
+
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
             UserManager user = new UserManager(_httpClientFactory);

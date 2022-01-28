@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
@@ -31,27 +30,9 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<User>("User/GetUsers", parameter);
         }
 
-        public async Task<string> ChangePassword([FromBody] User parameter) //Todo Bakılacak Neden bırada kontroller gerçekleşiyor
+        public Task<string> ChangePassword([FromBody] User parameter)
         {
-            var url = apiAdress + $"/User/ChangePassword";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<User>(parameter);
-
-            if (parameter.Password != parameter.PasswordTry)
-            {
-                url = "test";
-            }
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<User>("User/ChangePassword", parameter);
         }
 
         public Task<string> UpdateProfile(User parameter)

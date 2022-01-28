@@ -8,6 +8,7 @@ namespace UltimateAPI.Manager
 {
     public class BaseManager : Controller
     {
+
         public void AddLog(int id, string message)
         {
             Log log = new Log();

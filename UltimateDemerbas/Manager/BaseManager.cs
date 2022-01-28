@@ -21,7 +21,7 @@ namespace UltimateDemerbas.Manager
 
         public string apiAdress = "https://localhost:44354/api/";
 
-        public StringContent GetSerilizatiob<T>(T ConvertData)
+        private StringContent GetSerilizatiob<T>(T ConvertData)
         {
             var ConvertJson = new StringContent(
                   JsonSerializer.Serialize(ConvertData),
@@ -29,12 +29,6 @@ namespace UltimateDemerbas.Manager
                   "application/json");
 
             return ConvertJson;
-        }
-
-
-        public void Error(Exception ex)
-        {
-            WriteError(ex);
         }
 
         private void WriteError(Exception ex)
@@ -72,6 +66,7 @@ namespace UltimateDemerbas.Manager
         }
 
 
+        #region Api Connection
         public async Task<string> GetApi(string goUrl)
         {
             var url = apiAdress + goUrl;
@@ -84,7 +79,7 @@ namespace UltimateDemerbas.Manager
             }
             catch (Exception ex)
             {
-                Error(ex);
+                WriteError(ex);
                 return null;
             }
         }
@@ -102,16 +97,14 @@ namespace UltimateDemerbas.Manager
             }
             catch (Exception ex)
             {
-                Error(ex);
+                WriteError(ex);
                 return null;
             }
         }
-
-
+        #endregion
 
 
         //public int ActiveUserId { get { return Convert.ToInt32(Request.Cookies["id"]); } }
         //public string ActiveUserCompany { get { return Request.Cookies["company"]; } }
-
     }
 }
