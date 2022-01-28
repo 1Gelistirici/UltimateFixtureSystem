@@ -9,30 +9,32 @@
             <div class="scroller" style="height:450px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <div class="col-md-9">
-                        <span>Name</span>
-                            <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
-                        <br />
-                        <span>Piece</span>
-                            <input ng-model="Pop.Piece" style="font-size: 14px;" type="number" class="form-control">
-                        <br />
-                        <span>Bill</span>
-                            <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control">
-                        <br />
-                        <span>Model</span>
-                            <select class="form-control" ng-model="Pop.ModelNo">
+                        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="ComponentForm">
+                            <span>Name</span>
+                            <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control" required>
+                            <br />
+                            <span>Piece</span>
+                            <input ng-model="Pop.Piece" style="font-size: 14px;" type="number" class="form-control" required>
+                            <br />
+                            <span>Bill</span>
+                            <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control" required>
+                            <br />
+                            <span>Model</span>
+                            <select class="form-control" ng-model="Pop.ModelNo" required>
                                 <option ng-repeat="x in Models" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
-                        <br />
-                        <span>Category</span>
-                            <select class="form-control" ng-model="Pop.CategoryNo">
+                            <br />
+                            <span>Category</span>
+                            <select class="form-control" ng-model="Pop.CategoryNo" required>
                                 <option ng-repeat="x in Categorys" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
+                        </form>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-top:80%;">
                     <input type="hidden" />
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddComponent()">Save</button>
+                    <button type="submit" class="btn red"ng-disabled="ComponentForm.$invalid" ng-click="AddComponent()">Save</button>
                 </div>
             </div>
         </div>

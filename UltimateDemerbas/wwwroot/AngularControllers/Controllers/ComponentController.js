@@ -67,6 +67,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Delete", "Silme işlemi başarılıyla gerçekleşti.");
+                        $scope.GetComponents();
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -101,7 +102,10 @@
             ComponentService.AddComponent(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Component", "Component başarıyla eklenmiştir");
+                        toaster.success("Component", "Component başarıyla eklendi");
+                        $scope.Pop = [];
+                        $('#AddSituation').modal('hide');
+                        $scope.GetComponents();
                     } else {
                         toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
