@@ -14,75 +14,24 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetCategories()
+        public Task<string> GetCategories()
         {
-            var url = apiAdress + $"/Category/GetCategories";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Category/GetCategories");
         }
 
-        public async Task<string> DeleteCategory(Category parameter)
+        public Task<string> DeleteCategory(Category parameter)
         {
-            var url = apiAdress + $"/Category/DeleteCategory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Category>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Category>("Category/DeleteCategory", parameter);
         }
 
-        public async Task<string> UpdateCategory(Category parameter)
+        public Task<string> UpdateCategory(Category parameter)
         {
-            var url = apiAdress + $"/Category/UpdateCategory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Category>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Category>("Category/UpdateCategory", parameter);
         }
 
-        public async Task<string> AddCategory(Category parameter)
+        public Task<string> AddCategory(Category parameter)
         {
-            var url = apiAdress + $"/Category/AddCategory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Category>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Category>("Category/AddCategory", parameter);
         }
     }
 }

@@ -15,75 +15,24 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetBillTypes()
+        public Task<string> GetBillTypes()
         {
-            var url = apiAdress + $"/BillType/GetBillTypes";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("BillType/GetBillTypes");
         }
 
-        public async Task<string> DeleteBillType(BillType parameter)
+        public Task<string> DeleteBillType(BillType parameter)
         {
-            var url = apiAdress + $"/BillType/DeleteBillType";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<BillType>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<BillType>("BillType/DeleteBillType", parameter);
         }
 
-        public async Task<string> UpdateBillType(BillType parameter)
+        public Task<string> UpdateBillType(BillType parameter)
         {
-            var url = apiAdress + $"/BillType/UpdateBillType";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<BillType>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<BillType>("BillType/UpdateBillType", parameter);
         }
 
-        public async Task<string> AddBillType(BillType parameter)
+        public Task<string> AddBillType(BillType parameter)
         {
-            var url = apiAdress + $"/BillType/AddBillType";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<BillType>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<BillType>("BillType/AddBillType", parameter);
         }
     }
 }

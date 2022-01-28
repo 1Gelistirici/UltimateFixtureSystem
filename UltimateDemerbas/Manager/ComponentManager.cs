@@ -14,75 +14,24 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetComponents()
+        public Task<string> GetComponents()
         {
-            var url = apiAdress + $"/Component/GetComponents";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Component/GetComponents");
         }
 
-        public async Task<string> DeleteComponent(Component parameter)
+        public Task<string> DeleteComponent(Component parameter)
         {
-            var url = apiAdress + $"/Component/DeleteComponent";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Component>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Component>("Component/DeleteComponent", parameter);
         }
 
-        public async Task<string> UpdateComponent(Component parameter)
+        public Task<string> UpdateComponent(Component parameter)
         {
-            var url = apiAdress + $"/Component/UpdateComponent";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Component>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Component>("Component/UpdateComponent", parameter);
         }
 
-        public async Task<string> AddComponent(Component parameter)
+        public Task<string> AddComponent(Component parameter)
         {
-            var url = apiAdress + $"/Component/AddComponent";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Component>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Component>("Component/AddComponent", parameter);
         }
     }
 }

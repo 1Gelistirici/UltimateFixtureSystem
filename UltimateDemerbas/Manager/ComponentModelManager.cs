@@ -15,75 +15,24 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetComponentModels()
+        public Task<string> GetComponentModels()
         {
-            var url = apiAdress + $"/ComponentModel/GetComponentModels";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("ComponentModel/GetComponentModels");
         }
 
-        public async Task<string> DeleteComponentModel(ComponentModel parameter)
+        public Task<string> DeleteComponentModel(ComponentModel parameter)
         {
-            var url = apiAdress + $"/ComponentModel/DeleteComponentModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<ComponentModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<ComponentModel>("ComponentModel/DeleteComponentModel", parameter);
         }
 
-        public async Task<string> UpdateComponentModel(ComponentModel parameter)
+        public Task<string> UpdateComponentModel(ComponentModel parameter)
         {
-            var url = apiAdress + $"/ComponentModel/UpdateComponentModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<ComponentModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<ComponentModel>("ComponentModel/UpdateComponentModel", parameter);
         }
 
-        public async Task<string> AddComponentModel(ComponentModel parameter)
+        public Task<string> AddComponentModel(ComponentModel parameter)
         {
-            var url = apiAdress + $"/ComponentModel/AddComponentModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<ComponentModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<ComponentModel>("ComponentModel/AddComponentModel", parameter);
         }
     }
 }

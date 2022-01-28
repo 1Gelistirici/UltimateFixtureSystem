@@ -13,94 +13,29 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetAssignments(Assignment parameter)
+        public Task<string> GetAssignments(Assignment parameter)
         {
-            var url = apiAdress + $"/Assignment/GetAssignments";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Assignment>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Assignment>("Assignment/GetAssignments", parameter);
         }
 
-        public async Task<string> DeleteAssignment(Assignment parameter)
+        public Task<string> DeleteAssignment(Assignment parameter)
         {
-            var url = apiAdress + $"/Assignment/DeleteAssignment";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Assignment>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Assignment>("Assignment/DeleteAssignment", parameter);
         }
 
-        public async Task<string> UpdateAssignment(Assignment parameter)
+        public Task<string> UpdateAssignment(Assignment parameter)
         {
-            var url = apiAdress + $"/Assignment/UpdateAssignment";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Assignment>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Assignment>("Assignment/UpdateAssignment", parameter);
         }
 
-        public async Task<string> AddAssignment(Assignment parameter)
+        public Task<string> AddAssignment(Assignment parameter)
         {
-            var url = apiAdress + $"/Assignment/AddAssignment";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Assignment>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Assignment>("Assignment/AddAssignment", parameter);
         }
 
-        public async Task<string> GetAssignmentUser(Assignment parameter)
+        public Task<string> GetAssignmentUser(Assignment parameter)
         {
-            var url = apiAdress + $"/Assignment/GetAssignmentUser";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Assignment>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Assignment>("Assignment/GetAssignmentUser", parameter);
         }
 
     }

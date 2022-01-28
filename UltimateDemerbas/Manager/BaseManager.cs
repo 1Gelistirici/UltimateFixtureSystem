@@ -19,9 +19,6 @@ namespace UltimateDemerbas.Manager
         }
 
 
-
-
-
         public string apiAdress = "https://localhost:44354/api/";
 
         public StringContent GetSerilizatiob<T>(T ConvertData)

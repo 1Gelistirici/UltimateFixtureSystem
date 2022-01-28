@@ -15,75 +15,24 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetAccessoryModels()
+        public Task<string> GetAccessoryModels()
         {
-            var url = apiAdress + $"/AccessoryModel/GetAccessoryModels";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("AccessoryModel/GetAccessoryModels");
         }
 
-        public async Task<string> DeleteAccessoryModel(AccessoryModel parameter)
+        public Task<string> DeleteAccessoryModel(AccessoryModel parameter)
         {
-            var url = apiAdress + $"/AccessoryModel/DeleteAccessoryModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<AccessoryModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<AccessoryModel>("AccessoryModel/DeleteAccessoryModel", parameter);
         }
 
-        public async Task<string> UpdateAccessoryModel(AccessoryModel parameter)
+        public Task<string> UpdateAccessoryModel(AccessoryModel parameter)
         {
-            var url = apiAdress + $"/AccessoryModel/UpdateAccessoryModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<AccessoryModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<AccessoryModel>("AccessoryModel/UpdateAccessoryModel", parameter);
         }
 
-        public async Task<string> AddAccessoryModel(AccessoryModel parameter)
+        public Task<string> AddAccessoryModel(AccessoryModel parameter)
         {
-            var url = apiAdress + $"/AccessoryModel/AddAccessoryModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<AccessoryModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<AccessoryModel>("AccessoryModel/AddAccessoryModel", parameter);
         }
     }
 }

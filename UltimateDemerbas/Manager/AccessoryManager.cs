@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class AccessoryManager:BaseManager
+    public class AccessoryManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -14,93 +14,29 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetAccessories()
+        public Task<string> GetAccessories()
         {
-            var url = apiAdress + $"/Accessory/GetAccessories";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
-        }
-        
-        public async Task<string> GetAccessory(Accessory parameter)
-        {
-            var url = apiAdress + $"/Accessory/GetAccessory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Accessory>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Accessory/GetAccessories");
         }
 
-        public async Task<string> DeleteAccessory(Accessory parameter)
+        public Task<string> GetAccessory(Accessory parameter)
         {
-            var url = apiAdress + $"/Accessory/DeleteAccessory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Accessory>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Accessory>("Accessory/GetAccessory", parameter);
         }
 
-        public async Task<string> UpdateAccessory(Accessory parameter)
+        public Task<string> DeleteAccessory(Accessory parameter)
         {
-            var url = apiAdress + $"/Accessory/UpdateAccessory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Accessory>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Accessory>("Accessory/DeleteAccessory", parameter);
         }
 
-        public async Task<string> AddAccessory(Accessory parameter)
+        public Task<string> UpdateAccessory(Accessory parameter)
         {
-            var url = apiAdress + $"/Accessory/AddAccessory";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Accessory>(parameter);
+            return GetApiParameter<Accessory>("Accessory/UpdateAccessory", parameter);
+        }
 
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+        public Task<string> AddAccessory(Accessory parameter)
+        {
+            return GetApiParameter<Accessory>("Accessory/AddAccessory", parameter);
         }
     }
 }
