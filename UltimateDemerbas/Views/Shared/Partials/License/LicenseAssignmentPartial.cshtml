@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-footer" style="margin-top:16%;">
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddFixLic()">Save</button>
+                    <button type="submit" class="btn red" ng-disabled="Assign.FixturId===undefined || Assign.FixturId===null" ng-click="AddFixLic()">Save</button>
                 </div>
             </div>
         </div>

@@ -64,9 +64,10 @@
             AccessoryModelService.AddAccessoryModel(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Accessory model ekleme işlemi yapılırken bir hata oluştu");
+                        toaster.success("Aksesuar Model", "Accessory model başarıyla eklendi");
                         $('#AddSituation').modal('hide');
                         $scope.GetAccessoryModels();
+                        $scope.Pop = [];
                     } else {
                         toaster.success("Başarısız", "Accessory model ekleme işlemi yapılırken bir hata oluştu");
                     }

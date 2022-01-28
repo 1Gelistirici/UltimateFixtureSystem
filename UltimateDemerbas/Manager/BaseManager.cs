@@ -102,9 +102,5 @@ namespace UltimateDemerbas.Manager
             }
         }
         #endregion
-
-
-        //public int ActiveUserId { get { return Convert.ToInt32(Request.Cookies["id"]); } }
-        //public string ActiveUserCompany { get { return Request.Cookies["company"]; } }
     }
 }

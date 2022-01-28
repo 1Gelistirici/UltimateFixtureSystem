@@ -7,16 +7,19 @@
                 <h4 class="modal-title danger">Add Accessory Model</h4>
             </div>
             <div class="scroller" style="height:160px" data-always-visible="0" data-rail-visible1="1">
-                <div class="modal-body">
-                    <div class="col-md-9">
-                        <span>Accessory Model Name</span>
-                        <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control">
+                <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="AccessoryModelForm">
+                    <div class="modal-body">
+                        <div class="col-md-9">
+                            <span>Accessory Model Name</span>
+                            <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control" required>
+                        </div>
                     </div>
-                </div>
+                </form>
+
                 <div class="modal-footer" style="margin-top:11%;">
                     <input type="hidden" />
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddAccessoryModel()">Save</button>
+                    <button type="submit" class="btn red" ng-disabled="AccessoryModelForm.$invalid" ng-click="AddAccessoryModel()">Save</button>
                 </div>
             </div>
         </div>

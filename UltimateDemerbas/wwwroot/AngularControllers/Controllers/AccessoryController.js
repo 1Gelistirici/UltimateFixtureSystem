@@ -99,6 +99,9 @@
             AccessoryService.AddAccessory(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        toaster.success("Aksesuar Ekleme", "Aksesuar başarıyla eklendi");
+                        $('#AddSituation').modal('hide');
+                        $scope.Pop = [];
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
