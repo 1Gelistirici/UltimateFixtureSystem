@@ -15,6 +15,7 @@ namespace UltimateDemerbas.Controllers
             fixture = new FixLicManager(_httpClientFactory);
         }
 
+
         public IActionResult Index()
         {
             return View();

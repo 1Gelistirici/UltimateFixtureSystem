@@ -16,6 +16,7 @@ namespace UltimateDemerbas.Controllers
             fixtureModel = new FixtureModelManager(_httpClientFactory);
         }
 
+
         public IActionResult Index()
         {
             return View();
