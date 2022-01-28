@@ -67,6 +67,7 @@
                         toaster.success("Başarılı", "Departman ekleme işlemi yapılırken bir hata oluştu");
                         $('#AddDepartment').modal('hide');
                         $scope.GetDepartments();
+                        $scope.Pop = [];
                     } else {
                         toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
                     }
