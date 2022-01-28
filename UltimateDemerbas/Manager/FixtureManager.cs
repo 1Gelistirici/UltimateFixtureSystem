@@ -14,111 +14,34 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetFixtures()
+        public Task<string> GetFixtures()
         {
-            var url = apiAdress + $"/Fixture/GetFixtures";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Fixture/GetFixtures");
         }
 
-        public async Task<string> GetFixture(Fixture parameter)
+        public Task<string> GetFixture(Fixture parameter)
         {
-            var url = apiAdress + $"/Fixture/GetFixture";
-            var httpClient = _httpClientFactory.CreateClient("Test");
-            var JsonData = GetSerilizatiob<Fixture>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Fixture>("Fixture/GetFixture", parameter);
         }
 
-        public async Task<string> GetFixtureByUser(Fixture parameter)
+        public Task<string> GetFixtureByUser(Fixture parameter)
         {
-            var url = apiAdress + $"/Fixture/GetFixtureByUser";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Fixture>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Fixture>("Fixture/GetFixtureByUser", parameter);
         }
 
-        public async Task<string> AddFixture(Fixture parameter)
+        public Task<string> AddFixture(Fixture parameter)
         {
-            var url = apiAdress + $"/Fixture/AddFixture";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Fixture>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Fixture>("Fixture/AddFixture", parameter);
         }
 
-        public async Task<string> UpdateFixture(Fixture parameter)
+        public Task<string> UpdateFixture(Fixture parameter)
         {
-            var url = apiAdress + $"/Fixture/UpdateFixture";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Fixture>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Fixture>("Fixture/UpdateFixture", parameter);
         }
 
-        public async Task<string> DeleteFixture(Fixture parameter)
+        public Task<string> DeleteFixture(Fixture parameter)
         {
-            var url = apiAdress + $"/Fixture/DeleteFixture";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<Fixture>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<Fixture>("Fixture/DeleteFixture", parameter);
         }
     }
 }

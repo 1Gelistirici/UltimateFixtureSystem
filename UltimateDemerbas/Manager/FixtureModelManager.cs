@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class FixtureModelManager:BaseManager
+    public class FixtureModelManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -15,75 +15,24 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> GetFixtureModels()
+        public Task<string> GetFixtureModels()
         {
-            var url = apiAdress + $"/FixtureModel/GetFixtureModels";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("FixtureModel/GetFixtureModels");
         }
 
-        public async Task<string> DeleteFixtureModel(FixtureModel parameter)
+        public Task<string> DeleteFixtureModel(FixtureModel parameter)
         {
-            var url = apiAdress + $"/FixtureModel/DeleteFixtureModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixtureModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<FixtureModel>("FixtureModel/DeleteFixtureModel", parameter);
         }
 
-        public async Task<string> UpdateFixtureModel(FixtureModel parameter)
+        public Task<string> UpdateFixtureModel(FixtureModel parameter)
         {
-            var url = apiAdress + $"/FixtureModel/UpdateFixtureModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixtureModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<FixtureModel>("FixtureModel/UpdateFixtureModel", parameter);
         }
 
-        public async Task<string> AddFixtureModel(FixtureModel parameter)
+        public Task<string> AddFixtureModel(FixtureModel parameter)
         {
-            var url = apiAdress + $"/FixtureModel/AddFixtureModel";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixtureModel>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<FixtureModel>("FixtureModel/AddFixtureModel", parameter);
         }
     }
 }

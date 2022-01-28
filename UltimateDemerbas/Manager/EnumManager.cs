@@ -12,55 +12,19 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> GetIsActiveTypes()
+        public Task<string> GetIsActiveTypes()
         {
-            var url = apiAdress + $"/Enum/GetIsActiveTypes";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Enum/GetIsActiveTypes");
         }
 
-        public async Task<string> GetItemStatuTypes()
+        public Task<string> GetItemStatuTypes()
         {
-            var url = apiAdress + $"/Enum/GetItemStatuTypes";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Enum/GetItemStatuTypes");
         }
 
-        public async Task<string> GetItemTypeTypes()
+        public Task<string> GetItemTypeTypes()
         {
-            var url = apiAdress + $"/Enum/GetItemTypeTypes";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-
-            try
-            {
-                var response = await httpClient.GetAsync(url);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApi("Enum/GetItemTypeTypes");
         }
 
     }

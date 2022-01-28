@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
-    public class LoginManager:BaseManager
+    public class LoginManager : BaseManager
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -15,22 +15,9 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public async Task<string> Authenticate(User user)
+        public Task<string> Authenticate(User parameter)
         {
-            var url = apiAdress + $"/Login/Authenticate";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<User>(user);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<User>("Login/Authenticate", parameter);
         }
 
     }

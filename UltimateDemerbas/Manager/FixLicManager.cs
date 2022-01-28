@@ -13,58 +13,19 @@ namespace UltimateDemerbas.Manager
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> AddFixLic(FixLic parameter)
+        public Task<string> AddFixLic(FixLic parameter)
         {
-            var url = apiAdress + $"/FixLic/AddFixLic";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixLic>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<FixLic>("FixLic/AddFixLic", parameter);
         }
 
-        public async Task<string> GetFixLices(FixLic parameter)
+        public Task<string> GetFixLices(FixLic parameter)
         {
-            var url = apiAdress + $"/FixLic/GetFixLices";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixLic>(parameter);
-
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+            return GetApiParameter<FixLic>("FixLic/GetFixLices", parameter);
         }
-        
-        public async Task<string> DeleteFixLic(FixLic parameter)
-        {
-            var url = apiAdress + $"/FixLic/DeleteFixLic";
-            var httpClient = _httpClientFactory.CreateClient("Test"); ;
-            var JsonData = GetSerilizatiob<FixLic>(parameter);
 
-            try
-            {
-                var response = await httpClient.PostAsync(url, JsonData);
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                Error(ex);
-                return null;
-            }
+        public Task<string> DeleteFixLic(FixLic parameter)
+        {
+            return GetApiParameter<FixLic>("FixLic/DeleteFixLic", parameter);
         }
 
     }
