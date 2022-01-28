@@ -67,6 +67,7 @@
                         toaster.success("Başarılı", "Component model ekleme işlemi başarılı");
                         $('#AddSituation').modal('hide');
                         $scope.GetComponentModels();
+                        $scope.Pop = [];
                     } else {
                         toaster.success("Başarısız", "Component model ekleme işlemi yapılırken bir hata oluştu");
                     }
