@@ -9,10 +9,13 @@ namespace UltimateDemerbas.Controllers
     public class ComponentController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        ComponentManager component;
         public ComponentController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            component = new ComponentManager(_httpClientFactory);
         }
+
 
         public IActionResult Index()
         {
@@ -22,39 +25,28 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetComponents()
         {
-            ComponentManager component = new ComponentManager(_httpClientFactory);
             var result = component.GetComponents();
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteComponent([FromBody] Component parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-   
-            ComponentManager component = new ComponentManager(_httpClientFactory);
             var result = component.DeleteComponent(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddComponent([FromBody] Component parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
-            ComponentManager component = new ComponentManager(_httpClientFactory);
             var result = component.AddComponent(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateComponent([FromBody] Component parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
-            ComponentManager component = new ComponentManager(_httpClientFactory);
             var result = component.UpdateComponent(parameter);
-
             return Content(result.Result);
         }
     }

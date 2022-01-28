@@ -28,21 +28,18 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
             var result = log.GetLogs(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteLog([FromBody] Log parameter)
         {
             var result = log.DeleteLog(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddLog([FromBody] Log parameter)
         {
             var result = log.AddLog(parameter);
-
             return Content(result.Result);
         }
     }

@@ -8,9 +8,11 @@ namespace UltimateDemerbas.Controllers
     public class FixtureController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        FixtureManager fixture;
         public FixtureController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            fixture = new FixtureManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -34,7 +36,6 @@ namespace UltimateDemerbas.Controllers
                 parameter.UserId = WorkingUser;
             }
 
-            FixtureManager fixture = new FixtureManager(_httpClientFactory);
             var result = fixture.GetFixture(parameter);
             return Content(result.Result);
         }
@@ -44,7 +45,6 @@ namespace UltimateDemerbas.Controllers
             Fixture parameter = new Fixture();
             parameter.UserId = WorkingUser;
 
-            FixtureManager fixture = new FixtureManager(_httpClientFactory);
             var result = fixture.GetFixtureByUser(parameter);
 
             return Content(result.Result);
@@ -52,7 +52,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddFixture([FromBody] Fixture parameter)
         {
-            FixtureManager fixture = new FixtureManager(_httpClientFactory);
             var result = fixture.AddFixture(parameter);
 
             return Content(result.Result);
@@ -60,7 +59,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateFixture([FromBody] Fixture parameter)
         {
-            FixtureManager fixture = new FixtureManager(_httpClientFactory);
             var result = fixture.UpdateFixture(parameter);
 
             return Content(result.Result);
@@ -68,7 +66,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteFixture([FromBody] Fixture parameter)
         {
-            FixtureManager fixture = new FixtureManager(_httpClientFactory);
             var result = fixture.DeleteFixture(parameter);
 
             return Content(result.Result);

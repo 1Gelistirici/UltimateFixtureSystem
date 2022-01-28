@@ -9,10 +9,13 @@ namespace UltimateDemerbas.Controllers
     public class BillController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        BillManager bill;
         public BillController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            bill = new BillManager(_httpClientFactory);
         }
+
 
         public IActionResult Index()
         {
@@ -22,39 +25,28 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetBills()
         {
-            BillManager bill = new BillManager(_httpClientFactory);
             var result = bill.GetBills();
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteBill([FromBody] Bill parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-            
-            BillManager bill = new BillManager(_httpClientFactory);
             var result = bill.DeleteBill(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddBill([FromBody] Bill parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
-            BillManager bill = new BillManager(_httpClientFactory);
             var result = bill.AddBill(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateBill([FromBody] Bill parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-         
-            BillManager bill = new BillManager(_httpClientFactory);
             var result = bill.UpdateBill(parameter);
-
             return Content(result.Result);
         }
     }

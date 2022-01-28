@@ -9,10 +9,13 @@ namespace UltimateDemerbas.Controllers
     public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        CategoryManager category;
         public CategoryController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            category = new CategoryManager(_httpClientFactory);
         }
+
 
         public IActionResult Index()
         {
@@ -22,39 +25,28 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetCategories()
         {
-            CategoryManager category = new CategoryManager(_httpClientFactory);
             var result = category.GetCategories();
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteCategory([FromBody] Category parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-         
-            CategoryManager category = new CategoryManager(_httpClientFactory);
             var result = category.DeleteCategory(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddCategory([FromBody] Category parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-        
-            CategoryManager category = new CategoryManager(_httpClientFactory);
             var result = category.AddCategory(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateCategory([FromBody] Category parameter)
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-        
-            CategoryManager category = new CategoryManager(_httpClientFactory);
             var result = category.UpdateCategory(parameter);
-
             return Content(result.Result);
         }
     }

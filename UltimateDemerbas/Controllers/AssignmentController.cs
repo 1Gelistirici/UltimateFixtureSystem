@@ -8,9 +8,11 @@ namespace UltimateDemerbas.Controllers
     public class AssignmentController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
+            AssignmentManager assignment;
         public AssignmentController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            assignment = new AssignmentManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -22,36 +24,26 @@ namespace UltimateDemerbas.Controllers
         {
             Assignment parameter = new Assignment();
             parameter.CompanyId = 1; // ToDo : WorkingCompany olacak
-
-            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.GetAssignments(parameter);
-
+            var result = assignment.GetAssignments(parameter);
             return Content(result.Result);
         }
        
         public IActionResult DeleteAssignment([FromBody] Assignment parameter)
         {
-            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.DeleteAssignment(parameter);
-
+            var result = assignment.DeleteAssignment(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddAssignment([FromBody] Assignment parameter)
         {
             parameter.AppointerId = WorkingUser;
-
-            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.AddAssignment(parameter);
-
+            var result = assignment.AddAssignment(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateAssignment([FromBody] Assignment parameter)
         {
-            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.UpdateAssignment(parameter);
-
+            var result = assignment.UpdateAssignment(parameter);
             return Content(result.Result);
         }
 
@@ -59,10 +51,7 @@ namespace UltimateDemerbas.Controllers
         {
             Assignment parameter = new Assignment();
             parameter.UserId = WorkingUser;
-
-            AssignmentManager componentModel = new AssignmentManager(_httpClientFactory);
-            var result = componentModel.GetAssignmentUser(parameter);
-
+            var result = assignment.GetAssignmentUser(parameter);
             return Content(result.Result);
         }
 

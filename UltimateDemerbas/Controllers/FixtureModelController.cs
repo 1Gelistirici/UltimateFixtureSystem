@@ -9,9 +9,11 @@ namespace UltimateDemerbas.Controllers
     public class FixtureModelController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        FixtureModelManager fixtureModel;
         public FixtureModelController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            fixtureModel = new FixtureModelManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -22,7 +24,6 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetFixtureModels()
         {
-            FixtureModelManager fixtureModel = new FixtureModelManager(_httpClientFactory);
             var result = fixtureModel.GetFixtureModels();
 
             return Content(result.Result);
@@ -32,7 +33,6 @@ namespace UltimateDemerbas.Controllers
         {
             parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            FixtureModelManager fixtureModel = new FixtureModelManager(_httpClientFactory);
             var result = fixtureModel.DeleteFixtureModel(parameter);
 
             return Content(result.Result);
@@ -42,7 +42,6 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            FixtureModelManager fixtureModel = new FixtureModelManager(_httpClientFactory);
             var result = fixtureModel.AddFixtureModel(data);
 
             return Content(result.Result);
@@ -52,7 +51,6 @@ namespace UltimateDemerbas.Controllers
         {
             data.UserId = Convert.ToInt32(Request.Cookies["id"]);
 
-            FixtureModelManager fixtureModel = new FixtureModelManager(_httpClientFactory);
             var result = fixtureModel.UpdateFixtureModel(data);
 
             return Content(result.Result);

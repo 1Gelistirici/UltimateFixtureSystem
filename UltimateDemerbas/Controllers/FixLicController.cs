@@ -8,9 +8,11 @@ namespace UltimateDemerbas.Controllers
     public class FixLicController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        FixLicManager fixture;
         public FixLicController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            fixture = new FixLicManager(_httpClientFactory);
         }
 
         public IActionResult Index()
@@ -21,9 +23,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddFixLic([FromBody] FixLic parameter)
         {
-            FixLicManager fixture = new FixLicManager(_httpClientFactory);
             var result = fixture.AddFixLic(parameter);
-
             return Content(result.Result);
         }
 
@@ -31,7 +31,6 @@ namespace UltimateDemerbas.Controllers
         {
             FixLic parameter = new FixLic();
             parameter.CompanyId = 1; // ToDo : WorkingCompany'den alınacak
-            FixLicManager fixture = new FixLicManager(_httpClientFactory);
             var result = fixture.GetFixLices(parameter);
 
             return Content(result.Result);
@@ -39,9 +38,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteFixLic([FromBody] FixLic parameter)
         {
-            FixLicManager fixture = new FixLicManager(_httpClientFactory);
             var result = fixture.DeleteFixLic(parameter);
-
             return Content(result.Result);
         }
 
