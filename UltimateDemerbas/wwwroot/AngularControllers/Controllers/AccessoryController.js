@@ -67,6 +67,8 @@
             AccessoryService.DeleteAccessory(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.Refresh();
+                        toaster.success("Aksesuar Silindi","Aksesuar silme işlemi başarılı")
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -102,6 +104,7 @@
                         toaster.success("Aksesuar Ekleme", "Aksesuar başarıyla eklendi");
                         $('#AddSituation').modal('hide');
                         $scope.Pop = [];
+                        $scope.Refresh();
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
