@@ -80,7 +80,8 @@
                 "Name": $scope.Pop.Name,
                 "Piece": $scope.Pop.Piece,
                 "Boundary": $scope.Pop.Boundary,
-                "Price": $scope.Pop.Price
+                "Price": $scope.Pop.Price,
+                "MinStock": $scope.Pop.MinStock
             }
 
             TonerService.AddToner(data,
@@ -89,6 +90,7 @@
                         $scope.GetToners();
                         $('#AddTonerPopup').modal('hide');
                         toaster.success("Başarılı", "Toner eklendi.");
+                        $scope.Pop = [];
                     } else {
                         toaster.error("Başarısız", "Toner ekleme işlemi yapılırken bir hata oluştu");
                     }
