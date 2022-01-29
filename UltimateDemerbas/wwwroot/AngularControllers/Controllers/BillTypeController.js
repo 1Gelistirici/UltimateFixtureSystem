@@ -67,6 +67,7 @@
                         toaster.success("Başarılı", "Bill type ekleme işlemi yapılırken bir hata oluştu");
                         $('#AddSituation').modal('hide');
                         $scope.GetBillTypes();
+                        $scope.Pop = [];
                     } else {
                         toaster.success("Başarısız", "Bill type ekleme işlemi yapılırken bir hata oluştu");
                     }
