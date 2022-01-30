@@ -185,7 +185,6 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@billNo", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@billDate", parameter.BillDate);
-                        sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
                         sqlCommand.Parameters.AddWithValue("@type_no", parameter.TypeNo);

@@ -113,7 +113,7 @@
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                         <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                        <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                        @*<li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
                                 <span class="badge badge-success"> 7 </span>
@@ -222,12 +222,12 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- END NOTIFICATION DROPDOWN -->
                         <li class="separator hide"> </li>
                         <!-- BEGIN INBOX DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                        @*<li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-envelope-open"></i>
                                 <span class="badge badge-danger"> 4 </span>
@@ -307,12 +307,12 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- END INBOX DROPDOWN -->
                         <li class="separator hide"> </li>
                         <!-- BEGIN TODO DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                        @*<li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-calendar"></i>
                                 <span class="badge badge-primary"> 3 </span>
@@ -423,7 +423,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- END TODO DROPDOWN -->
                         <!-- BEGIN USER LOGIN DROPDOWN -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -435,11 +435,11 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
-                                    <a href="page_user_profile_1.html">
+                                    <a href="/Profile/Index">
                                         <i class="icon-user"></i> My Profile
                                     </a>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a href="app_calendar.html">
                                         <i class="icon-calendar"></i> My Calendar
                                     </a>
@@ -466,15 +466,15 @@
                                     <a href="/User/Login" ng-click="LogOut()">
                                         <i class="icon-key"></i> Log Out
                                     </a>
-                                </li>
+                                </li>*@
                             </ul>
                         </li>
                         <!-- END USER LOGIN DROPDOWN -->
                         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                        <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                        @*<li class="dropdown dropdown-extended quick-sidebar-toggler">
                             <span class="sr-only">Toggle Quick Sidebar</span>
                             <i class="icon-logout"></i>
-                        </li>
+                        </li>*@
                         <!-- END QUICK SIDEBAR TOGGLER -->
                     </ul>
                 </div>
@@ -553,10 +553,10 @@
 
             <!-- END SIDEBAR -->
             <!-- BEGIN QUICK SIDEBAR -->
-            <a href="javascript:;" class="page-quick-sidebar-toggler">
+            @*<a href="javascript:;" class="page-quick-sidebar-toggler">
                 <i class="icon-login"></i>
-            </a>
-            <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+            </a>*@
+            @*<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
                 <div class="page-quick-sidebar">
                     <ul class="nav nav-tabs">
                         <li class="active">
@@ -1157,7 +1157,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <!-- END QUICK SIDEBAR -->
         </div>
     </div>

@@ -15,7 +15,6 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window",
             }
         });
 
-
         $scope.MenuTitle = [];
         $scope.MenuSub = [];
         $scope.Header = [];
@@ -54,10 +53,8 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window",
             });
         });
 
-
         $scope.LogOut = function () {
             Cookies.remove("id");
         }
-
 
     }]);

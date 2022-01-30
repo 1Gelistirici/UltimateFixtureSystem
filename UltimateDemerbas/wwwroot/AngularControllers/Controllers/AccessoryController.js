@@ -1,8 +1,6 @@
 ﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "NgTableParams", "toaster",
     function ($scope, AccessoryService, CategoryService, AccessoryModelService, NgTableParams, toaster,) {
 
-        $scope.test = null;
-
         $scope.RegisterCount = 0;
 
         $scope.TableCol = {
