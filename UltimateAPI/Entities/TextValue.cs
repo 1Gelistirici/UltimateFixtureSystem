@@ -1,4 +1,5 @@
-﻿namespace UltimateDemerbas.Models
+﻿
+namespace UltimateDemerbas.Models
 {
     public class TextValue
     {

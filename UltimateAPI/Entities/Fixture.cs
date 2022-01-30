@@ -1,6 +1,4 @@
 ﻿
-using UltimateAPI.Entities.Enums;
-
 namespace UltimateAPI.Entities
 {
     public class Fixture : BaseProperty

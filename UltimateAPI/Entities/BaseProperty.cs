@@ -1,4 +1,5 @@
-﻿namespace UltimateAPI.Entities
+﻿
+namespace UltimateAPI.Entities
 {
     public class BaseProperty
     {

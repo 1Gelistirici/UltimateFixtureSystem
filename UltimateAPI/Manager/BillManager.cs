@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class BillManager:BaseManager
+    public class BillManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile BillManager _instance;
@@ -54,12 +54,12 @@ namespace UltimateAPI.Manager
                                     Bill bill = new Bill();
                                     bill.Id = Convert.ToInt32(read["id"]);
                                     bill.BillNo = read["billNo"].ToString();
-                                    bill.BillDate = read["billDate"].ToString();
+                                    bill.BillDate = Convert.ToDateTime(read["billDate"]);
+                                    bill.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     bill.Price = Convert.ToInt32(read["price"]);
                                     bill.Comment = read["comment"].ToString();
-                                    bill.Product = read["product"].ToString();
-                                    bill.Piece = Convert.ToInt32(read["piece"]);
-                                    bill.TypeNo = read["type_no"].ToString();
+                                    bill.TypeNo = Convert.ToInt32(read["type_No"]);
+                                    bill.Department = Convert.ToInt32(read["department"]);
 
                                     bills.Add(bill);
                                 }
@@ -100,11 +100,11 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@billNo", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@billDate", parameter.BillDate);
+                        sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
-                        sqlCommand.Parameters.AddWithValue("@product", parameter.Product);
-                        sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
-                        sqlCommand.Parameters.AddWithValue("@type_no", parameter.TypeNo);
+                        sqlCommand.Parameters.AddWithValue("@type_No", parameter.TypeNo);
+                        sqlCommand.Parameters.AddWithValue("@department", parameter.Department);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -122,7 +122,7 @@ namespace UltimateAPI.Manager
                 return result;
             }
 
-            AddLog(parameter.UserId,"Toner eklendi");
+            AddLog(parameter.UserId, "Toner eklendi");
 
             return result;
         }
@@ -185,11 +185,11 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@billNo", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@billDate", parameter.BillDate);
+                        sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
-                        sqlCommand.Parameters.AddWithValue("@product", parameter.Product);
-                        sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
                         sqlCommand.Parameters.AddWithValue("@type_no", parameter.TypeNo);
+                        sqlCommand.Parameters.AddWithValue("@department", parameter.Department);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

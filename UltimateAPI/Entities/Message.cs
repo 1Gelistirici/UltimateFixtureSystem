@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UltimateAPI.Entities
 {
@@ -9,6 +6,5 @@ namespace UltimateAPI.Entities
     {
         public string MessageDetail{ get; set; }
         public DateTime Time { get; set; }
-
     }
 }
