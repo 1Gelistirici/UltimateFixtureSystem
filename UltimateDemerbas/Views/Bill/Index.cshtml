@@ -4,6 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+// ToDo gereksizleri sil
+<link href="~/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" />
+<link href="~/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" />
+
+<link href="~/assets1/global/plugins/datatables/datatables.min.css" rel="stylesheet" />
+<link href="~/assets1/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
+<link href="~/assets1/global/css/components-md.min.css" rel="stylesheet" />
+<link href="~/assets1/lgn/plugins-md.min.css" rel="stylesheet" />
+
+<link href="~/assets1/layout/layout.min.css" rel="stylesheet" />
+<link href="~/assets/layouts/layout4/css/themes/default.min.css" rel="stylesheet" />
+<link href="~/assets1/css/custom.min.css" rel="stylesheet" />
+
+
+
 <div ng-controller="BillController">
 
     <!--Header-->
@@ -17,7 +33,7 @@
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBill">
                         Add Bill
                     </a>
                 </div>
@@ -50,36 +66,32 @@
                             <tr ng-repeat="_ in $data">
 
                                 <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                            <input ng-model="_.BillNo" style="font-size: 14px;" type="text" class="form-control" value="{{ _.BillNo }}">
+                                    <input ng-model="_.BillNo" style="font-size: 14px;" type="text" class="form-control" value="{{ _.BillNo }}">
                                 </td>
 
                                 <td data-title="TableCol.BillDate" filter="{ BillDate: 'text'}" sortable="'BillDate'">
-                                            <input ng-model="_.BillDate" style="font-size: 14px;" type="date" class="form-control" value="{{ _.BillDate }}">
+                                    <input ng-model="_.BillDate" style="font-size: 14px;" type="date" class="form-control" value="{{ _.BillDate }}">
                                 </td>
 
                                 <td data-title="TableCol.Comment" style="width:20%;" filter="{ Comment: 'text'}" sortable="'Comment'">
-                                        <textarea class="form-control" ng-model="_.Comment" rows="2" value="{{ _.Comment }}"></textarea>
-                                </td>
-
-                                <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
-                                            <input ng-model="_.Piece" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Piece }}">
+                                    <textarea class="form-control" ng-model="_.Comment" rows="2" value="{{ _.Comment }}"></textarea>
                                 </td>
 
                                 <td data-title="TableCol.TypeNo" filter="{ Type: 'number'}" sortable="'Type'">
-                                        <select class="form-control" ng-model="_.TypeNo">
-                                            <option ng-repeat="x in BillTypes" type="number" value="{{x.Id}}">{{x.Name}}</option>
-                                        </select>
+                                    <select class="form-control" ng-model="_.TypeNo">
+                                        <option ng-repeat="x in BillTypes" type="number" value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
                                 </td>
 
                                 <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
-                                        <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}">
+                                    <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}">
                                 </td>
 
                                 <td data-title="TableCol.Items">
-                                        <button class="btn blue">
-                                            Items
-                                            <i class="fa fa-share"></i>
-                                        </button>
+                                    <button class="btn blue">
+                                        Items
+                                        <i class="fa fa-share"></i>
+                                    </button>
                                 </td>
 
                                 <td>
@@ -132,6 +144,27 @@
 
 @section PageScript
     {
+    <script src="~/assets1/js/js.cookie.min.js"></script>
+    <script src="~/assets1/js/jquery.slimscroll.min.js"></script>
+    <script src="~/assets1/js/jquery.blockui.min.js"></script>
+    <script src="~/assets1/js/bootstrap-switch.min.js"></script>
+    <script src="~/assets1/global/scripts/datatable.js"></script>
+    <script src="~/assets1/js/datatables.min.js"></script>
+    <script src="~/assets1/js/datatables.bootstrap.js"></script>
+    <script src="~/assets1/js/app.min.js"></script>
+
+    <script src="~/ThirdParty/EditTables/AddBillEditTable.js"></script>
+
+    @*<script src="~/assets/pages/scripts/table-datatables-editable.min.js"></script>*@
+    <script src="~/assets1/js/demo.min.js"></script>
+    <script src="~/assets1/js/quick-sidebar.min.js"></script>
+    <script src="~/assets1/js/quick-nav.min.js"></script>
+
+
+
+
+
+
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/BillTypeService.js"></script>

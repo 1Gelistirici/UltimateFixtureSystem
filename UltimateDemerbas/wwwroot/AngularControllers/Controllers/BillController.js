@@ -38,6 +38,11 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
+
+                        //$.each($scope.Data, function (index, value) {
+                        //    $scope.Data[index].BillDate = new Date($scope.Data[index].BillDate);
+                        //});
+
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
@@ -120,6 +125,22 @@
         //        IsOpen = true;
         //    }
         //}
+
+
+        //$scope.tester = function () {
+
+        //    $('#sample_editable_1 td').each(function () {
+        //        if ($(this).data('original-value') !== $(this).text()) {
+        //            //console.log("$(this).data('original-value')", $(this).data('original-value'));
+        //            //console.log('original value was: ' + $(this).data('original-value'));
+        //            console.log('new value is: ' + $(this).text());
+        //            //console.log("$(this)", $(this));
+        //        }
+        //    });
+
+        //}
+
+
 
     }]);
 
