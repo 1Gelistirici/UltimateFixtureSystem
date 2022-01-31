@@ -69,11 +69,32 @@
         $scope.OpenPopup = function (_) {
             $scope.Pop = [];
             $scope.Pop.Subject = _.ReportSubject;
+            $scope.Pop.Id = _.Id;
         }
 
         $scope.Conclude = function () {
 
+            parameter = {
+                "Id": $scope.Pop.Id,
+                "Statu": parseInt($scope.Pop.Statu),
+                "Comment": $scope.Pop.Comment
+            };
+
+            ReportService.UpdateReportStatu(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
+                        toaster.success("Başarılı", "Rapor başarıyla sonuçlandırıldı.");
+                        $("#Conclude").modal("hide");
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
         }
+
+
 
         //$scope.TableCol = {
         //    Name: "Component Name",

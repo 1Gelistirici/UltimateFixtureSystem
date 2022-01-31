@@ -22,7 +22,7 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpGet("UpdateReportStatu")]
+        [HttpPost("UpdateReportStatu")]
         public IActionResult UpdateReportStatu(Report parameter)
         {
             var result = ReportCallManager.Instance.UpdateReportStatu(parameter);

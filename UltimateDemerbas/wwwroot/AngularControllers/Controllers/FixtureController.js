@@ -28,8 +28,6 @@
                             var parameter = { id: value.Value, title: value.Text };
                             $scope.ItemStatusFilter.push(parameter);
                         });
-
-                        console.log("123", $scope.ItemStatus);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -99,40 +97,14 @@
             FixtureService.GetFixtures(
                 function success(result) {
                     if (result.IsSuccess) {
-
-
-
-
-
                         $scope.Data = result.Data;
                         $scope.RegisterCount = $scope.Data.length;
-
-
-
-
-
-
 
                         for (var i = 0; i < result.Data.length; i++) {
 
                             if ($scope.Data[i].StatuNo != null)
                                 $scope.Data[i].StatuNoo = $scope.ItemStatus.find(_ => _.Value === $scope.Data[i].StatuNo);
-                            console.log("ss", $scope.Data[i].StatuNoo);
-
-
-
-
-
                         }
-
-
-
-
-
-
-
-
-
 
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
