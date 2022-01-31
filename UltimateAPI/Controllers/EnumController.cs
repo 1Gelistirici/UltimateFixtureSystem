@@ -28,6 +28,13 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetItemTypeTypes();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetReportStatus")]
+        public ActionResult GetReportStatus()
+        {
+            var result = EnumCallManager.Instance.GetReportStatus();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
 
     }
 }

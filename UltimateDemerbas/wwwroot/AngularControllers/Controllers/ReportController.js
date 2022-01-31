@@ -3,7 +3,7 @@
 
         var nowDate = new Date();
         $scope.RegisterCount = 0;
-
+        $scope.Id = 0;
 
         $scope.GetReports = function () {
             ReportService.GetReports(
@@ -51,6 +51,9 @@
         $scope.GetUsers();
 
 
+        $scope.Conclude = function (id) {
+            console.log($scope.Id);
+        }
 
         //$scope.TableCol = {
         //    Name: "Component Name",

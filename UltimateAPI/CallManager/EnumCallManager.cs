@@ -42,5 +42,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetItemTypeTypes();
         }
+
+        public UltimateResult<List<TextValue>> GetReportStatus()
+        {
+            return EnumManager.Instance.GetReportStatus();
+        }
     }
 }

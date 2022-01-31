@@ -25,6 +25,13 @@
                 }, error);
         }
 
+        this.GetReportStatus = function (success, error) {
+            $http.get("/Enum/GetReportStatus").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
 
     }]);
 
