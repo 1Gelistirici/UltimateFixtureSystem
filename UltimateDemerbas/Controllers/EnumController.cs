@@ -35,6 +35,13 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+        
+        public IActionResult GetReportStatus()
+        {
+            var result = enumManager.GetReportStatus();
+
+            return Content(result.Result);
+        }
 
     }
 }

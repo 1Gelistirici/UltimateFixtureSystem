@@ -1,9 +1,9 @@
-﻿MainApp.controller("ReportController", ["$scope", "ReportService", "AccessoryService", "CategoryService", "AccessoryModelService", "UserService", "NgTableParams", "toaster",
-    function ($scope, ReportService, AccessoryService, CategoryService, AccessoryModelService, UserService, NgTableParams, toaster,) {
+﻿MainApp.controller("ReportController", ["$scope", "ReportService", "EnumService", "CategoryService", "AccessoryModelService", "UserService", "NgTableParams", "toaster",
+    function ($scope, ReportService, EnumService, CategoryService, AccessoryModelService, UserService, NgTableParams, toaster,) {
 
         var nowDate = new Date();
         $scope.RegisterCount = 0;
-        $scope.Id = 0;
+        $scope.Pop = [];
 
         $scope.GetReports = function () {
             ReportService.GetReports(
@@ -50,9 +50,29 @@
         }
         $scope.GetUsers();
 
+        $scope.GetReportStatus = function () {
+            EnumService.GetReportStatus(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
 
-        $scope.Conclude = function (id) {
-            console.log($scope.Id);
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetReportStatus();
+
+
+        $scope.OpenPopup = function (_) {
+            $scope.Pop = [];
+            $scope.Pop.Subject = _.ReportSubject;
+        }
+
+        $scope.Conclude = function () {
+
         }
 
         //$scope.TableCol = {
