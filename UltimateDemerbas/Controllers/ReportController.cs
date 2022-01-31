@@ -23,7 +23,6 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetReports()
         {
             var result = report.GetReports();
-
             return Content(result.Result);
         }
 
@@ -32,7 +31,14 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = report.AddReport(parameter);
+            return Content(result.Result);
+        }
 
+        public IActionResult UpdateReportStatu([FromBody] Report parameter)
+        {
+            parameter.UserId = WorkingUser;
+
+            var result = report.UpdateReportStatu(parameter);
             return Content(result.Result);
         }
     }

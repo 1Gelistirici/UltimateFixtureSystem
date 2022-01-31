@@ -23,5 +23,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<Report>("Report/AddReport", parameter);
         }
+
+        public Task<string> UpdateReportStatu(Report parameter)
+        {
+            return GetApiParameter<Report>("Report/UpdateReportStatu", parameter);
+        }
     }
 }

@@ -124,5 +124,44 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Report>> UpdateReportStatu(Report parameter)
+        {
+            UltimateResult<List<Report>> result = new UltimateResult<List<Report>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[reports_UpdateReportStatu]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("@status", parameter.Statu);
+                        sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            AddLog(parameter.UserId, "Rapor oluşturuldı");
+
+            return result;
+        }
+
     }
 }

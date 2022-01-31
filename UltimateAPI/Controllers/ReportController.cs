@@ -21,5 +21,12 @@ namespace UltimateAPI.Controllers
             var result = ReportCallManager.Instance.GetReports();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpGet("UpdateReportStatu")]
+        public IActionResult UpdateReportStatu(Report parameter)
+        {
+            var result = ReportCallManager.Instance.UpdateReportStatu(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

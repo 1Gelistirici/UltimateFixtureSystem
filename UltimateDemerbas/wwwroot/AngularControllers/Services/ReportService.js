@@ -17,5 +17,13 @@
                 }, error);
         };
 
+        this.UpdateReportStatu = function (parameter, success, error) {
+            $http.post('/Report/UpdateReportStatu', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

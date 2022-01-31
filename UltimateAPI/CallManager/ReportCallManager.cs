@@ -36,5 +36,10 @@ namespace UltimateAPI.CallManager
         {
             return ReportManager.Instance.AddReport(parameter);
         }
+
+        public UltimateResult<List<Report>> UpdateReportStatu(Report parameter)
+        {
+            return ReportManager.Instance.UpdateReportStatu(parameter);
+        }
     }
 }

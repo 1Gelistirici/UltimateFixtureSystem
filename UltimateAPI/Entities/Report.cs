@@ -9,5 +9,7 @@ namespace UltimateAPI.Entities
         public DateTime InsertDate { get; set; }
         public int ItemKind { get; set; }
         public int ItemId { get; set; }
+        public string Comment { get; set; }
+        public int Statu { get; set; }
     }
 }
