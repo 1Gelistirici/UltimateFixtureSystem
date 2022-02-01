@@ -59,6 +59,7 @@ namespace UltimateAPI.Manager
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
                                     report.ItemKind = Convert.ToInt32(read["itemKind"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
+                                    report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
 
                                     reports.Add(report);
                                 }
