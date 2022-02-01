@@ -70,6 +70,7 @@
             $scope.Pop = [];
             $scope.Pop.Subject = _.ReportSubject;
             $scope.Pop.Id = _.Id;
+            $scope.Pop.AssignmentId = _.AssignmentId;
         }
 
         $scope.Conclude = function () {
@@ -77,7 +78,8 @@
             parameter = {
                 "Id": $scope.Pop.Id,
                 "Statu": parseInt($scope.Pop.Statu),
-                "Comment": $scope.Pop.Comment
+                "Comment": $scope.Pop.Comment,
+                "assignmentId": $scope.Pop.AssignmentId
             };
 
             ReportService.UpdateReportStatu(parameter,

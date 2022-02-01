@@ -6,10 +6,13 @@ namespace UltimateAPI.Entities.Enums
     {
         [Description("Active")]
         Active = 0,
+
         [Description("Delete")]
         Delete = 1,
+        
         [Description("Closed")]
         Closed = 2,
+        
         [Description("Resolved")]
         Resolved = 3
     }

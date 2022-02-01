@@ -11,5 +11,6 @@ namespace UltimateAPI.Entities
         public int ItemId { get; set; }
         public string Comment { get; set; }
         public int Statu { get; set; }
+        public int AssignmentId { get; set; }
     }
 }

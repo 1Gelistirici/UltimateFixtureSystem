@@ -21,14 +21,14 @@
                         <br />
                         <div class="col-md-9">
                             <span>Comment</span>
-                            <textarea class="form-control" rows="4" ng-model="Pop.Comment" style="font-size: 14px;" min="0"></textarea>
+                            <textarea class="form-control" rows="4" ng-model="Pop.Comment" style="font-size: 14px; resize:none" min="0"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer" style="margin-top:30%;">
                     <input type="hidden" />
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="ConcludeForm.$invalid || Pop.Comment=='' ||Pop.Comment==null || Pop.Statu==null " ng-click="Conclude();">Save</button>
+                    <button type="submit" class="btn red" ng-disabled="ConcludeForm.$invalid || Pop.Comment=='' ||Pop.Comment==null || Pop.Statu==null" ng-click="Conclude();">Save</button>
                 </div>
             </div>
         </div>

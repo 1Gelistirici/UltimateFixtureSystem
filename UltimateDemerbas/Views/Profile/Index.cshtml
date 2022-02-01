@@ -159,7 +159,7 @@
                                                     </colgroup>
 
                                                     <tbody>
-                                                        <tr ng-repeat="_ in $data">
+                                                        <tr ng-repeat="_ in $data" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''" filter="{ BillNo: 'text'}" >
 
                                                             <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                                                 <div class="input-icon">
@@ -183,7 +183,7 @@
                                                                 </div>
                                                             </td>
 
-                                                            <td data-title="TableCol.Recall" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                                            <td data-title="TableCol.Recall" sortable="'BillNo'">
                                                                 <div class="input-icon" ng-show="_.IsRecall==true">
                                                                     <span>{{_.RecallDate}}</span>
                                                                 </div>

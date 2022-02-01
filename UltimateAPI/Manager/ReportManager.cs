@@ -142,6 +142,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@status", parameter.Statu);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
+                        sqlCommand.Parameters.AddWithValue("@assignmentId", parameter.AssignmentId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

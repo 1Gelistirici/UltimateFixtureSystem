@@ -33,7 +33,6 @@
         }
         $scope.GetItemTypeTypes();
 
-
         //GetAssignmentUser
         $scope.GetAssignmentUser = function () {
             AssignmentService.GetAssignmentUser(
@@ -43,12 +42,10 @@
                         $scope.AccessoryData = result.Data;
                         $.each($scope.AccessoryData, function (index, value) {
 
-
                             $scope.AccessoryData[index].RecallDate = new Date($scope.AccessoryData[index].RecallDate).toLocaleString();
-
                             $scope.AccessoryData[index].TypeItem = $scope.ItemTypes.find(x => x.Value == value.ItemType);
-                            console.log("bulucu", $scope.ItemTypes );
-                            console.log("belirleyici", $scope.AccessoryData[index].TypeItem );
+                            //console.log("bulucu", $scope.ItemTypes );
+                            //console.log("belirleyici", $scope.AccessoryData[index].TypeItem );
 
                             //Servisden datalar ayrıştırılarak geliyor. Herbiri için farklı tab açmak yerine aynı tab altında toplanılacağı için uı da Accessories içerisinde toplanıyor.
                             if ($scope.AccessoryData[index].Components != null) {
@@ -67,7 +64,6 @@
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Fixtures;
                             }
                         });
-
                         RefreshAccessoryTable();
                     } else {
                         toaster.error("GetAssignmentUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
