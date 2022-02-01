@@ -83,7 +83,7 @@
             ReportService.UpdateReportStatu(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
+                        $scope.GetReports();
                         toaster.success("Başarılı", "Rapor başarıyla sonuçlandırıldı.");
                         $("#Conclude").modal("hide");
                     } else {
