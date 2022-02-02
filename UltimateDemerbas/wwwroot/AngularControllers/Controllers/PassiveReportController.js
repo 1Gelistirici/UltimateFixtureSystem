@@ -7,7 +7,7 @@
 
         $scope.GetDetail = function (_) {
             $scope.Pop = [];
-            $scope.Pop.Subject = _.Subject;
+            $scope.Pop.Subject = _.ReportSubject;
             $scope.Pop.Comment = _.Comment;
             $scope.Pop.Statu = $scope.ReportStatus.filter(x => x.Value == _.Statu)[0].Value;
         }
@@ -16,7 +16,6 @@
             ReportService.GetPassiveReports(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log(result.Data);
                         $scope.Reports = result.Data.filter(x => x.Statu == type);
 
                         $.each($scope.Reports, function (index, value) {
@@ -41,8 +40,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-                        console.log(result.Data);
-                        $scope.GetPassiveReports(0);
+                        $scope.GetPassiveReports(1);
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
