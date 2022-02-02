@@ -1,0 +1,35 @@
+﻿
+<div id="ReportDetail" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Conclude - {{Pop.Subject}}</h4>
+            </div>
+            <div style="height:300px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="ConcludeForm">
+                        <div class="col-md-9">
+                            <span>Statu</span>
+                            <select class="form-control" ng-model="Pop.Statu" disabled>
+                                <option ng-repeat="x in ReportStatus" ng-value="{{x.Value}}">{{x.Text}}</option>
+                            </select>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <div class="col-md-9">
+                            <span>Comment</span>
+                            <textarea class="form-control" rows="4" ng-model="Pop.Comment" style="font-size: 14px; resize:none" min="0" disabled></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="margin-top:30%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

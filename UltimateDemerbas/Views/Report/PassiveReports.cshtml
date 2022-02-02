@@ -15,17 +15,17 @@
             </div>
             <div class="actions">
 
-                <button type="button" class="btn red mt-ladda-btn ladda-button" data-style="slide-right">
+                <button type="button" class="btn red mt-ladda-btn ladda-button" ng-click="GetPassiveReports(2)" data-style="slide-right">
                     <span class="ladda-label">Closed Reports</span>
                     <span class="ladda-spinner"></span>
                 </button>
 
-                <button type="button" class="btn btn-success mt-ladda-btn ladda-button" data-style="expand-up">
+                <button type="button" class="btn btn-success mt-ladda-btn ladda-button" ng-click="GetPassiveReports(3)" data-style="expand-up">
                     <span class="ladda-label">Resolved Reports</span>
                     <span class="ladda-spinner"></span>
                 </button>
 
-                <button type="button" class="btn btn-warning mt-ladda-btn ladda-button" data-style="zoom-in">
+                <button type="button" class="btn btn-warning mt-ladda-btn ladda-button" ng-click="GetPassiveReports(1)" data-style="zoom-in">
                     <span class="ladda-label">Deleted Reports</span>
                     <span class="ladda-spinner"></span>
                 </button>
@@ -55,14 +55,29 @@
                     </div>
                     <div class="pull-right">
                         <br />
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Conclude" ng-click="OpenPopup(_);">Conclude</button>
+
+                        <button type="button" class="btn btn-primary red" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==2" ng-click="GetDetail(_);">
+                            <span class="ladda-label">
+                                <i class="icon-arrow-up"></i>
+                            </span>Closed
+                        </button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==3" ng-click="GetDetail(_);">
+                            <span class="ladda-label">
+                                <i class="icon-arrow-up"></i>
+                            </span>Resolved
+                        </button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==1" ng-click="GetDetail(_);">
+                            <span class="ladda-label">
+                                <i class="icon-arrow-up"></i>
+                            </span>Deleted
+                        </button>
                     </div>
                 </div>
                 <!-- END WIDGET THUMB -->
             </div>
         </div>
 
-        <partial name="~/Views/Shared/Partials/Report/ConcludePopup.cshtml" />
+        <partial name="~/Views/Shared/Partials/Report/ShowDetail.cshtml" />
     </div>
 </div>
 

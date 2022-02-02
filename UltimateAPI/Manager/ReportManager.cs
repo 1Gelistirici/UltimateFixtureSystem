@@ -60,6 +60,8 @@ namespace UltimateAPI.Manager
                                     report.ItemKind = Convert.ToInt32(read["itemKind"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
+                                    report.Statu = Convert.ToInt32(read["deleted"]);
+                                    report.Comment = read["comment"].ToString();
 
                                     reports.Add(report);
                                 }
@@ -114,6 +116,8 @@ namespace UltimateAPI.Manager
                                     report.ItemKind = Convert.ToInt32(read["itemKind"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
+                                    report.Statu = Convert.ToInt32(read["deleted"]);
+                                    report.Comment = read["comment"].ToString();
 
                                     reports.Add(report);
                                 }

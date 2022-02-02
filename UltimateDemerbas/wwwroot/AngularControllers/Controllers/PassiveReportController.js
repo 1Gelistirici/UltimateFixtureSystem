@@ -5,11 +5,19 @@
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
-        $scope.GetReports = function () {
-            ReportService.GetReports(
+        $scope.GetDetail = function (_) {
+            $scope.Pop = [];
+            $scope.Pop.Subject = _.Subject;
+            $scope.Pop.Comment = _.Comment;
+            $scope.Pop.Statu = $scope.ReportStatus.filter(x => x.Value == _.Statu)[0].Value;
+        }
+
+        $scope.GetPassiveReports = function (type) {
+            ReportService.GetPassiveReports(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Reports = result.Data;
+                        console.log(result.Data);
+                        $scope.Reports = result.Data.filter(x => x.Statu == type);
 
                         $.each($scope.Reports, function (index, value) {
                             $scope.Reports[index].InsertDate = new Date($scope.Reports[index].InsertDate).toLocaleString();
@@ -20,10 +28,6 @@
                             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                             $scope.Reports[index].DiffDate = diffDays > 30;
                         });
-
-
-                        console.log($scope.Reports);
-
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -38,7 +42,7 @@
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
                         console.log(result.Data);
-                        $scope.GetReports();
+                        $scope.GetPassiveReports(0);
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -62,36 +66,5 @@
                 });
         }
         $scope.GetReportStatus();
-
-
-        $scope.OpenPopup = function (_) {
-            $scope.Pop = [];
-            $scope.Pop.Subject = _.ReportSubject;
-            $scope.Pop.Id = _.Id;
-            $scope.Pop.AssignmentId = _.AssignmentId;
-        }
-
-        $scope.Conclude = function () {
-
-            parameter = {
-                "Id": $scope.Pop.Id,
-                "Statu": parseInt($scope.Pop.Statu),
-                "Comment": $scope.Pop.Comment,
-                "assignmentId": $scope.Pop.AssignmentId
-            };
-
-            ReportService.UpdateReportStatu(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.GetReports();
-                        toaster.success("Başarılı", "Rapor başarıyla sonuçlandırıldı.");
-                        $("#Conclude").modal("hide");
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
     }
 ]);
