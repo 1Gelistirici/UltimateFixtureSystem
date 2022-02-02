@@ -8,17 +8,24 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class ReportController : ControllerBase
     {
-        [HttpPost("AddReport")]
-        public IActionResult AddReport(Report parameter)
-        {
-            var result = ReportCallManager.Instance.AddReport(parameter);
-            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
-        }
-
         [HttpGet("GetReports")]
         public IActionResult GetReports()
         {
             var result = ReportCallManager.Instance.GetReports();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpGet("GetPassiveReports")]
+        public IActionResult GetPassiveReports()
+        {
+            var result = ReportCallManager.Instance.GetPassiveReports();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+        
+        [HttpPost("AddReport")]
+        public IActionResult AddReport(Report parameter)
+        {
+            var result = ReportCallManager.Instance.AddReport(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

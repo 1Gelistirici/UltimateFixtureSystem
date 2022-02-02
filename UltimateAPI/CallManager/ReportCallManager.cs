@@ -32,6 +32,11 @@ namespace UltimateAPI.CallManager
             return ReportManager.Instance.GetReports();
         }
 
+        public UltimateResult<List<Report>> GetPassiveReports()
+        {
+            return ReportManager.Instance.GetPassiveReports();
+        }
+
         public UltimateResult<List<Report>> AddReport(Report parameter)
         {
             return ReportManager.Instance.AddReport(parameter);

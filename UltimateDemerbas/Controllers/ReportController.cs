@@ -20,9 +20,20 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        public IActionResult PassiveReports()
+        {
+            return View();
+        }
+
         public IActionResult GetReports()
         {
             var result = report.GetReports();
+            return Content(result.Result);
+        }
+
+        public IActionResult GetPassiveReports()
+        {
+            var result = report.GetPassiveReports();
             return Content(result.Result);
         }
 

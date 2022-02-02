@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "PassiveReports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="PassiveReportController">
+
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Passive Reports
+                </span>
+            </div>
+            <div class="actions">
+
+                <button type="button" class="btn red mt-ladda-btn ladda-button" data-style="slide-right">
+                    <span class="ladda-label">Closed Reports</span>
+                    <span class="ladda-spinner"></span>
+                </button>
+
+                <button type="button" class="btn btn-success mt-ladda-btn ladda-button" data-style="expand-up">
+                    <span class="ladda-label">Resolved Reports</span>
+                    <span class="ladda-spinner"></span>
+                </button>
+
+                <button type="button" class="btn btn-warning mt-ladda-btn ladda-button" data-style="zoom-in">
+                    <span class="ladda-label">Deleted Reports</span>
+                    <span class="ladda-spinner"></span>
+                </button>
+
+            </div>
+        </div>
+
+        <div ng-repeat="_ in Reports">
+            <div class="col-md-4">
+                <!-- BEGIN WIDGET THUMB -->
+                <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered" style="height:200px;">
+                    <div>
+                        <span class="widget-thumb-heading">{{_.User.Name}}&nbsp;{{_.User.Surname}}</span>
+                        <span class="widget-thumb-heading pull-right">{{_.InsertDate}}</span>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="widget-thumb-wrap">
+                        <i class="widget-thumb-icon bg-green icon-bulb" ng-if="!_.DiffDate"></i>
+                        <i class="widget-thumb-icon bg-red icon-bulb" ng-if="_.DiffDate"></i>
+                        <div class="widget-thumb-body">
+                            <span class="widget-thumb-subtitle">
+                                {{_.ReportSubject}}
+                            </span>
+                            <span>{{_.ReportDetail}}</span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <br />
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Conclude" ng-click="OpenPopup(_);">Conclude</button>
+                    </div>
+                </div>
+                <!-- END WIDGET THUMB -->
+            </div>
+        </div>
+
+        <partial name="~/Views/Shared/Partials/Report/ConcludePopup.cshtml" />
+    </div>
+</div>
+
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/AssignmentService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryService.js"></script>
+    <script src="~/AngularControllers/Services/CategoryService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
+
+    <script src="~/AngularControllers/Services/ReportService.js"></script>
+    <script src="~/AngularControllers/Controllers/PassiveReportController.js"></script>
+}

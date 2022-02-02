@@ -1,4 +1,4 @@
-﻿MainApp.controller("ReportController", ["$scope", "ReportService", "EnumService", "UserService", "toaster",
+﻿MainApp.controller("PassiveReportController", ["$scope", "ReportService", "EnumService", "UserService", "toaster",
     function ($scope, ReportService, EnumService, UserService, toaster,) {
 
         var nowDate = new Date();

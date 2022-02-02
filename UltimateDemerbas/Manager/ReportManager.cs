@@ -19,6 +19,11 @@ namespace UltimateDemerbas.Manager
             return GetApi("Report/GetReports");
         }
 
+        public Task<string> GetPassiveReports()
+        {
+            return GetApi("Report/GetPassiveReports");
+        }
+
         public Task<string> AddReport(Report parameter)
         {
             return GetApiParameter<Report>("Report/AddReport", parameter);
