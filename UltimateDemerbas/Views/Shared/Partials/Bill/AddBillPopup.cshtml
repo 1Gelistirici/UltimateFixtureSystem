@@ -25,53 +25,140 @@
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="btn-group">
-                                        <button id="sample_editable_1_new" class="btn green">
-                                            Add New
-                                            <i class="fa fa-plus"></i>
-                                        </button>
+                                <div class="col-md-12">
+                                    <div class="col-md-2">
+                                        <label>Name</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
                                     </div>
+                                    <div class="col-md-2">
+                                        <label>Piece</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Price</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Product Type</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Model</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Category</label>
+                                        <input ng-model="BillNo" type="text" class="form-control">
+                                    </div>
+
+
                                 </div>
-                                @*<div class="col-md-6">
-                                        <div class="btn-group pull-right">
-                                            <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">
-                                                Export Bill Items
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                    <a href="javascript:;"> Print </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> Save as PDF </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> Export to Excel </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>*@
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <div class="btn-group pull-right">
+                                    <button id="sample_editable_1_new" class="btn green">
+                                        Add New
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
-                        <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
-                            <thead>
-                                <tr>
+                
 
-                                    <th> Name </th>
-                                    <th> Piece </th>
-                                    <th> Price </th>
-                                    <th> Product Type </th>
-                                    <th> Model </th>
-                                    <th> Category </th>
-                                    <th> Edit </th>
-                                    <th> Delete </th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+
+                        <div class="table-scrollable table-scrollable-borderless">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-light" ng-table="PopupTableParams" style="margin-bottom: 50px !important;">
+
+                                    <colgroup>
+                                        <col width="100" />
+                                        <col width="100" />
+                                        <col width="100" />
+                                        <col width="100" />
+                                        <col width="100" />
+                                        <col width="100" />
+                                        <col width="100" />
+                                    </colgroup>
+
+                                    <tbody>
+                                        <tr ng-repeat="_ in $data">
+
+                                            <td data-title="PopupTableCol.Name" sortable="'Name'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+                                            <td data-title="PopupTableCol.Piece" sortable="'Piece'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+                                            <td data-title="PopupTableCol.Price" sortable="'Price'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+                                            <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+                                            <td data-title="PopupTableCol.Model" sortable="'Model'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+                                            <td data-title="PopupTableCol.Category" sortable="'Category'">
+                                                <input ng-model="_.name" type="text" class="form-control">
+                                            </td>
+
+                                            <td>
+                                                <div class="btn-group absoluteitem">
+                                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                        <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li class="ms-hover">
+                                                            <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateCategory(_)">
+                                                                <i class="fa fa-edit "></i>Update
+                                                            </a>
+                                                        </li>
+                                                        <li class="ms-hover">
+                                                            <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteCategory(_)">
+                                                                <i class="fa fa-phone "></i>Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="6" class="no-margin no-padding">
+                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{PopupRegisterCount}}</span>
+                                            </td>
+                                        </tr>
+
+                                    </tfoot>
+
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->

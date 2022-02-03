@@ -15,9 +15,6 @@
             Items: "Items",
         };
 
-        $scope.ttt = function () {
-            return 1;
-        }
 
         $scope.GetBillTypes = function () {
             BillTypeService.GetBillTypes(
@@ -105,6 +102,53 @@
                     toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                 });
         }
+
+
+
+
+        //Popup
+
+        //$scope.AddData = function () {
+
+        //    var parameter = {
+
+
+        //    };
+
+        //    $scope.PopupData.push(parameter);
+
+
+        //}
+
+        $scope.PopupTableCol = {
+            Name: "Name",
+            Piece: "Piece",
+            Price: "Price",
+            ProductType: "ProductType",
+            Model: "Model",
+            Category: "Category",
+        };
+
+
+        var testData = [
+            { name: "test" },
+            { name: "test" },
+            { name: "test" },
+            { name: "test" },
+            { name: "test" },
+            { name: "test" },
+            { name: "test" }
+        ]
+
+        $scope.PopupRegisterCount = testData.length;
+        $scope.PopupTableParams = new NgTableParams({
+            sorting: { name: 'adc' },
+            count: 20
+        }, {
+            counts: [10, 20, 50],
+            dataset: testData
+        });
+
 
 
         //$(document).ready(function () {
