@@ -45,4 +45,8 @@
     <ProjectReference Include="..\UltimateAPI\UltimateAPI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ThirdParty\" />
+  </ItemGroup>
+
 </Project>
