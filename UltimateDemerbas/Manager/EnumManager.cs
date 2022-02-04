@@ -25,11 +25,15 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetItemTypeTypes");
         }
-        
+
         public Task<string> GetReportStatus()
         {
             return GetApi("Enum/GetReportStatus");
         }
 
+        public Task<string> GetProductTypes()
+        {
+            return GetApi("Enum/GetProductTypes");
+        }
     }
 }

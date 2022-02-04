@@ -33,5 +33,12 @@
                 }, error);
         }
 
+        this.GetProductTypes = function (success, error) {
+            $http.get("/Enum/GetProductTypes").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

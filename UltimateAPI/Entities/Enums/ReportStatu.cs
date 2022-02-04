@@ -2,7 +2,7 @@
 
 namespace UltimateAPI.Entities.Enums
 {
-    public enum ReportStatu
+    public enum ReportStatu //Itemler için açılan raporların durumları
     {
         [Description("Active")]
         Active = 0,

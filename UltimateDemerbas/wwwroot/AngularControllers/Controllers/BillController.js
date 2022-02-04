@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumTypeService", "NgTableParams", "toaster",
+    function ($scope, BillService, BillTypeService, EnumTypeService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -15,6 +15,20 @@
             Items: "Items",
         };
 
+
+        $scope.GetProductTypes = function () {
+            EnumTypeService.GetProductTypes(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ProductTypes = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetProductTypes();
 
         $scope.GetBillTypes = function () {
             BillTypeService.GetBillTypes(
@@ -83,25 +97,25 @@
                 });
         }
 
-        $scope.AddBill = function () {
-            var data = {
-                "Name": $scope.Pop.Name,
-                "Piece": $scope.Pop.Piece,
-                "Boundary": $scope.Pop.Boundary,
-                "Price": $scope.Pop.Price
-            }
+        //$scope.AddBill = function () {
+        //    var data = {
+        //        "Name": $scope.Pop.Name,
+        //        "Piece": $scope.Pop.Piece,
+        //        "Boundary": $scope.Pop.Boundary,
+        //        "Price": $scope.Pop.Price
+        //    }
 
-            BillService.AddBill(data,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Fatura kaydedildi.");
-                    } else {
-                        toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-                });
-        }
+        //    BillService.AddBill(data,
+        //        function success(result) {
+        //            if (result.IsSuccess) {
+        //                toaster.success("Başarılı", "Fatura kaydedildi.");
+        //            } else {
+        //                toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+        //            }
+        //        }, function error() {
+        //            toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+        //        });
+        //}
 
 
 

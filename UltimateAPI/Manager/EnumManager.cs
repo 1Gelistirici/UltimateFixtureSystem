@@ -135,6 +135,32 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+        
+        public UltimateResult<List<TextValue>> GetProductTypes()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<ProductType> datas = Enum.GetValues(typeof(ProductType)).Cast<ProductType>().ToList();
+                foreach (ProductType logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<ProductType>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
     }
 }

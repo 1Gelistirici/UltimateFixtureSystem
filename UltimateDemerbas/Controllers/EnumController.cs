@@ -18,30 +18,31 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetIsActiveTypes()
         {
             var result = enumManager.GetIsActiveTypes();
-
             return Content(result.Result);
         }
 
         public IActionResult GetItemStatuTypes()
         {
             var result = enumManager.GetItemStatuTypes();
-
             return Content(result.Result);
         }
 
         public IActionResult GetItemTypeTypes()
         {
             var result = enumManager.GetItemTypeTypes();
-
             return Content(result.Result);
         }
-        
+
         public IActionResult GetReportStatus()
         {
             var result = enumManager.GetReportStatus();
-
             return Content(result.Result);
         }
 
+        public IActionResult GetProductTypes()
+        {
+            var result = enumManager.GetProductTypes();
+            return Content(result.Result);
+        }
     }
 }

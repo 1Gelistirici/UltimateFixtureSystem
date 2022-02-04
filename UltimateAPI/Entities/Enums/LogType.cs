@@ -1,7 +1,7 @@
 ﻿
 namespace UltimateAPI.Entities.Enums
 {
-    public enum LogType
+    public enum LogType //Yapılan işlemi belirtir
     {
         LoginFailed = 0,
         LoginSucess = 1,

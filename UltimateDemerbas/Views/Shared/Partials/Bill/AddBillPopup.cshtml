@@ -26,30 +26,32 @@
                         <div class="table-toolbar">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-2">
-                                        <label>Name</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Piece</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Price</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Product Type</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Model</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Category</label>
-                                        <input ng-model="BillNo" type="text" class="form-control">
-                                    </div>
+                                    <form name="BillAddForma">
+                                        <div class="col-md-2">
+                                            <label>Name</label>
+                                            <input ng-model="BillNo" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>Piece</label>
+                                            <input ng-model="BillNo" type="number" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>Price</label>
+                                            <input ng-model="BillNo" type="number" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>Product Type</label>
+                                            <input ng-model="BillNo" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>Model</label>
+                                            <input ng-model="BillNo" type="text" class="form-control" readonly>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>Category</label>
+                                            <input ng-model="BillNo" type="text" class="form-control" readonly>
+                                        </div>
+                                    </form>
 
 
                                 </div>
@@ -91,10 +93,10 @@
                                                 <input ng-model="_.name" type="text" class="form-control">
                                             </td>
                                             <td data-title="PopupTableCol.Piece" sortable="'Piece'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <input ng-model="_.name" type="number" class="form-control">
                                             </td>
                                             <td data-title="PopupTableCol.Price" sortable="'Price'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <input ng-model="_.name" type="number" class="form-control">
                                             </td>
                                             <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
                                                 <input ng-model="_.name" type="text" class="form-control">
