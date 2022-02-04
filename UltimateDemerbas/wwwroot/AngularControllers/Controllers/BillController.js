@@ -242,7 +242,7 @@
         }
 
         $scope.DeleteAddedBill = function (addedId) {
-            $scope.AddedData = $scope.AddedData.find(x => x.Id != addedId);
+            $scope.AddedData = $scope.AddedData.filter(x => x.Id != addedId);
 
             console.log($scope.AddedData);
             $scope.PopupRegisterCount = $scope.AddedData.length;
