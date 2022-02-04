@@ -29,27 +29,33 @@
                                     <form name="BillAddForma">
                                         <div class="col-md-2">
                                             <label>Name</label>
-                                            <input ng-model="BillNo" type="text" class="form-control" required>
+                                            <input ng-model="Added.Name" type="text" class="form-control" required>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Piece</label>
-                                            <input ng-model="BillNo" type="number" class="form-control" required>
+                                            <input ng-model="Added.Piece" type="number" class="form-control" required>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Price</label>
-                                            <input ng-model="BillNo" type="number" class="form-control" required>
+                                            <input ng-model="Added.Price" type="number" class="form-control" required>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Product Type</label>
-                                            <input ng-model="BillNo" type="text" class="form-control" required>
+                                            <select class="form-control" ng-model="Added.ProductTypeNo" ng-change="GetModal();" required>
+                                                <option ng-repeat="x in ProductTypes" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Model</label>
-                                            <input ng-model="BillNo" type="text" class="form-control" readonly>
+                                            <select class="form-control" ng-model="Added.Model" required>
+                                                <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-2">
                                             <label>Category</label>
-                                            <input ng-model="BillNo" type="text" class="form-control" readonly>
+                                            <select class="form-control" ng-model="Added.CategoryNo" required>
+                                                <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                            </select>
                                         </div>
                                     </form>
 
@@ -60,7 +66,7 @@
                                 <br />
                                 <br />
                                 <div class="btn-group pull-right">
-                                    <button id="sample_editable_1_new" class="btn green">
+                                    <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();">
                                         Add New
                                         <i class="fa fa-plus"></i>
                                     </button>
@@ -68,7 +74,7 @@
 
                             </div>
                         </div>
-                
+
 
 
 
@@ -90,22 +96,29 @@
                                         <tr ng-repeat="_ in $data">
 
                                             <td data-title="PopupTableCol.Name" sortable="'Name'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <input ng-model="_.Name" type="text" class="form-control" required>
                                             </td>
                                             <td data-title="PopupTableCol.Piece" sortable="'Piece'">
-                                                <input ng-model="_.name" type="number" class="form-control">
+                                                <input ng-model="_.Piece" type="number" class="form-control" required>
                                             </td>
                                             <td data-title="PopupTableCol.Price" sortable="'Price'">
-                                                <input ng-model="_.name" type="number" class="form-control">
+                                                <input ng-model="_.Price" type="number" class="form-control" required>
                                             </td>
                                             <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <select class="form-control" ng-model="_.ProductTypeNo" disabled required>
+                                                    <option ng-repeat="x in ProductTypes" ng-value="{{x.Value}}">{{x.Text}}</option>
+                                                </select>
                                             </td>
                                             <td data-title="PopupTableCol.Model" sortable="'Model'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
+                                                @*<select class="form-control" ng-model="_.ModelNo" required>
+                                                    <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                </select>*@
                                             </td>
                                             <td data-title="PopupTableCol.Category" sortable="'Category'">
-                                                <input ng-model="_.name" type="text" class="form-control">
+                                                <select class="form-control" ng-model="_.CategoryNo" required>
+                                                    <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                </select>
                                             </td>
 
                                             <td>
@@ -116,12 +129,7 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li class="ms-hover">
-                                                            <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateCategory(_)">
-                                                                <i class="fa fa-edit "></i>Update
-                                                            </a>
-                                                        </li>
-                                                        <li class="ms-hover">
-                                                            <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteCategory(_)">
+                                                            <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAddedBill(_.Id)">
                                                                 <i class="fa fa-phone "></i>Delete
                                                             </a>
                                                         </li>

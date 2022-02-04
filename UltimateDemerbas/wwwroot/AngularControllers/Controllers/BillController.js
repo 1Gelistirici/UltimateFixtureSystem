@@ -1,8 +1,10 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumTypeService", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, EnumTypeService, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureModelService", "ComponentModelService", "AccessoryModelService", "NgTableParams", "toaster",
+    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureModelService, ComponentModelService, AccessoryModelService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
+        $scope.Added = [];
+        $scope.AddedData = [];
 
         $scope.TableCol = {
             BillNo: "Bill No",
@@ -14,21 +16,15 @@
             TypeNo: "Bill Type",
             Items: "Items",
         };
+        $scope.PopupTableCol = {
+            Name: "Name",
+            Piece: "Piece",
+            Price: "Price",
+            ProductType: "ProductType",
+            Model: "Model",
+            Category: "Category",
+        };
 
-
-        $scope.GetProductTypes = function () {
-            EnumTypeService.GetProductTypes(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.ProductTypes = result.Data;
-                    } else {
-                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetProductTypes();
 
         $scope.GetBillTypes = function () {
             BillTypeService.GetBillTypes(
@@ -122,6 +118,143 @@
 
         //Popup
 
+        $scope.GetProductTypes = function () {
+            EnumService.GetProductTypes(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ProductTypes = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetProductTypes();
+
+        $scope.GetCategories = function () {
+            CategoryService.GetCategories(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Categories = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetCategories();
+
+        $scope.GetCategories = function () {
+            CategoryService.GetCategories(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Categories = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetCategories();
+
+        $scope.GetFixtureModels = function () {
+            FixtureModelService.GetFixtureModels(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Models = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetAccessoryModels = function () {
+            AccessoryModelService.GetAccessoryModels(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Models = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetComponentModels = function () {
+            ComponentModelService.GetComponentModels(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Models = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
+        $scope.GetModal = function () {
+            $scope.Models = [];
+
+            if ($scope.Added.ProductTypeNo === 0) {
+                $scope.GetFixtureModels();
+            } else if ($scope.Added.ProductTypeNo === 1) {
+                $scope.GetAccessoryModels();
+            } else if ($scope.Added.ProductTypeNo === 2) {
+                //ToDo ne yapılacağı kararlaştırılacak
+            } else if ($scope.ProductTypeNo === 3) {
+                $scope.GetComponentModels();
+            }
+
+
+        }
+
+        id = 0;
+        $scope.AddNewItem = function () {
+            id++;
+            var parameter = {
+                Id: id,
+                Name: $scope.Added.Name,
+                Piece: $scope.Added.Piece,
+                Price: $scope.Added.Price,
+                ProductTypeNo: $scope.Added.ProductTypeNo,
+                Model: $scope.Added.Model,
+                CategoryNo: $scope.Added.CategoryNo,
+            };
+
+            $scope.AddedData.push(parameter);
+
+            console.log($scope.AddedData);
+            $scope.PopupRegisterCount = $scope.AddedData.length;
+            $scope.PopupTableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 20
+            }, {
+                counts: [10, 20, 50],
+                dataset: $scope.AddedData
+            });
+
+            $scope.Added = [];
+        }
+
+        $scope.DeleteAddedBill = function (addedId) {
+            $scope.AddedData = $scope.AddedData.find(x => x.Id != addedId);
+
+            console.log($scope.AddedData);
+            $scope.PopupRegisterCount = $scope.AddedData.length;
+            $scope.PopupTableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 20
+            }, {
+                counts: [10, 20, 50],
+                dataset: $scope.AddedData
+            });
+        }
+
         //$scope.AddData = function () {
 
         //    var parameter = {
@@ -134,34 +267,10 @@
 
         //}
 
-        $scope.PopupTableCol = {
-            Name: "Name",
-            Piece: "Piece",
-            Price: "Price",
-            ProductType: "ProductType",
-            Model: "Model",
-            Category: "Category",
-        };
 
 
-        var testData = [
-            { name: "test" },
-            { name: "test" },
-            { name: "test" },
-            { name: "test" },
-            { name: "test" },
-            { name: "test" },
-            { name: "test" }
-        ]
 
-        $scope.PopupRegisterCount = testData.length;
-        $scope.PopupTableParams = new NgTableParams({
-            sorting: { name: 'adc' },
-            count: 20
-        }, {
-            counts: [10, 20, 50],
-            dataset: testData
-        });
+
 
 
 
