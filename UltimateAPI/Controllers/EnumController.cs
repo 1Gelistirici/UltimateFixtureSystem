@@ -42,5 +42,12 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetProductTypes();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetDepartments")]
+        public ActionResult GetDepartments()
+        {
+            var result = EnumCallManager.Instance.GetDepartments();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

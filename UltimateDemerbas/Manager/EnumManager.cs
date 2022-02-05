@@ -35,5 +35,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetProductTypes");
         }
+
+        public Task<string> GetDepartments()
+        {
+            return GetApi("Enum/GetDepartments");
+        }
     }
 }

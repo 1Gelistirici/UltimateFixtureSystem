@@ -117,6 +117,19 @@
 
 
         //Popup
+        $scope.GetDepartments = function () {
+            EnumService.GetDepartments(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.ProductTypes = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetDepartments();
 
         $scope.GetProductTypes = function () {
             EnumService.GetProductTypes(
@@ -266,10 +279,6 @@
 
 
         //}
-
-
-
-
 
 
 

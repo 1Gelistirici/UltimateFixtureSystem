@@ -52,5 +52,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetProductTypes();
         }
+
+        public UltimateResult<List<TextValue>> GetDepartments()
+        {
+            return EnumManager.Instance.GetDepartments();
+        }
     }
 }

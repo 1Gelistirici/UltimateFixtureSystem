@@ -40,5 +40,13 @@
                         success(response.data);
                 }, error);
         }
+
+        this.GetDepartmens = function (success, error) {
+            $http.get("/Enum/GetDepartments").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

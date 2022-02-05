@@ -12,13 +12,12 @@
                             <span class="caption-subject font-red sbold uppercase">Add Bill Item</span>
                         </div>
                         <div class="actions">
-                            <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <div class="btn-group btn-group-devided pull-right" data-toggle="buttons">
                                 <label class="btn btn-transparent red btn-outline btn-circle btn-sm active" data-dismiss="modal">
                                     <input type="radio" name="options" class="toggle" id="option1">Cancel
                                 </label>
-                                <label class="btn btn-transparent blue btn-outline btn-circle btn-sm" ng-click="tester()">
-                                    <input type="radio" name="options" class="toggle" id="option2">Save
-                                </label>
+
+                                <button class="btn btn-transparent blue btn-outline btn-circle btn-sm" ng-click="" ng-disabled="AddedData.length<=0">Save</button>
                             </div>
                         </div>
                     </div>
@@ -26,7 +25,7 @@
                         <div class="table-toolbar">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form name="BillAddForma">
+                                    <form name="BillAddForm">
                                         <div class="col-md-2">
                                             <label>Name</label>
                                             <input ng-model="Added.Name" type="text" class="form-control" required>
@@ -58,15 +57,13 @@
                                             </select>
                                         </div>
                                     </form>
-
-
                                 </div>
                                 <br />
                                 <br />
                                 <br />
                                 <br />
                                 <div class="btn-group pull-right">
-                                    <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();">
+                                    <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();" ng-disabled="BillAddForm.$invalid">
                                         Add New
                                         <i class="fa fa-plus"></i>
                                     </button>
@@ -112,8 +109,8 @@
                                             <td data-title="PopupTableCol.Model" sortable="'Model'">
                                                 <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
                                                 @*<select class="form-control" ng-model="_.ModelNo" required>
-                                                    <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                </select>*@
+                                                        <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                    </select>*@
                                             </td>
                                             <td data-title="PopupTableCol.Category" sortable="'Category'">
                                                 <select class="form-control" ng-model="_.CategoryNo" required>

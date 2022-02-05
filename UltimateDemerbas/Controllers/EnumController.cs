@@ -44,5 +44,11 @@ namespace UltimateDemerbas.Controllers
             var result = enumManager.GetProductTypes();
             return Content(result.Result);
         }
+
+        public IActionResult GetDepartments()
+        {
+            var result = enumManager.GetDepartments();
+            return Content(result.Result);
+        }
     }
 }

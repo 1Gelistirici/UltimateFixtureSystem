@@ -162,5 +162,31 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<TextValue>> GetDepartments()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<Departments> datas = Enum.GetValues(typeof(Departments)).Cast<Departments>().ToList();
+                foreach (Departments logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<Departments>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }
