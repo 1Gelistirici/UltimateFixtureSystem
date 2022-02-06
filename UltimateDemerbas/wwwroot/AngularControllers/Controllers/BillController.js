@@ -24,7 +24,7 @@
             Model: "Model",
             Category: "Category",
         };
-        var ProductType = [{ Fixture: 0 }, { Accessory: 1 }, { Toner: 2 }, { Component:3 }]
+        var ProductType = { Fixture: 0, Accessory: 1,  Toner: 2 , Component: 3 }
 
         //#region Bill Events
         $scope.GetBillTypes = function () {
@@ -46,7 +46,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
-                        console.log($scope.Data);
                         $.each($scope.Data, function (index, value) {
                             $scope.Data[index].BillDate = new Date($scope.Data[index].BillDate);
                             $scope.Data[index].InsertDate = new Date($scope.Data[index].InsertDate);
@@ -97,6 +96,12 @@
         }
 
         $scope.AddBill = function (price) {
+            var price = 0;
+
+            $.each($scope.AddedData, function (index, value) {
+                price += value.Price;
+            });
+
             var data = {
                 "BillNo": $scope.Pop.BillNo,
                 "BillDate": $scope.Pop.BillDate,
@@ -108,7 +113,9 @@
             BillService.AddBill(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("added",result.Data)
+                        $scope.InsertedId = result.Data[0].Id;
+                        $scope.Save();
+                        $scope.GetBills();
                         toaster.success("Başarılı", "Fatura kaydedildi.");
                     } else {
                         toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
@@ -247,7 +254,6 @@
 
             $scope.AddedData.push(parameter);
 
-            console.log($scope.AddedData);
             $scope.PopupRegisterCount = $scope.AddedData.length;
             $scope.PopupTableParams = new NgTableParams({
                 sorting: { name: 'adc' },
@@ -275,16 +281,6 @@
         }
 
         $scope.Save = function () {
-            var price = 0;
-
-            $.each($scope.AddedData, function (index, value) {
-                price += value.Price;
-            });
-
-
-            $scope.AddBill(price);
-            return;
-
             $.each($scope.AddedData, function (index, value) {
                 console.log(value);
 
@@ -292,13 +288,17 @@
                     var parameter = {
                         "Name": value.Name,
                         "ModelNo": value.Model.Id,
-                        "BillNo": $scope.BillId,
+                        "BillNo": $scope.InsertedId,
                         "StatuNo": 1,
                         "CategoryNo": value.CategoryNo,
-                        "UserNo": 0
+                        "UserNo": 0,
+                        "Price": value.Price
                     }
 
-                    $scope.AddFixture(value);
+                    for (var i = 0; i < value.Piece; i++) {
+                        $scope.AddFixture(parameter);
+                    }
+
                 } else if (value.ProductTypeNo === ProductType.Accessory) {
 
                 } else if (value.ProductTypeNo === ProductType.Toner) {
@@ -307,39 +307,9 @@
 
                 }
 
-                price += value.Price;
             });
 
-
-
-
         }
-
-
-
-        //$scope.AddBill = function () {
-        //    var data = {
-        //        "BillNo": $scope.Pop.BillNo,
-        //        "BillDate": $scope.Pop.BillDate,
-        //        "Price": price,
-        //        "Comment": $scope.Pop.Comment,
-        //        "Department": $scope.Pop.Department
-        //    }
-
-        //    console.log(data);
-        //    return;
-
-        //    BillService.AddBill(data,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Başarılı", "Fatura kaydedildi.");
-        //            } else {
-        //                toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
 
         $scope.AddFixture = function (parameter) {
             FixtureService.AddFixture(parameter,
@@ -353,7 +323,5 @@
                     toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-
-
 
     }]);

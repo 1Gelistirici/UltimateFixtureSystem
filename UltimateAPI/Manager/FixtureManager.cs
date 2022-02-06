@@ -257,7 +257,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", (ItemStatu)parameter.StatuNo == ItemStatu.Assigned ? parameter.UserNo : 0);
-                        //sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

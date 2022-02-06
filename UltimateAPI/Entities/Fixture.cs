@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace UltimateAPI.Entities
 {
     public class Fixture : BaseProperty
@@ -9,5 +10,6 @@ namespace UltimateAPI.Entities
         public int StatuNo { get; set; }
         public int CategoryNo { get; set; }
         public int UserNo { get; set; }
+        public Double Price { get; set; }
     }
 }
