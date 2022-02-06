@@ -18,15 +18,10 @@
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBill">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBillDetail">
                         Add Bill
                     </a>
-
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBillDetail">
-                        Test Add Bill
-                    </a>
                 </div>
-
             </div>
         </div>
 
@@ -137,9 +132,11 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/ComponentService.js"></script>
     <script src="~/AngularControllers/Services/ComponentModelService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/FixtureModelService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>

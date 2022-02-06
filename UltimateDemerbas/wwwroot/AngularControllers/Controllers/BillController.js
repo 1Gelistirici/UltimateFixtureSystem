@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureService", "FixtureModelService", "ComponentModelService", "AccessoryModelService", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureService, FixtureModelService, ComponentModelService, AccessoryModelService, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureService", "FixtureModelService", "ComponentService", "ComponentModelService", "AccessoryService", "AccessoryModelService", "NgTableParams", "toaster",
+    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureService, FixtureModelService, ComponentService, ComponentModelService, AccessoryService, AccessoryModelService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -24,7 +24,7 @@
             Model: "Model",
             Category: "Category",
         };
-        var ProductType = { Fixture: 0, Accessory: 1,  Toner: 2 , Component: 3 }
+        var ProductType = { Fixture: 0, Accessory: 1, Toner: 2, Component: 3 }
 
         //#region Bill Events
         $scope.GetBillTypes = function () {
@@ -99,7 +99,7 @@
             var price = 0;
 
             $.each($scope.AddedData, function (index, value) {
-                price += value.Price;
+                price += value.Price * value.Piece;
             });
 
             var data = {
@@ -215,6 +215,7 @@
             ComponentModelService.GetComponentModels(
                 function success(result) {
                     if (result.IsSuccess) {
+                        console.log("result.Data", result.Data);
                         $scope.Models = result.Data;
                     } else {
                         toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
@@ -234,7 +235,7 @@
                 $scope.GetAccessoryModels();
             } else if ($scope.Added.ProductTypeNo === 2) {
                 //ToDo ne yapılacağı kararlaştırılacak
-            } else if ($scope.ProductTypeNo === 3) {
+            } else if ($scope.Added.ProductTypeNo === 3) {
                 $scope.GetComponentModels();
             }
         }
@@ -269,7 +270,6 @@
         $scope.DeleteAddedBill = function (addedId) {
             $scope.AddedData = $scope.AddedData.filter(x => x.Id != addedId);
 
-            console.log($scope.AddedData);
             $scope.PopupRegisterCount = $scope.AddedData.length;
             $scope.PopupTableParams = new NgTableParams({
                 sorting: { name: 'adc' },
@@ -282,7 +282,6 @@
 
         $scope.Save = function () {
             $.each($scope.AddedData, function (index, value) {
-                console.log(value);
 
                 if (value.ProductTypeNo === ProductType.Fixture) {
                     var parameter = {
@@ -298,30 +297,72 @@
                     for (var i = 0; i < value.Piece; i++) {
                         $scope.AddFixture(parameter);
                     }
-
                 } else if (value.ProductTypeNo === ProductType.Accessory) {
+                    var parameter = {
+                        "Name": value.Name,
+                        "Piece": value.Piece,
+                        "Price": value.Price,
+                        "BillNo": $scope.InsertedId,
+                        "ModelNo": value.Model.Id,
+                        "CategoryNo": value.CategoryNo
+                    }
+
+                    $scope.AddAccessory(parameter);
 
                 } else if (value.ProductTypeNo === ProductType.Toner) {
 
                 } else if (value.ProductTypeNo === ProductType.Component) {
+                    var parameter = {
+                        "Name": value.Name,
+                        "Piece": value.Piece,
+                        "Price": value.Price,
+                        "BillNo": $scope.InsertedId,
+                        "ModelNo": value.Model.Id,
+                        "CategoryNo": value.CategoryNo
+                    }
 
+                    $scope.AddComponent(parameter);
                 }
-
             });
-
         }
 
+        //#region Add Item
         $scope.AddFixture = function (parameter) {
             FixtureService.AddFixture(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Demirbaş başarıyla eklenmiştir.");
+                        toaster.success("Demirbaş Ekleme", "Demirbaş başarıyla eklenmiştir.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Demirbaş Ekleme", "Demirbaş ekleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Demirbaş Ekleme", "Demirbaş ekleme işlemi yapılırken bir hata oluştu");
                 });
         }
+        $scope.AddAccessory = function (parameter) {
+            AccessoryService.AddAccessory(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Aksesuar Ekleme", "Aksesuar başarıyla eklendi");
+                    } else {
+                        toaster.error("Aksesuar Ekleme", "Aksesuar ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Aksesuar Ekleme", "Aksesuar ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.AddComponent = function (parameter) {
+            ComponentService.AddComponent(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Component Ekleme", "Component başarıyla eklendi");
+                    } else {
+                        toaster.error("Component Ekleme", "Component ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Component Ekleme", "Component ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        //#endregion
 
     }]);

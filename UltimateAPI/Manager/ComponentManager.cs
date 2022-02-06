@@ -55,6 +55,7 @@ namespace UltimateAPI.Manager
                                     component.Id = Convert.ToInt32(read["id"]);
                                     component.Name = read["name"].ToString();
                                     component.Piece= Convert.ToInt32(read["piece"]);
+                                    component.Price= Convert.ToDouble(read["price"]);
                                     component.ModelNo = read["model_no"].ToString();
                                     component.BillNo = Convert.ToInt32(read["bill_no"]);
                                     component.CategoryNo = read["category_no"].ToString();
@@ -98,6 +99,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
@@ -181,6 +183,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);

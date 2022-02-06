@@ -2,12 +2,12 @@
     function ($scope, AccessoryService, CategoryService, AccessoryModelService, NgTableParams, toaster,) {
 
         $scope.RegisterCount = 0;
-
         $scope.TableCol = {
             Name: "Component Name",
             ModelNo: "Model",
             CategoryNo: "Category",
             Piece: "Piece",
+            Price: "Price",
             BillNo: "Bill",
         };
 
@@ -91,6 +91,7 @@
             var data = {
                 "Name": $scope.Pop.Name,
                 "Piece": $scope.Pop.Piece,
+                "Price": $scope.Pop.Price,
                 "BillNo": $scope.Pop.BillNo,
                 "ModelNo": $scope.Pop.ModelNo,
                 "CategoryNo": $scope.Pop.CategoryNo
@@ -119,6 +120,7 @@
             $scope.piece = x.Piece;
             $scope.Pop = [];
             $scope.Pop.piece = 0;
+            $scope.Pop.Price = 0;
             $scope.Pop.Id = x.Id;
             $scope.Pop.UserName = x.Name;
             $scope.Pop.ItemType = 2; // ToDO : Enumdan çekilebilir

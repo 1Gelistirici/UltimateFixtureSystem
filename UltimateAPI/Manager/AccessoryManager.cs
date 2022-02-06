@@ -55,6 +55,7 @@ namespace UltimateAPI.Manager
                                     accessory.Id = Convert.ToInt32(read["id"]);
                                     accessory.Name = read["name"].ToString();
                                     accessory.Piece = Convert.ToInt32(read["piece"]);
+                                    accessory.Price = Convert.ToDouble(read["price"]);
                                     accessory.ModelNo = Convert.ToInt32(read["model_no"]);
                                     accessory.UserNo = Convert.ToInt32(read["user_no"]);
                                     accessory.BillNo = Convert.ToInt32(read["bill_no"]);
@@ -111,6 +112,7 @@ namespace UltimateAPI.Manager
                                     accessory.Id = Convert.ToInt32(read["id"]);
                                     accessory.Name = read["name"].ToString();
                                     accessory.Piece = Convert.ToInt32(read["piece"]);
+                                    accessory.Price = Convert.ToDouble(read["price"]);
                                     accessory.ModelNo = Convert.ToInt32(read["model_no"]);
                                     accessory.UserNo = Convert.ToInt32(read["user_no"]);
                                     accessory.BillNo = Convert.ToInt32(read["bill_no"]);
@@ -156,6 +158,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
@@ -241,6 +244,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);

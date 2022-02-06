@@ -9,6 +9,7 @@
             ModelNo: "Model",
             CategoryNo: "Category",
             Piece: "Piece",
+            Price: "Price",
             BillNo: "Bill",
         };
 
@@ -90,7 +91,6 @@
         }
 
         $scope.AddComponent = function () {
-
             var data = {
                 "Name": $scope.Pop.Name,
                 "Piece": $scope.Pop.Piece,
@@ -112,7 +112,6 @@
                 }, function error() {
                     toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
-
         }
 
         $scope.SetPiece = function (x) {
