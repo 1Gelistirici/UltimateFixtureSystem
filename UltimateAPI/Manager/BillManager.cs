@@ -58,7 +58,6 @@ namespace UltimateAPI.Manager
                                     bill.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     bill.Price = Convert.ToInt32(read["price"]);
                                     bill.Comment = read["comment"].ToString();
-                                    bill.TypeNo = Convert.ToInt32(read["type_No"]);
                                     bill.Department = Convert.ToInt32(read["department"]);
 
                                     bills.Add(bill);
@@ -87,7 +86,7 @@ namespace UltimateAPI.Manager
             UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[bills_AddBill]";
-
+  
             try
             {
                 using (sqlConnection = Global.GetSqlConnection())
@@ -103,7 +102,6 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
-                        sqlCommand.Parameters.AddWithValue("@type_No", parameter.TypeNo);
                         sqlCommand.Parameters.AddWithValue("@department", parameter.Department);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
@@ -187,7 +185,6 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@billDate", parameter.BillDate);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
-                        sqlCommand.Parameters.AddWithValue("@type_no", parameter.TypeNo);
                         sqlCommand.Parameters.AddWithValue("@department", parameter.Department);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();

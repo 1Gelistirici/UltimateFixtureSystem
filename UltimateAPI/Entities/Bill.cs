@@ -9,7 +9,6 @@ namespace UltimateAPI.Entities
         public DateTime InsertDate { get; set; }
         public Double Price { get; set; }
         public string Comment { get; set; }
-        public int TypeNo { get; set; }
         public int Department { get; set; }
     }
 }

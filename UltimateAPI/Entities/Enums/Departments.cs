@@ -5,22 +5,22 @@ namespace UltimateAPI.Entities.Enums
 {
     public enum Departments
     {
-        [Description("NotSerious")]
+        [Description("ARGE")]
         ARGE = 0,
 
-        [Description("NotSerious")]
+        [Description("IT")]
         IT = 1,
 
-        [Description("NotSerious")]
+        [Description("IK")]
         IK = 2,
 
-        [Description("NotSerious")]
+        [Description("Domestic Sales")]
         DomesticSales = 3,
 
-        [Description("NotSerious")]
+        [Description("International Sales")]
         InternationalSales = 4,
 
-        [Description("NotSerious")]
+        [Description("Marketing")]
         Marketing = 5,
 
     }

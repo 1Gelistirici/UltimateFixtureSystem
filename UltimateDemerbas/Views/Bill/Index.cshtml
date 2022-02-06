@@ -21,6 +21,10 @@
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBill">
                         Add Bill
                     </a>
+
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddBillDetail">
+                        Test Add Bill
+                    </a>
                 </div>
 
             </div>
@@ -58,25 +62,22 @@
                                     <input ng-model="_.BillDate" style="font-size: 14px;" type="date" class="form-control" value="{{ _.BillDate }}">
                                 </td>
 
+                                <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                    <input ng-model="_.InsertDate" style="font-size: 14px;" type="date" class="form-control" value="{{ _.InsertDate }}">
+                                </td>
+
                                 <td data-title="TableCol.Comment" style="width:20%;" filter="{ Comment: 'text'}" sortable="'Comment'">
                                     <textarea class="form-control" ng-model="_.Comment" rows="2" value="{{ _.Comment }}"></textarea>
                                 </td>
 
-                                <td data-title="TableCol.TypeNo" filter="{ Type: 'number'}" sortable="'Type'">
-                                    <select class="form-control" ng-model="_.TypeNo">
-                                        <option ng-repeat="x in BillTypes" type="number" value="{{x.Id}}">{{x.Name}}</option>
+                                <td data-title="TableCol.Department" filter="{ Type: 'number'}" sortable="'Type'">
+                                    <select class="form-control" ng-model="_.Department">
+                                        <option ng-repeat="x in Departments" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                     </select>
                                 </td>
 
                                 <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
                                     <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}">
-                                </td>
-
-                                <td data-title="TableCol.Items">
-                                    <button class="btn blue">
-                                        Items
-                                        <i class="fa fa-share"></i>
-                                    </button>
                                 </td>
 
                                 <td>
@@ -101,6 +102,11 @@
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="GetItems()">
+                                                    <i class="fa fa-share "></i>Items
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
@@ -122,6 +128,7 @@
         </div>
     </div>
 
+    <partial name="~/Views/Shared/Partials/Bill/AddBillDetailsPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Bill/AddBillPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Bill/AddAssignmentPartial.cshtml" />
 </div>
@@ -130,6 +137,7 @@
 @section PageScript
     {
     <script src="~/AngularControllers/Services/ComponentModelService.js"></script>
+    <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/FixtureModelService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>

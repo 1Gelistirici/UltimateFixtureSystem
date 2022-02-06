@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureModelService", "ComponentModelService", "AccessoryModelService", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureModelService, ComponentModelService, AccessoryModelService, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureService", "FixtureModelService", "ComponentModelService", "AccessoryModelService", "NgTableParams", "toaster",
+    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureService, FixtureModelService, ComponentModelService, AccessoryModelService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -9,11 +9,10 @@
         $scope.TableCol = {
             BillNo: "Bill No",
             BillDate: "Bill Date",
+            InsertDate: "Insert Date",
             Price: "Price",
             Comment: "Comment",
-            Product: "Product",
-            Piece: "Piece",
-            TypeNo: "Bill Type",
+            Department: "Department",
             Items: "Items",
         };
         $scope.PopupTableCol = {
@@ -24,8 +23,9 @@
             Model: "Model",
             Category: "Category",
         };
+        var ProductType = [{ Fixture=0 }, { Accessory=1 }, { Toner=2 }, { Component=3 }]
 
-
+        //#region Bill Events
         $scope.GetBillTypes = function () {
             BillTypeService.GetBillTypes(
                 function success(result) {
@@ -45,10 +45,11 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
-
-                        //$.each($scope.Data, function (index, value) {
-                        //    $scope.Data[index].BillDate = new Date($scope.Data[index].BillDate);
-                        //});
+                        console.log($scope.Data);
+                        $.each($scope.Data, function (index, value) {
+                            $scope.Data[index].BillDate = new Date($scope.Data[index].BillDate);
+                            $scope.Data[index].InsertDate = new Date($scope.Data[index].InsertDate);
+                        });
 
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
@@ -93,35 +94,36 @@
                 });
         }
 
-        //$scope.AddBill = function () {
-        //    var data = {
-        //        "Name": $scope.Pop.Name,
-        //        "Piece": $scope.Pop.Piece,
-        //        "Boundary": $scope.Pop.Boundary,
-        //        "Price": $scope.Pop.Price
-        //    }
+        $scope.AddBill = function (price) {
+            var data = {
+                "BillNo": $scope.Pop.BillNo,
+                "BillDate": $scope.Pop.BillDate,
+                "Price": price,
+                "Comment": $scope.Pop.Comment,
+                "Department": $scope.Pop.Department
+            }
 
-        //    BillService.AddBill(data,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Başarılı", "Fatura kaydedildi.");
-        //            } else {
-        //                toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
-
-
-
+            BillService.AddBill(data,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Fatura kaydedildi.");
+                    } else {
+                        toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        //#endregion
 
         //Popup
+
+        //#region Get Enums
         $scope.GetDepartments = function () {
             EnumService.GetDepartments(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.ProductTypes = result.Data;
+                        $scope.Departments = result.Data;
                     } else {
                         toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -172,7 +174,9 @@
                 });
         }
         $scope.GetCategories();
+        //#endregion
 
+        //#region Get Models
         $scope.GetFixtureModels = function () {
             FixtureModelService.GetFixtureModels(
                 function success(result) {
@@ -209,6 +213,7 @@
                     toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
+        //#endregion
 
         $scope.GetModal = function () {
             $scope.Models = [];
@@ -222,8 +227,6 @@
             } else if ($scope.ProductTypeNo === 3) {
                 $scope.GetComponentModels();
             }
-
-
         }
 
         id = 0;
@@ -268,84 +271,60 @@
             });
         }
 
-        //$scope.AddData = function () {
+        $scope.Save = function () {
+            var price = 0;
 
-        //    var parameter = {
+            $.each($scope.AddedData, function (index, value) {
+                console.log(value);
 
+                if (value.ProductTypeNo === ProductType.Fixture) {
 
-        //    };
+                } else if (value.ProductTypeNo === ProductType.Accessory) {
 
-        //    $scope.PopupData.push(parameter);
+                } else if (value.ProductTypeNo === ProductType.Toner) {
 
+                } else if (value.ProductTypeNo === ProductType.Component) {
 
-        //}
+                }
 
-
-
-
-        //$(document).ready(function () {
-        //    var table = $('#example').DataTable();
-
-        //    $('#example tbody').on('click', 'tr', function () {
-        //        var data = table.row(this).data();
-        //        alert('You clicked on ' + data[0] + '\'s row');
-        //    });
-        //});
-
-        //$scope.PopupForm = function () {
-        //    if (IsOpen) {
-        //        document.getElementById("myForm").style.display = "block";
-        //        IsOpen = false;
-        //    } else {
-        //        document.getElementById("myForm").style.display = "none";
-        //        IsOpen = true;
-        //    }
-        //}
+                price += value.Price;
+            });
 
 
-        //$scope.tester = function () {
+            return;
 
-        //    $('#sample_editable_1 td').each(function () {
-        //        if ($(this).data('original-value') !== $(this).text()) {
-        //            //console.log("$(this).data('original-value')", $(this).data('original-value'));
-        //            //console.log('original value was: ' + $(this).data('original-value'));
-        //            console.log('new value is: ' + $(this).text());
-        //            //console.log("$(this)", $(this));
-        //        }
-        //    });
+            $scope.AddBill(price);
 
-        //}
+
+        }
+
+
+
+        $scope.AddBill = function () {
+            var data = {
+                "BillNo": $scope.Pop.BillNo,
+                "BillDate": $scope.Pop.BillDate,
+                "Price": price,
+                "Comment": $scope.Pop.Comment,
+                "Department": $scope.Pop.Department
+            }
+
+            console.log(data);
+            return;
+
+            BillService.AddBill(data,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Fatura kaydedildi.");
+                    } else {
+                        toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
 
 
 
     }]);
-
-
-
-
-    //$(document).ready(function () {
-    //    var table = $('#example').DataTable();
-
-    //    $('#example tbody').on('click', 'tr', function () {
-    //        var data = table.row(this).data();
-    //        alert('You clicked on ' + data[0] + '\'s row');
-    //    });
-    //});
-
-
-    //$scope.PopupForm = function () {
-    //    if (IsOpen) {
-    //        document.getElementById("myForm").style.display = "block";
-    //        IsOpen = false;
-    //    } else {
-    //        document.getElementById("myForm").style.display = "none";
-    //        IsOpen = true;
-    //    }
-    //}
-
-
-    //$http.get("https://localhost:44331/api/Toners")
-    //    .then(function (response) {
-    //       var deneme = response.data.Data;
-    //    });
-
