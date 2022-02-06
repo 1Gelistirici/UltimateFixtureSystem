@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
 
@@ -83,10 +84,11 @@ namespace UltimateAPI.Manager
 
         public UltimateResult<List<Bill>> AddBill(Bill parameter)
         {
+            List<Bill> bills = new List<Bill>();
             UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[bills_AddBill]";
-  
+
             try
             {
                 using (sqlConnection = Global.GetSqlConnection())
@@ -103,12 +105,20 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@comment", parameter.Comment);
                         sqlCommand.Parameters.AddWithValue("@department", parameter.Department);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+
+                        //Return inserted id
+                        int id = (int)sqlCommand.Parameters["@ResultId"].Value;
+                        Bill bill = new Bill();
+                        bill.Id = id;
+                        bills.Add(bill);
+                        result.Data = bills;
+
                         sqlConnection.Close();
                         sqlCommand.Dispose();
-
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }

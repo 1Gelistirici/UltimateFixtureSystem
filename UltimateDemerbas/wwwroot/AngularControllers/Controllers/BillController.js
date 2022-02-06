@@ -3,6 +3,7 @@
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
+        $scope.Pop.BillDate = new Date();
         $scope.Added = [];
         $scope.AddedData = [];
 
@@ -23,7 +24,7 @@
             Model: "Model",
             Category: "Category",
         };
-        var ProductType = [{ Fixture=0 }, { Accessory=1 }, { Toner=2 }, { Component=3 }]
+        var ProductType = [{ Fixture: 0 }, { Accessory: 1 }, { Toner: 2 }, { Component:3 }]
 
         //#region Bill Events
         $scope.GetBillTypes = function () {
@@ -72,6 +73,7 @@
             BillService.DeleteBill(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.GetBills();
                         toaster.success("Başarılı", "Fatura silindi.")
                     } else {
                         toaster.error("Başarısız", "Fatura silme işlemi yapılırken bir hata oluştu");
@@ -106,6 +108,7 @@
             BillService.AddBill(data,
                 function success(result) {
                     if (result.IsSuccess) {
+                        console.log("added",result.Data)
                         toaster.success("Başarılı", "Fatura kaydedildi.");
                     } else {
                         toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
@@ -275,10 +278,27 @@
             var price = 0;
 
             $.each($scope.AddedData, function (index, value) {
+                price += value.Price;
+            });
+
+
+            $scope.AddBill(price);
+            return;
+
+            $.each($scope.AddedData, function (index, value) {
                 console.log(value);
 
                 if (value.ProductTypeNo === ProductType.Fixture) {
+                    var parameter = {
+                        "Name": value.Name,
+                        "ModelNo": value.Model.Id,
+                        "BillNo": $scope.BillId,
+                        "StatuNo": 1,
+                        "CategoryNo": value.CategoryNo,
+                        "UserNo": 0
+                    }
 
+                    $scope.AddFixture(value);
                 } else if (value.ProductTypeNo === ProductType.Accessory) {
 
                 } else if (value.ProductTypeNo === ProductType.Toner) {
@@ -291,39 +311,48 @@
             });
 
 
-            return;
-
-            $scope.AddBill(price);
 
 
         }
 
 
 
-        $scope.AddBill = function () {
-            var data = {
-                "BillNo": $scope.Pop.BillNo,
-                "BillDate": $scope.Pop.BillDate,
-                "Price": price,
-                "Comment": $scope.Pop.Comment,
-                "Department": $scope.Pop.Department
-            }
+        //$scope.AddBill = function () {
+        //    var data = {
+        //        "BillNo": $scope.Pop.BillNo,
+        //        "BillDate": $scope.Pop.BillDate,
+        //        "Price": price,
+        //        "Comment": $scope.Pop.Comment,
+        //        "Department": $scope.Pop.Department
+        //    }
 
-            console.log(data);
-            return;
+        //    console.log(data);
+        //    return;
 
-            BillService.AddBill(data,
+        //    BillService.AddBill(data,
+        //        function success(result) {
+        //            if (result.IsSuccess) {
+        //                toaster.success("Başarılı", "Fatura kaydedildi.");
+        //            } else {
+        //                toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+        //            }
+        //        }, function error() {
+        //            toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+        //        });
+        //}
+
+        $scope.AddFixture = function (parameter) {
+            FixtureService.AddFixture(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Fatura kaydedildi.");
+                        toaster.success("Başarılı", "Demirbaş başarıyla eklenmiştir.");
                     } else {
-                        toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-
 
 
 
