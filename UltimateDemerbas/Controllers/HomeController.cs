@@ -18,7 +18,7 @@ namespace UltimateDemerbas.Controllers
         protected override int PageNumber { get; set; } = 0;
 
 
-        [Authorize]
+        //[Authorize]
         //[CheckAuthorize]
         public IActionResult Index()
         {
