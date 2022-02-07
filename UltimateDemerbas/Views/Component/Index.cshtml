@@ -63,13 +63,13 @@
 
                                 <td data-title="TableCol.ModelNo" filter="{ Type: 'number'}" sortable="'ModelNo'">
                                     <select class="form-control" ng-model="_.ModelNo">
-                                        <option ng-repeat="x in Models" type="number" value="{{x.Id}}">{{x.Name}}</option>
+                                        <option ng-repeat="x in Models" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
                                 </td>
 
                                 <td data-title="TableCol.CategoryNo" filter="{ Type: 'number'}" sortable="'CategoryNo'">
                                     <select class="form-control" ng-model="_.CategoryNo">
-                                        <option ng-repeat="x in Categorys" type="number" value="{{x.Id}}">{{x.Name}}</option>
+                                        <option ng-repeat="x in Categorys" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
                                 </td>
 

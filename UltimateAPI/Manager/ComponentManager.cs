@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class ComponentManager:BaseManager
+    public class ComponentManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile ComponentManager _instance;
@@ -54,11 +54,11 @@ namespace UltimateAPI.Manager
                                     Component component = new Component();
                                     component.Id = Convert.ToInt32(read["id"]);
                                     component.Name = read["name"].ToString();
-                                    component.Piece= Convert.ToInt32(read["piece"]);
-                                    component.Price= Convert.ToDouble(read["price"]);
-                                    component.ModelNo = read["model_no"].ToString();
+                                    component.Piece = Convert.ToInt32(read["piece"]);
+                                    component.Price = Convert.ToDouble(read["price"]);
+                                    component.ModelNo = Convert.ToInt32(read["model_no"]);
                                     component.BillNo = Convert.ToInt32(read["bill_no"]);
-                                    component.CategoryNo = read["category_no"].ToString();
+                                    component.CategoryNo = Convert.ToInt32(read["category_no"]);
 
                                     components.Add(component);
                                 }
@@ -80,7 +80,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-      
+
         public UltimateResult<List<Component>> AddComponent(Component parameter)
         {
             UltimateResult<List<Component>> result = new UltimateResult<List<Component>>();
@@ -187,7 +187,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
-                 
+
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();

@@ -6,8 +6,8 @@ namespace UltimateAPI.Entities
     {
         public int Piece { get; set; }
         public Double Price { get; set; }
-        public string ModelNo { get; set; }
+        public int ModelNo { get; set; }
         public int BillNo { get; set; }
-        public string CategoryNo { get; set; }
+        public int CategoryNo { get; set; }
     }
 }

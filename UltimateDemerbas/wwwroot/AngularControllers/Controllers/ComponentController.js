@@ -94,6 +94,7 @@
             var data = {
                 "Name": $scope.Pop.Name,
                 "Piece": $scope.Pop.Piece,
+                "Price": $scope.Pop.Price,
                 "BillNo": $scope.Pop.BillNo,
                 "ModelNo": $scope.Pop.ModelNo,
                 "CategoryNo": $scope.Pop.CategoryNo
