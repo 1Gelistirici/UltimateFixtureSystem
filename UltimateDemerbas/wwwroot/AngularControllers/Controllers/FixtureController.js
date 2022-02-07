@@ -99,13 +99,6 @@
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
                         $scope.RegisterCount = $scope.Data.length;
-
-                        for (var i = 0; i < result.Data.length; i++) {
-
-                            if ($scope.Data[i].StatuNo != null)
-                                $scope.Data[i].StatuNoo = $scope.ItemStatus.find(_ => _.Value === $scope.Data[i].StatuNo);
-                        }
-
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20

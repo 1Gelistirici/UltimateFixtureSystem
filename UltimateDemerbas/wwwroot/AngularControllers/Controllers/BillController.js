@@ -117,6 +117,9 @@
                         $scope.Save();
                         $scope.GetBills();
                         toaster.success("Başarılı", "Fatura kaydedildi.");
+                        $("#AddBill").modal("hide");
+                        $scope.Added = [];
+                        $scope.Pop = [];
                     } else {
                         toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                     }
@@ -323,6 +326,9 @@
 
                     $scope.AddComponent(parameter);
                 }
+
+                $scope.DeleteAddedBill(value.Id);
+
             });
         }
 
