@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
@@ -7,13 +8,18 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using UltimateDemerbas.Models;
+using UltimateDemerbas.Models.Tool;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
 
+
+        [Authorize]
+        //[CheckAuthorize]
         public IActionResult Index()
         {
             return View();

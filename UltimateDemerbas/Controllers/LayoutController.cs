@@ -4,8 +4,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class LayoutController : Controller
+    public class LayoutController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         LayoutManager layoutManager;
         public LayoutController(IHttpClientFactory httpClientFactory)

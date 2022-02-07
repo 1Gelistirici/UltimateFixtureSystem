@@ -7,6 +7,7 @@ namespace UltimateDemerbas.Controllers
 {
     public class UsedTonerController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         UsedTonerManager usedToner;
         public UsedTonerController(IHttpClientFactory httpClientFactory)

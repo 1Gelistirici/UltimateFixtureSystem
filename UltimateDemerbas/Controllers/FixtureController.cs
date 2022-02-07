@@ -7,8 +7,10 @@ namespace UltimateDemerbas.Controllers
 {
     public class FixtureController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         FixtureManager fixture;
+
         public FixtureController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;

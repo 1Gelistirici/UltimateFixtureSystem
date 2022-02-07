@@ -7,6 +7,7 @@ namespace UltimateDemerbas.Controllers
 {
     public class FixLicController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         FixLicManager fixture;
         public FixLicController(IHttpClientFactory httpClientFactory)

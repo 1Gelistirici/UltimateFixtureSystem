@@ -6,8 +6,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class BillTypeController : Controller
+    public class BillTypeController : BaseController
     {
+        protected override int PageNumber { get; set; } = 1;
         private readonly IHttpClientFactory _httpClientFactory;
         BillTypeManager billType;
         public BillTypeController(IHttpClientFactory httpClientFactory)

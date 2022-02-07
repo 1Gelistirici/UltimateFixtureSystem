@@ -6,8 +6,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         UserManager user;
 

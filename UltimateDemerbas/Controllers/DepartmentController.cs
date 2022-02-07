@@ -7,6 +7,7 @@ namespace UltimateDemerbas.Controllers
 {
     public class DepartmentController : BaseController
     {
+        protected override int PageNumber { get; set; } = 1;
         private readonly IHttpClientFactory _httpClientFactory;
         DepartmentManager department;
         public DepartmentController(IHttpClientFactory httpClientFactory)

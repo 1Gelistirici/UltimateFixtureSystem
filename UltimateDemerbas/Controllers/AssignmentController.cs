@@ -7,8 +7,9 @@ namespace UltimateDemerbas.Controllers
 {
     public class AssignmentController : BaseController
     {
+        protected override int PageNumber { get; set; } = 1;
         private readonly IHttpClientFactory _httpClientFactory;
-            AssignmentManager assignment;
+        AssignmentManager assignment;
         public AssignmentController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
@@ -27,7 +28,7 @@ namespace UltimateDemerbas.Controllers
             var result = assignment.GetAssignments(parameter);
             return Content(result.Result);
         }
-       
+
         public IActionResult DeleteAssignment([FromBody] Assignment parameter)
         {
             var result = assignment.DeleteAssignment(parameter);

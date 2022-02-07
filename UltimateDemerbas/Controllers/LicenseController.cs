@@ -6,8 +6,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class LicenseController : Controller
+    public class LicenseController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         LicenseManager licence;
         public LicenseController(IHttpClientFactory httpClientFactory)

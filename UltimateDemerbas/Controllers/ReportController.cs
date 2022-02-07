@@ -7,6 +7,7 @@ namespace UltimateDemerbas.Controllers
 {
     public class ReportController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         ReportManager report;
         public ReportController(IHttpClientFactory httpClientFactory)

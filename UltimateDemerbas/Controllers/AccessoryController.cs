@@ -6,8 +6,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class AccessoryController : Controller
+    public class AccessoryController : BaseController
     {
+        protected override int PageNumber { get; set; } = 1;
         private readonly IHttpClientFactory _httpClientFactory;
         AccessoryManager accessory;
         public AccessoryController(IHttpClientFactory httpClientFactory)

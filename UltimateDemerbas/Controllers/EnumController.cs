@@ -6,6 +6,7 @@ namespace UltimateDemerbas.Controllers
 {
     public class EnumController : BaseController
     {
+        protected override int PageNumber { get; set; } = 1;
         private readonly IHttpClientFactory _httpClientFactory;
         EnumManager enumManager;
         public EnumController(IHttpClientFactory httpClientFactory)

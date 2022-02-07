@@ -6,8 +6,9 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
-    public class FixtureModelController : Controller
+    public class FixtureModelController : BaseController
     {
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         FixtureModelManager fixtureModel;
         public FixtureModelController(IHttpClientFactory httpClientFactory)
