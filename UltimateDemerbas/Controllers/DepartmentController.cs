@@ -15,7 +15,6 @@ namespace UltimateDemerbas.Controllers
             _httpClientFactory = httpClientFactory;
             department = new DepartmentManager(_httpClientFactory);
         }
-
         public IActionResult Index()
         {
             return View();
