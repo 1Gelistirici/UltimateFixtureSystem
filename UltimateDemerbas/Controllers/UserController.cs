@@ -57,7 +57,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetUser()
         {
             User parameter = new User();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = user.GetUser(parameter);
 
@@ -74,7 +74,7 @@ namespace UltimateDemerbas.Controllers
         }
         public IActionResult UpdateProfile([FromBody] User parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = user.UpdateProfile(parameter);
 
@@ -87,7 +87,7 @@ namespace UltimateDemerbas.Controllers
                 return Content("Şifreler Uyuşmuyor");
             }
 
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = user.ChangePassword(parameter);
 

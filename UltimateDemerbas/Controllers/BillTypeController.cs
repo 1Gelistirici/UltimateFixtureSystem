@@ -34,21 +34,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteBillType([FromBody] BillType parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = billType.DeleteBillType(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddBillType([FromBody] BillType parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = billType.AddBillType(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateBillType([FromBody] BillType parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = billType.UpdateBillType(parameter);
             return Content(result.Result);
         }

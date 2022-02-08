@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -24,10 +23,8 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult Authenticate([FromBody] User user)
         {
-            user.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
+            user.UserId = WorkingUser;
             var result = login.Authenticate(user);
-
             return Content(result.Result);
         }
     }

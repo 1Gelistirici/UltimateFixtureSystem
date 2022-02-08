@@ -32,7 +32,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteSituation([FromBody] Situation parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = situation.DeleteSituation(parameter);
 
@@ -41,7 +41,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateSituation([FromBody] Situation data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
 
             var result = situation.UpdateSituation(data);
 
@@ -50,7 +50,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddSituation([FromBody] Situation data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
 
             var result = situation.AddSituation(data);
 

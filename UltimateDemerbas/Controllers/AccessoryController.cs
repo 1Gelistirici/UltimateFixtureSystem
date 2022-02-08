@@ -38,7 +38,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetAccessory()
         {
             Accessory parameter = new Accessory();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessory.GetAccessory(parameter);
 
             return Content(result.Result);
@@ -46,21 +46,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteAccessory([FromBody] Accessory parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessory.DeleteAccessory(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddAccessory([FromBody] Accessory parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessory.AddAccessory(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateAccessory([FromBody] Accessory parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessory.UpdateAccessory(parameter);
             return Content(result.Result);
         }

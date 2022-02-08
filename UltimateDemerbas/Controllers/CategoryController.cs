@@ -32,21 +32,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteCategory([FromBody] Category parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = category.DeleteCategory(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddCategory([FromBody] Category parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = category.AddCategory(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateCategory([FromBody] Category parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = category.UpdateCategory(parameter);
             return Content(result.Result);
         }

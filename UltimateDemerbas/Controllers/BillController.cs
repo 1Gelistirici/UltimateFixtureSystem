@@ -32,21 +32,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteBill([FromBody] Bill parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = bill.DeleteBill(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddBill([FromBody] Bill parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = bill.AddBill(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateBill([FromBody] Bill parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = bill.UpdateBill(parameter);
             return Content(result.Result);
         }

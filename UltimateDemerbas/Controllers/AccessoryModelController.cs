@@ -32,21 +32,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteAccessoryModel([FromBody] AccessoryModel parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessoryModel.DeleteAccessoryModel(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddAccessoryModel([FromBody] AccessoryModel parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessoryModel.AddAccessoryModel(parameter);
             return Content(result.Result);
         }
 
         public IActionResult UpdateAccessoryModel([FromBody] AccessoryModel parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = accessoryModel.UpdateAccessoryModel(parameter);
             return Content(result.Result);
         }

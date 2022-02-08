@@ -31,7 +31,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteLicense([FromBody] License parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = licence.DeleteLicense(parameter);
 
@@ -40,7 +40,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateLicense([FromBody] License data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
 
             var result = licence.UpdateLicense(data);
 
@@ -49,7 +49,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddLicense([FromBody] License data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
 
             var result = licence.AddLicense(data);
 

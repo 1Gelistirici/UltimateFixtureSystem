@@ -33,7 +33,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetTasks()
         {
             Tasks parameter = new Tasks();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = task.GetTasks(parameter);
 
@@ -42,7 +42,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteTask([FromBody] Tasks parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = task.DeleteTask(parameter);
 
@@ -51,7 +51,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateTask([FromBody] Tasks parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = task.UpdateTask(parameter);
 
@@ -60,7 +60,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddTask([FromBody] Tasks parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = task.AddTask(parameter);
 

@@ -26,7 +26,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetMessages()
         {
             Message parameter = new Message();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = message.GetMessages(parameter);
 
@@ -35,7 +35,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteMessage([FromBody] Message parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = message.DeleteMessage(parameter);
 
@@ -44,7 +44,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddMessage([FromBody] Message parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = message.AddMessage(parameter);
 

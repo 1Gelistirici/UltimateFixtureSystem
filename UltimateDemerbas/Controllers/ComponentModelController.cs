@@ -32,21 +32,21 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteComponentModel([FromBody] ComponentModel parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
             var result = componentModel.DeleteComponentModel(parameter);
             return Content(result.Result);
         }
 
         public IActionResult AddComponentModel([FromBody] ComponentModel data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
             var result = componentModel.AddComponentModel(data);
             return Content(result.Result);
         }
 
         public IActionResult UpdateComponentModel([FromBody] ComponentModel data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            data.UserId = WorkingUser;
             var result = componentModel.UpdateComponentModel(data);
             return Content(result.Result);
         }

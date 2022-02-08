@@ -26,7 +26,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetLogs()
         {
             Log parameter = new Log();
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = log.GetLogs(parameter);
             return Content(result.Result);

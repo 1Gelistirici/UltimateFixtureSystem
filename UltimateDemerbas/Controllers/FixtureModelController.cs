@@ -33,28 +33,22 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteFixtureModel([FromBody] FixtureModel parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
+            parameter.UserId = WorkingUser;
             var result = fixtureModel.DeleteFixtureModel(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddFixtureModel([FromBody] FixtureModel data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
+            data.UserId = WorkingUser;
             var result = fixtureModel.AddFixtureModel(data);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateFixtureModel([FromBody] FixtureModel data)
         {
-            data.UserId = Convert.ToInt32(Request.Cookies["id"]);
-
+            data.UserId = WorkingUser;
             var result = fixtureModel.UpdateFixtureModel(data);
-
             return Content(result.Result);
         }
 

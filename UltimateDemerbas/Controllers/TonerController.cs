@@ -32,7 +32,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteToner([FromBody] Toner parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = toner.DeleteToner(parameter);
 
@@ -41,7 +41,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddToner([FromBody] Toner parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = toner.AddToner(parameter);
 
@@ -50,7 +50,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateToner([FromBody] Toner parameter)
         {
-            parameter.UserId = Convert.ToInt32(Request.Cookies["id"]);
+            parameter.UserId = WorkingUser;
 
             var result = toner.UpdateToner(parameter);
 
