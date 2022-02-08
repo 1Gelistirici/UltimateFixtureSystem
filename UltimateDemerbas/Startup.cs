@@ -20,7 +20,10 @@ namespace UltimateDemerbas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
-            services.AddSession();
+            services.AddSession(options =>
+                  {
+                      options.IdleTimeout = TimeSpan.FromDays(2);
+                  });
 
             services.AddControllersWithViews();
             services.AddHttpClient("Test", c =>

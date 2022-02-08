@@ -11,20 +11,30 @@
             LoginService.CheckUser(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        if (result.Data.length > 0) {
-                            setCookie("id", result.Data[0].Id, 315);
-                            //Cookies.set('id', result.Data[0].Id);
-                            toaster.success("Başarılı", "Sisteme giriş yapıldı.");
-                            $window.location.href = '/Home/Index';
-                        } else {
-                            toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
-                        }
+                        SetActiveUserSession(54);
+                        SetActiveCompanySession(51);
+                        toaster.success("Başarılı", "Sisteme giriş yapıldı.");
 
+                        return;
+                        $window.location.href = '/Home/Index';
                     } else {
-                        toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
+                        toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
                     }
                 }, function error() {
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
+                });
+        }
+
+
+        function SetActiveUserSession(id) {
+            LoginService.SetActiveUserSession(id,
+                function success(result) {
+                });
+        }
+
+        function SetActiveCompanySession(companyId) {
+            LoginService.SetActiveCompanySession(companyId,
+                function success(result) {
                 });
         }
 
@@ -37,11 +47,3 @@
         });
 
     }]);
-
-//cookie ekler
-function setCookie(cname, cvalue, exminutes) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exminutes * 60 * 1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}

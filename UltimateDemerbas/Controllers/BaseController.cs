@@ -10,14 +10,6 @@ namespace UltimateDemerbas.Controllers
 
 
 
-        //HttpContext.Session.SetInt32(1, 24);  
-        //HttpContext.Session.SetString("isUserLogin", "true"); // Yeni bir session oluşturma.
-
-        //HttpContext.Session.GetString("isUserLogin"); // Sessiondan değer getirme.
-
-        //HttpContext.Session.Clear(); // Tüm sessionları temizleme.
-
-
         protected abstract int PageNumber { get; set; }
         public void CheckSecurity()
         {
@@ -31,19 +23,31 @@ namespace UltimateDemerbas.Controllers
             }
         }
 
-        public void SetActiveUserId(int id, int companyId)
+
+
+
+
+
+        public void GetActiveUser()
+        {
+            var a = HttpContext.Session.GetInt32("Id");
+            var b = HttpContext.Session.GetInt32("CompanyId");
+        }
+
+        public void SetActiveUser(int id)
         {
             HttpContext.Session.SetInt32("Id", id);
+        }
+
+        public void SetActiveCompany(int companyId)
+        {
             HttpContext.Session.SetInt32("CompanyId", companyId);
         }
 
-        public void RemoveActiveUserId()
+        public void RemoveActiveUser()
         {
             HttpContext.Session.Remove("Id");
-            HttpContext.Session.Remove("Company");
+            HttpContext.Session.Remove("CompanyId");
         }
-
-
-
     }
 }
