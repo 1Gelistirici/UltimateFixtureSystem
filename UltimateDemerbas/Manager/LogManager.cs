@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class LogManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public LogManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetLogs(Log parameter)

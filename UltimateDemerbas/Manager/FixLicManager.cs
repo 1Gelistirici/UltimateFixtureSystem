@@ -6,10 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class FixLicManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         public FixLicManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> AddFixLic(FixLic parameter)

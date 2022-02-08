@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class MessageManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public MessageManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

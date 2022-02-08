@@ -7,11 +7,8 @@ namespace UltimateDemerbas.Manager
 {
     public class BillManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public BillManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

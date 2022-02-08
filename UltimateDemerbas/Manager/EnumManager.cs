@@ -5,10 +5,8 @@ namespace UltimateDemerbas.Manager
 {
     public class EnumManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         public EnumManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetIsActiveTypes()

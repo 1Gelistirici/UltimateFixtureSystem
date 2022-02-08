@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class TaskManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public TaskManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

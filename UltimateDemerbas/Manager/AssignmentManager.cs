@@ -6,10 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class AssignmentManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         public AssignmentManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetAssignments(Assignment parameter)

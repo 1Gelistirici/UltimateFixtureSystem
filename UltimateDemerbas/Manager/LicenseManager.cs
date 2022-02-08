@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class LicenseManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public LicenseManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

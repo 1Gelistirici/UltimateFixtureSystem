@@ -5,11 +5,8 @@ namespace UltimateDemerbas.Manager
 {
     public class LayoutManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public LayoutManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

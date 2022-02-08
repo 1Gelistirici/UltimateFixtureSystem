@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class LoginManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public LoginManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

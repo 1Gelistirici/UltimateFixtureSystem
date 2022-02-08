@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class TonerManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public TonerManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetToners()

@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class AccessoryModelManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public AccessoryModelManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
 

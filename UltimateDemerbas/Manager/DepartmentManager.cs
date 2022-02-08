@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class DepartmentManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public DepartmentManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetDepartments(Department parameter)

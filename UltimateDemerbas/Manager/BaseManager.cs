@@ -10,7 +10,6 @@ namespace UltimateDemerbas.Manager
 {
     public class BaseManager : Controller
     {
-
         private readonly IHttpClientFactory _httpClientFactory;
 
         public BaseManager(IHttpClientFactory httpClientFactory)

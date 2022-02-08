@@ -6,11 +6,8 @@ namespace UltimateDemerbas.Manager
 {
     public class CategoryManager : BaseManager
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
         public CategoryManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
         }
 
         public Task<string> GetCategories()
