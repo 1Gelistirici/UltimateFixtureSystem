@@ -76,8 +76,10 @@ namespace UltimateAPI.Manager
                         {
                             log.UserNo = user.UserId;
                             log.Type = LogType.LoginSucess;
-
                             LogManager.Instance.AddLog(log);
+
+                            result.IsSuccess = true;
+                            result.Message = "Başarıyla giriş yapıldı.";
                         }
                         else
                         {
@@ -85,8 +87,10 @@ namespace UltimateAPI.Manager
                             log.IncorrectPassword = user.Password;
                             log.IncorrectUserName = user.UserName;
                             log.IncorrectCompany = user.Company;
-
                             LogManager.Instance.AddLog(log);
+
+                            result.IsSuccess = false;
+                            result.Message = "Kullanıcı adı veya şifre yanlış.";
                         }
 
                         result.Data = users;

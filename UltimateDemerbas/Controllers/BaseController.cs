@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace UltimateDemerbas.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public int WorkingUser { get { return GetActiveUserId(); } }
+        public int WorkingUser { get { return (int)HttpContext.Session.GetInt32("Id"); } }
+        public int WorkingCompany { get { return (int)HttpContext.Session.GetInt32("CompanyId"); } }
 
 
 
@@ -31,19 +31,16 @@ namespace UltimateDemerbas.Controllers
             }
         }
 
-        public int GetActiveUserId()
+        public void SetActiveUserId(int id, int companyId)
         {
-            return (int)HttpContext.Session.GetInt32("Test");
+            HttpContext.Session.SetInt32("Id", id);
+            HttpContext.Session.SetInt32("CompanyId", companyId);
         }
 
-        public void SetActiveUserId()
-        {
-            HttpContext.Session.SetString("Test", "Ben Rules!");
-        } 
-        
         public void RemoveActiveUserId()
         {
-            HttpContext.Session.Remove("Test");
+            HttpContext.Session.Remove("Id");
+            HttpContext.Session.Remove("Company");
         }
 
 
