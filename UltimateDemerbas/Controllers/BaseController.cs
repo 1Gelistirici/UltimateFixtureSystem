@@ -5,8 +5,8 @@ namespace UltimateDemerbas.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public int WorkingUser { get { return (int)HttpContext.Session.GetInt32("Id"); } }
-        public int WorkingCompany { get { return (int)HttpContext.Session.GetInt32("CompanyId"); } }
+        public int WorkingUser { get { return HttpContext.Session.GetInt32("Id") == null ? 0 : (int)HttpContext.Session.GetInt32("Id"); } }
+        public int WorkingCompany { get { return HttpContext.Session.GetInt32("CompanyId") == null ? 0 : (int)HttpContext.Session.GetInt32("CompanyId"); } }
 
 
 
@@ -22,11 +22,6 @@ namespace UltimateDemerbas.Controllers
                 }
             }
         }
-
-
-
-
-
 
         public void GetActiveUser()
         {
@@ -49,5 +44,6 @@ namespace UltimateDemerbas.Controllers
             HttpContext.Session.Remove("Id");
             HttpContext.Session.Remove("CompanyId");
         }
+
     }
 }
