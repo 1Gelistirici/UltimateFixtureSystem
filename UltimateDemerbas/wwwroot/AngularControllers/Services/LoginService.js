@@ -20,24 +20,13 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
-        this.SetActiveUserSession = function (id, success, error) {
-            $http.post("/User/SetActiveUserSession", JSON.stringify(id)).then(
+        this.SetUserSession = function (parameter, success, error) {
+            $http.post("/User/SetUserSession", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
         }
-        this.SetActiveCompanySession = function (companyId, success, error) {
-            $http.post("/User/SetActiveCompanySession", JSON.stringify(companyId)).then(
-                function (response) {
-                    if (success)
-                        success(response.data);
-                }, error);
-        }
-
-
-
-
 
     }]);
 

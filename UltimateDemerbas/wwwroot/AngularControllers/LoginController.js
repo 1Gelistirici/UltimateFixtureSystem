@@ -11,11 +11,13 @@
             LoginService.CheckUser(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        SetActiveUserSession(54);
-                        SetActiveCompanySession(51);
-                        toaster.success("Başarılı", "Sisteme giriş yapıldı.");
+                        var parameter = {
+                            Id: result.Data[0].Id,
+                            CompanyId: result.Data[0].CompanyId
+                        }
+                        SetUserSession(parameter);
 
-                        return;
+                        toaster.success("Başarılı", "Sisteme giriş yapıldı.");
                         $window.location.href = '/Home/Index';
                     } else {
                         toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
@@ -26,17 +28,12 @@
         }
 
 
-        function SetActiveUserSession(id) {
-            LoginService.SetActiveUserSession(id,
+        function SetUserSession(parameter) {
+            LoginService.SetUserSession(parameter,
                 function success(result) {
                 });
         }
 
-        function SetActiveCompanySession(companyId) {
-            LoginService.SetActiveCompanySession(companyId,
-                function success(result) {
-                });
-        }
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {

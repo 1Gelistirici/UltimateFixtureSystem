@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -29,14 +30,10 @@ namespace UltimateDemerbas.Controllers
             var b = HttpContext.Session.GetInt32("CompanyId");
         }
 
-        public void SetActiveUser(int id)
+        public void SetSession(ReferansParameter parameter)
         {
-            HttpContext.Session.SetInt32("Id", id);
-        }
-
-        public void SetActiveCompany(int companyId)
-        {
-            HttpContext.Session.SetInt32("CompanyId", companyId);
+            HttpContext.Session.SetInt32("Id", parameter.Id);
+            HttpContext.Session.SetInt32("CompanyId", parameter.CompanyId);
         }
 
         public void RemoveActiveUser()

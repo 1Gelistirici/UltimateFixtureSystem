@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -30,18 +29,12 @@ namespace UltimateDemerbas.Controllers
 
 
         //ToDo Bu işlem script tarafından kaldırılmaya çalışılacak
-        public IActionResult SetActiveUserSession([FromBody] int id)
+        public IActionResult SetUserSession([FromBody] ReferansParameter parameter)
         {
-            SetActiveUser(id);
-            GetActiveUser();
-            return null;
+            SetSession(parameter);
+            return Ok();
         }
-        public IActionResult SetActiveCompanySession([FromBody] int companyId)
-        {
-            SetActiveCompany(companyId);
-            GetActiveUser();
-            return null;
-        }
+
         public IActionResult RemoveActiveUserSession()
         {
             RemoveActiveUser();
