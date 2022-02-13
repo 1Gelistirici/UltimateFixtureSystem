@@ -57,4 +57,10 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window",
             Cookies.remove("id");
         }
 
+        $scope.Exit = function () {
+            $http.get("/User/RemoveActiveUserSession").then(function (response) {
+
+            });
+        }
+
     }]);

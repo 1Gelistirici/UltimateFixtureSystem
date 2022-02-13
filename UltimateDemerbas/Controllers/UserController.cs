@@ -27,21 +27,6 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-
-        //ToDo Bu işlem script tarafından kaldırılmaya çalışılacak
-        public IActionResult SetUserSession([FromBody] ReferansParameter parameter)
-        {
-            SetSession(parameter);
-            return Ok();
-        }
-
-        public IActionResult RemoveActiveUserSession()
-        {
-            RemoveActiveUser();
-            return null;
-        }
-
-
         public IActionResult CheckUser([FromBody] User parameter)
         {
             var result = user.CheckUser(parameter);
@@ -87,5 +72,19 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+
+        //Login Session
+        public IActionResult SetUserSession([FromBody] ReferansParameter parameter)
+        {
+            SetSession(parameter);
+            return Ok();
+        }
+
+        //Exit Session
+        public IActionResult RemoveActiveUserSession()
+        {
+            RemoveActiveUser();
+            return null;
+        }
     }
 }
