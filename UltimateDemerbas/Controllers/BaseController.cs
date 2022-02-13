@@ -14,6 +14,12 @@ namespace UltimateDemerbas.Controllers
         protected abstract int PageNumber { get; set; }
         public void CheckSecurity()
         {
+            if (WorkingUser <= 0)
+            {
+                Response.Redirect("/User/Login");
+                return;
+            }
+
             if (PageNumber > 0)
             {
                 bool result = true;/* MenuItemsManager.Instance.GetMenuCompanyUserCheck(new ReferanceParameter() { RefId = WorkingUser }, PageNumber);*/

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas
 {
@@ -30,6 +31,9 @@ namespace UltimateDemerbas
              {
                  c.BaseAddress = new Uri("https://localhost:44331/api");
              });
+
+            services.AddScoped<CheckAuthorize>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

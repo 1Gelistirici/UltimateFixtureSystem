@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -7,7 +8,8 @@ namespace UltimateDemerbas.Controllers
     {
         protected override int PageNumber { get; set; } = 0;
       
-        [Authorize]
+        //[Authorize]
+        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();

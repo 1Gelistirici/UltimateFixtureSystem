@@ -3,6 +3,7 @@ using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -17,6 +18,7 @@ namespace UltimateDemerbas.Controllers
             log = new LogManager(_httpClientFactory);
         }
 
+        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();

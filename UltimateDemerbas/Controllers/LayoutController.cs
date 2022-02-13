@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using UltimateDemerbas.Manager;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -15,11 +16,13 @@ namespace UltimateDemerbas.Controllers
             layoutManager = new LayoutManager(_httpClientFactory);
         }
 
+        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();
         }
 
+        [CheckAuthorize]
         public IActionResult Tester()
         {
             return View();

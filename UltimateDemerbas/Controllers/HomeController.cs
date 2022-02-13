@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
@@ -18,13 +17,13 @@ namespace UltimateDemerbas.Controllers
         protected override int PageNumber { get; set; } = 0;
 
 
-        //[Authorize]
-        //[CheckAuthorize]
+        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();
         }
 
+        [CheckAuthorize]
         public IActionResult Privacy()
         {
             return View();
