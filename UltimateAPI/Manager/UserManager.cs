@@ -109,12 +109,70 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<List<User>> GetUser(User parameter)
+        public UltimateResult<User> GetUser(User parameter)
+        {
+            User user = new User();
+            UltimateResult<User> result = new UltimateResult<User>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[user_GetUser]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.UserId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    user.Name = read["name"].ToString();
+                                    user.Surname = read["surname"].ToString();
+                                    user.UserName = read["username"].ToString();
+                                    user.MailAdress = read["mailAdress"].ToString();
+                                    user.Telephone = read["telNo"].ToString();
+                                    user.Company = read["company"].ToString();
+                                    user.Title = read["title"].ToString();
+                                    user.Department = read["department"].ToString();
+                                    user.Linkedin = read["linkedin"].ToString();
+                                    user.Facebook = read["facebook"].ToString();
+                                    user.Twitter = read["twitter"].ToString();
+                                    user.About = read["about"].ToString();
+                                    user.Id = Convert.ToInt32(read["id"]);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = user;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+        
+        public UltimateResult<List<User>> GetUserCompany(User parameter)
         {
             List<User> users = new List<User>();
             UltimateResult<List<User>> result = new UltimateResult<List<User>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[user_GetUser]";
+            string Proc = "[dbo].[user_GetUserCompany]";
 
             try
             {

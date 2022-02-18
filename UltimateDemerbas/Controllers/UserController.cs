@@ -43,6 +43,15 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+        public IActionResult GetUserCompany()
+        {
+            User parameter = new User();
+            parameter.CompanyId = WorkingCompany;
+
+            var result = user.GetUser(parameter);
+
+            return Content(result.Result);
+        }
         public IActionResult GetUsers()
         {
             User parameter = new User();
