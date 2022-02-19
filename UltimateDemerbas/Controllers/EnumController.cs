@@ -4,6 +4,7 @@ using UltimateDemerbas.Manager;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class EnumController : BaseController
     {
         protected override int PageNumber { get; set; } = 1;

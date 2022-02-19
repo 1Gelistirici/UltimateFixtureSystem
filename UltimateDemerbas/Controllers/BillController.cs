@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -7,6 +6,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class BillController : BaseController
     {
         protected override int PageNumber { get; set; } = 1;

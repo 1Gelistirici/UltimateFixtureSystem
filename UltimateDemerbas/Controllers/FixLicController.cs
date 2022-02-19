@@ -6,6 +6,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class FixLicController : BaseController
     {
         protected override int PageNumber { get; set; } = 0;
@@ -34,7 +35,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetFixLices()
         {
             FixLic parameter = new FixLic();
-            parameter.CompanyId = 1; // ToDo : WorkingCompany'den alınacak
+            parameter.CompanyId = WorkingCompany;
             var result = fixture.GetFixLices(parameter);
 
             return Content(result.Result);

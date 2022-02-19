@@ -12,6 +12,7 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class HomeController : BaseController
     {
         protected override int PageNumber { get; set; } = 0;

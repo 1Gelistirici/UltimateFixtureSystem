@@ -34,6 +34,8 @@ namespace UltimateDemerbas.Controllers
             var result = user.CheckUser(parameter);
             return Content(result.Result);
         }
+
+        [CheckAuthorize]
         public IActionResult GetUser()
         {
             User parameter = new User();
@@ -43,6 +45,8 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+       
+        [CheckAuthorize]
         public IActionResult GetUserCompany()
         {
             User parameter = new User();
@@ -52,15 +56,19 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+   
+        [CheckAuthorize]
         public IActionResult GetUsers()
         {
             User parameter = new User();
-            parameter.CompanyId = 1; // ToDo : WorkingCompany Bakılacak
+            parameter.CompanyId = WorkingCompany;
 
             var result = user.GetUsers(parameter);
 
             return Content(result.Result);
         }
+     
+        [CheckAuthorize]
         public IActionResult UpdateProfile([FromBody] User parameter)
         {
             parameter.UserId = WorkingUser;
@@ -69,6 +77,8 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
+      
+        [CheckAuthorize]
         public IActionResult ChangePassword([FromBody] User parameter)
         {
             if (parameter.Password != parameter.PasswordTry)

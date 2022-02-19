@@ -6,6 +6,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class DepartmentController : BaseController
     {
         protected override int PageNumber { get; set; } = 1;

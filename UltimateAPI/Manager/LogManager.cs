@@ -49,7 +49,7 @@ namespace UltimateAPI.Manager
 
                         User param = new User();
                         param.UserId = parameter.UserId;
-                        sqlCommand.Parameters.AddWithValue("@company", UserManager.Instance.GetUser(param).Data[0].Company);
+                        sqlCommand.Parameters.AddWithValue("@company", UserManager.Instance.GetUser(param).Data.Company);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {

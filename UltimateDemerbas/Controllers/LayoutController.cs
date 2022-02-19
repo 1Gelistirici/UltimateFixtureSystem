@@ -5,6 +5,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class LayoutController : BaseController
     {
         protected override int PageNumber { get; set; } = 0;

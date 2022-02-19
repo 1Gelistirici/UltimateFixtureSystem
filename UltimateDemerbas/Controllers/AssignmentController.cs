@@ -6,6 +6,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class AssignmentController : BaseController
     {
         protected override int PageNumber { get; set; } = 1;
@@ -17,7 +18,6 @@ namespace UltimateDemerbas.Controllers
             assignment = new AssignmentManager(_httpClientFactory);
         }
 
-        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();

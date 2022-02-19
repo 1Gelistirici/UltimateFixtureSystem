@@ -7,6 +7,7 @@ using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
+    [CheckAuthorize]
     public class AccessoryController : BaseController
     {
         protected override int PageNumber { get; set; } = 1;
@@ -19,13 +20,11 @@ namespace UltimateDemerbas.Controllers
         }
 
 
-        [CheckAuthorize]
         public IActionResult Index()
         {
             return View();
         }
 
-        [CheckAuthorize]
         public IActionResult Assignments()
         {
             return View();
