@@ -187,6 +187,32 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+        
+        public UltimateResult<List<TextValue>> GetGenders()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<Gender> datas = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
+                foreach (Gender logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<Gender>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
     }
 }

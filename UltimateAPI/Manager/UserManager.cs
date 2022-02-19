@@ -61,7 +61,7 @@ namespace UltimateAPI.Manager
                                     usr.Id = Convert.ToInt32(read["Id"]);
                                     usr.Name = read["name"].ToString();
                                     usr.Surname = read["surname"].ToString();
-                                    usr.Company = read["company"].ToString();
+                                    usr.CompanyId = Convert.ToInt32(read["companyId"]);
 
                                     users.Add(usr);
                                 }
@@ -166,7 +166,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-        
+
         public UltimateResult<List<User>> GetUserCompany(User parameter)
         {
             List<User> users = new List<User>();
@@ -184,7 +184,7 @@ namespace UltimateAPI.Manager
                     {
                         ConnectionManager.Instance.CmdOperations();
 
-                        sqlCommand.Parameters.AddWithValue("@id", parameter.UserId);
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.CompanyId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
@@ -206,6 +206,7 @@ namespace UltimateAPI.Manager
                                     user.Twitter = read["twitter"].ToString();
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
+                                    user.Gender = Convert.ToInt32(read["gender"]);
 
                                     users.Add(user);
                                 }

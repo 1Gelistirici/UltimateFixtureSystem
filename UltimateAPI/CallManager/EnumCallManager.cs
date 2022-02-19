@@ -57,5 +57,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetDepartments();
         }
+
+        public UltimateResult<List<TextValue>> GetGenders()
+        {
+            return EnumManager.Instance.GetGenders();
+        }
     }
 }

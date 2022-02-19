@@ -38,5 +38,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetDepartments");
         }
+
+        public Task<string> GetGenders()
+        {
+            return GetApi("Enum/GetGenders");
+        }
     }
 }

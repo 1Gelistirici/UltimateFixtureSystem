@@ -1,8 +1,8 @@
 ﻿MainApp.service("UserService", ["$http",
     function ($http) {
 
-        this.GetUser = function (success, error) {
-            $http.get("/User/GetUser").then(
+        this.GetUser = function (id, success, error) {
+            $http.get("/User/GetUser", { id: id }).then(
                 function (response) {
                     if (success)
                         success(response.data);
@@ -11,6 +11,14 @@
 
         this.GetUsers = function (success, error) {
             $http.get("/User/GetUsers").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
+        this.GetUserCompany = function (success, error) {
+            $http.get("/User/GetUserCompany").then(
                 function (response) {
                     if (success)
                         success(response.data);

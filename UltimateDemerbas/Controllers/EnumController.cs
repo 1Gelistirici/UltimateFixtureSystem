@@ -53,5 +53,11 @@ namespace UltimateDemerbas.Controllers
             var result = enumManager.GetDepartments();
             return Content(result.Result);
         }
+
+        public IActionResult GetGenders()
+        {
+            var result = enumManager.GetGenders();
+            return Content(result.Result);
+        }
     }
 }

@@ -26,6 +26,10 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult Login()
         {
+            if (WorkingUser > 0)
+            {
+                Response.Redirect("/Home/Index");
+            }
             return View();
         }
 
@@ -45,18 +49,18 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-       
+
         [CheckAuthorize]
         public IActionResult GetUserCompany()
         {
             User parameter = new User();
             parameter.CompanyId = WorkingCompany;
 
-            var result = user.GetUser(parameter);
+            var result = user.GetUserCompany(parameter);
 
             return Content(result.Result);
         }
-   
+
         [CheckAuthorize]
         public IActionResult GetUsers()
         {
@@ -67,7 +71,7 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-     
+
         [CheckAuthorize]
         public IActionResult UpdateProfile([FromBody] User parameter)
         {
@@ -77,7 +81,7 @@ namespace UltimateDemerbas.Controllers
 
             return Content(result.Result);
         }
-      
+
         [CheckAuthorize]
         public IActionResult ChangePassword([FromBody] User parameter)
         {

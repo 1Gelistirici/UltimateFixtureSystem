@@ -49,5 +49,12 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetDepartments();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetGenders")]
+        public ActionResult GetGenders()
+        {
+            var result = EnumCallManager.Instance.GetGenders();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

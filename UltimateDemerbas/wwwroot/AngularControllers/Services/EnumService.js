@@ -48,5 +48,13 @@
                         success(response.data);
                 }, error);
         }
+
+        this.GetGenders = function (success, error) {
+            $http.get("/Enum/GetGenders").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

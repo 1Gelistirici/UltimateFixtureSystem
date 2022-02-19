@@ -1,5 +1,4 @@
-﻿@*@using VPS.UI.Models.Tool*@
-
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -122,15 +121,3 @@
     <script src="~/AngularControllers/Services/LicenseService.js"></script>
     <script src="~/AngularControllers/Controllers/LicenseController.js"></script>
 }
-@*@section PageScript{
-        @if (VpsHelper.IsDebugActive)
-        {
-            <script src="~/Scripts/Service/TagService.js"></script>
-            <script src="~/Scripts/Controller/TagController.js"></script>
-        }
-        else
-        {
-            <script src="~/Scripts/Service/ZoneService.js?@VersionChecker.GetDateVersion()"></script>
-            <script src="~/Scripts/Controller/TagController.js?@VersionChecker.GetDateVersion()"></script>
-        }
-    }*@
