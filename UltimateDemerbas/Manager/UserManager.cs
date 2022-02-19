@@ -41,6 +41,11 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<User>("User/UpdateProfile", parameter);
         }
+        
+        public Task<string> AddUser(User parameter)
+        {
+            return GetApiParameter<User>("User/AddUser", parameter);
+        }
 
     }
 }

@@ -43,6 +43,7 @@ namespace UltimateAPI.Controllers
             var result = UserCallManager.Instance.ChangePassword(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
         [HttpPost("UpdateProfile")]
         public IActionResult UpdateProfile(User parameter)
         {
@@ -50,7 +51,12 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-
+        [HttpPost("AddUser")]
+        public IActionResult AddUser(User parameter)
+        {
+            var result = UserCallManager.Instance.AddUser(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
 
 
     }

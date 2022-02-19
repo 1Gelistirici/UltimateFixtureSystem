@@ -44,9 +44,7 @@ namespace UltimateDemerbas.Controllers
         {
             User parameter = new User();
             parameter.UserId = WorkingUser;
-
             var result = user.GetUser(parameter);
-
             return Content(result.Result);
         }
 
@@ -55,9 +53,7 @@ namespace UltimateDemerbas.Controllers
         {
             User parameter = new User();
             parameter.CompanyId = WorkingCompany;
-
             var result = user.GetUserCompany(parameter);
-
             return Content(result.Result);
         }
 
@@ -66,9 +62,15 @@ namespace UltimateDemerbas.Controllers
         {
             User parameter = new User();
             parameter.CompanyId = WorkingCompany;
-
             var result = user.GetUsers(parameter);
+            return Content(result.Result);
+        }
 
+        [CheckAuthorize]
+        public IActionResult AddUser([FromBody] User parameter)
+        {
+            parameter.UserId = WorkingUser;
+            var result = user.AddUser(parameter);
             return Content(result.Result);
         }
 
@@ -76,9 +78,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult UpdateProfile([FromBody] User parameter)
         {
             parameter.UserId = WorkingUser;
-
             var result = user.UpdateProfile(parameter);
-
             return Content(result.Result);
         }
 
@@ -91,9 +91,7 @@ namespace UltimateDemerbas.Controllers
             }
 
             parameter.UserId = WorkingUser;
-
             var result = user.ChangePassword(parameter);
-
             return Content(result.Result);
         }
 

@@ -371,177 +371,47 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        //public UltimateResult<List<User>> GetAccessories()
-        //{
-        //    List<User> accessories = new List<User>();
-        //    UltimateResult<List<User>> result = new UltimateResult<List<User>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[accessories_GetAccessories]";
+        public UltimateResult<User> AddUser(User parameter)
+        {
+            UltimateResult<User> result = new UltimateResult<User>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[user_AddUser]";
 
-        //    try
-        //    {
-        //        using (sqlConnection =  Global.GetSqlConnection())
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
 
-        //                using (SqlDataReader read = sqlCommand.ExecuteReader())
-        //                {
-        //                    if (read.HasRows)
-        //                    {
-        //                        while (read.Read())
-        //                        {
-        //                            User accessory = new User();
-        //                            accessory.Id = Convert.ToInt32(read["id"]);
-        //                            accessory.Name = read["name"].ToString();
-        //                            accessory.Piece = Convert.ToInt32(read["piece"]);
-        //                            accessory.ModelNo = Convert.ToInt32(read["model_no"]);
-        //                            accessory.UserNo = Convert.ToInt32(read["user_no"]);
-        //                            accessory.BillNo = Convert.ToInt32(read["bill_no"]);
-        //                            accessory.StatuNo = Convert.ToInt32(read["statu_no"]);
-        //                            accessory.CategoryNo = Convert.ToInt32(read["category_no"]);
+                        sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@surname", parameter.Surname);
+                        sqlCommand.Parameters.AddWithValue("@username", parameter.UserName);
+                        sqlCommand.Parameters.AddWithValue("@password", parameter.Password);
+                        sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
-        //                            accessories.Add(accessory);
-        //                        }
-        //                    }
-        //                    read.Close();
-        //                }
-        //                sqlCommand.Dispose();
-        //                result.Data = accessories;
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //        result.IsSuccess = false;
-        //    }
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
 
-        //    return result;
-        //}
+            AddLog(parameter.UserId, $"{parameter.Name} {parameter.Surname} isimli ıser eklendi");
 
-        //public UltimateResult<List<User>> AddAccessory(User parameter)
-        //{
-        //    UltimateResult<List<User>> result = new UltimateResult<List<User>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[accessories_AddAccessory]";
-
-        //    try
-        //    {
-        //        using (sqlConnection =  Global.GetSqlConnection())
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
-
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
-
-        //                sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
-        //                sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
-        //                sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
-        //                sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
-        //                sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
-        //                sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
-        //                sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
-
-        //                int effectedRow = sqlCommand.ExecuteNonQuery();
-        //                result.IsSuccess = effectedRow > 0;
-        //                sqlConnection.Close();
-        //                sqlCommand.Dispose();
-
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //    }
-
-        //    return result;
-        //}
-
-        //public UltimateResult<List<User>> DeleteAccessory(User parameter)
-        //{
-        //    UltimateResult<List<User>> result = new UltimateResult<List<User>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[accessories_DeleteAccessory]";
-
-        //    try
-        //    {
-        //        using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
-
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
-
-        //                sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
-
-        //                int effectedRow = sqlCommand.ExecuteNonQuery();
-        //                result.IsSuccess = effectedRow > 0;
-        //                sqlConnection.Close();
-        //                sqlCommand.Dispose();
-
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //    }
-
-        //    return result;
-        //}
-
-        //public UltimateResult<List<User>> UpdateAccessory(User parameter)
-        //{
-        //    UltimateResult<List<User>> result = new UltimateResult<List<User>>();
-        //    SqlConnection sqlConnection = null;
-        //    string Proc = "[dbo].[accessories_UpdateAccessory]";
-
-        //    try
-        //    {
-        //        using (sqlConnection = new SqlConnection(@"Data Source=SKY-NET\SQLEXPRESS;Initial Catalog=UDemirbas;Integrated Security=True"))
-        //        {
-        //            ConnectionManager.Instance.SqlConnect(sqlConnection);
-
-        //            using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-        //            {
-        //                ConnectionManager.Instance.CmdOperations();
-
-        //                sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
-        //                sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
-        //                sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
-        //                sqlCommand.Parameters.AddWithValue("@model_no", parameter.ModelNo);
-        //                sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
-        //                sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
-        //                sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
-        //                sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
-
-        //                int effectedRow = sqlCommand.ExecuteNonQuery();
-        //                result.IsSuccess = effectedRow > 0;
-        //                sqlConnection.Close();
-        //                sqlCommand.Dispose();
-        //            }
-        //            ConnectionManager.Instance.Dispose(sqlConnection);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ConnectionManager.Instance.Excep(ex, sqlConnection);
-        //    }
-
-        //    return result;
-        //}
-
-
+            return result;
+        }
 
     }
 }
