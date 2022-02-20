@@ -61,7 +61,27 @@
         }
         $scope.GetGenders();
 
+        $scope.UpdateLicense = function () {
+            var parameter = {
+                Name: $scope.Name,
+                Surname: $scope.Surname,
+                Username: $scope.Username,
+                Password: $scope.Password,
+                Company: $scope.Company
+            };
 
+            LicenseService.UpdateLicense(data,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Update License", "Lisans güncelleme işlemi başarılı");
+                        $scope.Pop = [];
+                    } else {
+                        toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
 
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
