@@ -68,23 +68,25 @@
             }
 
             var parameter = {
-                Name: $scope.Name,
-                Surname: $scope.Surname,
-                Username: $scope.Username,
-                Password: $scope.Password,
-                Company: $scope.Company
+                Name: $scope.Pop.Name,
+                Surname: $scope.Pop.Surname,
+                Username: $scope.Pop.Username,
+                Gender: $scope.Pop.Gender,
+                Password: $scope.Pop.Password,
+                PasswordTry: $scope.Pop.TryPassword,
             };
 
-            UserService.AddUser(data,
+            UserService.AddUser(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Update License", "Lisans güncelleme işlemi başarılı");
+                        toaster.success("Successful", "Lisans güncelleme işlemi başarılı");
                         $scope.Pop = [];
+                        $("#AddUser").modal("hide");
                     } else {
-                        toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Unsuccessful", result.Message);
                     }
                 }, function error() {
-                    toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Unsuccessful", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

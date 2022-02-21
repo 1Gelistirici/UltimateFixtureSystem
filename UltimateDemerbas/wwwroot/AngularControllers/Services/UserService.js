@@ -16,9 +16,9 @@
                         success(response.data);
                 }, error);
         }
-        
-        this.AddUser = function (success, error) {
-            $http.post("/User/AddUser").then(
+
+        this.AddUser = function (parameter, success, error) {
+            $http.post("/User/AddUser", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

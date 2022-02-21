@@ -206,7 +206,7 @@ namespace UltimateAPI.Manager
                                     user.Twitter = read["twitter"].ToString();
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
-                                    user.Gender = Convert.ToInt32(read["gender"]);
+                                    user.Gender = Convert.ToBoolean(read["gender"]);
 
                                     users.Add(user);
                                 }
@@ -391,10 +391,17 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@surname", parameter.Surname);
                         sqlCommand.Parameters.AddWithValue("@username", parameter.UserName);
                         sqlCommand.Parameters.AddWithValue("@password", parameter.Password);
+                        sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
                         sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+
+                        if (effectedRow==-1)
+                        {
+                            result.Message = "Kullanıcı adını değiştiriniz.";
+                        }
+
                         sqlConnection.Close();
                         sqlCommand.Dispose();
                     }
@@ -408,7 +415,7 @@ namespace UltimateAPI.Manager
                 return result;
             }
 
-            AddLog(parameter.UserId, $"{parameter.Name} {parameter.Surname} isimli ıser eklendi");
+            AddLog(parameter.UserId, $"{parameter.Name} {parameter.Surname} isimli user eklendi");
 
             return result;
         }

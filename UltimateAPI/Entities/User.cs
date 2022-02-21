@@ -16,7 +16,7 @@ namespace UltimateAPI.Entities
         public string Twitter { get; set; }
         public string Linkedin { get; set; }
         public string About { get; set; }
-        public int Gender { get; set; }
+        public bool Gender { get; set; }
 
     }
 }

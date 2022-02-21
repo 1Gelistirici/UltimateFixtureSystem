@@ -74,7 +74,7 @@ namespace UltimateDemerbas.Controllers
                 return Content("Şifreler Uyuşmuyor");
             }
 
-            parameter.UserId = WorkingUser;
+            parameter.CompanyId = WorkingCompany;
             var result = user.AddUser(parameter);
             return Content(result.Result);
         }

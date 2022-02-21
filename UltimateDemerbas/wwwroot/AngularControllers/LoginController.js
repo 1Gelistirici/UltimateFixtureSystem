@@ -1,7 +1,10 @@
 ﻿LoginApp.controller("LoginController", ["$scope", "LoginService", "$window", "toaster",
     function ($scope, LoginService, $window, toaster) {
 
+        $scope.LoginButton = false;
+
         $scope.CheckUser = function () {
+            $scope.LoginButton = true;
             var parameter = {
                 UserName: $scope.User.Username,
                 Password: $scope.User.Password,
@@ -10,6 +13,7 @@
 
             LoginService.CheckUser(parameter,
                 function success(result) {
+                    $scope.LoginButton = false;
                     if (result.IsSuccess) {
                         var parameter = {
                             Id: result.Data[0].Id,
@@ -23,6 +27,7 @@
                         toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
                     }
                 }, function error() {
+                    $scope.LoginButton = false;
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
