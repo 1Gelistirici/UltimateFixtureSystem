@@ -23,12 +23,6 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        [CheckAuthorize]
-        public IActionResult Tester()
-        {
-            return View();
-        }
-
         public IActionResult GetMenus()
         {
             var result = layoutManager.GetMenus();

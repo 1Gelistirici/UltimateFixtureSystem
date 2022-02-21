@@ -61,7 +61,12 @@
         }
         $scope.GetGenders();
 
-        $scope.UpdateLicense = function () {
+        $scope.AddUser = function () {
+            if ($scope.Password != $scope.TryPassword) {
+                toaster.error("Başarısız", "Şifreler Uyuşmuyor.");
+                return;
+            }
+
             var parameter = {
                 Name: $scope.Name,
                 Surname: $scope.Surname,
@@ -70,7 +75,7 @@
                 Company: $scope.Company
             };
 
-            LicenseService.UpdateLicense(data,
+            UserService.AddUser(data,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Update License", "Lisans güncelleme işlemi başarılı");
