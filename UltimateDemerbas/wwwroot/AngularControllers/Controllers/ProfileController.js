@@ -73,28 +73,25 @@
                 });
         }
 
-        //Get User
+        //#region GETS
         $scope.GetUser = function () {
             UserService.GetUser(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.User = result.Data[0];
-                        $scope.Facebook = result.Data[0].Facebook;
-                        $scope.Twitter = result.Data[0].Twitter;
-                        $scope.Linkedin = result.Data[0].Linkedin;
-                        $scope.About = result.Data[0].About;
-
-                        console.log($scope.User);
+                        $scope.User = result.Data;
+                        $scope.Facebook = result.Data.Facebook;
+                        $scope.Twitter = result.Data.Twitter;
+                        $scope.Linkedin = result.Data.Linkedin;
+                        $scope.About = result.Data.About;
                     } else {
-                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUser();
 
-        //Get Task
         $scope.GetTasks = function () {
             TaskService.GetTasks(
                 function success(result) {
@@ -109,7 +106,6 @@
         }
         $scope.GetTasks();
 
-        //Get Categories
         $scope.GetCategories = function () {
             CategoryService.GetCategories(
                 function success(result) {
@@ -124,7 +120,6 @@
         }
         $scope.GetCategories();
 
-        //Get AccessoryModels
         $scope.GetAccessoryModels = function () {
             AccessoryModelService.GetAccessoryModels(
                 function success(result) {
@@ -139,6 +134,7 @@
                 });
         }
         $scope.GetAccessoryModels();
+        //#endregion
 
         //Get Accessory
         //$scope.GetAccessory = function () {
@@ -186,11 +182,15 @@
             UserService.ChangePassword(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.PasswordTry = [];
+                        $scope.Password = [];
+                        $scope.OldPassword = [];
+                        toaster.success("Başarılı", "Şifre güncellendi.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "Şifre güncellenirken bir problem oluştu.");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Şifre güncellenirken bir problem oluştu.");
                 });
         }
 
@@ -212,10 +212,10 @@
                         $scope.User.Linkedin = $scope.Linkedin;
                         $scope.User.About = $scope.About;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateProfile", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateProfile", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

@@ -49,7 +49,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@Company", user.Company);
                         sqlCommand.Parameters.AddWithValue("@UserName", user.UserName);
-                        sqlCommand.Parameters.AddWithValue("@Password", user.Password);
+                        sqlCommand.Parameters.AddWithValue("@Password", Functions.Hashing.SHA_512_Encrypting(user.Password));
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
@@ -147,6 +147,8 @@ namespace UltimateAPI.Manager
                                     user.Twitter = read["twitter"].ToString();
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
+
+                                    result.IsSuccess = true;
                                 }
                             }
                             read.Close();
@@ -308,8 +310,8 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@id", parameter.UserId);
-                        sqlCommand.Parameters.AddWithValue("@newPass", parameter.Password);
-                        sqlCommand.Parameters.AddWithValue("@oldPass", parameter.OldPassword);
+                        sqlCommand.Parameters.AddWithValue("@newPass", Functions.Hashing.SHA_512_Encrypting(parameter.Password));
+                        sqlCommand.Parameters.AddWithValue("@oldPass", Functions.Hashing.SHA_512_Encrypting(parameter.OldPassword));
 
                         result.IsSuccess = false;
                         int effectedRow = sqlCommand.ExecuteNonQuery();
@@ -390,14 +392,14 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@surname", parameter.Surname);
                         sqlCommand.Parameters.AddWithValue("@username", parameter.UserName);
-                        sqlCommand.Parameters.AddWithValue("@password", parameter.Password);
+                        sqlCommand.Parameters.AddWithValue("@password", Functions.Hashing.SHA_512_Encrypting(parameter.Password));
                         sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
                         sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
 
-                        if (effectedRow==-1)
+                        if (effectedRow == -1)
                         {
                             result.Message = "Kullanıcı adını değiştiriniz.";
                         }
@@ -416,6 +418,43 @@ namespace UltimateAPI.Manager
             }
 
             AddLog(parameter.UserId, $"{parameter.Name} {parameter.Surname} isimli user eklendi");
+
+            return result;
+        }
+
+        public bool DeleteUser(User parameter)
+        {
+            bool result = false;
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[users_DeleteUser]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+            }
+
+            AddLog(parameter.UserId, "Demirbaş Silindi");
 
             return result;
         }

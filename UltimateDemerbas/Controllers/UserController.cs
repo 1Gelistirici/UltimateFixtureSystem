@@ -33,6 +33,19 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        [CheckAuthorize]
+        public IActionResult ChangePassword([FromBody] User parameter)
+        {
+            if (parameter.Password != parameter.PasswordTry)
+            {
+                return Content("Şifreler Uyuşmuyor");
+            }
+
+            parameter.UserId = WorkingUser;
+            var result = user.ChangePassword(parameter);
+            return Content(result.Result);
+        }
+
         public IActionResult CheckUser([FromBody] User parameter)
         {
             var result = user.CheckUser(parameter);
@@ -76,6 +89,13 @@ namespace UltimateDemerbas.Controllers
 
             parameter.CompanyId = WorkingCompany;
             var result = user.AddUser(parameter);
+            return Content(result.Result);
+        }
+
+        [CheckAuthorize]
+        public IActionResult DeleteUser([FromBody] User parameter)
+        {
+            var result = user.DeleteUser(parameter);
             return Content(result.Result);
         }
 

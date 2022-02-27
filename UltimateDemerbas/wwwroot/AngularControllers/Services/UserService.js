@@ -1,8 +1,8 @@
 ﻿MainApp.service("UserService", ["$http",
     function ($http) {
 
-        this.GetUser = function (id, success, error) {
-            $http.get("/User/GetUser", { id: id }).then(
+        this.GetUser = function (success, error) {
+            $http.get("/User/GetUser").then(
                 function (response) {
                     if (success)
                         success(response.data);
@@ -43,6 +43,14 @@
 
         this.UpdateProfile = function (parameter, success, error) {
             $http.post("/User/UpdateProfile", JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
+        this.DeleteUser = function (Id, success, error) {
+            $http.post("/User/DeleteUser", { Id: Id }).then(
                 function (response) {
                     if (success)
                         success(response.data);

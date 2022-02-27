@@ -82,6 +82,7 @@
                         toaster.success("Successful", "Lisans güncelleme işlemi başarılı");
                         $scope.Pop = [];
                         $("#AddUser").modal("hide");
+                        $scope.GetUserCompany();
                     } else {
                         toaster.error("Unsuccessful", result.Message);
                     }
@@ -90,23 +91,27 @@
                 });
         }
 
+        $scope.DeleteUser = function (data) {
+            
+            UserService.DeleteUser(data.Id,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Kullanıcı silindi.");
+                        $scope.GetUserCompany();
+                    } else {
+                        toaster.error("Başarısız", "Kullanıcı silme işlemi yapılırken bir hata oluştu.");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Kullanıcı silme işlemi yapılırken bir hata oluştu.");
+                });
+        }
+
+
 
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
 
-        //$scope.DeleteLicense = function (data) {
-        //    LicenseService.DeleteLicense(data.Id,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Delete License", "Lisans silme işlemi başarılı");
-        //                $scope.GetLicenses();
-        //            } else {
-        //                toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
+
 
         //$scope.UpdateLicense = function (data) {
         //    LicenseService.UpdateLicense(data,

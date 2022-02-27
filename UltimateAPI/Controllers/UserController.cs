@@ -29,7 +29,7 @@ namespace UltimateAPI.Controllers
             var result = UserCallManager.Instance.GetUserCompany(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-        
+
         [HttpPost("GetUsers")]
         public IActionResult GetUsers(User parameter)
         {
@@ -56,6 +56,13 @@ namespace UltimateAPI.Controllers
         {
             var result = UserCallManager.Instance.AddUser(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("DeleteUser")]
+        public IActionResult DeleteUser(User parameter)
+        {
+            var result = UserCallManager.Instance.DeleteUser(parameter);
+            return Content(ResultData.Get(result, "", result));
         }
 
 

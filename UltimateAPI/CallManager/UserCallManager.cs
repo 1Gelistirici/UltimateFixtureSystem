@@ -55,5 +55,9 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.AddUser(parameter);
         }
+        public bool DeleteUser(User parameter)
+        {
+            return UserManager.Instance.DeleteUser(parameter);
+        }
     }
 }
