@@ -51,6 +51,11 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<User>("User/DeleteUser", parameter);
         }
+        
+        public Task<string> UpdateUser(User parameter)
+        {
+            return GetApiParameter<User>("User/UpdateUser", parameter);
+        }
 
     }
 }

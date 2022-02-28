@@ -17,6 +17,7 @@ namespace UltimateAPI.Entities
         public string Linkedin { get; set; }
         public string About { get; set; }
         public bool Gender { get; set; }
+        public int Lock { get; set; }
 
     }
 }

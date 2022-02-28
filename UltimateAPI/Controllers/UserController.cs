@@ -65,6 +65,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result, "", result));
         }
 
+        [HttpPost("UpdateUser")]
+        public IActionResult UpdateUser(User parameter)
+        {
+            var result = UserCallManager.Instance.UpdateUser(parameter);
+            return Content(ResultData.Get(result, "", result));
+        }
+
 
     }
 }

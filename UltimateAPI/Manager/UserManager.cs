@@ -373,6 +373,53 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+
+        public bool UpdateUser(User parameter)
+        {
+            bool result = false;
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[users_UpdateUser]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.UserId);
+                        sqlCommand.Parameters.AddWithValue("@name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@surname", parameter.Surname);
+                        sqlCommand.Parameters.AddWithValue("@username", parameter.UserName);
+                        sqlCommand.Parameters.AddWithValue("@mailAdress", parameter.MailAdress);
+                        sqlCommand.Parameters.AddWithValue("@telNo", parameter.Telephone);
+                        sqlCommand.Parameters.AddWithValue("@title", parameter.Title);
+                        sqlCommand.Parameters.AddWithValue("@departmentId", parameter.Department);
+                        sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
+                        sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result = false;
+                return result;
+            }
+
+            return result;
+        }
+
+
         public UltimateResult<User> AddUser(User parameter)
         {
             UltimateResult<User> result = new UltimateResult<User>();
@@ -444,7 +491,6 @@ namespace UltimateAPI.Manager
                         result = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
-
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }

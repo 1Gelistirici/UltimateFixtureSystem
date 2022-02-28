@@ -100,6 +100,13 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
+        public IActionResult UpdateUser([FromBody] User parameter)
+        {
+            var result = user.UpdateUser(parameter);
+            return Content(result.Result);
+        }
+
+        [CheckAuthorize]
         public IActionResult UpdateProfile([FromBody] User parameter)
         {
             parameter.UserId = WorkingUser;

@@ -57,5 +57,13 @@
                 }, error);
         }
 
+        this.UpdateUser = function (parameter, success, error) {
+            $http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
     }]);
 
