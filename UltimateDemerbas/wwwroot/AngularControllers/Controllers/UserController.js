@@ -1,6 +1,7 @@
 ﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster",
     function ($scope, UserService, EnumService, NgTableParams, toaster) {
 
+        //#region Parameters
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -12,6 +13,7 @@
             Telephone: "Telephone",
             MailAdress: "Mail"
         };
+        //#endregion
 
         $scope.GetUserCompany = function () {
             UserService.GetUserCompany(
@@ -92,7 +94,6 @@
         }
 
         $scope.DeleteUser = function (data) {
-            
             UserService.DeleteUser(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -106,6 +107,29 @@
                 });
         }
 
+        $scope.OpenPopup = function (data) {
+            $scope.Pop = data;
+        }
+
+        $scope.UpdateUser = function () {
+
+            var parameter = {
+
+            };
+
+            UserService.UpdateUser(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Kullanıcı güncellendi.");
+                        $scope.Pop = [];
+
+                    } else {
+                        toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
+                });
+        }
 
 
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -113,19 +137,7 @@
 
 
 
-        //$scope.UpdateLicense = function (data) {
-        //    LicenseService.UpdateLicense(data,
-        //        function success(result) {
-        //            if (result.IsSuccess) {
-        //                toaster.success("Update License", "Lisans güncelleme işlemi başarılı");
 
-        //            } else {
-        //                toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
-        //            }
-        //        }, function error() {
-        //            toaster.error("Update License", "Lisans güncelleme işlemi yapılırken bir hata oluştu");
-        //        });
-        //}
 
         //$scope.AddLicense = function () {
         //    var data = {

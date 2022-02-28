@@ -141,7 +141,7 @@ namespace UltimateAPI.Manager
                                     user.Telephone = read["telNo"].ToString();
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
-                                    user.Department = read["department"].ToString();
+                                    user.Department = Convert.ToInt32(read["departmentId"]);
                                     user.Linkedin = read["linkedin"].ToString();
                                     user.Facebook = read["facebook"].ToString();
                                     user.Twitter = read["twitter"].ToString();
@@ -202,7 +202,7 @@ namespace UltimateAPI.Manager
                                     user.Telephone = read["telNo"].ToString();
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
-                                    user.Department = read["department"].ToString();
+                                    user.Department = Convert.ToInt32(read["departmentId"]);
                                     user.Linkedin = read["linkedin"].ToString();
                                     user.Facebook = read["facebook"].ToString();
                                     user.Twitter = read["twitter"].ToString();
@@ -264,7 +264,7 @@ namespace UltimateAPI.Manager
                                     user.Telephone = read["telNo"].ToString();
                                     user.Company = read["company"].ToString();
                                     user.Title = read["title"].ToString();
-                                    user.Department = read["department"].ToString();
+                                    user.Department = Convert.ToInt32(read["departmentId"]);
                                     user.Linkedin = read["linkedin"].ToString();
                                     user.Facebook = read["facebook"].ToString();
                                     user.Twitter = read["twitter"].ToString();

@@ -1,0 +1,107 @@
+﻿
+<div id="UpdateUser" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Add New User</h4>
+
+                    <div class="md-checkbox-list pull-right">
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox2_1" class="md-check">
+                            <label for="checkbox2_1">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> Lock
+                            </label>
+                        </div>
+                    </div>
+            </div>
+            <div class="scroller" style="height:440px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form name="AddUserForm" class="col-md-12">
+
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Name.$invalid && !AddUserForm.Name.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Name" class="form-control" ng-model="Pop.Name" placeholder="john" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Surname.$invalid && !AddUserForm.Surname.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Surname</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Surname" class="form-control" ng-model="Pop.Surname" placeholder="doe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Username.$invalid && !AddUserForm.Username.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Username</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Username" class="form-control" ng-model="Pop.UserName" placeholder="johndoe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.MailAdress.$invalid && !AddUserForm.Username.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">MailAdress</label>
+                            <div class="col-md-9">
+                                <input type="text" name="MailAdress" class="form-control" ng-model="Pop.MailAdress" placeholder="johndoe" required>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Title.$invalid && !AddUserForm.Username.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Title</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Title" class="form-control" ng-model="Pop.Title" placeholder="johndoe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Department.$invalid && !AddUserForm.Username.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Department</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Department" class="form-control" ng-model="Pop.Department" placeholder="johndoe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Telephone.$invalid && !AddUserForm.Username.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Telephone</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Telephone" class="form-control" ng-model="Pop.Telephone" placeholder="johndoe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-radios has-success col-md-6 pull-right">
+                            <label for="form_control_1">Gender</label>
+                            <div class="md-radio-inline">
+                                <div class="md-radio">
+                                    <input type="radio" id="checkbox2_8" name="radio2" class="md-radiobtn" ng-checked="Pop.Gender===false">
+                                    <label for="checkbox2_8">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> Women
+                                    </label>
+                                </div>
+                                <div class="md-radio">
+                                    <input type="radio" id="checkbox2_9" name="radio2" class="md-radiobtn" ng-checked="Pop.Gender===true">
+                                    <label for="checkbox2_9">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> Man
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="AddUser()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

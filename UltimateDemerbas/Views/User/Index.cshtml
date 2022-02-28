@@ -96,7 +96,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateUser(_)">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
                                             </li>
@@ -127,6 +127,7 @@
     </div>
 
     <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/User/UpdateUserPopup.cshtml" />
 </div>
 
 
