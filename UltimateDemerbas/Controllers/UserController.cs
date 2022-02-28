@@ -93,18 +93,21 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
+        [HttpPost]
+        public IActionResult UpdateUser([FromBody] User parameter)
+        {
+            var result = user.UpdateUser(parameter);
+            return Content(result.Result);
+        }
+
+        [CheckAuthorize]
         public IActionResult DeleteUser([FromBody] User parameter)
         {
             var result = user.DeleteUser(parameter);
             return Content(result.Result);
         }
 
-        [CheckAuthorize]
-        public IActionResult UpdateUser([FromBody] User parameter)
-        {
-            var result = user.UpdateUser(parameter);
-            return Content(result.Result);
-        }
+
 
         [CheckAuthorize]
         public IActionResult UpdateProfile([FromBody] User parameter)

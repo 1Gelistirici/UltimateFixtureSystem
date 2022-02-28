@@ -35,12 +35,26 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", "GetUserCompany");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "GetUserCompany");
                 });
         }
+
+        $scope.GetDepartments = function () {
+            EnumService.GetDepartments(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Departments = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "GetDepartments");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "GetDepartments");
+                });
+        }
+        $scope.GetDepartments();
 
         $scope.GetGenders = function () {
             EnumService.GetGenders(
@@ -114,7 +128,15 @@
         $scope.UpdateUser = function () {
 
             var parameter = {
-
+                UserId: $scope.Pop.Id,
+                Name: $scope.Pop.Name,
+                Surname: $scope.Pop.Surname,
+                UserName: $scope.Pop.UserName,
+                MailAdress: $scope.Pop.MailAdress,
+                Telephone: $scope.Pop.Telephone,
+                Title: $scope.Pop.Title,
+                Department: $scope.Pop.Department,
+                Gender: $scope.Pop.Gender.Value === 1,
             };
 
             UserService.UpdateUser(parameter,
@@ -122,7 +144,8 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Kullanıcı güncellendi.");
                         $scope.Pop = [];
-
+                        $("#UpdateUser").modal("hide");
+                        //$scope.GetUserCompany();
                     } else {
                         toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
                     }

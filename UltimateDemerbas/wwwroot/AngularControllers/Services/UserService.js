@@ -25,6 +25,14 @@
                 }, error);
         }
 
+        this.UpdateUser = function (parameter, success, error) {
+            $http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.GetUserCompany = function (success, error) {
             $http.get("/User/GetUserCompany").then(
                 function (response) {
@@ -51,14 +59,6 @@
 
         this.DeleteUser = function (Id, success, error) {
             $http.post("/User/DeleteUser", { Id: Id }).then(
-                function (response) {
-                    if (success)
-                        success(response.data);
-                }, error);
-        }
-
-        this.UpdateUser = function (parameter, success, error) {
-            $http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
