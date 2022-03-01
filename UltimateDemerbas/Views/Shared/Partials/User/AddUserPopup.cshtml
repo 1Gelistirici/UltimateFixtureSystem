@@ -5,8 +5,19 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h4 class="modal-title danger">Add New User</h4>
+
+                <div class="md-checkbox-list pull-right">
+                    <div class="md-checkbox">
+                        <input type="checkbox" id="checkbox2_1" class="md-check">
+                        <label for="checkbox2_1">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span> Lock
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="scroller" style="height:350px" data-always-visible="0" data-rail-visible1="1">
+            <div class="scroller" style="height:450px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form name="AddUserForm" class="col-md-12">
 
@@ -32,10 +43,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Department.$invalid && !AddUserForm.Department.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Department</label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="Department" ng-model="Pop.Department" required>
+                                    <option ng-repeat="x in Departments" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Password.$invalid && !AddUserForm.Password.$pristine}">
                             <label class="col-md-3 control-label" for="form_control_1">Password</label>
                             <div class="col-md-9">
                                 <input type="password" name="Password" class="form-control" ng-model="Pop.Password" placeholder="******" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Title.$invalid && !AddUserForm.Title.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Title</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Title" class="form-control" ng-model="Pop.Title" required>
                             </div>
                         </div>
 
@@ -45,6 +72,7 @@
                                 <input type="password" name="TryPassword" class="form-control" ng-model="Pop.TryPassword" placeholder="******" required>
                             </div>
                         </div>
+
 
                         <div class="form-group form-md-radios has-success col-md-6 pull-right">
                             <label for="form_control_1">Gender</label>

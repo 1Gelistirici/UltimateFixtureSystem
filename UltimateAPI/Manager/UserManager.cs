@@ -373,7 +373,6 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-
         public bool UpdateUser(User parameter)
         {
             bool result = false;
@@ -419,7 +418,6 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-
         public UltimateResult<User> AddUser(User parameter)
         {
             UltimateResult<User> result = new UltimateResult<User>();
@@ -442,6 +440,9 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@password", Functions.Hashing.SHA_512_Encrypting(parameter.Password));
                         sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
                         sqlCommand.Parameters.AddWithValue("@companyId", parameter.CompanyId);
+                        sqlCommand.Parameters.AddWithValue("@title", parameter.Title);
+                        sqlCommand.Parameters.AddWithValue("@departmentId", parameter.Department);
+                        sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

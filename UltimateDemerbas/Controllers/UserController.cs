@@ -107,8 +107,6 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-
-
         [CheckAuthorize]
         public IActionResult UpdateProfile([FromBody] User parameter)
         {

@@ -90,6 +90,9 @@
                 Gender: $scope.Pop.Gender,
                 Password: $scope.Pop.Password,
                 PasswordTry: $scope.Pop.TryPassword,
+                Title: $scope.Pop.Title,
+                PasswordTry: $scope.Pop.TryPassword,
+                Department: $scope.Pop.Department,
             };
 
             UserService.AddUser(parameter,
