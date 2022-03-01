@@ -26,7 +26,6 @@ namespace UltimateAPI.Manager
                 }
                 return _instance;
             }
-
         }
 
 
