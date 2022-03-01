@@ -27,6 +27,7 @@ namespace UltimateDemerbas.Controllers
         }
 
 
+        [CheckAuthorize]
         public IActionResult GetFixtures()
         {
             FixtureManager fixture = new FixtureManager(_httpClientFactory);
@@ -35,6 +36,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        [CheckAuthorize]
         public IActionResult GetFixture([FromBody] Fixture parameter)
         {
             if (parameter.UserId == 0)
@@ -46,6 +48,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        [CheckAuthorize]
         public IActionResult GetFixtureByUser()
         {
             Fixture parameter = new Fixture();
@@ -56,6 +59,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        [CheckAuthorize]
         public IActionResult AddFixture([FromBody] Fixture parameter)
         {
             var result = fixture.AddFixture(parameter);
@@ -63,6 +67,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        [CheckAuthorize]
         public IActionResult UpdateFixture([FromBody] Fixture parameter)
         {
             var result = fixture.UpdateFixture(parameter);
@@ -70,6 +75,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        [CheckAuthorize]
         public IActionResult DeleteFixture([FromBody] Fixture parameter)
         {
             var result = fixture.DeleteFixture(parameter);
