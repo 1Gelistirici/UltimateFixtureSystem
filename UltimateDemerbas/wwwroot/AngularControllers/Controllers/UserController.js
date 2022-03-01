@@ -87,7 +87,7 @@
                 Name: $scope.Pop.Name,
                 Surname: $scope.Pop.Surname,
                 Username: $scope.Pop.Username,
-                Gender: $scope.Pop.Gender,
+                Gender: $('#checkbox2_8').is(':checked'),
                 Password: $scope.Pop.Password,
                 PasswordTry: $scope.Pop.TryPassword,
                 Title: $scope.Pop.Title,

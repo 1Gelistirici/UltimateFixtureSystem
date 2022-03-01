@@ -52,10 +52,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Password.$invalid && !AddUserForm.Password.$pristine}">
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Password.$invalid && !AddUserForm.Password.$pristine}">
                             <label class="col-md-3 control-label" for="form_control_1">Password</label>
                             <div class="col-md-9">
                                 <input type="password" name="Password" class="form-control" ng-model="Pop.Password" placeholder="******" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.TryPassword.$invalid && !AddUserForm.TryPassword.$pristine}">
+                            <label class="col-md-3 control-label" for="form_control_1">Try Password</label>
+                            <div class="col-md-9">
+                                <input type="password" name="TryPassword" class="form-control" ng-model="Pop.TryPassword" placeholder="******" required>
                             </div>
                         </div>
 
@@ -65,14 +72,6 @@
                                 <input type="text" name="Title" class="form-control" ng-model="Pop.Title" required>
                             </div>
                         </div>
-
-                        <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.TryPassword.$invalid && !AddUserForm.TryPassword.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Try Password</label>
-                            <div class="col-md-9">
-                                <input type="password" name="TryPassword" class="form-control" ng-model="Pop.TryPassword" placeholder="******" required>
-                            </div>
-                        </div>
-
 
                         <div class="form-group form-md-radios has-success col-md-6 pull-right">
                             <label for="form_control_1">Gender</label>
