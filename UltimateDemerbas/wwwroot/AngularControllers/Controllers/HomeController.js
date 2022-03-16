@@ -1,10 +1,11 @@
-﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService",
-    function ($scope, LogService, MessageService, TaskService, UserService) {
+﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService",
+    function ($scope, LogService, MessageService, TaskService, UserService, TonerService) {
 
         $scope.Pop = [];
         $scope.Messages = [];
         $scope.MessageDetail = '';
         $scope.lateTask = 0;
+        $scope.TonerAlert = 0;
 
         $scope.Tasks = [];
         $scope.Pop.startDate = new Date();
@@ -48,6 +49,26 @@
                 });
         }
         $scope.GetMessages();
+
+        $scope.GetToners = function () {
+            TonerService.GetToners(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.TonerAlert = 0;
+
+                        result.Data.forEach(function (x) {
+                            if (x.Piece <= x.MinStock) {
+                                $scope.TonerAlert++;
+                            }
+                        });
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetToners();
 
         $scope.GetTasks = function () {
             TaskService.GetTasks(
