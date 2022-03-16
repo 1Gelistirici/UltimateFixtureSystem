@@ -42,6 +42,7 @@
                             <col width="600" />
                             <col width="600" />
                             <col width="600" />
+                            <col width="600" />
                         </colgroup>
 
                         <tbody>
@@ -83,6 +84,23 @@
                                 <td data-title="TableCol.Title" filter="{ Title: 'text'}" sortable="'Title'">
                                     <div class="col-md-9">
                                         <label style="font-size: 14px;"> {{_.Title}}</label>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.Lock" filter="{ Lock: 'text'}" sortable="'Lock'">
+                                    <div class="col-md-9">
+
+                                        <div class="md-checkbox-list pull-right" ng-show="_.Lock">
+                                            <div class="md-checkbox">
+                                                <input type="checkbox" id="checkbox2_1" class="md-check" ng-checked="true">
+                                                <label for="checkbox2_1">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> Lock
+                                                </label>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </td>
 

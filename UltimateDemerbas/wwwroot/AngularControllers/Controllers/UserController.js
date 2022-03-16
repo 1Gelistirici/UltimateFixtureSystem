@@ -11,7 +11,8 @@
             Gender: "Gender",
             Title: "Title",
             Telephone: "Telephone",
-            MailAdress: "Mail"
+            MailAdress: "Mail",
+            Lock: "Lock"
         };
         //#endregion
 
