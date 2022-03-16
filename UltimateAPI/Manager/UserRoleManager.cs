@@ -53,8 +53,8 @@ namespace UltimateAPI.Manager
                                 while (read.Read())
                                 {
                                     UserRole user = new UserRole();
-                                    user.MenuRefId = Convert.ToInt32(read["name"]);
-                                    user.UserRefId = Convert.ToInt32(read["surname"]);
+                                    user.MenuRefId = Convert.ToInt32(read["MenuRefId"]);
+                                    user.UserRefId = Convert.ToInt32(read["UserRefId"]);
 
                                     users.Add(user);
                                 }

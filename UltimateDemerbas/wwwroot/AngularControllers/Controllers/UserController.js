@@ -93,6 +93,7 @@
                 Title: $scope.Pop.Title,
                 PasswordTry: $scope.Pop.TryPassword,
                 Department: $scope.Pop.Department,
+                Lock: $scope.Pop.Lock
             };
 
             UserService.AddUser(parameter,
@@ -140,6 +141,7 @@
                 Title: $scope.Pop.Title,
                 Department: $scope.Pop.Department,
                 Gender: $scope.Pop.Gender.Value === 1,
+                Lock: $scope.Pop.Lock
             };
 
             UserService.UpdateUser(parameter,
