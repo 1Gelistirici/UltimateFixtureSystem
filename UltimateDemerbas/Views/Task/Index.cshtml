@@ -3,6 +3,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .backRed {
+        background-color: #ff7a7a;
+    }
+</style>
 
 <div ng-controller="TaskController">
 
@@ -45,7 +50,7 @@
                         </colgroup>
 
                         <tbody>
-                            <tr ng-repeat="_ in $data">
+                            <tr ng-repeat="_ in $data" ng-class="{'backRed':_.EndDate<=Today}" >
 
                                 <td data-title="TableCol.TaskDetail" filter="{ TaskDetail: 'text'}" sortable="'TaskDetail'">
                                     <textarea ng-model="_.TaskDetail" type="text" class="form-control"></textarea>
@@ -59,11 +64,11 @@
                                     <input ng-model="_.EndDate" style="font-size: 14px;" type="date" class="form-control">
                                 </td>
 
-                                <td data-title="TableCol.Category" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <input ng-model="Pop.IsActive" style="font-size: 14px;" type="text" class="form-control">
+                                <td data-title="TableCol.IsActive" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                    <input ng-model="_.IsActive" style="font-size: 14px;" type="text" class="form-control">
                                 </td>
 
-                                <td data-title="TableCol.Bill" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
+                                <td data-title="TableCol.Count" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
                                     <select class="form-control" ng-model="_.Count">
                                         <option ng-repeat="x in ImportanceLevels" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                     </select>

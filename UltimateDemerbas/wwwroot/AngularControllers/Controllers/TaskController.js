@@ -12,6 +12,7 @@
             Count: "Importance Level"
         };
 
+        $scope.Today = new Date();
 
         //#endregion
 
@@ -22,11 +23,21 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         console.log("tesks", result.Data);
+                        $scope.Data = result.Data;
 
-                        //$.each($scope.ItemStatus, function (index, value) {
-                        //    var parameter = { id: value.Value, title: value.Text };
-                        //    $scope.ItemStatusFilter.push(parameter);
-                        //});
+                        $.each($scope.Data, function (index, value) {
+                            $scope.Data[index].EndDate = new Date(value.EndDate);
+                            $scope.Data[index].StartDate = new Date(value.StartDate);
+                        });
+
+                        $scope.TableParams = new NgTableParams({
+                            sorting: { name: 'adc' },
+                            count: 20
+                        }, {
+                            counts: [10, 20, 50],
+                            dataset: $scope.Data
+                        });
+
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -42,11 +53,6 @@
                     if (result.IsSuccess) {
                         $scope.ImportanceLevels = result.Data;
                         console.log("tesks", result.Data);
-
-                        //$.each($scope.ItemStatus, function (index, value) {
-                        //    var parameter = { id: value.Value, title: value.Text };
-                        //    $scope.ItemStatusFilter.push(parameter);
-                        //});
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -176,13 +182,7 @@
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
                         $scope.RegisterCount = $scope.Data.length;
-                        $scope.TableParams = new NgTableParams({
-                            sorting: { name: 'adc' },
-                            count: 20
-                        }, {
-                            counts: [10, 20, 50],
-                            dataset: $scope.Data
-                        });
+
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
