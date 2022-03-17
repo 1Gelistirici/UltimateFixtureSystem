@@ -56,5 +56,13 @@
                         success(response.data);
                 }, error);
         }
+
+        this.GetImportanceLevels = function (success, error) {
+            $http.get("/Enum/GetImportanceLevels").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

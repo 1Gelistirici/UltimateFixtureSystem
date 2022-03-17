@@ -214,5 +214,31 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<TextValue>> GetImportanceLevels()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<ImportanceLevel> datas = Enum.GetValues(typeof(ImportanceLevel)).Cast<ImportanceLevel>().ToList();
+                foreach (ImportanceLevel logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<ImportanceLevel>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

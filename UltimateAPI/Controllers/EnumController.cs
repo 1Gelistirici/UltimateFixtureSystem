@@ -56,5 +56,12 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetGenders();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetImportanceLevels")]
+        public ActionResult GetImportanceLevels()
+        {
+            var result = EnumCallManager.Instance.GetImportanceLevels();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

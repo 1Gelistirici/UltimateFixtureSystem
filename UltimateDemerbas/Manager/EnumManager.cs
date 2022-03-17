@@ -43,5 +43,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetGenders");
         }
+
+        public Task<string> GetImportanceLevels()
+        {
+            return GetApi("Enum/GetImportanceLevels");
+        }
     }
 }

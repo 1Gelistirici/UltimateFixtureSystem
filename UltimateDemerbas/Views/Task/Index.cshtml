@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-controller="FixtureController">
+<div ng-controller="TaskController">
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
@@ -12,13 +12,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Fixtures
+                    Taks
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddFixturePopup">
-                        Add Fixture
+                        Add Task
                     </a>
                 </div>
 
@@ -42,47 +42,33 @@
                             <col />
                             <col />
                             <col />
-                            <col />
                         </colgroup>
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
 
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="input-icon">
-                                        <input ng-model="_.Name" type="text" class="form-control">
-                                    </div>
+                                <td data-title="TableCol.TaskDetail" filter="{ TaskDetail: 'text'}" sortable="'TaskDetail'">
+                                    <textarea ng-model="_.TaskDetail" type="text" class="form-control"></textarea>
                                 </td>
 
-                                <td data-title="TableCol.Model" filter="{ Piece: 'text'}" sortable="'Piece'">
-                                    <select class="form-control" ng-model="_.ModelNo">
-                                        <option ng-repeat="x in FixtureModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
+                                <td data-title="TableCol.StartDate" filter="{ StartDate: 'text'}" sortable="'StartDate'">
+                                    <input ng-model="_.StartDate" style="font-size: 14px;" type="date" class="form-control">
+                                </td>
+
+                                <td data-title="TableCol.EndDate" filter="{ EndDate: 'text'}" sortable="'EndDate'">
+                                    <input ng-model="_.EndDate" style="font-size: 14px;" type="date" class="form-control">
                                 </td>
 
                                 <td data-title="TableCol.Category" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <select class="form-control" ng-model="_.CategoryNo">
-                                        <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
+                                    <input ng-model="Pop.IsActive" style="font-size: 14px;" type="text" class="form-control">
                                 </td>
 
                                 <td data-title="TableCol.Bill" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
-                                    <select class="form-control" ng-model="_.BillNo">
-                                        <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
+                                    <select class="form-control" ng-model="_.Count">
+                                        <option ng-repeat="x in ImportanceLevels" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                     </select>
                                 </td>
 
-                                <td data-title="TableCol.Statu" filter="{ StatuNo: 'select'}" sortable="'StatuNo'" filter-data="ItemStatusFilter">
-                                    <select class="form-control" ng-change="_.Changed=true" ng-model="_.StatuNo">
-                                        <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
-                                    </select>
-                                </td>
-
-                                <td data-title="TableCol.User" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <select class="form-control" ng-model="_.UserNo" ng-show="_.UserNo>0" disabled>
-                                        <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
-                                </td>
 
                                 <td>
                                     <div class="btn-group absoluteitem">
@@ -91,11 +77,6 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover" ng-show="_.StatuNo==1" data-toggle="modal" data-target="#FixtureAssignmentPopup">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
-                                                    <i class="fa fa-eject"></i>Assign
-                                                </a>
-                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateFixture(_)">
                                                     <i class="fa fa-edit"></i>Update
@@ -132,6 +113,7 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/TaskService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
@@ -140,5 +122,5 @@
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
-    <script src="~/AngularControllers/Controllers/FixtureController.js"></script>
+    <script src="~/AngularControllers/Controllers/TaskController.js"></script>
 }

@@ -62,5 +62,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetGenders();
         }
+
+        public UltimateResult<List<TextValue>> GetImportanceLevels()
+        {
+            return EnumManager.Instance.GetImportanceLevels();
+        }
     }
 }
