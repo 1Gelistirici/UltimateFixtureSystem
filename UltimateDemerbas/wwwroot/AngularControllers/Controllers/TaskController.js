@@ -81,6 +81,19 @@
                 });
         }
 
+        $scope.UpdateTask = function (parameter) {
+            TaskService.UpdateTask(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
 
         function RefreshData() {
             $scope.GetTasks();
@@ -193,18 +206,7 @@
         $scope.GetFixtures();
 
 
-        $scope.UpdateFixture = function (parameter) {
-            FixtureService.UpdateFixture(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
+
 
         $scope.AddFixture = function () {
             var parameter = {
@@ -232,7 +234,7 @@
                 });
         }
 
-      
+
 
         $scope.SetAssign = function (x) {
             $scope.Assign = x;
