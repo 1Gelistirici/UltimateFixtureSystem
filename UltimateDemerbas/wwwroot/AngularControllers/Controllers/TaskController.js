@@ -82,7 +82,7 @@
         }
 
 
-        RefreshData = function () {
+        function RefreshData() {
             $scope.GetTasks();
         }
 
@@ -232,9 +232,7 @@
                 });
         }
 
-        RefreshData = function () {
-            $scope.GetFixtures();
-        }
+      
 
         $scope.SetAssign = function (x) {
             $scope.Assign = x;
