@@ -22,7 +22,7 @@
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddFixturePopup">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup">
                         Add Task
                     </a>
                 </div>
@@ -84,6 +84,11 @@
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateTask(_)">
+                                                    <i class="fa fa-edit"></i>Close
+                                                </a>
+                                            </li>   
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateTask(_)">
                                                     <i class="fa fa-edit"></i>Update
                                                 </a>
                                             </li>
@@ -112,8 +117,7 @@
             </div>
         </div>
     </div>
-    <partial name="~/Views/Shared/Partials/Fixture/AddFixturePopup.cshtml" />
-    <partial name="~/Views/Shared/Partials/Fixture/FixtureAssignmentPartial.cshtml" />
+    <partial name="~/Views/Shared/Partials/Task/AddTaskPopup.cshtml" />
 </div>
 
 @section PageScript

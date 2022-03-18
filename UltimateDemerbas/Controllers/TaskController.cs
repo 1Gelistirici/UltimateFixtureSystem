@@ -28,7 +28,6 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetTask([FromBody] Tasks parameter)
         {
             var result = task.GetTask(parameter);
-
             return Content(result.Result);
         }
 
@@ -36,36 +35,28 @@ namespace UltimateDemerbas.Controllers
         {
             Tasks parameter = new Tasks();
             parameter.UserId = WorkingUser;
-
             var result = task.GetTasks(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteTask([FromBody] Tasks parameter)
         {
             parameter.UserId = WorkingUser;
-
             var result = task.DeleteTask(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateTask([FromBody] Tasks parameter)
         {
             parameter.UserId = WorkingUser;
-
             var result = task.UpdateTask(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddTask([FromBody] Tasks parameter)
         {
             parameter.UserId = WorkingUser;
-
             var result = task.AddTask(parameter);
-
             return Content(result.Result);
         }
 

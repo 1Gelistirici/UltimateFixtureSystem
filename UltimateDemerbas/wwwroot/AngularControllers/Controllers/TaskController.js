@@ -1,5 +1,5 @@
-﻿MainApp.controller("TaskController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "EnumService", "NgTableParams", "toaster", "TaskService",
-    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster, TaskService) {
+﻿MainApp.controller("TaskController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster", "TaskService",
+    function ($scope, UserService, EnumService, NgTableParams, toaster, TaskService) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -22,7 +22,6 @@
             TaskService.GetTasks(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("tesks", result.Data);
                         $scope.Data = result.Data;
                         $scope.RegisterCount = result.Data.length;
 
@@ -53,7 +52,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.ImportanceLevels = result.Data;
-                        console.log("tesks", result.Data);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -95,6 +93,22 @@
                 });
         }
 
+        $scope.AddTask = function () {
+            TaskService.AddTask($scope.Pop,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
+                        $scope.GetTasks();
+                        $("#AddTaskPopup").modal("hide");
+                        $scope.Pop = [];
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
 
         function RefreshData() {
             $scope.GetTasks();
@@ -104,18 +118,6 @@
 
 
 
-        $scope.GetUsers = function () {
-            UserService.GetUsers(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.Users = result.Data;
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetUsers();
+
 
     }]);

@@ -1,0 +1,45 @@
+﻿
+<div id="AddTaskPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Add Task</h4>
+            </div>
+            <div class="scroller" style="height: 400px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="TaskForm">
+
+                        <div class="col-md-12">
+                            <span>TaskDetail</span>
+                            <textarea ng-model="Pop.TaskDetail" rows="3" type="text" class="form-control" required></textarea>
+                        </div>
+             
+                        <div class="col-md-12">
+                            <span>StartDate</span>
+                            <input ng-model="Pop.StartDate" style="font-size: 14px;" type="date" class="form-control" required>
+                        </div>
+               
+                        <div class="col-md-12">
+                            <span>EndDate</span>
+                            <input ng-model="Pop.EndDate" style="font-size: 14px;" type="date" class="form-control" required>
+                        </div>
+            
+                        <div class="col-md-12">
+                            <span>Importance Levels</span>
+                            <select class="form-control" ng-model="Pop.Count" required>
+                                <option ng-repeat="x in ImportanceLevels" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer" style="margin-top:68%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-disabled="TaskForm.$invalid || Pop.EndDate<Pop.StartDate" ng-click="AddTask()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
