@@ -24,6 +24,7 @@
                     if (result.IsSuccess) {
                         console.log("tesks", result.Data);
                         $scope.Data = result.Data;
+                        $scope.RegisterCount = result.Data.length;
 
                         $.each($scope.Data, function (index, value) {
                             $scope.Data[index].EndDate = new Date(value.EndDate);
@@ -103,78 +104,6 @@
 
 
 
-
-
-
-
-
-
-
-        $scope.ItemStatus = [];
-        $scope.ItemStatusFilter = [];
-        //Enum ItemStatu
-        $scope.GetItemStatuTypes = function () {
-            EnumService.GetItemStatuTypes(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.ItemStatus = result.Data;
-                        $scope.ItemStatus = $scope.ItemStatus.filter(_ => _.Value != 0);
-
-                        $.each($scope.ItemStatus, function (index, value) {
-                            var parameter = { id: value.Value, title: value.Text };
-                            $scope.ItemStatusFilter.push(parameter);
-                        });
-                    } else {
-                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetItemStatuTypes();
-
-        $scope.GetCategories = function () {
-            CategoryService.GetCategories(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.Categories = result.Data;
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetCategories();
-
-        $scope.GetFixtureModels = function () {
-            FixtureModelService.GetFixtureModels(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.FixtureModels = result.Data;
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetFixtureModels();
-
-        $scope.GetBills = function () {
-            BillService.GetBills(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.Bills = result.Data;
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetBills();
-
         $scope.GetUsers = function () {
             UserService.GetUsers(
                 function success(result) {
@@ -188,83 +117,5 @@
                 });
         }
         $scope.GetUsers();
-
-        $scope.GetFixtures = function () {
-            FixtureService.GetFixtures(
-                function success(result) {
-                    if (result.IsSuccess) {
-                        $scope.Data = result.Data;
-                        $scope.RegisterCount = $scope.Data.length;
-
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-        $scope.GetFixtures();
-
-
-
-
-        $scope.AddFixture = function () {
-            var parameter = {
-                "Name": $scope.Pop.Name,
-                "ModelNo": $scope.Pop.ModelNo,
-                "BillNo": $scope.Pop.BillNo,
-                "StatuNo": $scope.Pop.StatuNo,
-                "CategoryNo": $scope.Pop.CategoryNo,
-                "UserNo": $scope.Pop.UserNo
-            }
-
-            FixtureService.AddFixture(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        //$scope.Data.push(parameter);
-                        RefreshData();
-                        toaster.success("Başarılı", "Demirbaş başarıyla eklenmiştir.");
-                        $("#AddFixturePopup").modal("hide");
-                        $scope.Pop = [];
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
-
-
-
-        $scope.SetAssign = function (x) {
-            $scope.Assign = x;
-        }
-
-        $scope.AssignFixture = function () {
-            if ($scope.Assign.checkRecallDate === undefined) {
-                $scope.Assign.checkRecallDate = false;
-            }
-
-            var parameter = {
-                UserId: parseInt($scope.Assign.user),
-                RecallDate: $scope.Assign.recallDate,
-                ItemType: 4, // ToDo : Enumdan çekilebilir
-                ItemId: $scope.Assign.Id,
-                IsRecall: $scope.Assign.checkRecallDate,
-            }
-
-            AssignmentService.AddAssignment(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                        $('#FixtureAssignmentPopup').modal('hide');
-                        RefreshData();
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
 
     }]);

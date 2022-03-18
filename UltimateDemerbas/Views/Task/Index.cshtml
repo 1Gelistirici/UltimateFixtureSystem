@@ -53,7 +53,7 @@
                             <tr ng-repeat="_ in $data" ng-class="{'backRed':_.EndDate<=Today}" >
 
                                 <td data-title="TableCol.TaskDetail" filter="{ TaskDetail: 'text'}" sortable="'TaskDetail'">
-                                    <textarea ng-model="_.TaskDetail" type="text" class="form-control"></textarea>
+                                    <textarea ng-model="_.TaskDetail" rows="3" type="text" class="form-control"></textarea>
                                 </td>
 
                                 <td data-title="TableCol.StartDate" filter="{ StartDate: 'text'}" sortable="'StartDate'">
