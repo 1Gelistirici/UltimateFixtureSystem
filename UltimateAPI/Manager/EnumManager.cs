@@ -240,5 +240,31 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<TextValue>> GetTaskActiveStatus()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<ActiveStatu> datas = Enum.GetValues(typeof(ActiveStatu)).Cast<ActiveStatu>().ToList();
+                foreach (ActiveStatu logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<ActiveStatu>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

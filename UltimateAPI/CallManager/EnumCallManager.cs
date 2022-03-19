@@ -67,5 +67,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetImportanceLevels();
         }
+
+        public UltimateResult<List<TextValue>> GetTaskActiveStatus()
+        {
+            return EnumManager.Instance.GetTaskActiveStatus();
+        }
     }
 }

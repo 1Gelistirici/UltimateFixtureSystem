@@ -35,5 +35,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<Tasks>("Task/AddTask", parameter);
         }
+
+        public Task<string> AddStatu(Tasks parameter)
+        {
+            return GetApiParameter<Tasks>("Task/AddStatu", parameter);
+        }
     }
 }

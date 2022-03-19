@@ -61,6 +61,19 @@
         }
         $scope.GetImportanceLevels();
 
+        $scope.GetTaskActiveStatus = function () {
+            EnumService.GetTaskActiveStatus(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.TaskActiveStatus = result.Data;
+                    } else {
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetImportanceLevels();
         //#endregion
 
 
@@ -100,6 +113,22 @@
                         toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
                         $scope.GetTasks();
                         $("#AddTaskPopup").modal("hide");
+                        $scope.Pop = [];
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
+        $scope.AddStatu = function () {
+            TaskService.AddStatu($scope.Pop,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
+                        $scope.GetTasks();
+                        $("#AddTaskStatuPopup").modal("hide");
                         $scope.Pop = [];
                     } else {
                         toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");

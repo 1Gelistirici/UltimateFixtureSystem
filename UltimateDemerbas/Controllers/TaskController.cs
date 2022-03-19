@@ -60,5 +60,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult AddStatu([FromBody] Tasks parameter)
+        {
+            parameter.UserId = WorkingUser;
+            var result = task.AddStatu(parameter);
+            return Content(result.Result);
+        }
+
     }
 }

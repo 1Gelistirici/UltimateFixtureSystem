@@ -8,7 +8,7 @@ using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
-    public class TaskManager:BaseManager
+    public class TaskManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile TaskManager _instance;
@@ -60,8 +60,8 @@ namespace UltimateAPI.Manager
                                     task.Id = Convert.ToInt32(read["id"]);
                                     task.UserId = Convert.ToInt32(read["UserId"]);
                                     task.StartDate = Convert.ToDateTime(read["startDate"]);
-                                    task.EndDate= Convert.ToDateTime(read["endDate"]);
-                                    task.IsActive= (IsActive)Convert.ToInt32(read["isActive"]);
+                                    task.EndDate = Convert.ToDateTime(read["endDate"]);
+                                    task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
                                     task.TaskDetail = read["task"].ToString();
                                     task.Count = Convert.ToInt32(read["count"]);
 
@@ -85,7 +85,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-        
+
         public UltimateResult<List<Tasks>> GetTask(Tasks parameter)
         {
             List<Tasks> componentModels = new List<Tasks>();
@@ -115,8 +115,8 @@ namespace UltimateAPI.Manager
                                     task.Id = Convert.ToInt32(read["id"]);
                                     task.UserId = Convert.ToInt32(read["UserId"]);
                                     task.StartDate = Convert.ToDateTime(read["startDate"]);
-                                    task.EndDate= Convert.ToDateTime(read["endDate"]);
-                                    task.IsActive= (IsActive)Convert.ToInt32(read["isActive"]);
+                                    task.EndDate = Convert.ToDateTime(read["endDate"]);
+                                    task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
                                     task.TaskDetail = read["task"].ToString();
                                     task.Count = Convert.ToInt32(read["count"]);
 
@@ -161,7 +161,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@endDate", parameter.EndDate);
                         sqlCommand.Parameters.AddWithValue("@task", parameter.TaskDetail);
                         sqlCommand.Parameters.AddWithValue("@count", parameter.Count);
-    
+
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
@@ -221,6 +221,48 @@ namespace UltimateAPI.Manager
             }
 
             AddLog(parameter.UserId, "Task Güncellendi");
+
+            return result;
+        }
+
+        public UltimateResult<List<Tasks>> AddStatu(Tasks parameter)
+        {
+            UltimateResult<List<Tasks>> result = new UltimateResult<List<Tasks>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[tasks_AddStatu]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("@isActive", parameter.IsActive);
+                        sqlCommand.Parameters.AddWithValue("@note", parameter.Note);
+                        sqlCommand.Parameters.AddWithValue("@updateDate", DateTime.UtcNow);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            AddLog(parameter.UserId, "Task Eklendi");
 
             return result;
         }

@@ -41,5 +41,13 @@
                 }, error);
         };
 
+        this.AddStatu = function (parameter, success, error) {
+            $http.post('/Task/AddStatu', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

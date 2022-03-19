@@ -63,5 +63,12 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetImportanceLevels();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetTaskActiveStatus")]
+        public ActionResult GetTaskActiveStatus()
+        {
+            var result = EnumCallManager.Instance.GetTaskActiveStatus();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

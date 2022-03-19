@@ -15,6 +15,14 @@ namespace UltimateAPI.Controllers
             var result = task.AddTask(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpPost("AddStatu")]
+        public IActionResult AddStatu(Tasks parameter)
+        {
+            TaskCallManager task = new TaskCallManager();
+            var result = task.AddStatu(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
 
         [HttpPost("GetTasks")]
         public IActionResult GetTasks(Tasks parameter)

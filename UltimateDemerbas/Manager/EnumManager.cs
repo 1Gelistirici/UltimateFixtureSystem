@@ -48,5 +48,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetImportanceLevels");
         }
+
+        public Task<string> GetTaskActiveStatus()
+        {
+            return GetApi("Enum/GetTaskActiveStatus");
+        }
     }
 }

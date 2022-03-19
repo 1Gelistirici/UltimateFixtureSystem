@@ -51,5 +51,10 @@ namespace UltimateAPI.CallManager
         {
             return TaskManager.Instance.AddTask(parameter);
         }
+
+        public UltimateResult<List<Tasks>> AddStatu(Tasks parameter)
+        {
+            return TaskManager.Instance.AddStatu(parameter);
+        }
     }
 }

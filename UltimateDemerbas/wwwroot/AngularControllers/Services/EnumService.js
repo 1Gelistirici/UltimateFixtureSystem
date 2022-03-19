@@ -64,5 +64,13 @@
                         success(response.data);
                 }, error);
         }
+
+        this.GetTaskActiveStatus = function (success, error) {
+            $http.get("/Enum/GetTaskActiveStatus").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

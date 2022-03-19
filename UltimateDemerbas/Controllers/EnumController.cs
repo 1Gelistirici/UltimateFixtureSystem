@@ -65,5 +65,11 @@ namespace UltimateDemerbas.Controllers
             var result = enumManager.GetImportanceLevels();
             return Content(result.Result);
         }
+
+        public IActionResult GetTaskActiveStatus()
+        {
+            var result = enumManager.GetTaskActiveStatus();
+            return Content(result.Result);
+        }
     }
 }
