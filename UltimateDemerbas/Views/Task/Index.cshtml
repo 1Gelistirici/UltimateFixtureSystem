@@ -50,7 +50,7 @@
                         </colgroup>
 
                         <tbody>
-                            <tr ng-repeat="_ in $data" ng-class="{'backRed':_.EndDate<=Today}" >
+                            <tr ng-repeat="_ in $data" ng-class="{'backRed':_.EndDate<=Today}">
 
                                 <td data-title="TableCol.TaskDetail" filter="{ TaskDetail: 'text'}" sortable="'TaskDetail'">
                                     <textarea ng-model="_.TaskDetail" rows="3" type="text" class="form-control"></textarea>
@@ -83,8 +83,8 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" data-target="#AddTaskStatuPopup">
-                                                    <i class="fa fa-edit"></i>Close
+                                                <a class="viewuserbtn" data-toggle="modal" data-target="#AddTaskStatuPopup" ng-click="OpenTaskStatuPopup(_)">
+                                                    <i class="fa fa-close"></i>Close
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
@@ -118,6 +118,7 @@
         </div>
     </div>
     <partial name="~/Views/Shared/Partials/Task/AddTaskPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Task/AddTaskStatuPopup.cshtml" />
 </div>
 
 @section PageScript

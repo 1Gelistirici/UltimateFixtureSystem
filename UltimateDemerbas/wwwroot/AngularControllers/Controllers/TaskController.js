@@ -65,7 +65,7 @@
             EnumService.GetTaskActiveStatus(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.TaskActiveStatus = result.Data;
+                        $scope.TaskActiveStatus = result.Data.filter(x => x.Value != 1);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -73,7 +73,7 @@
                     toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetImportanceLevels();
+        $scope.GetTaskActiveStatus();
         //#endregion
 
 
@@ -123,7 +123,12 @@
         }
 
         $scope.AddStatu = function () {
-            TaskService.AddStatu($scope.Pop,
+            var param = {
+                Note: $scope.Pop.Note,
+                Id: $scope.Pop.Id,
+                IsActive: $scope.Pop.IsActive
+            }
+            TaskService.AddStatu(param,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
@@ -143,7 +148,10 @@
             $scope.GetTasks();
         }
 
-
+        $scope.OpenTaskStatuPopup = function (_) {
+            $scope.Pop = [];
+            $scope.Pop.Id = _.Id;
+        }
 
 
 
