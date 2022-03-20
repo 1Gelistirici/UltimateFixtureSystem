@@ -9,6 +9,11 @@
     }
 </style>
 
+
+<link href="~/css/GeneralCss/ToggleCheckboxButton.css" rel="stylesheet" />
+
+
+
 <div ng-controller="TaskController">
 
     <!--Header-->
@@ -16,16 +21,38 @@
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+
+
+
                 <span class="caption-subject bold uppercase">
                     Taks
                 </span>
+
+
             </div>
             <div class="actions">
-                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup">
-                        Add Task
-                    </a>
+                <div class="material-switch">
+                    Active &nbsp;
+                    <input id="{{4000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckActive" ng-model="CheckActive" ng-change="ChangeCheck();" />
+                    <label for="{{4000}}" class="label-success" style=""></label> &nbsp;&nbsp;&nbsp;
+                    Closed &nbsp;
+                    <input id="{{3000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckClosed" ng-model="CheckClosed" ng-change="ChangeCheck();" />
+                    <label for="{{3000}}" class="label-danger"></label>&nbsp;&nbsp;&nbsp;
+                    Solved &nbsp;
+                    <input id="{{2000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckSolved" ng-model="CheckSolved" ng-change="ChangeCheck();" />
+                    <label for="{{2000}}" class="label-primary"></label>&nbsp;&nbsp;&nbsp;
+                    UnSolved &nbsp;
+                    <input id="{{1000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckUnSolved" ng-model="CheckUnSolved" ng-change="ChangeCheck();" />
+                    <label for="{{1000}}" class="label-warning"></label>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup">
+                            Add Task
+                        </a>
+                    </div>
+
                 </div>
+
 
             </div>
         </div>
@@ -64,14 +91,17 @@
                                     <input ng-model="_.EndDate" style="font-size: 14px;" type="date" class="form-control">
                                 </td>
 
-                                <td data-title="TableCol.IsActive" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <input ng-model="_.IsActive" style="font-size: 14px;" type="number" class="form-control">
-                                </td>
-
                                 <td data-title="TableCol.Count" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
                                     <select class="form-control" ng-model="_.Count">
                                         <option ng-repeat="x in ImportanceLevels" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                     </select>
+                                </td>
+
+                                <td data-title="TableCol.IsActive" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                    <span class="label label-sm label-success" ng-if="_.IsActive===1">Active</span>
+                                    <span class="label label-sm label-danger" ng-if="_.IsActive===2">Closed</span>
+                                    <span class="label label-sm label-primary" ng-if="_.IsActive===4">Solved</span>
+                                    <span class="label label-sm label-warning" ng-if="_.IsActive===8">UnSolved</span>
                                 </td>
 
 
@@ -82,7 +112,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
+                                            <li class="ms-hover" ng-if="_.IsActive===0">
                                                 <a class="viewuserbtn" data-toggle="modal" data-target="#AddTaskStatuPopup" ng-click="OpenTaskStatuPopup(_)">
                                                     <i class="fa fa-close"></i>Close
                                                 </a>
@@ -106,7 +136,9 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;">
+                                        Toplam Kayit Sayisi: {{RegisterCount}}
+                                    </span>
                                 </td>
                             </tr>
 

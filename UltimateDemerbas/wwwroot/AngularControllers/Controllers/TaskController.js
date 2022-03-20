@@ -3,12 +3,13 @@
 
         //#region Parameters
         $scope.RegisterCount = 0;
+        $scope.CheckActive = true;
 
         $scope.TableCol = {
             TaskDetail: "Detail",
             StartDate: "Start Date",
             EndDate: "End Date",
-            IsActive: "Active",
+            IsActive: "Status",
             Count: "Importance Level"
         };
 
@@ -23,6 +24,8 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
+
+                        console.log($scope.Data);
                         $scope.RegisterCount = result.Data.length;
 
                         $.each($scope.Data, function (index, value) {
@@ -30,14 +33,7 @@
                             $scope.Data[index].StartDate = new Date(value.StartDate);
                         });
 
-                        $scope.TableParams = new NgTableParams({
-                            sorting: { name: 'adc' },
-                            count: 20
-                        }, {
-                            counts: [10, 20, 50],
-                            dataset: $scope.Data
-                        });
-
+                        $scope.ChangeCheck();
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -65,6 +61,7 @@
             EnumService.GetTaskActiveStatus(
                 function success(result) {
                     if (result.IsSuccess) {
+                        console.log("GetTaskActiveStatus", result.Data);
                         $scope.TaskActiveStatus = result.Data.filter(x => x.Value != 1);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -76,7 +73,36 @@
         $scope.GetTaskActiveStatus();
         //#endregion
 
+        $scope.ChangeCheck = function () {
 
+            $scope.DataFilter = [];
+
+            if ($scope.CheckActive) {
+                $scope.DataFilter = $scope.Data.filter(x => x.IsActive === 1);
+            }
+            if ($scope.CheckClosed) {
+                $scope.DataFilter = $scope.Data.filter(x => x.IsActive === 2).concat($scope.DataFilter);
+            }
+            if ($scope.CheckSolved) {
+                $scope.DataFilter = $scope.Data.filter(x => x.IsActive === 4).concat($scope.DataFilter);
+            }
+            if ($scope.CheckUnSolved) {
+                $scope.DataFilter = $scope.Data.filter(x => x.IsActive === 8).concat($scope.DataFilter);
+            }
+
+
+            $scope.TableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 20
+            }, {
+                counts: [10, 20, 50],
+                dataset: $scope.DataFilter
+            });
+
+
+
+
+        }
 
 
         $scope.DeleteTask = function (data) {
