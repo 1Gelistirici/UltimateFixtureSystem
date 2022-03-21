@@ -1,16 +1,32 @@
-﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService",
-    function ($scope, LogService, MessageService, TaskService, UserService, TonerService) {
+﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService", "ReportService", "toaster",
+    function ($scope, LogService, MessageService, TaskService, UserService, TonerService, ReportService, toaster) {
 
         $scope.Pop = [];
         $scope.Messages = [];
         $scope.MessageDetail = '';
         $scope.lateTask = 0;
         $scope.TonerAlert = 0;
+        $scope.totalActiveReport = 0;
 
         $scope.Tasks = [];
         $scope.Pop.startDate = new Date();
         $scope.Pop.endDate = new Date();
         $scope.Pop.count = 0;
+
+        $scope.GetReportsByStatu = function () {
+
+            ReportService.GetReportsByStatu(0,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.totalActiveReport = result.Data.length;
+                    } else {
+                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetReportsByStatu();
 
         $scope.GetLogs = function () {
             LogService.GetLogs(

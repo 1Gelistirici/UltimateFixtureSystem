@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 using UltimateAPI.Manager;
 
 namespace UltimateAPI.CallManager
@@ -30,6 +31,11 @@ namespace UltimateAPI.CallManager
         public UltimateResult<List<Report>> GetReports()
         {
             return ReportManager.Instance.GetReports();
+        }
+        
+        public UltimateResult<List<Report>> GetReportsByStatu(ReportStatu reportStatu)
+        {
+            return ReportManager.Instance.GetReportsByStatu(reportStatu);
         }
 
         public UltimateResult<List<Report>> GetPassiveReports()

@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateDemerbas.Manager
 {
@@ -14,6 +15,11 @@ namespace UltimateDemerbas.Manager
         public Task<string> GetReports()
         {
             return GetApi("Report/GetReports");
+        }
+
+        public Task<string> GetReportsByStatu(ReportStatu reportStatu)
+        {
+            return GetApiParameter<ReportStatu>("Report/GetReportsByStatu", reportStatu);
         }
 
         public Task<string> GetPassiveReports()

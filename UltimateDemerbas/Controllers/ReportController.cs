@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Tool;
 
@@ -33,6 +34,12 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetReports()
         {
             var result = report.GetReports();
+            return Content(result.Result);
+        }
+
+        public IActionResult GetReportsByStatu([FromBody] ReportStatu reportStatu)
+        {
+            var result = report.GetReportsByStatu(reportStatu);
             return Content(result.Result);
         }
 

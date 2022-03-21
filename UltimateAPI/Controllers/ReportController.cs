@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Controllers
 {
@@ -12,6 +13,13 @@ namespace UltimateAPI.Controllers
         public IActionResult GetReports()
         {
             var result = ReportCallManager.Instance.GetReports();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("GetReportsByStatu")]
+        public IActionResult GetReportsByStatu(ReportStatu reportStatu)
+        {
+            var result = ReportCallManager.Instance.GetReportsByStatu(reportStatu);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

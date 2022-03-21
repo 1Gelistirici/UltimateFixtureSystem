@@ -8,7 +8,15 @@
                         success(response.data);
                 }, error);
         }
-        
+
+        this.GetReportsByStatu = function (reportStatu, success, error) {
+            $http.post('/Report/GetReportsByStatu', { reportStatu: reportStatu }).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.GetPassiveReports = function (success, error) {
             $http.get("/Report/GetPassiveReports").then(
                 function (response) {
