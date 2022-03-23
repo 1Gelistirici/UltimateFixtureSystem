@@ -30,10 +30,10 @@ namespace UltimateAPI.Manager
         }
 
 
-        public UltimateResult<List<User>> CheckUser(User user)
+        public UltimateResult<User> CheckUser(User user)
         {
-            List<User> users = new List<User>();
-            UltimateResult<List<User>> result = new UltimateResult<List<User>>();
+            User userData = new User();
+            UltimateResult<User> result = new UltimateResult<User>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[users_CheckUser]";
 
@@ -62,8 +62,9 @@ namespace UltimateAPI.Manager
                                     usr.Name = read["name"].ToString();
                                     usr.Surname = read["surname"].ToString();
                                     usr.CompanyId = Convert.ToInt32(read["companyId"]);
+                                    usr.Lock = Convert.ToBoolean(read["lock"]);
 
-                                    users.Add(usr);
+                                    userData = usr;
                                 }
                             }
                             read.Close();
@@ -72,9 +73,21 @@ namespace UltimateAPI.Manager
                         Log log = new Log();
                         log.Time = DateTime.Now;
 
-                        if (users.Count > 0)
+                        if (userData != null)
                         {
                             log.UserNo = user.UserId;
+
+                            if (userData.Lock)
+                            {
+                                log.Type = LogType.LoginFailed;
+                                LogManager.Instance.AddLog(log);
+
+                                result.Message = "Hesap kilitlidir.";
+                                result.IsSuccess = false;
+                                return result;
+                                //return nereye dönüyort - sql bağlantısını kapat
+                            }
+
                             log.Type = LogType.LoginSucess;
                             LogManager.Instance.AddLog(log);
 
@@ -93,7 +106,7 @@ namespace UltimateAPI.Manager
                             result.Message = "Kullanıcı adı veya şifre yanlış.";
                         }
 
-                        result.Data = users;
+                        result.Data = userData;
                         sqlCommand.Dispose();
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
@@ -508,6 +521,7 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
 
     }
 }

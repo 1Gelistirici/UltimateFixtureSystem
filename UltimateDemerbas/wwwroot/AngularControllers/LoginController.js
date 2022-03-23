@@ -16,15 +16,15 @@
                     $scope.LoginButton = false;
                     if (result.IsSuccess) {
                         var parameter = {
-                            Id: result.Data[0].Id,
-                            CompanyId: result.Data[0].CompanyId
+                            Id: result.Data.Id,
+                            CompanyId: result.Data.CompanyId
                         }
                         SetUserSession(parameter);
 
-                        toaster.success("Başarılı", "Sisteme giriş yapıldı.");
+                        toaster.success("Başarılı", result.Message);
                         $window.location.href = '/Home/Index';
                     } else {
-                        toaster.error("Başarısız", "Kullanıcı adı veya şifre hatalıdır.");
+                        toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
                     $scope.LoginButton = false;

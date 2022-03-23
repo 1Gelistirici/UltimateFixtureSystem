@@ -27,7 +27,7 @@ namespace UltimateAPI.CallManager
 
         }
 
-        public UltimateResult<List<User>> CheckUser(User parameter)
+        public UltimateResult<User> CheckUser(User parameter)
         {
             return UserManager.Instance.CheckUser(parameter);
         }
