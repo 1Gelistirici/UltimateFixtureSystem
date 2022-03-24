@@ -5,7 +5,19 @@ using System.Threading.Tasks;
 
 namespace UltimateDemerbas.Manager
 {
-    public class MenuController
+    public class MenuManager
     {
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
