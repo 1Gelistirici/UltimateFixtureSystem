@@ -5,5 +5,6 @@ namespace UltimateAPI.Entities
     {
         public int MenuRefId { get; set; }
         public int UserRefId { get; set; }
+        public int CompanyRefId { get; set; }
     }
 }

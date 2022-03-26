@@ -30,6 +30,7 @@ namespace UltimateDemerbas.Controllers
             {
                 Response.Redirect("/Home/Index");
             }
+
             return View();
         }
 

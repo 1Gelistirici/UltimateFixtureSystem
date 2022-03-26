@@ -8,8 +8,7 @@
             var parameter = {
                 UserName: $scope.User.Username,
                 Password: $scope.User.Password,
-                Company: $scope.User.Company,
-                RememberMe: $scope.User.RememberMe
+                Company: $scope.User.Company
             }
 
             LoginService.CheckUser(parameter,
@@ -18,7 +17,8 @@
                     if (result.IsSuccess) {
                         var parameter = {
                             Id: result.Data.Id,
-                            CompanyId: result.Data.CompanyId
+                            CompanyId: result.Data.CompanyId,
+                            RememberMe: $scope.User.RememberMe
                         }
                         SetUserSession(parameter);
 

@@ -23,7 +23,7 @@ namespace UltimateDemerbas
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession(options =>
                   {
-                      options.IdleTimeout = TimeSpan.FromDays(2);
+                      options.IdleTimeout = TimeSpan.FromDays(1);
                   });
 
             services.AddControllersWithViews();

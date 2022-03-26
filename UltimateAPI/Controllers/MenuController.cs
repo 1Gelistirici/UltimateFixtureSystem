@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using UltimateAPI.CallManager;
+using UltimateAPI.Entities;
 
 namespace UltimateAPI.Controllers
 {
@@ -11,5 +8,25 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class MenuController : ControllerBase
     {
+        [HttpPost("GetRole")]
+        public IActionResult GetRole(UserRole parameter)
+        {
+            var result = MenuCallManager.Instance.GetRole(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("AddRole")]
+        public IActionResult AddRole(UserRole parameter)
+        {
+            var result = MenuCallManager.Instance.AddRole(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("DeleteRole")]
+        public IActionResult DeleteRole(UserRole parameter)
+        {
+            var result = MenuCallManager.Instance.DeleteRole(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }
