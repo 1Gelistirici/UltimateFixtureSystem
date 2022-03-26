@@ -11,21 +11,21 @@ namespace UltimateAPI.Controllers
         [HttpPost("GetRole")]
         public IActionResult GetRole(UserRole parameter)
         {
-            var result = MenuCallManager.Instance.GetRole(parameter);
+            var result = UserRoleCallManager.Instance.GetRole(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
         [HttpPost("AddRole")]
         public IActionResult AddRole(UserRole parameter)
         {
-            var result = MenuCallManager.Instance.AddRole(parameter);
+            var result = UserRoleCallManager.Instance.AddRole(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
         [HttpPost("DeleteRole")]
         public IActionResult DeleteRole(UserRole parameter)
         {
-            var result = MenuCallManager.Instance.DeleteRole(parameter);
+            var result = UserRoleCallManager.Instance.DeleteRole(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
     }
