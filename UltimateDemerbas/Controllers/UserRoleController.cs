@@ -19,11 +19,23 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
-        public IActionResult GetFixture()
+        public IActionResult DeleteRole([FromBody] UserRole parameter)
         {
-            UserRole parameter = new UserRole();
-            parameter.CompanyId = WorkingCompany;
-            var result = userRole.GetUserRoleCompany(parameter);
+            var result = userRole.DeleteRole(parameter);
+            return Content(result.Result);
+        }
+
+        [CheckAuthorize]
+        public IActionResult AddRole([FromBody] UserRole parameter)
+        {
+            var result = userRole.AddRole(parameter);
+            return Content(result.Result);
+        }
+
+        [CheckAuthorize]
+        public IActionResult GetRole([FromBody] UserRole parameter)
+        {
+            var result = userRole.GetRole(parameter);
             return Content(result.Result);
         }
 

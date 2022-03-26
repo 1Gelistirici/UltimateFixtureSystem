@@ -8,11 +8,22 @@ namespace UltimateDemerbas.Manager
     {
         public UserRoleManager(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
+
         }
 
-        public Task<string> GetUserRoleCompany(UserRole parameter)
+        public Task<string> GetRole(UserRole parameter)
         {
-            return GetApiParameter<UserRole>("UserRole/GetUserRoleCompany", parameter);
+            return GetApiParameter<UserRole>("UserRole/GetRole", parameter);
+        }
+
+        public Task<string> AddRole(UserRole parameter)
+        {
+            return GetApiParameter<UserRole>("UserRole/AddRole", parameter);
+        }
+
+        public Task<string> DeleteRole(UserRole parameter)
+        {
+            return GetApiParameter<UserRole>("UserRole/DeleteRole", parameter);
         }
 
     }
