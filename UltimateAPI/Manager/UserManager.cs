@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
 
@@ -147,6 +148,7 @@ namespace UltimateAPI.Manager
                             {
                                 while (read.Read())
                                 {
+                                    user.Id = Convert.ToInt32(read["id"]);
                                     user.Name = read["name"].ToString();
                                     user.Surname = read["surname"].ToString();
                                     user.UserName = read["username"].ToString();
@@ -159,9 +161,9 @@ namespace UltimateAPI.Manager
                                     user.Facebook = read["facebook"].ToString();
                                     user.Twitter = read["twitter"].ToString();
                                     user.About = read["about"].ToString();
-                                    user.Id = Convert.ToInt32(read["id"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
 
                                     result.IsSuccess = true;
                                 }
@@ -226,6 +228,7 @@ namespace UltimateAPI.Manager
                                     user.Gender = Convert.ToBoolean(read["gender"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
 
                                     users.Add(user);
                                 }

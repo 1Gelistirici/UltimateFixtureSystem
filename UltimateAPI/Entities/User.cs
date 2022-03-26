@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace UltimateAPI.Entities
 {
     public class User : BaseProperty
@@ -19,6 +21,7 @@ namespace UltimateAPI.Entities
         public bool Gender { get; set; }
         public bool Lock { get; set; }
         public string ImageUrl { get; set; }
+        public List<UserRole> Role { get; set; }
 
     }
 }
