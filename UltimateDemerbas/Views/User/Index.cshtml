@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -36,7 +35,7 @@
                     <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
                         <colgroup>
-                            <col width="600" />
+                            <col width="100" />
                             <col width="600" />
                             <col width="600" />
                             <col width="600" />
@@ -47,6 +46,31 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
+                                <td>
+                                    <div class="btn-group absoluteitem">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#assignRole">
+                                                    <i class="fa fa-group"></i>Assign Role
+                                                </a>
+                                            </li>     
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
+                                                    <i class="fa fa-edit"></i>Update
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
+                                                    <i class="fa fa-trash"></i>Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
 
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
@@ -104,26 +128,6 @@
                                     </div>
                                 </td>
 
-                                <td>
-                                    <div class="btn-group absoluteitem">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
-                                                    <i class="fa fa-edit "></i>Update
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
-                                                    <i class="fa fa-trash "></i>Delete
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
 
@@ -149,12 +153,12 @@
 
 @section PageScript
     {
-    <script src="~/AngularControllers/Services/UserService.js"></script>
-    <script src="~/AngularControllers/Services/EnumService.js"></script>
+<script src="~/AngularControllers/Services/UserService.js"></script>
+<script src="~/AngularControllers/Services/EnumService.js"></script>
 
-    <script src="~/AngularControllers/Services/FixLicService.js"></script>
-    <script src="~/AngularControllers/Services/FixtureService.js"></script>
-    <script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
-    <script src="~/AngularControllers/Services/LicenseService.js"></script>
-    <script src="~/AngularControllers/Controllers/UserController.js"></script>
+<script src="~/AngularControllers/Services/FixLicService.js"></script>
+<script src="~/AngularControllers/Services/FixtureService.js"></script>
+<script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
+<script src="~/AngularControllers/Services/LicenseService.js"></script>
+<script src="~/AngularControllers/Controllers/UserController.js"></script>
 }
