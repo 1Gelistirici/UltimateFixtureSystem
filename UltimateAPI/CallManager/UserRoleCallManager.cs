@@ -27,10 +27,19 @@ namespace UltimateAPI.CallManager
 
         }
 
-        public UltimateResult<List<UserRole>> GetUserRoleCompany(UserRole parameter)
+        public UltimateResult<List<UserRole>> GetRole(UserRole parameter)
         {
-            return UserRoleManager.Instance.GetUserRoleCompany(parameter);
+            return MenuManager.Instance.GetRole(parameter);
         }
 
+        public UltimateResult<List<UserRole>> DeleteRole(UserRole parameter)
+        {
+            return MenuManager.Instance.DeleteRole(parameter);
+        }
+
+        public UltimateResult<List<UserRole>> AddRole(UserRole parameter)
+        {
+            return MenuManager.Instance.AddRole(parameter);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
-using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -28,12 +27,13 @@ namespace UltimateAPI.Manager
             }
         }
 
-        public UltimateResult<List<UserRole>> GetUserRoleCompany(UserRole parameter)
+
+        public UltimateResult<List<UserRole>> GetRole(UserRole parameter)
         {
-            List<UserRole> users = new List<UserRole>();
+            List<UserRole> roles = new List<UserRole>();
             UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[userRole_GetUserRoleCompany]";
+            string Proc = "[dbo].[userRole_GetRole]";
 
             try
             {
@@ -44,7 +44,9 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@CompanyId", parameter.CompanyId);
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
@@ -52,17 +54,18 @@ namespace UltimateAPI.Manager
                             {
                                 while (read.Read())
                                 {
-                                    UserRole user = new UserRole();
-                                    user.MenuRefId = Convert.ToInt32(read["MenuRefId"]);
-                                    user.UserRefId = Convert.ToInt32(read["UserRefId"]);
+                                    UserRole userRole = new UserRole();
+                                    userRole.Id = Convert.ToInt32(read["Id"]);
+                                    userRole.MenuRefId = Convert.ToInt32(read["MenuRefId"]);
+                                    userRole.UserRefId = Convert.ToInt32(read["UserRefId"]);
 
-                                    users.Add(user);
+                                    roles.Add(userRole);
                                 }
                             }
                             read.Close();
                         }
                         sqlCommand.Dispose();
-                        result.Data = users;
+                        result.Data = roles;
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
@@ -77,7 +80,80 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<UserRole>> AddRole(UserRole parameter)
+        {
+            UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[userRole_AddUserRole]";
 
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
 
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@MenuRefId", parameter.MenuRefId);
+                        sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public UltimateResult<List<UserRole>> DeleteRole(UserRole parameter)
+        {
+            UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[userRole_DeleteUserRole]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
     }
 }
