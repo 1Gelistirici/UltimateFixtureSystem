@@ -161,6 +161,7 @@ namespace UltimateAPI.Manager
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["lock"]);
 
                                     result.IsSuccess = true;
                                 }
@@ -224,6 +225,7 @@ namespace UltimateAPI.Manager
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Gender = Convert.ToBoolean(read["gender"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["lock"]);
 
                                     users.Add(user);
                                 }
@@ -286,6 +288,7 @@ namespace UltimateAPI.Manager
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["lock"]);
 
                                     users.Add(user);
                                 }

@@ -18,6 +18,8 @@ namespace UltimateAPI.Entities
         public string About { get; set; }
         public bool Gender { get; set; }
         public bool Lock { get; set; }
+        public string ImageUrl { get; set; }
+        public bool RememberMe { get; set; }
 
     }
 }

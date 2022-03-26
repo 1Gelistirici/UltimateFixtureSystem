@@ -8,7 +8,8 @@
             var parameter = {
                 UserName: $scope.User.Username,
                 Password: $scope.User.Password,
-                Company: $scope.User.Company
+                Company: $scope.User.Company,
+                RememberMe: $scope.User.RememberMe
             }
 
             LoginService.CheckUser(parameter,
