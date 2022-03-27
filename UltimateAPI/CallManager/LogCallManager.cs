@@ -27,6 +27,7 @@ namespace UltimateAPI.CallManager
 
         }
 
+
         public UltimateResult<List<Log>> GetLogs(Log parameter)
         {
             return LogManager.Instance.GetLogs(parameter);
