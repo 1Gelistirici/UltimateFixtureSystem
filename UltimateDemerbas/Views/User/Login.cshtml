@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -43,7 +42,6 @@
 
     <!-- BEGIN LOGO -->
     <div class="logo">
-
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
@@ -88,18 +86,22 @@
             </div>
         </form>
         <!-- END LOGIN FORM -->
+        <br />
+        <br />
+        <br />
+        <br />
         <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="forget-form" action="index.html" method="post">
+        <form name="ForgetForm" class="forget-form">
             <div class="form-title">
                 <span class="form-title">Forget Password ?</span>
                 <span class="form-subtitle">Enter your e-mail to reset it.</span>
             </div>
             <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" />
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" ng-model="forgerMail" required/>
             </div>
             <div class="form-actions">
                 <button type="button" id="back-btn" class="btn btn-default">Back</button>
-                <button type="submit" class="btn btn-primary uppercase pull-right">Submit</button>
+                <button type="submit" ng-disabled="ForgetForm.$invalid" class="btn btn-primary uppercase pull-right">Send</button>
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
@@ -141,11 +143,11 @@
     <script src="~/Scripts/General/toaster.js"></script>
     <!-- End toaster Js-->
     @*<script>
-            $(document).ready(function () {
-                $('#clickmewow').click(function () {
-                    $('#radio1003').attr('checked', 'checked');
-                });
-            })
+        $(document).ready(function () {
+        $('#clickmewow').click(function () {
+        $('#radio1003').attr('checked', 'checked');
+        });
+        })
         </script>*@
 </body>
 
