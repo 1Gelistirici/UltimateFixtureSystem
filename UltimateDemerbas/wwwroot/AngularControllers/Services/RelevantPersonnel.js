@@ -1,24 +1,24 @@
 ﻿MainApp.service("RelevantPersonnelService", ["$http",
     function ($http) {
 
-        this.GetMessages = function (success, error) {
-            $http.get("/Message/GetMessages").then(
+        this.GetRelevantPersonnels = function (success, error) {
+            $http.get("/RelevantPersonnel/GetRelevantPersonnels").then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
         }
 
-        this.DeleteMessage = function (Id, success, error) {
-            $http.post('/Message/DeleteMessage', { Id: Id }).then(
+        this.DeleteRelevantPersonnel = function (Id, success, error) {
+            $http.post('/RelevantPersonnel/DeleteRelevantPersonnel', { Id: Id }).then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
         };
 
-        this.AddMessage = function (parameter, success, error) {
-            $http.post('/Message/AddMessage', JSON.stringify(parameter)).then(
+        this.AddRelevantPersonnel = function (parameter, success, error) {
+            $http.post('/RelevantPersonnel/AddRelevantPersonnel', JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
