@@ -47,7 +47,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Adress" filter="{ Adress: 'text'}" sortable="'Adress'">
+                                <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
                                     <div class="col-md-9">
                                         {{_.User.MailAdress}}
                                     </div>
@@ -83,12 +83,13 @@
         </div>
     </div>
 
-    <partial name="~/Views/Shared/Partials/ComponentModel/AddComponentModelPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/RelevantPersonnel/AddRelevantPersonnelPartial.cshtml" />
 </div>
 
 
 @section PageScript
     {
+<script src="~/AngularControllers/Services/UserService.js"></script>
 <script src="~/AngularControllers/Services/RelevantPersonnelService.js"></script>
 <script src="~/AngularControllers/Controllers/RelevantPersonnelController.js"></script>
 }

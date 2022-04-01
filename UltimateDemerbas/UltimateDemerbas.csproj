@@ -18,12 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Layout\**" />
     <Compile Remove="Views\Shared\Partials\Profile\**" />
     <Compile Remove="wwwroot\assets1\test\**" />
+    <Content Remove="Views\Layout\**" />
     <Content Remove="Views\Shared\Partials\Profile\**" />
     <Content Remove="wwwroot\assets1\test\**" />
+    <EmbeddedResource Remove="Views\Layout\**" />
     <EmbeddedResource Remove="Views\Shared\Partials\Profile\**" />
     <EmbeddedResource Remove="wwwroot\assets1\test\**" />
+    <None Remove="Views\Layout\**" />
     <None Remove="Views\Shared\Partials\Profile\**" />
     <None Remove="wwwroot\assets1\test\**" />
   </ItemGroup>
@@ -47,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Layout\" />
     <Folder Include="wwwroot\ThirdParty\" />
   </ItemGroup>
 

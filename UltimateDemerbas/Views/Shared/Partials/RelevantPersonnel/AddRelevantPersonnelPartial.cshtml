@@ -1,0 +1,28 @@
+﻿<!--Add Popup-->
+<div id="AddRelevantPersonnel" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Add Relevant Personnel</h4>
+            </div>
+            <div class="scroller" style="height:160px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <div class="col-md-9">
+                        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="RelevantPersonnelForm">
+                            <span>User</span>
+                            <select class="form-control" ng-model="User" required>
+                                <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}} {{x.Surname}}</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:14%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-disabled="RelevantPersonnelForm.$invalid" ng-click="AddRelevantPersonnel()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
