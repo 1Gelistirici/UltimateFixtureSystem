@@ -129,6 +129,7 @@ namespace UltimateAPI.Manager
                                     RelevantPersonnel revelant = new RelevantPersonnel();
                                     revelant.Id = Convert.ToInt32(read["Id"]);
                                     revelant.UserRefId = Convert.ToInt32(read["UserRefId"]);
+                                    revelant.User = UserManager.Instance.GetUser(new User { UserId = revelant.UserRefId }).Data;
                                     revelant.CompanyRefId = Convert.ToInt32(read["CompanyRefId"]);
 
                                     reports.Add(revelant);

@@ -30,9 +30,9 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult DeleteRelevantPersonnel(int Id)
+        public IActionResult DeleteRelevantPersonnel([FromBody]  ReferansParameter parameter)
         {
-            var result = reveland.DeleteRelevantPersonnel(new ReferansParameter { Id = Id });
+            var result = reveland.DeleteRelevantPersonnel(parameter);
             return Content(result.Result);
         }
 
