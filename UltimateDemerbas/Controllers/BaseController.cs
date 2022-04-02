@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Controllers
@@ -45,11 +46,7 @@ namespace UltimateDemerbas.Controllers
         {
             HttpContext.Session.SetInt32("Id", parameter.Id);
             HttpContext.Session.SetInt32("CompanyId", parameter.CompanyId);
-
-            if (parameter.RememberMe)
-            {
-                HttpContext.Session.SetInt32("RememberMe", 1);
-            }
+            HttpContext.Session.SetInt32("RememberMe", Convert.ToInt16(parameter.RememberMe));
         }
 
         public void RemoveActiveUser()

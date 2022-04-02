@@ -186,6 +186,59 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<User> GetUserCompanyUserName(User parameter)
+        {
+            User user = new User();
+            UltimateResult<User> result = new UltimateResult<User>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[user_GetUserCompanyUsername]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@Company", parameter.Company);
+                        sqlCommand.Parameters.AddWithValue("@UserName", parameter.UserName);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    user.Id = Convert.ToInt32(read["id"]);
+                                    user.Name = read["name"].ToString();
+                                    user.Surname = read["surname"].ToString();
+                                    user.UserName = read["username"].ToString();
+                                    user.MailAdress = read["mailAdress"].ToString();
+                           
+                                    result.IsSuccess = true;
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = user;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<User>> GetUserCompany(User parameter)
         {
             List<User> users = new List<User>();

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
+using UltimateDemerbas.Models.Mailer;
 using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
@@ -10,12 +12,14 @@ namespace UltimateDemerbas.Controllers
     {
         protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
+        private IConfiguration Configuration;
         UserManager user;
 
-        public UserController(IHttpClientFactory httpClientFactory)
+        public UserController(IHttpClientFactory httpClientFactory, IConfiguration _configuration)
         {
             _httpClientFactory = httpClientFactory;
             user = new UserManager(_httpClientFactory);
+            Configuration = _configuration;
         }
 
         [CheckAuthorize]
@@ -51,6 +55,36 @@ namespace UltimateDemerbas.Controllers
         {
             var result = user.CheckUser(parameter);
             return Content(result.Result);
+        }
+
+        public IActionResult ForgetPassword([FromBody] User parameter)
+        {
+
+
+            var a = user.GetUserCompanyUserName(parameter);
+            var b = a.Result;
+
+
+            Mailer mailler = new Mailer(Configuration);
+            Mail mail = new Mail();
+
+
+            mail.To = "oyben89@gmail.com";
+            mail.Body = "test";
+            mail.Subject = "test";
+
+
+
+            var sendResult = mailler.Sendmail(mail);
+
+
+
+
+            if (sendResult)
+            {
+            }
+
+            return Content("");
         }
 
         [CheckAuthorize]

@@ -17,6 +17,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<User>("User/CheckUser", parameter);
         }
 
+        public Task<string> GetUserCompanyUserName(User parameter)
+        {
+            return GetApiParameter<User>("User/GetUserCompanyUserName", parameter);
+        }
+
         public Task<string> GetUser(User parameter)
         {
             return GetApiParameter<User>("User/GetUser", parameter);

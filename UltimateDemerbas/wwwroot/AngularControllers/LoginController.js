@@ -33,6 +33,26 @@
                 });
         }
 
+        $scope.ForgetPassword = function () {
+            var parameter = {
+                Company: $scope.forgetCompany,
+                UserName: $scope.forgetUsername
+            }
+
+            LoginService.ForgetPassword(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.forgetCompany = "";
+                        $scope.forgetUsername = "";
+                        toaster.success("Başarılı", result.Message);
+                    } else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
+                });
+        }
+
 
         function SetUserSession(parameter) {
             LoginService.SetUserSession(parameter,

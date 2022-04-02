@@ -31,6 +31,10 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.CheckUser(parameter);
         }
+        public UltimateResult<User> GetUserCompanyUserName(User parameter)
+        {
+            return UserManager.Instance.GetUserCompanyUserName(parameter);
+        }
         public UltimateResult<User> GetUser(User parameter)
         {
             return UserManager.Instance.GetUser(parameter);
