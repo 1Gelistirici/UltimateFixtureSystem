@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
 namespace UltimateAPI.Manager
@@ -27,10 +26,9 @@ namespace UltimateAPI.Manager
 
         }
 
-        public UltimateResult<List<Code>> GetCode(Code parameter)
+        public UltimateResult<Code> GetCode(Code parameter)
         {
-            List<Code> categories = new List<Code>();
-            UltimateResult<List<Code>> result = new UltimateResult<List<Code>>();
+            UltimateResult<Code> result = new UltimateResult<Code>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[codes_GetCode]";
 
@@ -59,13 +57,12 @@ namespace UltimateAPI.Manager
                                     code.InsertDate = Convert.ToDateTime(read["InsertDate"]);
                                     code.EndDate = Convert.ToDateTime(read["EndDate"]);
 
-                                    categories.Add(code);
+                                    result.Data = code;
                                 }
                             }
                             read.Close();
                         }
                         sqlCommand.Dispose();
-                        result.Data = categories;
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
@@ -118,7 +115,5 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-
-
     }
 }
