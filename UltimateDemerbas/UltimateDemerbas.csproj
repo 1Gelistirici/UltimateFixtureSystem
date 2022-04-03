@@ -42,6 +42,7 @@
     <PackageReference Include="AngularJS.Route" Version="1.8.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="ngTable" Version="3.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />

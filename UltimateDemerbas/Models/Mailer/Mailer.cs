@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using UltimateAPI.Entities;
@@ -29,7 +27,7 @@ namespace UltimateDemerbas.Models.Mailer
                 MailMessage mailMessage = new MailMessage(mail.Sender, mail.To);
                 mailMessage.Subject = mail.Subject;
                 mailMessage.Body = mail.Body;
-                mailMessage.IsBodyHtml = false;
+                mailMessage.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";

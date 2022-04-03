@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Mailer;
 using UltimateDemerbas.Models.Tool;
+using Functions;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -60,31 +62,47 @@ namespace UltimateDemerbas.Controllers
         public IActionResult ForgetPassword([FromBody] User parameter)
         {
 
-
-            var a = user.GetUserCompanyUserName(parameter);
-            var b = a.Result;
-
-
-            Mailer mailler = new Mailer(Configuration);
-            Mail mail = new Mail();
+            var response = user.GetUserCompanyUserName(parameter);
+            User userData = JsonSerializer.Deserialize<UltimateResult<User>>(response.Result).Data;
 
 
-            mail.To = "oyben89@gmail.com";
-            mail.Body = "test";
-            mail.Subject = "test";
-
-
-
-            var sendResult = mailler.Sendmail(mail);
-
-
-
-
-            if (sendResult)
+            if (userData.Id > 0)
             {
+                string newCode = CodeCreator.CreateCode(10);
+
+
+                Mailer mailler = new Mailer(Configuration);
+                Mail mail = new Mail();
+
+                mail.To = userData.MailAdress;
+                mail.Body = $"Use this key for reset Password: <b>{newCode}</b> The code is valid for 5 minutes only.";
+                mail.Subject = "Reset Password in Ultimate Fixture";
+
+                var sendResult = mailler.Sendmail(mail);
+                if (sendResult)
+                {
+
+                }
             }
 
+
+
+
             return Content("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
         [CheckAuthorize]
