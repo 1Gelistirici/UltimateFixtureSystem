@@ -61,48 +61,54 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult ForgetPassword([FromBody] User parameter)
         {
+            UltimateResult<User> result = new UltimateResult<User>();
 
-            var response = user.GetUserCompanyUserName(parameter);
-            User userData = JsonSerializer.Deserialize<UltimateResult<User>>(response.Result).Data;
-
-
-            if (userData.Id > 0)
+            try
             {
-                string newCode = CodeCreator.CreateCode(10);
+                var response = user.GetUserCompanyUserName(parameter);
+                User userData = JsonSerializer.Deserialize<UltimateResult<User>>(response.Result).Data;
 
+                result.IsSuccess = true;
+                result.Message = "Eğer girilen bilgiler doğru ise mail gönderilmiştir.";
 
-                Mailer mailler = new Mailer(Configuration);
-                Mail mail = new Mail();
-
-                mail.To = userData.MailAdress;
-                mail.Body = $"Use this key for reset Password: <b>{newCode}</b> The code is valid for 5 minutes only.";
-                mail.Subject = "Reset Password in Ultimate Fixture";
-
-                var sendResult = mailler.Sendmail(mail);
-                if (sendResult)
+                if (userData.Id > 0)
                 {
+                    string newCode = CodeCreator.CreateCode(10);
 
+
+                    Mailer mailler = new Mailer(Configuration);
+                    Mail mail = new Mail();
+
+                    mail.To = userData.MailAdress;
+                    mail.Body = $"Use this key for reset Password: <b>[{newCode}]</b> The code is valid for 5 minutes only.";
+                    mail.Subject = "Reset Password in Ultimate Fixture";
+
+                    var sendResult = mailler.Sendmail(mail);
+                    if (sendResult)
+                    {
+                        CodeManager codeManager = new CodeManager(_httpClientFactory);
+                        Code code = new Code();
+                        code.UserRefId = userData.Id;
+                        code.CodeString = newCode;
+
+                        codeManager.AddCode(code);
+                    }
+                    else
+                    {
+                        result.IsSuccess = false;
+                        result.Message = "Beklenmedik bir hata oluştu.";
+                        return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+                    }
                 }
+
+                return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
             }
-
-
-
-
-            return Content("");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            catch (System.Exception)
+            {
+                result.IsSuccess = true;
+                result.Message = "Eğer girilen bilgiler doğru ise mail gönderilmiştir.";
+                return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+            }
         }
 
         [CheckAuthorize]

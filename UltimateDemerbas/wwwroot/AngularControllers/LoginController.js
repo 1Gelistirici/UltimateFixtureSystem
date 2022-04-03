@@ -34,6 +34,8 @@
         }
 
         $scope.ForgetPassword = function () {
+            $scope.forgetSendButton = true;
+
             var parameter = {
                 Company: $scope.forgetCompany,
                 UserName: $scope.forgetUsername
@@ -45,6 +47,16 @@
                         $scope.forgetCompany = "";
                         $scope.forgetUsername = "";
                         toaster.success("Başarılı", result.Message);
+                        $scope.second = 60;
+
+                        var forgetInterval = setInterval(function () {
+                            $scope.second = $scope.second - 1;
+
+                            if ($scope.second === 0) {
+                                $scope.forgetSendButton = false;
+                                clearInterval(forgetInterval);
+                            }
+                        }, 1000);
                     } else {
                         toaster.error("Başarısız", result.Message);
                     }

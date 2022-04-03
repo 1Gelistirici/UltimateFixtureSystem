@@ -104,7 +104,8 @@
             </div>
             <div>
                 <button type="button" id="back-btn" class="btn btn-default">Back</button>
-                <button type="button" ng-disabled="ForgetForm.$invalid" class="btn btn-primary uppercase pull-right" ng-click="ForgetPassword();">Send</button>
+                <button type="button" ng-disabled="ForgetForm.$invalid && forgetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPassword();">Send</button>
+                  <b ng-if="forgetSendButton" >{{second}} can be resent after seconds.</b>
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
