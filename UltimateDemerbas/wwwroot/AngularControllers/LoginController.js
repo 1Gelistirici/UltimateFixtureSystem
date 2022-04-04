@@ -71,12 +71,21 @@
 
         $scope.ForgetPasswordChange = function () {
             var parameter = {
-                Code: $scope.code,
+                CodeString: $scope.code,
                 Password: $scope.password,
                 TryPassword: $scope.tryPassword
             }
 
-
+            LoginService.ForgetPasswordChange(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", result.Message);
+                    } else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
+                });
         }
 
 

@@ -128,9 +128,9 @@ namespace UltimateDemerbas.Controllers
             }
 
             User userInfo = new User();
-            userInfo.Id = codeData.UserRefId;
+            userInfo.UserId = codeData.UserRefId;
             userInfo.Password = parameter.Password;
-            userInfo.PasswordTry = parameter.TryPassword;
+            userInfo.OldPassword= parameter.TryPassword;
             var result = user.ChangePassword(userInfo);
 
             return Content(result.Result);

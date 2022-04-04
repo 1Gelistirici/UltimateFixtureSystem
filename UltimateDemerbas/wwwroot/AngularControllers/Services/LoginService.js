@@ -19,6 +19,14 @@ LoginApp.service("LoginService", ["$http",
                 }, error);
         };
 
+        this.ForgetPasswordChange = function (parameter, success, error) {
+            $http.post('/User/ForgetPasswordChange/', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.RemoveActiveUserSession = function (success, error) {
             $http.get("/User/RemoveActiveUserSession").then(
                 function (response) {

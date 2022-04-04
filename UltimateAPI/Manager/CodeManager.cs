@@ -53,7 +53,7 @@ namespace UltimateAPI.Manager
                                     Code code = new Code();
                                     code.Id = Convert.ToInt32(read["Id"]);
                                     code.UserRefId = Convert.ToInt32(read["UserRefId"]);
-                                    code.CodeString = read["CodeString"].ToString();
+                                    code.CodeString = read["Code"].ToString();
                                     code.InsertDate = Convert.ToDateTime(read["InsertDate"]);
                                     code.EndDate = Convert.ToDateTime(read["EndDate"]);
 
