@@ -2,6 +2,8 @@
     function ($scope, LoginService, $window, toaster) {
 
         $scope.LoginButton = false;
+        $scope.forgetForm = true;
+        $scope.resetPasswordForm = false;
 
         $scope.CheckUser = function () {
             $scope.LoginButton = true;
@@ -46,13 +48,15 @@
                     if (result.IsSuccess) {
                         $scope.forgetCompany = "";
                         $scope.forgetUsername = "";
-                        toaster.success("Başarılı", result.Message);
+                        //toaster.success("Başarılı", result.Message);
                         $scope.second = 60;
+                        $scope.forgetForm = false;
+                        $scope.resetPasswordForm = true;
 
                         var forgetInterval = setInterval(function () {
                             $scope.second = $scope.second - 1;
 
-                            if ($scope.second === 0) {
+                            if ($scope.second === 1) {
                                 $scope.forgetSendButton = false;
                                 clearInterval(forgetInterval);
                             }
@@ -63,6 +67,16 @@
                 }, function error() {
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
+        }
+
+        $scope.ForgetPasswordChange = function () {
+            var parameter = {
+                Code: $scope.code,
+                Password: $scope.password,
+                TryPassword: $scope.tryPassword
+            }
+
+
         }
 
 

@@ -10,5 +10,7 @@ namespace UltimateAPI.Entities
         public DateTime InsertDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsActive { get; set; }
+        public string Password { get; set; }
+        public string TryPassword { get; set; }
     }
 }

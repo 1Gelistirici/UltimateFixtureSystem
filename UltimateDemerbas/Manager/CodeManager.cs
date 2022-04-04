@@ -10,9 +10,9 @@ namespace UltimateDemerbas.Manager
         {
         }
 
-        public Task<string> GetCode()
+        public Task<string> GetCode(Code parameter)
         {
-            return GetApi("Code/GetCode");
+            return GetApiParameter<Code>("Code/GetCode", parameter);
         }
     
         public Task<string> AddCode(Code parameter)

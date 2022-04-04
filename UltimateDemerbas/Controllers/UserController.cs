@@ -71,7 +71,7 @@ namespace UltimateDemerbas.Controllers
                 result.IsSuccess = true;
                 result.Message = "Eğer girilen bilgiler doğru ise mail gönderilmiştir.";
 
-                if (userData.Id > 0)
+                if (userData != null)
                 {
                     string newCode = CodeCreator.CreateCode(10);
 
@@ -109,6 +109,31 @@ namespace UltimateDemerbas.Controllers
                 result.Message = "Eğer girilen bilgiler doğru ise mail gönderilmiştir.";
                 return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
             }
+        }
+
+        public IActionResult ForgetPasswordChange([FromBody] Code parameter)
+        {
+            if (parameter.Password != parameter.TryPassword)
+            {
+                return Content(ResultData.Get(false, "Şifreler uyuşmuyor.", null));
+            }
+
+            CodeManager codeManager = new CodeManager(_httpClientFactory);
+            var response = codeManager.GetCode(new Code { CodeString = parameter.CodeString });
+            Code codeData = JsonSerializer.Deserialize<UltimateResult<Code>>(response.Result).Data;
+
+            if (codeData == null)
+            {
+                return Content(ResultData.Get(false, "Kod aktif değil.", null));
+            }
+
+            User userInfo = new User();
+            userInfo.Id = codeData.UserRefId;
+            userInfo.Password = parameter.Password;
+            userInfo.PasswordTry = parameter.TryPassword;
+            var result = user.ChangePassword(userInfo);
+
+            return Content(result.Result);
         }
 
         [CheckAuthorize]

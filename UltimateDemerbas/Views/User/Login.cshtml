@@ -91,7 +91,7 @@
         <br />
         <br />
         <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form name="ForgetForm" class="forget-form">
+        <form name="ForgetForm" class="forget-form" ng-show="forgetForm">
             <div class="form-title">
                 <span class="form-title">Forget Password ?</span>
                 <span class="form-subtitle">Enter your e-mail to reset it.</span>
@@ -105,10 +105,32 @@
             <div>
                 <button type="button" id="back-btn" class="btn btn-default">Back</button>
                 <button type="button" ng-disabled="ForgetForm.$invalid && forgetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPassword();">Send</button>
-                  <b ng-if="forgetSendButton" >{{second}} can be resent after seconds.</b>
+                @*<b ng-if="forgetSendButton">{{second}} can be resent after seconds.</b>*@
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form name="ResetPasswordForm" class="forget-form" ng-show="resetPasswordForm">
+            <div class="form-title">
+                <span class="form-title">Reset Password ?</span>
+                <span class="form-subtitle">Enter your e-mail to reset it.</span>
+            </div>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" ng-model="password" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Try Password" ng-model="tryPassword" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Code" ng-model="code" required />
+            </div>
+            <div>
+                <button type="button" ng-disabled="ResetPasswordForm.$invalid && forgetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPasswordChange();">Send</button>
+            </div>
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+
+
     </div>
 
     <script src="~/assets/global/plugins/jquery.min.js"></script>

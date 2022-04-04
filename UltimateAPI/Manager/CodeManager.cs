@@ -42,7 +42,7 @@ namespace UltimateAPI.Manager
                     {
                         ConnectionManager.Instance.CmdOperations();
 
-                        sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
+                        sqlCommand.Parameters.AddWithValue("@Code", parameter.CodeString);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
