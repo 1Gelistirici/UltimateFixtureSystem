@@ -52,6 +52,7 @@
                         $scope.second = 60;
                         $scope.forgetForm = false;
                         $scope.resetPasswordForm = true;
+                        toaster.success("Mail gönderilmiştir.", "Gönderilen kod 5 dakika içinde kullanılmalıdır.");
 
                         var forgetInterval = setInterval(function () {
                             $scope.second = $scope.second - 1;
@@ -70,6 +71,7 @@
         }
 
         $scope.ForgetPasswordChange = function () {
+            $scope.resetSendButton = false;
             var parameter = {
                 CodeString: $scope.code,
                 Password: $scope.password,
@@ -78,12 +80,15 @@
 
             LoginService.ForgetPasswordChange(parameter,
                 function success(result) {
+                    $scope.resetSendButton = true;
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", result.Message);
+                        location.reload();
                     } else {
                         toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
+                    $scope.resetSendButton = true;
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
