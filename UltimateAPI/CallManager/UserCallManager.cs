@@ -51,6 +51,10 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.ChangePassword(parameter);
         }
+        public bool ForgetChangePassword(User parameter)
+        {
+            return UserManager.Instance.ForgetChangePassword(parameter);
+        }
         public UltimateResult<User> UpdateProfile(User parameter)
         {
             return UserManager.Instance.UpdateProfile(parameter);

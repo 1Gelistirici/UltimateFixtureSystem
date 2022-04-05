@@ -131,7 +131,7 @@ namespace UltimateDemerbas.Controllers
             userInfo.UserId = codeData.UserRefId;
             userInfo.Password = parameter.Password;
             userInfo.OldPassword= parameter.TryPassword;
-            var result = user.ChangePassword(userInfo);
+            var result = user.ForgetChangePassword(userInfo);
 
             return Content(result.Result);
         }

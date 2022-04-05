@@ -42,6 +42,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<User>("User/ChangePassword", parameter);
         }
 
+        public Task<string> ForgetChangePassword([FromBody] User parameter)
+        {
+            return GetApiParameter<User>("User/ForgetChangePassword", parameter);
+        }
+
         public Task<string> UpdateProfile(User parameter)
         {
             return GetApiParameter<User>("User/UpdateProfile", parameter);

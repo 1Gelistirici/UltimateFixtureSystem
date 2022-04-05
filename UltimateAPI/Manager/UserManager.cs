@@ -217,7 +217,7 @@ namespace UltimateAPI.Manager
                                     user.Surname = read["surname"].ToString();
                                     user.UserName = read["username"].ToString();
                                     user.MailAdress = read["mailAdress"].ToString();
-                           
+
                                     result.IsSuccess = true;
                                 }
                             }
@@ -402,6 +402,46 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                return result;
+            }
+
+            AddLog(parameter.UserId, "Şifre Güncellendi");
+
+            return result;
+        }
+
+        public bool ForgetChangePassword(User parameter)
+        {
+            List<User> users = new List<User>();
+            bool result = false;
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[users_ForgetChangePassword]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@Id", parameter.UserId);
+                        sqlCommand.Parameters.AddWithValue("@Password", Functions.Hashing.SHA_512_Encrypting(parameter.Password));
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result = effectedRow > 0;
+
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result = false;
                 return result;
             }
 

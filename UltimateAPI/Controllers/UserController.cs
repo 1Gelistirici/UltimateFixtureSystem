@@ -51,6 +51,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("ForgetChangePassword")]
+        public IActionResult ForgetChangePassword(User parameter)
+        {
+            var result = UserCallManager.Instance.ForgetChangePassword(parameter);
+            return Content(ResultData.Get(result, "", ""));
+        }
+
         [HttpPost("UpdateProfile")]
         public IActionResult UpdateProfile(User parameter)
         {
