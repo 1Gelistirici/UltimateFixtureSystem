@@ -1,5 +1,5 @@
-﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "EnumService", "NgTableParams", "toaster",
-    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, EnumService, NgTableParams, toaster) {
+﻿MainApp.controller("ProfileController", ["$scope", "UserService", "TaskService", "CategoryService", "AccessoryModelService", "ReportService", "AssignmentService", "EnumService", "$confirm", "NgTableParams", "toaster",
+    function ($scope, UserService, TaskService, CategoryService, AccessoryModelService, ReportService, AssignmentService, EnumService, $confirm, NgTableParams, toaster) {
 
         $scope.ItemTypesFilter = [];
         $scope.AccessoryCount = 0;
@@ -169,6 +169,10 @@
                 counts: [10, 20, 50],
                 dataset: $scope.AccessoryData
             });
+        }
+
+        $scope.ChangePasswordConfirm = function () {
+            $confirm.Show("Silme Onayı", "Tüm verilerinizi silmek istediğinize emin misiniz?", $scope.ChangePassword);
         }
 
         //Change Password
