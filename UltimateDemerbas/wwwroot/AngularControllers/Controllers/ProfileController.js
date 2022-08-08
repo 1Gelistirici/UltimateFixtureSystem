@@ -219,6 +219,7 @@
                         $scope.User.Twitter = $scope.Twitter;
                         $scope.User.Linkedin = $scope.Linkedin;
                         $scope.User.About = $scope.About;
+                        toaster.success("Başarılı", "Bilgiler güncellendi.");
                     } else {
                         toaster.error("UpdateProfile", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
