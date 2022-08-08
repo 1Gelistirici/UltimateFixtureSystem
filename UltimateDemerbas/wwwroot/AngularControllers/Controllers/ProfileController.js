@@ -172,7 +172,7 @@
         }
 
         $scope.ChangePasswordConfirm = function () {
-            $confirm.Show("Silme Onayı", "Tüm verilerinizi silmek istediğinize emin misiniz?", $scope.ChangePassword);
+            $confirm.Show("Onay", "Şifrenizi değiştirmek istediğinize emin misiniz?", $scope.ChangePassword);
         }
 
         //Change Password
@@ -196,6 +196,10 @@
                 }, function error() {
                     toaster.error("Başarısız", "Şifre güncellenirken bir problem oluştu.");
                 });
+        }
+
+        $scope.UpdateProfileConfirm = function () {
+            $confirm.Show("Onay", "Değişiklikleri kaydetmek istediğinize emin misiniz?", $scope.UpdateProfile);
         }
 
         //Update Profile
