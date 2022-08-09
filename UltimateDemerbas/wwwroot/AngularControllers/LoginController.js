@@ -15,7 +15,6 @@
 
             LoginService.CheckUser(parameter,
                 function success(result) {
-                    $scope.LoginButton = false;
                     if (result.IsSuccess) {
                         var parameter = {
                             Id: result.Data.Id,
@@ -24,9 +23,8 @@
                         }
                         SetUserSession(parameter);
 
-                        toaster.success("Başarılı", result.Message);
-                        $window.location.href = '/Home/Index';
                     } else {
+                        $scope.LoginButton = false;
                         toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
@@ -97,6 +95,8 @@
         function SetUserSession(parameter) {
             LoginService.SetUserSession(parameter,
                 function success(result) {
+                        toaster.success("Başarılı", result.Message);
+                        $window.location.href = '/Home/Index';
                 });
         }
 
