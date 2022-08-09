@@ -17,10 +17,27 @@
                     </div>
                 </div>
             </div>
-            <div class="scroller" style="height:450px" data-always-visible="0" data-rail-visible1="1">
+            <div class="scroller" style="height:650px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form name="AddUserForm" class="col-md-12">
 
+                        <div class="col-md-12">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
+                                    <img src="/Content/assets/layouts/layout4/img/avatar.png" width="150" height="150" alt="" id="imgavatar" />
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                <div>
+                                    <span class="btn default btn-file">
+                                        <span class="fileinput-new">   Resim seç </span>
+                                        <span class="fileinput-exists"> Değiştir </span>
+                                        <input type="file" name="" ng-model="ImagePath" id="ImagePath" onchange="angular.element(this).scope().fileNameChanged(this)">
+                                    </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput" ng-model="ImagePath"> Sil </a>
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Name.$invalid && !AddUserForm.Name.$pristine}">
                             <label class="col-md-3 control-label" for="form_control_1">Name</label>
