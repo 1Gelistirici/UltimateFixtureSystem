@@ -7,6 +7,10 @@ using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Mailer;
 using UltimateDemerbas.Models.Tool;
 using Functions;
+using System;
+using UltimateAPI.Entities.Enums;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -130,7 +134,7 @@ namespace UltimateDemerbas.Controllers
             User userInfo = new User();
             userInfo.UserId = codeData.UserRefId;
             userInfo.Password = parameter.Password;
-            userInfo.OldPassword= parameter.TryPassword;
+            userInfo.OldPassword = parameter.TryPassword;
             var result = user.ForgetChangePassword(userInfo);
 
             return Content(result.Result);
@@ -164,16 +168,44 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
-        public IActionResult AddUser([FromBody] User parameter)
+        public IActionResult AddUser(/*[FromBody] User parameter*/)
         {
-            if (parameter.Password != parameter.PasswordTry)
+            string folderUrl = "";
+            FileHelper fileHelper = new FileHelper(Configuration);
+
+            try
             {
-                return Content("Şifreler Uyuşmuyor");
+                User parameter = JsonHelper.JsonConvert<User>(Request.Form["parameter"]);
+
+                if (Request.Form.Files.Count > 0)
+                {
+                    var file = Request.Form.Files[0];
+                    string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+
+                    string fileGuId = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    folderUrl = Path.Combine(folder, fileGuId);
+
+                    if (file != null)
+                    {
+                        parameter.ImageUrl = fileGuId;
+                        var result = user.AddUser(parameter);
+
+                        using (FileStream fs = System.IO.File.Create(folderUrl))
+
+                        {
+                            file.CopyTo(fs);
+                        }
+
+                        return Content(result.Result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.Delete(folderUrl);
             }
 
-            parameter.CompanyId = WorkingCompany;
-            var result = user.AddUser(parameter);
-            return Content(result.Result);
+            return Content("");
         }
 
         [CheckAuthorize]

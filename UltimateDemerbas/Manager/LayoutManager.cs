@@ -10,14 +10,9 @@ namespace UltimateDemerbas.Manager
         }
 
 
-
         public Task<string> GetMenus()
         {
             return GetApi("Layout/GetMenus");
         }
-
-
-
-
     }
 }

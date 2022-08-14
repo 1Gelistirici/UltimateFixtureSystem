@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UltimateDemerbas", "Ultimat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{26CC3055-E622-4CFC-942C-399B7FB5FDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Common\Functions.csproj", "{8CCF8F18-F47B-4C15-8687-9C773459F0E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functions", "Common\Functions.csproj", "{8CCF8F18-F47B-4C15-8687-9C773459F0E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

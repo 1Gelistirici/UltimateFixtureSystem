@@ -4,6 +4,7 @@
         //#region Parameters
         $scope.RegisterCount = 0;
         $scope.Pop = [];
+        $scope.files = [];
 
         $scope.TableCol = {
             Name: "Name",
@@ -15,6 +16,14 @@
             Lock: "Lock"
         };
         //#endregion
+
+        $scope.fileNameChanged = function (file) {
+            if (file.files != undefined && file.files.length > 0) {
+                for (var i = 0; i < file.files.length; i++) {
+                    $scope.files = file.files[0];
+                }
+            }
+        };
 
         $scope.GetUserCompany = function () {
             UserService.GetUserCompany(
@@ -97,7 +106,7 @@
                 Lock: $scope.Pop.Lock
             };
 
-            UserService.AddUser(parameter,
+            UserService.AddUser(parameter, $scope.files,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Successful", "Lisans güncelleme işlemi başarılı");
