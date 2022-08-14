@@ -168,7 +168,7 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
-        public IActionResult AddUser(/*[FromBody] User parameter*/)
+        public IActionResult AddUser()
         {
             string folderUrl = "";
             FileHelper fileHelper = new FileHelper(Configuration);
