@@ -157,10 +157,10 @@ namespace UltimateDemerbas.Controllers
 
             User parameter = new User();
             parameter.CompanyId = WorkingCompany;
-            var result = user.GetUserCompany(parameter);
+            var response = user.GetUserCompany(parameter);
 
-            List<User> userData = JsonSerializer.Deserialize<UltimateResult<List<User>>>(result.Result).Data;
-            foreach (var item in userData)
+            UltimateResult<List<User>> result = JsonSerializer.Deserialize<UltimateResult<List<User>>>(response.Result);
+            foreach (var item in result.Data)
             {
                 if (item.ImageName != null)
                 {
@@ -168,7 +168,7 @@ namespace UltimateDemerbas.Controllers
                 }
             }
 
-            return Content(result.Result);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
         [CheckAuthorize]
