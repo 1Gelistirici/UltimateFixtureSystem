@@ -44,15 +44,35 @@
                         success(response.data);
                     }
                 }, error);
-
         }
 
 
-        this.UpdateUser = function (parameter, success, error) {
-            $http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
+        this.UpdateUser = function (parameter, file, success, error) {
+            //$http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
+            //    function (response) {
+            //        if (success)
+            //            success(response.data);
+            //    }, error);
+
+            var fd = new FormData();
+
+            fd.append(parameter.name, parameter.file);
+            fd.append("parameter", parameter);
+
+            var request = {
+                method: 'POST',
+                url: '/User/UpdateUser',
+                data: fd,
+                headers: {
+                    'Content-Type': undefined
+                }
+            };
+
+            $http(request).then(
                 function (response) {
-                    if (success)
+                    if (success) {
                         success(response.data);
+                    }
                 }, error);
         }
 

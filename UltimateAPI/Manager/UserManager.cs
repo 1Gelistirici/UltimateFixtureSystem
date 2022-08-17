@@ -217,6 +217,7 @@ namespace UltimateAPI.Manager
                                     user.Surname = read["surname"].ToString();
                                     user.UserName = read["username"].ToString();
                                     user.MailAdress = read["mailAdress"].ToString();
+                                    user.ImageName = read["ImageName"].ToString();
 
                                     result.IsSuccess = true;
                                 }
@@ -282,6 +283,7 @@ namespace UltimateAPI.Manager
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["lock"]);
                                     user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
+                                    user.ImageName = read["ImageName"].ToString();
 
                                     users.Add(user);
                                 }
@@ -345,6 +347,7 @@ namespace UltimateAPI.Manager
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.ImageName = read["ImageName"].ToString();
 
                                     users.Add(user);
                                 }
@@ -514,6 +517,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@departmentId", parameter.Department);
                         sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
                         sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
+                        sqlCommand.Parameters.AddWithValue("@ImageName", parameter.ImageName);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result = effectedRow > 0;
@@ -558,6 +562,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@title", parameter.Title);
                         sqlCommand.Parameters.AddWithValue("@departmentId", parameter.Department);
                         sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
+                        sqlCommand.Parameters.AddWithValue("@ImageName", parameter.ImageName);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

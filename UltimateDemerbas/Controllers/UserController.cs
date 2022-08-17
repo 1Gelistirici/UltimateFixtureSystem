@@ -10,7 +10,7 @@ using Functions;
 using System;
 using UltimateAPI.Entities.Enums;
 using System.IO;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -152,9 +152,22 @@ namespace UltimateDemerbas.Controllers
         [CheckAuthorize]
         public IActionResult GetUserCompany()
         {
+            FileHelper fileHelper = new FileHelper(Configuration);
+            string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+
             User parameter = new User();
             parameter.CompanyId = WorkingCompany;
             var result = user.GetUserCompany(parameter);
+
+            List<User> userData = JsonSerializer.Deserialize<UltimateResult<List<User>>>(result.Result).Data;
+            foreach (var item in userData)
+            {
+                if (item.ImageName != null)
+                {
+                    item.ImageUrl = Path.Combine(folder, item.ImageName);
+                }
+            }
+
             return Content(result.Result);
         }
 
@@ -188,9 +201,11 @@ namespace UltimateDemerbas.Controllers
                     if (file != null)
                     {
                         UltimateResult<User> result = new UltimateResult<User>();
+                        parameter.ImageName = file.FileName;
+                        parameter.CompanyId = WorkingCompany;
 
                         var response = user.AddUser(parameter).Result;
-                         result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
+                        result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
 
                         if (result.IsSuccess)
                         {
