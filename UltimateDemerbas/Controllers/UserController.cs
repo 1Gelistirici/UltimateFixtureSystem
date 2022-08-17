@@ -187,16 +187,20 @@ namespace UltimateDemerbas.Controllers
 
                     if (file != null)
                     {
-                        parameter.ImageUrl = fileGuId;
-                        var result = user.AddUser(parameter);
+                        UltimateResult<User> result = new UltimateResult<User>();
 
-                        using (FileStream fs = System.IO.File.Create(folderUrl))
+                        var response = user.AddUser(parameter).Result;
+                         result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
 
+                        if (result.IsSuccess)
                         {
-                            file.CopyTo(fs);
+                            using (FileStream fs = System.IO.File.Create(folderUrl))
+                            {
+                                file.CopyTo(fs);
+                            }
                         }
 
-                        return Content(result.Result);
+                        return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
                     }
                 }
             }
