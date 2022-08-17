@@ -164,6 +164,7 @@ namespace UltimateAPI.Manager
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["lock"]);
                                     user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
+                                    user.ImageName = read["ImageName"].ToString();
 
                                     result.IsSuccess = true;
                                 }
