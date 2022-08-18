@@ -1,5 +1,5 @@
-﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster",
-    function ($scope, UserService, EnumService, NgTableParams, toaster) {
+﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster", "$sce",
+    function ($scope, UserService, EnumService, NgTableParams, toaster, $sce) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -16,6 +16,10 @@
             Lock: "Lock"
         };
         //#endregion
+
+        $scope.TrustSrc = function (src) {
+            return $sce.trustAsResourceUrl(src);
+        }
 
         $scope.fileNameChanged = function (file) {
             if (file.files != undefined && file.files.length > 0) {
@@ -35,7 +39,6 @@
                             $scope.Data[index].Gender = $scope.Gender.find(x => x.Value == value.Gender);
                         });
 
-                        console.log($scope.Data);
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },

@@ -162,9 +162,13 @@ namespace UltimateDemerbas.Controllers
             UltimateResult<List<User>> result = JsonSerializer.Deserialize<UltimateResult<List<User>>>(response.Result);
             foreach (var item in result.Data)
             {
-                if (item.ImageName != null)
+                if (item.ImageName != "")
                 {
                     item.ImageUrl = Path.Combine(folder, item.ImageName);
+                }
+                else
+                {
+                    item.ImageUrl = "";
                 }
             }
 

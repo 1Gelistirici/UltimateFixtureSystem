@@ -162,7 +162,7 @@ namespace UltimateAPI.Manager
                                     user.Twitter = read["twitter"].ToString();
                                     user.About = read["about"].ToString();
                                     user.Lock = Convert.ToBoolean(read["lock"]);
-                                    user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["ImageUrl"]);
                                     user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
                                     user.ImageName = read["ImageName"].ToString();
 
@@ -282,7 +282,7 @@ namespace UltimateAPI.Manager
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Gender = Convert.ToBoolean(read["gender"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
-                                    user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["ImageUrl"]);
                                     user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
                                     user.ImageName = read["ImageName"].ToString();
 
@@ -347,7 +347,7 @@ namespace UltimateAPI.Manager
                                     user.About = read["about"].ToString();
                                     user.Id = Convert.ToInt32(read["id"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
-                                    user.ImageUrl = Convert.ToString(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["ImageUrl"]);
                                     user.ImageName = read["ImageName"].ToString();
 
                                     users.Add(user);
