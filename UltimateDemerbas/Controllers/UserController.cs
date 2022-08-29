@@ -205,7 +205,8 @@ namespace UltimateDemerbas.Controllers
                     if (file != null)
                     {
                         UltimateResult<User> result = new UltimateResult<User>();
-                        parameter.ImageName = file.FileName;
+                        parameter.ImageName = fileGuId;
+                        parameter.ImageUrl = folderUrl;
                         parameter.CompanyId = WorkingCompany;
 
                         var response = user.AddUser(parameter).Result;

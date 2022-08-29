@@ -519,6 +519,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@gender", parameter.Gender);
                         sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
                         sqlCommand.Parameters.AddWithValue("@ImageName", parameter.ImageName);
+                        sqlCommand.Parameters.AddWithValue("@ImageUrl", parameter.ImageUrl);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result = effectedRow > 0;
@@ -564,6 +565,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@departmentId", parameter.Department);
                         sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
                         sqlCommand.Parameters.AddWithValue("@ImageName", parameter.ImageName);
+                        sqlCommand.Parameters.AddWithValue("@ImageUrl", parameter.ImageUrl);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
