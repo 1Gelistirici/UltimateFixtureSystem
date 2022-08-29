@@ -6,6 +6,8 @@
 <link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
 
 <div ng-controller="UserController">
+    <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/User/UpdateUserPopup.cshtml" />
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
@@ -59,7 +61,7 @@
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#assignRole">
                                                     <i class="fa fa-group"></i>Assign Role
                                                 </a>
-                                            </li>     
+                                            </li>
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
                                                     <i class="fa fa-edit"></i>Update
@@ -148,8 +150,7 @@
         </div>
     </div>
 
-    <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
-    <partial name="~/Views/Shared/Partials/User/UpdateUserPopup.cshtml" />
+
 </div>
 
 
