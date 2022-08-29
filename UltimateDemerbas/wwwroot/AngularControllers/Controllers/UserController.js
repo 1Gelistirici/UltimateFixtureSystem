@@ -139,7 +139,7 @@
         }
 
         $scope.OpenPopup = function (data) {
-            $scope.Pop = data;
+            $scope.Pop = jQuery.extend(true, {}, data);
         }
 
         $scope.UpdateUser = function () {
@@ -154,7 +154,10 @@
                 Title: $scope.Pop.Title,
                 Department: $scope.Pop.Department,
                 Gender: $scope.Pop.Gender.Value === 1,
-                Lock: $scope.Pop.Lock
+                Lock: $scope.Pop.Lock,
+                file: $scope.files,
+                ImageName: $scope.Pop.ImageName,
+                ImageUrl: $scope.Pop.ImageUrl
             };
 
             UserService.UpdateUser(parameter,
@@ -163,7 +166,7 @@
                         toaster.success("Başarılı", "Kullanıcı güncellendi.");
                         $scope.Pop = [];
                         $("#UpdateUser").modal("hide");
-                        //$scope.GetUserCompany();
+                        $scope.GetUserCompany();
                     } else {
                         toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
                     }

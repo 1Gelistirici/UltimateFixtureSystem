@@ -492,9 +492,9 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public bool UpdateUser(User parameter)
+        public UltimateResult<User> UpdateUser(User parameter)
         {
-            bool result = false;
+            UltimateResult<User> result = new UltimateResult<User>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[users_UpdateUser]";
 
@@ -522,7 +522,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@ImageUrl", parameter.ImageUrl);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
-                        result = effectedRow > 0;
+                        result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
                     }
@@ -532,7 +532,7 @@ namespace UltimateAPI.Manager
             catch (Exception ex)
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
-                result = false;
+                result.IsSuccess = false;
                 return result;
             }
 

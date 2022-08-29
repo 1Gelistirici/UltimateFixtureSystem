@@ -67,7 +67,7 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.DeleteUser(parameter);
         }
-        public bool UpdateUser(User parameter)
+        public UltimateResult<User> UpdateUser(User parameter)
         {
             return UserManager.Instance.UpdateUser(parameter);
         }

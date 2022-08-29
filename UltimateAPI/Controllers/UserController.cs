@@ -83,7 +83,7 @@ namespace UltimateAPI.Controllers
         public IActionResult UpdateUser(User parameter)
         {
             var result = UserCallManager.Instance.UpdateUser(parameter);
-            return Content(ResultData.Get(result, "", result));
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
 

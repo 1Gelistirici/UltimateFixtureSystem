@@ -47,7 +47,7 @@
         }
 
 
-        this.UpdateUser = function (parameter, file, success, error) {
+        this.UpdateUser = function (parameter, success, error) {
             //$http.post("/User/UpdateUser", JSON.stringify(parameter)).then(
             //    function (response) {
             //        if (success)
@@ -56,8 +56,8 @@
 
             var fd = new FormData();
 
-            fd.append(parameter.name, parameter.file);
-            fd.append("parameter", parameter);
+            fd.append(parameter.file.name, parameter.file);
+            fd.append("parameter", JSON.stringify(parameter));
 
             var request = {
                 method: 'POST',

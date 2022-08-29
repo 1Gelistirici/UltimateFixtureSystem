@@ -234,10 +234,62 @@ namespace UltimateDemerbas.Controllers
 
         [CheckAuthorize]
         [HttpPost]
-        public IActionResult UpdateUser([FromBody] User parameter)
+        public IActionResult UpdateUser()
         {
-            var result = user.UpdateUser(parameter);
-            return Content(result.Result);
+            string folderUrl = "";
+
+            try
+            {
+                FileHelper fileHelper = new FileHelper(Configuration);
+
+                User parameter = JsonHelper.JsonConvert<User>(Request.Form["parameter"]);
+
+                if (Request.Form.Files.Count > 0)
+                {
+                    var file = Request.Form.Files[0];
+                    string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+
+                    string fileGuId = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    folderUrl = Path.Combine(folder, fileGuId);
+
+                    if (file != null)
+                    {
+                        System.IO.File.Delete(parameter.ImageUrl);
+
+                        UltimateResult<User> result = new UltimateResult<User>();
+                        parameter.ImageName = fileGuId;
+                        parameter.ImageUrl = folderUrl;
+                        parameter.CompanyId = WorkingCompany;
+
+                        var response = user.UpdateUser(parameter).Result;
+                        result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
+
+                        if (result.IsSuccess)
+                        {
+                            using (FileStream fs = System.IO.File.Create(folderUrl))
+                            {
+                                file.CopyTo(fs);
+                            }
+                        }
+
+                        return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+                    }
+                }
+                else
+                {
+                    var result = user.UpdateUser(parameter);
+                    return Content(result.Result);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (folderUrl != "")
+                {
+                    System.IO.File.Delete(folderUrl);
+                }
+            }
+
+            return Content("");
         }
 
         [CheckAuthorize]
