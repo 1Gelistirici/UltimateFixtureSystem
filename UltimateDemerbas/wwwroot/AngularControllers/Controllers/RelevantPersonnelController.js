@@ -24,10 +24,10 @@
 
                         $scope.GetUserCompany();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetRelevantPersonnels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetRelevantPersonnels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetRelevantPersonnels();
@@ -42,10 +42,10 @@
 
                         $scope.User = $scope.Users[0].Id;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUserCompany", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUserCompany", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

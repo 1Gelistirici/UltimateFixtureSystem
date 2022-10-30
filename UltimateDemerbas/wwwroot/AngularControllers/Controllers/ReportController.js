@@ -25,10 +25,10 @@
                         console.log($scope.Reports);
 
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetReports", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetReports", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -40,10 +40,10 @@
                         console.log(result.Data);
                         $scope.GetReports();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUsers();
@@ -55,10 +55,10 @@
                         $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
 
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetReportStatus", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetReportStatus", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetReportStatus();
@@ -87,10 +87,10 @@
                         toaster.success("Başarılı", "Rapor başarıyla sonuçlandırıldı.");
                         $("#Conclude").modal("hide");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateReportStatu", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateReportStatu", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
     }

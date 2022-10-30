@@ -29,10 +29,10 @@
                             $scope.ItemStatusFilter.push(parameter);
                         });
                     } else {
-                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetItemStatuTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetItemStatuTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetItemStatuTypes();
@@ -43,10 +43,10 @@
                     if (result.IsSuccess) {
                         $scope.Categories = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetCategories();
@@ -57,10 +57,10 @@
                     if (result.IsSuccess) {
                         $scope.FixtureModels = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetFixtureModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetFixtureModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetFixtureModels();
@@ -71,10 +71,10 @@
                     if (result.IsSuccess) {
                         $scope.Bills = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetBills", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetBills", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetBills();
@@ -85,10 +85,10 @@
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUsers();
@@ -107,10 +107,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetFixtures();
@@ -122,10 +122,10 @@
                         RefreshData();
                         toaster.success("Başarlı", "Demirbaş başarıyla silinmiştir.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -135,10 +135,10 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

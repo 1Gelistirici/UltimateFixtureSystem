@@ -7,10 +7,10 @@
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUsers();
@@ -37,10 +37,10 @@
                         $('#AddAssignment').modal('hide');
                         $scope.$parent.Refresh();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
     }]);

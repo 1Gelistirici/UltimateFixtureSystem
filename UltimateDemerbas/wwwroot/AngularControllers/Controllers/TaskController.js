@@ -112,10 +112,10 @@
                         RefreshData();
                         toaster.success("Başarlı", "Demirbaş başarıyla silinmiştir.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -125,10 +125,10 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -141,10 +141,10 @@
                         $("#AddTaskPopup").modal("hide");
                         $scope.Pop = [];
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -162,10 +162,10 @@
                         $("#AddTaskStatuPopup").modal("hide");
                         $scope.Pop = [];
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddStatu", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddStatu", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

@@ -21,10 +21,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetSituations", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetSituations", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetSituations();
@@ -35,10 +35,10 @@
                     if (result.IsSuccess) {
                         toaster.success("", "");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -48,10 +48,10 @@
                     if (result.IsSuccess) {
                         toaster.success("", "");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -65,10 +65,10 @@
                     if (result.IsSuccess) {
                         toaster.success("", "");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
 
         }
