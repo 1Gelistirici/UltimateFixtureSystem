@@ -8,88 +8,6 @@
 
 
 <link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
-<div class="row">
-    <div class="col-md-6">
-        <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-bubble font-green"></i>
-                    <span class="caption-subject font-green sbold uppercase">Nestable List 1</span>
-                </div>
-                <div class="actions">
-                    <div class="btn-group">
-                        <a class="btn green-haze btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            Actions
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li>
-                                <a href="javascript:;"> Option 1</a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li>
-                                <a href="javascript:;">Option 2</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">Option 3</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">Option 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="portlet-body ">
-                <div class="dd" id="nestable_list_1">
-                    <ol class="dd-list">
-                        <li class="dd-item" data-id="1">
-                            <div class="dd-handle"> Item 1 </div>
-                        </li>
-                        <li class="dd-item" data-id="2">
-                            <div class="dd-handle"> Item 2 </div>
-                            <ol class="dd-list">
-                                <li class="dd-item" data-id="3">
-                                    <div class="dd-handle"> Item 3 </div>
-                                </li>
-                                <li class="dd-item" data-id="4">
-                                    <div class="dd-handle"> Item 4 </div>
-                                </li>
-                                <li class="dd-item" data-id="5">
-                                    <div class="dd-handle"> Item 5 </div>
-                                    <ol class="dd-list">
-                                        <li class="dd-item" data-id="6">
-                                            <div class="dd-handle"> Item 6 </div>
-                                        </li>
-                                        <li class="dd-item" data-id="7">
-                                            <div class="dd-handle"> Item 7 </div>
-                                        </li>
-                                        <li class="dd-item" data-id="8">
-                                            <div class="dd-handle"> Item 8 </div>
-                                        </li>
-                                    </ol>
-                                </li>
-                                <li class="dd-item" data-id="9">
-                                    <div class="dd-handle"> Item 9 </div>
-                                </li>
-                                <li class="dd-item" data-id="10">
-                                    <div class="dd-handle"> Item 10 </div>
-                                </li>
-                            </ol>
-                        </li>
-                        <li class="dd-item" data-id="11">
-                            <div class="dd-handle"> Item 11 </div>
-                        </li>
-                        <li class="dd-item" data-id="12">
-                            <div class="dd-handle"> Item 12 </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 
 <div ng-controller="UserController">
     <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
@@ -101,16 +19,8 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-users font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Users
+                    Menu Management
                 </span>
-            </div>
-            <div class="actions">
-                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddUser">
-                        Add New User
-                    </a>
-                </div>
-
             </div>
         </div>
 
@@ -120,118 +30,63 @@
 
         <!--Table Body-->
         <div class="portlet-body">
-            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
-                <div class="table-responsive">
-                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+            <div class="portlet light bordered">
 
-                        <colgroup>
-                            <col width="100" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                            <col width="600" />
-                        </colgroup>
 
-                        <tbody>
-                            <tr ng-repeat="_ in $data">
-                                <td>
-                                    <div class="btn-group absoluteitem">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#assignRole">
-                                                    <i class="fa fa-group"></i>Assign Role
-                                                </a>
+
+
+                <div class="portlet-body ">
+                    <div class="dd" id="nestable_list_1">
+                        <ol class="dd-list">
+                            <li class="dd-item" data-id="1">
+                                <div class="dd-handle"> Item 1 </div>
+                            </li>
+                            <li class="dd-item" data-id="2">
+                                <div class="dd-handle"> Item 2 </div>
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="3">
+                                        <div class="dd-handle"> Item 3 </div>
+                                    </li>
+                                    <li class="dd-item" data-id="4">
+                                        <div class="dd-handle"> Item 4 </div>
+                                    </li>
+                                    <li class="dd-item" data-id="5">
+                                        <div class="dd-handle"> Item 5 </div>
+                                        <ol class="dd-list">
+                                            <li class="dd-item" data-id="6">
+                                                <div class="dd-handle"> Item 6 </div>
                                             </li>
-                                            <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
-                                                    <i class="fa fa-edit"></i>Update
-                                                </a>
+                                            <li class="dd-item" data-id="7">
+                                                <div class="dd-handle"> Item 7 </div>
                                             </li>
-                                            <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
-                                                    <i class="fa fa-trash"></i>Delete
-                                                </a>
+                                            <li class="dd-item" data-id="8">
+                                                <div class="dd-handle"> Item 8 </div>
                                             </li>
-                                        </ul>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="col-md-9">
-                                        <label style="font-size: 14px;"> {{_.Name}}</label>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Surname" filter="{ Surname: 'text'}" sortable="'Surname'">
-                                    <div class="col-md-9">
-                                        <label style="font-size: 14px;"> {{_.Surname}}</label>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Telephone" filter="{ Telephone: 'text'}" sortable="'Telephone'">
-                                    <div class="col-md-9">
-                                        <label style="font-size: 14px;"> {{_.Telephone}}</label>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
-                                    <div class="col-md-9">
-                                        <label style="font-size: 14px;"> {{_.MailAdress}}</label>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Gender" filter="{ Gender: 'text'}" sortable="'Gender'">
-                                    <div class="col-md-9">
-                                        <button type="button" class="btn btn-sm mt-ladda-btn ladda-button btn-circle" ng-class="_.Gender.Value===0?'btn-warning ':'btn-success '"
-                                                data-style="expand-right" data-size="s">
-                                            <span class="ladda-label">{{_.Gender.Text}}</span>
-                                        </button>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Title" filter="{ Title: 'text'}" sortable="'Title'">
-                                    <div class="col-md-9">
-                                        <label style="font-size: 14px;"> {{_.Title}}</label>
-                                    </div>
-                                </td>
-
-                                <td data-title="TableCol.Lock" filter="{ Lock: 'text'}" sortable="'Lock'">
-                                    <div class="col-md-9">
-
-                                        <div class="md-checkbox-list pull-right" ng-show="_.Lock">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" id="checkbox{{Id}}" class="md-check" ng-checked="true">
-                                                <label for="checkbox{{Id}}">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> Lock
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
-                                </td>
-                            </tr>
-
-                        </tfoot>
-
-                    </table>
+                                        </ol>
+                                    </li>
+                                    <li class="dd-item" data-id="9">
+                                        <div class="dd-handle"> Item 9 </div>
+                                    </li>
+                                    <li class="dd-item" data-id="10">
+                                        <div class="dd-handle"> Item 10 </div>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li class="dd-item" data-id="11">
+                                <div class="dd-handle"> Item 11 </div>
+                            </li>
+                            <li class="dd-item" data-id="12">
+                                <div class="dd-handle"> Item 12 </div>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
+
+
+
+
+
+
             </div>
         </div>
     </div>

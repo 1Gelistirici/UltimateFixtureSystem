@@ -24,7 +24,6 @@ namespace UltimateAPI.CallManager
                 }
                 return _instance;
             }
-
         }
 
 

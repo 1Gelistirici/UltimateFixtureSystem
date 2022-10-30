@@ -24,9 +24,13 @@ namespace UltimateAPI.CallManager
                 }
                 return _instance;
             }
-
         }
 
-   
+
+        //public UltimateResult<List<Menu>> GetMenuCompany(Menu parameter)
+        //{
+        //    return MenuManager.Instance.GetMenuCompany(parameter);
+        //}
+
     }
 }

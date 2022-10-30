@@ -8,6 +8,12 @@ namespace UltimateAPI.Controllers
     [ApiController]
     public class MenuController : ControllerBase
     {
+        //[HttpPost("GetMenuCompany")]
+        //public IActionResult GetMenuCompany(Menu parameter)
+        //{
+        //    var result = MenuCallManager.Instance.GetMenuCompany(parameter);
+        //    return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        //}
 
     }
 }
