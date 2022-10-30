@@ -28,10 +28,10 @@
                             $scope.Reports[index].DiffDate = diffDays > 30;
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetPassiveReports", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetPassiveReports", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -42,10 +42,10 @@
                         $scope.Users = result.Data;
                         $scope.GetPassiveReports(1);
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUsers();
@@ -57,10 +57,10 @@
                         $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
 
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetReportStatus", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetReportStatus", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetReportStatus();

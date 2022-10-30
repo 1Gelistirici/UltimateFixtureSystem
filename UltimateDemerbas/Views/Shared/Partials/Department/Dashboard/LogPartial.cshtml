@@ -1,0 +1,51 @@
+﻿
+
+<div class="col-lg-12 col-xs-12 col-sm-12">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-share font-dark hide"></i>
+                <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                <ul class="feeds" ng-repeat="x in Logs">
+                    <li>
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-sm label-info">
+                                        <i class="{{x.Icon}}"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{x.Detail}} ({{x.UserName}})
+                                        <span class="label label-sm label-warning ">
+                                            Take action
+                                            <i class="fa fa-share"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="date pull-right" style="color: #6495ed ">{{x.Time}} </div>
+                        </div>
+                        @*<div class="col2">
+                                <div class="date">{{x.Time}} </div>
+                            </div>*@
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="scroller-footer">
+                <div class="btn-arrow-link pull-right">
+                    <a href="\Log\">See All Records</a>
+                    <i class="icon-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

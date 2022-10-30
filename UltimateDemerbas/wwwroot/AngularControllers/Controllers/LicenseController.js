@@ -8,8 +8,8 @@
             Type: "Type",
             Piece: "Piece"
         };
-        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
 
         $scope.GetLicenses = function () {
             LicenseService.GetLicenses(
@@ -26,10 +26,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetLicenses", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetLicenses", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetLicenses();
@@ -72,14 +72,14 @@
             LicenseService.AddLicense(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                         $("#AddLicense").modal("hide");
                         $scope.GetLicenses();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddLicense", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddLicense", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
 
         }
@@ -97,10 +97,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetLicensesTypes();
@@ -116,10 +116,10 @@
                         $scope.Fixtures = result.Data.filter(x => x.CategoryNo == 1);
                         console.log($scope.Fixtures);
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetFixtures();

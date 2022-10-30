@@ -161,10 +161,10 @@
                         $("#AddFixturePopup").modal("hide");
                         $scope.Pop = [];
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddFixture", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -192,14 +192,14 @@
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                         $('#FixtureAssignmentPopup').modal('hide');
                         RefreshData();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

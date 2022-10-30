@@ -33,7 +33,7 @@
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                         $('#AddAssignment').modal('hide');
                         $scope.$parent.Refresh();
                     } else {

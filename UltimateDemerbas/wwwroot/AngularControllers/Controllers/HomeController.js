@@ -41,10 +41,10 @@
                         var bottomCoord = $('.downScrool')[0].scrollHeight;
                         $('.downScrool').slimScroll({ scrollTo: bottomCoord });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetLogs", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetLogs", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetLogs();
@@ -58,10 +58,10 @@
                             $scope.Messages[index].Time = new Date(value.Time).toLocaleString();
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetMessages", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetMessages", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetMessages();
@@ -78,10 +78,10 @@
                             }
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetToners", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetToners", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetToners();
@@ -103,10 +103,10 @@
                             }
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetTasks();
@@ -116,12 +116,12 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.NowUser = result.Data;
-                        $scope.UserId = result.Data[0].Id;
+                        $scope.UserId = result.Data.Id;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetUser();
@@ -152,7 +152,7 @@
             .withUrl("https://localhost:5001/chathub")
             .build();
 
-        connection.start();
+        //connection.start();
 
         connection.on("receiveMessageOther", (message, id, nickName) => {
             var d = new Date();
@@ -178,10 +178,10 @@
                         $scope.GetMessages();
                         $scope.MessageDetail = '';
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddMessage", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddMessage", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
 
 
@@ -206,10 +206,10 @@
                     if (result.IsSuccess) {
                         $scope.GetTasks();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -227,10 +227,10 @@
                     if (result.IsSuccess) {
                         $scope.GetTasks();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -240,10 +240,10 @@
                     if (result.IsSuccess) {
                         $scope.GetTasks();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

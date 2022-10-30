@@ -1,26 +1,23 @@
 ﻿
-<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-repeat="x in MainMenu">
+<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-repeat="maintem in Menus" ng-if="maintem.Dependency===menuType.Main">
 
     <li class="heading">
-        <h3 class="uppercase">{{x.Name}}</h3>
+        <h3 class="uppercase">{{maintem.Name}}</h3>
     </li>
 
-
-    <li class="nav-item" ng-repeat="y in MenuTitle" ng-if="y.Dependency ==x.Name">
-        <a href="" ng-click="Nav(y.Url);" class="nav-link nav-toggle">
-            <i ng-class="y.Icon"></i>
-            <span class="title">{{y.Name}}</span>
-            <span class="arrow" ng-hide="y.Url!=''"></span>
+    <li class="nav-item" ng-repeat="subMainItem in Menus" ng-if="subMainItem.Dependency === maintem.Id">
+        <a href="" ng-click="Nav(subMainItem.Url);" class="nav-link nav-toggle">
+            <i ng-class="subMainItem.Icon"></i>
+            <span class="title">{{subMainItem.Name}}</span>
+            <span class="arrow" ng-hide="subMainItem.Url"></span>
         </a>
-        <ul class="sub-menu" ng-hide="y.Url!=''">
-            <li class="nav-item " ng-repeat="z in MenuSub" ng-if="z.Dependency ==y.Name">
-                <a href="{{z.Url}}" class="nav-link">
-                    <span class="title">{{z.Name}}</span>
+        <ul class="sub-menu" ng-hide="subMainItem.Url">
+            <li class="nav-item " ng-repeat="subItem in Menus" ng-if="subItem.Dependency === subMainItem.Id">
+                <a href="{{subItem.Url}}" class="nav-link">
+                    <span class="title">{{subItem.Name}}</span>
                 </a>
             </li>
         </ul>
     </li>
 
-
 </ul>
-

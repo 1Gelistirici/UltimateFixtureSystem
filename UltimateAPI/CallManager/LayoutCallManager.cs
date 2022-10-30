@@ -11,13 +11,5 @@ namespace UltimateAPI.CallManager
             return LayoutManager.Instance.GetMenus();
         }
 
-
-
-
-
-
-
-
-
     }
 }

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -56,9 +57,8 @@ namespace UltimateAPI.Manager
                                     layout.Id = Convert.ToInt32(read["id"]);
                                     layout.Name = read["name"].ToString();
                                     layout.Url = read["url"].ToString();
-                                    layout.Area = read["area"].ToString();
                                     layout.Icon = read["icon"].ToString();
-                                    layout.Dependency = read["dependency"].ToString();
+                                    layout.Dependency = (MenuType)Convert.ToInt16(read["dependency"]);
 
                                     layouts.Add(layout);
                                 }

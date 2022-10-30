@@ -1,0 +1,52 @@
+﻿    <!--Add Popup-->
+<div id="UpdateTask" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">New Task</h4>
+            </div>
+            <div class="scroller" style="height:400px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <div class="col-md-9">
+                        <span>Task Start Date</span>
+                        <div class="input-icon">
+                            <i class="fa fa-bell-o"></i>
+                            <input ng-model="Task.startDate" style="font-size: 14px;" ng-value="" type="date" class="form-control">
+                        </div>
+                        <br />
+                        <span>Task End Date</span>
+                        <div class="input-icon">
+                            <i class="fa fa-bell-o"></i>
+                            <input ng-model="Task.endDate" style="font-size: 14px;" type="date" class="form-control">
+                        </div>
+                        <br />
+                        <span>Task Detail</span>
+                        <div class="input-icon">
+                            <i class="fa fa-bell-o"></i>
+                            <textarea ng-model="Task.taskDetail" rows="3" style="font-size: 14px;" type="text" class="form-control"></textarea>
+                        </div>
+                        <br />
+                        <span>Count</span>
+                        <div class="input-icon">
+                            <i class="fa fa-bell-o"></i>
+                            <select class="form-control" ng-model="Task.count">
+                                <option ng-value="0">0</option>
+                                <option ng-value="1">1</option>
+                                <option ng-value="2">2</option>
+                                <option ng-value="3">3</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top:80%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-click="UpdateTask()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
