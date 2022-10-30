@@ -10,26 +10,22 @@
         var data = {Id:x.Id,Name:x.Name}
         LicenseTypeService.UpdateLicensesTypes(data,
             function success(result) {
-                if (result.IsSuccess) {
-
-                } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                if (!result.IsSuccess) {
+                    toaster.error("UpdateLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.error("UpdateLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
             });
     };
 
     $scope.DeleteLicensesTypes = function (x) {
         LicenseTypeService.DeleteLicensesTypes(x.Id,
                 function success(result) {
-                    if (result.IsSuccess) {
-
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    if (!result.IsSuccess) {
+                        toaster.error("DeleteLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
     };
 
@@ -37,13 +33,11 @@
         var data = { Name: $scope.popName }
         LicenseTypeService.AddLicenseType(data,
             function success(result) {
-                if (result.IsSuccess) {
-
-                } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                if (!result.IsSuccess) {
+                    toaster.error("AddLicenseType", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.error("AddLicenseType", "Kat listeleme işlemi yapılırken bir hata oluştu");
             });
     };
 
@@ -63,10 +57,10 @@
                         dataset: $scope.Data
                     });
                 } else {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 }
             }, function error() {
-                toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                toaster.error("GetLicensesTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
             });
     }
 

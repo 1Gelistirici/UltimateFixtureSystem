@@ -95,7 +95,6 @@
         function SetUserSession(parameter) {
             LoginService.SetUserSession(parameter,
                 function success(result) {
-                        toaster.success("Başarılı", result.Message);
                         $window.location.href = '/Home/Index';
                 });
         }

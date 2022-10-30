@@ -17,10 +17,10 @@
                     if (result.IsSuccess) {
                         $scope.Categories = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetCategories();
@@ -31,10 +31,10 @@
                     if (result.IsSuccess) {
                         $scope.AccessoryModels = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetAccessoryModels();
@@ -78,12 +78,11 @@
         $scope.UpdateAccessory = function (data) {
             AccessoryService.UpdateAccessory(data,
                 function success(result) {
-                    if (result.IsSuccess) {
-                    } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    if (!result.IsSuccess) {
+                        toaster.error("UpdateAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -105,10 +104,10 @@
                         $scope.Pop = [];
                         $scope.Refresh();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

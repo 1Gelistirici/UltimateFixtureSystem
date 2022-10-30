@@ -22,10 +22,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetCategories();
@@ -37,10 +37,10 @@
                         toaster.success("Başarılı", "Kategori başarıyla silinmiştir.");
                         RefreshData();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -51,10 +51,10 @@
                         toaster.success("Başarılı", "Kategori başarıyla güncellenmiştir.");
                         RefreshData();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -70,10 +70,10 @@
                         $('#AddCategoryPopup').modal('hide');
                         RefreshData();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddCategory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 

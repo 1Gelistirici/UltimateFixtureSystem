@@ -19,10 +19,10 @@
                     if (result.IsSuccess) {
                         $scope.Categorys = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetCategorys();
@@ -33,10 +33,10 @@
                     if (result.IsSuccess) {
                         $scope.Models = result.Data;
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetComponentModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetComponentModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetComponentModels();
@@ -55,10 +55,10 @@
                             dataset: $scope.Data
                         });
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("GetComponents", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetComponents", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
         $scope.GetComponents();
@@ -70,10 +70,10 @@
                         toaster.success("Delete", "Silme işlemi başarılıyla gerçekleşti.");
                         $scope.GetComponents();
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("DeleteComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("DeleteComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -83,10 +83,10 @@
                     if (result.IsSuccess) {
                         toaster.success("Update", "Günvelleme işlemi başarılıyla gerçekleşti.");
                     } else {
-                        toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("UpdateComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("UpdateComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
@@ -108,10 +108,10 @@
                         $('#AddSituation').modal('hide');
                         $scope.GetComponents();
                     } else {
-                        toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Component", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("AddComponent", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
 
