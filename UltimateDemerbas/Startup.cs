@@ -27,7 +27,7 @@ namespace UltimateDemerbas
                   });
 
             services.AddControllersWithViews();
-            services.AddHttpClient("Test", c =>
+            services.AddHttpClient("CoreSession", c =>
              {
                  c.BaseAddress = new Uri("https://localhost:44331/api");
              });
@@ -54,10 +54,12 @@ namespace UltimateDemerbas
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
             app.UseRouting();
 
-            app.UseSession();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
