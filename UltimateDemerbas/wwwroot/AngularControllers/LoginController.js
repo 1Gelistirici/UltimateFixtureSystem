@@ -10,19 +10,14 @@
             var parameter = {
                 UserName: $scope.User.Username,
                 Password: $scope.User.Password,
-                Company: $scope.User.Company
+                Company: $scope.User.Company,
+                RememberMe: $scope.User.RememberMe
             }
 
             LoginService.CheckUser(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        var parameter = {
-                            Id: result.Data.Id,
-                            CompanyId: result.Data.CompanyId,
-                            RememberMe: $scope.User.RememberMe
-                        }
-                        SetUserSession(parameter);
-
+                        $window.location.href = '/Home/Index';
                     } else {
                         $scope.LoginButton = false;
                         toaster.error("Başarısız", result.Message);
@@ -90,15 +85,6 @@
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
-
-
-        function SetUserSession(parameter) {
-            LoginService.SetUserSession(parameter,
-                function success(result) {
-                        $window.location.href = '/Home/Index';
-                });
-        }
-
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {

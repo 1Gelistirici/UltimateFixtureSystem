@@ -22,6 +22,7 @@ namespace UltimateAPI.Entities
         public bool Lock { get; set; }
         public string ImageUrl { get; set; }
         public string ImageName { get; set; }
+        public bool RememberMe { get; set; }
         public List<UserRole> Role { get; set; }
 
     }

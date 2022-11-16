@@ -23,14 +23,22 @@ namespace UltimateDemerbas.Controllers
                     Response.Redirect("/Error");
                 }
             }
-
-            var rememberMe = HttpContext.Session.GetInt32("RememberMe");
-            if (rememberMe == 1)
-            {
-                return;
-            }
             else if (WorkingUser <= 0)
             {
+                string companyId = Request.Cookies["companyId"];
+                string userId = Request.Cookies["userId"];
+
+                if (userId != "" && userId != null && companyId != "" && companyId != null)
+                {
+                    ReferansParameter referansParameter = new ReferansParameter();
+                    referansParameter.Id = Convert.ToInt32(userId);
+                    referansParameter.CompanyId = Convert.ToInt32(userId);
+                    SetSession(referansParameter);
+
+                    return;
+                }
+
+
                 Response.Redirect("/User/Login");
                 return;
             }
@@ -46,7 +54,7 @@ namespace UltimateDemerbas.Controllers
         {
             HttpContext.Session.SetInt32("Id", parameter.Id);
             HttpContext.Session.SetInt32("CompanyId", parameter.CompanyId);
-            HttpContext.Session.SetInt32("RememberMe", Convert.ToInt16(parameter.RememberMe));
+            //HttpContext.Session.SetInt32("RememberMe", Convert.ToInt16(parameter.RememberMe));
         }
 
         public void RemoveActiveUser()

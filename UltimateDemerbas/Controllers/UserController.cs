@@ -11,6 +11,7 @@ using System;
 using UltimateAPI.Entities.Enums;
 using System.IO;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -54,12 +55,34 @@ namespace UltimateDemerbas.Controllers
 
             parameter.UserId = WorkingUser;
             var result = user.ChangePassword(parameter);
+
+
             return Content(result.Result);
         }
 
         public IActionResult CheckUser([FromBody] User parameter)
         {
             var result = user.CheckUser(parameter);
+
+            UltimateResult<User> resultUser = JsonSerializer.Deserialize<UltimateResult<User>>(result.Result);
+
+            if (resultUser.IsSuccess)
+            {
+                ReferansParameter referansParameter = new ReferansParameter();
+                referansParameter.Id = Convert.ToInt32(resultUser.Data.Id);
+                referansParameter.CompanyId = Convert.ToInt32(resultUser.Data.CompanyId);
+                SetSession(referansParameter);
+            }
+
+            if (parameter.RememberMe && resultUser.IsSuccess)
+            {
+                CookieOptions cookie = new CookieOptions();
+                cookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Append("companyId", resultUser.Data.CompanyId.ToString(), cookie);
+                Response.Cookies.Append("userId", resultUser.Data.Id.ToString(), cookie);
+            }
+
+
             return Content(result.Result);
         }
 
