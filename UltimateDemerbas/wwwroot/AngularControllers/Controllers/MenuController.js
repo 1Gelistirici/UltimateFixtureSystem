@@ -9,9 +9,10 @@
                 function success(result) {
                     if (result.IsSuccess) {
 
-                        $scope.menuItems = result.Data;
+                        $scope.menuItems = result.Data.filter(x => x.Dependency === 0);
 
                         console.log("menu", result.Data);
+                        console.log("$scope.menuItems", $scope.menuItems);
                     } else {
                         toaster.error("Başarısız", "Menü listelenemedi.");
                     }
