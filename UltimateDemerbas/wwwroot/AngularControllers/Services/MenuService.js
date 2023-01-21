@@ -1,8 +1,8 @@
-﻿MainApp.service("FixtureService", ["$http",
+﻿MainApp.service("MenuService", ["$http",
     function ($http) {
 
-        this.GetMenuCompany = function (success, error) {
-            $http.get("/Menu/GetMenuCompany").then(
+        this.GetMenu = function (success, error) {
+            $http.get("/Menu/GetMenu").then(
                 function (response) {
                     if (success)
                         success(response.data);

@@ -27,10 +27,35 @@ namespace UltimateAPI.CallManager
         }
 
 
-        //public UltimateResult<List<Menu>> GetMenuCompany(Menu parameter)
-        //{
-        //    return MenuManager.Instance.GetMenuCompany(parameter);
-        //}
+        public UltimateResult<List<Menu>> GetMenu()
+        {
+            UltimateResult<List<Menu>> result = MenuManager.Instance.GetMenus();
+
+            if (result.Data != null)
+            {
+
+                foreach (Menu menuItem in result.Data.ToArray())
+                {
+                    if (menuItem.Dependency > 0)
+                    {
+                        Menu mainMenu = result.Data.Find(x => x.Id == menuItem.Dependency);
+                        if (mainMenu != null)
+                        {
+                            if (mainMenu.Children == null)
+                                mainMenu.Children = new List<Menu>();
+
+                            mainMenu.Children.Add(menuItem);
+                            result.Data.Remove(menuItem);
+                        }
+                    }
+
+                }
+
+            }
+
+
+            return result;
+        }
 
     }
 }

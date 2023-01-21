@@ -23,15 +23,11 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        //public IActionResult GetMenuCompany()
-        //{
-        //    FixLic parameter = new FixLic();
-        //    parameter.CompanyId = WorkingCompany;
-        //    var result = fixture.GetFixLices(parameter);
-
-        //    return Content(result.Result);
-        //}
-
+        public IActionResult GetMenu()
+        {
+            var result = menu.GetMenu();
+            return Content(result.Result);
+        }
 
     }
 }

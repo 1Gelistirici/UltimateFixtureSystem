@@ -10,21 +10,15 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public Task<string> GetMenus()
+        public Task<string> GetMenu()
         {
-            return GetApi("Menu/GetMenus");
+            return GetApi("Menu/GetMenu");
         }
 
-
-
-
-
-
-
-
-
-
-
+        public Task<string> GetLicensesTypes()
+        {
+            return GetApi("LicanseType/GetLicensesTypes");
+        }
 
     }
 }

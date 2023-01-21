@@ -3,92 +3,180 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link href="~/assets1/global/plugins/jquery-nestable/jquery.nestable.css" rel="stylesheet" />
+
+<div class="page-sidebar" style="width: 100%;" ng-controller="MenuController">
 
 
-<div ng-controller="MenuController">
-
-    <!--Header-->
-    <div class="portlet light portlet-fit bordered col-md-12">
+    <div class="portlet light portlet-fit ">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
-                <i class="fa fa-users font-dark-gray" style="color:#678098"></i>
+                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Menu Management
+                    Yeni Menü Ekleme
                 </span>
             </div>
-        </div>
-
-        <!--Table Body-->
-        <div class="portlet-body">
-
-            <div class="dd" id="nestable_list_1">
-                <ol class="dd-list">
-                    <li class="dd-item" data-id="1">
-                        <div class="dd-handle">
-                            Item 1
-                            <button class="pull-right">+</button>
-                            <button class="pull-right">-</button>
-                        </div>
-                    </li>
-                    <li class="dd-item" data-id="2">
-                        <div class="dd-handle"> Item 2 </div>
-                        <ol class="dd-list">
-                            <li class="dd-item" data-id="3">
-                                <div class="dd-handle"> Item 3 </div>
-                            </li>
-                            <li class="dd-item" data-id="4">
-                                <div class="dd-handle"> Item 4 </div>
-                            </li>
-                            <li class="dd-item" data-id="5">
-                                <div class="dd-handle"> Item 5 </div>
-                                <ol class="dd-list">
-                                    <li class="dd-item" data-id="6">
-                                        <div class="dd-handle"> Item 6 </div>
-                                    </li>
-                                    <li class="dd-item" data-id="7">
-                                        <div class="dd-handle"> Item 7 </div>
-                                    </li>
-                                    <li class="dd-item" data-id="8">
-                                        <div class="dd-handle"> Item 8 </div>
-                                    </li>
-                                </ol>
-                            </li>
-                            <li class="dd-item" data-id="9">
-                                <div class="dd-handle"> Item 9 </div>
-                            </li>
-                            <li class="dd-item" data-id="10">
-                                <div class="dd-handle"> Item 10 </div>
-                            </li>
-                        </ol>
-                    </li>
-                    <li class="dd-item" data-id="11">
-                        <div class="dd-handle"> Item 11 </div>
-                    </li>
-                    <li class="dd-item" data-id="12">
-                        <div class="dd-handle"> Item 12 </div>
-                    </li>
-                </ol>
+            <div class="actions">
             </div>
-
-
-
-
-
-
         </div>
 
+
+
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless">
+                <div>
+                    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-item" style="margin-left: -17px;">
+                            <a href="" class="nav-link nav-toggle" ng-click="btnMenuInsertPopUp(0)">
+                                <i class="fa fa-users"></i>
+                                <span class="title"> Kök Dizine Ekle</span>
+                                <div class="list-count pull-right grey-mint addaction"
+                                     style="background-color: #525e64; color: #FFF;">
+                                    <i class="fa fa-plus" style="margin-left: 3px;"></i>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li>
+
+
+                            <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" id="sortable" ng-repeat="menu in menuItems">
+
+
+
+
+                                <li class="nav-item" id="{{menu.Id}}{{menu.Dependency}}{{menu.Name}}"
+                                    order="{{menu.Order}}">
+                                    <a href="" class="nav-link nav-toggle">
+                                        <i class="{{menu.Icon}}"></i>
+                                        <span class="title">{{menu.Name}}</span>
+
+                                        <div ng-if="menu.Children!=null && menu.Children.Count > 0">
+                                            <div class="list-count pull-right grey-mint "
+                                                 ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
+                                                 style="background-color: #525e64; color: #FFF;">
+                                                <i class="fa fa-edit" style=""></i>
+                                            </div>
+
+                                            <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(menu.Id)"
+                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                <i class="fa fa-minus" style=""></i>
+                                            </div>
+
+                                            <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)"
+                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                <i class="fa fa-plus" style=""></i>
+                                            </div>
+                                        </div>
+
+                                        <div ng-if="menu.Children===null || menu.Children.Count <= 0">
+                                            <div class="list-count pull-right grey-mint "
+                                                 ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
+                                                 style="background-color: #525e64; color: #FFF;">
+                                                <i class="fa fa-edit" style=""></i>
+                                            </div>
+
+                                            <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(menu.Id)"
+                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                <i class="fa fa-minus" style=""></i>
+                                            </div>
+
+                                            <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)"
+                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                <i class="fa fa-plus" style=""></i>
+                                            </div>
+                                        </div>
+
+                                    </a>
+
+                                    <div ng-if="menu.Children===null || menu.Children.Count <= 0">
+                                        <ul class="sub-menu" style="margin-left: 50px;" id="childrenMenu{{menu.Id}}" ng-repeat="childMenu in menu.Children">
+
+
+                                            <li class="nav-item" data-parentId="{{childMenu.Dependency}}" data-id="{{childMenu.Id}}"
+                                                id="{{childMenu.Id}}{{childMenu.Dependency}}{{childMenu.Name}}">
+                                                <a href="" class="nav-link ">
+                                                    <i class="{{childMenu.MenuIcon}}"></i>
+                                                    <span class="title">{{childMenu.Name}}</span>
+
+                                                    <div class="list-count pull-right grey-mint "
+                                                         ng-click="btnMenuUpdatePopUp(childMenu.Id,childMenu.ParentId,childMenu.Name)"
+                                                         style="background-color: #525e64; color: #FFF;">
+                                                        <i class="fa fa-edit" style=""></i>
+                                                    </div>
+
+                                                    <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(childMenu.Id)"
+                                                         style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                        <i class="fa fa-minus" style=""></i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                </li>
+
+
+
+
+
+
+                            </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                        </li>
+
+
+
+
+
+
+
+
+                    </ul>
+                    <div id="btnUpdateMenuOrder" style="display: none;">
+                        <input type="button" value="Güncelle" class="btn btn-success"
+                               ng-click="UpdateOrder()" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
+
+
+
+
+
 
 
 @section PageScript
     {
-    <script src="~/assets1/global/plugins/jquery-nestable/jquery.nestable.js"></script>
-    <script src="~/assets/pages/scripts/ui-nestable.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
 
+            $(".sub-menu").sortable();
+            $(".sub-menu").disableSelection();
+        });
+    </script>
 
-
-
-
+    <script src="~/AngularControllers/Services/MenuService.js"></script>
+    <script src="~/AngularControllers/Controllers/MenuController.js"></script>
 }
+
