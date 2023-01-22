@@ -69,48 +69,48 @@
                                             </div>
                                         </div>
 
-                                        <div ng-if="menu.Children===null || menu.Children.Count <= 0">
-                                            <div class="list-count pull-right grey-mint "
-                                                 ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
-                                                 style="background-color: #525e64; color: #FFF;">
-                                                <i class="fa fa-edit" style=""></i>
-                                            </div>
-
-                                            <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(menu.Id)"
-                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
-                                                <i class="fa fa-minus" style=""></i>
-                                            </div>
-
-                                            <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)"
-                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
-                                                <i class="fa fa-plus" style=""></i>
-                                            </div>
+                                        @*<div ng-if="menu.Children===null || menu.Children.length <= 0">*@
+                                        <div class="list-count pull-right grey-mint "
+                                             ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
+                                             style="background-color: #525e64; color: #FFF;">
+                                            <i class="fa fa-edit" style=""></i>
                                         </div>
+
+                                        <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(menu.Id)"
+                                             style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                            <i class="fa fa-minus" style=""></i>
+                                        </div>
+
+                                        <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)"
+                                             style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                            <i class="fa fa-plus" style=""></i>
+                                        </div>
+                                        @*</div>*@
 
                                     </a>
 
-                                        <ul class="sub-menu" style="margin-left: 50px;" id="childrenMenu{{menu.Id}}" ng-repeat="childMenu in menu.Children">
+                                    <ul class="sub-menu" style="margin-left: 50px;" id="childrenMenu{{menu.Id}}" ng-repeat="childMenu in menu.Children">
 
 
-                                            <li class="nav-item" data-parentId="{{childMenu.Dependency}}" data-id="{{childMenu.Id}}"
-                                                id="{{childMenu.Id}}{{childMenu.Dependency}}{{childMenu.Name}}">
-                                                <a href="" class="nav-link ">
-                                                    <i class="{{childMenu.MenuIcon}}"></i>
-                                                    <span class="title">{{childMenu.Name}}</span>
+                                        <li class="nav-item" data-parentId="{{childMenu.Dependency}}" data-id="{{childMenu.Id}}"
+                                            id="{{childMenu.Id}}{{childMenu.Dependency}}{{childMenu.Name}}">
+                                            <a href="" class="nav-link ">
+                                                <i class="{{childMenu.Icon}}"></i>
+                                                <span class="title">{{childMenu.Name}}</span>
 
-                                                    <div class="list-count pull-right grey-mint "
-                                                         ng-click="btnMenuUpdatePopUp(childMenu.Id,childMenu.ParentId,childMenu.Name)"
-                                                         style="background-color: #525e64; color: #FFF;">
-                                                        <i class="fa fa-edit" style=""></i>
-                                                    </div>
+                                                <div class="list-count pull-right grey-mint "
+                                                     ng-click="btnMenuUpdatePopUp(childMenu.Id,childMenu.ParentId,childMenu.Name)"
+                                                     style="background-color: #525e64; color: #FFF;">
+                                                    <i class="fa fa-edit" style=""></i>
+                                                </div>
 
-                                                    <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(childMenu.Id)"
-                                                         style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
-                                                        <i class="fa fa-minus" style=""></i>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                <div class="list-count pull-right grey-mint " ng-click="DeleteMenu(childMenu.Id)"
+                                                     style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
+                                                    <i class="fa fa-minus" style=""></i>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -133,6 +133,22 @@
         </div>
     </div>
 
+
+
+
+    @*<div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+        @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
+    </div>
+
+
+    <div id="menuDeletePopup" class="modal fade" tabindex="-1" aria-hidden="true">
+        @Html.Partial("~/Views/Shared/Partials/Menu/MenuDeletePartial.cshtml")
+    </div>
+
+
+    <div id="menuUpdatePopup" class="modal fade" tabindex="-1" aria-hidden="true" style="min-height:690px !important;">
+        @Html.Partial("~/Views/Shared/Partials/Menu/MenuUpdatePartial.cshtml", menuItems)
+    </div>*@
 </div>
 
 
