@@ -137,18 +137,18 @@
 
 
     @*<div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
-        @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
-    </div>
+            @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
+        </div>
 
 
-    <div id="menuDeletePopup" class="modal fade" tabindex="-1" aria-hidden="true">
-        @Html.Partial("~/Views/Shared/Partials/Menu/MenuDeletePartial.cshtml")
-    </div>
+        <div id="menuDeletePopup" class="modal fade" tabindex="-1" aria-hidden="true">
+            @Html.Partial("~/Views/Shared/Partials/Menu/MenuDeletePartial.cshtml")
+        </div>
 
 
-    <div id="menuUpdatePopup" class="modal fade" tabindex="-1" aria-hidden="true" style="min-height:690px !important;">
-        @Html.Partial("~/Views/Shared/Partials/Menu/MenuUpdatePartial.cshtml", menuItems)
-    </div>*@
+        <div id="menuUpdatePopup" class="modal fade" tabindex="-1" aria-hidden="true" style="min-height:690px !important;">
+            @Html.Partial("~/Views/Shared/Partials/Menu/MenuUpdatePartial.cshtml", menuItems)
+        </div>*@
 </div>
 
 
@@ -171,6 +171,7 @@
     </script>
 
     <script src="~/AngularControllers/Services/MenuService.js"></script>
+    <script src="~/AngularControllers/Controllers/MenuInsertPartialView.js"></script>
     <script src="~/AngularControllers/Controllers/MenuController.js"></script>
 }
 

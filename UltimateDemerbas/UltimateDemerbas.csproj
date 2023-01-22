@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\Partials\Menu\" />
     <Folder Include="wwwroot\ThirdParty\" />
   </ItemGroup>
 

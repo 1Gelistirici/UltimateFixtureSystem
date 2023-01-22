@@ -57,5 +57,21 @@ namespace UltimateAPI.CallManager
             return result;
         }
 
+        public UltimateResult<List<Menu>> DeleteMenu(Menu parameter)
+        {
+            return MenuManager.Instance.DeleteMenu(parameter);
+        }
+
+        public UltimateResult<List<Menu>> AddMenu(Menu parameter)
+        {
+            return MenuManager.Instance.AddMenu(parameter);
+        }
+
+        public UltimateResult<List<Menu>> UpdateMenu(Menu parameter)
+        {
+            return MenuManager.Instance.UpdateMenu(parameter);
+        }
+
+
     }
 }

@@ -81,8 +81,124 @@ namespace UltimateAPI.Manager
         }
 
 
+        public UltimateResult<List<Menu>> AddMenu(Menu parameter)
+        {
+            UltimateResult<List<Menu>> result = new UltimateResult<List<Menu>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[menu_AddMenu]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("url", parameter.Url);
+                        sqlCommand.Parameters.AddWithValue("icon", parameter.Icon);
+                        sqlCommand.Parameters.AddWithValue("dependency", parameter.Dependency);
+                        sqlCommand.Parameters.AddWithValue("order", parameter.Order);
 
 
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public UltimateResult<List<Menu>> DeleteMenu(Menu parameter)
+        {
+            UltimateResult<List<Menu>> result = new UltimateResult<List<Menu>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[menu_DeleteMenu]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public UltimateResult<List<Menu>> UpdateMenu(Menu parameter)
+        {
+            UltimateResult<List<Menu>> result = new UltimateResult<List<Menu>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[menu_UpdateMenu]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+                        sqlCommand.Parameters.AddWithValue("name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("url", parameter.Url);
+                        sqlCommand.Parameters.AddWithValue("icon", parameter.Icon);
+                        sqlCommand.Parameters.AddWithValue("dependency", parameter.Dependency);
+                        sqlCommand.Parameters.AddWithValue("order", parameter.Order);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
 
     }
