@@ -18,7 +18,7 @@
         };
 
         this.AddMenu = function (parameter, success, error) {
-            $http.post('/Menu/AddMenu/', JSON.stringify(parameter)).then(
+            $http.post('/Menu/AddMenu/', JSON.stringify(parameter)).then( 
                 function (response) {
                     if (success)
                         success(response.data);
