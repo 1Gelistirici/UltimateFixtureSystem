@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using UltimateAPI.Entities;
 
 namespace UltimateDemerbas.Manager
 {
@@ -15,9 +16,19 @@ namespace UltimateDemerbas.Manager
             return GetApi("Menu/GetMenu");
         }
 
-        public Task<string> GetLicensesTypes()
+        public Task<string> AddMenu(Menu parameter)
         {
-            return GetApi("LicanseType/GetLicensesTypes");
+            return GetApiParameter<Menu>("Menu/AddMenu", parameter);
+        }
+
+        public Task<string> UpdateMenu(Menu parameter)
+        {
+            return GetApiParameter<Menu>("Menu/UpdateMenu", parameter);
+        }
+
+        public Task<string> DeleteMenu(Menu parameter)
+        {
+            return GetApiParameter<Menu>("Menu/DeleteMenu", parameter);
         }
 
     }
