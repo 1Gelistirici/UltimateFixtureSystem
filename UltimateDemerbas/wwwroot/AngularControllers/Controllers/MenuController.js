@@ -2,7 +2,7 @@
     function ($scope, menuService, toaster) {
 
 
-
+        $scope.Menu = [];
 
         $scope.GetMenu = function () {
             menuService.GetMenu(
@@ -21,6 +21,141 @@
                 });
         }
         $scope.GetMenu();
+
+
+        $scope.DeleteMenu = function () {
+
+
+
+        }
+
+
+        $scope.btnMenuInsertPopUp = function (parentId) {
+            $scope.ParentId = parentId;
+            $scope.MenuOptions = parentId === 0 ? 1 : 0;
+            $("#menuInsertPopup").modal("show");
+        }
+
+
+
+
+        function validateSaveParameters() {
+
+            var result = false;
+            if (!$scope.Menu || !$scope.Menu.MenuName || $scope.Menu.MenuName === "") {
+                $scope.menuNameSituation = true;
+                generalValidation = true;
+            }
+
+            if (!$scope.Menu || !$scope.Menu.MenuLink || $scope.Menu.MenuLink === "") {
+                $scope.menuLinkSituation = true;
+                generalValidation = true;
+            }
+
+            if (!$scope.Menu || !$scope.Menu.MenuIcon || $scope.Menu.MenuIcon === "") {
+                $scope.menuIconSituation = true;
+                generalValidation = true;
+            }
+
+            return result;
+        }
+
+        $scope.SaveMenu = function () {
+            App.blockUI();
+
+            if (!validateSaveParameters()) {
+                var parameters = {
+                    Dependency: $scope.ParentId,
+                    Name: $scope.Menu.MenuName,
+                    Url: $scope.Menu.MenuLink,
+                    Icon: $scope.Menu.MenuIcon,
+                    Order: $scope.MenuOptions
+                };
+
+                menuService.AddMenu(parameters,
+                    function success(response) {
+                        if (response.IsSuccess) {
+                            location.replace("/Menu/Index");
+                            toaster.success("Kaydetme", "Kaydetme işlemi başarılı");
+                            App.unblockUI();
+                        } else {
+                            toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
+                            App.unblockUI();
+                        }
+
+                    },
+                    function error() {
+                        toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
+                        App.unblockUI();
+                    });
+            } else {
+                toaster.error("Kaydetme", "Lütfen zorunlu alanları doldurunuz");
+                App.unblockUI();
+            }
+        };
+
+
+
+        $scope.DeleteMenu = function (id) {
+
+            if (!id) {
+                toaster.error("Menü seçilmeli.");
+                return;
+            }
+
+            App.blockUI();
+            swal({
+                title: "Emin misiniz?",
+                text: "Bu menüyü silmek istediğinizden emin misiniz?, (Menüye bağlı alt menüler de silinecektir)",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ['İptal', 'Evet']
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var parameter = {
+                            Id: id
+                        }
+
+                        if (id) {
+                            menuService.DeleteMenu(parameter,
+                                function success(response) {
+                                    if (response.IsSuccess) {
+                                        location.replace("/Menu/Index");
+                                        toaster.success("Silme", "Silme işlemi başarılı");
+                                        App.unblockUI();
+                                    } else {
+                                        toaster.error("Silme", "Silme işlemi yapılırken bir hata oluştu");
+                                        App.unblockUI();
+                                    }
+                                },
+                                function error() {
+                                    toaster.error("Silme", "Silme işlemi yapılırken bir hata oluştu");
+                                    App.unblockUI();
+                                });
+                        }
+                        else {
+                            toaster.error("Silme", "Silme işlemi yapılırken bir hata oluştu");
+                            App.unblockUI();
+                        }
+
+                    } else {
+                        App.unblockUI();
+                    }
+                });
+        };
+
+
+
+
+
+
+
+
+
 
 
 

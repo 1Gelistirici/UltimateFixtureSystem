@@ -89,10 +89,8 @@
 
                                     </a>
 
-                                    <ul class="sub-menu" style="margin-left: 50px;" id="childrenMenu{{menu.Id}}" ng-repeat="childMenu in menu.Children">
-
-
-                                        <li class="nav-item" data-parentId="{{childMenu.Dependency}}" data-id="{{childMenu.Id}}"
+                                    <ul class="sub-menu" style="margin-left: 50px;" id="childrenMenu{{menu.Id}}">
+                                        <li ng-repeat="childMenu in menu.Children" class="nav-item" data-parentId="{{childMenu.Dependency}}" data-id="{{childMenu.Id}}"
                                             id="{{childMenu.Id}}{{childMenu.Dependency}}{{childMenu.Name}}">
                                             <a href="" class="nav-link ">
                                                 <i class="{{childMenu.Icon}}"></i>
@@ -136,11 +134,11 @@
 
 
 
-    @*<div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
-            @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
-        </div>
+    <div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+        @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
+    </div>
 
-
+    @*
         <div id="menuDeletePopup" class="modal fade" tabindex="-1" aria-hidden="true">
             @Html.Partial("~/Views/Shared/Partials/Menu/MenuDeletePartial.cshtml")
         </div>
