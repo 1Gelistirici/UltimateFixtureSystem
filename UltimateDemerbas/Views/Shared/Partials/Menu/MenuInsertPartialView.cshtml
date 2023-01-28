@@ -43,34 +43,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input" ng-show="ParentId ==7 || ParentId ==60 || ParentId ==12">
-                                <label class="control-label col-md-4">
-                                    Kategori
-                                    <span class="required"></span>
-                                </label>
-                                <div class="col-md-8">
-
-                                    <label ng-repeat="x in reportCategory">
-                                        <input type="checkbox"
-                                               name="selectedLevels[]"
-                                               ng-disabled="ParentMessageOptionsEdit&& x.Value==2"
-                                               value="{{x}}"
-                                               ng-checked="selectionmesInsert.indexOf(x.Value) > -1"
-                                               ng-click="toggleSelectionMessageInsert(x.Id)"> {{x.ReportName}} &nbsp;<br />
-                                    </label>
-
-                                </div>
-                            </div>
-
-
-
                         </div>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
-                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="SaveMenu(Menu,CategoryReport)">Kaydet</button>
+                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="SaveMenu(Menu)">Kaydet</button>
             </div>
         </div>
     </div>

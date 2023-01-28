@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
@@ -144,6 +145,16 @@ namespace UltimateAPI.Manager
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        //if (result.IsSuccess)
+                        //{
+                        //    UltimateResult<List<Menu>> menus = GetMenus();
+                        //    menus.Data = menus.Data.Where(x => x.Dependency == parameter.Id).ToList();
+                        //    foreach (var item in menus.Data)
+                        //    {
+                        //        DeleteMenu(new Menu { Id = item.Id });
+                        //    }
+                        //}
 
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);

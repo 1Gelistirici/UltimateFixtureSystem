@@ -21,7 +21,6 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
         $scope.MenuSub = [];
         $scope.Header = [];
         $scope.MainMenu = [];
-        var Menus = null;
 
         $scope.Nav = function (url) {
             if (!url) {
@@ -37,56 +36,9 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
                 return;
             }
 
-            Menus = response.data.Data;
             $scope.Menus = response.data.Data;
 
-            console.log($scope.Menus);
-
-            //var menuType = { Main: 0, MainHeader: 1, MainTitle: 2, MainSubMenu: 3 };
-
-            //$scope.MainMenu = Menu.filter(x => x.Dependency === menuType.Main);
-            //$scope.Header = Menu.filter(x => x.Area === menuType.MainHeader);
-            //$scope.MenuTitle = Menu.filter(x => x.Area === menuType.MainTitle);
-            //$scope.MenuSub = Menu.filter(x => x.Area === menuType.MainSubMenu);
-
-            Menus.forEach(function (element) {
-
-                //if (element.Dependency === menuType.Main) {
-                //    $scope.MainMenu.push(element);
-                //}
-
-                //if (element.Area === menuType.MainHeader) {
-                //    $scope.Header.push(element);
-                //}
-
-                //if (element.Area === menuType.MainTitle) {
-                //    $scope.MenuTitle.push(element);
-                //}
-
-                //if (element.Area === menuType.MainSubMenu) {
-                //    $scope.MenuSub.push(element);
-                //}
-
-
-
-                //if (element.Dependency == "Main") {
-                //    $scope.MainMenu.push(element);
-                //}
-
-
-                //if (element.Area == "Main Header") {
-                //    $scope.Header.push(element);
-                //}
-
-                //if (element.Area == "Main Title") {
-                //    $scope.MenuTitle.push(element);
-                //}
-
-                //if (element.Area == "Main SubMenu") {
-                //    $scope.MenuSub.push(element);
-                //}
-
-            });
+            console.log("menu",$scope.Menus);
         });
 
         $scope.LogOut = function () {

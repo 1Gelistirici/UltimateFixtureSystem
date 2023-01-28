@@ -71,7 +71,7 @@
 
                                         @*<div ng-if="menu.Children===null || menu.Children.length <= 0">*@
                                         <div class="list-count pull-right grey-mint "
-                                             ng-click="btnMenuUpdatePopUp(menu.Children)"
+                                             ng-click="btnMenuUpdatePopUp(menu)"
                                              style="background-color: #525e64; color: #FFF;">
                                             <i class="fa fa-edit" style=""></i>
                                         </div>
@@ -81,7 +81,7 @@
                                             <i class="fa fa-minus" style=""></i>
                                         </div>
 
-                                        <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)"
+                                        <div class="list-count pull-right grey-mint " ng-click="btnMenuInsertPopUp(menu.Id)" ng-hide="menu.Url!==''"
                                              style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
                                             <i class="fa fa-plus" style=""></i>
                                         </div>

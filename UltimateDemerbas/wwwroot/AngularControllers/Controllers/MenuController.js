@@ -27,16 +27,53 @@
 
 
         $scope.btnMenuInsertPopUp = function (parentId) {
+            $scope.insertMenuData = [];
             $scope.ParentId = parentId;
-            $scope.MenuOptions = parentId === 0 ? 1 : 0;
+            //$scope.MenuOptions = parentId === 0 ? 1 : 0;
             $("#menuInsertPopup").modal("show");
         }
 
         $scope.btnMenuUpdatePopUp = function (menu) {
-            console.log("menu", menu);
+            $scope.updateMenuData = [];
             $("#menuUpdatePopup").modal("show");
             $scope.updateMenuData = menu;
         }
+
+        $scope.updateMenu = function () {
+            App.blockUI();
+
+            //if (!validateSaveParameters()) {
+                var parameters = {
+                    Id: $scope.updateMenuData.Id,
+                    Dependency: $scope.updateMenuData.Dependency,
+                    Name: $scope.updateMenuData.Name,
+                    Url: $scope.updateMenuData.Url,
+                    Icon: $scope.updateMenuData.Icon,
+                    Order: $scope.updateMenuData.Order
+                };
+
+                menuService.UpdateMenu(parameters,
+                    function success(response) {
+                        if (response.IsSuccess) {
+                            location.replace("/Menu/Index");
+                            toaster.success("Kaydetme", "Kaydetme işlemi başarılı");
+                            App.unblockUI();
+                        } else {
+                            toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
+                            App.unblockUI();
+                        }
+
+                    },
+                    function error() {
+                        toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
+                        App.unblockUI();
+                    });
+            //} else {
+            //    toaster.error("Kaydetme", "Lütfen zorunlu alanları doldurunuz");
+            //    App.unblockUI();
+            //}
+        };
+
 
 
 
