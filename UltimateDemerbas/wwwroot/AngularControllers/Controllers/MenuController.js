@@ -8,11 +8,7 @@
             menuService.GetMenu(
                 function success(result) {
                     if (result.IsSuccess) {
-
                         $scope.menuItems = result.Data.filter(x => x.Dependency === 0);
-
-                        console.log("menu", result.Data);
-                        console.log("$scope.menuItems", $scope.menuItems);
                     } else {
                         toaster.error("Başarısız", "Menü listelenemedi.");
                     }
@@ -36,6 +32,11 @@
             $("#menuInsertPopup").modal("show");
         }
 
+        $scope.btnMenuUpdatePopUp = function (menu) {
+            console.log("menu", menu);
+            $("#menuUpdatePopup").modal("show");
+            $scope.updateMenuData = menu;
+        }
 
 
 

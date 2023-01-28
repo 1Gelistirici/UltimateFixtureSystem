@@ -1,1 +1,66 @@
 ﻿
+<div id="menuUpdatePopup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Menü Güncelle</h4>
+            </div>
+            <div class="modal-body">
+                <div class="scroller" style="height:290px" data-always-visible="1" data-rail-visible1="1">
+                    <form action="#" id="form_sample_7" class="form-horizontal">
+                        <div class="form-body">
+
+                            <div ng-class="menuNameSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
+                                <label class="control-label col-md-4" for="inputMenuNameError">
+                                    Menü Adı <span class="required"></span>
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" placeholder=" Menü adı giriniz" class="form-control" for="inputMenuNameError"
+                                           maxlength="50" ng-change="checkMenuName()" ng-model="updateMenuData.Name" id="inputMenuNameError" />
+                                </div>
+                            </div>
+                            <div ng-class="menuLinkSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
+                                <label class="control-label col-md-4" for="inputMenuLinkError">
+                                    Menü Linki
+                                    <span class="required"></span>
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" placeholder=" Menü linki giriniz" class="form-control" for="inputMenuLinkError"
+                                           maxlength="50" ng-change="checkMenuLink()" ng-model="updateMenuData.Url" id="inputMenuLinkError" />
+                                </div>
+                            </div>
+
+                            <div ng-class="menuIconSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
+                                <label class="control-label col-md-4">
+                                    Menü İkon
+                                    <span class="required"></span>
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" placeholder=" Menü Icon giriniz" class="form-control" for="inputError"
+                                           maxlength="50" ng-change="checkMenuIcon()" ng-model="updateMenuData.Icon" id="MenuIcon" />
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="SaveMenu(Menu,CategoryReport)">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/MenuService.js"></script>
+    <script src="~/AngularControllers/Controllers/MenuInsertPartialView.js"></script>
+}
+

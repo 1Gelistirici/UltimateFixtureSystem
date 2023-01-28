@@ -52,9 +52,9 @@
                                         <span class="title">{{menu.Name}}</span>
 
                                         <div ng-if="menu.Children!=null && menu.Children.Count > 0">
-                                            <div class="list-count pull-right grey-mint "
-                                                 ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
-                                                 style="background-color: #525e64; color: #FFF;">
+
+                                            <div class="list-count pull-right grey-mint " ng-click="btnMenuUpdatePopUp(menu)"
+                                                 style="background-color: #525e64; color: #FFF;margin-right: 5px;margin-right:5px;">
                                                 <i class="fa fa-edit" style=""></i>
                                             </div>
 
@@ -71,7 +71,7 @@
 
                                         @*<div ng-if="menu.Children===null || menu.Children.length <= 0">*@
                                         <div class="list-count pull-right grey-mint "
-                                             ng-click="btnMenuUpdatePopUp(menu.Id,menu.ParentId,menu.Name)"
+                                             ng-click="btnMenuUpdatePopUp(menu.Children)"
                                              style="background-color: #525e64; color: #FFF;">
                                             <i class="fa fa-edit" style=""></i>
                                         </div>
@@ -97,7 +97,7 @@
                                                 <span class="title">{{childMenu.Name}}</span>
 
                                                 <div class="list-count pull-right grey-mint "
-                                                     ng-click="btnMenuUpdatePopUp(childMenu.Id,childMenu.ParentId,childMenu.Name)"
+                                                     ng-click="btnMenuUpdatePopUp(childMenu)"
                                                      style="background-color: #525e64; color: #FFF;">
                                                     <i class="fa fa-edit" style=""></i>
                                                 </div>
@@ -112,12 +112,6 @@
                                 </li>
                             </ul>
                         </li>
-
-
-
-
-
-
 
 
                     </ul>
@@ -136,6 +130,10 @@
 
     <div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
         @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
+    </div>
+
+    <div id="menuUpdatePopup" class="modal fade" tabindex="-1" aria-hidden="true">
+        @Html.Partial("~/Views/Shared/Partials/Menu/MenuUpdatePartial.cshtml")
     </div>
 
     @*
