@@ -216,6 +216,9 @@ namespace UltimateDemerbas.Controllers
             try
             {
                 User parameter = JsonHelper.JsonConvert<User>(Request.Form["parameter"]);
+                parameter.CompanyId = WorkingCompany;
+                parameter.ImageName = "";
+                parameter.ImageUrl = "";
 
                 if (Request.Form.Files.Count > 0)
                 {
@@ -230,7 +233,6 @@ namespace UltimateDemerbas.Controllers
                         UltimateResult<User> result = new UltimateResult<User>();
                         parameter.ImageName = fileGuId;
                         parameter.ImageUrl = folderUrl;
-                        parameter.CompanyId = WorkingCompany;
 
                         var response = user.AddUser(parameter).Result;
                         result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
@@ -245,6 +247,12 @@ namespace UltimateDemerbas.Controllers
 
                         return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
                     }
+                }
+                else
+                {
+                    var response = user.AddUser(parameter).Result;
+                    UltimateResult<User> result = JsonSerializer.Deserialize<UltimateResult<User>>(response);
+                    return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
                 }
             }
             catch (Exception ex)

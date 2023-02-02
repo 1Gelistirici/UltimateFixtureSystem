@@ -91,7 +91,7 @@
         $scope.GetGenders();
 
         $scope.AddUser = function () {
-            if ($scope.Password != $scope.TryPassword) {
+            if ($scope.Pop.Password !== $scope.Pop.TryPassword) {
                 toaster.error("Başarısız", "Şifreler Uyuşmuyor.");
                 return;
             }
