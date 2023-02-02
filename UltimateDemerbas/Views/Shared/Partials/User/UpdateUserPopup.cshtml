@@ -94,7 +94,7 @@
                             <label for="form_control_1">Gender</label>
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="checkbox2_8" name="radio2" class="md-radiobtn" ng-model="Pop.Gender" ng-checked="Pop.Gender">
+                                    <input type="radio" id="checkbox2_8" name="radio2" class="md-radiobtn" ng-model="Pop.Gender" ng-checked="Pop.Gender.Value===Gender[0].Value" ng-value="Gender[0]">
                                     <label for="checkbox2_8">
                                         <span></span>
                                         <span class="check"></span>
@@ -102,7 +102,7 @@
                                     </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="checkbox2_9" name="radio2" class="md-radiobtn" ng-checked="Pop.Gender">
+                                    <input type="radio" id="checkbox2_9" name="radio2" class="md-radiobtn" ng-model="Pop.Gender" ng-checked="Pop.Gender.Value===Gender[1].Value" ng-value="Gender[1]">
                                     <label for="checkbox2_9">
                                         <span></span>
                                         <span class="check"></span>
