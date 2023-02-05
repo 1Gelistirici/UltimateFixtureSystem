@@ -25,7 +25,6 @@
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
 
-                        console.log($scope.Data);
                         $scope.RegisterCount = result.Data.length;
 
                         $.each($scope.Data, function (index, value) {
@@ -61,7 +60,6 @@
             EnumService.GetTaskActiveStatus(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("GetTaskActiveStatus", result.Data);
                         $scope.TaskActiveStatus = result.Data.filter(x => x.Value != 1);
                     } else {
                         toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");

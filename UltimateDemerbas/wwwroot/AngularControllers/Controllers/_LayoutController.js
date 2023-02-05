@@ -37,8 +37,6 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
             }
 
             $scope.Menus = response.data.Data;
-
-            console.log("menu",$scope.Menus);
         });
 
         $scope.LogOut = function () {

@@ -37,7 +37,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-                        console.log(result.Data);
                         $scope.GetReports();
                     } else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");

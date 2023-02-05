@@ -218,7 +218,6 @@
             ComponentModelService.GetComponentModels(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log("result.Data", result.Data);
                         $scope.Models = result.Data;
                     } else {
                         toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");

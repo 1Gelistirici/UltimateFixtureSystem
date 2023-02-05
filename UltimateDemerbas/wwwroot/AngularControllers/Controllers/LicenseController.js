@@ -114,7 +114,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Fixtures = result.Data.filter(x => x.CategoryNo == 1);
-                        console.log($scope.Fixtures);
                     } else {
                         toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

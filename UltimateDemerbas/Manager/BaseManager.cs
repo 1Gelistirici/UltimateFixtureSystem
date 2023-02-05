@@ -56,7 +56,8 @@ namespace UltimateDemerbas.Manager
                     var file = System.IO.File.Create(targetFile);
                     file.Close();
                 }
-                System.IO.File.WriteAllText(targetFile, ex.ToString());
+
+                System.IO.File.AppendAllText(targetFile, $"\n{DateTime.Now} - {ex.Message.ToString()}");
             }
             catch (Exception)
             {

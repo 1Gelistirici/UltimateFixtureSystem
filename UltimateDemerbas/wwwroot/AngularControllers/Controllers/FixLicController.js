@@ -16,7 +16,6 @@
                         //    $scope.Data.find(x => x.Id == value.Id).FixtureId = 34;
                         //    $scope.Data.find(x => x.Id == value.Id).LicanseId = 3;
                         //});
-                        console.log($scope.Data);
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
                             count: 20
@@ -38,7 +37,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Licenses = result.Data;
-                        console.log($scope.Licenses);
                     } else {
                         toaster.error("GetLicenses", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -53,7 +51,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Fixtures = result.Data;
-                        console.log($scope.Fixtures);
                     } else {
                         toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

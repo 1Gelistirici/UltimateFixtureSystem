@@ -51,8 +51,6 @@
                 ItemType: x.ItemType,
                 ItemId: x.ItemId
             }
-            console.log(x);
-            console.log(parameter);
             AssignmentService.DeleteAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
