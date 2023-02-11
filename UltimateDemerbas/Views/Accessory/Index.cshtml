@@ -60,17 +60,11 @@
                                     <input ng-model="_.Price" type="number" class="form-control">
                                 </td>
 
-                                @*<td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                        <input ng-model="_.BillNo" type="number" class="form-control">
-                                    </td>*@
-
-
                                 <td data-title="TableCol.BillNo" filter="{ BillNo: 'number'}" sortable="'BillNo'">
                                     <select class="form-control" ng-model="_.BillNo">
                                         <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
                                 </td>
-
 
                                 <td data-title="TableCol.ModelNo" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
                                     <select class="form-control" ng-model="_.ModelNo">
