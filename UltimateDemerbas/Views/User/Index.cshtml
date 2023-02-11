@@ -57,7 +57,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
+                                            <li class="ms-hover" ng-if="_.Id!==3">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#assignRole">
                                                     <i class="fa fa-group"></i>Assign Role
                                                 </a>
@@ -67,7 +67,7 @@
                                                     <i class="fa fa-edit"></i>Update
                                                 </a>
                                             </li>
-                                            <li class="ms-hover">
+                                            <li class="ms-hover" ng-if="_.Id!==3">
                                                 <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
                                                     <i class="fa fa-trash"></i>Delete
                                                 </a>
@@ -156,15 +156,15 @@
 
 @section PageScript
     {
-<script src="~/AngularControllers/Services/UserService.js"></script>
-<script src="~/AngularControllers/Services/EnumService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
 
-<script src="~/AngularControllers/Services/FixLicService.js"></script>
-<script src="~/AngularControllers/Services/FixtureService.js"></script>
-<script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
-<script src="~/AngularControllers/Services/LicenseService.js"></script>
-<script src="~/AngularControllers/Controllers/UserController.js"></script>
+    <script src="~/AngularControllers/Services/FixLicService.js"></script>
+    <script src="~/AngularControllers/Services/FixtureService.js"></script>
+    <script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
+    <script src="~/AngularControllers/Services/LicenseService.js"></script>
+    <script src="~/AngularControllers/Controllers/UserController.js"></script>
 
-<script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+    <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 
 }

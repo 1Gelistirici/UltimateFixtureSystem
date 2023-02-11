@@ -33,7 +33,9 @@
             SituationService.DeleteSituation(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("", "");
+                        toaster.success("Başarılı", "Durum silindi.");
+
+                        $scope.GetSituations();
                     } else {
                         toaster.error("DeleteSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -46,8 +48,9 @@
             SituationService.UpdateSituation(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("", "");
-                    } else {
+                        toaster.success("Başarılı", "Durum güncellendii.");
+                    }
+                    else {
                         toaster.error("UpdateSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
@@ -63,7 +66,11 @@
             SituationService.AddSituation(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("", "");
+                        toaster.success("Başarılı", "Durum eklendi.");
+
+                        $scope.Pop = [];
+                        $("#AddSituation").modal("hide");
+                        $scope.GetSituations();
                     } else {
                         toaster.error("AddSituation", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

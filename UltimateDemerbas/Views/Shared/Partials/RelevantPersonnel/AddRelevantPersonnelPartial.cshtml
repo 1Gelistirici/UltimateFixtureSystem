@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="AddRelevantPersonnel" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="AddRelevantPersonnel" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
                     <div class="col-md-9">
                         <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="RelevantPersonnelForm">
                             <span>User</span>
-                            <select class="form-control" ng-model="User" required>
+                            <select class="form-control select2" ng-model="User" required>
                                 <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}} {{x.Surname}}</option>
                             </select>
                         </form>
