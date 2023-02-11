@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "NgTableParams", "toaster",
-    function ($scope, AccessoryService, CategoryService, AccessoryModelService, NgTableParams, toaster,) {
+﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "BillService", "NgTableParams", "toaster",
+    function ($scope, AccessoryService, CategoryService, AccessoryModelService, BillService, NgTableParams, toaster,) {
 
         $scope.RegisterCount = 0;
         $scope.TableCol = {
@@ -10,6 +10,20 @@
             Price: "Price",
             BillNo: "Bill",
         };
+
+        $scope.GetBills = function () {
+            BillService.GetBills(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Bills = result.Data;
+                    } else {
+                        toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetBills();
 
         $scope.GetCategories = function () {
             CategoryService.GetCategories(
@@ -66,7 +80,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Refresh();
-                        toaster.success("Aksesuar Silindi","Aksesuar silme işlemi başarılı")
+                        toaster.success("Aksesuar Silindi", "Aksesuar silme işlemi başarılı")
                     } else {
                         toaster.error("DeleteAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

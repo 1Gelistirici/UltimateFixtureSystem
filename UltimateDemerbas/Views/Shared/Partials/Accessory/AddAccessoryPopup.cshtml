@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="AddSituation" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,21 +24,28 @@
                             <input ng-model="Pop.Price" style="font-size: 14px;" min="0" type="number" class="form-control" required>
                         </div>
 
+                        @*<div class="col-md-9">
+                                <span>Bill No</span>
+                                <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control" required>
+                            </div>*@
+
                         <div class="col-md-9">
                             <span>Bill No</span>
-                            <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control" required>
+                            <select class="form-control select2" ng-model="Pop.BillNo">
+                                <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                            </select>
                         </div>
 
                         <div class="col-md-9">
                             <span>Model No</span>
-                            <select class="form-control" ng-model="Pop.ModelNo" required>
+                            <select class="form-control select2" ng-model="Pop.ModelNo" required>
                                 <option ng-repeat="x in AccessoryModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-9">
                             <span>Category No</span>
-                            <select class="form-control" ng-model="Pop.CategoryNo" required>
+                            <select class="form-control select2" ng-model="Pop.CategoryNo" required>
                                 <option ng-repeat="x in  Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>

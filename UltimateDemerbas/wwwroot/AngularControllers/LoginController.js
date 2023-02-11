@@ -89,9 +89,14 @@
         //Enter'a basıldığında
         $(document).keypress(function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
-            if (keycode == '13') {
+            if (keycode === 13) //Enter
+            {
                 $scope.CheckUser();
             }
+            //else if (keycode === 32) //Space
+            //{
+            //    $scope.User.RememberMe = !$scope.User.RememberMe;
+            //}
         });
 
     }]);
