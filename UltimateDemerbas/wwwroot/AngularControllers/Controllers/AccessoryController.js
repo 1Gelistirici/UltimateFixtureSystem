@@ -92,7 +92,10 @@
         $scope.UpdateAccessory = function (data) {
             AccessoryService.UpdateAccessory(data,
                 function success(result) {
-                    if (!result.IsSuccess) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Kayıt güncellendi.");
+                    }
+                    else {
                         toaster.error("UpdateAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
