@@ -3,11 +3,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
+@section LayotCss{
+    <link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
+}
+
 
 <div ng-controller="UserController">
     <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/User/UpdateUserPopup.cshtml" />
+
+    <div id="companyUserUpdatePopupGetir" class="modal fade" aria-hidden="true">
+        <partial name="~/Views/Shared/Partials/User/CompanyUserUpdatePartial.cshtml" />
+    </div>
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
@@ -58,7 +65,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover" ng-if="_.Id!==3">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#assignRole">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="OpenAssignPopup(_)" data-target="#companyUserUpdatePopupGetir">
                                                     <i class="fa fa-group"></i>Assign Role
                                                 </a>
                                             </li>
@@ -141,7 +148,6 @@
                                     <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
                                 </td>
                             </tr>
-
                         </tfoot>
 
                     </table>
@@ -153,18 +159,23 @@
 
 </div>
 
-
 @section PageScript
     {
+    <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+
+
+    <script src="~/AngularControllers/Services/MenuService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>
+
 
     <script src="~/AngularControllers/Services/FixLicService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
     <script src="~/AngularControllers/Services/LicenseTypeService.js"></script>
     <script src="~/AngularControllers/Services/LicenseService.js"></script>
+    <script src="~/AngularControllers/Controllers/CompanyUserEditController.js"></script>
     <script src="~/AngularControllers/Controllers/UserController.js"></script>
 
-    <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+    <script src="~/AngularControllers/Shared/Partial/UserMenuTree.js"></script>
 
 }

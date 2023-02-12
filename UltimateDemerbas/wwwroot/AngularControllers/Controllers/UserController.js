@@ -1,5 +1,5 @@
-﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster", "$sce",
-    function ($scope, UserService, EnumService, NgTableParams, toaster, $sce) {
+﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce",
+    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -54,6 +54,22 @@
                     toaster.error("Başarısız", "GetUserCompany");
                 });
         }
+
+
+        $scope.GetMenu = function () {
+            MenuService.GetMenu(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Menus = result.Data;
+                        console.log("$scope.Menus", $scope.Menus);
+                    } else {
+                        toaster.error("Başarısız", "GetUserCompany");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "GetUserCompany");
+                });
+        }
+        $scope.GetMenu();
 
         $scope.GetDepartments = function () {
             EnumService.GetDepartments(
@@ -139,6 +155,10 @@
 
         $scope.OpenPopup = function (data) {
             $scope.Pop = jQuery.extend(true, {}, data);
+        }
+
+        $scope.OpenAssignPopup = function (data) {
+            $scope.AssignPopup = data;
         }
 
         $scope.UpdateUser = function () {

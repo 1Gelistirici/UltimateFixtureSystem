@@ -1,0 +1,46 @@
+﻿
+
+<div class="modal-dialog" style="width: 900px;height: 900px;">
+
+    @* MenuUser İşlemleri *@
+    <div id="userMenuUpdatePopup_" class="modal fade" tabindex="-1" aria-hidden="true" style="z-index: 10052 !important;margin-top: -80px;">
+        <div class="modal-dialog" style="top: 5%;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div style="overflow-y: scroll; overflow-x: hidden; max-height: 700px;">
+                        <div id="WebUserMenuUpdateTree" style="height: auto; display: block; padding-top: 3px;">
+                            <partial name="~/Views/Shared/Partials/User/CompanyUserMenuTreePartial.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Personel Düzenleme</h4>
+        </div>
+        <div class="scroller" style="height:580px" data-always-visible="0" data-rail-visible1="1">
+            <div class="portlet light">
+                <div class=" portlet-body">
+                    <div class="tab-pane" id="userMenuTabs">
+                        <div class="tabcontent">
+                            <br /><br />
+                            <div data-toggle="modal" data-target="#userMenuUpdatePopup_">
+                                <label class="control-label col-md-3">Menü İzin Seç <span class="required"> *</span></label>
+                                <div class="col-md-9">
+                                    <textarea disabled id="menuUserUpdateNameList_" style="width: 100%" class="form-control" rows="10"></textarea>
+                                    <input type="hidden" disabled id="menuValueList_" style="width: 100%" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
