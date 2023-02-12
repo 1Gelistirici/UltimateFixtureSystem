@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="AddSituation" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,15 +20,18 @@
                             <input ng-model="Pop.Price" style="font-size: 14px;" type="number" class="form-control" required>
                             <br />
                             <span>Bill</span>
-                            <input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control" required>
+                            @*<input ng-model="Pop.BillNo" style="font-size: 14px;" type="number" class="form-control" required>*@
+                            <select class="form-control select2" ng-model="Pop.BillNo" required>
+                                <option ng-repeat="x in Bills" type="number" value="{{x.Id}}">{{x.Name}}</option>
+                            </select>
                             <br />
                             <span>Model</span>
-                            <select class="form-control" ng-model="Pop.ModelNo" required>
+                            <select class="form-control select2" ng-model="Pop.ModelNo" required>
                                 <option ng-repeat="x in Models" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                             <br />
                             <span>Category</span>
-                            <select class="form-control" ng-model="Pop.CategoryNo" required>
+                            <select class="form-control select2" ng-model="Pop.CategoryNo" required>
                                 <option ng-repeat="x in Categorys" type="number" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </form>

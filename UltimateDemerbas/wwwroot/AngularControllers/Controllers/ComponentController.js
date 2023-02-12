@@ -1,5 +1,5 @@
-﻿MainApp.controller("ComponentController", ["$scope", "CategoryService", "ComponentModelService", "ComponentService", "$http", "NgTableParams", "toaster",
-    function ($scope, CategoryService, ComponentModelService, ComponentService, $http, NgTableParams, toaster) {
+﻿MainApp.controller("ComponentController", ["$scope", "CategoryService", "ComponentModelService", "ComponentService", "BillService", "$http", "NgTableParams", "toaster",
+    function ($scope, CategoryService, ComponentModelService, ComponentService, BillService, $http, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -26,6 +26,20 @@
                 });
         }
         $scope.GetCategorys();
+
+        $scope.GetBills = function () {
+            BillService.GetBills(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Bills = result.Data;
+                    } else {
+                        toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetBills();
 
         $scope.GetComponentModels = function () {
             ComponentModelService.GetComponentModels(

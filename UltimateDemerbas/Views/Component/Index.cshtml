@@ -57,8 +57,14 @@
                                     <input ng-model="_.Price" type="number" class="form-control" value="{{ _.Price}}">
                                 </td>
 
-                                <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
-                                    <input ng-model="_.BillNo" type="text" class="form-control" value="{{ _.BillNo}}">
+                                @*<td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                        <input ng-model="_.BillNo" type="text" class="form-control" value="{{ _.BillNo}}">
+                                    </td>*@
+
+                                <td data-title="TableCol.BillNo" filter="{ Type: 'number'}" sortable="'BillNo'">
+                                    <select class="form-control" ng-model="_.BillNo">
+                                        <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
                                 </td>
 
                                 <td data-title="TableCol.ModelNo" filter="{ Type: 'number'}" sortable="'ModelNo'">
@@ -123,6 +129,7 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/BillService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>

@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="AddFixturePopup" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="AddFixturePopup" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,35 +16,35 @@
 
                         <div class="col-md-9">
                             <span>Model</span>
-                            <select class="form-control" ng-model="Pop.ModelNo" required>
+                            <select class="form-control select2" ng-model="Pop.ModelNo" required>
                                 <option ng-repeat="x in FixtureModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-9">
                             <span>Bill</span>
-                            <select class="form-control" ng-model="Pop.BillNo" required>
+                            <select class="form-control select2" ng-model="Pop.BillNo" required>
                                 <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-9">
                             <span>Statu</span>
-                            <select class="form-control" ng-model="Pop.StatuNo"  required>
+                            <select class="form-control select2" ng-model="Pop.StatuNo"  required>
                                 <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-9" ng-show="Pop.StatuNo==3">
                             <span>User</span>
-                            <select class="form-control" ng-model="Pop.UserNo" ng-required="Pop.StatuNo==3">
+                            <select class="form-control select2" ng-model="Pop.UserNo" ng-required="Pop.StatuNo==3">
                                 <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>
 
                         <div class="col-md-9">
                             <span>Category</span>
-                            <select class="form-control" ng-model="Pop.CategoryNo" required>
+                            <select class="form-control select2" ng-model="Pop.CategoryNo" required>
                                 <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>
