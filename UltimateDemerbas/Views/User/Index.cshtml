@@ -7,14 +7,18 @@
     <link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
 }
 
+@model UltimateDemerbas.Controllers.UserController.MenuListResult
+
 
 <div ng-controller="UserController">
     <partial name="~/Views/Shared/Partials/User/AddUserPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/User/UpdateUserPopup.cshtml" />
 
     <div id="companyUserUpdatePopupGetir" class="modal fade" aria-hidden="true">
-        <partial name="~/Views/Shared/Partials/User/CompanyUserUpdatePartial.cshtml" />
+        @Html.Partial("~/Views/Shared/Partials/User/CompanyUserUpdatePartial.cshtml", Model)
     </div>
+
+
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">

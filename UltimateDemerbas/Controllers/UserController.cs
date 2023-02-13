@@ -21,18 +21,33 @@ namespace UltimateDemerbas.Controllers
         private readonly IHttpClientFactory _httpClientFactory;
         private IConfiguration Configuration;
         UserManager user;
+        MenuManager menu;
 
         public UserController(IHttpClientFactory httpClientFactory, IConfiguration _configuration)
         {
             _httpClientFactory = httpClientFactory;
             user = new UserManager(_httpClientFactory);
+            menu = new MenuManager(_httpClientFactory);
             Configuration = _configuration;
         }
+
+        public class MenuListResult
+        {
+            public List<Menu> Menus { get; set; }
+        }
+
 
         [CheckAuthorize]
         public IActionResult Index()
         {
-            return View();
+            var menuResult = menu.GetMenu();
+            UltimateResult<List<Menu>> result = JsonSerializer.Deserialize<UltimateResult<List<Menu>>>(menuResult.Result);
+
+            MenuListResult resultMenu = new MenuListResult();
+            resultMenu.Menus = result.Data;
+
+
+            return View(resultMenu);
         }
 
         public IActionResult Login()
