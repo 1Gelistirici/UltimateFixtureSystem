@@ -1,36 +1,44 @@
 ﻿
+
 <style>
     .disabled_node {
         color: #ddd;
     }
 </style>
 
-
 @model UltimateDemerbas.Controllers.UserController.MenuListResult
 
-
-<ul>
-    @foreach (var menu in Model.Menus)
+@if (Model.Menus != null)
+{
+    foreach (var menu in Model.Menus)
     {
-        <li data-id="@menu.Id" data-name="@menu.Name" data-companyRefId="@menu.Id">
-            @menu.Name
 
-            @if (menu.Children != null)
-            {
-                @foreach (var childMenu in menu.Children)
+        <ul>
+
+            <li data-menuValue="@menu.Id" data-name="@menu.Name">
+                @menu.Name
+                @if (menu.Children != null)
                 {
-                    <ul>
-                        <li data-id="@childMenu.Id" data-name="@childMenu.Name" data-companyRefId="@childMenu.Id">
-                            @childMenu.Name
-                        </li>
-                    </ul>
+                    foreach (var item in menu.Children)
+                    {
+
+                        <ul>
+                            @if (item != null)
+                            {
+                                <li data-menuValue="@item.Id" data-name="@item.Name" class="target">
+                                    @item.Name
+                                </li>
+                            }
+
+                        </ul>
+                    }
+
                 }
-            }
-        </li>
+            </li>
+
+        </ul>
     }
-</ul>
-
-
+}
 
 <script>
     $(".target").hide();

@@ -9,7 +9,7 @@
         "core": {
             "themes": {
                 "name": "proton",
-                "variant": "large",
+                "variant": "large", 
                 "icons": false
 
             }
