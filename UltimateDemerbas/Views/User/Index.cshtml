@@ -46,122 +46,122 @@
 
 
 
-                    <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
-                        <form autocomplete="off" id="companyUser_form">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+                <form autocomplete="off" id="companyUser_form">
 
-                            <div class="table-responsive">
-                                <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
-                                    <colgroup>
-                                        <col width="100" />
-                                        <col width="600" />
-                                        <col width="600" />
-                                        <col width="600" />
-                                        <col width="600" />
-                                        <col width="600" />
-                                        <col width="600" />
-                                    </colgroup>
+                            <colgroup>
+                                <col width="100" />
+                                <col width="600" />
+                                <col width="600" />
+                                <col width="600" />
+                                <col width="600" />
+                                <col width="600" />
+                                <col width="600" />
+                            </colgroup>
 
-                                    <tbody>
-                                        <tr ng-repeat="_ in $data">
-                                            <td>
-                                                <div class="btn-group absoluteitem">
-                                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li class="ms-hover" ng-if="_.Id!==3">
-                                                            <a class="viewuserbtn" data-toggle="modal" ng-click="OpenAssignPopup(_)" data-target="#companyUserUpdatePopupGetir">
-                                                                <i class="fa fa-group"></i>Assign Role
-                                                            </a>
-                                                        </li>
-                                                        <li class="ms-hover">
-                                                            <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
-                                                                <i class="fa fa-edit"></i>Update
-                                                            </a>
-                                                        </li>
-                                                        <li class="ms-hover" ng-if="_.Id!==3">
-                                                            <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
-                                                                <i class="fa fa-trash"></i>Delete
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                            <tbody>
+                                <tr ng-repeat="_ in $data">
+                                    <td>
+                                        <div class="btn-group absoluteitem">
+                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li class="ms-hover" ng-if="_.Id!==3">
+                                                    <a class="viewuserbtn" data-toggle="modal" ng-click="OpenAssignPopup(_)" data-target="#companyUserUpdatePopupGetir">
+                                                        <i class="fa fa-group"></i>Assign Role
+                                                    </a>
+                                                </li>
+                                                <li class="ms-hover">
+                                                    <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
+                                                        <i class="fa fa-edit"></i>Update
+                                                    </a>
+                                                </li>
+                                                <li class="ms-hover" ng-if="_.Id!==3">
+                                                    <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
+                                                        <i class="fa fa-trash"></i>Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                        <div class="col-md-9">
+                                            <label style="font-size: 14px;"> {{_.Name}}</label>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Surname" filter="{ Surname: 'text'}" sortable="'Surname'">
+                                        <div class="col-md-9">
+                                            <label style="font-size: 14px;"> {{_.Surname}}</label>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Telephone" filter="{ Telephone: 'text'}" sortable="'Telephone'">
+                                        <div class="col-md-9">
+                                            <label style="font-size: 14px;"> {{_.Telephone}}</label>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
+                                        <div class="col-md-9">
+                                            <label style="font-size: 14px;"> {{_.MailAdress}}</label>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Gender" filter="{ Gender: 'text'}" sortable="'Gender'">
+                                        <div class="col-md-9">
+                                            <button type="button" class="btn btn-sm mt-ladda-btn ladda-button btn-circle" ng-class="_.Gender.Value===0?'btn-warning ':'btn-success '"
+                                                    data-style="expand-right" data-size="s">
+                                                <span class="ladda-label">{{_.Gender.Text}}</span>
+                                            </button>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Title" filter="{ Title: 'text'}" sortable="'Title'">
+                                        <div class="col-md-9">
+                                            <label style="font-size: 14px;"> {{_.Title}}</label>
+                                        </div>
+                                    </td>
+
+                                    <td data-title="TableCol.Lock" filter="{ Lock: 'text'}" sortable="'Lock'">
+                                        <div class="col-md-9">
+
+                                            <div class="md-checkbox-list pull-right" ng-show="_.Lock">
+                                                <div class="md-checkbox">
+                                                    <input type="checkbox" id="checkbox{{Id}}" class="md-check" ng-checked="true">
+                                                    <label for="checkbox{{Id}}">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> Lock
+                                                    </label>
                                                 </div>
-                                            </td>
+                                            </div>
 
-                                            <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                                <div class="col-md-9">
-                                                    <label style="font-size: 14px;"> {{_.Name}}</label>
-                                                </div>
-                                            </td>
+                                        </div>
+                                    </td>
 
-                                            <td data-title="TableCol.Surname" filter="{ Surname: 'text'}" sortable="'Surname'">
-                                                <div class="col-md-9">
-                                                    <label style="font-size: 14px;"> {{_.Surname}}</label>
-                                                </div>
-                                            </td>
+                                </tr>
+                            </tbody>
 
-                                            <td data-title="TableCol.Telephone" filter="{ Telephone: 'text'}" sortable="'Telephone'">
-                                                <div class="col-md-9">
-                                                    <label style="font-size: 14px;"> {{_.Telephone}}</label>
-                                                </div>
-                                            </td>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="no-margin no-padding">
+                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
 
-                                            <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
-                                                <div class="col-md-9">
-                                                    <label style="font-size: 14px;"> {{_.MailAdress}}</label>
-                                                </div>
-                                            </td>
-
-                                            <td data-title="TableCol.Gender" filter="{ Gender: 'text'}" sortable="'Gender'">
-                                                <div class="col-md-9">
-                                                    <button type="button" class="btn btn-sm mt-ladda-btn ladda-button btn-circle" ng-class="_.Gender.Value===0?'btn-warning ':'btn-success '"
-                                                            data-style="expand-right" data-size="s">
-                                                        <span class="ladda-label">{{_.Gender.Text}}</span>
-                                                    </button>
-                                                </div>
-                                            </td>
-
-                                            <td data-title="TableCol.Title" filter="{ Title: 'text'}" sortable="'Title'">
-                                                <div class="col-md-9">
-                                                    <label style="font-size: 14px;"> {{_.Title}}</label>
-                                                </div>
-                                            </td>
-
-                                            <td data-title="TableCol.Lock" filter="{ Lock: 'text'}" sortable="'Lock'">
-                                                <div class="col-md-9">
-
-                                                    <div class="md-checkbox-list pull-right" ng-show="_.Lock">
-                                                        <div class="md-checkbox">
-                                                            <input type="checkbox" id="checkbox{{Id}}" class="md-check" ng-checked="true">
-                                                            <label for="checkbox{{Id}}">
-                                                                <span></span>
-                                                                <span class="check"></span>
-                                                                <span class="box"></span> Lock
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-
-                                        </tr>
-                                    </tbody>
-
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="6" class="no-margin no-padding">
-                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-
-                                </table>
-                            </div>
-                        </form>
-
+                        </table>
                     </div>
+                </form>
+
+            </div>
         </div>
 
 
@@ -175,6 +175,7 @@
     <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 
 
+    <script src="~/AngularControllers/Services/UserRoleService.js"></script>
     <script src="~/AngularControllers/Services/MenuService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>

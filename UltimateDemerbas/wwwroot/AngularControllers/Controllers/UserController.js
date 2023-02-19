@@ -1,5 +1,5 @@
-﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce",
-    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce) {
+﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce", "UserRoleService",
+    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce, userRoleService) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -159,6 +159,57 @@
 
         $scope.OpenAssignPopup = function (data) {
             $scope.AssignPopup = data;
+
+
+            var parameter = { UserRefId: data.Id }
+
+
+
+            userRoleService.GetRole(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+
+
+
+
+
+                        var instance = $('#WebUserMenuUpdateTree').jstree(true);
+                        instance.deselect_all();
+                        //instance.select_node('2');
+
+                        var menuNameListResult = "";
+                        $("#WebUserMenuUpdateTree").jstree('open_all');
+                        //Hepsnin önce açılması gerekir 
+                        var menuValueList = [];
+                        $(function () {
+                            $.each($("#WebUserMenuUpdateTree").jstree('full').find("li"), function (index, element) {
+                                var menuValue = parseInt(element.dataset.menuvalue);
+                                var menuIsActive = result.Data.find(x => x.MenuRefId === menuValue)
+
+                                if (menuIsActive !== undefined) {
+                                    $('#WebUserMenuUpdateTree').jstree("select_node", element.id);
+
+                                    menuNameListResult = menuNameListResult + "," + element.id;
+
+
+                                    menuValueList.push(menuValue);
+                                }
+
+                                $("#menuNameListResult").val(menuValueList);
+                            });
+                        });
+
+                    } else {
+                        toaster.error("UserRole", "Bir hata oluştu.");
+                    }
+                }, function error() {
+                    toaster.error("UserRole", "Bir hata oluştu.");
+                });
+
+
+
+
+
         }
 
         $scope.UpdateUser = function () {

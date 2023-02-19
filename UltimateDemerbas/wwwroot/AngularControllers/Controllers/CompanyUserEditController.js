@@ -1,5 +1,5 @@
-﻿MainApp.controller("CompanyUserEditController", ["$scope", "NgTableParams", "toaster",
-    function ($scope, NgTableParams, toaster) {
+﻿MainApp.controller("CompanyUserEditController", ["$scope", "NgTableParams", "toaster", "UserRoleService",
+    function ($scope, NgTableParams, toaster, userRoleService) {
 
 
         //VPSApp.controller('CompanyUserEditController', ["$scope", "CompanyUserService", "WebUserService", "PositionBoxService", "ProgramingService", "toaster",
@@ -251,29 +251,22 @@
 
             if (menuValueList.length > 0) {
                 for (var i = 0; i < menuValueList.length; i++) {
-                    var menuParam = { MenuRefId: parseInt(menuValueList[i]) };
+                    var menuParam = { MenuRefId: parseInt(menuValueList[i]), UserRefId: $scope.companyUser.Id };
                     menuList.push(menuParam);
                 }
             }
 
-            debugger;
-            return;
-            $scope.user = $scope.companyUser;
-            $scope.user.WebUser.Menu = menuList;
-
-
-            CompanyUserService.UpdateCompanyUser($scope.user,
-                $scope.files,
+            userRoleService.AddRoleList(menuList,
                 function success(response) {
                     if (response.IsSuccess) {
-                        location.replace("/CompanyUser/Index");
-                        toaster.success("Güncelleme", "Güncelleme işlemi yapılmıştır");
+                        location.reload();
+                        toaster.success("Başarılı", "Yatkilendirme işlemi başarıyla yapılmıştır.");
                     } else {
                         toaster.error("Güncelleme Hata ", response.Message);
                     }
                 },
                 function error(response) {
-                    toaster.error("Güncelleme Hata ", response.Message);
+                    toaster.error("Başarısız", response.Message);
                 });
         };
 
