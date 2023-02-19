@@ -41,5 +41,19 @@ namespace UltimateAPI.CallManager
         {
             return UserRoleManager.Instance.AddRole(parameter);
         }
+
+        public UltimateResult<List<UserRole>> AddRoleList(List<UserRole> parameter)
+        {
+            UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
+            foreach (UserRole userRole in parameter)
+            {
+                if (result.IsSuccess)
+                {
+                    result = UserRoleManager.Instance.AddRole(userRole);
+                }
+            }
+
+            return result;
+        }
     }
 }

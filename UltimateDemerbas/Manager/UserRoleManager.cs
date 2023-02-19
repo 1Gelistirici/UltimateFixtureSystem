@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using UltimateAPI.Entities;
 
@@ -24,6 +25,11 @@ namespace UltimateDemerbas.Manager
         public Task<string> DeleteRole(UserRole parameter)
         {
             return GetApiParameter<UserRole>("UserRole/DeleteRole", parameter);
+        }
+
+        public Task<string> AddRoleList(List<UserRole> parameter)
+        {
+            return GetApiParameter<List<UserRole>>("UserRole/AddRoleList", parameter);
         }
 
     }

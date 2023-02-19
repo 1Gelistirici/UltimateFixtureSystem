@@ -2,31 +2,6 @@
 @model UltimateDemerbas.Controllers.UserController.MenuListResult
 
 
-<div id="webUserDeletePopup" class="modal fade" tabindex="-1" aria-hidden="true" style="width: 880px;z-index:10052!important" ng-controller="CompanyUserEditController as ctrl">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" ng-click="CloseWebUserDeletePopup()" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Bu Web kullanıcıyı silmek istediğinize eminmisiniz ?</h4>
-            </div>
-            <div class="scroller" style="height:120px" data-always-visible="0" data-rail-visible1="1">
-                <div class="modal-body">
-                    <form action="#" id="form_sample_8" class="form-horizontal">
-                        <div class="form-body">
-
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn dark btn-outline" ng-click="CloseWebUserDeletePopup()">Kapat</button>
-                    <button type="submit" class="btn red" ng-disabled="generalValidation" ng-click="DeleteWebUser($parent._CompanyUser.WebUser)">Devam Et</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal-dialog" style="width: 900px;height: 900px;" ng-controller="CompanyUserEditController as ctrl">
 
     <div id="userMenuUpdatePopup_" class="modal fade" tabindex="-1" aria-hidden="true" style="z-index: 10052 !important;margin-top: -80px;">
@@ -73,42 +48,24 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Personel Düzenleme - {{$parent._CompanyUser.FirstName}}</h4>
+            <h4 class="modal-title">Personel Düzenleme - {{$parent.AssignPopup.Name}}</h4>
         </div>
-        <div class="scroller" style="height:580px" data-always-visible="0" data-rail-visible1="1">
-            <div class="portlet light">
-                <div class=" portlet-body">
-                    <div class="tabbable-line">
-                        <ul class="nav nav-tabs">
-
-                            <li class="ms-hover">
-                                <a data-target="#userMenuTabs" id="userMenuTab" data-toggle="tab" aria-expanded="false">Kullanıcı Menü Yetkileri</a>
-                            </li>
-
-                        </ul>
-                        <div class="tab-content" style="padding: 0px">
-
-                            <div class="tab-pane" id="userMenuTabs">
-                                <div class="tabcontent">
-                                    <br /><br />
-                                    <div data-toggle="modal" data-target="#userMenuUpdatePopup_">
-                                        <label class="control-label col-md-3">Menü İzin Seç <span class="required"> *</span></label>
-                                        <div class="col-md-9">
-                                            <textarea disabled id="menuUserUpdateNameList_" style="width: 100%" class="form-control" rows="10"></textarea>
-                                            <input type="hidden" disabled id="menuValueList_" style="width: 100%" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="modal-footer col-md-6">
-                        <button type="button" data-dismiss="modal" class="btn dark btn-outline" ng-click="ClearCompanyUserInsertPopup()">Kapat</button>
-                        <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="UpdateCompanyUser($parent._CompanyUser,buildZoneRef)">Kaydet</button>
+        <div class="scroller" style="height:320px" data-always-visible="0" data-rail-visible1="1">
+            <br />
+            <div class="tab-pane" id="userMenuTabs">
+                <div data-toggle="modal" data-target="#userMenuUpdatePopup_">
+                    <label class="control-label col-md-3">Menü İzin Seç <span class="required"> *</span></label>
+                    <div class="col-md-9">
+                        <textarea disabled id="menuUserUpdateNameList_" style="width: 100%" class="form-control" rows="10"></textarea>
+                        <input type="hidden" disabled id="menuValueList_" style="width: 100%" class="form-control" />
                     </div>
                 </div>
+            </div>
+
+
+            <div class="modal-footer col-md-12 ">
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline" ng-click="ClearCompanyUserInsertPopup()">Kapat</button>
+                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="UpdateCompanyUser($parent.AssignPopup)">Kaydet</button>
             </div>
         </div>
 

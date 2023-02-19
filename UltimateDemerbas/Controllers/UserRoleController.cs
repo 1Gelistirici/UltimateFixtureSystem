@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -38,6 +39,14 @@ namespace UltimateDemerbas.Controllers
             var result = userRole.GetRole(parameter);
             return Content(result.Result);
         }
+
+        [CheckAuthorize]
+        public IActionResult AddRoleList([FromBody] List<UserRole> parameter)
+        {
+            var result = userRole.AddRoleList(parameter);
+            return Content(result.Result);
+        }
+
 
     }
 }

@@ -112,6 +112,7 @@ namespace UltimateAPI.Manager
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
+                result.Message = ex.Message;
                 return result;
             }
 

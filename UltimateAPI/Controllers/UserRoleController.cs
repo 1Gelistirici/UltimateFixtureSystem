@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 
@@ -28,5 +29,14 @@ namespace UltimateAPI.Controllers
             var result = UserRoleCallManager.Instance.DeleteRole(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("AddRoleList")]
+        public IActionResult AddRoleList(List<UserRole> parameter)
+        {
+            var result = UserRoleCallManager.Instance.AddRoleList(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+
     }
 }
