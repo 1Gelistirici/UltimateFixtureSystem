@@ -61,7 +61,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Menus = result.Data;
-                        console.log("$scope.Menus", $scope.Menus);
                     } else {
                         toaster.error("Başarısız", "GetUserCompany");
                     }
@@ -184,13 +183,23 @@
                                 var menuValue = parseInt(element.dataset.menuvalue);
                                 var menuIsActive = result.Data.find(x => x.MenuRefId === menuValue)
 
+                                var menuData = $scope.Menus.find(x => x.Id === menuValue);
+                                if (!menuData) {
+                                    for (var i = 0; i < $scope.Menus.length; i++) {
+                                        if ($scope.Menus[i].Children && !menuData) {
+                                            menuData = $scope.Menus[i].Children.find(x => x.Id === menuValue);
+                                        }
+                                    }
+                                }
+
                                 if (menuIsActive !== undefined) {
-                                    $('#WebUserMenuUpdateTree').jstree("select_node", element.id);
+                                    if (menuData.Url !== "") {
+                                        $('#WebUserMenuUpdateTree').jstree("select_node", element.id);
 
-                                    menuNameListResult = menuNameListResult + "," + element.id;
+                                        menuNameListResult = menuNameListResult + "," + element.id;
 
-
-                                    menuValueList.push(menuValue);
+                                        menuValueList.push(menuValue);
+                                    }
                                 }
 
                                 $("#menuNameListResult").val(menuValueList);
