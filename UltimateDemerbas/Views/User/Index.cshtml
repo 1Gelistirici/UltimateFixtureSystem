@@ -3,8 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section LayotCss{
-}
 
 @model UltimateDemerbas.Controllers.UserController.MenuListResult
 
@@ -16,7 +14,6 @@
     <div id="companyUserUpdatePopupGetir" class="modal fade" aria-hidden="true">
         @Html.Partial("~/Views/Shared/Partials/User/CompanyUserUpdatePartial.cshtml", Model)
     </div>
-
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
@@ -43,8 +40,6 @@
 
         <!--Table Body-->
         <div class="portlet-body">
-
-
 
             <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
                 <form autocomplete="off" id="companyUser_form">
@@ -164,9 +159,7 @@
             </div>
         </div>
 
-
     </div>
-
 
 </div>
 
@@ -174,12 +167,10 @@
     {
     <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 
-
     <script src="~/AngularControllers/Services/UserRoleService.js"></script>
     <script src="~/AngularControllers/Services/MenuService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>
-
 
     <script src="~/AngularControllers/Services/FixLicService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
@@ -190,5 +181,3 @@
 
     <script src="~/AngularControllers/Shared/Partial/UserMenuTree.js"></script>
 }
-
-
