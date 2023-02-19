@@ -45,6 +45,8 @@ namespace UltimateAPI.CallManager
         public UltimateResult<List<UserRole>> AddRoleList(List<UserRole> parameter)
         {
             UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
+
+            result = UserRoleManager.Instance.DeleteRole(parameter[0]);
             foreach (UserRole userRole in parameter)
             {
                 if (result.IsSuccess)

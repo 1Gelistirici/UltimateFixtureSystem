@@ -45,7 +45,7 @@ namespace UltimateAPI.CallManager
                                 mainMenu.Children = new List<Menu>();
 
                             mainMenu.Children.Add(menuItem);
-                            //result.Data.Remove(menuItem);
+                            result.Data.Remove(menuItem);
                         }
                     }
 

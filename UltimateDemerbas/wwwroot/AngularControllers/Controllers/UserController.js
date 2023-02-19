@@ -160,18 +160,16 @@
         $scope.OpenAssignPopup = function (data) {
             $scope.AssignPopup = data;
 
+            fillMenu(data);
+        }
 
+
+        function fillMenu(data) {
             var parameter = { UserRefId: data.Id }
-
-
 
             userRoleService.GetRole(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-
-
-
-
 
                         var instance = $('#WebUserMenuUpdateTree').jstree(true);
                         instance.deselect_all();
@@ -205,11 +203,6 @@
                 }, function error() {
                     toaster.error("UserRole", "Bir hata oluştu.");
                 });
-
-
-
-
-
         }
 
         $scope.UpdateUser = function () {
