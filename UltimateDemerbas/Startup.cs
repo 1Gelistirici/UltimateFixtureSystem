@@ -30,14 +30,14 @@ namespace UltimateDemerbas
             services.AddControllersWithViews();
             services.AddHttpClient("CoreSession", c =>
              {
-                 c.BaseAddress = new Uri("https://localhost:44331/api");
+                 c.BaseAddress = new Uri("https://localhost:44354/api");
              });
 
 
 
             //services.AddHttpClient<UserRoleTest>(client =>
             //{
-            //    client.BaseAddress = new Uri(Configuration["https://localhost:44331/api"]);
+            //    client.BaseAddress = new Uri(Configuration["https://localhost:44354/api"]);
             //    client.DefaultRequestHeaders.Add("Accept", "application/json");
             //});
             //services.AddSingleton<UserRoleTest>();
