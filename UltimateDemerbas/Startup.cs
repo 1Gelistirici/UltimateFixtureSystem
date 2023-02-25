@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas
@@ -31,6 +32,17 @@ namespace UltimateDemerbas
              {
                  c.BaseAddress = new Uri("https://localhost:44331/api");
              });
+
+
+
+            //services.AddHttpClient<UserRoleTest>(client =>
+            //{
+            //    client.BaseAddress = new Uri(Configuration["https://localhost:44331/api"]);
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //});
+            //services.AddSingleton<UserRoleTest>();
+
+
 
             services.AddScoped<CheckAuthorize>();
 
