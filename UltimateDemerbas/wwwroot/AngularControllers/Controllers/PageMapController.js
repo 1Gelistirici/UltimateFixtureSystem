@@ -27,16 +27,6 @@
         $scope.GetMenu();
 
 
-
-
-
-
-
-
-
-
-
-
         function drawChart(menus) {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Name');
@@ -59,7 +49,6 @@
                             [{ 'v': childValue.Name }, value.Name],
                         ]);
                     });
-
                 }
             });
 
@@ -68,27 +57,7 @@
             var chart = new google.visualization.OrgChart(document.getElementById('pageMap'));
             // Draw the chart, setting the allowHtml option to true for the tooltips.
             chart.draw(data, { 'allowHtml': true, allowCollapse: false, size: 'small' });
-
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
     }]);
