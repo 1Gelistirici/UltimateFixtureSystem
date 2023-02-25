@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Page Map";
+}
+
+
+<div ng-controller="PageMapController">
+
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-map font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Page Map
+                </span>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <div id="pageMap"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section PageScript
+    {
+    <script src="~/lib/gstatic/charts/loader.js"></script>
+
+    <script src="~/AngularControllers/Services/MenuService.js"></script>
+    <script src="~/AngularControllers/Controllers/PageMapController.js"></script>
+}
