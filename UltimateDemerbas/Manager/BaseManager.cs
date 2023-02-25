@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Manager
 {
@@ -18,7 +19,7 @@ namespace UltimateDemerbas.Manager
         }
 
 
-        public string apiAdress = "https://localhost:44354/api/";
+        public string apiAdress = ConnectionManager.Instance.apiAdress;
 
         private StringContent GetSerilizatiob<T>(T ConvertData)
         {

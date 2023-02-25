@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using UltimateAPI.Entities;
+using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -21,44 +22,11 @@ namespace UltimateDemerbas.Controllers
         protected abstract int PageNumber { get; set; }
         public void CheckSecurity()
         {
-            if (WorkingUser > 0)
+            if (WorkingUser > 0 && PageNumber > 0)
             {
-                UserRole userRole = new UserRole();
-                userRole.UserRefId = WorkingUser;
+                bool isAuthorized = UserRoleAuthentication.Instance.CheckMenuUserRole(WorkingUser, PageNumber);
 
-                var request = WebRequest.Create("https://localhost:44354/api/UserRole/GetRole");
-                request.Method = "POST";
-                request.ContentType = "application/json";
-
-
-                var jsonData = JsonConvert.SerializeObject(userRole);
-                var data = Encoding.UTF8.GetBytes(jsonData);
-
-
-                request.ContentLength = data.Length;
-
-                Stream stream;
-                using (stream = request.GetRequestStream())
-                {
-                    stream.Write(data, 0, data.Length);
-                }
-                var response = request.GetResponse();
-                stream = response.GetResponseStream();
-                var reader = new StreamReader(stream);
-                var content = reader.ReadToEnd();
-
-
-                UltimateResult<List<UserRole>> userRoles = JsonConvert.DeserializeObject<UltimateResult<List<UserRole>>>(content);
-
-
-
-                bool isAuthorized = userRoles.Data.Find(x => x.Id == PageNumber) != null;
-
-
-
-
-                bool result = true;/* MenuItemsManager.Instance.GetMenuCompanyUserCheck(new ReferanceParameter() { RefId = WorkingUser }, PageNumber);*/
-                if (!result)
+                if (!isAuthorized)
                 {
                     Response.Redirect("/Error");
                 }
