@@ -9,11 +9,6 @@
                     if (result.IsSuccess) {
                         console.log(result.Data);
 
-
-
-
-
-
                         google.charts.load('current', { packages: ["orgchart"] });
                         google.charts.setOnLoadCallback(function () { drawChart(result.Data) });
                     }
@@ -31,7 +26,6 @@
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Name');
             data.addColumn('string', 'Manager');
-
 
             data.addRows([
                 [{ 'v': 'UFS' }, ''],
@@ -59,5 +53,9 @@
             chart.draw(data, { 'allowHtml': true, allowCollapse: false, size: 'small' });
         }
 
+
+        jQuery(document).ready(function () {
+            $(".sidebar-toggler").click();
+        });
 
     }]);
