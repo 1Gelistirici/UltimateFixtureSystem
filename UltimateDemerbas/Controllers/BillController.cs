@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class BillController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 32;
         private readonly IHttpClientFactory _httpClientFactory;
         BillManager bill;
         public BillController(IHttpClientFactory httpClientFactory)

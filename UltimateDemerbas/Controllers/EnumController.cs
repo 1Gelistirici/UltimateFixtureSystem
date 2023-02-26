@@ -8,7 +8,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class EnumController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         EnumManager enumManager;
         public EnumController(IHttpClientFactory httpClientFactory)

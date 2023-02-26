@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class DepartmentController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 36;
         private readonly IHttpClientFactory _httpClientFactory;
         DepartmentManager department;
         public DepartmentController(IHttpClientFactory httpClientFactory)

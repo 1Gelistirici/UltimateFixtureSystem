@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -10,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class ComponentController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 34;
         private readonly IHttpClientFactory _httpClientFactory;
         ComponentManager component;
         public ComponentController(IHttpClientFactory httpClientFactory)

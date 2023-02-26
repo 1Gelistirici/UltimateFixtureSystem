@@ -8,7 +8,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class HomeController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 21;
 
 
         [CheckAuthorize]

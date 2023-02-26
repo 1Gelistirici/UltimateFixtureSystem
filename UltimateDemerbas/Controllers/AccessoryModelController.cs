@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class AccessoryModelController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 29;
         private readonly IHttpClientFactory _httpClientFactory;
         AccessoryModelManager accessoryModel;
         public AccessoryModelController(IHttpClientFactory httpClientFactory)

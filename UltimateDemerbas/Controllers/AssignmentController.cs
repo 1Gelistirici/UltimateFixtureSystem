@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class AssignmentController : BaseController
     {
-        protected override int PageNumber { get; set; } = 1;
+        protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
         AssignmentManager assignment;
         public AssignmentController(IHttpClientFactory httpClientFactory)
@@ -18,10 +18,6 @@ namespace UltimateDemerbas.Controllers
             assignment = new AssignmentManager(_httpClientFactory);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult GetAssignments()
         {

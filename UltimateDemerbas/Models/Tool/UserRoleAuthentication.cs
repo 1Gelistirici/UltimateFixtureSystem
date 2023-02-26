@@ -32,10 +32,12 @@ namespace UltimateDemerbas.Models.Tool
 
         public bool CheckMenuUserRole(int userRefId, int pageNumber)
         {
-            var request = WebRequest.Create(ConnectionManager.Instance.apiAdress);
+            var request = WebRequest.Create(ConnectionManager.Instance.apiAdress + "UserRole/GetRole");
             request.Method = "POST";
             request.ContentType = "application/json";
 
+
+        //https://localhost:44354/api/UserRole/GetRole
 
             var jsonData = JsonConvert.SerializeObject(new UserRole() { UserRefId = userRefId });
             var data = Encoding.UTF8.GetBytes(jsonData);
@@ -55,7 +57,7 @@ namespace UltimateDemerbas.Models.Tool
 
 
             UltimateResult<List<UserRole>> userRoles = JsonConvert.DeserializeObject<UltimateResult<List<UserRole>>>(content);
-            bool isAuthorized = userRoles.Data.Find(x => x.Id == pageNumber) != null;
+            bool isAuthorized = userRoles.Data.Find(x => x.MenuRefId == pageNumber) != null;
 
             return isAuthorized;
         }

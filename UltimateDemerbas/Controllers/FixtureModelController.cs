@@ -10,7 +10,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class FixtureModelController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 40;
         private readonly IHttpClientFactory _httpClientFactory;
         FixtureModelManager fixtureModel;
         public FixtureModelController(IHttpClientFactory httpClientFactory)
