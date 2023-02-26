@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class TonerController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 50;
         private readonly IHttpClientFactory _httpClientFactory;
         TonerManager toner;
         public TonerController(IHttpClientFactory httpClientFactory)

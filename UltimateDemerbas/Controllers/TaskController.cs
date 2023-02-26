@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class TaskController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 47;
         private readonly IHttpClientFactory _httpClientFactory;
         TaskManager task;
         public TaskController(IHttpClientFactory httpClientFactory)

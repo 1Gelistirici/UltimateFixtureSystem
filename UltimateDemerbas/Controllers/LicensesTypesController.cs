@@ -10,7 +10,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class LicensesTypesController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 42;
         private readonly IHttpClientFactory _httpClientFactory;
         LicensesTypeManager licensesTypeManager;
         public LicensesTypesController(IHttpClientFactory httpClientFactory)

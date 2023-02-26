@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class RelevantPersonnelController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 45;
         private readonly IHttpClientFactory _httpClientFactory;
         RelevantPersonnelManager reveland;
         public RelevantPersonnelController(IHttpClientFactory httpClientFactory)

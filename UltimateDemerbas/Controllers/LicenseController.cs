@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -10,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class LicenseController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 37;
         private readonly IHttpClientFactory _httpClientFactory;
         LicenseManager licence;
         public LicenseController(IHttpClientFactory httpClientFactory)

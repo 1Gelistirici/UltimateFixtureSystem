@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class LogController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 44;
         private readonly IHttpClientFactory _httpClientFactory;
         LogManager log;
         public LogController(IHttpClientFactory httpClientFactory)

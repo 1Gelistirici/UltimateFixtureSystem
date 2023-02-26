@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class MenuController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 23;
         private readonly IHttpClientFactory _httpClientFactory;
         MenuManager menu;
         public MenuController(IHttpClientFactory httpClientFactory)

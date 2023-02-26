@@ -9,7 +9,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class SituationController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 46;
         private readonly IHttpClientFactory _httpClientFactory;
         SituationManager situation;
         public SituationController(IHttpClientFactory httpClientFactory)

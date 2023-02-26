@@ -10,7 +10,7 @@ namespace UltimateDemerbas.Controllers
     [CheckAuthorize]
     public class ReportController : BaseController
     {
-        protected override int PageNumber { get; set; } = 0;
+        protected override int PageNumber { get; set; } = 43;
         private readonly IHttpClientFactory _httpClientFactory;
         ReportManager report;
         public ReportController(IHttpClientFactory httpClientFactory)
