@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using UltimateAPI.Entities;
@@ -102,15 +103,22 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("icon", parameter.Icon);
                         sqlCommand.Parameters.AddWithValue("dependency", parameter.Dependency);
                         sqlCommand.Parameters.AddWithValue("order", parameter.Order);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
 
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
+
+                    if (result.IsSuccess)
+                    {
+                        UserRoleManager.Instance.AddRole(new UserRole() { UserRefId = 3, MenuRefId = result.ReturnId });
+                    }
                 }
             }
             catch (Exception ex)
@@ -146,15 +154,18 @@ namespace UltimateAPI.Manager
                         sqlConnection.Close();
                         sqlCommand.Dispose();
 
-                        //if (result.IsSuccess)
-                        //{
-                        //    UltimateResult<List<Menu>> menus = GetMenus();
-                        //    menus.Data = menus.Data.Where(x => x.Dependency == parameter.Id).ToList();
-                        //    foreach (var item in menus.Data)
-                        //    {
-                        //        DeleteMenu(new Menu { Id = item.Id });
-                        //    }
-                        //}
+                    
+                        if (result.IsSuccess)
+                        {
+                            //    UltimateResult<List<Menu>> menus = GetMenus();
+                            //    menus.Data = menus.Data.Where(x => x.Dependency == parameter.Id).ToList();
+                            //    foreach (var item in menus.Data)
+                            //    {
+                            //        DeleteMenu(new Menu { Id = item.Id });
+                            //    }
+
+                            UserRoleManager.Instance.DeleteRole(new UserRole() {MenuRefId=parameter.Id });
+                        }
 
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);

@@ -137,6 +137,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
                         sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@MenuRefId", parameter.MenuRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
