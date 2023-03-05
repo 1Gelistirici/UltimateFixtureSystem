@@ -1,5 +1,5 @@
-﻿MainApp.controller("LicensesTypesController", ["$scope", "LicenseTypeService", "NgTableParams", "toaster",
-    function ($scope, LicenseTypeService, NgTableParams, toaster) {
+﻿MainApp.controller("LicensesTypesController", ["$scope", "LicenseTypeService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, LicenseTypeService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.TableCol = {
@@ -72,6 +72,14 @@
                 });
         }
         $scope.GetLicensesTypes();
+
+
+        $scope.UpdateLicensesTypesConfirm = function (x) {
+            $confirm.Show("Onay", "Gencellemek istediğinize emin misiniz?", function () { $scope.UpdateLicensesTypes(x) });
+        }
+        $scope.DeleteLicensesTypesConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteLicensesTypes(x) });
+        }
 
     }]);
 

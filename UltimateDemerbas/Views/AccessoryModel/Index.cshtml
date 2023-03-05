@@ -10,7 +10,7 @@
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
-                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
                     Accessory Models
                 </span>
@@ -44,7 +44,7 @@
                             <tr ng-repeat="_ in $data">
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
-                                            <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
+                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>
                                 </td>
 
@@ -56,12 +56,12 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateAccessoryModel(_)">
+                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateAccessoryModelConfirm(_)">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAccessoryModel(_)">
+                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteAccessoryModelConfirm(_)">
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>

@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="AddLicense" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="AddLicense" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,7 +17,7 @@
 
                         <div style="margin-top:3%;">
                             <span>License Type</span>
-                            <select class="form-control" ng-model="Pop.TypeNo">
+                            <select class="form-control select2" ng-model="Pop.TypeNo">
                                 <option ng-repeat="x in LicenseTypes" ng-selected="true" value="{{x.Id}}">{{x.Name}}</option>
                             </select>
                         </div>

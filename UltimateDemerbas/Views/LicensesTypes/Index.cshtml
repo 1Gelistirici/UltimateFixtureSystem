@@ -10,7 +10,7 @@
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
-                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <i class="fa fa-file-text-o font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
                     Licenses Types
                 </span>
@@ -57,12 +57,12 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" @*data-target="#AddLicenseTypePopup"*@ ng-click="UpdateLicensesTypes(_)">
+                                                <a class="viewuserbtn" data-toggle="modal" @*data-target="#AddLicenseTypePopup"*@ ng-click="UpdateLicensesTypesConfirm(_)">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" @*data-target="#floorDeletePopup"*@ ng-click="DeleteLicensesTypes(_)">
+                                                <a class="addphone" title="Delete" data-toggle="modal" @*data-target="#floorDeletePopup"*@ ng-click="DeleteLicensesTypesConfirm(_)">
                                                     <i class="fa fa-phone "></i>Delete
                                                 </a>
                                             </li>

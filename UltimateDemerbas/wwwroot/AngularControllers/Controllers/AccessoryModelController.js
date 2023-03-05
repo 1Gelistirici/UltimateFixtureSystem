@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryModelController", ["$scope", "AccessoryModelService", "toaster", "NgTableParams",
-    function ($scope, AccessoryModelService, toaster, NgTableParams) {
+﻿MainApp.controller("AccessoryModelController", ["$scope", "AccessoryModelService", "toaster", "NgTableParams","$confirm",
+    function ($scope, AccessoryModelService, toaster, NgTableParams, $confirm) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -74,6 +74,13 @@
                 }, function error() {
                     toaster.success("Başarısız", "Accessory model ekleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.UpdateAccessoryModelConfirm = function (x) {
+            $confirm.Show("Onay", "Gencellemek istediğinize emin misiniz?", function () { $scope.UpdateAccessoryModel(x) });
+        }
+        $scope.DeleteAccessoryModelConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteAccessoryModel(x) });
         }
 
     }]);
