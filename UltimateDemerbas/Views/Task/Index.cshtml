@@ -13,23 +13,19 @@
 <link href="~/css/GeneralCss/ToggleCheckboxButton.css" rel="stylesheet" />
 
 
-
 <div ng-controller="TaskController">
 
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
-                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
-
-
+                <i class="fa fa-tasks font-dark-gray" style="color:#678098"></i>
 
                 <span class="caption-subject bold uppercase">
                     Taks
                 </span>
 
-
-            </div> 
+            </div>
             <div class="actions">
                 <div class="material-switch">
                     Active &nbsp;
@@ -46,7 +42,7 @@
                     <label for="{{1000}}" class="label-warning"></label>
                     &nbsp;&nbsp;&nbsp;
                     <div class="btn-group btn-group-devided" data-toggle="buttons">
-                        <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup">
+                        <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup" ng-click="OpenTaskPopup();">
                             Add Task
                         </a>
                     </div>
@@ -118,12 +114,12 @@
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateTask(_)">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateTaskConfirm(_)">
                                                     <i class="fa fa-edit"></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteTask(_)">
+                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteTaskConfirm(_)">
                                                     <i class="fa fa-trash"></i>Delete
                                                 </a>
                                             </li>
@@ -149,6 +145,7 @@
             </div>
         </div>
     </div>
+
     <partial name="~/Views/Shared/Partials/Task/AddTaskPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Task/AddTaskStatuPopup.cshtml" />
 </div>

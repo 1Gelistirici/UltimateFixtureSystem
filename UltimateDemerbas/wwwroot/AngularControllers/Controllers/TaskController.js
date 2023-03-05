@@ -1,5 +1,5 @@
-﻿MainApp.controller("TaskController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster", "TaskService",
-    function ($scope, UserService, EnumService, NgTableParams, toaster, TaskService) {
+﻿MainApp.controller("TaskController", ["$scope", "UserService", "EnumService", "NgTableParams", "toaster", "TaskService", "$confirm",
+    function ($scope, UserService, EnumService, NgTableParams, toaster, TaskService, $confirm) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -14,6 +14,7 @@
         };
 
         $scope.Today = new Date();
+
 
         //#endregion
 
@@ -107,7 +108,8 @@
             TaskService.DeleteTask(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-                        RefreshData();
+                        $scope.GetTasks();
+
                         toaster.success("Başarlı", "Demirbaş başarıyla silinmiştir.");
                     } else {
                         toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -122,7 +124,8 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Demirbaş başarıyla güncellenmiştir.");
-                    } else {
+                    }
+                    else {
                         toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
@@ -131,6 +134,7 @@
         }
 
         $scope.AddTask = function () {
+       
             TaskService.AddTask($scope.Pop,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -138,13 +142,38 @@
                         $scope.GetTasks();
                         $("#AddTaskPopup").modal("hide");
                         $scope.Pop = [];
-                    } else {
+                    }
+                    else {
                         toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
                     toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
+
+        $scope.OpenTaskPopup = function () {
+            $scope.Pop = {
+                StartDate: new Date()
+                , EndDate: new Date()
+                , Count: 0
+                , TaskDetail: ''
+            };
+
+            $scope.Pop.EndDate.setDate($scope.Pop.EndDate.getDate() + 1);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        //
 
         $scope.AddStatu = function () {
             var param = {
@@ -167,18 +196,17 @@
                 });
         }
 
-
-        function RefreshData() {
-            $scope.GetTasks();
-        }
-
         $scope.OpenTaskStatuPopup = function (_) {
             $scope.Pop = [];
             $scope.Pop.Id = _.Id;
         }
 
 
-
-
+        $scope.UpdateTaskConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateTask(x); });
+        }
+        $scope.DeleteTaskConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteTask(x); });
+        }
 
     }]);
