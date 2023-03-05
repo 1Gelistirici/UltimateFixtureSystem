@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
@@ -60,6 +59,7 @@ namespace UltimateAPI.Manager
                                     menu.Icon = read["icon"].ToString();
                                     menu.Dependency = Convert.ToInt16(read["dependency"]);
                                     menu.Order = Convert.ToInt16(read["order"]);
+                                    menu.IsHaveProblem = Convert.ToBoolean(read["isHaveProblem"]);
 
                                     menus.Add(menu);
                                 }
@@ -104,7 +104,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("dependency", parameter.Dependency);
                         sqlCommand.Parameters.AddWithValue("order", parameter.Order);
                         sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
-
+                        sqlCommand.Parameters.AddWithValue("isHaveProblem", parameter.IsHaveProblem);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -154,7 +154,7 @@ namespace UltimateAPI.Manager
                         sqlConnection.Close();
                         sqlCommand.Dispose();
 
-                    
+
                         if (result.IsSuccess)
                         {
                             //    UltimateResult<List<Menu>> menus = GetMenus();
@@ -164,7 +164,7 @@ namespace UltimateAPI.Manager
                             //        DeleteMenu(new Menu { Id = item.Id });
                             //    }
 
-                            UserRoleManager.Instance.DeleteRole(new UserRole() {MenuRefId=parameter.Id });
+                            UserRoleManager.Instance.DeleteRole(new UserRole() { MenuRefId = parameter.Id });
                         }
 
                     }
@@ -203,6 +203,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("icon", parameter.Icon);
                         sqlCommand.Parameters.AddWithValue("dependency", parameter.Dependency);
                         sqlCommand.Parameters.AddWithValue("order", parameter.Order);
+                        sqlCommand.Parameters.AddWithValue("isHaveProblem", parameter.IsHaveProblem);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

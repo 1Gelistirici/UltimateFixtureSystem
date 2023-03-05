@@ -12,6 +12,7 @@ namespace UltimateAPI.Entities
         public string Icon { get; set; }
         public int Dependency { get; set; }
         public int Order { get; set; }
-        public List<Menu> Children{ get; set; }
+        public List<Menu> Children { get; set; }
+        public bool IsHaveProblem { get; set; }
     }
 }

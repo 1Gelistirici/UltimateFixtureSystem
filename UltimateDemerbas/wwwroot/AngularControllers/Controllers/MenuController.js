@@ -43,31 +43,32 @@
             App.blockUI();
 
             //if (!validateSaveParameters()) {
-                var parameters = {
-                    Id: $scope.updateMenuData.Id,
-                    Dependency: $scope.updateMenuData.Dependency,
-                    Name: $scope.updateMenuData.Name,
-                    Url: $scope.updateMenuData.Url,
-                    Icon: $scope.updateMenuData.Icon,
-                    Order: $scope.updateMenuData.Order
-                };
+            var parameters = {
+                Id: $scope.updateMenuData.Id,
+                Dependency: $scope.updateMenuData.Dependency,
+                Name: $scope.updateMenuData.Name,
+                Url: $scope.updateMenuData.Url,
+                Icon: $scope.updateMenuData.Icon,
+                Order: $scope.updateMenuData.Order,
+                Order: $scope.updateMenuData.IsHaveProblem
+            };
 
-                menuService.UpdateMenu(parameters,
-                    function success(response) {
-                        if (response.IsSuccess) {
-                            location.replace("/Menu/Index");
-                            toaster.success("Kaydetme", "Kaydetme işlemi başarılı");
-                            App.unblockUI();
-                        } else {
-                            toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
-                            App.unblockUI();
-                        }
-
-                    },
-                    function error() {
+            menuService.UpdateMenu(parameters,
+                function success(response) {
+                    if (response.IsSuccess) {
+                        location.replace("/Menu/Index");
+                        toaster.success("Kaydetme", "Kaydetme işlemi başarılı");
+                        App.unblockUI();
+                    } else {
                         toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
                         App.unblockUI();
-                    });
+                    }
+
+                },
+                function error() {
+                    toaster.error("Kaydetme", "Kaydetme işlemi yapılırken bir hata oluştu");
+                    App.unblockUI();
+                });
             //} else {
             //    toaster.error("Kaydetme", "Lütfen zorunlu alanları doldurunuz");
             //    App.unblockUI();
