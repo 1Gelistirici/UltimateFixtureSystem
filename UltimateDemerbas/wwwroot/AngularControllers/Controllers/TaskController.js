@@ -163,16 +163,6 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
         //
 
         $scope.AddStatu = function () {

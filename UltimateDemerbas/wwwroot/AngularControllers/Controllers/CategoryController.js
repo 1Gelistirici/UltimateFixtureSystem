@@ -1,5 +1,5 @@
-﻿MainApp.controller("CategoryController", ["$scope", "CategoryService", "$http", "NgTableParams", "toaster",
-    function ($scope, CategoryService, $http, NgTableParams, toaster) {
+﻿MainApp.controller("CategoryController", ["$scope", "CategoryService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, CategoryService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -80,6 +80,14 @@
         function RefreshData() {
             $scope.Pop = [];
             $scope.GetCategories();
+        }
+
+
+        $scope.UpdateCategoryConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateCategory(x); });
+        }
+        $scope.DeleteCategoryConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteCategory(x); });
         }
 
     }]);
