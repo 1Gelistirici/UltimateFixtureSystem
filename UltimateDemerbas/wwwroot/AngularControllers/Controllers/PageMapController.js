@@ -16,7 +16,6 @@
                 });
         }
 
-
         $scope.GetMenu = function () {
             menuService.GetMenu(
                 function success(result) {
@@ -33,6 +32,7 @@
                 });
         }
         $scope.GetMenu();
+
 
         var drawData, orgChart;
         function drawChart() {
@@ -92,8 +92,13 @@
         }
 
 
+        $scope.selectMenuItemConfirm = function () {
+            if (orgChart.getSelection().length === 0)
+                return;
+
+            $confirm.Show("Onay", "Menu durumunu değiştirmek istediğinize emin misiniz?", selectMenuItem);
+        }
         function selectMenuItem() {
-            console.log(drawData.Wf);
 
             var row = orgChart.getSelection()[0].row;
             var id = drawData.Wf[row].c[2].v; //Id
@@ -116,10 +121,6 @@
             $scope.updateMenu(menuData);
         }
 
-        jQuery(document).ready(function () {
-            $(".sidebar-toggler").click();
-        });
-
 
         function getMenuById(id) {
             var result;
@@ -134,16 +135,13 @@
 
             return result;
         }
-
         function refreshOrgChart() {
             orgChart.draw(drawData, { 'allowHtml': true, allowCollapse: false, size: 'small' });
         }
 
-        $scope.selectMenuItemConfirm = function () {
-            if (orgChart.getSelection().length === 0)
-                return;
 
-            $confirm.Show("Onay", "Menu durumunu değiştirmek istediğinize emin misiniz?", selectMenuItem);
-        }
+        jQuery(document).ready(function () {
+            $(".sidebar-toggler").click();
+        });
 
     }]);
