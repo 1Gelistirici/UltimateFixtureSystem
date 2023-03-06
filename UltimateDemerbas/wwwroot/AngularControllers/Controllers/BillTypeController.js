@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillTypeController", ["$scope", "BillTypeService", "toaster", "NgTableParams",
-    function ($scope, BillTypeService, toaster, NgTableParams) {
+﻿MainApp.controller("BillTypeController", ["$scope", "BillTypeService", "toaster", "NgTableParams", "$confirm",
+    function ($scope, BillTypeService, toaster, NgTableParams, $confirm) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -74,6 +74,13 @@
                 }, function error() {
                     toaster.success("Başarısız", "Bill type ekleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.UpdateBillTypeConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateBillType(x); });
+        }
+        $scope.DeleteBillTypeConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteBillType(x); });
         }
 
     }]);
