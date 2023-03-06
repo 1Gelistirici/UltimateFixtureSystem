@@ -1,5 +1,5 @@
-﻿MainApp.controller("DepartmentController", ["$scope", "DepartmentService", "toaster", "NgTableParams",
-    function ($scope, DepartmentService, toaster, NgTableParams) {
+﻿MainApp.controller("DepartmentController", ["$scope", "DepartmentService", "toaster", "NgTableParams","$confirm",
+    function ($scope, DepartmentService, toaster, NgTableParams, $confirm) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -74,6 +74,17 @@
                 }, function error() {
                     toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.openAddPopup = function () {
+            $scope.Pop = [];
+        }
+
+        $scope.UpdateDepartmentConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateDepartment(x); });
+        }
+        $scope.DeleteDepartmentConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteDepartment(x); });
         }
 
     }]);
