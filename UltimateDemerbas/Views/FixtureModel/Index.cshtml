@@ -10,14 +10,14 @@
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
-                <i class="icon-settings font-dark-gray" style="color:#678098"></i>
+                <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
                     Fixture Models
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation" ng-click="openAddPopup();">
                         Add Fixture Model
                     </a>
                 </div>
@@ -47,10 +47,7 @@
 
 
                                     <div class="col-md-9">
-                                        <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
-                                            <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
-                                        </div>
+                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>
 
                                 </td>
@@ -63,12 +60,12 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateFixtureModel(_)">
+                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateFixtureModelConfirm(_)">
                                                     <i class="fa fa-edit "></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteFixtureModel(_)">
+                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteFixtureModelConfirm(_)">
                                                     <i class="fa fa-phone "></i>Delete
                                                 </a>
                                             </li>
