@@ -300,7 +300,10 @@ namespace UltimateDemerbas.Controllers
 
                     if (file != null)
                     {
-                        System.IO.File.Delete(parameter.ImageUrl);
+                        if (System.IO.File.Exists(parameter.ImageUrl))
+                        {
+                            System.IO.File.Delete(parameter.ImageUrl);
+                        }
 
                         UltimateResult<User> result = new UltimateResult<User>();
                         parameter.ImageName = fileGuId;
