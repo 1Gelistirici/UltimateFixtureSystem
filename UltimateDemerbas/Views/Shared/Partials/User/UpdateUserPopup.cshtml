@@ -20,12 +20,11 @@
             <div class="scroller" style="height:650px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form name="UpdateUserForm" class="col-md-12">
-
                         <div class="form-group col-md-12">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
                                     <img style="height: 100%;" ng-show="Pop.ImageUrl ==''" src="~/assets/layouts/layout/img/avatar.png" width="150" height="150" alt="" />
-                                    <img style="height: 100%;" ng-show="Pop.ImageUrl !=''" ng-src="Pop.ImageUrl" width="150" height="150" alt="" />
+                                    <img style="height: 100%;" ng-show="Pop.ImageUrl !=''" src="data:image/jpg;base64, {{Pop.ImageUrl}}" width="150" height="150" alt="" />
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                 <div>

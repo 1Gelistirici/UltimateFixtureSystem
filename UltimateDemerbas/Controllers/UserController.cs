@@ -12,6 +12,7 @@ using UltimateAPI.Entities.Enums;
 using System.IO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -203,6 +204,12 @@ namespace UltimateDemerbas.Controllers
                 if (item.ImageName != "")
                 {
                     item.ImageUrl = Path.Combine(folder, item.ImageName);
+
+                    byte[] imageData = System.IO.File.ReadAllBytes(item.ImageUrl);
+                    string base64ImageRepresentation = Convert.ToBase64String(imageData);
+
+                    item.ImageUrl = base64ImageRepresentation;
+
                 }
                 else
                 {
