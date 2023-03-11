@@ -1,5 +1,5 @@
-﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureService", "FixtureModelService", "ComponentService", "ComponentModelService", "AccessoryService", "AccessoryModelService", "NgTableParams", "toaster",
-    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureService, FixtureModelService, ComponentService, ComponentModelService, AccessoryService, AccessoryModelService, NgTableParams, toaster) {
+﻿MainApp.controller("BillController", ["$scope", "BillService", "BillTypeService", "EnumService", "CategoryService", "FixtureService", "FixtureModelService", "ComponentService", "ComponentModelService", "AccessoryService", "AccessoryModelService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, BillService, BillTypeService, EnumService, CategoryService, FixtureService, FixtureModelService, ComponentService, ComponentModelService, AccessoryService, AccessoryModelService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -369,5 +369,12 @@
                 });
         }
         //#endregion
+
+        $scope.UpdateBillConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateBill(x); });
+        }
+        $scope.DeleteBillConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteBill(x); });
+        }
 
     }]);
