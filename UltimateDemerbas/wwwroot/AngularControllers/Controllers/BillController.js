@@ -370,6 +370,13 @@
         }
         //#endregion
 
+
+        $(document).ready(function () {
+            $("#btnAddBillPopup").click();
+        });
+
+
+
         $scope.UpdateBillConfirm = function (x) {
             $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateBill(x); });
         }
