@@ -1,10 +1,5 @@
 ﻿
-<div class="row">
-    <div class="col-md-6">
-        <button type="submit" class="btn red" data-target="#modal_demo_2" data-toggle="modal">Launch Modal 2</button>
-    </div>
-</div>
-<div id="modal_demo_2" class="modal fade" role="dialog" aria-hidden="true">
+<div id="AddBill" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog" style="width:1400px">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,14 +20,6 @@
             </div>
             <div class="modal-body">
                 <form action="#" class="form-horizontal" name="BillAddForm">
-
-
-
-
-
-
-
-
 
 
                     <div class="row">
@@ -57,13 +44,13 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Product Type</label>
-                                                    <select class="form-control" ng-model="Added.ProductTypeNo" ng-change="GetModal();" required>
+                                                    <select class="form-control select2" ng-model="Added.ProductTypeNo" ng-change="GetModal();" required>
                                                         <option ng-repeat="x in ProductTypes" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Model</label>
-                                                    <select class="form-control" ng-model="Added.Model" required>
+                                                    <select class="form-control select2" ng-model="Added.Model" required>
                                                         <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
@@ -87,8 +74,6 @@
 
                                         </div>
                                     </div>
-
-
 
 
                                     <div class="table-scrollable table-scrollable-borderless">
@@ -171,21 +156,6 @@
                             <!-- END EXAMPLE TABLE PORTLET-->
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
