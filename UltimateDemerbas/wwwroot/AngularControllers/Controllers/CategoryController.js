@@ -16,9 +16,9 @@
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
-                            count: 20
+                            count: 5
                         }, {
-                            counts: [10, 20, 50],
+                            counts: [5, 10, 50],
                             dataset: $scope.Data
                         });
                     } else {
@@ -82,6 +82,16 @@
             $scope.GetCategories();
         }
 
+
+        $(document).ready(function () {
+
+        });
+
+        $("#btnAddCategoryPopup").click(function () {
+            setTimeout(function () {
+                $("#categoryName").focus();
+            }, 500);
+        });
 
         $scope.UpdateCategoryConfirm = function (x) {
             $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateCategory(x); });
