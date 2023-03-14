@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UltimateAPI.Entities
 {
@@ -10,5 +11,6 @@ namespace UltimateAPI.Entities
         public Double Price { get; set; }
         public string Comment { get; set; }
         public int Department { get; set; }
+        public List<BillItem> Items { get; set; }
     }
 }

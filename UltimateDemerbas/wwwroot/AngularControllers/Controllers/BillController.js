@@ -95,8 +95,8 @@
                 });
         }
 
-        $scope.AddBill = function (price) {
-            var price = 0;
+        $scope.AddBill = function () {
+            price = 0;
 
             $.each($scope.AddedData, function (index, value) {
                 price += value.Price * value.Piece;
