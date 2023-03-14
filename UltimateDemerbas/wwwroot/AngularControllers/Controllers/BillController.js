@@ -97,8 +97,19 @@
 
         $scope.AddBill = function () {
             price = 0;
+            var items = [];
 
             $.each($scope.AddedData, function (index, value) {
+                items.push({
+                    Id: value.Id
+                    , Name: value.Name
+                    , Piece: value.Piece
+                    , Price: value.Price
+                    , ProductTypeRefId: value.ProductTypeNo
+                    , ModelRefId: value.Model.Id
+                    , CategoryRefId: value.CategoryNo
+                });
+
                 price += value.Price * value.Piece;
             });
 
@@ -107,16 +118,18 @@
                 "BillDate": $scope.Pop.BillDate,
                 "Price": price,
                 "Comment": $scope.Pop.Comment,
-                "Department": $scope.Pop.Department
+                "Department": $scope.Pop.Department,
+                "Items": items
             }
 
             BillService.AddBill(data,
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.InsertedId = result.Data[0].Id;
-                        $scope.Save();
+                        //$scope.Save();
                         $scope.GetBills();
                         toaster.success("Başarılı", "Fatura kaydedildi.");
+                        $("#AddBillDetail").modal("hide");
                         $("#AddBill").modal("hide");
                         $scope.Added = [];
                         $scope.Pop = [];
@@ -288,12 +301,12 @@
                 if (value.ProductTypeNo === ProductType.Fixture) {
                     var parameter = {
                         "Name": value.Name,
-                        "ModelNo": value.Model.Id,
-                        "BillNo": $scope.InsertedId,
                         "StatuNo": 1,
-                        "CategoryNo": value.CategoryNo,
                         "UserNo": 0,
-                        "Price": value.Price
+                        "Price": value.Price,
+                        "BillNo": $scope.InsertedId,
+                        "ModelNo": value.Model.Id,
+                        "CategoryNo": value.CategoryNo
                     }
 
                     for (var i = 0; i < value.Piece; i++) {

@@ -1,4 +1,5 @@
 ﻿using System;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Entities
 {
@@ -8,7 +9,7 @@ namespace UltimateAPI.Entities
         public string Name { get; set; }
         public int Piece { get; set; }
         public Double Price { get; set; }
-        public int ProductTypeRefId { get; set; }
+        public ProductType ProductType { get; set; }
         public int ModelRefId { get; set; }
         public int CategoryRefId { get; set; }
 

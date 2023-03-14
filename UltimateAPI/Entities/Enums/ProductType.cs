@@ -5,12 +5,12 @@ namespace UltimateAPI.Entities.Enums
     public enum ProductType
     {
         [Description("Fixture")]
-        Fixture,
+        Fixture = 0,
         [Description("Accessory")]
-        Accessory,
+        Accessory = 1,
         [Description("Toner")]
-        Toner,
+        Toner = 2,
         [Description("Component")]
-        Component
+        Component = 4
     }
 }

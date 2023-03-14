@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
@@ -119,6 +120,71 @@ namespace UltimateAPI.Manager
 
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            foreach (var item in parameter.Items)
+                            {
+                                if (item.ProductType == ProductType.Accessory)
+                                {
+                                    Accessory accessory = new Accessory();
+                                    accessory.Name = item.Name;
+                                    accessory.Piece = item.Piece;
+                                    accessory.Price = item.Price;
+                                    accessory.ModelNo = item.ModelRefId;
+                                    accessory.BillNo = bill.Id;
+                                    accessory.CategoryNo = item.CategoryRefId;
+                                    accessory.UserNo = parameter.UserId;
+                                    accessory.StatuNo = (int)ItemStatu.Ready;
+
+                                    AccessoryManager.Instance.AddAccessory(accessory);
+                                }
+                                else if (item.ProductType == ProductType.Component)
+                                {
+                                    Component component = new Component();
+                                    component.Name = item.Name;
+                                    component.Piece = item.Piece;
+                                    component.Price = item.Price;
+                                    component.BillNo = bill.Id;
+                                    component.ModelNo = item.ModelRefId;
+                                    component.CategoryNo = item.CategoryRefId;
+
+                                    ComponentManager.Instance.AddComponent(component);
+                                }
+                                else if (item.ProductType == ProductType.Fixture)
+                                {
+                                    for (int i = 0; i < item.Piece; i++)
+                                    {
+                                        Fixture fixture = new Fixture();
+                                        fixture.Name = item.Name;
+                                        fixture.ModelNo = item.ModelRefId;
+                                        fixture.BillNo = bill.Id;
+                                        fixture.CategoryNo = item.CategoryRefId;
+                                        fixture.Price = item.Price;
+                                        fixture.UserNo = parameter.UserId;
+                                        fixture.StatuNo = (int)ItemStatu.Ready;
+
+                                        FixtureManager.Instance.AddFixture(fixture);
+                                    }
+                                }
+                                //else if (item.ProductType == ProductType.Toner)
+                                //{
+                                //    Toner toner = new Toner();
+                                //    toner.Name = item.Name;
+                                //    toner.Piece = item.Piece;
+                                //    toner.Price = item.Price;
+
+
+                                //    //sqlCommand.Parameters.AddWithValue("@boundary", parameter.Boundary);
+                                //    //sqlCommand.Parameters.AddWithValue("@minStock", parameter.MinStock);
+
+                                //    TonerManager.Instance.AddToner(toner);
+                                //}
+
+                            }
+
+
+                        }
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
