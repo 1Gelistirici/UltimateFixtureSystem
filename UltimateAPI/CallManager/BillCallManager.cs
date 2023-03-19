@@ -13,6 +13,9 @@ namespace UltimateAPI.CallManager
 
         public UltimateResult<List<Bill>> DeleteBill(Bill parameter)
         {
+            UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
+            List<Bill> bills = BillManager.Instance.GetBills().Data;
+
             return BillManager.Instance.DeleteBill(parameter);
         }
 
