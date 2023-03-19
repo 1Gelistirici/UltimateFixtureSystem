@@ -67,7 +67,7 @@
                                 </td>
 
                                 <td data-title="TableCol.Bill" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
-                                    <select class="form-control" ng-model="_.BillNo">
+                                    <select class="form-control" ng-model="_.BillNo" disabled>
                                         <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
                                     </select>
                                 </td>
