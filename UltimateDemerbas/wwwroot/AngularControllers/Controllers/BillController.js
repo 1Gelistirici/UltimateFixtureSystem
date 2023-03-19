@@ -105,7 +105,7 @@
                     , Name: value.Name
                     , Piece: value.Piece
                     , Price: value.Price
-                    , ProductTypeRefId: value.ProductTypeNo
+                    , ProductType: value.ProductTypeNo
                     , ModelRefId: value.Model.Id
                     , CategoryRefId: value.CategoryNo
                 });
@@ -250,7 +250,7 @@
                 $scope.GetAccessoryModels();
             } else if ($scope.Added.ProductTypeNo === 2) {
                 //ToDo ne yapılacağı kararlaştırılacak
-            } else if ($scope.Added.ProductTypeNo === 3) {
+            } else if ($scope.Added.ProductTypeNo === 4) {
                 $scope.GetComponentModels();
             }
         }
