@@ -295,6 +295,18 @@
             });
         }
 
+        function loadBillItemsTable(data) {
+
+            $scope.BillItemTableCount = data.length;
+            $scope.BillItemTableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 20
+            }, {
+                counts: [10, 20, 50],
+                dataset: data
+            });
+        }
+
         $scope.Save = function () {
             $.each($scope.AddedData, function (index, value) {
 
@@ -382,6 +394,16 @@
                 });
         }
         //#endregion
+
+        $scope.GetItems = function (bill) {
+            $scope.selectedBill = bill;
+
+            if (!bill.Items) {
+                toaster.error("Faturaya ait bilgi bulunamadı.");
+                return;
+            }
+            loadBillItemsTable(bill.Items);
+        }
 
         $scope.UpdateBillConfirm = function (x) {
             $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateBill(x); });

@@ -83,11 +83,10 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="GetItems()">
+                                                <a class="addphone" title="Items" data-toggle="modal" data-target="#BillItemsPopup" ng-click="GetItems(_);">
                                                     <i class="fa fa-share "></i>Items
                                                 </a>
                                             </li>
-
                                             <li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="SetPiece(_)">
                                                     <i class="fa fa-eject"></i>Assign
@@ -124,6 +123,7 @@
         </div>
     </div>
 
+    <partial name="~/Views/Shared/Partials/Bill/BillItemsPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Bill/AddBillDetailsPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Bill/AddBillPopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Bill/AddAssignmentPartial.cshtml" />
