@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UltimateAPI.Entities;
 using UltimateAPI.Manager;
 
@@ -13,8 +14,16 @@ namespace UltimateAPI.CallManager
 
         public UltimateResult<List<Bill>> DeleteBill(Bill parameter)
         {
-            UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
-            List<Bill> bills = BillManager.Instance.GetBills().Data;
+            Bill bill = BillManager.Instance.GetBills().Data.Where(x => x.Id == parameter.Id).ToList()[0];
+            bool isHaveItem = bill.Items.Count > 0;
+
+            if (isHaveItem)
+            {
+                UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
+                result.IsSuccess = false;
+                result.Message = "Fatura silinemedi. Faturaya ait ürünler bulunmaktadır.";
+                return result;
+            }
 
             return BillManager.Instance.DeleteBill(parameter);
         }
