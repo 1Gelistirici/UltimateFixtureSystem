@@ -62,7 +62,7 @@ namespace UltimateAPI.Manager
                                     bill.Price = Convert.ToInt32(read["price"]);
                                     bill.Comment = read["comment"].ToString();
                                     bill.Department = Convert.ToInt32(read["department"]);
-                                    bill.Items = GetBillItems(bill.Id);
+                                    //bill.Items = GetBillItems(bill.Id);
 
                                     bills.Add(bill);
                                 }
@@ -85,29 +85,29 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        private List<BillItem> GetBillItems(int billRefId)
-        {
-            List<BillItem> result = new List<BillItem>();
-            List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data.Where(x => x.BillNo == billRefId).ToList();
-            List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.Where(x => x.BillNo == billRefId).ToList();
-            List<Component> components = ComponentManager.Instance.GetComponents().Data.Where(x => x.BillNo == billRefId).ToList();
+        //private List<BillItem> GetBillItems(int billRefId)
+        //{
+        //    List<BillItem> result = new List<BillItem>();
+        //    List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data.Where(x => x.BillNo == billRefId).ToList();
+        //    List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.Where(x => x.BillNo == billRefId).ToList();
+        //    List<Component> components = ComponentManager.Instance.GetComponents().Data.Where(x => x.BillNo == billRefId).ToList();
 
 
-            foreach (Accessory item in accessories)
-            {
-                result.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
-            }
-            foreach (Fixture item in fixtures)
-            {
-                result.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
-            }
-            foreach (Component item in components)
-            {
-                result.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
-            }
+        //    foreach (Accessory item in accessories)
+        //    {
+        //        result.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+        //    }
+        //    foreach (Fixture item in fixtures)
+        //    {
+        //        result.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+        //    }
+        //    foreach (Component item in components)
+        //    {
+        //        result.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public UltimateResult<List<Bill>> AddBill(Bill parameter)
         {

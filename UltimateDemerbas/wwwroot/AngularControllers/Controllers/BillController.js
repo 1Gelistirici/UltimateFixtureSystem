@@ -397,7 +397,7 @@
 
         $scope.GetItems = function (bill) {
             $scope.selectedBill = bill;
-
+            console.log("bill.Items", bill.Items);
             if (!bill.Items) {
                 toaster.error("Faturaya ait bilgi bulunamadı.");
                 return;
