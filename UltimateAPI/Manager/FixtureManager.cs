@@ -61,7 +61,7 @@ namespace UltimateAPI.Manager
                                     fixture.StatuNo = Convert.ToInt32(read["statu_no"]);
                                     fixture.CategoryNo = Convert.ToInt32(read["category_no"]);
                                     fixture.UserNo = Convert.ToInt32(read["user_no"]);
-                                    //fixture.Piece = Convert.ToInt32(read["piece"]);
+                                    fixture.Price = Convert.ToInt32(read["price"]);
 
                                     fixtures.Add(fixture);
                                 }
