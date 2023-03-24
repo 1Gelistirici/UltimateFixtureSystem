@@ -304,6 +304,7 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Silme işlemi başarıyla gerçekleştirildi.");
 
+                        $scope.selectedBill.Price -= parameter.Price;
                         $scope.selectedBill.Items = $scope.selectedBill.Items.filter(x => x.Id !== parameter.Id);
                         loadBillItemsTable($scope.selectedBill.Items);
                     } else {
