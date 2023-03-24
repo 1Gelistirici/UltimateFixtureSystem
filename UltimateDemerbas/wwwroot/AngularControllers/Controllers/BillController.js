@@ -51,6 +51,8 @@
                             $scope.Data[index].InsertDate = new Date($scope.Data[index].InsertDate);
                         });
 
+
+
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },
@@ -300,9 +302,9 @@
             $scope.BillItemTableCount = data.length;
             $scope.BillItemTableParams = new NgTableParams({
                 sorting: { name: 'adc' },
-                count: 20
+                count: 5
             }, {
-                counts: [10, 20, 50],
+                counts: [5, 10, 50],
                 dataset: data
             });
         }
@@ -397,6 +399,7 @@
 
         $scope.GetItems = function (bill) {
             $scope.selectedBill = bill;
+
             console.log("bill.Items", bill.Items);
             if (!bill.Items) {
                 toaster.error("Faturaya ait bilgi bulunamadı.");

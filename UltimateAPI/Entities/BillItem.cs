@@ -12,6 +12,8 @@ namespace UltimateAPI.Entities
         public ProductType ProductType { get; set; }
         public int ModelRefId { get; set; }
         public int CategoryRefId { get; set; }
+        public string ModelName { get; set; }
+        public object Model { get; set; }
 
     }
 }

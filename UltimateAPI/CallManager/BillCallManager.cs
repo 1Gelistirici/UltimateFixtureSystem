@@ -48,6 +48,10 @@ namespace UltimateAPI.CallManager
             List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.ToList();
             List<Component> components = ComponentManager.Instance.GetComponents().Data.ToList();
 
+            List<AccessoryModel> accessoryModels = AccessoryModelManager.Instance.GetAccessoryModels().Data.ToList();
+            List<FixtureModel> fixtureModels = FixtureModelManager.Instance.GetFixtureModels().Data.ToList();
+            List<ComponentModel> componentModels = ComponentModelManager.Instance.GetComponentModels().Data.ToList();
+
             for (int i = 0; i < data.Data.Count - 1; i++)
             {
                 int billRefId = data.Data[i].Id;
@@ -62,15 +66,21 @@ namespace UltimateAPI.CallManager
 
                 foreach (Accessory item in accessoriesFilter)
                 {
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+                    AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
+
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel });
                 }
                 foreach (Fixture item in fixturesFilter)
                 {
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+                    FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
+
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel });
                 }
                 foreach (Component item in componentsFilter)
                 {
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo });
+                    ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
+
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel });
                 }
 
             }
