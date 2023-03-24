@@ -30,5 +30,13 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<Bill>("Bill/AddBill", parameter);
         }
+
+        public Task<string> DeleteBillItem(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Bill/DeleteBillItem", parameter);
+        }
+
+
+
     }
 }

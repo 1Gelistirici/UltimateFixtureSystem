@@ -86,6 +86,10 @@ namespace UltimateAPI.CallManager
             }
         }
 
+        public UltimateResult<List<BillItem>> DeleteBillItem(ReferansParameter parameter)
+        {
+            return BillManager.Instance.DeleteBillItem(parameter);
+        }
 
     }
 }

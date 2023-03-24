@@ -284,17 +284,31 @@
             $scope.Added = [];
         }
 
-        $scope.DeleteAddedBill = function (addedId) {
-            $scope.AddedData = $scope.AddedData.filter(x => x.Id != addedId);
+        //$scope.DeleteAddedBill = function (addedId) {
+        //    $scope.AddedData = $scope.AddedData.filter(x => x.Id != addedId);
 
-            $scope.PopupRegisterCount = $scope.AddedData.length;
-            $scope.PopupTableParams = new NgTableParams({
-                sorting: { name: 'adc' },
-                count: 20
-            }, {
-                counts: [10, 20, 50],
-                dataset: $scope.AddedData
-            });
+        //    $scope.PopupRegisterCount = $scope.AddedData.length;
+        //    $scope.PopupTableParams = new NgTableParams({
+        //        sorting: { name: 'adc' },
+        //        count: 20
+        //    }, {
+        //        counts: [10, 20, 50],
+        //        dataset: $scope.AddedData
+        //    });
+        //}
+
+
+        function DeleteBillItem(id) {
+            Bi.DeleteBillItem(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Models = result.Data;
+                    } else {
+                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                });
         }
 
         function loadBillItemsTable(data) {
@@ -338,9 +352,11 @@
 
                     $scope.AddAccessory(parameter);
 
-                } else if (value.ProductTypeNo === ProductType.Toner) {
+                }
+                //else if (value.ProductTypeNo === ProductType.Toner) {
 
-                } else if (value.ProductTypeNo === ProductType.Component) {
+                //}
+                else if (value.ProductTypeNo === ProductType.Component) {
                     var parameter = {
                         "Name": value.Name,
                         "Piece": value.Piece,
@@ -353,7 +369,7 @@
                     $scope.AddComponent(parameter);
                 }
 
-                $scope.DeleteAddedBill(value.Id);
+                //$scope.DeleteAddedBill(value.Id);
 
             });
         }
@@ -414,5 +430,9 @@
         $scope.DeleteBillConfirm = function (x) {
             $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteBill(x); });
         }
+        $scope.DeleteBillItemConfirm = function (id) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz? Ürün silindikden sonra ürün tutarı fatura tutarından düşülecektir.", function () { DeleteBillItem(id); });
+        }
+
 
     }]);

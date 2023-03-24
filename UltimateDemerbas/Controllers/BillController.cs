@@ -52,5 +52,13 @@ namespace UltimateDemerbas.Controllers
             var result = bill.UpdateBill(parameter);
             return Content(result.Result);
         }
+
+        public IActionResult DeleteBillItem([FromBody] int id)
+        {
+            var result = bill.DeleteBillItem(new ReferansParameter() { Id = id });
+            return Content(result.Result);
+        }
+
+
     }
 }

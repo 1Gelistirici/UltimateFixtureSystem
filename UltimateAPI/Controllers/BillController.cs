@@ -40,5 +40,14 @@ namespace UltimateAPI.Controllers
             var result = bill.UpdateBill(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("DeleteBillItem")]
+        public IActionResult DeleteBillItem(ReferansParameter parameter)
+        {
+            BillCallManager bill = new BillCallManager();
+            var result = bill.DeleteBillItem(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
     }
 }

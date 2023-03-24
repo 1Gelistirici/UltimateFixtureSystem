@@ -33,13 +33,13 @@
                                 <tr ng-repeat="_ in $data">
 
                                     <td data-title="PopupTableCol.Name" sortable="'Name'">
-                                        <input ng-model="_.Name" type="text" class="form-control" required>
+                                        <input ng-model="_.Name" type="text" class="form-control" required disabled>
                                     </td>
                                     <td data-title="PopupTableCol.Price" sortable="'Price'">
-                                        <input ng-model="_.Price" type="number" class="form-control" required>
+                                        <input ng-model="_.Price" type="number" class="form-control" required disabled>
                                     </td>
                                     <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
-                                        <select class="form-control" ng-model="_.ProductType" disabled required>
+                                        <select class="form-control" ng-model="_.ProductType" disabled required disabled>
                                             <option ng-repeat="x in ProductTypes" ng-value="{{x.Value}}">{{x.Text}}</option>
                                         </select>
                                     </td>
@@ -50,7 +50,7 @@
                                             </select>*@
                                     </td>
                                     <td data-title="PopupTableCol.Category" sortable="'Category'">
-                                        <select class="form-control" ng-model="_.CategoryNo" required>
+                                        <select class="form-control" ng-model="_.CategoryRefId" required disabled>
                                             <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
                                     </td>
@@ -63,7 +63,7 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li class="ms-hover">
-                                                    <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAddedBill(_.Id)">
+                                                    <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteBillItemConfirm(_.Id)">
                                                         <i class="fa fa-phone "></i>Delete
                                                     </a>
                                                 </li>

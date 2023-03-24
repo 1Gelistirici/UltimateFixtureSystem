@@ -33,5 +33,13 @@
                 }, error);
         };
 
+        this.DeleteBillItem = function (id, success, error) {
+            $http.post('/Bill/DeleteBillItem', { id: id }).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 
