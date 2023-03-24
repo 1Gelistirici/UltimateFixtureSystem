@@ -309,43 +309,6 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<List<BillItem>> DeleteBillItem(ReferansParameter parameter)
-        {
-            UltimateResult<List<BillItem>> result = new UltimateResult<List<BillItem>>();
-            SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[bills_DeleteBillItem]";
-
-            try
-            {
-                using (sqlConnection = Global.GetSqlConnection())
-                {
-                    ConnectionManager.Instance.SqlConnect(sqlConnection);
-
-                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
-                    {
-                        ConnectionManager.Instance.CmdOperations();
-
-                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
-
-                        int effectedRow = sqlCommand.ExecuteNonQuery();
-                        result.IsSuccess = effectedRow > 0;
-                        sqlConnection.Close();
-                        sqlCommand.Dispose();
-
-                    }
-                    ConnectionManager.Instance.Dispose(sqlConnection);
-                }
-            }
-            catch (Exception ex)
-            {
-                ConnectionManager.Instance.Excep(ex, sqlConnection);
-                result.IsSuccess = false;
-                return result;
-            }
-
-            return result;
-        }
-
 
     }
 }

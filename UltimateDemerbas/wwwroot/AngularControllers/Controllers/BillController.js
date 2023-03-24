@@ -298,16 +298,16 @@
         //}
 
 
-        function DeleteBillItem(id) {
-            Bi.DeleteBillItem(
+        function DeleteBillItem(parameter) {
+            BillService.DeleteBillItem(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Models = result.Data;
+                        toaster.success("Başarılı", "Silme işlemi başarıyla gerçekleştirildi.");
                     } else {
-                        toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
-                    toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("Başarısız", "Beklenmeyen bir hata oluştu.");
                 });
         }
 

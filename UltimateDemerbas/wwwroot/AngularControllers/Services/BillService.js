@@ -34,7 +34,7 @@
         };
 
         this.DeleteBillItem = function (id, success, error) {
-            $http.post('/Bill/DeleteBillItem', { id: id }).then(
+            $http.post('/Bill/DeleteBillItem', JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

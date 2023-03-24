@@ -68,27 +68,51 @@ namespace UltimateAPI.CallManager
                 {
                     AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel });
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
                 }
                 foreach (Fixture item in fixturesFilter)
                 {
                     FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel });
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
                 }
                 foreach (Component item in componentsFilter)
                 {
                     ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel });
+                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
                 }
 
             }
         }
 
-        public UltimateResult<List<BillItem>> DeleteBillItem(ReferansParameter parameter)
+        public UltimateResult<List<BillItem>> DeleteBillItem(BillItem billItem)
         {
-            return BillManager.Instance.DeleteBillItem(parameter);
+            UltimateResult<List<BillItem>> result = new UltimateResult<List<BillItem>>();
+
+            Bill bill = GetBills().Data.ToList().Find(x => x.Id == billItem.BillRefId);
+            bill.Price = bill.Price - billItem.Price;
+            UltimateResult<List<Bill>> billResult = UpdateBill(bill);
+
+            if (billResult.IsSuccess)
+            {
+                if (billItem.ProductType == ProductType.Accessory)
+                {
+                    AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
+                    result.IsSuccess = accessoryCallManager.DeleteAccessory(new Accessory() { Id = billItem.Id }).IsSuccess;
+                }
+                else if (billItem.ProductType == ProductType.Component)
+                {
+                    ComponentCallManager componentCallManager = new ComponentCallManager();
+                    result.IsSuccess = componentCallManager.DeleteComponent(new Component() { Id = billItem.Id }).IsSuccess;
+                }
+                else if (billItem.ProductType == ProductType.Fixture)
+                {
+                    result.IsSuccess = FixtureCallManager.Instance.DeleteFixture(new Fixture() { Id = billItem.Id }).IsSuccess;
+                }
+            }
+
+            return result;
         }
 
     }
