@@ -33,7 +33,7 @@
                 }, error);
         };
 
-        this.DeleteBillItem = function (id, success, error) {
+        this.DeleteBillItem = function (parameter, success, error) {
             $http.post('/Bill/DeleteBillItem', JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)

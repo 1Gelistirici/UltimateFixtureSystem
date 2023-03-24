@@ -303,6 +303,9 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Silme işlemi başarıyla gerçekleştirildi.");
+
+                        $scope.selectedBill.Items = $scope.selectedBill.Items.filter(x => x.Id !== parameter.Id);
+                        loadBillItemsTable($scope.selectedBill.Items);
                     } else {
                         toaster.error("Başarısız", result.Message);
                     }
@@ -416,7 +419,6 @@
         $scope.GetItems = function (bill) {
             $scope.selectedBill = bill;
 
-            console.log("bill.Items", bill.Items);
             if (!bill.Items) {
                 toaster.error("Faturaya ait bilgi bulunamadı.");
                 return;
@@ -430,8 +432,8 @@
         $scope.DeleteBillConfirm = function (x) {
             $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteBill(x); });
         }
-        $scope.DeleteBillItemConfirm = function (id) {
-            $confirm.Show("Onay", "Silmek istediğinize emin misiniz? Ürün silindikden sonra ürün tutarı fatura tutarından düşülecektir.", function () { DeleteBillItem(id); });
+        $scope.DeleteBillItemConfirm = function (parameter) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz? Ürün silindikden sonra ürün tutarı fatura tutarından düşülecektir.", function () { DeleteBillItem(parameter); });
         }
 
 

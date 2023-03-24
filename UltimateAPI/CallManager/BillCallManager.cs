@@ -68,19 +68,19 @@ namespace UltimateAPI.CallManager
                 {
                     AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
+                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
                 }
                 foreach (Fixture item in fixturesFilter)
                 {
                     FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
+                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
                 }
                 foreach (Component item in componentsFilter)
                 {
                     ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
 
-                    data.Data[i].Items.Add(new BillItem() { Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
+                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
                 }
 
             }
