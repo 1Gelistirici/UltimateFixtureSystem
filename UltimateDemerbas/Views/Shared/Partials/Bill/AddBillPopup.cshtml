@@ -21,7 +21,6 @@
             <div class="modal-body">
                 <form action="#" class="form-horizontal" name="BillAddForm">
 
-
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -50,124 +49,121 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Model</label>
-                                                    <select class="form-control select2" ng-model="Added.Model" required>
+                                                    <select class="form-control select2" ng-model="Added.Model">
                                                         <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label>Category</label>
-                                                    <select class="form-control select2" ng-model="Added.CategoryNo" required>
-                                                        <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                    </select>
-                                                </div>
                                             </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <div class="btn-group pull-right">
-                                                <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();" ng-disabled="BillAddForm.$invalid">
-                                                    Add New
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                            <div class="col-md-2">
+                                                <label>Category</label>
+                                                <select class="form-control select2" ng-model="Added.CategoryNo" required>
+                                                    <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                </select>
                                             </div>
-
                                         </div>
-                                    </div>
-
-
-                                    <div class="table-scrollable table-scrollable-borderless" ng-show="AddedData.length>0">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-light" ng-table="PopupTableParams" style="margin-bottom: 50px !important;">
-                                                <colgroup>
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                    <col width="100" />
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr ng-repeat="_ in $data">
-
-                                                        <td data-title="PopupTableCol.Name" sortable="'Name'">
-                                                            <input ng-model="_.Name" type="text" class="form-control" required>
-                                                        </td>
-                                                        <td data-title="PopupTableCol.Piece" sortable="'Piece'">
-                                                            <input ng-model="_.Piece" type="number" class="form-control" required>
-                                                        </td>
-                                                        <td data-title="PopupTableCol.Price" sortable="'Price'">
-                                                            <input ng-model="_.Price" type="number" class="form-control" required>
-                                                        </td>
-                                                        <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
-                                                            <select class="form-control" ng-model="_.ProductTypeNo" disabled required>
-                                                                <option ng-repeat="x in ProductTypes" ng-value="{{x.Value}}">{{x.Text}}</option>
-                                                            </select>
-                                                        </td>
-                                                        <td data-title="PopupTableCol.Model" sortable="'Model'">
-                                                            <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
-                                                            @*<select class="form-control" ng-model="_.ModelNo" required>
-                                                                    <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                                </select>*@
-                                                        </td>
-                                                        <td data-title="PopupTableCol.Category" sortable="'Category'">
-                                                            <select class="form-control" ng-model="_.CategoryNo" required>
-                                                                <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                            </select>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="btn-group absoluteitem">
-                                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                                    <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                                                    <i class="fa fa-angle-down"></i>
-                                                                </button>
-                                                                <ul class="dropdown-menu" role="menu">
-                                                                    <li class="ms-hover">
-                                                                        <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAddedBill(_.Id)">
-                                                                            <i class="fa fa-phone "></i>Delete
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-
-                                                <tfoot>
-                                                    <tr>
-                                                        <td colspan="6" class="no-margin no-padding">
-                                                            <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{PopupRegisterCount}}</span>
-                                                        </td>
-                                                    </tr>
-
-                                                </tfoot>
-
-                                            </table>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <div class="btn-group pull-right">
+                                            <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();" ng-disabled="BillAddForm.$invalid">
+                                                Add New
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
+
                                     </div>
-
-
-
-
                                 </div>
+
+
+                                <div class="table-scrollable table-scrollable-borderless" ng-show="AddedData.length>0">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-light" ng-table="PopupTableParams" style="margin-bottom: 50px !important;">
+                                            <colgroup>
+                                                <col width="100" />
+                                                <col width="100" />
+                                                <col width="100" />
+                                                <col width="100" />
+                                                <col width="100" />
+                                                <col width="100" />
+                                                <col width="100" />
+                                            </colgroup>
+                                            <tbody>
+                                                <tr ng-repeat="_ in $data">
+
+                                                    <td data-title="PopupTableCol.Name" sortable="'Name'">
+                                                        <input ng-model="_.Name" type="text" class="form-control" required>
+                                                    </td>
+                                                    <td data-title="PopupTableCol.Piece" sortable="'Piece'">
+                                                        <input ng-model="_.Piece" type="number" class="form-control" required>
+                                                    </td>
+                                                    <td data-title="PopupTableCol.Price" sortable="'Price'">
+                                                        <input ng-model="_.Price" type="number" class="form-control" required>
+                                                    </td>
+                                                    <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
+                                                        <select class="form-control" ng-model="_.ProductTypeNo" disabled required>
+                                                            <option ng-repeat="x in ProductTypes" ng-value="{{x.Value}}">{{x.Text}}</option>
+                                                        </select>
+                                                    </td>
+                                                    <td data-title="PopupTableCol.Model" sortable="'Model'">
+                                                        <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
+                                                        @*<select class="form-control" ng-model="_.ModelNo" required>
+                                                                <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                            </select>*@
+                                                    </td>
+                                                    <td data-title="PopupTableCol.Category" sortable="'Category'">
+                                                        <select class="form-control" ng-model="_.CategoryNo" required>
+                                                            <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                        </select>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="btn-group absoluteitem">
+                                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li class="ms-hover">
+                                                                    <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAddedBill(_.Id)">
+                                                                        <i class="fa fa-phone "></i>Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="6" class="no-margin no-padding">
+                                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{PopupRegisterCount}}</span>
+                                                    </td>
+                                                </tr>
+
+                                            </tfoot>
+
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
-                            <!-- END EXAMPLE TABLE PORTLET-->
                         </div>
+                        <!-- END EXAMPLE TABLE PORTLET-->
                     </div>
-
-
-
-
-
-                </form>
             </div>
-            @*<div class="modal-footer">
-                    <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <button class="btn green" data-dismiss="modal">Save changes</button>
-                </div>*@
+
+            </form>
         </div>
+        @*<div class="modal-footer">
+                <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn green" data-dismiss="modal">Save changes</button>
+            </div>*@
     </div>
+</div>
 </div>
 

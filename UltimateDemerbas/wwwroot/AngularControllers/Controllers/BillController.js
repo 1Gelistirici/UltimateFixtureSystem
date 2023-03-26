@@ -137,7 +137,8 @@
                         $scope.Added = [];
                         $scope.Pop = [];
                         $scope.Pop.BillDate = new Date();
-                    } else {
+                    }
+                    else {
                         toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {

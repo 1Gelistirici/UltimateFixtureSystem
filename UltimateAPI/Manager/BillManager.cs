@@ -193,19 +193,17 @@ namespace UltimateAPI.Manager
                                         FixtureManager.Instance.AddFixture(fixture);
                                     }
                                 }
-                                //else if (item.ProductType == ProductType.Toner)
-                                //{
-                                //    Toner toner = new Toner();
-                                //    toner.Name = item.Name;
-                                //    toner.Piece = item.Piece;
-                                //    toner.Price = item.Price;
+                                else if (item.ProductType == ProductType.Toner)
+                                {
+                                    Toner toner = new Toner();
+                                    toner.Name = item.Name;
+                                    toner.Piece = item.Piece;
+                                    toner.Price = item.Price;
+                                    toner.Boundary = item.Piece;
+                                    toner.MinStock = item.Piece;
 
-
-                                //    //sqlCommand.Parameters.AddWithValue("@boundary", parameter.Boundary);
-                                //    //sqlCommand.Parameters.AddWithValue("@minStock", parameter.MinStock);
-
-                                //    TonerManager.Instance.AddToner(toner);
-                                //}
+                                    TonerManager.Instance.AddToner(toner);
+                                }
 
                             }
 
