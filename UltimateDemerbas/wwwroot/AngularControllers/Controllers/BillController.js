@@ -77,7 +77,7 @@
                         $scope.GetBills();
                         toaster.success("Başarılı", "Fatura silindi.")
                     } else {
-                        toaster.error("Başarısız", "Fatura silme işlemi yapılırken bir hata oluştu");
+                        toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
                     toaster.error("Başarısız", "Fatura silme işlemi yapılırken bir hata oluştu");
@@ -135,6 +135,7 @@
                         $("#AddBill").modal("hide");
                         $scope.Added = [];
                         $scope.Pop = [];
+                        $scope.Pop.BillDate = new Date();
                     } else {
                         toaster.error("Başarısız", "Fatura ekleme işlemi yapılırken bir hata oluştu");
                     }

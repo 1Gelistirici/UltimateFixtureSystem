@@ -72,7 +72,7 @@
                                 </td>
 
                                 <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
-                                    <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}">
+                                    <input ng-model="_.Price" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Price }}" disabled>
                                 </td>
 
                                 <td>
@@ -87,11 +87,11 @@
                                                     <i class="fa fa-share "></i>Items
                                                 </a>
                                             </li>
-                                            <li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetPiece(_)">
-                                                    <i class="fa fa-eject"></i>Assign
-                                                </a>
-                                            </li>
+                                            @*<li class="ms-hover" ng-hide="_.Piece<=0" data-toggle="modal" data-target="#AddAssignment">
+                                                    <a class="viewuserbtn" data-toggle="modal" ng-click="SetPiece(_)">
+                                                        <i class="fa fa-eject"></i>Assign
+                                                    </a>
+                                                </li>*@
                                             <li class="ms-hover">
                                                 <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateBillConfirm(_)">
                                                     <i class="fa fa-edit "></i>Update
