@@ -407,28 +407,16 @@
 
         //#regionAdd Bill Item
         $scope.addNewBillItem = function () {
-
             var parameter = {
-                Id: id,
                 Name: $scope.addPopupBillItemData.Name,
                 Piece: $scope.addPopupBillItemData.Piece,
                 Price: $scope.addPopupBillItemData.Price,
                 ProductTypeNo: $scope.addPopupBillItemData.ProductTypeNo,
-                Model: $scope.addPopupBillItemData.Model,
-                CategoryNo: $scope.addPopupBillItemData.CategoryNo,
+                ModelRefId: $scope.addPopupBillItemData.ModelRefId,
+                CategoryRefId: $scope.addPopupBillItemData.CategoryRefId,
+                BillRefId: $scope.selectedBill.Id,
             };
-
-
-
-
-
-
-
-
-
-
-
-
+            AddBillItem(parameter);
         }
 
         function AddBillItem(parameter) {

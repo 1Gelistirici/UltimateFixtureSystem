@@ -115,5 +115,57 @@ namespace UltimateAPI.CallManager
             return result;
         }
 
+        public UltimateResult<BillItem> AddBillItem(BillItem parameter)
+        {
+            UltimateResult<BillItem> result = new UltimateResult<BillItem>();
+
+            if (parameter.ProductType == ProductType.Accessory)
+            {
+                Accessory accessory = new Accessory();
+                accessory.Name = parameter.Name;
+                accessory.Piece = parameter.Piece;
+                accessory.Price = parameter.Price;
+                accessory.ModelNo = parameter.ModelRefId;
+                accessory.UserNo = parameter.Id;
+                accessory.BillNo = parameter.BillRefId;
+                accessory.StatuNo = (int)ItemStatu.Ready;
+                accessory.CategoryNo = parameter.CategoryRefId;
+
+                AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
+                accessoryCallManager.AddAccessory(accessory);
+            }
+            else if (parameter.ProductType == ProductType.Component)
+            {
+                Component component = new Component();
+                component.Name = parameter.Name;
+                component.Piece = parameter.Piece;
+                component.Price = parameter.Price;
+                component.ModelNo = parameter.ModelRefId;
+                component.BillNo = parameter.BillRefId;
+                component.CategoryNo = parameter.CategoryRefId;
+
+                ComponentCallManager componentCallManager = new ComponentCallManager();
+                componentCallManager.AddComponent(component);
+            }
+            else if (parameter.ProductType == ProductType.Fixture)
+            {
+                for (int i = 0; i < parameter.Piece; i++)
+                {
+                    Fixture fixture = new Fixture();
+                    fixture.Name = parameter.Name;
+                    fixture.ModelNo = parameter.ModelRefId;
+                    fixture.BillNo = parameter.BillRefId;
+                    fixture.StatuNo = (int)ItemStatu.Ready;
+                    fixture.CategoryNo = parameter.CategoryRefId;
+                    fixture.Price = parameter.Price;
+
+                    FixtureCallManager.Instance.AddFixture(fixture);
+                }
+            }
+
+            return result;
+        }
+
+
     }
 }

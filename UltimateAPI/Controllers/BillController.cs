@@ -49,5 +49,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("AddBillItem")]
+        public IActionResult AddBillItem(BillItem parameter)
+        {
+
+            BillCallManager bill = new BillCallManager();
+            var result = bill.AddBillItem(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
     }
 }

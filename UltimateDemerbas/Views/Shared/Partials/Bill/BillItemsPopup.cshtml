@@ -44,13 +44,13 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Model</label>
-                                                    <select class="form-control select2" ng-model="addPopupBillItemData.Model" required>
-                                                        <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.ModelRefId" required>
+                                                        <option ng-repeat="x in Models" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Category</label>
-                                                    <select class="form-control select2" ng-model="addPopupBillItemData.CategoryNo" required>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.CategoryRefId" required>
                                                         <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>

@@ -61,6 +61,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddBillItem([FromBody] BillItem parameter)
         {
+            parameter.Id = WorkingUser;
             var result = bill.AddBillItem(parameter);
             return Content(result.Result);
         }
