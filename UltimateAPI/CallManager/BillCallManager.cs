@@ -120,7 +120,7 @@ namespace UltimateAPI.CallManager
             UltimateResult<BillItem> result = new UltimateResult<BillItem>();
 
             Bill bill = GetBills().Data.ToList().Find(x => x.Id == parameter.BillRefId);
-            bill.Price = bill.Price - parameter.Price;
+            bill.Price = bill.Price + parameter.Price;
             UltimateResult<List<Bill>> billResult = UpdateBill(bill);
 
             if (billResult.IsSuccess)
