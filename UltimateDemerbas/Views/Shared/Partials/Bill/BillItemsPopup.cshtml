@@ -26,31 +26,31 @@
                                             <div class="col-md-12">
                                                 <div class="col-md-2">
                                                     <label>Name</label>
-                                                    <input ng-model="Added.Name" type="text" class="form-control" required>
+                                                    <input ng-model="addPopupBillItemData.Name" type="text" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Piece</label>
-                                                    <input ng-model="Added.Piece" type="number" class="form-control" required>
+                                                    <input ng-model="addPopupBillItemData.Piece" type="number" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Price</label>
-                                                    <input ng-model="Added.Price" type="number" class="form-control" required>
+                                                    <input ng-model="addPopupBillItemData.Price" type="number" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Product Type</label>
-                                                    <select class="form-control select2" ng-model="Added.ProductTypeNo" ng-change="GetModal();" required>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.ProductTypeNo" ng-change="GetModal();" required>
                                                         <option ng-repeat="x in ProductTypes" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Model</label>
-                                                    <select class="form-control select2" ng-model="Added.Model" required>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.Model" required>
                                                         <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Category</label>
-                                                    <select class="form-control select2" ng-model="Added.CategoryNo" required>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.CategoryNo" required>
                                                         <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
@@ -60,7 +60,7 @@
                                             <br />
                                             <br />
                                             <div class="btn-group pull-right">
-                                                <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();" ng-disabled="BillAddForm.$invalid">
+                                                <button id="sample_editable_1_new" class="btn green" ng-click="addNewBillItem();" ng-disabled="BillAddForm.$invalid">
                                                     Add New
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -97,16 +97,12 @@
                                                         </td>
                                                         <td data-title="PopupTableCol.Model" sortable="'Model'">
                                                             <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
-                                                            @*<select class="form-control" ng-model="_.ModelNo" required>
-                                                                    <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                                </select>*@
                                                         </td>
                                                         <td data-title="PopupTableCol.Category" sortable="'Category'">
                                                             <select class="form-control" ng-model="_.CategoryRefId" required disabled>
                                                                 <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                             </select>
                                                         </td>
-
                                                         <td>
                                                             <div class="btn-group absoluteitem">
                                                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

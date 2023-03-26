@@ -59,6 +59,11 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult AddBillItem([FromBody] BillItem parameter)
+        {
+            var result = bill.AddBillItem(parameter);
+            return Content(result.Result);
+        }
 
     }
 }

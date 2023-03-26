@@ -6,6 +6,7 @@
         $scope.Pop.BillDate = new Date();
         $scope.Added = [];
         $scope.AddedData = [];
+        $scope.addPopupBillItemData = [];
 
         $scope.TableCol = {
             BillNo: "Bill No",
@@ -285,20 +286,6 @@
             $scope.Added = [];
         }
 
-        //$scope.DeleteAddedBill = function (addedId) {
-        //    $scope.AddedData = $scope.AddedData.filter(x => x.Id != addedId);
-
-        //    $scope.PopupRegisterCount = $scope.AddedData.length;
-        //    $scope.PopupTableParams = new NgTableParams({
-        //        sorting: { name: 'adc' },
-        //        count: 20
-        //    }, {
-        //        counts: [10, 20, 50],
-        //        dataset: $scope.AddedData
-        //    });
-        //}
-
-
         function DeleteBillItem(parameter) {
             BillService.DeleteBillItem(parameter,
                 function success(result) {
@@ -414,6 +401,47 @@
                     }
                 }, function error() {
                     toaster.error("Component Ekleme", "Component ekleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        //#endregion
+
+        //#regionAdd Bill Item
+        $scope.addNewBillItem = function () {
+
+            var parameter = {
+                Id: id,
+                Name: $scope.addPopupBillItemData.Name,
+                Piece: $scope.addPopupBillItemData.Piece,
+                Price: $scope.addPopupBillItemData.Price,
+                ProductTypeNo: $scope.addPopupBillItemData.ProductTypeNo,
+                Model: $scope.addPopupBillItemData.Model,
+                CategoryNo: $scope.addPopupBillItemData.CategoryNo,
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        function AddBillItem(parameter) {
+            BillService.AddBillItem(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Ürün başarıyla eklendi.");
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata oluştu.");
                 });
         }
         //#endregion

@@ -41,5 +41,13 @@
                 }, error);
         };
 
+        this.AddBillService = function (parameter, success, error) {
+            $http.post('/Bill/AddBillService', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 
