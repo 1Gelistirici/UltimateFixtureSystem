@@ -442,10 +442,15 @@
             BillService.AddBillItem(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Ürün başarıyla eklendi.");
                         $scope.GetBills();
-                        $scope.selectedBill = $scope.bills.find(x => x.Id === $scope.selectedBill.Id);
-                        loadBillItemsTable($scope.selectedBill.Items);
+
+                        setTimeout(function () {
+                            $scope.selectedBill = $scope.bills.find(x => x.Id === $scope.selectedBill.Id);
+                            loadBillItemsTable($scope.selectedBill.Items);
+                        }, 1000);
+
+                        $scope.addPopupBillItemData = [];
+                        toaster.success("Başarılı", "Ürün başarıyla eklendi.");
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
