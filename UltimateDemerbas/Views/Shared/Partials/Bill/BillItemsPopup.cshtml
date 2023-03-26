@@ -38,7 +38,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label>Product Type</label>
-                                                    <select class="form-control select2" ng-model="addPopupBillItemData.ProductTypeNo" ng-change="GetModal();" required>
+                                                    <select class="form-control select2" ng-model="addPopupBillItemData.ProductTypeNo" ng-change="GetModalBillItem();" required>
                                                         <option ng-repeat="x in ProductTypes" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                                     </select>
                                                 </div>

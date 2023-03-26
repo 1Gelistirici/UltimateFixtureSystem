@@ -119,47 +119,66 @@ namespace UltimateAPI.CallManager
         {
             UltimateResult<BillItem> result = new UltimateResult<BillItem>();
 
-            if (parameter.ProductType == ProductType.Accessory)
-            {
-                Accessory accessory = new Accessory();
-                accessory.Name = parameter.Name;
-                accessory.Piece = parameter.Piece;
-                accessory.Price = parameter.Price;
-                accessory.ModelNo = parameter.ModelRefId;
-                accessory.UserNo = parameter.Id;
-                accessory.BillNo = parameter.BillRefId;
-                accessory.StatuNo = (int)ItemStatu.Ready;
-                accessory.CategoryNo = parameter.CategoryRefId;
+            Bill bill = GetBills().Data.ToList().Find(x => x.Id == parameter.BillRefId);
+            bill.Price = bill.Price - parameter.Price;
+            UltimateResult<List<Bill>> billResult = UpdateBill(bill);
 
-                AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
-                accessoryCallManager.AddAccessory(accessory);
-            }
-            else if (parameter.ProductType == ProductType.Component)
+            if (billResult.IsSuccess)
             {
-                Component component = new Component();
-                component.Name = parameter.Name;
-                component.Piece = parameter.Piece;
-                component.Price = parameter.Price;
-                component.ModelNo = parameter.ModelRefId;
-                component.BillNo = parameter.BillRefId;
-                component.CategoryNo = parameter.CategoryRefId;
-
-                ComponentCallManager componentCallManager = new ComponentCallManager();
-                componentCallManager.AddComponent(component);
-            }
-            else if (parameter.ProductType == ProductType.Fixture)
-            {
-                for (int i = 0; i < parameter.Piece; i++)
+                if (parameter.ProductType == ProductType.Accessory)
                 {
-                    Fixture fixture = new Fixture();
-                    fixture.Name = parameter.Name;
-                    fixture.ModelNo = parameter.ModelRefId;
-                    fixture.BillNo = parameter.BillRefId;
-                    fixture.StatuNo = (int)ItemStatu.Ready;
-                    fixture.CategoryNo = parameter.CategoryRefId;
-                    fixture.Price = parameter.Price;
+                    Accessory accessory = new Accessory();
+                    accessory.Name = parameter.Name;
+                    accessory.Piece = parameter.Piece;
+                    accessory.Price = parameter.Price;
+                    accessory.ModelNo = parameter.ModelRefId;
+                    accessory.UserNo = parameter.Id;
+                    accessory.BillNo = parameter.BillRefId;
+                    accessory.StatuNo = (int)ItemStatu.Ready;
+                    accessory.CategoryNo = parameter.CategoryRefId;
 
-                    FixtureCallManager.Instance.AddFixture(fixture);
+                    AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
+                    var resultItem = accessoryCallManager.AddAccessory(accessory);
+
+                    result.IsSuccess = resultItem.IsSuccess;
+                    result.Message = resultItem.Message;
+                    result.ReturnId = resultItem.ReturnId;
+                }
+                else if (parameter.ProductType == ProductType.Component)
+                {
+                    Component component = new Component();
+                    component.Name = parameter.Name;
+                    component.Piece = parameter.Piece;
+                    component.Price = parameter.Price;
+                    component.ModelNo = parameter.ModelRefId;
+                    component.BillNo = parameter.BillRefId;
+                    component.CategoryNo = parameter.CategoryRefId;
+
+                    ComponentCallManager componentCallManager = new ComponentCallManager();
+                    var resultItem = componentCallManager.AddComponent(component);
+
+                    result.IsSuccess = resultItem.IsSuccess;
+                    result.Message = resultItem.Message;
+                    result.ReturnId = resultItem.ReturnId;
+                }
+                else if (parameter.ProductType == ProductType.Fixture)
+                {
+                    for (int i = 0; i < parameter.Piece; i++)
+                    {
+                        Fixture fixture = new Fixture();
+                        fixture.Name = parameter.Name;
+                        fixture.ModelNo = parameter.ModelRefId;
+                        fixture.BillNo = parameter.BillRefId;
+                        fixture.StatuNo = (int)ItemStatu.Ready;
+                        fixture.CategoryNo = parameter.CategoryRefId;
+                        fixture.Price = parameter.Price;
+
+                        var resultItem = FixtureCallManager.Instance.AddFixture(fixture);
+
+                        result.IsSuccess = resultItem.IsSuccess;
+                        result.Message = resultItem.Message;
+                        result.ReturnId = resultItem.ReturnId;
+                    }
                 }
             }
 

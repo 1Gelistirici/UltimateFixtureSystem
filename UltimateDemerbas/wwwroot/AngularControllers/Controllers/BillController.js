@@ -52,7 +52,7 @@
                             $scope.Data[index].InsertDate = new Date($scope.Data[index].InsertDate);
                         });
 
-
+                        $scope.bills = $scope.Data;
 
                         $scope.RegisterCount = $scope.Data.length;
                         $scope.TableParams = new NgTableParams({
@@ -250,11 +250,30 @@
 
             if ($scope.Added.ProductTypeNo === 0) {
                 $scope.GetFixtureModels();
-            } else if ($scope.Added.ProductTypeNo === 1) {
+            }
+            else if ($scope.Added.ProductTypeNo === 1) {
                 $scope.GetAccessoryModels();
-            } else if ($scope.Added.ProductTypeNo === 2) {
+            }
+            else if ($scope.Added.ProductTypeNo === 2) {
                 //ToDo ne yapılacağı kararlaştırılacak
-            } else if ($scope.Added.ProductTypeNo === 4) {
+            }
+            else if ($scope.Added.ProductTypeNo === 4) {
+                $scope.GetComponentModels();
+            }
+        }
+        $scope.GetModalBillItem = function () {
+            $scope.Models = [];
+
+            if ($scope.addPopupBillItemData.ProductTypeNo === 0) {
+                $scope.GetFixtureModels();
+            }
+            else if ($scope.addPopupBillItemData.ProductTypeNo === 1) {
+                $scope.GetAccessoryModels();
+            }
+            else if ($scope.addPopupBillItemData.ProductTypeNo === 2) {
+                //ToDo ne yapılacağı kararlaştırılacak
+            }
+            else if ($scope.addPopupBillItemData.ProductTypeNo === 4) {
                 $scope.GetComponentModels();
             }
         }
@@ -424,6 +443,9 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Ürün başarıyla eklendi.");
+                        $scope.GetBills();
+                        $scope.selectedBill = $scope.bills.find(x => x.Id === $scope.selectedBill.Id);
+                        loadBillItemsTable($scope.selectedBill.Items);
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
