@@ -7,5 +7,6 @@ namespace UltimateAPI.Entities
         public int Boundary { get; set; }
         public double Price { get; set; }
         public int MinStock { get; set; }
+        public int BillRefId{ get; set; }
     }
 }

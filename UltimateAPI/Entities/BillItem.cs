@@ -15,6 +15,8 @@ namespace UltimateAPI.Entities
         public int BillRefId { get; set; }
         public string ModelName { get; set; }
         public object Model { get; set; }
+        public int Boundary { get; set; }
+        public int MinStock { get; set; }
 
     }
 }

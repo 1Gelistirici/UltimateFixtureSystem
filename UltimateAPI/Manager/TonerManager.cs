@@ -48,7 +48,7 @@ namespace UltimateAPI.Manager
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
                             if (read.HasRows)
-                            { 
+                            {
                                 while (read.Read())
                                 {
                                     Toner toner = new Toner();
@@ -58,6 +58,7 @@ namespace UltimateAPI.Manager
                                     toner.Price = Convert.ToInt32(read["price"]);
                                     toner.Boundary = Convert.ToInt32(read["boundary"]);
                                     toner.MinStock = Convert.ToInt32(read["minStock"]);
+                                    toner.BillRefId = Convert.ToInt32(read["billRefId"]);
 
                                     toners.Add(toner);
                                 }
@@ -101,6 +102,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@boundary", parameter.Boundary);
                         sqlCommand.Parameters.AddWithValue("@minStock", parameter.MinStock);
+                        sqlCommand.Parameters.AddWithValue("@billRefId", parameter.BillRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -184,6 +186,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@boundary", parameter.Boundary);
                         sqlCommand.Parameters.AddWithValue("@minStock", parameter.MinStock);
+                        sqlCommand.Parameters.AddWithValue("@billRefId", parameter.BillRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

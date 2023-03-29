@@ -48,6 +48,9 @@ namespace UltimateAPI.CallManager
             List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.ToList();
             List<Component> components = ComponentManager.Instance.GetComponents().Data.ToList();
 
+            TonerCallManager tonerCallManager = new TonerCallManager();
+            List<Toner> toners = tonerCallManager.GetToners().Data.ToList();
+
             List<AccessoryModel> accessoryModels = AccessoryModelManager.Instance.GetAccessoryModels().Data.ToList();
             List<FixtureModel> fixtureModels = FixtureModelManager.Instance.GetFixtureModels().Data.ToList();
             List<ComponentModel> componentModels = ComponentModelManager.Instance.GetComponentModels().Data.ToList();
@@ -58,6 +61,7 @@ namespace UltimateAPI.CallManager
                 List<Accessory> accessoriesFilter = accessories.Where(x => x.BillNo == billRefId).ToList();
                 List<Fixture> fixturesFilter = fixtures.Where(x => x.BillNo == billRefId).ToList();
                 List<Component> componentsFilter = components.Where(x => x.BillNo == billRefId).ToList();
+                List<Toner> tonersFilter = toners.Where(x => x.BillRefId == billRefId).ToList();
 
                 if (data.Data[i].Items == null)
                 {
@@ -82,7 +86,10 @@ namespace UltimateAPI.CallManager
 
                     data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
                 }
-
+                foreach (Toner item in tonersFilter)
+                {
+                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, BillRefId = data.Data[i].Id, Boundary = item.Piece, MinStock = item.Piece });
+                }
             }
         }
 
@@ -109,6 +116,11 @@ namespace UltimateAPI.CallManager
                 else if (billItem.ProductType == ProductType.Fixture)
                 {
                     result.IsSuccess = FixtureCallManager.Instance.DeleteFixture(new Fixture() { Id = billItem.Id }).IsSuccess;
+                }
+                else if (billItem.ProductType == ProductType.Toner)
+                {
+                    TonerCallManager tonerCallManager = new TonerCallManager();
+                    result.IsSuccess = tonerCallManager.DeleteToner(new Toner() { Id = billItem.Id }).IsSuccess;
                 }
             }
 
@@ -180,6 +192,24 @@ namespace UltimateAPI.CallManager
                         result.ReturnId = resultItem.ReturnId;
                     }
                 }
+                else if (parameter.ProductType == ProductType.Toner)
+                {
+                    Toner toner = new Toner();
+                    toner.Name = parameter.Name;
+                    toner.Piece = parameter.Piece;
+                    toner.Price = parameter.Price;
+                    toner.Boundary = parameter.Piece;
+                    toner.MinStock = parameter.Piece;
+                    toner.BillRefId = parameter.BillRefId;
+
+                    TonerCallManager tonerCallManager = new TonerCallManager();
+                    var resultItem = tonerCallManager.AddToner(toner);
+
+                    result.IsSuccess = resultItem.IsSuccess;
+                    result.Message = resultItem.Message;
+                    result.ReturnId = resultItem.ReturnId;
+                }
+
             }
 
             return result;
