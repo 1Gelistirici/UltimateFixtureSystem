@@ -19,8 +19,7 @@
 
             </div>
             <div class="modal-body">
-                <form action="#" class="form-horizontal" name="BillAddForm">
-
+                <form class="form-horizontal" name="BillAddForm">
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -53,12 +52,12 @@
                                                         <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Category</label>
-                                                <select class="form-control select2" ng-model="Added.CategoryNo" required>
-                                                    <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                                </select>
+                                                <div class="col-md-2">
+                                                    <label>Category</label>
+                                                    <select class="form-control select2" ng-model="Added.CategoryNo" required>
+                                                        <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <br />
@@ -155,15 +154,14 @@
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>
+                </form>
             </div>
 
-            </form>
         </div>
         @*<div class="modal-footer">
                 <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
                 <button class="btn green" data-dismiss="modal">Save changes</button>
             </div>*@
     </div>
-</div>
 </div>
 
