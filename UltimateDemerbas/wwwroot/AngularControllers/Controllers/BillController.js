@@ -109,7 +109,7 @@
                     , Piece: value.Piece
                     , Price: value.Price
                     , ProductType: value.ProductTypeNo
-                    , ModelRefId: value.Model.Id
+                    , ModelRefId: value.Model ? value.Model.Id : 0
                     , CategoryRefId: value.CategoryNo
                 });
 

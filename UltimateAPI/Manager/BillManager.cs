@@ -201,6 +201,7 @@ namespace UltimateAPI.Manager
                                     toner.Price = item.Price;
                                     toner.Boundary = item.Piece;
                                     toner.MinStock = item.Piece;
+                                    toner.BillRefId = bill.Id;
 
                                     TonerManager.Instance.AddToner(toner);
                                 }
