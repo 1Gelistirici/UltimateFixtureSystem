@@ -1,5 +1,5 @@
-﻿MainApp.controller("ComponentController", ["$scope", "CategoryService", "ComponentModelService", "ComponentService", "BillService", "$http", "NgTableParams", "toaster",
-    function ($scope, CategoryService, ComponentModelService, ComponentService, BillService, $http, NgTableParams, toaster) {
+﻿MainApp.controller("ComponentController", ["$scope", "CategoryService", "ComponentModelService", "ComponentService", "BillService", "$http", "NgTableParams", "toaster", "$confirm",
+    function ($scope, CategoryService, ComponentModelService, ComponentService, BillService, $http, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -136,6 +136,13 @@
             $scope.Pop.Id = x.Id;
             $scope.Pop.UserName = x.Name;
             $scope.Pop.ItemType = 3; // ToDO : Enumdan çekilebilir
+        }
+
+        $scope.UpdateComponentConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateComponent(x); });
+        }
+        $scope.DeleteComponentConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteComponent(x); });
         }
 
     }]);

@@ -1,5 +1,5 @@
-﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "BillService", "NgTableParams", "toaster",
-    function ($scope, AccessoryService, CategoryService, AccessoryModelService, BillService, NgTableParams, toaster,) {
+﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "BillService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, AccessoryService, CategoryService, AccessoryModelService, BillService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.TableCol = {
@@ -140,6 +140,13 @@
             $scope.Pop.Id = x.Id;
             $scope.Pop.UserName = x.Name;
             $scope.Pop.ItemType = 2; // ToDO : Enumdan çekilebilir
+        }
+
+        $scope.UpdateAccessoryConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateAccessory(x); });
+        }
+        $scope.DeleteAccessoryConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteAccessory(x); });
         }
 
     }]);
