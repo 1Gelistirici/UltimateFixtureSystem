@@ -466,6 +466,7 @@
             $scope.selectedBill = bill;
 
             if (!bill.Items) {
+                loadBillItemsTable([]);
                 toaster.error("Faturaya ait bilgi bulunamadı.");
                 return;
             }

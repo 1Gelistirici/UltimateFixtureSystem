@@ -1,5 +1,5 @@
-﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "BillService", "NgTableParams", "toaster",
-    function ($scope, TonerService, UsedTonerService, DepartmentService, billService, NgTableParams, toaster) {
+﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "BillService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, TonerService, UsedTonerService, DepartmentService, billService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
