@@ -60,13 +60,13 @@
                                     </select>
                                 </td>
 
-                                <td data-title="TableCol.Category" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                <td data-title="TableCol.Category" filter="{ CategoryNo: 'text'}" sortable="'CategoryNo'">
                                     <select class="form-control" ng-model="_.CategoryNo">
                                         <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
                                 </td>
 
-                                <td data-title="TableCol.Bill" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
+                                <td data-title="TableCol.Bill" filter="{ BillNo: 'number'}" sortable="'BillNo'">
                                     <select class="form-control" ng-model="_.BillNo" disabled>
                                         <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
                                     </select>

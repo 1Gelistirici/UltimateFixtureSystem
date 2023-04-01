@@ -1,5 +1,5 @@
-﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "NgTableParams", "toaster",
-    function ($scope, TonerService, UsedTonerService, DepartmentService, NgTableParams, toaster) {
+﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "BillService", "NgTableParams", "toaster",
+    function ($scope, TonerService, UsedTonerService, DepartmentService, billService, NgTableParams, toaster) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -10,7 +10,22 @@
             Boundary: "Boundary",
             Price: "Price",
             MinStock: "Min Stock",
+            Bill: "Bill",
         };
+
+        $scope.GetBills = function () {
+            billService.GetBills(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.Bills = result.Data;
+                    } else {
+                        toaster.error("GetBills", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetBills", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetBills();
 
         $scope.GetToners = function () {
             TonerService.GetToners(
@@ -81,7 +96,8 @@
                 "Piece": $scope.Pop.Piece,
                 "Boundary": $scope.Pop.Boundary,
                 "Price": $scope.Pop.Price,
-                "MinStock": $scope.Pop.MinStock
+                "MinStock": $scope.Pop.MinStock,
+                "BillRefId": $scope.Pop.BillRefId
             }
 
             TonerService.AddToner(data,
@@ -123,6 +139,18 @@
                 }, function error() {
                     toaster.error("Başarısız", "UsedToner  ekleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.openPopup = function () {
+            $scope.Pop = [];
+            $scope.Pop.BillNo = 0;
+        }
+
+        $scope.UpdateTonerConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateToner(x); });
+        }
+        $scope.DeleteTonerConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteToner(x); });
         }
 
     }]);
