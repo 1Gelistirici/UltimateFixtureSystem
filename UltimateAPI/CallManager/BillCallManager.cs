@@ -49,7 +49,7 @@ namespace UltimateAPI.CallManager
             return BillManager.Instance.UpdateBill(parameter);
         }
 
-        private void GetBillItems(ref UltimateResult<List<Bill>> data)
+        private void GetBillItems(ref UltimateResult<List<Bill>> resultData)
         {
             try
             {
@@ -65,40 +65,40 @@ namespace UltimateAPI.CallManager
                 List<FixtureModel> fixtureModels = FixtureModelManager.Instance.GetFixtureModels().Data.ToList();
                 List<ComponentModel> componentModels = ComponentModelManager.Instance.GetComponentModels().Data.ToList();
 
-                for (int i = 0; i < data.Data.Count - 1; i++)
+                for (int i = 0; i < resultData.Data.Count; i++)
                 {
-                    int billRefId = data.Data[i].Id;
+                    int billRefId = resultData.Data[i].Id;
                     List<Accessory> accessoriesFilter = accessories.Where(x => x.BillNo == billRefId).ToList();
                     List<Fixture> fixturesFilter = fixtures.Where(x => x.BillNo == billRefId).ToList();
                     List<Component> componentsFilter = components.Where(x => x.BillNo == billRefId).ToList();
                     List<Toner> tonersFilter = toners.Where(x => x.BillRefId == billRefId).ToList();
 
-                    if (data.Data[i].Items == null)
+                    if (resultData.Data[i].Items == null)
                     {
-                        data.Data[i].Items = new List<BillItem>();
+                        resultData.Data[i].Items = new List<BillItem>();
                     }
 
                     foreach (Accessory item in accessoriesFilter)
                     {
                         AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
 
-                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
+                        resultData.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = resultData.Data[i].Id });
                     }
                     foreach (Fixture item in fixturesFilter)
                     {
                         FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
 
-                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
+                        resultData.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = resultData.Data[i].Id });
                     }
                     foreach (Component item in componentsFilter)
                     {
                         ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
 
-                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
+                        resultData.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = resultData.Data[i].Id });
                     }
                     foreach (Toner item in tonersFilter)
                     {
-                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, BillRefId = data.Data[i].Id, Boundary = item.Piece, MinStock = item.Piece });
+                        resultData.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Toner, BillRefId = resultData.Data[i].Id, Boundary = item.Piece, MinStock = item.Piece });
                     }
                 }
 
