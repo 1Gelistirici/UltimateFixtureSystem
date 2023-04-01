@@ -11,22 +11,29 @@ namespace UltimateAPI.CallManager
         public UltimateResult<List<Bill>> GetBills()
         {
             UltimateResult<List<Bill>> result = BillManager.Instance.GetBills();
-            GetBillItems(ref result);
+            if (result.IsSuccess)
+            {
+                GetBillItems(ref result);
+            }
 
             return result;
         }
 
         public UltimateResult<List<Bill>> DeleteBill(Bill parameter)
         {
-            Bill bill = GetBills().Data.Where(x => x.Id == parameter.Id).ToList()[0];
-            bool isHaveItem = bill.Items.Count > 0;
 
-            if (isHaveItem)
+            Bill bill = GetBills().Data.Where(x => x.Id == parameter.Id).ToList()[0];
+            if (bill.Items != null)
             {
-                UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
-                result.IsSuccess = false;
-                result.Message = "Fatura silinemedi. Faturaya ait ürünler bulunmaktadır.";
-                return result;
+                bool isHaveItem = bill.Items.Count > 0;
+
+                if (isHaveItem)
+                {
+                    UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
+                    result.IsSuccess = false;
+                    result.Message = "Fatura silinemedi. Faturaya ait ürünler bulunmaktadır.";
+                    return result;
+                }
             }
 
             return BillManager.Instance.DeleteBill(parameter);
@@ -44,53 +51,63 @@ namespace UltimateAPI.CallManager
 
         private void GetBillItems(ref UltimateResult<List<Bill>> data)
         {
-            List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data.ToList();
-            List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.ToList();
-            List<Component> components = ComponentManager.Instance.GetComponents().Data.ToList();
-
-            TonerCallManager tonerCallManager = new TonerCallManager();
-            List<Toner> toners = tonerCallManager.GetToners().Data.ToList();
-
-            List<AccessoryModel> accessoryModels = AccessoryModelManager.Instance.GetAccessoryModels().Data.ToList();
-            List<FixtureModel> fixtureModels = FixtureModelManager.Instance.GetFixtureModels().Data.ToList();
-            List<ComponentModel> componentModels = ComponentModelManager.Instance.GetComponentModels().Data.ToList();
-
-            for (int i = 0; i < data.Data.Count - 1; i++)
+            try
             {
-                int billRefId = data.Data[i].Id;
-                List<Accessory> accessoriesFilter = accessories.Where(x => x.BillNo == billRefId).ToList();
-                List<Fixture> fixturesFilter = fixtures.Where(x => x.BillNo == billRefId).ToList();
-                List<Component> componentsFilter = components.Where(x => x.BillNo == billRefId).ToList();
-                List<Toner> tonersFilter = toners.Where(x => x.BillRefId == billRefId).ToList();
 
-                if (data.Data[i].Items == null)
+                List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data.ToList();
+                List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data.ToList();
+                List<Component> components = ComponentManager.Instance.GetComponents().Data.ToList();
+
+                TonerCallManager tonerCallManager = new TonerCallManager();
+                List<Toner> toners = tonerCallManager.GetToners().Data.ToList();
+
+                List<AccessoryModel> accessoryModels = AccessoryModelManager.Instance.GetAccessoryModels().Data.ToList();
+                List<FixtureModel> fixtureModels = FixtureModelManager.Instance.GetFixtureModels().Data.ToList();
+                List<ComponentModel> componentModels = ComponentModelManager.Instance.GetComponentModels().Data.ToList();
+
+                for (int i = 0; i < data.Data.Count - 1; i++)
                 {
-                    data.Data[i].Items = new List<BillItem>();
+                    int billRefId = data.Data[i].Id;
+                    List<Accessory> accessoriesFilter = accessories.Where(x => x.BillNo == billRefId).ToList();
+                    List<Fixture> fixturesFilter = fixtures.Where(x => x.BillNo == billRefId).ToList();
+                    List<Component> componentsFilter = components.Where(x => x.BillNo == billRefId).ToList();
+                    List<Toner> tonersFilter = toners.Where(x => x.BillRefId == billRefId).ToList();
+
+                    if (data.Data[i].Items == null)
+                    {
+                        data.Data[i].Items = new List<BillItem>();
+                    }
+
+                    foreach (Accessory item in accessoriesFilter)
+                    {
+                        AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
+
+                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
+                    }
+                    foreach (Fixture item in fixturesFilter)
+                    {
+                        FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
+
+                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
+                    }
+                    foreach (Component item in componentsFilter)
+                    {
+                        ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
+
+                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
+                    }
+                    foreach (Toner item in tonersFilter)
+                    {
+                        data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, BillRefId = data.Data[i].Id, Boundary = item.Piece, MinStock = item.Piece });
+                    }
                 }
 
-                foreach (Accessory item in accessoriesFilter)
-                {
-                    AccessoryModel accessoryModel = accessoryModels.Find(x => x.Id == item.ModelNo);
-
-                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Accessory, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = accessoryModel, BillRefId = data.Data[i].Id });
-                }
-                foreach (Fixture item in fixturesFilter)
-                {
-                    FixtureModel fixtureModel = fixtureModels.Find(x => x.Id == item.ModelNo);
-
-                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Price = item.Price, ProductType = ProductType.Fixture, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = fixtureModel, BillRefId = data.Data[i].Id });
-                }
-                foreach (Component item in componentsFilter)
-                {
-                    ComponentModel componentModel = componentModels.Find(x => x.Id == item.ModelNo);
-
-                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, ModelRefId = item.ModelNo, CategoryRefId = item.CategoryNo, Model = componentModel, BillRefId = data.Data[i].Id });
-                }
-                foreach (Toner item in tonersFilter)
-                {
-                    data.Data[i].Items.Add(new BillItem() { Id = item.Id, Name = item.Name, Piece = item.Piece, Price = item.Price, ProductType = ProductType.Component, BillRefId = data.Data[i].Id, Boundary = item.Piece, MinStock = item.Piece });
-                }
             }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+
         }
 
         public UltimateResult<List<BillItem>> DeleteBillItem(BillItem billItem)
