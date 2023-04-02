@@ -65,34 +65,34 @@ namespace UltimateAPI.Manager
                                     assignment.UserId = Convert.ToInt32(read["userId"]);
                                     assignment.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     assignment.AppointerId = Convert.ToInt32(read["appointerId"]);
-                                    assignment.ItemType = Convert.ToInt32(read["itemType"]);
+                                    assignment.ItemType = (ItemType)Convert.ToInt32(read["itemType"]);
                                     assignment.ItemId = Convert.ToInt32(read["itemId"]);
                                     assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
                                     assignment.Piece = Convert.ToInt32(read["piece"]);
                                     assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
                                     assignment.Report = Convert.ToBoolean(read["report"]);
 
-                                    if (assignment.ItemType == (int)ItemType.Accessory)
+                                    if (assignment.ItemType == ItemType.Accessory)
                                     {
                                         assignment.Accessories = (accessories.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Bill)
+                                    else if (assignment.ItemType == ItemType.Bill)
                                     {
                                         assignment.Bills = (bills.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Companent)
+                                    else if (assignment.ItemType == ItemType.Companent)
                                     {
                                         assignment.Components = (components.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Fixture)
+                                    else if (assignment.ItemType == ItemType.Fixture)
                                     {
                                         assignment.Fixtures = (fixtures.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Licence)
+                                    else if (assignment.ItemType == ItemType.Licence)
                                     {
                                         assignment.Licences = (licenses.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Toner)
+                                    else if (assignment.ItemType == ItemType.Toner)
                                     {
                                         assignment.Toners = (toners.Find(x => x.Id == assignment.ItemId));
                                     }
@@ -283,34 +283,34 @@ namespace UltimateAPI.Manager
                                     assignment.UserId = Convert.ToInt32(read["userId"]);
                                     assignment.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     assignment.AppointerId = Convert.ToInt32(read["appointerId"]);
-                                    assignment.ItemType = Convert.ToInt32(read["itemType"]);
+                                    assignment.ItemType = (ItemType)Convert.ToInt32(read["itemType"]);
                                     assignment.ItemId = Convert.ToInt32(read["itemId"]);
                                     assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
                                     assignment.Piece = Convert.ToInt32(read["piece"]);
                                     assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
                                     assignment.Report = Convert.ToBoolean(read["report"]);
 
-                                    if (assignment.ItemType == (int)ItemType.Accessory)
+                                    if (assignment.ItemType == ItemType.Accessory)
                                     {
                                         assignment.Accessories = (accessories.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Bill)
+                                    else if (assignment.ItemType == ItemType.Bill)
                                     {
                                         assignment.Bills = (bills.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Companent)
+                                    else if (assignment.ItemType == ItemType.Companent)
                                     {
                                         assignment.Components = (components.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Fixture)
+                                    else if (assignment.ItemType == ItemType.Fixture)
                                     {
                                         assignment.Fixtures = (fixtures.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Licence)
+                                    else if (assignment.ItemType == ItemType.Licence)
                                     {
                                         assignment.Licences = (licenses.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else if (assignment.ItemType == (int)ItemType.Toner)
+                                    else if (assignment.ItemType == ItemType.Toner)
                                     {
                                         assignment.Toners = (toners.Find(x => x.Id == assignment.ItemId));
                                     }
