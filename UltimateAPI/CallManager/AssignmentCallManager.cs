@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 using UltimateAPI.Manager;
 
 namespace UltimateAPI.CallManager
@@ -31,7 +33,7 @@ namespace UltimateAPI.CallManager
         {
             return AssignmentManager.Instance.GetAssignments(parameter);
         }
-    
+
         public UltimateResult<List<Assignment>> DeleteAssignment(Assignment parameter)
         {
             return AssignmentManager.Instance.DeleteAssignment(parameter);
@@ -39,6 +41,50 @@ namespace UltimateAPI.CallManager
 
         public UltimateResult<List<Assignment>> AddAssignment(Assignment parameter)
         {
+            bool isHaveItem = true;
+            if (parameter.ItemType == ItemType.Accessory)
+            {
+                AccessoryCallManager accessoryModelCall = new AccessoryCallManager();
+                isHaveItem = accessoryModelCall.GetAccessory(new Accessory() { Id = parameter.ItemId }).Data[0].Piece >= parameter.Piece;
+            }
+            //else if (parameter.ItemType == ItemType.Bill)
+            //{
+            //    BillCallManager billCallManager = new BillCallManager();
+            //    isHaveItem = billCallManager.GetBills().Data.Find(x => x.Id == parameter.ItemId);
+            //}
+            else if (parameter.ItemType == ItemType.Companent)
+            {
+                ComponentCallManager componentCallManager = new ComponentCallManager();
+                isHaveItem = componentCallManager.GetComponents().Data.Find(x => x.Id == parameter.ItemId).Piece >= parameter.Piece;
+            }
+            else if (parameter.ItemType == ItemType.Fixture)
+            {
+                isHaveItem = FixtureCallManager.Instance.GetFixture(new Fixture() { Id = parameter.ItemId }).Data[0].StatuNo == (int)ItemStatu.Ready;
+            }
+            else if (parameter.ItemType == ItemType.Licence)
+            {
+                LicenseCallManager licenseCallManager = new LicenseCallManager();
+                isHaveItem = licenseCallManager.GetLicenses().Data.Find(x => x.Id == parameter.ItemId).Piece >= parameter.Piece;
+            }
+            else if (parameter.ItemType == ItemType.Toner)
+            {
+                TonerCallManager tonerCallManager = new TonerCallManager();
+                isHaveItem = tonerCallManager.GetToners().Data.Find(x => x.Id == parameter.ItemId).Piece >= parameter.Piece;
+            }
+
+            if (!isHaveItem)
+            {
+                UltimateResult<List<Assignment>> result = new UltimateResult<List<Assignment>>();
+                result.IsSuccess = false;
+                result.Message = "Atanan miktarda ürün bulunamadı.";
+                return result;
+            }
+
+
+
+
+
+
             return AssignmentManager.Instance.AddAssignment(parameter);
         }
 
