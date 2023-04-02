@@ -1,6 +1,7 @@
 ﻿MainApp.controller("AccessoryController", ["$scope", "AccessoryService", "CategoryService", "AccessoryModelService", "BillService", "NgTableParams", "toaster", "$confirm",
     function ($scope, AccessoryService, CategoryService, AccessoryModelService, BillService, NgTableParams, toaster, $confirm) {
 
+
         $scope.RegisterCount = 0;
         $scope.TableCol = {
             Name: "Component Name",
@@ -140,6 +141,7 @@
             $scope.Pop.Id = x.Id;
             $scope.Pop.UserName = x.Name;
             $scope.Pop.ItemType = 2; // ToDO : Enumdan çekilebilir
+            $scope.Pop.recallDate = new Date();
         }
 
         $scope.UpdateAccessoryConfirm = function (x) {

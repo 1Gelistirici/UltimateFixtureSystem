@@ -16,15 +16,15 @@
                                     <option ng-repeat="x in Users" value="{{x.Id}}">{{x.Name}}</option>
                                 </select>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9" style="margin-top:2%;">
                                 <span>Piece</span>
                                 <input ng-model="Pop.piece" style="font-size: 14px;" min="0" max="{{piece}}" type="number" class="form-control">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9" style="margin-top:2%;">
                                 <span>ReCall Active</span>
                                 <input ng-model="Pop.checkRecallDate" type="checkbox" class="form-control">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9" style="margin-top:2%;">
                                 <span>ReCall Date</span>
                                 <input ng-model="Pop.recallDate" ng-disabled="Pop.checkRecallDate!==true" style="font-size: 14px;" type="date" class="form-control col-md-7">
                             </div>
