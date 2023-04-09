@@ -1,5 +1,5 @@
 ﻿<!--Add Popup-->
-<div id="LicenseAssignmentPartial" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="LicenseAssignmentPartial" class="modal fade" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
                     <div class="col-md-9">
                         <div style="margin-top:3%;">
                             <span>Fixture</span>
-                            <select class="form-control" ng-model="Assign.FixturId">
+                            <select class="form-control select2" ng-model="Assign.FixturId">
                                 <option ng-repeat="x in Fixtures" ng-selected="true" value="{{x.Id}}">{{x.Name}}({{x.Id}})</option>
                             </select>
                         </div>

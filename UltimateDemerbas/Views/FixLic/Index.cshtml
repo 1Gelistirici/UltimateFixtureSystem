@@ -6,7 +6,7 @@
 
 
 <div ng-controller="FixLicController">
-     <!--Header-->
+    <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
             <div class="caption font-dark-gray" style="color:#678098">
@@ -36,7 +36,7 @@
                             <tr ng-repeat="_ in $data">
                                 <td data-title="TableCol.Fixture" filter="{ Fixture: 'text'}" sortable="'Fixture'">
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="_.FixtureId">
+                                        <select class="form-control" ng-model="_.FixtureId" disabled>
                                             <option ng-repeat="x in Fixtures" ng-value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
                                     </div>
@@ -44,7 +44,7 @@
 
                                 <td data-title="TableCol.License" filter="{ License: 'text'}" sortable="'License'">
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="_.LicanseId">
+                                        <select class="form-control" ng-model="_.LicanseId" disabled>
                                             <option ng-repeat="x in Licenses" ng-value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
                                     </div>
@@ -63,7 +63,7 @@
                                                     </a>
                                                 </li>*@
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" ng-click="DeleteFixLic(_)">
+                                                <a class="addphone" title="Update" ng-click="DeleteFixLicConfirm(_)">
                                                     <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>

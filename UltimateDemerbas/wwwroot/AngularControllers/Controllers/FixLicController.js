@@ -1,5 +1,5 @@
-﻿MainApp.controller("FixLicController", ["$scope", "FixLicService", "LicenseService", "FixtureService", "NgTableParams", "toaster",
-    function ($scope, FixLicService, LicenseService, FixtureService, NgTableParams, toaster) {
+﻿MainApp.controller("FixLicController", ["$scope", "FixLicService", "LicenseService", "FixtureService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, FixLicService, LicenseService, FixtureService, NgTableParams, toaster, $confirm) {
         $scope.TableCol = {
             License: "License",
             Fixture: "Fixture",
@@ -60,9 +60,9 @@
         }
         $scope.GetFixtures();
 
-        $scope.DeleteFixLic = function (data) {
+        function DeleteFixLic(data) {
             var parameter = {
-                Id:data.Id
+                Id: data.Id
             }
 
             FixLicService.DeleteFixLic(parameter,
@@ -76,6 +76,13 @@
                 }, function error() {
                     toaster.error("Başarısız", "FixLic silme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+
+
+
+        $scope.DeleteFixLicConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { DeleteFixLic(x); });
         }
 
         //$scope.UpdateLicense = function (data) {
