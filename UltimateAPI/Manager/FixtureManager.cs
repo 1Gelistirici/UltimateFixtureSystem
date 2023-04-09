@@ -62,6 +62,7 @@ namespace UltimateAPI.Manager
                                     fixture.CategoryNo = Convert.ToInt32(read["category_no"]);
                                     fixture.UserNo = Convert.ToInt32(read["user_no"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
 
                                     fixtures.Add(fixture);
                                 }
@@ -118,6 +119,7 @@ namespace UltimateAPI.Manager
                                     fixture.CategoryNo = Convert.ToInt32(read["category_No"]);
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
 
                                     result.Data = fixture;
                                 }
@@ -166,13 +168,15 @@ namespace UltimateAPI.Manager
                                 {
                                     Fixture fixture = new Fixture();
                                     fixture.Id = Convert.ToInt32(read["id"]);
+                                    fixture.Name = read["name"].ToString();
+                                    fixture.ModelNo = Convert.ToInt32(read["model_No"]);
                                     fixture.LoginSystem = read["loginSystem"].ToString();
-                                    fixture.ModelNo = Convert.ToInt32(read["modelNo"]);
-                                    fixture.BillNo = Convert.ToInt32(read["billNo"]);
-                                    fixture.StatuNo = Convert.ToInt32(read["statuNo"]);
-                                    fixture.CategoryNo = Convert.ToInt32(read["categoryNo"]);
-                                    fixture.UserNo = Convert.ToInt32(read["userNo"]);
-                                    //fixture.Piece = Convert.ToInt32(read["piece"]);
+                                    fixture.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    fixture.StatuNo = Convert.ToInt32(read["statu_No"]);
+                                    fixture.CategoryNo = Convert.ToInt32(read["category_No"]);
+                                    fixture.UserNo = Convert.ToInt32(read["user_No"]);
+                                    fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.Price = Convert.ToInt32(read["price"]);
 
                                     fixtures.Add(fixture);
                                 }
@@ -256,6 +260,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", (ItemStatu)parameter.StatuNo == ItemStatu.Assigned ? parameter.UserNo : 0);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
+                        sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -301,7 +306,8 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
-                        //sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
+                        sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
+                        //sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

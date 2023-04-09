@@ -62,6 +62,7 @@ namespace UltimateDemerbas.Controllers
         [CheckAuthorize]
         public IActionResult AddFixture([FromBody] Fixture parameter)
         {
+            parameter.CompanyRefId = WorkingCompany;
             var result = fixture.AddFixture(parameter);
 
             return Content(result.Result);
@@ -70,6 +71,7 @@ namespace UltimateDemerbas.Controllers
         [CheckAuthorize]
         public IActionResult UpdateFixture([FromBody] Fixture parameter)
         {
+            parameter.CompanyRefId = WorkingCompany;
             var result = fixture.UpdateFixture(parameter);
 
             return Content(result.Result);
