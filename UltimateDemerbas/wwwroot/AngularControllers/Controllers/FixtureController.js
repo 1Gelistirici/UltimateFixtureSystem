@@ -174,6 +174,7 @@
 
         $scope.SetAssign = function (x) {
             $scope.Assign = x;
+            $scope.Assign.recallDate = new Date();
         }
 
         $scope.AssignFixture = function () {
@@ -192,11 +193,10 @@
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                         $('#FixtureAssignmentPopup').modal('hide');
                         RefreshData();
                     } else {
-                        toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                        toaster.error("AddAssignment", result.Message);
                     }
                 }, function error() {
                     toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");

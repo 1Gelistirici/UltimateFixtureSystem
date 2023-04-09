@@ -73,7 +73,16 @@ namespace UltimateAPI.CallManager
             }
             else if (parameter.ItemType == ItemType.Fixture)
             {
-                isHaveItem = FixtureCallManager.Instance.GetFixture(new Fixture() { Id = parameter.ItemId }).Data[0].StatuNo == (int)ItemStatu.Ready;
+
+                Fixture fixture = FixtureCallManager.Instance.GetFixture(new Fixture() { Id = parameter.ItemId }).Data;
+
+                isHaveItem = fixture.StatuNo == (int)ItemStatu.Ready;
+                if (isHaveItem)
+                {
+                    fixture.StatuNo = (int)ItemStatu.Assigned;
+                    fixture.UserNo = parameter.UserId;
+                    FixtureCallManager.Instance.UpdateFixture(fixture);
+                }
             }
             else if (parameter.ItemType == ItemType.Licence)
             {

@@ -32,7 +32,7 @@ namespace UltimateAPI.CallManager
         {
             return FixtureManager.Instance.GetFixtures();
         }
-        public UltimateResult<List<Fixture>> GetFixture(Fixture parameter)
+        public UltimateResult<Fixture> GetFixture(Fixture parameter)
         {
             return FixtureManager.Instance.GetFixture(parameter);
         }

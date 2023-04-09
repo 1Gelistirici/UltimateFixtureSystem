@@ -84,10 +84,10 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<List<Fixture>> GetFixture(Fixture parameter)
+        public UltimateResult<Fixture> GetFixture(Fixture parameter)
         {
-            List<Fixture> fixtures = new List<Fixture>();
-            UltimateResult<List<Fixture>> result = new UltimateResult<List<Fixture>>();
+            Fixture fixture = new Fixture();
+            UltimateResult<Fixture> result = new UltimateResult<Fixture>();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[fixtures_GetFixture]";
 
@@ -109,23 +109,22 @@ namespace UltimateAPI.Manager
                             {
                                 while (read.Read())
                                 {
-                                    Fixture fixture = new Fixture();
                                     fixture.Id = Convert.ToInt32(read["id"]);
+                                    fixture.Name = read["name"].ToString();
                                     fixture.LoginSystem = read["loginSystem"].ToString();
-                                    fixture.ModelNo = Convert.ToInt32(read["modelNo"]);
+                                    fixture.ModelNo = Convert.ToInt32(read["model_No"]);
                                     fixture.BillNo = Convert.ToInt32(read["billNo"]);
-                                    fixture.StatuNo = Convert.ToInt32(read["statuNo"]);
-                                    fixture.CategoryNo = Convert.ToInt32(read["categoryNo"]);
-                                    fixture.UserNo = Convert.ToInt32(read["userNo"]);
+                                    fixture.StatuNo = Convert.ToInt32(read["statu_No"]);
+                                    fixture.CategoryNo = Convert.ToInt32(read["category_No"]);
+                                    fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     //fixture.Piece = Convert.ToInt32(read["piece"]);
 
-                                    fixtures.Add(fixture);
+                                    result.Data = fixture;
                                 }
                             }
                             read.Close();
                         }
                         sqlCommand.Dispose();
-                        result.Data = fixtures;
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
