@@ -44,8 +44,15 @@ namespace UltimateAPI.CallManager
             bool isHaveItem = true;
             if (parameter.ItemType == ItemType.Accessory)
             {
-                AccessoryCallManager accessoryModelCall = new AccessoryCallManager();
-                isHaveItem = accessoryModelCall.GetAccessory(new Accessory() { Id = parameter.ItemId }).Data[0].Piece >= parameter.Piece;
+                AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
+                Accessory accessory = accessoryCallManager.GetAccessory(new Accessory() { Id = parameter.ItemId }).Data;
+                isHaveItem = accessory.Piece >= parameter.Piece;
+
+                if (isHaveItem)
+                {
+                    accessory.Piece -= parameter.Piece;
+                    accessoryCallManager.UpdateAccessory(accessory);
+                }
             }
             //else if (parameter.ItemType == ItemType.Bill)
             //{
@@ -55,7 +62,14 @@ namespace UltimateAPI.CallManager
             else if (parameter.ItemType == ItemType.Companent)
             {
                 ComponentCallManager componentCallManager = new ComponentCallManager();
-                isHaveItem = componentCallManager.GetComponents().Data.Find(x => x.Id == parameter.ItemId).Piece >= parameter.Piece;
+                Component component = componentCallManager.GetComponent(new ReferansParameter() { RefId = parameter.ItemId }).Data;
+
+                isHaveItem = component.Piece >= parameter.Piece;
+                if (isHaveItem)
+                {
+                    component.Piece -= parameter.Piece;
+                    componentCallManager.UpdateComponent(component);
+                }
             }
             else if (parameter.ItemType == ItemType.Fixture)
             {

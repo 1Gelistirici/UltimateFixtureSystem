@@ -81,6 +81,58 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<Component> GetComponent(ReferansParameter parameter)
+        {
+            Component component = new Component();
+            UltimateResult<Component> result = new UltimateResult<Component>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[accessories_GetComponent]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    component.Id = Convert.ToInt32(read["id"]);
+                                    component.Name = read["name"].ToString();
+                                    component.Piece = Convert.ToInt32(read["piece"]);
+                                    component.Price = Convert.ToDouble(read["price"]);
+                                    component.ModelNo = Convert.ToInt32(read["model_no"]);
+                                    component.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    component.CategoryNo = Convert.ToInt32(read["category_no"]);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = component;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<Component>> AddComponent(Component parameter)
         {
             UltimateResult<List<Component>> result = new UltimateResult<List<Component>>();
