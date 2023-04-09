@@ -86,7 +86,7 @@ namespace UltimateAPI.Manager
             Component component = new Component();
             UltimateResult<Component> result = new UltimateResult<Component>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[accessories_GetComponent]";
+            string Proc = "[dbo].[components_GetComponent]";
 
             try
             {

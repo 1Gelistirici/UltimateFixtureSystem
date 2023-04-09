@@ -129,6 +129,10 @@
                 });
         }
 
+        $scope.Refresh = function () {
+            $scope.GetComponents();
+        }
+
         $scope.SetPiece = function (x) {
             $scope.piece = x.Piece;
             $scope.Pop = [];
@@ -136,6 +140,7 @@
             $scope.Pop.Id = x.Id;
             $scope.Pop.UserName = x.Name;
             $scope.Pop.ItemType = 3; // ToDO : Enumdan çekilebilir
+            $scope.Pop.recallDate = new Date();
         }
 
         $scope.UpdateComponentConfirm = function (x) {
