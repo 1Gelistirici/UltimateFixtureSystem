@@ -76,7 +76,7 @@
         }
         $scope.GetAccessories();
 
-        $scope.DeleteAccessory = function (data) {
+        function DeleteAccessory (data) {
             AccessoryService.DeleteAccessory(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -90,7 +90,7 @@
                 });
         }
 
-        $scope.UpdateAccessory = function (data) {
+        function   UpdateAccessory  (data) {
             AccessoryService.UpdateAccessory(data,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -145,10 +145,10 @@
         }
 
         $scope.UpdateAccessoryConfirm = function (x) {
-            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateAccessory(x); });
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { UpdateAccessory(x); });
         }
         $scope.DeleteAccessoryConfirm = function (x) {
-            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteAccessory(x); });
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { DeleteAccessory(x); });
         }
 
     }]);

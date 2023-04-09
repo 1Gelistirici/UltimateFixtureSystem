@@ -1,5 +1,5 @@
-﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "FixtureService", "FixLicService", "NgTableParams", "toaster",
-    function ($scope, LicenseService, LicenseTypeService, FixtureService, FixLicService, NgTableParams, toaster) {
+﻿MainApp.controller("LicenseController", ["$scope", "LicenseService", "LicenseTypeService", "FixtureService", "FixLicService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, LicenseService, LicenseTypeService, FixtureService, FixLicService, NgTableParams, toaster, $confirm) {
         $scope.RegisterCount = 0;
         $scope.Pop = [];
 
@@ -34,7 +34,7 @@
         }
         $scope.GetLicenses();
 
-        $scope.DeleteLicense = function (data) {
+        function DeleteLicense(data) {
             LicenseService.DeleteLicense(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -48,7 +48,7 @@
                 });
         }
 
-        $scope.UpdateLicense = function (data) {
+        function UpdateLicense(data) {
             LicenseService.UpdateLicense(data,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -142,4 +142,12 @@
                     toaster.error("Başarısız", "Lisans atama işlemi yapılırken bir hata oluştu");
                 });
         }
+
+        $scope.UpdateLicenseConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { UpdateLicense(x); });
+        }
+        $scope.DeleteLicenseConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { DeleteLicense(x); });
+        }
+
     }]);

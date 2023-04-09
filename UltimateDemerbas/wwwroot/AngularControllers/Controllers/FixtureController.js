@@ -1,5 +1,5 @@
-﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "EnumService", "NgTableParams", "toaster",
-    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster,) {
+﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "EnumService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster, $confirm,) {
 
         $scope.test = null;
 
@@ -22,7 +22,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.ItemStatus = result.Data;
-                        $scope.ItemStatus = $scope.ItemStatus.filter(_ => _.Value != 0);
+                        $scope.ItemStatus = $scope.ItemStatus.filter(_ => _.Value !== 0);
 
                         $.each($scope.ItemStatus, function (index, value) {
                             var parameter = { id: value.Value, title: value.Text };
@@ -115,7 +115,7 @@
         }
         $scope.GetFixtures();
 
-        $scope.DeleteFixture = function (data) {
+        function DeleteFixture(data) {
             FixtureService.DeleteFixture(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -129,7 +129,7 @@
                 });
         }
 
-        $scope.UpdateFixture = function (parameter) {
+        function UpdateFixture(parameter) {
             FixtureService.UpdateFixture(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -201,6 +201,18 @@
                 }, function error() {
                     toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.Refresh = function () {
+            $scope.GetFixtures();
+        }
+
+
+        $scope.UpdateFixtureConfirm = function (x) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { UpdateFixture(x); });
+        }
+        $scope.DeleteFixtureConfirm = function (x) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { DeleteFixture(x); });
         }
 
     }]);
