@@ -113,7 +113,7 @@ namespace UltimateAPI.Manager
                                     fixture.Name = read["name"].ToString();
                                     fixture.LoginSystem = read["loginSystem"].ToString();
                                     fixture.ModelNo = Convert.ToInt32(read["model_No"]);
-                                    fixture.BillNo = Convert.ToInt32(read["billNo"]);
+                                    fixture.BillNo = Convert.ToInt32(read["bill_no"]);
                                     fixture.StatuNo = Convert.ToInt32(read["statu_No"]);
                                     fixture.CategoryNo = Convert.ToInt32(read["category_No"]);
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);

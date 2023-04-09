@@ -73,7 +73,7 @@
                                 </td>
 
                                 <td data-title="TableCol.Statu" filter="{ StatuNo: 'select'}" sortable="'StatuNo'" filter-data="ItemStatusFilter">
-                                    <select class="form-control" ng-change="_.Changed=true" ng-model="_.StatuNo">
+                                    <select class="form-control" ng-disabled="_.StatuNo==1" ng-change="_.Changed=true" ng-model="_.StatuNo">
                                         <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                     </select>
                                 </td>
