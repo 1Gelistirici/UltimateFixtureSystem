@@ -83,12 +83,66 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<List<Accessory>> GetAccessory(Accessory parameter)
+        public UltimateResult<Accessory> GetAccessory(Accessory parameter)
+        {
+            Accessory accessory = new Accessory();
+            UltimateResult<Accessory> result = new UltimateResult<Accessory>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[accessories_GetAccessory]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@id", parameter.Id);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    accessory.Id = Convert.ToInt32(read["id"]);
+                                    accessory.Name = read["name"].ToString();
+                                    accessory.Piece = Convert.ToInt32(read["piece"]);
+                                    accessory.Price = Convert.ToDouble(read["price"]);
+                                    accessory.ModelNo = Convert.ToInt32(read["model_no"]);
+                                    accessory.UserNo = Convert.ToInt32(read["user_no"]);
+                                    accessory.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    accessory.StatuNo = Convert.ToInt32(read["statu_no"]);
+                                    accessory.CategoryNo = Convert.ToInt32(read["category_no"]);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = accessory;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public UltimateResult<List<Accessory>> GetAccessoryByUser(Accessory parameter)
         {
             List<Accessory> accessories = new List<Accessory>();
             UltimateResult<List<Accessory>> result = new UltimateResult<List<Accessory>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[accessories_GetAccessory]";
+            string Proc = "[dbo].[accessories_GetAccessoryByUser]";
 
             try
             {

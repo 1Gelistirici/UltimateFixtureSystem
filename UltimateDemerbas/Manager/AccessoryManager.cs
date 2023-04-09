@@ -20,6 +20,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Accessory>("Accessory/GetAccessory", parameter);
         }
 
+        public Task<string> GetAccessoryByUser(Accessory parameter)
+        {
+            return GetApiParameter<Accessory>("Accessory/GetAccessoryByUser", parameter);
+        }
+
         public Task<string> DeleteAccessory(Accessory parameter)
         {
             return GetApiParameter<Accessory>("Accessory/DeleteAccessory", parameter);

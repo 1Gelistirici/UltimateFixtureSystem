@@ -43,24 +43,24 @@
                         $.each($scope.AccessoryData, function (index, value) {
 
                             $scope.AccessoryData[index].RecallDate = new Date($scope.AccessoryData[index].RecallDate).toLocaleString();
-                            $scope.AccessoryData[index].TypeItem = $scope.ItemTypes.find(x => x.Value == value.ItemType);
+                            $scope.AccessoryData[index].TypeItem = $scope.ItemTypes.find(x => x.Value === value.ItemType);
                             //console.log("bulucu", $scope.ItemTypes );
                             //console.log("belirleyici", $scope.AccessoryData[index].TypeItem );
 
                             //Servisden datalar ayrıştırılarak geliyor. Herbiri için farklı tab açmak yerine aynı tab altında toplanılacağı için uı da Accessories içerisinde toplanıyor.
-                            if ($scope.AccessoryData[index].Components != null) {
+                            if ($scope.AccessoryData[index].Components !== null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Components;
                             }
-                            else if ($scope.AccessoryData[index].Bills != null) {
+                            else if ($scope.AccessoryData[index].Bills !== null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Bills;
                             }
-                            else if ($scope.AccessoryData[index].Licences != null) {
+                            else if ($scope.AccessoryData[index].Licences !== null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Licences;
                             }
-                            else if ($scope.AccessoryData[index].Toners != null) {
+                            else if ($scope.AccessoryData[index].Toners !== null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Toners;
                             }
-                            else if ($scope.AccessoryData[index].Fixtures != null) {
+                            else if ($scope.AccessoryData[index].Fixtures !== null) {
                                 $scope.AccessoryData[index].Accessories = $scope.AccessoryData[index].Fixtures;
                             }
                         });
@@ -137,8 +137,8 @@
         //#endregion
 
         //Get Accessory
-        //$scope.GetAccessory = function () {
-        //AccessoryService.GetAccessory(
+        //$scope.GetAccessoryByUser = function () {
+        //AccessoryService.GetAccessoryByUser(
         //    function success(result) {
         //        if (result.IsSuccess) {
         //            $scope.AccessoryData = result.Data;
@@ -153,13 +153,13 @@
         //    dataset: $scope.AccessoryData
         //});
         //    } else {
-        //        toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //        toaster.error("GetAccessoryByUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
         //    }
         //}, function error() {
-        //    toaster.error("GetAccessory", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //    toaster.error("GetAccessoryByUser", "Kat listeleme işlemi yapılırken bir hata oluştu");
         //});
         //}
-        //$scope.GetAccessory();
+        //$scope.GetAccessoryByUser();
 
         function RefreshAccessoryTable() {
             $scope.AccessoryTable = new NgTableParams({
@@ -231,7 +231,7 @@
 
         $scope.GetAccessoryModels = function (x) {
             $scope.AccessoryModels.forEach(function (item) {
-                if (item.Id == x) {
+                if (item.Id === x) {
                     $scope.AccessoryModelreturn = item.Name;
                 }
             });
@@ -239,7 +239,7 @@
 
         $scope.GetCategoryNo = function (x) {
             $scope.Categories.forEach(function (item) {
-                if (item.Id == x) {
+                if (item.Id === x) {
                     $scope.CategoryNoreturn = item.Name;
                 }
             });
@@ -253,7 +253,7 @@
 
         //AddReport
         $scope.AddReport = function () {
-            $scope.AccessoryData.find(x => x.Id == $scope.AssignmentId).Report = true;
+            $scope.AccessoryData.find(x => x.Id === $scope.AssignmentId).Report = true;
 
             var parameter = {
                 ReportSubject: $scope.Pop.reportSubject,

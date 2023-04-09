@@ -44,6 +44,15 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetAccessoryByUser()
+        {
+            Accessory parameter = new Accessory();
+            parameter.UserId = WorkingUser;
+            var result = accessory.GetAccessoryByUser(parameter);
+
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteAccessory([FromBody] Accessory parameter)
         {
             parameter.UserId = WorkingUser;

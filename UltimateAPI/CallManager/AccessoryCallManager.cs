@@ -10,10 +10,15 @@ namespace UltimateAPI.CallManager
         {
             return AccessoryManager.Instance.GetAccessories();
         }
-        
-        public UltimateResult<List<Accessory>> GetAccessory(Accessory parameter)
+
+        public UltimateResult<Accessory> GetAccessory(Accessory parameter)
         {
             return AccessoryManager.Instance.GetAccessory(parameter);
+        }
+
+        public UltimateResult<List<Accessory>> GetAccessoryByUser(Accessory parameter)
+        {
+            return AccessoryManager.Instance.GetAccessoryByUser(parameter);
         }
 
         public UltimateResult<List<Accessory>> DeleteAccessory(Accessory parameter)

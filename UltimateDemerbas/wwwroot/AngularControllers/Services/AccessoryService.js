@@ -8,14 +8,22 @@
                         success(response.data);
                 }, error);
         }
-        
+
         this.GetAccessory = function (success, error) {
             $http.post("/Accessory/GetAccessory").then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
-        }
+        };
+
+        this.GetAccessoryByUser = function (success, error) {
+            $http.post("/Accessory/GetAccessoryByUser").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
 
         this.DeleteAccessory = function (Id, success, error) {
             $http.post('/Accessory/DeleteAccessory', { Id: Id }).then(

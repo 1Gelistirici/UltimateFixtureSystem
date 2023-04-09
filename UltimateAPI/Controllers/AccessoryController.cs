@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 
@@ -12,7 +13,7 @@ namespace UltimateAPI.Controllers
         public IActionResult AddAccessory(Accessory parameter)
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
-            var result = accessory.AddAccessory(parameter);
+            UltimateResult<List<Accessory>> result = accessory.AddAccessory(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
@@ -20,15 +21,23 @@ namespace UltimateAPI.Controllers
         public IActionResult GetAccessories()
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
-            var result = accessory.GetAccessories();
+            UltimateResult<List<Accessory>> result = accessory.GetAccessories();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-        
+
         [HttpPost("GetAccessory")]
         public IActionResult GetAccessory(Accessory parameter)
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
-            var result = accessory.GetAccessory(parameter);
+            UltimateResult<Accessory> result = accessory.GetAccessory(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("GetAccessoryByUser")]
+        public IActionResult GetAccessoryByUser(Accessory parameter)
+        {
+            AccessoryCallManager accessory = new AccessoryCallManager();
+            UltimateResult<List<Accessory>> result = accessory.GetAccessoryByUser(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
@@ -36,7 +45,7 @@ namespace UltimateAPI.Controllers
         public IActionResult DeleteAccessory(Accessory parameter)
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
-            var result = accessory.DeleteAccessory(parameter);
+            UltimateResult<List<Accessory>> result = accessory.DeleteAccessory(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
@@ -44,7 +53,7 @@ namespace UltimateAPI.Controllers
         public IActionResult UpdateAccessory(Accessory parameter)
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
-            var result = accessory.UpdateAccessory(parameter);
+            UltimateResult<List<Accessory>> result = accessory.UpdateAccessory(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
     }
