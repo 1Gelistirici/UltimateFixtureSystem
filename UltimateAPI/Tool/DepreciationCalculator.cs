@@ -28,9 +28,9 @@ namespace UltimateAPI.Tool
 
 
         //Sabit Yıllık Tutar Yöntemi
-        public List<FixedAnnualAmountResult> FixedAnnualAmount(FixedAnnualAmountModel parameter)
+        public UltimateResult<List<FixedAnnualAmountResult>> FixedAnnualAmount(FixedAnnualAmountModel parameter)
         {
-            List<FixedAnnualAmountResult> result = new List<FixedAnnualAmountResult>();
+            UltimateResult<List<FixedAnnualAmountResult>> result = new UltimateResult<List<FixedAnnualAmountResult>>();
             double activeValue = parameter.Cost;
             for (int year = 1; year <= parameter.EconomicSpine; year++)
             {
@@ -43,7 +43,7 @@ namespace UltimateAPI.Tool
                 fixedAnnualAmountResult.Year = year;
                 fixedAnnualAmountResult.NewActiveValue = newActiveValue;
                 fixedAnnualAmountResult.DepreciationExpense = depreciationExpense;
-                result.Add(fixedAnnualAmountResult);
+                result.Data.Add(fixedAnnualAmountResult);
             }
 
             return result;
@@ -51,8 +51,9 @@ namespace UltimateAPI.Tool
 
 
         //Azalan Bakiye Yöntemi
-        public decimal DecreasingBalance(DecreasingBalanceModel parameter)
+        public UltimateResult<DecreasingBalanceResult> DecreasingBalance(DecreasingBalanceModel parameter)
         {
+            UltimateResult<DecreasingBalanceResult> result = new UltimateResult<DecreasingBalanceResult>();
             decimal balance = parameter.ValueReceived - parameter.Scrapvalue;
             decimal totaldepreciation = 0;
 
@@ -63,17 +64,21 @@ namespace UltimateAPI.Tool
                 totaldepreciation += monthlyDepreciation;
             }
 
-            return totaldepreciation;
+            result.Data.TotalDepreciation = totaldepreciation;
+            return result;
         }
 
 
         //Üretim Miktarına Göre Amortisman Yöntemi
-        public decimal DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
+        public UltimateResult<DepreciationByProductionAmountResult> DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
         {
+            UltimateResult<DepreciationByProductionAmountResult> result = new UltimateResult<DepreciationByProductionAmountResult>();
             decimal totalProduction = parameter.ProductionCapacity * parameter.LifeSpanInYears;
             decimal productionRate = parameter.ProductionAmount / totalProduction;
             decimal annualDepreciation = (parameter.AssetCost - parameter.SalvageValue) * productionRate;
-            return annualDepreciation;
+            
+            result.Data.AnnualDepreciation = annualDepreciation;
+            return result;
         }
 
 
