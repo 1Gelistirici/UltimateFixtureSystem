@@ -51,53 +51,21 @@ namespace UltimateAPI.Tool
         }
 
 
-
-
-
-
-        
         //Azalan Bakiye Yöntemi
-        public List<DecreasingBalanceResult> DecreasingBalance(DecreasingBalanceModel parameter)
+        public decimal DecreasingBalance(DecreasingBalanceModel parameter)
         {
-         
-        }
+            decimal balance = parameter.ValueReceived - parameter.Scrapvalue;
+            decimal totaldepreciation = 0;
 
-
-
-        public class AmortismanHesabi
-        {
-            public decimal AlinanDeger { get; set; } // Satın alınan değer
-            public decimal HurdaDegeri { get; set; } // Hurda değeri
-            public decimal Omur { get; set; } // Amortisman ömrü
-            public decimal AylikAmortismanOrani { get; set; } // Aylık amortisman oranı
-
-            public AmortismanHesabi(decimal alinanDeger, decimal hurdaDegeri, decimal omur)
+            for (int i = 1; i <= parameter.NumberOfLastMonth; i++)
             {
-                AlinanDeger = alinanDeger;
-                HurdaDegeri = hurdaDegeri;
-                Omur = omur;
-                AylikAmortismanOrani = 1m / (12m * omur); // Aylık amortisman oranı hesaplama
+                decimal monthlyDepreciation = balance * parameter.MonthlyDepreciationRate;
+                balance -= monthlyDepreciation;
+                totaldepreciation += monthlyDepreciation;
             }
 
-            public decimal AmortismanHesapla(int gecenAySayisi)
-            {
-                decimal bakiye = AlinanDeger - HurdaDegeri;
-                decimal amortismanToplami = 0;
-
-                for (int i = 1; i <= gecenAySayisi; i++)
-                {
-                    decimal aylikAmortisman = bakiye * AylikAmortismanOrani;
-                    bakiye -= aylikAmortisman;
-                    amortismanToplami += aylikAmortisman;
-                }
-
-                return amortismanToplami;
-            }
+            return totaldepreciation;
         }
-
-
-
-
 
 
 
