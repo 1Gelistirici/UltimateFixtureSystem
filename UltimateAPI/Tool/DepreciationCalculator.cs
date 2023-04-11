@@ -27,7 +27,6 @@ namespace UltimateAPI.Tool
         }
 
 
-
         //Sabit Yıllık Tutar Yöntemi
         public List<FixedAnnualAmountResult> FixedAnnualAmount(FixedAnnualAmountModel parameter)
         {
@@ -68,7 +67,14 @@ namespace UltimateAPI.Tool
         }
 
 
-
+        //Üretim Miktarına Göre Amortisman Yöntemi
+        public decimal DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
+        {
+            decimal totalProduction = parameter.ProductionCapacity * parameter.LifeSpanInYears;
+            decimal productionRate = parameter.ProductionAmount / totalProduction;
+            decimal annualDepreciation = (parameter.AssetCost - parameter.SalvageValue) * productionRate;
+            return annualDepreciation;
+        }
 
 
     }
