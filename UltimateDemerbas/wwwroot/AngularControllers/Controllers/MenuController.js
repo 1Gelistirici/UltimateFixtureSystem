@@ -50,7 +50,7 @@
                 Url: $scope.updateMenuData.Url,
                 Icon: $scope.updateMenuData.Icon,
                 Order: $scope.updateMenuData.Order,
-                Order: $scope.updateMenuData.IsHaveProblem
+                IsHaveProblem: $scope.updateMenuData.IsHaveProblem
             };
 
             menuService.UpdateMenu(parameters,

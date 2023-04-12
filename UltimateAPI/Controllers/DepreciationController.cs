@@ -24,7 +24,7 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpPost("DecreasingBalance")]
+        [HttpPost("DepreciationByProductionAmount")]
         public IActionResult DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
         {
             UltimateResult<DepreciationByProductionAmountResult> result = DepreciationCalculator.Instance.DepreciationByProductionAmount(parameter);
