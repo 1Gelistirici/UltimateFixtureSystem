@@ -1,60 +1,69 @@
-﻿MainApp.controller("DepreciationController", ["$scope", "DepartmentService", "toaster", "NgTableParams", "$confirm",
-    function ($scope, DepartmentService, toaster, NgTableParams, $confirm) {
-     
-        $scope.GetDepartments = function () {
-            DepartmentService.GetDepartments(
+﻿MainApp.controller("DepreciationController", ["$scope", "DepreciationService", "toaster",
+    function ($scope, depreciationService, toaster) {
+
+        $scope.calculateFixedAnnualAmount = function () {
+
+            var parameter = {
+                Cost: $scope.cost
+                , RecoveryValue: $scope.recoveryValue
+                , EconomicSpine: $scope.economicSpine
+            }
+
+            depreciationService.FixedAnnualAmount(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Data = result.Data;
-                        $scope.RegisterCount = $scope.Data.length;
-                        $scope.TableParams = new NgTableParams({
-                            sorting: { name: 'adc' },
-                            count: 20
-                        }, {
-                            counts: [10, 20, 50],
-                            dataset: $scope.Data
-                        });
-                    } else {
+                        console.log("calculateFixedAnnualAmount", result.Data);
+                    }
+                    else {
                         toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
                     toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetDepartments();
 
-    
-        $scope.UpdateDepartment = function (data) {
-            DepartmentService.UpdateDepartment(data,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Departman güncelleme işlemi yapılırken bir hata oluştu");
-                    } else {
-                        toaster.error("Başarısız", "Departman güncelleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Departman güncelleme işlemi yapılırken bir hata oluştu");
-                });
-        }
+        $scope.calculateDecreasingBalance = function () {
 
-        $scope.AddDepartment = function () {
-            var data = {
-                "Name": $scope.Pop.Name,
+            var parameter = {
+                TotalDepreciation: $scope.totalDepreciation
             }
 
-            DepartmentService.AddDepartment(data,
+            depreciationService.DecreasingBalance(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Departman ekleme işlemi yapılırken bir hata oluştu");
-                        $('#AddDepartment').modal('hide');
-                        $scope.GetDepartments();
-                        $scope.Pop = [];
-                    } else {
-                        toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
+                        console.log("calculateDecreasingBalance", result.Data);
+                    }
+                    else {
+                        toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
-                    toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
+                    toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
+
+        $scope.calculateDepreciationByProductionAmount = function () {
+
+            var parameter = {
+                AssetCost: $scope.assetCost
+                , SalvageValue: $scope.salvageValue
+                , ProductionCapacity: $scope.productionCapacity
+                , ProductionAmount: $scope.productionAmount
+                , LifeSpanInYears: $scope.lifeSpanInYears
+            }
+
+            depreciationService.DepreciationByProductionAmount(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log("calculateDepreciationByProductionAmount", result.Data);
+                    }
+                    else {
+                        toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
+
 
     }]);

@@ -27,7 +27,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetDepartments()
         {
             Department parameter = new Department();
-            parameter.CompanyId = 1; // ToDO : WorkingCompany'den alıncaktır
+            parameter.CompanyId = WorkingCompany;
 
             var result = department.GetDepartments(parameter);
             return Content(result.Result);
@@ -35,7 +35,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult AddDepartment([FromBody] Department parameter)
         {
-            parameter.CompanyId = 1; // ToDo : WorkingCompany'den çekilecek
+            parameter.CompanyId = WorkingCompany;
 
             var result = department.AddDepartment(parameter);
             return Content(result.Result);

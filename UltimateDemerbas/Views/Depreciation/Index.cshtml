@@ -33,17 +33,17 @@
 
                         <div class="col-md-4">
                             <label>Cost</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="cost" />
                         </div>
 
                         <div class="col-md-4">
                             <label>Recovery Value</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="recoveryValue" />
                         </div>
 
                         <div class="col-md-4">
                             <label>Economic Spine</label>
-                            <input type="number" step="1" />
+                            <input type="number" step="1" ng-value="economicSpine" />
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateFixedAnnualAmount()" ng-disabled="fixedAnnualAmountForm.$invalid">Calculate</button>
@@ -57,7 +57,7 @@
 
                         <div class="col-md-4">
                             <label>Total Depreciation</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="totalDepreciation"/>
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateDecreasingBalance()" ng-disabled="decreasingBalanceForm.$invalid">Calculate</button>
@@ -71,27 +71,27 @@
 
                         <div class="col-md-2">
                             <label>Asset Cost</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="assetCost" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Salvage Value</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="salvageValue" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Production Capacity</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="productionCapacity" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Production Amount</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="productionAmount" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Life Span In Years</label>
-                            <input type="number" step="0.01" />
+                            <input type="number" step="0.01" ng-value="lifeSpanInYears" />
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateDepreciationByProductionAmount()" ng-disabled="depreciationByProductionAmountForm.$invalid">Calculate</button>
