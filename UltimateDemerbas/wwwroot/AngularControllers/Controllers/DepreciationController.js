@@ -1,12 +1,6 @@
 ﻿MainApp.controller("DepreciationController", ["$scope", "DepartmentService", "toaster", "NgTableParams", "$confirm",
     function ($scope, DepartmentService, toaster, NgTableParams, $confirm) {
-        $scope.RegisterCount = 0;
-        $scope.Pop = [];
-
-        $scope.TableCol = {
-            Name: "Departman Name",
-        };
-
+     
         $scope.GetDepartments = function () {
             DepartmentService.GetDepartments(
                 function success(result) {
@@ -29,20 +23,7 @@
         }
         $scope.GetDepartments();
 
-        $scope.DeleteDepartment = function (data) {
-            DepartmentService.DeleteDepartment(data.Id,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Departman silme işlemi yapılırken bir hata oluştu");
-                        $scope.GetDepartments();
-                    } else {
-                        toaster.error("Başarısız", "Departman silme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Departman silme işlemi yapılırken bir hata oluştu");
-                });
-        }
-
+    
         $scope.UpdateDepartment = function (data) {
             DepartmentService.UpdateDepartment(data,
                 function success(result) {
@@ -74,17 +55,6 @@
                 }, function error() {
                     toaster.error("Başarısız", "Departman ekleme işlemi yapılırken bir hata oluştu");
                 });
-        }
-
-        $scope.openAddPopup = function () {
-            $scope.Pop = [];
-        }
-
-        $scope.UpdateDepartmentConfirm = function (x) {
-            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateDepartment(x); });
-        }
-        $scope.DeleteDepartmentConfirm = function (x) {
-            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { $scope.DeleteDepartment(x); });
         }
 
     }]);
