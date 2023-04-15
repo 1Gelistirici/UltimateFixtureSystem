@@ -78,7 +78,6 @@ namespace UltimateAPI.Tool
         //Azalan Bakiye Yöntemi
         public UltimateResult<List<DecreasingBalanceV1Result>> DecreasingBalanceV1(DecreasingBalanceV1Model parameter)
         {
-            DecreasingBalanceV1Result data = new DecreasingBalanceV1Result();
             UltimateResult<List<DecreasingBalanceV1Result>> result = new UltimateResult<List<DecreasingBalanceV1Result>>();
             result.Data = new List<DecreasingBalanceV1Result>();
 
@@ -87,13 +86,16 @@ namespace UltimateAPI.Tool
             //100 / 5 x 2 = 40 TL
             //(100-40) / 5 x 2= 24 TL
 
-            data.TotalDepreciation = parameter.Cost / parameter.EconmicLife * 2;
-            result.Data.Add(data);
 
-            for (int i = 1; i < parameter.EconmicLife; i++)
+            double totalDepreciation = parameter.Cost / parameter.EconmicLife * 2;
+
+            for (int i = 0; i < parameter.EconmicLife; i++)
             {
-                data.TotalDepreciation = result.Data[result.Data.Count - 1].TotalDepreciation / parameter.EconmicLife * 2;
+                DecreasingBalanceV1Result data = new DecreasingBalanceV1Result();
+                data.TotalDepreciation = totalDepreciation;
                 result.Data.Add(data);
+
+                totalDepreciation = totalDepreciation / parameter.EconmicLife * 2;
             }
 
             return result;
