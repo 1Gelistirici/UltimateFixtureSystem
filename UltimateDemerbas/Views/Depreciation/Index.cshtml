@@ -53,6 +53,25 @@
                 </div>
                 <div class="tab-pane fade" id="tab_2_2">
 
+                    <form name="decreasingBalanceV1Form">
+
+                        <div class="col-md-4">
+                            <label>Cost</label>
+                            <input type="number" step="0.01" ng-model="decreasingBalanceV1.Cost" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Econmic Life</label>
+                            <input type="number" step="1" ng-model="decreasingBalanceV1.EconmicLife" />
+                        </div>
+
+                        <button class="btn btn-success" ng-click="calculateDecreasingBalanceV1()" ng-disabled="decreasingBalanceV1Form.$invalid">Calculate</button>
+
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="tab_2_2" hidden>
+
                     <form name="decreasingBalanceForm">
 
                         <div class="col-md-4">

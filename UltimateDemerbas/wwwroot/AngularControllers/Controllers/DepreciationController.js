@@ -45,6 +45,28 @@
                 });
         }
 
+        $scope.decreasingBalanceV1 = [];
+        $scope.calculateDecreasingBalanceV1 = function () {
+
+            var parameter = {
+                Cost: $scope.decreasingBalanceV1.Cost
+                , EconmicLife: $scope.decreasingBalanceV1.EconmicLife
+            }
+
+
+            depreciationService.DecreasingBalanceV1(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.table("calculateDecreasingBalance", result.Data);
+                    }
+                    else {
+                        toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+
         $scope.calculateDepreciationByProductionAmount = function () {
 
             var parameter = {
