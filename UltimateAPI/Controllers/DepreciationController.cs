@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+
+        [HttpPost("DecreasingBalanceV1")]
+        public IActionResult DecreasingBalanceV1(DecreasingBalanceV1Model parameter)
+        {
+            UltimateResult<List<DecreasingBalanceV1Result>> result = DepreciationCalculator.Instance.DecreasingBalanceV1(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DepreciationByProductionAmount")]
         public IActionResult DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
         {

@@ -20,6 +20,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<DecreasingBalanceModel>("Depreciation/DecreasingBalance", parameter);
         }
 
+        public Task<string> DecreasingBalanceV1(DecreasingBalanceV1Model parameter)
+        {
+            return GetApiParameter<DecreasingBalanceV1Model>("Depreciation/DecreasingBalanceV1", parameter);
+        }
+
         public Task<string> DepreciationByProductionAmount(DepreciationByProductionAmountModel parameter)
         {
             return GetApiParameter<DepreciationByProductionAmountModel>("Depreciation/DepreciationByProductionAmount", parameter);
