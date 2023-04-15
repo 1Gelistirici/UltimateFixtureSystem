@@ -72,5 +72,10 @@ namespace UltimateAPI.CallManager
         {
             return EnumManager.Instance.GetTaskActiveStatus();
         }
+
+        public UltimateResult<List<TextValue>> GetLogTypes()
+        {
+            return EnumManager.Instance.GetLogTypes();
+        }
     }
 }

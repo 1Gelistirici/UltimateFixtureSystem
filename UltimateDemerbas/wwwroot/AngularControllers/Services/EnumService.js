@@ -72,5 +72,13 @@
                         success(response.data);
                 }, error);
         }
+
+        this.GetLogTypes = function (success, error) {
+            $http.get("/Enum/GetLogTypes").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
     }]);
 

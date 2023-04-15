@@ -33,17 +33,17 @@
 
                         <div class="col-md-4">
                             <label>Cost</label>
-                            <input type="number" step="0.01" ng-value="cost" />
+                            <input type="number" step="0.01" ng-model="cost" />
                         </div>
 
                         <div class="col-md-4">
                             <label>Recovery Value</label>
-                            <input type="number" step="0.01" ng-value="recoveryValue" />
+                            <input type="number" step="0.01" ng-model="recoveryValue" />
                         </div>
 
                         <div class="col-md-4">
                             <label>Economic Spine</label>
-                            <input type="number" step="1" ng-value="economicSpine" />
+                            <input type="number" step="1" ng-model="economicSpine" />
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateFixedAnnualAmount()" ng-disabled="fixedAnnualAmountForm.$invalid">Calculate</button>
@@ -56,8 +56,23 @@
                     <form name="decreasingBalanceForm">
 
                         <div class="col-md-4">
-                            <label>Total Depreciation</label>
-                            <input type="number" step="0.01" ng-value="totalDepreciation"/>
+                            <label>Value Received</label>
+                            <input type="number" step="0.01" ng-model="valueReceived" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Scrap value</label>
+                            <input type="number" step="0.01" ng-model="scrapvalue" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Life</label>
+                            <input type="number" step="0.01" ng-model="life" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Number Of Last Month</label>
+                            <input type="number" step="0.01" ng-model="numberOfLastMonth" />
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateDecreasingBalance()" ng-disabled="decreasingBalanceForm.$invalid">Calculate</button>
@@ -71,27 +86,27 @@
 
                         <div class="col-md-2">
                             <label>Asset Cost</label>
-                            <input type="number" step="0.01" ng-value="assetCost" />
+                            <input type="number" step="0.01" ng-model="assetCost" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Salvage Value</label>
-                            <input type="number" step="0.01" ng-value="salvageValue" />
+                            <input type="number" step="0.01" ng-model="salvageValue" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Production Capacity</label>
-                            <input type="number" step="0.01" ng-value="productionCapacity" />
+                            <input type="number" step="0.01" ng-model="productionCapacity" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Production Amount</label>
-                            <input type="number" step="0.01" ng-value="productionAmount" />
+                            <input type="number" step="0.01" ng-model="productionAmount" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Life Span In Years</label>
-                            <input type="number" step="0.01" ng-value="lifeSpanInYears" />
+                            <input type="number" step="0.01" ng-model="lifeSpanInYears" />
                         </div>
 
                         <button class="btn btn-success" ng-click="calculateDepreciationByProductionAmount()" ng-disabled="depreciationByProductionAmountForm.$invalid">Calculate</button>

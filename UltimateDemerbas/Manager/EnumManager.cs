@@ -53,5 +53,10 @@ namespace UltimateDemerbas.Manager
         {
             return GetApi("Enum/GetTaskActiveStatus");
         }
+
+        public Task<string> GetLogTypes()
+        {
+            return GetApi("Enum/GetLogTypes");
+        }
     }
 }

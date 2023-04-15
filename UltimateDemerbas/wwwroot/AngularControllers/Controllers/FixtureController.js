@@ -1,8 +1,6 @@
 ﻿MainApp.controller("FixtureController", ["$scope", "CategoryService", "FixtureModelService", "FixtureService", "BillService", "AssignmentService", "UserService", "EnumService", "NgTableParams", "toaster", "$confirm",
     function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster, $confirm,) {
 
-        $scope.test = null;
-
         $scope.RegisterCount = 0;
 
         $scope.TableCol = {

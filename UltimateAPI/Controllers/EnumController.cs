@@ -70,5 +70,12 @@ namespace UltimateAPI.Controllers
             var result = EnumCallManager.Instance.GetTaskActiveStatus();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+        
+        [HttpGet("GetLogTypes")]
+        public ActionResult GetLogTypes()
+        {
+            var result = EnumCallManager.Instance.GetLogTypes();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     }
 }

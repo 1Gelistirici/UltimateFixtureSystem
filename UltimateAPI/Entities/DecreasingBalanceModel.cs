@@ -14,6 +14,5 @@ namespace UltimateAPI.Entities
             }
         }
         public int NumberOfLastMonth { get; set; }
-        public int MyProperty { get; set; }
     }
 }

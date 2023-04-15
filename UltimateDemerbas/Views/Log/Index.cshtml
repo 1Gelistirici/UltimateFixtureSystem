@@ -1,24 +1,80 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div ng-controller="LogController">
+
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-file-text-o font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    System Logs
+                </span>
+            </div>
+        </div>
+
+        <div ng-show="registerCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="registerCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col width="600" />
+                            <col width="600" />
+                            <col width="600" />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+                                <td data-title="TableCol.Detail" filter="{ Detail: 'text'}" sortable="'Detail'">
+                                    <span>{{_.Detail}}</span>
+                                </td>
+
+                                <td data-title="TableCol.Time" filter="{ Time: 'text'}" sortable="'Time'">
+                                    <span>{{_.Time}}</span>
+                                </td>
+
+                                <td data-title="TableCol.Type" filter="{ Type: 'select'}" sortable="'Type'" filter-data="logTypeFilter">
+                                    <div class="col-md-9">
+                                        <select class="form-control" ng-model="_.Type" disabled>
+                                            <option ng-repeat="x in logTypeList" ng-value="x.Value">{{x.Text}}</option>
+                                        </select>
+                                    </div>
+                                </td>
 
 
+                            </tr>
+                        </tbody>
 
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                </td>
+                            </tr>
 
+                        </tfoot>
 
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
+    <script src="~/AngularControllers/Services/LogService.js"></script>
+    <script src="~/AngularControllers/Controllers/LogController.js"></script>
+}
