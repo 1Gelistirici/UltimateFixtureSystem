@@ -13,5 +13,6 @@ namespace UltimateAPI.Entities
         public DateTime Time { get; set; }
         public int UserNo { get; set; }
         public LogType Type { get; set; }
+        public int CompanyRefId { get; set; }
     }
 }
