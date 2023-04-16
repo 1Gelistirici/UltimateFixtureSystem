@@ -1,12 +1,19 @@
 ﻿MainApp.controller("DepreciationController", ["$scope", "DepreciationService", "toaster", "NgTableParams",
     function ($scope, depreciationService, toaster, NgTableParams) {
 
-        $scope.RegisterCount = 0;
-        $scope.TableCol = {
+        $scope.RegisterCountNormalDecreasing = 0;
+        $scope.RegisterCountDecreasingBalance = 0;
+        $scope.TableColNormalDecreasing = {
             AccumulatedDepreciation: "Accumulated Depreciation",
             Cost: "Cost",
             DepreciationRate: "Depreciation Rate",
             PeriodDepreciation: "Period Depreciation",
+            Year: "Year"
+        };
+        $scope.TableColDecreasingBalance = {
+            ApplicableValue: "Accumulated Depreciation",
+            DepreciationRate: "Cost",
+            PeriodDepreciation: "Depreciation Rate",
             Year: "Year"
         };
 
@@ -40,7 +47,7 @@
             depreciationService.NormalDepreciation(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        loadTable(result.Data);
+                        loadTableNormalDecreasing(result.Data);
                         console.table("calculateFixedAnnualAmount", result.Data);
                     }
                     else {
@@ -86,6 +93,7 @@
             depreciationService.DecreasingBalanceV1(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
+                        loadTableDecreasingBalance(result.Data);
                         console.table("calculateDecreasingBalance", result.Data);
                     }
                     else {
@@ -120,7 +128,7 @@
         }
 
 
-        function loadTable(data) {
+        function loadTableNormalDecreasing(data) {
             $scope.TableParams = new NgTableParams({
                 sorting: { name: 'adc' },
                 count: 10
@@ -128,7 +136,19 @@
                 counts: [10, 20, 50],
                 dataset: data
             });
-            $scope.RegisterCount = data.length;
+            $scope.RegisterCountNormalDecreasing = data.length;
+            $scope.RegisterCountDecreasingBalance = 0;
+        }
+        function loadTableDecreasingBalance(data) {
+            $scope.TableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 10
+            }, {
+                counts: [10, 20, 50],
+                dataset: data
+            });
+            $scope.RegisterCountDecreasingBalance = data.length;
+            $scope.RegisterCountNormalDecreasing = 0;
         }
 
 

@@ -29,40 +29,40 @@
             <div class="tab-content" style="height:10%">
                 @*<div class="tab-pane fade" id="tab_2_1" hidden>
 
-                    <form name="fixedAnnualAmountForm">
+                        <form name="fixedAnnualAmountForm">
 
-                        <div class="col-md-4">
-                            <label>Cost</label>
-                            <input type="number" step="0.01" ng-model="cost" />
-                        </div>
+                            <div class="col-md-4">
+                                <label>Cost</label>
+                                <input type="number" step="0.01" ng-model="cost" />
+                            </div>
 
-                        <div class="col-md-3">
-                            <label>Recovery Value</label>
-                            <input type="number" step="0.01" ng-model="recoveryValue" />
-                        </div>
+                            <div class="col-md-3">
+                                <label>Recovery Value</label>
+                                <input type="number" step="0.01" ng-model="recoveryValue" />
+                            </div>
 
-                        <div class="col-md-3">
-                            <label>Economic Spine</label>
-                            <input type="number" step="1" ng-model="economicSpine" />
-                        </div>
+                            <div class="col-md-3">
+                                <label>Economic Spine</label>
+                                <input type="number" step="1" ng-model="economicSpine" />
+                            </div>
 
-                        <button class="btn btn-success pull-right" ng-click="calculateFixedAnnualAmount()" ng-disabled="fixedAnnualAmountForm.$invalid">Calculate</button>
+                            <button class="btn btn-success pull-right" ng-click="calculateFixedAnnualAmount()" ng-disabled="fixedAnnualAmountForm.$invalid">Calculate</button>
 
-                    </form>
+                        </form>
 
-                </div>*@
+                    </div>*@
                 <div class="tab-pane fade active in col-md-12" id="tab_2_1">
 
                     <form name="normalDepreciationForm">
 
                         <div class="col-md-2">
                             <label>Cost</label>
-                            <input type="number" step="0.01" ng-model="normalDepreciation.Cost" min="0"/>
+                            <input type="number" step="0.01" ng-model="normalDepreciation.Cost" min="0" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Life</label>
-                            <input type="number" step="1" ng-model="normalDepreciation.Life" min="0"/>
+                            <input type="number" step="1" ng-model="normalDepreciation.Life" min="0" />
                         </div>
 
                         <button class="btn btn-success pull-right" ng-click="calculateNormalDepreciation()" ng-disabled="normalDepreciationForm.$invalid">Calculate</button>
@@ -76,12 +76,12 @@
 
                         <div class="col-md-2">
                             <label>Cost</label>
-                            <input type="number" step="0.01" ng-model="decreasingBalanceV1.Cost" min="0"/>
+                            <input type="number" step="0.01" ng-model="decreasingBalanceV1.Cost" min="0" />
                         </div>
 
                         <div class="col-md-2">
                             <label>Econmic Life</label>
-                            <input type="number" step="1" ng-model="decreasingBalanceV1.EconmicLife" min="0"/>
+                            <input type="number" step="1" ng-model="decreasingBalanceV1.EconmicLife" min="0" />
                         </div>
 
                         <button class="btn btn-success pull-right" ng-click="calculateDecreasingBalanceV1()" ng-disabled="decreasingBalanceV1Form.$invalid">Calculate</button>
@@ -91,33 +91,33 @@
                 </div>
                 @*<div class="tab-pane fade" id="tab_2_2" hidden>
 
-                    <form name="decreasingBalanceForm">
+                        <form name="decreasingBalanceForm">
 
-                        <div class="col-md-4">
-                            <label>Value Received</label>
-                            <input type="number" step="0.01" ng-model="valueReceived" />
-                        </div>
+                            <div class="col-md-4">
+                                <label>Value Received</label>
+                                <input type="number" step="0.01" ng-model="valueReceived" />
+                            </div>
 
-                        <div class="col-md-4">
-                            <label>Scrap value</label>
-                            <input type="number" step="0.01" ng-model="scrapvalue" />
-                        </div>
+                            <div class="col-md-4">
+                                <label>Scrap value</label>
+                                <input type="number" step="0.01" ng-model="scrapvalue" />
+                            </div>
 
-                        <div class="col-md-4">
-                            <label>Life</label>
-                            <input type="number" step="0.01" ng-model="life" />
-                        </div>
+                            <div class="col-md-4">
+                                <label>Life</label>
+                                <input type="number" step="0.01" ng-model="life" />
+                            </div>
 
-                        <div class="col-md-4">
-                            <label>Number Of Last Month</label>
-                            <input type="number" step="0.01" ng-model="numberOfLastMonth" />
-                        </div>
+                            <div class="col-md-4">
+                                <label>Number Of Last Month</label>
+                                <input type="number" step="0.01" ng-model="numberOfLastMonth" />
+                            </div>
 
-                        <button class="btn btn-success" ng-click="calculateDecreasingBalance()" ng-disabled="decreasingBalanceForm.$invalid">Calculate</button>
+                            <button class="btn btn-success" ng-click="calculateDecreasingBalance()" ng-disabled="decreasingBalanceForm.$invalid">Calculate</button>
 
-                    </form>
+                        </form>
 
-                </div>*@
+                    </div>*@
                 @*<div class="tab-pane fade" id="tab_2_3">
 
                         <form name="depreciationByProductionAmountForm">
@@ -176,11 +176,11 @@
 
         <!--Table Body-->
         <div class="portlet-body">
-            <div ng-show="RegisterCount==0">
+            <div ng-show="RegisterCountNormalDecreasing==0 && RegisterCountDecreasingBalance==0">
                 <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
             </div>
 
-            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCountNormalDecreasing>0">
                 <div class="table-responsive">
                     <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
@@ -191,34 +191,34 @@
                             <col />
                             <col />
                         </colgroup>
-              
+
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Year">
+                                <td data-title="TableColNormalDecreasing.Year">
                                     <div class="col-md-9">
                                         <span>{{$index + 1}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.AccumulatedDepreciation">
+                                <td data-title="TableColNormalDecreasing.AccumulatedDepreciation">
                                     <div class="col-md-9">
                                         <span>{{_.AccumulatedDepreciation}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Cost">
+                                <td data-title="TableColNormalDecreasing.Cost">
                                     <div class="col-md-9">
                                         <span>{{_.Cost}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.DepreciationRate">
+                                <td data-title="TableColNormalDecreasing.DepreciationRate">
                                     <div class="col-md-9">
                                         <span>{{_.DepreciationRate}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.PeriodDepreciation">
+                                <td data-title="TableColNormalDecreasing.PeriodDepreciation">
                                     <div class="col-md-9">
                                         <span>{{_.PeriodDepreciation}}</span>
                                     </div>
@@ -228,13 +228,63 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCountNormalDecreasing}}</span>
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
+
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCountDecreasingBalance>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+                                <td data-title="TableColNormalDecreasing.Year">
+                                    <div class="col-md-9">
+                                        <span>{{$index + 1}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableColNormalDecreasing.ApplicableValue">
+                                    <div class="col-md-9">
+                                        <span>{{_.ApplicableValue}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableColNormalDecreasing.Cost">
+                                    <div class="col-md-9">
+                                        <span>{{_.DepreciationRate}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableColNormalDecreasing.DepreciationRate">
+                                    <div class="col-md-9">
+                                        <span>{{_.PeriodDepreciation}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCountDecreasingBalance}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 
