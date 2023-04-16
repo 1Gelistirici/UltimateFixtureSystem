@@ -15,6 +15,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<FixedAnnualAmountModel>("Depreciation/FixedAnnualAmount", parameter);
         }
 
+        public Task<string> NormalDepreciation(NormalDepreciationModel parameter)
+        {
+            return GetApiParameter<NormalDepreciationModel>("Depreciation/NormalDepreciation", parameter);
+        }
+
         public Task<string> DecreasingBalance(DecreasingBalanceModel parameter)
         {
             return GetApiParameter<DecreasingBalanceModel>("Depreciation/DecreasingBalance", parameter);

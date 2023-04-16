@@ -17,6 +17,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("NormalDepreciation")]
+        public IActionResult NormalDepreciation(NormalDepreciationModel parameter)
+        {
+            UltimateResult<List<NormalDepreciationResult>> result = DepreciationCalculator.Instance.NormalDepreciation(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DecreasingBalance")]
         public IActionResult DecreasingBalance(DecreasingBalanceModel parameter)
         {

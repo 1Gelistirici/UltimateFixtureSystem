@@ -21,6 +21,25 @@
                     toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
+        $scope.calculateNormalDepreciation = function () {
+
+            var parameter = {
+                Cost: $scope.normalDepreciation.Cost
+                , Life: $scope.normalDepreciation.Life
+            }
+
+            depreciationService.NormalDepreciation(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.table("calculateFixedAnnualAmount", result.Data);
+                    }
+                    else {
+                        toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
         $scope.calculateDecreasingBalance = function () {
 

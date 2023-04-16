@@ -54,6 +54,36 @@ namespace UltimateAPI.Tool
             return result;
         }
 
+        //Sabit Yıllık Tutar Yöntemi
+        public UltimateResult<List<NormalDepreciationResult>> NormalDepreciation(NormalDepreciationModel parameter)
+        {
+            //Sabit Yıllık Tutar = (Varlığın maliyeti - Tahmini geri kazanılabilir değer) / Tahmini Ömrü
+            //public double Cost { get; set; }
+            //public double AccumulatedDepreciation { get; set; }
+            //public double PeriodDepreciation { get; set; }
+            //public int DepreciationRate { get; set; }
+
+            UltimateResult<List<NormalDepreciationResult>> result = new UltimateResult<List<NormalDepreciationResult>>();
+            List<NormalDepreciationResult> datas = new List<NormalDepreciationResult>();
+
+            int depreciationRate = 20;
+
+            for (int i = 0; i < parameter.Life; i++)
+            {
+                NormalDepreciationResult data = new NormalDepreciationResult();
+                data.DepreciationRate = depreciationRate;
+                data.Cost = parameter.Cost;
+                data.PeriodDepreciation = parameter.Cost * (data.DepreciationRate / 100);
+                data.AccumulatedDepreciation = data.PeriodDepreciation * i + 1;
+
+                datas.Add(data);
+            }
+
+
+            result.Data = datas;
+            return result;
+        }
+
 
         //Azalan Bakiye Yöntemi
         public UltimateResult<DecreasingBalanceResult> DecreasingBalance(DecreasingBalanceModel parameter)
@@ -75,7 +105,7 @@ namespace UltimateAPI.Tool
             return result;
         }
 
-        //Azalan Bakiye Yöntemi
+        //Azalan Bakiye Yöntemi *
         public UltimateResult<List<DecreasingBalanceV1Result>> DecreasingBalanceV1(DecreasingBalanceV1Model parameter)
         {
             UltimateResult<List<DecreasingBalanceV1Result>> result = new UltimateResult<List<DecreasingBalanceV1Result>>();

@@ -29,6 +29,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult NormalDepreciation([FromBody] NormalDepreciationModel parameter)
+        {
+            var result = depreciation.NormalDepreciation(parameter);
+            return Content(result.Result);
+        }
+
         public IActionResult DecreasingBalance([FromBody] DecreasingBalanceModel parameter)
         {
             var result = depreciation.DecreasingBalance(parameter);
