@@ -66,7 +66,7 @@ namespace UltimateAPI.Tool
             UltimateResult<List<NormalDepreciationResult>> result = new UltimateResult<List<NormalDepreciationResult>>();
             List<NormalDepreciationResult> datas = new List<NormalDepreciationResult>();
 
-            int depreciationRate = 20;
+            double depreciationRate = 20;
 
             for (int i = 0; i < parameter.Life; i++)
             {
@@ -74,7 +74,7 @@ namespace UltimateAPI.Tool
                 data.DepreciationRate = depreciationRate;
                 data.Cost = parameter.Cost;
                 data.PeriodDepreciation = parameter.Cost * (data.DepreciationRate / 100);
-                data.AccumulatedDepreciation = data.PeriodDepreciation * i + 1;
+                data.AccumulatedDepreciation = data.PeriodDepreciation * (i + 1);
 
                 datas.Add(data);
             }
