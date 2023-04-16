@@ -7,6 +7,8 @@ namespace UltimateAPI.Entities
 {
     public class DecreasingBalanceV1Result
     {
-        public Double TotalDepreciation { get; set; }
+        public double DepreciationRate { get; set; }
+        public double ApplicableValue { get; set; }
+        public double PeriodDepreciation { get; set; }
     }
 }

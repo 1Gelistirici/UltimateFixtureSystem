@@ -1,5 +1,14 @@
-﻿MainApp.controller("DepreciationController", ["$scope", "DepreciationService", "toaster",
-    function ($scope, depreciationService, toaster) {
+﻿MainApp.controller("DepreciationController", ["$scope", "DepreciationService", "toaster", "NgTableParams",
+    function ($scope, depreciationService, toaster, NgTableParams) {
+
+        $scope.RegisterCount = 0;
+        $scope.TableCol = {
+            AccumulatedDepreciation: "Accumulated Depreciation",
+            Cost: "Cost",
+            DepreciationRate: "Depreciation Rate",
+            PeriodDepreciation: "Period Depreciation",
+            Year: "Year"
+        };
 
         $scope.calculateFixedAnnualAmount = function () {
 
@@ -31,6 +40,7 @@
             depreciationService.NormalDepreciation(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
+                        loadTable(result.Data);
                         console.table("calculateFixedAnnualAmount", result.Data);
                     }
                     else {
@@ -109,6 +119,17 @@
                 });
         }
 
+
+        function loadTable(data) {
+            $scope.TableParams = new NgTableParams({
+                sorting: { name: 'adc' },
+                count: 10
+            }, {
+                counts: [10, 20, 50],
+                dataset: data
+            });
+            $scope.RegisterCount = data.length;
+        }
 
 
     }]);

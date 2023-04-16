@@ -54,7 +54,7 @@ namespace UltimateAPI.Tool
             return result;
         }
 
-        //Sabit Yıllık Tutar Yöntemi
+        //Sabit Yıllık Tutar Yöntemi - Normal Amortisman Yöntemi *
         public UltimateResult<List<NormalDepreciationResult>> NormalDepreciation(NormalDepreciationModel parameter)
         {
             //Sabit Yıllık Tutar = (Varlığın maliyeti - Tahmini geri kazanılabilir değer) / Tahmini Ömrü
@@ -116,16 +116,22 @@ namespace UltimateAPI.Tool
             //100 / 5 x 2 = 40 TL
             //(100-40) / 5 x 2= 24 TL
 
+            //% 20 * 2 = % 40
 
-            double totalDepreciation = parameter.Cost / parameter.EconmicLife * 2;
+            double depreciationRate = 40;
+            double totalDepreciation = parameter.Cost;
 
             for (int i = 0; i < parameter.EconmicLife; i++)
             {
                 DecreasingBalanceV1Result data = new DecreasingBalanceV1Result();
-                data.TotalDepreciation = totalDepreciation;
+                data.DepreciationRate = depreciationRate;
+
+                data.ApplicableValue = totalDepreciation;
+                data.PeriodDepreciation = data.ApplicableValue * (data.DepreciationRate / 100);
+
                 result.Data.Add(data);
 
-                totalDepreciation = totalDepreciation / parameter.EconmicLife * 2;
+                totalDepreciation = data.ApplicableValue - data.PeriodDepreciation;
             }
 
             return result;
@@ -150,7 +156,6 @@ namespace UltimateAPI.Tool
             result.Data = data;
             return result;
         }
-
 
     }
 }
