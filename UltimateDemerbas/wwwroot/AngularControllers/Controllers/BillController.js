@@ -168,8 +168,9 @@
             EnumService.GetProductTypes(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.ProductTypes = result.Data;
-                    } else {
+                        $scope.ProductTypes = result.Data.filter(x => x.Value !== 2);
+                    }
+                    else {
                         toaster.error("Başarısız", "Fatura tipi listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
