@@ -1,5 +1,4 @@
 ﻿
-
 <div class="col-lg-12 col-xs-12 col-sm-12">
     <div class="portlet light bordered">
         <div class="portlet-title">
@@ -9,7 +8,7 @@
             </div>
         </div>
         <div class="portlet-body">
-            <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+            <div id="scrollerDiv" class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
                 <ul class="feeds" ng-repeat="x in Logs">
                     <li>
                         <div class="col1">
@@ -49,3 +48,14 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $("#scrollerDiv").mouseleave(function () {
+            document.body.style.overflow = 'auto';
+        });
+
+        $("#scrollerDiv").mouseenter(function () {
+            document.body.style.overflow = 'hidden';
+        });
+    });
+</script>
