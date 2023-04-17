@@ -4,16 +4,17 @@
         $scope.RegisterCountNormalDecreasing = 0;
         $scope.RegisterCountDecreasingBalance = 0;
         $scope.TableColNormalDecreasing = {
-            AccumulatedDepreciation: "Accumulated Depreciation",
+            ApplicableValue: "Applicable Value",
             Cost: "Cost",
             DepreciationRate: "Depreciation Rate",
             PeriodDepreciation: "Period Depreciation",
+            AccumulatedDepreciation: "Accumulated Depreciation",
             Year: "Year"
         };
         $scope.TableColDecreasingBalance = {
-            ApplicableValue: "Accumulated Depreciation",
-            DepreciationRate: "Cost",
-            PeriodDepreciation: "Depreciation Rate",
+            ApplicableValue: "Applicable Value",
+            Cost: "Cost",
+            DepreciationRate: "Depreciation Rate",
             Year: "Year"
         };
 
