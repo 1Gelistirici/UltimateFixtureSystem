@@ -19,14 +19,13 @@
                     Used Toners
                 </span>
             </div>
-            <div class="actions">
-                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddUsedTonerPopup">
-                        Add Used Toner
-                    </a>
-                </div>
-
-            </div>
+            @*<div class="actions">
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddUsedTonerPopup">
+                            Add Used Toner
+                        </a>
+                    </div>
+                </div>*@
         </div>
 
         <div ng-show="RegisterCount==0">
@@ -52,21 +51,21 @@
 
                                 <td data-title="TableCol.Toner" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="_.TonerNo" required>
+                                        <select class="form-control" ng-model="_.TonerNo" required disabled>
                                             <option ng-repeat="x in Toners" ng-selected="true" ng-value="x.Id">{{x.Name}}</option>
                                         </select>
                                     </div>
                                 </td>
                                 <td data-title="TableCol.Department" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
-                                        <select class="form-control" ng-model="_.DepartmentNo" required>
+                                        <select class="form-control" ng-model="_.DepartmentNo" required disabled>
                                             <option ng-repeat="x in Departments" ng-selected="true" ng-value="x.Id">{{x.Name}}</option>
                                         </select>
                                     </div>
                                 </td>
                                 <td data-title="TableCol.Piece" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
-                                        <input ng-model="_.NewPiece" style="font-size: 14px;" type="text" class="form-control" ng-value="_.Piece">
+                                        <input ng-model="_.NewPiece" style="font-size: 14px;" type="text" class="form-control" ng-value="_.Piece" disabled>
                                     </div>
                                 </td>
                                 <td data-title="TableCol.InsertDate" filter="{ Name: 'text'}" sortable="'Name'">
@@ -79,14 +78,14 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            @*<li class="ms-hover">
+                                                    <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateUsedToner(_)">
+                                                        <i class="fa fa-edit "></i>Update
+                                                    </a>
+                                                </li>*@
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateUsedToner(_)">
-                                                    <i class="fa fa-edit "></i>Update
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUsedToner(_)">
-                                                    <i class="fa fa-phone "></i>Delete
+                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="deleteUsedTonerConfirm(_)">
+                                                    <i class="fa fa-trash "></i>Delete
                                                 </a>
                                             </li>
                                         </ul>

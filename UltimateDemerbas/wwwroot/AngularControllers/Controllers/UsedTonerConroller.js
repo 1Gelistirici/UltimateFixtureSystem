@@ -1,5 +1,5 @@
-﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "NgTableParams", "toaster",
-    function ($scope, TonerService, UsedTonerService, DepartmentService, NgTableParams, toaster) {
+﻿MainApp.controller("TonerController", ["$scope", "TonerService", "UsedTonerService", "DepartmentService", "NgTableParams", "toaster", "$confirm",
+    function ($scope, TonerService, UsedTonerService, DepartmentService, NgTableParams, toaster, $confirm) {
 
         $scope.RegisterCount = 0;
         $scope.Pop = [];
@@ -66,7 +66,7 @@
         }
         $scope.GetDepartments();
 
-        $scope.DeleteUsedToner = function (data) {
+        function deleteUsedToner(data) {
             UsedTonerService.DeleteUsedToner(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -145,6 +145,10 @@
                 }, function error() {
                     toaster.error("Başarısız", "UsedToner  ekleme işlemi yapılırken bir hata oluştu");
                 });
+        }
+
+        $scope.deleteUsedTonerConfirm = function (parameter) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz? Ürün silindikden sonra ürün tutarı fatura tutarından düşülecektir.", function () { deleteUsedToner(parameter); });
         }
 
     }]);
