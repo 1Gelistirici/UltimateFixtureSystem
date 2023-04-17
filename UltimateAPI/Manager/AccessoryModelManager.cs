@@ -93,6 +93,7 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@modelName", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -172,6 +173,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@Id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@modelName", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

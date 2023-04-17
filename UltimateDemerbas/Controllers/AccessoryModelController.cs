@@ -42,6 +42,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult AddAccessoryModel([FromBody] AccessoryModel parameter)
         {
             parameter.UserId = WorkingUser;
+            parameter.CompanyRefId = WorkingCompany;
             var result = accessoryModel.AddAccessoryModel(parameter);
             return Content(result.Result);
         }
@@ -49,6 +50,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult UpdateAccessoryModel([FromBody] AccessoryModel parameter)
         {
             parameter.UserId = WorkingUser;
+            parameter.CompanyRefId = WorkingCompany;
             var result = accessoryModel.UpdateAccessoryModel(parameter);
             return Content(result.Result);
         }

@@ -218,6 +218,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -304,6 +305,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@bill_no", parameter.BillNo);
                         sqlCommand.Parameters.AddWithValue("@statu_no", parameter.StatuNo);
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

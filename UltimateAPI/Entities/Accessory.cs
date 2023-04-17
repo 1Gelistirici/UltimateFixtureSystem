@@ -11,5 +11,6 @@ namespace UltimateAPI.Entities
         public int StatuNo { get; set; }
         public int CategoryNo { get; set; }
         public Double Price { get; set; }
+        public int CompanyRefId { get; set; }
     }
 }

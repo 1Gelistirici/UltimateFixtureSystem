@@ -63,6 +63,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult AddAccessory([FromBody] Accessory parameter)
         {
             parameter.UserId = WorkingUser;
+            parameter.CompanyId = WorkingCompany;
             var result = accessory.AddAccessory(parameter);
             return Content(result.Result);
         }
@@ -70,6 +71,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult UpdateAccessory([FromBody] Accessory parameter)
         {
             parameter.UserId = WorkingUser;
+            parameter.CompanyId = WorkingCompany;
             var result = accessory.UpdateAccessory(parameter);
             return Content(result.Result);
         }
