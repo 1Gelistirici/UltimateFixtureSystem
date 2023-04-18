@@ -16,37 +16,37 @@
                     </a>
                     <ul class="dropdown-menu pull-right">
                         <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#AddTask"> Add Task </a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#AddTask" ng-click="openInsertTaskPopup();"> Add Task </a>
                         </li>
-                        <li class="divider"> </li>
-                        <li>
-                            <a href="javascript:;"> AirAsia </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;"> Cruise </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;"> HSBC </a>
-                        </li>
-                        <li class="divider"> </li>
-                        <li>
-                            <a href="javascript:;">
-                                Pending
-                                <span class="badge badge-danger"> 4 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                Completed
-                                <span class="badge badge-success"> 12 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                Overdue
-                                <span class="badge badge-warning"> 9 </span>
-                            </a>
-                        </li>
+                        @*<li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;"> AirAsia </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> Cruise </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> HSBC </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;">
+                                    Pending
+                                    <span class="badge badge-danger"> 4 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    Completed
+                                    <span class="badge badge-success"> 12 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    Overdue
+                                    <span class="badge badge-warning"> 9 </span>
+                                </a>
+                            </li>*@
                     </ul>
                 </div>
             </div>
@@ -82,18 +82,18 @@
                                                 <i class="fa fa-external-link"></i> Detail
                                             </a>
                                         </li>
-                                        <li>
+                                        @*<li>
                                             <a href="javascript:;">
                                                 <i class="fa fa-check"></i> Complete
                                             </a>
-                                        </li>
+                                        </li>*@
                                         <li>
-                                            <a href="javascript:;"data-toggle="modal" data-target="#UpdateTask" ng-click="GetTask(x)">
+                                            <a href="javascript:;" data-toggle="modal" data-target="#UpdateTask" ng-click="GetTask(x)">
                                                 <i class="fa fa-pencil"></i> Edit
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:;" ng-click="DeleteTask(x.Id)">
+                                            <a href="javascript:;" ng-click="DeleteTaskConfirm(x.Id)">
                                                 <i class="fa fa-trash-o"></i> Delete
                                             </a>
                                         </li>

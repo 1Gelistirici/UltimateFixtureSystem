@@ -9,42 +9,42 @@
             <div class="scroller" style="height:400px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <div class="col-md-9">
-                        <span>Task Start Date</span>
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
-                            <input ng-model="Pop.startDate" style="font-size: 14px;" type="date" class="form-control">
-                        </div>
-                        <br />
-                        <span>Task End Date</span>
-                        <div class="input-icon">
-                            <i class="fa fa-bell-o"></i>
-                            <input ng-model="Pop.endDate" style="font-size: 14px;" type="date" class="form-control">
-                        </div>
-                        <br />
-                        <span>Task Detail</span>
-                        <div class="input-icon">
-                            <textarea ng-model="Pop.taskDetail" rows="3" style="font-size: 14px;" type="text" class="form-control"></textarea>
-                        </div>
-                        <br />
-                        <span>Count</span>
-                        <div class="input-icon">
-                            <i class="fa fa-arrow-circle-up"></i>
-                            @*<input ng-model="Pop.count" style="font-size: 14px;" type="number" class="form-control">*@
-                            <select class="form-control" ng-model="Pop.count">
-                                <option ng-value="0">0</option>
-                                <option ng-value="1">1</option>
-                                <option ng-value="2">2</option>
-                                <option ng-value="3">3</option>
-                            </select>
-                        </div>
-
-
+                        <form name="addTaskForm">
+                            <span>Task Start Date</span>
+                            <div class="input-icon">
+                                <i class="fa fa-bell-o"></i>
+                                <input ng-model="Pop.startDate" style="font-size: 14px;" type="date" class="form-control" required>
+                            </div>
+                            <br />
+                            <span>Task End Date</span>
+                            <div class="input-icon">
+                                <i class="fa fa-bell-o"></i>
+                                <input ng-model="Pop.endDate" style="font-size: 14px;" type="date" class="form-control" required>
+                            </div>
+                            <br />
+                            <span>Task Detail</span>
+                            <div>
+                                <textarea ng-model="Pop.taskDetail" rows="3" style="font-size: 14px;" type="text" class="form-control" required></textarea>
+                            </div>
+                            <br />
+                            <span>Count</span>
+                            <div class="input-icon">
+                                <i class="fa fa-arrow-circle-up"></i>
+                                @*<input ng-model="Pop.count" style="font-size: 14px;" type="number" class="form-control">*@
+                                <select class="form-control" ng-model="Pop.count" required>
+                                    <option ng-value="0">0</option>
+                                    <option ng-value="1">1</option>
+                                    <option ng-value="2">2</option>
+                                    <option ng-value="3">3</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-top:80%;">
                     <input type="hidden" />
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddTask()">Save</button>
+                    <button type="submit" class="btn red" ng-disabled="addTaskForm.$invalid" ng-click="AddTask();">Save</button>
                 </div>
             </div>
         </div>

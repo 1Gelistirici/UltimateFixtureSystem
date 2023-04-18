@@ -61,7 +61,7 @@ namespace UltimateAPI.Manager
                                     task.EndDate = Convert.ToDateTime(read["endDate"]);
                                     task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
                                     task.TaskDetail = read["task"].ToString();
-                                    task.Count = Convert.ToInt32(read["count"]);
+                                    task.Count = (TaskCount)Convert.ToInt32(read["count"]);
 
                                     componentModels.Add(task);
                                 }
@@ -116,7 +116,7 @@ namespace UltimateAPI.Manager
                                     task.EndDate = Convert.ToDateTime(read["endDate"]);
                                     task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
                                     task.TaskDetail = read["task"].ToString();
-                                    task.Count = Convert.ToInt32(read["count"]);
+                                    task.Count = (TaskCount)Convert.ToInt32(read["count"]);
 
                                     componentModels.Add(task);
                                 }

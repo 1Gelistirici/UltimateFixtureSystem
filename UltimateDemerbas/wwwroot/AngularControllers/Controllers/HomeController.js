@@ -1,5 +1,5 @@
-﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService", "ReportService", "toaster",
-    function ($scope, LogService, MessageService, TaskService, UserService, TonerService, ReportService, toaster) {
+﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService", "ReportService", "toaster", "$confirm",
+    function ($scope, LogService, MessageService, TaskService, UserService, TonerService, ReportService, toaster, $confirm) {
 
         $scope.Pop = [];
         $scope.Messages = [];
@@ -12,6 +12,13 @@
         $scope.Pop.startDate = new Date();
         $scope.Pop.endDate = new Date();
         $scope.Pop.count = 0;
+
+        $scope.openInsertTaskPopup = function () {
+            $scope.Pop.taskDetail = "";
+            $scope.Pop.startDate = new Date();
+            $scope.Pop.endDate = new Date();
+            $scope.Pop.count = 0;
+        }
 
         $scope.GetReportsByStatu = function () {
 
@@ -95,7 +102,8 @@
                         $scope.Tasks = result.Data;
 
                         result.Data.forEach(function (x) {
-                            $scope.Tasks = result.Data;
+                            x.StartDateString = formatDate($scope.Tasks.StartDate);
+                            x.EndDateString = formatDate($scope.Tasks.EndDate);
                             var dateResult = $scope.DateCalc(x.StartDate, x.EndDate);
 
                             if (dateResult < 0) {
@@ -191,7 +199,7 @@
         }
 
 
-        $scope.UpdateTask = function () {
+        function updateTask() {
 
             var parameter = {
                 "TaskDetail": $scope.Task.taskDetail,
@@ -205,6 +213,9 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.GetTasks();
+                        toaster.success("Başarılı", "Güncelleme gerçekleştirildi.");
+
+                        $("#UpdateTask").modal("hide");
                     } else {
                         toaster.error("UpdateTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -226,6 +237,8 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.GetTasks();
+
+                        $("#AddTask").modal("hide");
                     } else {
                         toaster.error("AddTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -234,7 +247,7 @@
                 });
         }
 
-        $scope.DeleteTask = function (Id) {
+        function deleteTask(Id) {
             TaskService.DeleteTask(Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -265,6 +278,16 @@
             var result = Math.floor((date2 - date1) / MS_one_day);
 
             return result;
+        }
+
+
+
+
+        $scope.DeleteTaskConfirm = function (parameter) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz? Ürün silindikden sonra ürün tutarı fatura tutarından düşülecektir.", function () { deleteTask(parameter); });
+        }
+        $scope.UpdateTaskConfirm = function (parameter) {
+            $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { updateTask(parameter); });
         }
 
     }]);
