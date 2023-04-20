@@ -78,7 +78,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="ms-hover" ng-if="_.Id!==3">
-                                                    <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteUser(_)">
+                                                    <a class="addphone" title="Update" data-toggle="modal" ng-click="deleteUserConfirm(_)">
                                                         <i class="fa fa-trash"></i>Delete
                                                     </a>
                                                 </li>
@@ -167,7 +167,7 @@
 @section PageScript
     {
     <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
-    
+
     <script src="~/AngularControllers/Services/UserRoleService.js"></script>
     <script src="~/AngularControllers/Services/MenuService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>

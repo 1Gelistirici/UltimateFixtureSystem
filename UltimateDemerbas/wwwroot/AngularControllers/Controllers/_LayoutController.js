@@ -3,6 +3,7 @@
 MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
     function ($scope, $http, $window, toaster) {
 
+        $scope.layoutUserName = Cookies.get('userName');
         $scope.menuType = { Main: 0, MainHeader: 1, MainTitle: 2, MainSubMenu: 3 };
 
         $scope.backgroundColor = 'background-color:#1b243b';

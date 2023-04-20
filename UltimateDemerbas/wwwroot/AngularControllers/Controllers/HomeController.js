@@ -173,9 +173,9 @@
 
         $scope.AddMessage = function () {
             var d = new Date();
-            var data = { "UserId": $scope.UserId, "MessageDetail": $scope.MessageDetail, "Time": d.toUTCString(), "UserName": $scope.NowUser[0].UserName };
+            var data = { "UserId": $scope.UserId, "MessageDetail": $scope.MessageDetail, "Time": d.toUTCString(), "UserName": $scope.NowUser.UserName };
             $scope.Messages.push(data);
-            connection.invoke("SendAllMessageAsync", $scope.MessageDetail, $scope.UserId, $scope.NowUser[0].UserName);
+            connection.invoke("SendAllMessageAsync", $scope.MessageDetail, $scope.UserId, $scope.NowUser.UserName);
 
             var parameter = {
                 "MessageDetail": $scope.MessageDetail,

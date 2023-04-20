@@ -17,8 +17,10 @@
             LoginService.CheckUser(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
+                        Cookies.set('userName', parameter.UserName);
                         $window.location.href = '/Home/Index';
-                    } else {
+                    }
+                    else {
                         $scope.LoginButton = false;
                         toaster.error("Başarısız", result.Message);
                     }

@@ -1,5 +1,5 @@
-﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce", "UserRoleService",
-    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce, userRoleService) {
+﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce", "$confirm", "UserRoleService",
+    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce, userRoleService, $confirm) {
 
         //#region Parameters
         $scope.RegisterCount = 0;
@@ -22,7 +22,7 @@
         }
 
         $scope.fileNameChanged = function (file) {
-            if (file.files != undefined && file.files.length > 0) {
+            if (file.files !== undefined && file.files.length > 0) {
                 for (var i = 0; i < file.files.length; i++) {
                     $scope.files = file.files[0];
                 }
@@ -138,7 +138,7 @@
                 });
         }
 
-        $scope.DeleteUser = function (data) {
+        function deleteUser(data) {
             UserService.DeleteUser(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -247,5 +247,7 @@
                 });
         }
 
-
+        $scope.deleteUserConfirm = function (parameter) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { deleteUser(parameter); });
+        }
     }]);

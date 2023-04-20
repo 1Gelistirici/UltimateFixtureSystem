@@ -92,5 +92,5 @@
                     toaster.error("UpdateReportStatu", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-    }
-]);
+
+    }]);
