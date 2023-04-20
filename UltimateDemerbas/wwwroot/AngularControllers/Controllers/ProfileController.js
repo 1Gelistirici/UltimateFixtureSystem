@@ -3,6 +3,9 @@
 
         $scope.ItemTypesFilter = [];
         $scope.AccessoryCount = 0;
+        $scope.AssetLenngth = 0;
+        $scope.TaskLength = 0;
+        $scope.FixtureLength = 0;
         $scope.TableCol = {
             Name: "Component Name",
             ItemType: "Item Type",
@@ -40,6 +43,9 @@
                     if (result.IsSuccess) {
                         //$scope.AccessoryData = result.Data.filter(x => x.Accessories != null);
                         $scope.AccessoryData = result.Data;
+                        $scope.AssetLenngth = result.Data.length;
+                        $scope.FixtureLength = $scope.AccessoryData.filter(x => x.Fixtures).length;
+
                         $.each($scope.AccessoryData, function (index, value) {
 
                             $scope.AccessoryData[index].RecallDate = new Date($scope.AccessoryData[index].RecallDate).toLocaleString();
