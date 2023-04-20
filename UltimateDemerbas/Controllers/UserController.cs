@@ -90,13 +90,32 @@ namespace UltimateDemerbas.Controllers
                 SetSession(referansParameter);
             }
 
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddDays(1);
             if (parameter.RememberMe && resultUser.IsSuccess)
             {
-                CookieOptions cookie = new CookieOptions();
-                cookie.Expires = DateTime.Now.AddDays(1);
+
                 Response.Cookies.Append("companyId", resultUser.Data.CompanyId.ToString(), cookie);
                 Response.Cookies.Append("userId", resultUser.Data.Id.ToString(), cookie);
+
+
             }
+
+            Response.Cookies.Append("userName", resultUser.Data.UserName, cookie);
+            Response.Cookies.Append("userImage", resultUser.Data.ImageUrl, cookie);
+
+            //if (resultUser.Data.ImageName != "")
+            //{
+            //    FileHelper fileHelper = new FileHelper(Configuration);
+            //    string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+            //    resultUser.Data.ImageUrl = Path.Combine(folder, resultUser.Data.ImageName);
+
+            //    byte[] imageData = System.IO.File.ReadAllBytes(resultUser.Data.ImageUrl);
+            //    string base64ImageRepresentation = Convert.ToBase64String(imageData);
+
+            //    resultUser.Data.ImageUrl = base64ImageRepresentation;
+            //    Response.Cookies.Append("userImage", resultUser.Data.ImageUrl, cookie);
+            //}
 
 
             return Content(result.Result);
@@ -184,8 +203,33 @@ namespace UltimateDemerbas.Controllers
         {
             User parameter = new User();
             parameter.UserId = WorkingUser;
-            var result = user.GetUser(parameter);
-            return Content(result.Result);
+            var response = user.GetUser(parameter);
+
+
+            //FileHelper fileHelper = new FileHelper(Configuration);
+            //string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+            //UltimateResult<List<User>> result = JsonSerializer.Deserialize<UltimateResult<List<User>>>(response.Result);
+            //foreach (var item in result.Data)
+            //{
+            //    if (item.ImageName != "")
+            //    {
+            //        item.ImageUrl = Path.Combine(folder, item.ImageName);
+
+            //        byte[] imageData = System.IO.File.ReadAllBytes(item.ImageUrl);
+            //        string base64ImageRepresentation = Convert.ToBase64String(imageData);
+
+            //        item.ImageUrl = base64ImageRepresentation;
+
+            //    }
+            //    else
+            //    {
+            //        item.ImageUrl = "";
+            //    }
+            //}
+
+
+            //return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+            return Content(response.Result);
         }
 
         [CheckAuthorize]

@@ -60,7 +60,10 @@ namespace UltimateAPI.Manager
                                     User usr = new User();
                                     usr.Id = Convert.ToInt32(read["Id"]);
                                     usr.Name = read["name"].ToString();
+                                    usr.UserName = read["username"].ToString();
                                     usr.Surname = read["surname"].ToString();
+                                    usr.ImageName = read["ImageName"].ToString();
+                                    usr.ImageUrl = read["imageUrl"].ToString();
                                     usr.CompanyId = Convert.ToInt32(read["companyId"]);
                                     usr.Lock = Convert.ToBoolean(read["lock"]);
 
