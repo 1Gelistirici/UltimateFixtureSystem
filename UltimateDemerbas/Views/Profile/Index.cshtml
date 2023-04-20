@@ -17,10 +17,10 @@
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
+                @*<div class="profile-userbuttons">
                     <button type="button" class="btn btn-circle green btn-sm">Follow</button>
                     <button type="button" class="btn btn-circle red btn-sm">Message</button>
-                </div>
+                </div>*@
 
                 <br />
 
@@ -71,15 +71,15 @@
                     <span class="profile-desc-text"> {{User.About}} </span>
                     <div class="margin-top-20 profile-desc-link">
                         <i class="fa fa-linkedin-square"></i>
-                        <a target="_blank" href="{{User.Linkedin}}">Linkedin</a>
+                        <a target="_blank" href="https://www.{{User.Linkedin}}">Linkedin</a>
                     </div>
                     <div class="margin-top-20 profile-desc-link">
                         <i class="fa fa-twitter"></i>
-                        <a target="_blank" href="{{User.Twitter}}">Twitter</a>
+                        <a target="_blank" href="https://www.{{User.Twitter}}">Twitter</a>
                     </div>
                     <div class="margin-top-20 profile-desc-link">
                         <i class="fa fa-facebook"></i>
-                        <a target="_blank" href="{{User.Facebook}}">Facebook</a>
+                        <a target="_blank" href="https://www.{{User.Facebook}}">Facebook</a>
                     </div>
                 </div>
             </div>
@@ -116,15 +116,15 @@
 
                                         <div class="form-group">
                                             <label class="control-label">Linkedin Adress</label>
-                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Linkedin">
+                                            <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Linkedin">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Twitter Adress</label>
-                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Twitter">
+                                            <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Twitter">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Facebook Adress</label>
-                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" ng-model="Facebook">
+                                            <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Facebook">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">About</label>
