@@ -57,18 +57,18 @@
                     <!-- START TASK LIST -->
                     <ul class="task-list" ng-repeat="x in Tasks">
                         <li>
-                            <div class="task-checkbox">
-                                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                    <input type="checkbox" class="checkboxes" value="1" />
-                                    <span></span>
-                                </label>
-                            </div>
+                            @*<div class="task-checkbox">
+                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                        <input type="checkbox" class="checkboxes" value="1" />
+                                        <span></span>
+                                    </label>
+                                </div>*@
                             <div class="task-title">
-                                <span class="task-title-sp"> {{x.TaskDetail}} </span>
                                 <span ng-class="DateCalc(x.StartDate,x.EndDate) <= 0 ? 'label label-sm label-danger' : (DateCalc(x.StartDate,x.EndDate) <= 3 ? 'label label-sm label-warning' : 'label label-sm label-success')">{{DateCalc(x.StartDate,x.EndDate)}} Day</span>
-                                <span class="task-bell">
-                                    <i class="fa fa-bell-o"></i>
-                                </span>
+                                <span class="task-title-sp"> {{x.TaskDetail}} </span>
+                                @*<span class="task-bell">
+                                        <i class="fa fa-bell-o"></i>
+                                    </span>*@
                             </div>
                             <div class="task-config">
                                 <div class="task-config-btn btn-group">
@@ -83,10 +83,10 @@
                                             </a>
                                         </li>
                                         @*<li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-check"></i> Complete
-                                            </a>
-                                        </li>*@
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-check"></i> Complete
+                                                </a>
+                                            </li>*@
                                         <li>
                                             <a href="javascript:;" data-toggle="modal" data-target="#UpdateTask" ng-click="GetTask(x)">
                                                 <i class="fa fa-pencil"></i> Edit
