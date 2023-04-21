@@ -18,7 +18,6 @@
             AssignmentService.GetAssignmentsByCompany(
                 function success(result) {
                     if (result.IsSuccess) {
-                        console.log(result.Data);
 
                         $scope.assignmentData = result.Data;
 
@@ -179,5 +178,9 @@
                 });
         }
         $scope.GetCategories();
+
+        $scope.CheckRecallDate = function (recalDate) {
+            return new Date(recalDate).toLocaleString() > new Date().toLocaleString() ? false : true;
+        }
 
     }]);
