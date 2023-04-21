@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetAssignmentsByCompany = function (success, error) {
+            $http.get("/Assignment/GetAssignmentsByCompany").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteAssignment = function (parameter, success, error) {
             $http.post('/Assignment/DeleteAssignment', JSON.stringify(parameter)).then(
                 function (response) {

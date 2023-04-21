@@ -23,6 +23,14 @@ namespace UltimateAPI.Controllers
             var result = assignment.GetAssignments(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("GetAssignmentsByCompany")]
+        public IActionResult GetAssignmentsByCompany(Assignment parameter)
+        {
+            AssignmentCallManager assignment = new AssignmentCallManager();
+            var result = assignment.GetAssignmentsByCompany(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
     
         [HttpPost("DeleteAssignment")]
         public IActionResult DeleteAssignment(Assignment parameter)

@@ -18,12 +18,25 @@ namespace UltimateDemerbas.Controllers
             assignment = new AssignmentManager(_httpClientFactory);
         }
 
+        [CheckAuthorize]
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         public IActionResult GetAssignments()
         {
             Assignment parameter = new Assignment();
-            parameter.CompanyId = 1; // ToDo : WorkingCompany olacak
+            parameter.CompanyId = WorkingCompany;
             var result = assignment.GetAssignments(parameter);
+            return Content(result.Result);
+        }
+
+        public IActionResult GetAssignmentsByCompany()
+        {
+            Assignment parameter = new Assignment();
+            parameter.CompanyId = WorkingCompany;
+            var result = assignment.GetAssignmentsByCompany(parameter);
             return Content(result.Result);
         }
 
@@ -36,6 +49,7 @@ namespace UltimateDemerbas.Controllers
         public IActionResult AddAssignment([FromBody] Assignment parameter)
         {
             parameter.AppointerId = WorkingUser;
+            parameter.CompanyRefId = WorkingCompany;
             var result = assignment.AddAssignment(parameter);
             return Content(result.Result);
         }

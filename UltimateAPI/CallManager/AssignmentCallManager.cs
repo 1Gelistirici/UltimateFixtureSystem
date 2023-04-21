@@ -34,6 +34,11 @@ namespace UltimateAPI.CallManager
             return AssignmentManager.Instance.GetAssignments(parameter);
         }
 
+        public UltimateResult<List<Assignment>> GetAssignmentsByCompany(Assignment parameter)
+        {
+            return AssignmentManager.Instance.GetAssignmentsByCompany(parameter);
+        }
+
         public UltimateResult<List<Assignment>> DeleteAssignment(Assignment parameter)
         {
             return AssignmentManager.Instance.DeleteAssignment(parameter);
@@ -102,11 +107,6 @@ namespace UltimateAPI.CallManager
                 result.Message = "Atanan miktarda ürün bulunamadı.";
                 return result;
             }
-
-
-
-
-
 
             return AssignmentManager.Instance.AddAssignment(parameter);
         }

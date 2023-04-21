@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="AssignmentController">
+
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-asterisk font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Assignment
+                </span>
+            </div>
+        </div>
+
+        <div ng-show="registerCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="registerCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col width="100" />
+                            <col width="150" />
+                            <col width="50" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                            <col width="100" />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''" filter="{ BillNo: 'text'}">
+
+                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="input-icon">
+                                        <span>{{_.Item.Name}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                    <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
+                                </td>
+
+                                <td data-title="TableCol.Piece" filter="{ Piece: 'text'}" sortable="'Piece'">
+                                    <div class="input-icon">
+                                        <span>{{_.Piece}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                    <div class="input-icon">
+                                        <span>{{_.Item.BillNo}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.Recall" sortable="'BillNo'">
+                                    <div class="input-icon" ng-show="_.IsRecall==true">
+                                        <span>{{_.RecallDate}}</span>
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.ModelNo" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
+                                    <span>{{GetAccessoryModels(_.Item.ModelNo)}} {{AccessoryModelreturn}}</span>
+                                </td>
+
+                                <td data-title="TableCol.CategoryNo" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
+                                    <span>{{GetCategoryNo(_.Item.CategoryNo)}} {{CategoryNoreturn}}</span>
+                                </td>
+
+                                <td>
+                                    <div class="actions">
+                                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                            <a class="btn btn-warning addnewuserbtn" data-toggle="modal" data-target="#ReportPopup"
+                                               ng-click="OpenReport(_)" ng-show="_.Report==false">
+                                                Report
+                                            </a>
+                                            <a class="btn btn-danger addnewuserbtn disabled" data-toggle="modal" data-target="#ReportPopup"
+                                               ng-show="_.Report==true">
+                                                Reported
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/CategoryService.js"></script>
+    <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/AssignmentService.js"></script>
+    <script src="~/AngularControllers/Controllers/AssignmentController.js"></script>
+}

@@ -15,6 +15,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Assignment>("Assignment/GetAssignments", parameter);
         }
 
+        public Task<string> GetAssignmentsByCompany(Assignment parameter)
+        {
+            return GetApiParameter<Assignment>("Assignment/GetAssignmentsByCompany", parameter);
+        }
+
         public Task<string> DeleteAssignment(Assignment parameter)
         {
             return GetApiParameter<Assignment>("Assignment/DeleteAssignment", parameter);

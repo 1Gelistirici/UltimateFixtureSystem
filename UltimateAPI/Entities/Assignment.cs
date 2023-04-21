@@ -5,6 +5,7 @@ namespace UltimateAPI.Entities
 {
     public class Assignment : BaseProperty
     {
+        public int CompanyRefId { get; set; }
         public int AppointerId { get; set; }
         public ItemType ItemType { get; set; }
         public int ItemId { get; set; }

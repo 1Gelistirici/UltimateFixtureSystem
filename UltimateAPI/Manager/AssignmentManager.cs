@@ -145,6 +145,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@recallDate", parameter.RecallDate < DateTime.Now ? DateTime.Now : parameter.RecallDate);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece <= 0 ? 1 : parameter.Piece);
                         sqlCommand.Parameters.AddWithValue("@isRecall", parameter.IsRecall);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -335,5 +336,99 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<Assignment>> GetAssignmentsByCompany(Assignment parameter)
+        {
+            List<Assignment> assignments = new List<Assignment>();
+            UltimateResult<List<Assignment>> result = new UltimateResult<List<Assignment>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[assignment_GetAssignmentsByCompany]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data;
+                    List<Bill> bills = BillManager.Instance.GetBills().Data;
+                    List<Component> components = ComponentManager.Instance.GetComponents().Data;
+                    List<License> licenses = LicenseManager.Instance.GetLicenses().Data;
+                    List<Toner> toners = TonerManager.Instance.GetToners().Data;
+                    List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data;
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Assignment assignment = new Assignment();
+                                    assignment.Id = Convert.ToInt32(read["id"]);
+                                    assignment.UserId = Convert.ToInt32(read["userId"]);
+                                    assignment.InsertDate = Convert.ToDateTime(read["insertDate"]);
+                                    assignment.AppointerId = Convert.ToInt32(read["appointerId"]);
+                                    assignment.ItemType = (ItemType)Convert.ToInt32(read["itemType"]);
+                                    assignment.ItemId = Convert.ToInt32(read["itemId"]);
+                                    assignment.RecallDate = Convert.ToDateTime(read["recallDate"]);
+                                    assignment.Piece = Convert.ToInt32(read["piece"]);
+                                    assignment.IsRecall = Convert.ToBoolean(read["isRecall"]);
+                                    assignment.Report = Convert.ToBoolean(read["report"]);
+
+                                    if (assignment.ItemType == ItemType.Accessory)
+                                    {
+                                        assignment.Accessories = (accessories.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else if (assignment.ItemType == ItemType.Bill)
+                                    {
+                                        assignment.Bills = (bills.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else if (assignment.ItemType == ItemType.Companent)
+                                    {
+                                        assignment.Components = (components.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else if (assignment.ItemType == ItemType.Fixture)
+                                    {
+                                        assignment.Fixtures = (fixtures.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else if (assignment.ItemType == ItemType.Licence)
+                                    {
+                                        assignment.Licences = (licenses.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else if (assignment.ItemType == ItemType.Toner)
+                                    {
+                                        assignment.Toners = (toners.Find(x => x.Id == assignment.ItemId));
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+
+                                    assignments.Add(assignment);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = assignments;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }
