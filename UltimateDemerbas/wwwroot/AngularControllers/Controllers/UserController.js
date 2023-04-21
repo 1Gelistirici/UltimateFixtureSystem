@@ -1,5 +1,5 @@
 ﻿MainApp.controller("UserController", ["$scope", "UserService", "EnumService", "MenuService", "NgTableParams", "toaster", "$sce", "$confirm", "UserRoleService",
-    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce, userRoleService, $confirm) {
+    function ($scope, UserService, EnumService, MenuService, NgTableParams, toaster, $sce, $confirm, userRoleService) {
 
         //#region Parameters
         $scope.RegisterCount = 0;

@@ -2,6 +2,7 @@
     function ($scope, CategoryService, FixtureModelService, FixtureService, BillService, AssignmentService, UserService, EnumService, NgTableParams, toaster, $confirm,) {
 
         $scope.RegisterCount = 0;
+        $scope.Pop = [];
 
         $scope.TableCol = {
             Name: "Fixture Name",
@@ -11,6 +12,11 @@
             Statu: "Statu",
             User: "User",
         };
+
+        $scope.openPopup = function () {
+            $scope.Pop = [];
+            $scope.Pop.recallDate = new Date();
+        }
 
         $scope.ItemStatus = [];
         $scope.ItemStatusFilter = [];
@@ -154,6 +160,18 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         //$scope.Data.push(parameter);
+                        if ($scope.Pop.StatuNo === 3) {
+                            var parameter = {
+                                UserId: $scope.Pop.UserNo,
+                                RecallDate: $scope.Pop.recallDate,
+                                ItemType: 4, // ToDo : Enumdan çekilebilir
+                                ItemId: result.Data,
+                                IsRecall: $scope.Pop.checkRecallDate,
+                            }
+
+                            addAssignment(parameter);
+                        }
+
                         RefreshData();
                         toaster.success("Başarılı", "Demirbaş başarıyla eklenmiştir.");
                         $("#AddFixturePopup").modal("hide");
@@ -188,6 +206,11 @@
                 IsRecall: $scope.Assign.checkRecallDate,
             }
 
+            addAssignment(parameter);
+
+        }
+
+        function addAssignment(parameter) {
             AssignmentService.AddAssignment(parameter,
                 function success(result) {
                     if (result.IsSuccess) {

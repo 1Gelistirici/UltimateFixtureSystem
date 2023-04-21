@@ -76,7 +76,7 @@ namespace UltimateAPI.CallManager
 
                 Fixture fixture = FixtureCallManager.Instance.GetFixture(new Fixture() { Id = parameter.ItemId }).Data;
 
-                isHaveItem = fixture.StatuNo == (int)ItemStatu.Ready;
+                isHaveItem = fixture.StatuNo == ((int)ItemStatu.Ready | (int)ItemStatu.Assigned);
                 if (isHaveItem)
                 {
                     fixture.StatuNo = (int)ItemStatu.Assigned;

@@ -17,8 +17,8 @@
                 }, error);
         }
 
-        this.GetFixtureByUser = function (parameter, success, error) {
-            $http.post("/Fixture/GetFixtureByUser", JSON.stringify(parameter)).then(
+        this.GetFixtureByUser = function (Id, success, error) {
+            $http.post("/Fixture/GetFixtureByUser", { Id: Id }).then(
                 function (response) {
                     if (success)
                         success(response.data);

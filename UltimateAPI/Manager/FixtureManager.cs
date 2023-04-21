@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
@@ -261,9 +262,11 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@user_no", (ItemStatu)parameter.StatuNo == ItemStatu.Assigned ? parameter.UserNo : 0);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
                     }

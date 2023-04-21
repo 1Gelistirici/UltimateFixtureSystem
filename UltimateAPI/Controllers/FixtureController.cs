@@ -37,7 +37,7 @@ namespace UltimateAPI.Controllers
         {
             FixtureCallManager fixture = new FixtureCallManager();
             var result = fixture.AddFixture(parameter);
-            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
         [HttpPost("UpdateFixture")]

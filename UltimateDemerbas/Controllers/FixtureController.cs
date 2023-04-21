@@ -49,10 +49,10 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
-        public IActionResult GetFixtureByUser()
+        public IActionResult GetFixtureByUser(int userRefId)
         {
             Fixture parameter = new Fixture();
-            parameter.UserId = WorkingUser;
+            parameter.UserNo = userRefId == 0 ? WorkingUser : userRefId;
 
             var result = fixture.GetFixtureByUser(parameter);
 
