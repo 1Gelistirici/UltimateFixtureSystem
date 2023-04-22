@@ -36,10 +36,11 @@
                             <col width="100" />
                             <col width="100" />
                             <col width="100" />
+                            <col width="100" />
                         </colgroup>
 
                         <tbody>
-                            <tr ng-repeat="_ in $data" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''" filter="{ BillNo: 'text'}">
+                            <tr ng-repeat="_ in $data" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''">
 
                                 <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="input-icon">
@@ -77,19 +78,12 @@
                                     <span>{{GetCategoryNo(_.Item.CategoryNo)}} {{CategoryNoreturn}}</span>
                                 </td>
 
+                                <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
+                                    <span>{{_.User.Name}}</span>
+                                </td>
+
                                 <td>
-                                    <div class="actions">
-                                        <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                            <a class="btn btn-warning addnewuserbtn" data-toggle="modal" data-target="#ReportPopup"
-                                               ng-click="OpenReport(_)" ng-show="_.Report==false">
-                                                Report
-                                            </a>
-                                            <a class="btn btn-danger addnewuserbtn disabled" data-toggle="modal" data-target="#ReportPopup"
-                                               ng-show="_.Report==true">
-                                                Reported
-                                            </a>
-                                        </div>
-                                    </div>
+                                        <button class="btn red" ng-click="undoConfirm(_);">Undo</button>
                                 </td>
                             </tr>
                         </tbody>

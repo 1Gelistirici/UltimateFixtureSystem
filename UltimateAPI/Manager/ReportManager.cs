@@ -237,7 +237,7 @@ namespace UltimateAPI.Manager
                 return result;
             }
 
-            AddLog(parameter.UserId, "Rapor oluşturuldı");
+            AddLog(parameter.UserId, "Rapor oluşturuldu");
 
             return result;
         }
@@ -277,7 +277,7 @@ namespace UltimateAPI.Manager
                 return result;
             }
 
-            AddLog(parameter.UserId, "Rapor oluşturuldı");
+            AddLog(parameter.UserId, "Rapor oluşturuldu");
 
             return result;
         }

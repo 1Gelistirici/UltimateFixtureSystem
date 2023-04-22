@@ -1,5 +1,5 @@
-﻿MainApp.controller("AssignmentController", ["$scope", "AssignmentService", "UserService", "toaster", "EnumService", "NgTableParams", "AccessoryModelService", "CategoryService",
-    function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService) {
+﻿MainApp.controller("AssignmentController", ["$scope", "AssignmentService", "UserService", "toaster", "EnumService", "NgTableParams", "AccessoryModelService", "CategoryService", "$confirm",
+    function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService, $confirm) {
 
         $scope.registerCount = 0;
         $scope.ItemTypesFilter = [];
@@ -12,17 +12,18 @@
             Piece: "Piece",
             BillNo: "Bill",
             Recall: "Recall",
+            UserName: "User Name"
         };
 
         $scope.GetAssignmentsByCompany = function () {
             AssignmentService.GetAssignmentsByCompany(
                 function success(result) {
                     if (result.IsSuccess) {
-
                         $scope.assignmentData = result.Data;
 
                         $.each($scope.assignmentData, function (index, value) {
 
+                            $scope.assignmentData[index].User = $scope.Users.find(x => x.Id === value.UserId);
                             $scope.assignmentData[index].RecallDate = new Date($scope.assignmentData[index].RecallDate).toLocaleString();
                             $scope.assignmentData[index].TypeItem = $scope.ItemTypes.find(x => x.Value === value.ItemType);
 
@@ -130,10 +131,6 @@
                 });
         }
 
-
-
-
-
         $scope.GetAccessoryModels = function () {
             AccessoryModelService.GetAccessoryModels(
                 function success(result) {
@@ -148,6 +145,26 @@
         }
         $scope.GetAccessoryModels();
 
+        function deleteAssignment(item) {
+            var parameter = {
+                Id: item.Id
+                , ItemType: item.ItemType
+                , ItemId: item.ItemId
+            };
+
+            AssignmentService.DeleteAssignment(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Atama geri alındı.");
+                        $scope.GetAssignmentsByCompany();
+                    }
+                    else {
+                        toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
         $scope.GetCategoryNo = function (x) {
             $scope.Categories.forEach(function (item) {
@@ -181,6 +198,10 @@
 
         $scope.CheckRecallDate = function (recalDate) {
             return new Date(recalDate).toLocaleString() > new Date().toLocaleString() ? false : true;
+        }
+
+        $scope.undoConfirm = function (item) {
+            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { deleteAssignment(item) });
         }
 
     }]);
