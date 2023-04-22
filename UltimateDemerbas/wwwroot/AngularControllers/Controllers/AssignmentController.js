@@ -150,6 +150,7 @@
                 Id: item.Id
                 , ItemType: item.ItemType
                 , ItemId: item.ItemId
+                , Piece: item.Piece
             };
 
             AssignmentService.DeleteAssignment(parameter,
