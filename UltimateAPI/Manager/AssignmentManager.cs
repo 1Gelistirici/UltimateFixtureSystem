@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
 
@@ -188,6 +189,35 @@ namespace UltimateAPI.Manager
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            if (parameter.ItemType == ItemType.Accessory)
+                            {
+                                AccessoryCallManager accessoryCallManager = new AccessoryCallManager();
+                                Accessory accessory = accessoryCallManager.GetAccessory(new Accessory() { Id = parameter.ItemId }).Data;
+
+                                accessory.Piece += parameter.Piece;
+                                accessoryCallManager.UpdateAccessory(accessory);
+                            }
+                            else if (parameter.ItemType == ItemType.Companent)
+                            {
+                                ComponentCallManager componentCallManager = new ComponentCallManager();
+                                Component component = componentCallManager.GetComponent(new ReferansParameter() { RefId = parameter.ItemId }).Data;
+
+                                component.Piece += parameter.Piece;
+
+                                componentCallManager.UpdateComponent(component);
+                            }
+                            else if (parameter.ItemType == ItemType.Fixture)
+                            {
+                                Fixture fixture = FixtureCallManager.Instance.GetFixture(new Fixture() { Id = parameter.ItemId }).Data;
+
+                                fixture.UserNo = 0;
+                                fixture.StatuNo = (int)ItemStatu.Ready;
+                                FixtureCallManager.Instance.UpdateFixture(fixture);
+                            }
+                        }
 
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
