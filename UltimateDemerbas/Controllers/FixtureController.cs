@@ -26,6 +26,12 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        [CheckAuthorize]
+        public IActionResult ViewItem()
+        {
+            return View();
+        }
+
 
         [CheckAuthorize]
         public IActionResult GetFixtures()

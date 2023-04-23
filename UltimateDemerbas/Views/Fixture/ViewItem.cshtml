@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="FixtureController">
+
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-laptop font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Fixtures
+                </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddFixturePopup" ng-click="openPopup();">
+                        Add Fixture
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-show="RegisterCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+
+                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="input-icon">
+                                        <input ng-model="_.Name" type="text" class="form-control">
+                                    </div>
+                                </td>
+
+                                <td data-title="TableCol.Model" filter="{ Piece: 'text'}" sortable="'Piece'">
+                                    <select class="form-control" ng-model="_.ModelNo">
+                                        <option ng-repeat="x in FixtureModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
+                                </td>
+
+                                <td data-title="TableCol.Category" filter="{ CategoryNo: 'text'}" sortable="'CategoryNo'">
+                                    <select class="form-control" ng-model="_.CategoryNo">
+                                        <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
+                                </td>
+
+                                <td data-title="TableCol.Bill" filter="{ BillNo: 'number'}" sortable="'BillNo'">
+                                    <select class="form-control" ng-model="_.BillNo" disabled>
+                                        <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
+                                    </select>
+                                </td>
+
+                                <td data-title="TableCol.Statu" filter="{ StatuNo: 'select'}" sortable="'StatuNo'" filter-data="ItemStatusFilter">
+                                    <select class="form-control" ng-disabled="_.StatuNo===3" ng-change="_.Changed=true" ng-model="_.StatuNo">
+                                        <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
+                                    </select>
+                                </td>
+
+                                <td data-title="TableCol.User" filter="{ User: 'text'}" sortable="'User'">
+                                    <select class="form-control" ng-model="_.UserNo" ng-show="_.UserNo>0" disabled>
+                                        <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
+                                </td>
+
+                                <td>
+                                    <div class="btn-group absoluteitem">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" data-toggle="modal" data-target="#viewItemPartial" ng-click="ViewItem(_)">
+                                                <a class="addphone" title="View">
+                                                    <i class="fa fa-share-square-o"></i>View
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover" ng-show="_.StatuNo==1" data-toggle="modal" data-target="#FixtureAssignmentPopup">
+                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
+                                                    <i class="fa fa-eject"></i>Assign
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateFixtureConfirm(_)">
+                                                    <i class="fa fa-edit"></i>Update
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteFixtureConfirm(_)">
+                                                    <i class="fa fa-trash"></i>Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                </td>
+                            </tr>
+
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="~/Views/Shared/Partials/Global/ViewItemPartial.cshtml" />
+    <partial name="~/Views/Shared/Partials/Fixture/AddFixturePopup.cshtml" />
+    <partial name="~/Views/Shared/Partials/Fixture/FixtureAssignmentPartial.cshtml" />
+</div>
+
+@section PageScript
+    {
+<script src="~/AngularControllers/Services/EnumService.js"></script>
+<script src="~/AngularControllers/Services/AssignmentService.js"></script>
+<script src="~/AngularControllers/Services/FixtureService.js"></script>
+<script src="~/AngularControllers/Services/FixtureModelService.js"></script>
+<script src="~/AngularControllers/Services/BillService.js"></script>
+<script src="~/AngularControllers/Services/CategoryService.js"></script>
+<script src="~/AngularControllers/Services/AssignmentService.js"></script>
+<script src="~/AngularControllers/Services/UserService.js"></script>
+<script src="~/AngularControllers/Controllers/FixtureController.js"></script>
+}
