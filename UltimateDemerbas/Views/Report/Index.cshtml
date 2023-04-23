@@ -16,8 +16,8 @@
                 <br />
                 <br />
                 <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-green icon-bulb" ng-if="!_.DiffDate"></i>
-                    <i class="widget-thumb-icon bg-red icon-bulb" ng-if="_.DiffDate"></i>
+                    <i class="widget-thumb-icon bg-green fa fa-hourglass-2" ng-if="!_.DiffDate"></i>
+                    <i class="widget-thumb-icon bg-red fa fa-hourglass-3" ng-if="_.DiffDate"></i>
                     <div class="widget-thumb-body">
                         <span class="widget-thumb-subtitle">
                             {{_.ReportSubject}}
@@ -27,7 +27,12 @@
                 </div>
                 <div class="pull-right">
                     <br />
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Conclude" ng-click="OpenPopup(_);">Conclude</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Conclude" ng-click="OpenPopup(_);" title="Conclude">Conclude</button>
+
+                    <a href="" class="btn btn-icon-only btn-primary" title="Open Item">
+                        @*ToDo : Farklı bir pencerede item açılacak*@
+                        <i class="fa fa-share-square-o"></i>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET THUMB -->

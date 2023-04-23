@@ -50,8 +50,6 @@
                             }
                         });
 
-
-                        console.log(result.Data);
                         $scope.registerCount = $scope.reportedAssets.length;
                         $scope.TableParams = new NgTableParams({
                             sorting: { name: 'adc' },

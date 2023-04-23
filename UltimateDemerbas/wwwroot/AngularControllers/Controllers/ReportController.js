@@ -13,7 +13,7 @@
 
                         $.each($scope.Reports, function (index, value) {
                             $scope.Reports[index].InsertDate = new Date($scope.Reports[index].InsertDate).toLocaleString();
-                            $scope.Reports[index].User = $scope.Users.find(x => x.Id == $scope.Reports[index].UserId);
+                            $scope.Reports[index].User = $scope.Users.find(x => x.Id === $scope.Reports[index].UserId);
 
                             const reportDate = new Date($scope.Reports[index].InsertDate);
                             const diffTime = Math.abs(nowDate - reportDate);
@@ -51,7 +51,7 @@
             EnumService.GetReportStatus(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.ReportStatus = result.Data.filter(x => x.Value != 0);
+                        $scope.ReportStatus = result.Data.filter(x => x.Value !== 0);
 
                     } else {
                         toaster.error("GetReportStatus", "Kat listeleme işlemi yapılırken bir hata oluştu");
