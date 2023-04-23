@@ -12,61 +12,59 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Component Models
+                    Reported Assets
                 </span>
-            </div>
-            <div class="actions">
-                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
-                        Add Component Model
-                    </a>
-                </div>
-
             </div>
         </div>
 
-        <div ng-show="RegisterCount==0">
+        <div ng-show="registerCount==0">
             <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
         </div>
 
         <!--Table Body-->
         <div class="portlet-body">
-            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="registerCount>0">
                 <div class="table-responsive">
                     <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
 
                         <colgroup>
                             <col />
                             <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
                         </colgroup>
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="col-md-9">
-                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
-                                    </div>
+                                <td data-title="TableCol.ItemName" filter="{ ItemName: 'text'}" sortable="'ItemName'">
+                                    <span>{{_.Item.Name}}</span>
                                 </td>
-
-                                <td>
-                                    <div class="btn-group absoluteitem">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover">
-                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateComponentModelConfirm(_);">
-                                                    <i class="fa fa-edit "></i>Update
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover">
-                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteComponentModelConfirm(_);">
-                                                    <i class="fa fa-trash"></i>Delete
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                               
+                                <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                    <span>{{_.InsertDate}}</span>
+                                </td>
+                              
+                                <td data-title="TableCol.ReportSubject" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
+                                    <span>{{_.ReportSubject}}</span>
+                                </td>
+                              
+                                <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
+                                    <span>{{_.ReportDetail}}</span>
+                                </td>
+                              
+                                <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                    <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
+                                </td>
+                              
+                                <td data-title="TableCol.AssignmentName" filter="{ AssignmentName: 'text'}" sortable="'AssignmentName'">
+                                    <span>{{_.Assignment.Name}}</span>
+                                </td>
+                              
+                                <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
+                                    <span>{{_.User.Name}}</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -74,7 +72,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
                                 </td>
                             </tr>
                         </tfoot>
@@ -89,6 +87,8 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
     <script src="~/AngularControllers/Services/ReportService.js"></script>
     <script src="~/AngularControllers/Controllers/Report/ReportedAssetsController.js"></script>
 }

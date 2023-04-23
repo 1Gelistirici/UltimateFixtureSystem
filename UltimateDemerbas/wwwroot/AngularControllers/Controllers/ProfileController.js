@@ -259,13 +259,15 @@
 
         //AddReport
         $scope.AddReport = function () {
-            $scope.AccessoryData.find(x => x.Id === $scope.AssignmentId).Report = true;
+            var item = $scope.AccessoryData.find(x => x.Id === $scope.AssignmentId)
+            item.Report = true;
 
             var parameter = {
                 ReportSubject: $scope.Pop.reportSubject,
                 ReportDetail: $scope.Pop.reportDetail,
                 ItemId: $scope.Pop.Id,
-                Id: $scope.AssignmentId
+                Id: $scope.AssignmentId,
+                ItemType: item.ItemType
             }
 
             ReportService.AddReport(parameter,

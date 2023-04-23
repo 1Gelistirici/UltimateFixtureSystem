@@ -8,7 +8,7 @@ namespace UltimateAPI.Entities
         public string ReportSubject { get; set; }
         public string ReportDetail { get; set; }
         public DateTime InsertDate { get; set; }
-        public ItemType ItemKind { get; set; }
+        public ItemType ItemType { get; set; }
         public int ItemId { get; set; }
         public string Comment { get; set; }
         public int Statu { get; set; }

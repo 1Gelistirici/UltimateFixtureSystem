@@ -58,7 +58,7 @@ namespace UltimateAPI.Manager
                                     report.ReportDetail = read["reportDetail"].ToString();
                                     report.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
-                                    report.ItemKind = (ItemType)Convert.ToInt32(read["itemKind"]);
+                                    report.ItemType = (ItemType)Convert.ToInt32(read["ItemType"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
                                     report.Statu = Convert.ToInt32(read["deleted"]);
@@ -116,7 +116,7 @@ namespace UltimateAPI.Manager
                                     report.ReportDetail = read["reportDetail"].ToString();
                                     report.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
-                                    report.ItemKind = (ItemType)Convert.ToInt32(read["itemKind"]);
+                                    report.ItemType = (ItemType)Convert.ToInt32(read["ItemType"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
                                     report.Statu = Convert.ToInt32(read["deleted"]);
@@ -181,33 +181,33 @@ namespace UltimateAPI.Manager
                                     report.ReportDetail = read["reportDetail"].ToString();
                                     report.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
-                                    report.ItemKind = (ItemType)Convert.ToInt32(read["itemKind"]);
+                                    report.ItemType = (ItemType)Convert.ToInt32(read["ItemType"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
                                     report.Statu = Convert.ToInt32(read["deleted"]);
                                     report.Comment = read["comment"].ToString();
 
-                                    if (report.ItemKind == ItemType.Accessory)
+                                    if (report.ItemType == ItemType.Accessory)
                                     {
                                         report.AccessoryItem = (accessories.Find(x => x.Id == report.ItemId));
                                     }
-                                    else if (report.ItemKind == ItemType.Bill)
+                                    else if (report.ItemType == ItemType.Bill)
                                     {
                                         report.BillItem = (bills.Find(x => x.Id == report.ItemId));
                                     }
-                                    else if (report.ItemKind == ItemType.Companent)
+                                    else if (report.ItemType == ItemType.Companent)
                                     {
                                         report.ComponentItem = (components.Find(x => x.Id == report.ItemId));
                                     }
-                                    else if (report.ItemKind == ItemType.Fixture)
+                                    else if (report.ItemType == ItemType.Fixture)
                                     {
                                         report.FixtureItem = (fixtures.Find(x => x.Id == report.ItemId));
                                     }
-                                    else if (report.ItemKind == ItemType.Licence)
+                                    else if (report.ItemType == ItemType.Licence)
                                     {
                                         report.LicenceItem = (licenses.Find(x => x.Id == report.ItemId));
                                     }
-                                    else if (report.ItemKind == ItemType.Toner)
+                                    else if (report.ItemType == ItemType.Toner)
                                     {
                                         report.TonerItem = (toners.Find(x => x.Id == report.ItemId));
                                     }
@@ -262,7 +262,7 @@ namespace UltimateAPI.Manager
                                     report.ReportDetail = read["reportDetail"].ToString();
                                     report.InsertDate = Convert.ToDateTime(read["insertDate"]);
                                     report.ItemId = Convert.ToInt32(read["itemId"]);
-                                    report.ItemKind = (ItemType)Convert.ToInt32(read["itemKind"]);
+                                    report.ItemType = (ItemType)Convert.ToInt32(read["ItemType"]);
                                     report.ReportSubject = read["reportSubject"].ToString();
                                     report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
                                     report.Statu = Convert.ToInt32(read["deleted"]);
@@ -309,7 +309,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@reportDetail", parameter.ReportDetail);
                         sqlCommand.Parameters.AddWithValue("@insertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@itemId", parameter.ItemId);
-                        sqlCommand.Parameters.AddWithValue("@itemKind", parameter.ItemKind);
+                        sqlCommand.Parameters.AddWithValue("@ItemType", parameter.ItemType);
                         sqlCommand.Parameters.AddWithValue("@reportSubject", parameter.ReportSubject);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
