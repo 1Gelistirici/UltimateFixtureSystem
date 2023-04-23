@@ -26,6 +26,12 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
+        public IActionResult ReportedAssets()
+        {
+            return View();
+        }
+
+        [CheckAuthorize]
         public IActionResult PassiveReports()
         {
             return View();

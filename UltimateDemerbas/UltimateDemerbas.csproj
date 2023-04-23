@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\AngularControllers\Controllers\Report\" />
     <Folder Include="wwwroot\ThirdParty\" />
   </ItemGroup>
 
