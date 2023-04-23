@@ -43,6 +43,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetReportedAssetsByCompany()
+        {
+            var result = report.GetReportedAssetsByCompany(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult GetReportsByStatu([FromBody] ReportStatu reportStatu)
         {
             var result = report.GetReportsByStatu(reportStatu);

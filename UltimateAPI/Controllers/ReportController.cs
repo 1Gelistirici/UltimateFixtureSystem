@@ -23,6 +23,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetReportedAssetsByCompany")]
+        public IActionResult GetReportedAssetsByCompany(ReferansParameter parameter)
+        {
+            var result = ReportCallManager.Instance.GetReportedAssetsByCompany(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpGet("GetPassiveReports")]
         public IActionResult GetPassiveReports()
         {

@@ -37,6 +37,11 @@ namespace UltimateAPI.CallManager
         {
             return ReportManager.Instance.GetReportsByStatu(reportStatu);
         }
+        
+        public UltimateResult<List<Report>> GetReportedAssetsByCompany(ReferansParameter parameter)
+        {
+            return ReportManager.Instance.GetReportedAssetsByCompany(parameter);
+        }
 
         public UltimateResult<List<Report>> GetPassiveReports()
         {

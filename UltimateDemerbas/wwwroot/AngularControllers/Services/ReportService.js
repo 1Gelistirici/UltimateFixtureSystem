@@ -41,5 +41,13 @@
                 }, error);
         };
 
+        this.GetReportedAssetsByCompany = function (success, error) {
+            $http.post('/Report/GetReportedAssetsByCompany').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

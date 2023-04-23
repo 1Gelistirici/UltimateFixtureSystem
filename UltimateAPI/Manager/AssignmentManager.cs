@@ -41,8 +41,6 @@ namespace UltimateAPI.Manager
             {
                 using (sqlConnection = Global.GetSqlConnection())
                 {
-                    ConnectionManager.Instance.SqlConnect(sqlConnection);
-
                     List<Accessory> accessories = AccessoryManager.Instance.GetAccessories().Data;
                     List<Bill> bills = BillManager.Instance.GetBills().Data;
                     List<Component> components = ComponentManager.Instance.GetComponents().Data;
@@ -50,6 +48,8 @@ namespace UltimateAPI.Manager
                     List<Toner> toners = TonerManager.Instance.GetToners().Data;
                     List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data;
 
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+                
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
@@ -96,10 +96,6 @@ namespace UltimateAPI.Manager
                                     else if (assignment.ItemType == ItemType.Toner)
                                     {
                                         assignment.Toners = (toners.Find(x => x.Id == assignment.ItemId));
-                                    }
-                                    else
-                                    {
-                                        continue;
                                     }
 
                                     assignments.Add(assignment);

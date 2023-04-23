@@ -1,53 +1,94 @@
-﻿@{
-    ViewData["Title"] = "Report";
+﻿
+@{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-controller="ReportController">
+<div ng-controller="ReportedAssetsController">
 
-    <div ng-repeat="_ in Reports">
-        <div class="col-md-4">
-            <!-- BEGIN WIDGET THUMB -->
-            <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered" style="height:200px;">
-                <div>
-                    <span class="widget-thumb-heading">{{_.User.Name}}&nbsp;{{_.User.Surname}}</span>
-                    <span class="widget-thumb-heading pull-right">{{_.InsertDate}}</span>
+    <!--Header-->
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Component Models
+                </span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided" data-toggle="buttons">
+                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
+                        Add Component Model
+                    </a>
                 </div>
-                <br />
-                <br />
-                <div class="widget-thumb-wrap">
-                    <i class="widget-thumb-icon bg-green icon-bulb" ng-if="!_.DiffDate"></i>
-                    <i class="widget-thumb-icon bg-red icon-bulb" ng-if="_.DiffDate"></i>
-                    <div class="widget-thumb-body">
-                        <span class="widget-thumb-subtitle">
-                            {{_.ReportSubject}}
-                        </span>
-                        <span>{{_.ReportDetail}}</span>
-                    </div>
-                </div>
-                <div class="pull-right">
-                    <br />
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Conclude" ng-click="OpenPopup(_);">Conclude</button>
+
+            </div>
+        </div>
+
+        <div ng-show="RegisterCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                        <colgroup>
+                            <col />
+                            <col />
+                        </colgroup>
+
+                        <tbody>
+                            <tr ng-repeat="_ in $data">
+                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <div class="col-md-9">
+                                        <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="btn-group absoluteitem">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover">
+                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateComponentModelConfirm(_);">
+                                                    <i class="fa fa-edit "></i>Update
+                                                </a>
+                                            </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteComponentModelConfirm(_);">
+                                                    <i class="fa fa-trash"></i>Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="no-margin no-padding">
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
-            <!-- END WIDGET THUMB -->
         </div>
     </div>
 
-    <partial name="~/Views/Shared/Partials/Report/ConcludePopup.cshtml" />
 </div>
 
 
 @section PageScript
     {
-<script src="~/AngularControllers/Services/UserService.js"></script>
-<script src="~/AngularControllers/Services/AssignmentService.js"></script>
-<script src="~/AngularControllers/Services/AccessoryService.js"></script>
-<script src="~/AngularControllers/Services/CategoryService.js"></script>
-<script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
-
-<script src="~/AngularControllers/Services/EnumService.js"></script>
-
-<script src="~/AngularControllers/Services/ReportService.js"></script>
-<script src="~/AngularControllers/Controllers/ReportController.js"></script>
+    <script src="~/AngularControllers/Services/ReportService.js"></script>
+    <script src="~/AngularControllers/Controllers/Report/ReportedAssetsController.js"></script>
 }
