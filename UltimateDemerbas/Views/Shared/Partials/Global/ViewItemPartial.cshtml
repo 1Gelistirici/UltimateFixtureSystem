@@ -1,0 +1,40 @@
+﻿<div id="viewItemPartial" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 500px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">Assignment - {{Pop.UserName}}</h4>
+            </div>
+            <div class="scroller" style="height:380px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="AssignmentForm">
+                        <div class="col-md-9">
+                            <span>User</span>
+                            <select class="form-control" ng-model="Pop.user">
+                                <option ng-repeat="x in Users" value="{{x.Id}}">{{x.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-9" style="margin-top:2%;">
+                            <span>Piece</span>
+                            <input ng-model="Pop.piece" style="font-size: 14px;" min="0" max="{{piece}}" type="number" class="form-control">
+                        </div>
+                        <div class="col-md-9" style="margin-top:2%;">
+                            <span>ReCall Active</span>
+                            <input ng-model="Pop.checkRecallDate" type="checkbox" class="form-control">
+                        </div>
+                        <div class="col-md-9" style="margin-top:2%;">
+                            <span>ReCall Date</span>
+                            <input ng-model="Pop.recallDate" ng-disabled="Pop.checkRecallDate!==true" style="font-size: 14px;" type="date" class="form-control col-md-7">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer" style="margin-top:50%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn red" ng-disabled="AssignmentForm.$invalid || Pop.piece<=0 || Pop.user==null " ng-click="Assign()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

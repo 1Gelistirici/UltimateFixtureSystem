@@ -91,18 +91,23 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
+                                            <li class="ms-hover" data-toggle="modal" data-target="#viewItemPartial" ng-click="ViewItem(_)">
+                                                <a class="addphone" title="View">
+                                                    <i class="fa fa-share-square-o"></i>View
+                                                </a>
+                                            </li>
                                             <li class="ms-hover" ng-show="_.StatuNo==1" data-toggle="modal" data-target="#FixtureAssignmentPopup">
                                                 <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
                                                     <i class="fa fa-eject"></i>Assign
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateFixtureConfirm(_)">
+                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateFixtureConfirm(_)">
                                                     <i class="fa fa-edit"></i>Update
                                                 </a>
                                             </li>
                                             <li class="ms-hover">
-                                                <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteFixtureConfirm(_)">
+                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteFixtureConfirm(_)">
                                                     <i class="fa fa-trash"></i>Delete
                                                 </a>
                                             </li>
@@ -126,6 +131,7 @@
             </div>
         </div>
     </div>
+    <partial name="~/Views/Shared/Partials/Global/ViewItemPartial.cshtml" />
     <partial name="~/Views/Shared/Partials/Fixture/AddFixturePopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Fixture/FixtureAssignmentPartial.cshtml" />
 </div>
