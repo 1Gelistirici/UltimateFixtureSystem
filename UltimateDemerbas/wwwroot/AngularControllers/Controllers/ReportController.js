@@ -21,9 +21,6 @@
                             $scope.Reports[index].DiffDate = diffDays > 30;
                         });
 
-
-                        console.log($scope.Reports);
-
                     } else {
                         toaster.error("GetReports", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

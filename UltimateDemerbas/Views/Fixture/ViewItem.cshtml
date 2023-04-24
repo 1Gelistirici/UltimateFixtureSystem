@@ -1,149 +1,284 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-controller="FixtureController">
+<div ng-controller="ViewItemController">
 
-    <!--Header-->
-    <div class="portlet light portlet-fit bordered col-md-12">
-        <div class="portlet-title">
-            <div class="caption font-dark-gray" style="color:#678098">
-                <i class="fa fa-laptop font-dark-gray" style="color:#678098"></i>
-                <span class="caption-subject bold uppercase">
-                    Fixtures
-                </span>
-            </div>
-            <div class="actions">
-                <div class="btn-group btn-group-devided" data-toggle="buttons">
-                    <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddFixturePopup" ng-click="openPopup();">
-                        Add Fixture
-                    </a>
-                </div>
 
-            </div>
-        </div>
-
-        <div ng-show="RegisterCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
-        </div>
-
-        <!--Table Body-->
-        <div class="portlet-body">
-            <div class="table-scrollable table-scrollable-borderless" ng-show="RegisterCount>0">
-                <div class="table-responsive">
-                    <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
-
-                        <colgroup>
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                        </colgroup>
-
-                        <tbody>
-                            <tr ng-repeat="_ in $data">
-
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
-                                    <div class="input-icon">
-                                        <input ng-model="_.Name" type="text" class="form-control">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Begin: life time stats -->
+            <div class="portlet light portlet-fit portlet-datatable bordered">
+                @*<div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-settings font-dark"></i>
+                            <span class="caption-subject font-dark sbold uppercase">
+                                Order #12313232
+                                <span class="hidden-xs">| Dec 27, 2013 7:16:25 </span>
+                            </span>
+                        </div>
+                    </div>*@
+                <div class="portlet-body">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs nav-tabs-lg">
+                            <li class="active">
+                                <a href="#tab_1" data-toggle="tab"> Details </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="portlet yellow-crusta box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>Item Details
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Name: </div>
+                                                    <div class="col-md-7 value">
+                                                        {{Item.Name}}
+                                                        @*<span class="label label-info label-sm"> Email confirmation was sent </span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Inser Date: </div>
+                                                    <div class="col-md-7 value"> {{Item.LoginSystem}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Statu: </div>
+                                                    <div class="col-md-7 value">
+                                                        <span class="label label-success"> Closed </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Model: </div>
+                                                    <div class="col-md-7 value"> {{Item.Model.Name}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Category: </div>
+                                                    <div class="col-md-7 value"> {{Item.Category.Name}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Bill: </div>
+                                                    <div class="col-md-7 value"> {{Item.Bill.BillNo}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Asigned User: </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.Name}} {{Item.AsignedUser.Surname}} ({{Item.AsignedUser.UserName}})</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </td>
-
-                                <td data-title="TableCol.Model" filter="{ Piece: 'text'}" sortable="'Piece'">
-                                    <select class="form-control" ng-model="_.ModelNo">
-                                        <option ng-repeat="x in FixtureModels" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
-                                </td>
-
-                                <td data-title="TableCol.Category" filter="{ CategoryNo: 'text'}" sortable="'CategoryNo'">
-                                    <select class="form-control" ng-model="_.CategoryNo">
-                                        <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
-                                </td>
-
-                                <td data-title="TableCol.Bill" filter="{ BillNo: 'number'}" sortable="'BillNo'">
-                                    <select class="form-control" ng-model="_.BillNo" disabled>
-                                        <option ng-repeat="x in Bills" type="number" ng-value="{{x.Id}}">{{x.BillNo}}</option>
-                                    </select>
-                                </td>
-
-                                <td data-title="TableCol.Statu" filter="{ StatuNo: 'select'}" sortable="'StatuNo'" filter-data="ItemStatusFilter">
-                                    <select class="form-control" ng-disabled="_.StatuNo===3" ng-change="_.Changed=true" ng-model="_.StatuNo">
-                                        <option ng-repeat="x in ItemStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
-                                    </select>
-                                </td>
-
-                                <td data-title="TableCol.User" filter="{ User: 'text'}" sortable="'User'">
-                                    <select class="form-control" ng-model="_.UserNo" ng-show="_.UserNo>0" disabled>
-                                        <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
-                                    </select>
-                                </td>
-
-                                <td>
-                                    <div class="btn-group absoluteitem">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover" data-toggle="modal" data-target="#viewItemPartial" ng-click="ViewItem(_)">
-                                                <a class="addphone" title="View">
-                                                    <i class="fa fa-share-square-o"></i>View
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover" ng-show="_.StatuNo==1" data-toggle="modal" data-target="#FixtureAssignmentPopup">
-                                                <a class="viewuserbtn" data-toggle="modal" ng-click="SetAssign(_)">
-                                                    <i class="fa fa-eject"></i>Assign
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover">
-                                                <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="UpdateFixtureConfirm(_)">
-                                                    <i class="fa fa-edit"></i>Update
-                                                </a>
-                                            </li>
-                                            <li class="ms-hover">
-                                                <a class="addphone" title="Delete" data-toggle="modal" ng-click="DeleteFixtureConfirm(_)">
-                                                    <i class="fa fa-trash"></i>Delete
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="portlet blue-hoki box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>Customer Information
+                                                </div>
+                                                <div class="actions">
+                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Customer Name: </div>
+                                                    <div class="col-md-7 value"> Jhon Doe </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Email: </div>
+                                                    <div class="col-md-7 value"> jhon@doe.com </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> State: </div>
+                                                    <div class="col-md-7 value"> New York </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> Phone Number: </div>
+                                                    <div class="col-md-7 value"> 12234389 </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
-                                </td>
-                            </tr>
-
-                        </tfoot>
-
-                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="portlet green-meadow box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>Billing Address
+                                                </div>
+                                                <div class="actions">
+                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-12 value">
+                                                        Jhon Done
+                                                        <br> #24 Park Avenue Str
+                                                        <br> New York
+                                                        <br> Connecticut, 23456 New York
+                                                        <br> United States
+                                                        <br> T: 123123232
+                                                        <br> F: 231231232
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="portlet red-sunglo box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>Shipping Address
+                                                </div>
+                                                <div class="actions">
+                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-12 value">
+                                                        Jhon Done
+                                                        <br> #24 Park Avenue Str
+                                                        <br> New York
+                                                        <br> Connecticut, 23456 New York
+                                                        <br> United States
+                                                        <br> T: 123123232
+                                                        <br> F: 231231232
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="portlet grey-cascade box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>Shopping Cart
+                                                </div>
+                                                <div class="actions">
+                                                    <a href="javascript:;" class="btn btn-default btn-sm">
+                                                        <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th> Product </th>
+                                                                <th> Item Status </th>
+                                                                <th> Original Price </th>
+                                                                <th> Price </th>
+                                                                <th> Quantity </th>
+                                                                <th> Tax Amount </th>
+                                                                <th> Tax Percent </th>
+                                                                <th> Discount Amount </th>
+                                                                <th> Total </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label label-sm label-success"> Available
+                                                                </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 2 </td>
+                                                                <td> 2.00$ </td>
+                                                                <td> 4% </td>
+                                                                <td> 0.00$ </td>
+                                                                <td> 691.00$ </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label label-sm label-success"> Available
+                                                                </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 2 </td>
+                                                                <td> 2.00$ </td>
+                                                                <td> 4% </td>
+                                                                <td> 0.00$ </td>
+                                                                <td> 691.00$ </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label label-sm label-success"> Available
+                                                                </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 2 </td>
+                                                                <td> 2.00$ </td>
+                                                                <td> 4% </td>
+                                                                <td> 0.00$ </td>
+                                                                <td> 691.00$ </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label label-sm label-success"> Available
+                                                                </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 345.50$ </td>
+                                                                <td> 2 </td>
+                                                                <td> 2.00$ </td>
+                                                                <td> 4% </td>
+                                                                <td> 0.00$ </td>
+                                                                <td> 691.00$ </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- End: life time stats -->
         </div>
     </div>
-    <partial name="~/Views/Shared/Partials/Global/ViewItemPartial.cshtml" />
-    <partial name="~/Views/Shared/Partials/Fixture/AddFixturePopup.cshtml" />
-    <partial name="~/Views/Shared/Partials/Fixture/FixtureAssignmentPartial.cshtml" />
+
+
 </div>
+
+
 
 @section PageScript
     {
-<script src="~/AngularControllers/Services/EnumService.js"></script>
-<script src="~/AngularControllers/Services/AssignmentService.js"></script>
-<script src="~/AngularControllers/Services/FixtureService.js"></script>
-<script src="~/AngularControllers/Services/FixtureModelService.js"></script>
-<script src="~/AngularControllers/Services/BillService.js"></script>
-<script src="~/AngularControllers/Services/CategoryService.js"></script>
-<script src="~/AngularControllers/Services/AssignmentService.js"></script>
-<script src="~/AngularControllers/Services/UserService.js"></script>
-<script src="~/AngularControllers/Controllers/FixtureController.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/FixtureService.js"></script>
+    <script src="~/AngularControllers/Controllers/ViewItemController.js"></script>
 }

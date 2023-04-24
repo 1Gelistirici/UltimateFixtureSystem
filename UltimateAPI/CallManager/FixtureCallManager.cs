@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UltimateAPI.Entities;
 using UltimateAPI.Manager;
 
@@ -34,7 +35,24 @@ namespace UltimateAPI.CallManager
         }
         public UltimateResult<Fixture> GetFixture(Fixture parameter)
         {
-            return FixtureManager.Instance.GetFixture(parameter);
+            UltimateResult<Fixture> result = FixtureManager.Instance.GetFixture(parameter);
+
+            if (result.IsSuccess)
+            {
+                if (result.Data.BillNo > 0)
+                {
+                    BillCallManager billCallManager = new BillCallManager();
+                    result.Data.Bill = billCallManager.GetBills().Data.Find(x => x.Id == result.Data.BillNo);
+                }
+
+                CategoryCallManager categoryCallManager = new CategoryCallManager();
+                result.Data.Category = categoryCallManager.GetCategories().Data.Find(x => x.Id == result.Data.CategoryNo);
+
+                FixtureModelCallManager fixtureModelCallManager = new FixtureModelCallManager();
+                result.Data.Model = fixtureModelCallManager.GetFixtureModels().Data.Find(x => x.Id == result.Data.ModelNo);
+            }
+
+            return result;
         }
 
         public UltimateResult<List<Fixture>> GetFixtureByUser(Fixture parameter)
