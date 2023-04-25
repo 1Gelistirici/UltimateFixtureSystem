@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UltimateAPI.Entities;
 using UltimateAPI.Manager;
 
@@ -50,6 +49,8 @@ namespace UltimateAPI.CallManager
 
                 FixtureModelCallManager fixtureModelCallManager = new FixtureModelCallManager();
                 result.Data.Model = fixtureModelCallManager.GetFixtureModels().Data.Find(x => x.Id == result.Data.ModelNo);
+
+                result.Data.ItemStatu = EnumCallManager.Instance.GetItemStatuTypes().Data.Find(x => x.Value == result.Data.StatuNo);
             }
 
             return result;

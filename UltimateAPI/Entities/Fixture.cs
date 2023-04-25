@@ -1,4 +1,6 @@
 ﻿using System;
+using UltimateAPI.Entities.Enums;
+using UltimateDemerbas.Models;
 
 namespace UltimateAPI.Entities
 {
@@ -15,5 +17,6 @@ namespace UltimateAPI.Entities
         public int UserNo { get; set; }
         public Double Price { get; set; }
         public int CompanyRefId { get; set; }
+        public TextValue ItemStatu { get; set; }
     }
 }
