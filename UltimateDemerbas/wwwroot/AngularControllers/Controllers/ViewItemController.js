@@ -1,5 +1,5 @@
-﻿MainApp.controller("ViewItemController", ["$scope", "toaster", "FixtureService", "UserService",
-    function ($scope, toaster, fixtureService, userService) {
+﻿MainApp.controller("ViewItemController", ["$scope", "toaster", "FixtureService", "UserService", "ItemHistoryService",
+    function ($scope, toaster, fixtureService, userService, itemHistoryService) {
 
         //#region Parameters
         $scope.Item = [];
@@ -47,6 +47,20 @@
         }
         $scope.GetUsers();
 
+        $scope.GetUsers = function () {
+            itemHistoryService.GetItemHistoryByCompany(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log("his", result.Data);
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
+                });
+        }
+        $scope.GetItemHistoryByCompany();
         //#endregion
 
 
