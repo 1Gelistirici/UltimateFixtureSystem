@@ -42,6 +42,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult DeleteAssignment([FromBody] Assignment parameter)
         {
+            parameter.AppointerId = WorkingUser;
             var result = assignment.DeleteAssignment(parameter);
             return Content(result.Result);
         }
@@ -56,6 +57,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult UpdateAssignment([FromBody] Assignment parameter)
         {
+            parameter.AppointerId = WorkingUser;
             var result = assignment.UpdateAssignment(parameter);
             return Content(result.Result);
         }

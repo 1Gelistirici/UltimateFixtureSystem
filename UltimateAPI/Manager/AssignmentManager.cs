@@ -30,6 +30,7 @@ namespace UltimateAPI.Manager
 
         }
 
+
         public UltimateResult<List<Assignment>> GetAssignments(Assignment parameter)
         {
             List<Assignment> assignments = new List<Assignment>();
@@ -49,7 +50,7 @@ namespace UltimateAPI.Manager
                     List<Fixture> fixtures = FixtureManager.Instance.GetFixtures().Data;
 
                     ConnectionManager.Instance.SqlConnect(sqlConnection);
-                
+
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
@@ -148,6 +149,18 @@ namespace UltimateAPI.Manager
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            ItemHistory itemHistory = new ItemHistory();
+                            itemHistory.ItemRefId = parameter.ItemId;
+                            itemHistory.ItemType = parameter.ItemType;
+                            itemHistory.ProcessType = ProcessType.Assignment;
+                            itemHistory.TransactionUserRefId = parameter.AppointerId;
+                            itemHistory.CommittedUserRefId = parameter.UserId;
+
+                            ItemHistoryCallManager.Instance.AddItemHistory(itemHistory);
+                        }
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
@@ -213,6 +226,15 @@ namespace UltimateAPI.Manager
                                 fixture.StatuNo = (int)ItemStatu.Ready;
                                 FixtureCallManager.Instance.UpdateFixture(fixture);
                             }
+
+
+                            ItemHistory itemHistory = new ItemHistory();
+                            itemHistory.ItemRefId = parameter.ItemId;
+                            itemHistory.ItemType = parameter.ItemType;
+                            itemHistory.ProcessType = ProcessType.Remove;
+                            itemHistory.TransactionUserRefId = parameter.AppointerId;
+
+                            ItemHistoryCallManager.Instance.AddItemHistory(itemHistory);
                         }
 
                     }
@@ -257,6 +279,18 @@ namespace UltimateAPI.Manager
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            ItemHistory itemHistory = new ItemHistory();
+                            itemHistory.ItemRefId = parameter.ItemId;
+                            itemHistory.ItemType = parameter.ItemType;
+                            itemHistory.ProcessType = ProcessType.Update;
+                            itemHistory.TransactionUserRefId = parameter.AppointerId;
+
+                            ItemHistoryCallManager.Instance.AddItemHistory(itemHistory);
+                        }
+
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }

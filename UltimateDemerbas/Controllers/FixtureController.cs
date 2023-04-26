@@ -68,6 +68,7 @@ namespace UltimateDemerbas.Controllers
         [CheckAuthorize]
         public IActionResult AddFixture([FromBody] Fixture parameter)
         {
+            parameter.UserId = WorkingUser;
             parameter.CompanyRefId = WorkingCompany;
             var result = fixture.AddFixture(parameter);
 
@@ -86,6 +87,7 @@ namespace UltimateDemerbas.Controllers
         [CheckAuthorize]
         public IActionResult DeleteFixture([FromBody] Fixture parameter)
         {
+            parameter.UserId = WorkingCompany;
             var result = fixture.DeleteFixture(parameter);
 
             return Content(result.Result);

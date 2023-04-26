@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
 
@@ -223,6 +224,17 @@ namespace UltimateAPI.Manager
                         sqlConnection.Close();
                         sqlCommand.Dispose();
 
+                        if (result.IsSuccess)
+                        {
+                            ItemHistory itemHistory = new ItemHistory();
+                            itemHistory.ItemRefId = parameter.Id;
+                            itemHistory.ItemType = ItemType.Fixture;
+                            itemHistory.ProcessType = ProcessType.Remove;
+                            itemHistory.TransactionUserRefId = parameter.UserId;
+
+                            ItemHistoryCallManager.Instance.AddItemHistory(itemHistory);
+                        }
+
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
@@ -269,6 +281,17 @@ namespace UltimateAPI.Manager
                         result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            ItemHistory itemHistory = new ItemHistory();
+                            itemHistory.ItemRefId = result.ReturnId;
+                            itemHistory.ItemType = ItemType.Fixture;
+                            itemHistory.ProcessType = ProcessType.Insert;
+                            itemHistory.TransactionUserRefId = parameter.UserId;
+
+                            ItemHistoryCallManager.Instance.AddItemHistory(itemHistory);
+                        }
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
