@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
 using UltimateAPI.Manager;
