@@ -40,6 +40,7 @@ namespace UltimateAPI.Manager
                                     itemHistory.ProcessType = (ProcessType)Convert.ToInt32(read["ProcessType"]);
                                     itemHistory.TransactionUserRefId = Convert.ToInt32(read["TransactionUserRefId"]);
                                     itemHistory.CommittedUserRefId = Convert.ToInt32(read["CommittedUserRefId"]);
+                                    itemHistory.InsertDate = Convert.ToDateTime(read["InsertDate"]);
 
                                     datas.Add(itemHistory);
                                 }
