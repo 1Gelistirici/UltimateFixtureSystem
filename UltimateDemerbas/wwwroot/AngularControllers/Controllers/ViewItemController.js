@@ -47,7 +47,7 @@
         }
         $scope.GetUsers();
 
-        $scope.GetUsers = function () {
+        $scope.GetItemHistoryByCompany = function () {
             itemHistoryService.GetItemHistoryByCompany(
                 function success(result) {
                     if (result.IsSuccess) {

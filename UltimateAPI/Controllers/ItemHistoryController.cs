@@ -16,7 +16,7 @@ namespace UltimateAPI.Controllers
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message));
         }
 
-        [HttpGet("GetItemHistoryByCompany")]
+        [HttpPost("GetItemHistoryByCompany")]
         public IActionResult GetItemHistoryByCompany(ReferansParameter parameter)
         {
             UltimateResult<List<ItemHistory>> result = ItemHistoryCallManager.Instance.GetItemHistoryByCompany(parameter);

@@ -78,7 +78,7 @@ namespace UltimateAPI.Manager
                     {
                         ConnectionManager.Instance.CmdOperations();
 
-                        sqlCommand.Parameters.AddWithValue("@modelName", parameter.ItemRefId);
+                        sqlCommand.Parameters.AddWithValue("@ItemRefId", parameter.ItemRefId);
                         sqlCommand.Parameters.AddWithValue("@ItemType", parameter.ItemType);
                         sqlCommand.Parameters.AddWithValue("@ProcessType", parameter.ProcessType);
                         sqlCommand.Parameters.AddWithValue("@TransactionUserRefId", parameter.TransactionUserRefId);
