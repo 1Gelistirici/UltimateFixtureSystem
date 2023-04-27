@@ -462,10 +462,6 @@ namespace UltimateAPI.Manager
                                     {
                                         assignment.Toners = (toners.Find(x => x.Id == assignment.ItemId));
                                     }
-                                    else
-                                    {
-                                        continue;
-                                    }
 
                                     assignments.Add(assignment);
                                 }

@@ -53,6 +53,11 @@ namespace UltimateAPI.CallManager
             return EnumManager.Instance.GetProductTypes();
         }
 
+        public UltimateResult<List<TextValue>> GetProcessTypes()
+        {
+            return EnumManager.Instance.GetProcessTypes();
+        }
+
         public UltimateResult<List<TextValue>> GetDepartments()
         {
             return EnumManager.Instance.GetDepartments();

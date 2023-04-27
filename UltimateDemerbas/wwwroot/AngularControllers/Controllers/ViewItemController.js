@@ -1,9 +1,19 @@
-﻿MainApp.controller("ViewItemController", ["$scope", "toaster", "FixtureService", "UserService", "ItemHistoryService",
-    function ($scope, toaster, fixtureService, userService, itemHistoryService) {
+﻿MainApp.controller("ViewItemController", ["$scope", "toaster", "FixtureService", "UserService", "ItemHistoryService", "NgTableParams",
+    function ($scope, toaster, fixtureService, userService, itemHistoryService, NgTableParams) {
 
         //#region Parameters
         $scope.Item = [];
+        $scope.registerCount = 0;
 
+        $scope.TableCol = {
+            Name: "Name",
+            Surname: "Surname",
+            Gender: "Gender",
+            Title: "Title",
+            Telephone: "Telephone",
+            MailAdress: "Mail",
+            Lock: "Lock"
+        };
         //#endregion
 
 
@@ -51,7 +61,43 @@
             itemHistoryService.GetItemHistoryByCompany(
                 function success(result) {
                     if (result.IsSuccess) {
+                        $scope.itemHistory = result.Data;
+
                         console.log("his", result.Data);
+
+
+                        $.each($scope.itemHistory, function (index, value) {
+                            value.InsertDate = formatDate(new Date(value.InsertDate));
+
+
+                            if (value.Component !== null) {
+                                value.Item = value.Component;
+                            }
+                            else if (value.Bill !== null) {
+                                value.Item = value.Bill;
+                            }
+                            else if (value.Licence !== null) {
+                                value.Item = value.Licence;
+                            }
+                            else if (value.Toner !== null) {
+                                value.Item = value.Toner;
+                            }
+                            else if (value.Fixture !== null) {
+                                value.Item = value.Fixture;
+                            }
+                            else if (value.Accessory !== null) {
+                                value.Item = value.Accessory
+                            }
+                        });
+
+                        $scope.TableParams = new NgTableParams({
+                            sorting: { name: 'adc' },
+                            count: 20
+                        }, {
+                            counts: [10, 20, 50],
+                            dataset: $scope.itemHistory
+                        });
+                        $scope.registerCount = $scope.itemHistory.length;
                     }
                     else {
                         toaster.error("Başarısız", result.Message);

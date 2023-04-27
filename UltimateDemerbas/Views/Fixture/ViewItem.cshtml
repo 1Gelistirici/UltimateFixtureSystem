@@ -102,6 +102,20 @@
                                                     <div class="col-md-5 name"> Mail Adress: </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.MailAdress}} </div>
                                                 </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -171,88 +185,38 @@
                                                 <div class="caption">
                                                     <i class="fa fa-cogs"></i>Item History
                                                 </div>
-                                                <div class="actions">
-                                                    <a href="javascript:;" class="btn btn-default btn-sm">
-                                                        <i class="fa fa-pencil"></i> Edit
-                                                    </a>
-                                                </div>
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-hover table-bordered table-striped">
+                                                    <table class="table table-hover table-bordered table-striped" ng-table="TableParams">
                                                         <thead>
                                                             <tr>
-                                                                <th> Product </th>
-                                                                <th> Item Status </th>
-                                                                <th> Original Price </th>
-                                                                <th> Price </th>
-                                                                <th> Quantity </th>
-                                                                <th> Tax Amount </th>
-                                                                <th> Tax Percent </th>
-                                                                <th> Discount Amount </th>
-                                                                <th> Total </th>
+                                                                <th> ProcessTypeTextValue </th>
+                                                                <th> TransactionUser </th>
+                                                                <th> CommittedUser </th>
+                                                                <th> Date </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
+                                                            <tr ng-repeat="_ in $data">
                                                                 <td>
-                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                    <span>{{_.ProcessTypeTextValue.Text}}</span>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="label label-sm label-success"> Available
-                                                                </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 2 </td>
-                                                                <td> 2.00$ </td>
-                                                                <td> 4% </td>
-                                                                <td> 0.00$ </td>
-                                                                <td> 691.00$ </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                    <span>{{_.TransactionUser.Name}} {{_.TransactionUser.Surname}} ({{_.TransactionUser.UserName}}) </span>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="label label-sm label-success"> Available
-                                                                </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 2 </td>
-                                                                <td> 2.00$ </td>
-                                                                <td> 4% </td>
-                                                                <td> 0.00$ </td>
-                                                                <td> 691.00$ </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="javascript:;"> Product 1 </a>
+                                                                    <span>{{_.CommittedUser.Name}} {{_.CommittedUser.Surname}} ({{_.CommittedUser.UserName}})</span>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="label label-sm label-success"> Available
+                                                                    <span>{{_.InsertDate}}</span>
                                                                 </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 2 </td>
-                                                                <td> 2.00$ </td>
-                                                                <td> 4% </td>
-                                                                <td> 0.00$ </td>
-                                                                <td> 691.00$ </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="javascript:;"> Product 1 </a>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="label label-sm label-success"> Available
-                                                                </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 345.50$ </td>
-                                                                <td> 2 </td>
-                                                                <td> 2.00$ </td>
-                                                                <td> 4% </td>
-                                                                <td> 0.00$ </td>
-                                                                <td> 691.00$ </td>
+
+
+
+
+
+
                                                             </tr>
                                                         </tbody>
                                                     </table>

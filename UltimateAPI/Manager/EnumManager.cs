@@ -162,6 +162,32 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<TextValue>> GetProcessTypes()
+        {
+            UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
+            List<TextValue> typeList = new List<TextValue>();
+
+            try
+            {
+                List<ProcessType> datas = Enum.GetValues(typeof(ProcessType)).Cast<ProcessType>().ToList();
+                foreach (ProcessType logType in datas)
+                {
+                    typeList.Add(new TextValue { Text = EnumHelper.GetEnumDescription<ProcessType>(logType.ToString()), Value = (int)logType });
+                }
+
+                result.Data = typeList;
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+                result.Message = ex.ToString();
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<TextValue>> GetDepartments()
         {
             UltimateResult<List<TextValue>> result = new UltimateResult<List<TextValue>>();
