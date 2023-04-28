@@ -91,7 +91,7 @@
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li class="ms-hover" data-toggle="modal" data-target="#viewItemPartial" ng-click="ViewItem(_)">
+                                            <li class="ms-hover" ng-click="viewItem(_.Id);">
                                                 <a class="addphone" title="View">
                                                     <i class="fa fa-share-square-o"></i>View
                                                 </a>
@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-    
+
     <partial name="~/Views/Shared/Partials/Fixture/AddFixturePopup.cshtml" />
     <partial name="~/Views/Shared/Partials/Fixture/FixtureAssignmentPartial.cshtml" />
 </div>

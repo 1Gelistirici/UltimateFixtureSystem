@@ -4,6 +4,7 @@
         //#region Parameters
         $scope.Item = [];
         $scope.registerCount = 0;
+        var routeId = 0;
 
         $scope.TableCol = {
             Name: "Name",
@@ -20,7 +21,7 @@
         //#region GETS
         $scope.GetFixture = function () {
             var parameter = {
-                Id: 37
+                Id: routeId
             };
 
             fixtureService.GetFixture(parameter,
@@ -44,7 +45,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-                        console.log("Users", result.Data);
 
                         $scope.GetFixture();
                     }
@@ -55,16 +55,12 @@
                     toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
                 });
         }
-        $scope.GetUsers();
 
         $scope.GetItemHistoryByCompany = function () {
             itemHistoryService.GetItemHistoryByCompany(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.itemHistory = result.Data;
-
-                        console.log("his", result.Data);
-
 
                         $.each($scope.itemHistory, function (index, value) {
                             value.InsertDate = formatDate(new Date(value.InsertDate));
@@ -106,8 +102,18 @@
                     toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
                 });
         }
-        $scope.GetItemHistoryByCompany();
+
         //#endregion
 
+        $(document).ready(function () {
+             routeId = getParameterInUrlByName('id');
+            if (routeId > 0) {
+                $scope.GetUsers();
+                $scope.GetItemHistoryByCompany();
+            }
+        });
+
+
+       
 
     }]);

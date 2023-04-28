@@ -18,6 +18,11 @@
             $scope.Pop.recallDate = new Date();
         }
 
+        $scope.viewItem = function (id) {
+            var url = `/Fixture/ViewItem?id= + ${id}`;
+            window.open(url, "_blank");
+        }
+
         $scope.ItemStatus = [];
         $scope.ItemStatusFilter = [];
         //Enum ItemStatu
