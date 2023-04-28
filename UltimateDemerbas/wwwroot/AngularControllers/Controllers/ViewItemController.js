@@ -30,7 +30,6 @@
                         $scope.Item = result.Data;
                         $scope.Item.LoginSystem = formatDate(new Date($scope.Item.LoginSystem));
                         $scope.Item.AsignedUser = $scope.Users.find(x => x.Id === $scope.Item.UserNo);
-                        console.log("result.Data", result.Data);
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
@@ -106,7 +105,10 @@
         //#endregion
 
         $(document).ready(function () {
-             routeId = getParameterInUrlByName('id');
+            routeId = getParameterInUrlByName('id');
+            if (routeId !== undefined || routeId !== null)
+                routeId = parseInt(routeId);
+
             if (routeId > 0) {
                 $scope.GetUsers();
                 $scope.GetItemHistoryByCompany();
@@ -114,6 +116,6 @@
         });
 
 
-       
+
 
     }]);
