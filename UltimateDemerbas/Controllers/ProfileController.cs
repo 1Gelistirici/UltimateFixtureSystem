@@ -13,5 +13,11 @@ namespace UltimateDemerbas.Controllers
         {
             return View();
         }
+      
+        [CheckAuthorize]
+        public IActionResult DepozitFormPage()
+        {
+            return View();
+        }
     }
 }
