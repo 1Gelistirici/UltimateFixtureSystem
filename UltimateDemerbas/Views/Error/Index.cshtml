@@ -47,6 +47,7 @@
                 </p>
                 <p>
                     <a href="/Home/Index" class="btn red btn-outline"> Return home </a>
+                    <a class="btn green btn-outline" onclick="exit();"> Exit </a>
                     <br>
                 </p>
             </div>
@@ -63,6 +64,24 @@
     <script src="~/assets/global/scripts/app.min.js"></script>
 
     <script>
+
+        function exit() {
+            $.ajax({
+                url: "/User/RemoveActiveUserSession",
+                type: "GET",
+                success: function (result) {
+                    // işlem başarılı ise burada yapılacak işlemler
+                    console.log(result);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // işlem başarısız ise burada yapılacak işlemler
+                    console.log("Hata: " + errorThrown);
+                }
+            });
+
+            location.href = "/User/Login";
+        }
+
         $(document).ready(function () {
             $('#clickmewow').click(function () {
                 $('#radio1003').attr('checked', 'checked');
