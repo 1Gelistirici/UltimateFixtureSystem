@@ -1,5 +1,5 @@
-﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService", "ReportService", "toaster", "$confirm",
-    function ($scope, LogService, MessageService, TaskService, UserService, TonerService, ReportService, toaster, $confirm) {
+﻿MainApp.controller("HomeController", ["$scope", "LogService", "MessageService", "TaskService", "UserService", "TonerService", "ReportService", "AssignmentService", "toaster", "$confirm",
+    function ($scope, LogService, MessageService, TaskService, UserService, TonerService, ReportService, assignmentService, toaster, $confirm) {
 
         $scope.Pop = [];
         $scope.Messages = [];
@@ -7,6 +7,7 @@
         $scope.lateTask = 0;
         $scope.TonerAlert = 0;
         $scope.totalActiveReport = 0;
+        $scope.totalAsset = 0;
 
         $scope.Tasks = [];
         $scope.Pop.startDate = new Date();
@@ -133,6 +134,20 @@
                 });
         }
         $scope.GetUser();
+
+        $scope.GetAssignmentUser = function () {
+            assignmentService.GetAssignmentUser(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.totalAsset = result.Data.length;
+                    } else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı.");
+                });
+        }
+        $scope.GetAssignmentUser();
 
         //$scope.GetTask = function (Id) {
         //    TaskService.GetTask(Id,
