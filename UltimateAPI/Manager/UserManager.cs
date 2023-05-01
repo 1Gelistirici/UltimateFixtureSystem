@@ -46,7 +46,6 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        var a = Functions.Hashing.SHA_512_Encrypting(user.Password);
                         sqlCommand.Parameters.AddWithValue("@Company", user.Company);
                         sqlCommand.Parameters.AddWithValue("@UserName", user.UserName);
                         sqlCommand.Parameters.AddWithValue("@Password", Functions.Hashing.SHA_512_Encrypting(user.Password));
@@ -64,6 +63,7 @@ namespace UltimateAPI.Manager
                                     usr.Surname = read["surname"].ToString();
                                     usr.ImageName = read["ImageName"].ToString();
                                     usr.ImageUrl = read["imageUrl"].ToString();
+                                    usr.Company = read["company"].ToString();
                                     usr.CompanyId = Convert.ToInt32(read["companyId"]);
                                     usr.Lock = Convert.ToBoolean(read["lock"]);
 

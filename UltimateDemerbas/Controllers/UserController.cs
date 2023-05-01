@@ -12,7 +12,6 @@ using UltimateAPI.Entities.Enums;
 using System.IO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -92,17 +91,19 @@ namespace UltimateDemerbas.Controllers
 
             CookieOptions cookie = new CookieOptions();
             cookie.Expires = DateTime.Now.AddDays(1);
-            if (parameter.RememberMe && resultUser.IsSuccess)
+
+            if (resultUser.IsSuccess)
             {
+                if (parameter.RememberMe)
+                {
+                    Response.Cookies.Append("companyId", resultUser.Data.CompanyId.ToString(), cookie);
+                    Response.Cookies.Append("userId", resultUser.Data.Id.ToString(), cookie);
+                }
 
-                Response.Cookies.Append("companyId", resultUser.Data.CompanyId.ToString(), cookie);
-                Response.Cookies.Append("userId", resultUser.Data.Id.ToString(), cookie);
-
-
+                Response.Cookies.Append("companyName", resultUser.Data.Company, cookie);
+                Response.Cookies.Append("userName", resultUser.Data.UserName, cookie);
+                Response.Cookies.Append("userImage", resultUser.Data.ImageUrl, cookie);
             }
-
-            Response.Cookies.Append("userName", resultUser.Data.UserName, cookie);
-            Response.Cookies.Append("userImage", resultUser.Data.ImageUrl, cookie);
 
             //if (resultUser.Data.ImageName != "")
             //{
