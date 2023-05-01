@@ -4,16 +4,18 @@
         $scope.registerCount = 0;
         $scope.Pop = [];
         $scope.ItemTypesFilter = [];
+        $scope.reportStatusFilter = [];
 
         $scope.TableCol = {
-            ReportDetail: "Report Detail"
-            , InsertDate: "Insert Date"
+            UserId: "Responding User"
+            , AssignmentId: "Assignment User"
             , ItemType: "Item Type"
-            , ReportSubject: "Report Subject"
-
-            , AssignmentName: "Assignment Name"
-            , ItemName: "Item Name"
-            , UserName: "User Name"
+            , ItemId: "Item Name"
+            , Statu: "Statu"
+            , ReportDetail: "Detail"
+            , ReportSubject: "Subject"
+            , InsertDate: "Processing Time"
+            , Comment: "Answer"
         };
 
         $scope.GetReportsByUserRefId = function () {
@@ -29,7 +31,8 @@
                             $scope.reportedAssets[index].User = $scope.Users.find(x => x.Id === value.UserId);
                             $scope.reportedAssets[index].Assignment = $scope.Users.find(x => x.Id === value.AssignmentId);
                             $scope.reportedAssets[index].RecallDate = new Date($scope.reportedAssets[index].RecallDate).toLocaleString();
-                            $scope.reportedAssets[index].TypeItem = $scope.ItemTypes.find(x => x.Value === value.ItemType);
+                            $scope.reportedAssets[index].ItemTypeTextValue = $scope.ItemTypes.find(x => x.Value === value.ItemType);
+                            $scope.reportedAssets[index].ReportStatu = $scope.reportStatus.find(x => x.Value === value.Statu);
 
                             if ($scope.reportedAssets[index].ComponentItem !== null) {
                                 $scope.reportedAssets[index].Item = $scope.reportedAssets[index].ComponentItem;
@@ -79,7 +82,7 @@
                             $scope.ItemTypesFilter.push(parameter);
                         });
 
-                        $scope.GetUsers();
+                        $scope.GetReportStatus();
                     } else {
                         toaster.error("GetItemTypeTypes", "Item Type listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -88,6 +91,26 @@
                 });
         }
         $scope.GetItemTypeTypes();
+
+        $scope.GetReportStatus = function () {
+            enumService.GetReportStatus(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.reportStatus = result.Data;
+
+                        $.each($scope.reportStatus, function (index, value) {
+                            var parameter = { id: value.Value, title: value.Text };
+                            $scope.reportStatusFilter.push(parameter);
+                        });
+
+                        $scope.GetUsers();
+                    } else {
+                        toaster.error("GetItemTypeTypes", "Item Type listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetItemTypeTypes", "Item Type listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
 
         $scope.GetUsers = function () {
             userService.GetUsers(

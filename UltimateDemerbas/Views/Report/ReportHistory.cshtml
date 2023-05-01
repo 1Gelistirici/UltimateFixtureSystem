@@ -36,7 +36,7 @@
                                 <col />
                                 <col />
                                 <col />
-                           
+
                             </colgroup>
 
                             <tbody>
@@ -53,17 +53,20 @@
                                     <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
                                         <span>{{_.ReportDetail}}</span>
                                     </td>
-                                    <td data-title="TableCol.Statu" filter="{ Statu: 'text'}" sortable="'Statu'">
-                                        <span>{{_.Statu}}</span>
+                                    <td data-title="TableCol.Statu" filter="{ Statu: 'select'}" sortable="'Statu'" filter-data="reportStatusFilter">
+                                        <span>{{_.ReportStatu.Text}}</span>
                                     </td>
                                     <td data-title="TableCol.ItemId" filter="{ ItemId: 'text'}" sortable="'ItemId'">
-                                        <span>{{_.ItemId}}</span>
+                                        <span>{{_.Item.Name}}</span>
                                     </td>
-                                    <td data-title="TableCol.TypeItem" filter="{ TypeItem: 'text'}" sortable="'TypeItem'">
-                                        <span>{{_.TypeItem.Text}}</span>
+                                    <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                        <span>{{_.ItemTypeTextValue.Text}}</span>
                                     </td>
                                     <td data-title="TableCol.AssignmentId" filter="{ AssignmentId: 'text'}" sortable="'AssignmentId'">
-                                        <span>{{_.AssignmentId}}</span>
+                                        <span>{{_.Assignment.UserName}}</span>
+                                    </td>
+                                    <td data-title="TableCol.UserId" filter="{ UserId: 'text'}" sortable="'UserId'">
+                                        <span>{{_.User.UserName}}</span>
                                     </td>
 
                                 </tr>
