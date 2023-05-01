@@ -13,9 +13,9 @@
             <div class="col-xs-6">
                 <h5 class="muted Bold">Asset Deposit Form</h5>
 
-                <span class="pull-right">
+                @*<span class="pull-right">
                     {{todayDate}}
-                </span>
+                </span>*@
             </div>
         </div>
         <hr />
@@ -32,36 +32,34 @@
                         <tr>
                             <th> # </th>
                             <th> Item </th>
-                            <th class="hidden-xs"> Description </th>
-                            <th class="hidden-xs"> Quantity </th>
-                            <th class="hidden-xs"> Unit Cost </th>
-                            <th> Total </th>
+                            <th> Type </th>
+                            <th> Piece </th>
+                            <th> Date </th>
+                            <th> Category </th>
+                            <th> Model </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td> Hardware </td>
-                            <td class="hidden-xs"> Server hardware purchase </td>
-                            <td class="hidden-xs"> 32 </td>
-                            <td class="hidden-xs"> $75 </td>
-                            <td> $2152 </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Furniture </td>
-                            <td class="hidden-xs"> Office furniture purchase </td>
-                            <td class="hidden-xs"> 15 </td>
-                            <td class="hidden-xs"> $169 </td>
-                            <td> $4169 </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Foods </td>
-                            <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                            <td class="hidden-xs"> 69 </td>
-                            <td class="hidden-xs"> $49 </td>
-                            <td> $1260 </td>
+                        <tr ng-repeat="item in assignmentData">
+                            <td> {{$index}} </td>
+                            <td>
+                                {{item.Item.Name}}
+                            </td>
+                            <td>
+                                {{item.TypeItem.Text}}
+                            </td>
+                            <td>
+                                {{item.Piece}}
+                            </td>
+                            <td>
+                                {{item.InsertDate}}
+                            </td>
+                            <td>
+                                {{item.Item.CategoryNo}} {{item.Item.Category.Name}}
+                            </td>
+                            <td>
+                                {{item.Item.ModelNo}}  {{item.Item.Model.Name}}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -81,8 +79,6 @@
                 <p>
                     Signature:
                 </p>
-
-
             </div>
         </div>
     </div>

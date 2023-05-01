@@ -2,7 +2,7 @@
 MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", "UserService", "toaster", "EnumService", "NgTableParams", "AccessoryModelService", "CategoryService", "$confirm",
     function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService, $confirm) {
 
-        $scope.todayDate = formatDate(new Date);
+        //$scope.todayDate = formatDate(new Date);
         $scope.assignmentData = [];
 
         $scope.GetAssignmentsByCompany = function () {
@@ -13,6 +13,7 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
 
                         $.each($scope.assignmentData, function (index, value) {
 
+                            value.InsertDate = formatDate(new Date(value.InsertDate));
                             $scope.assignmentData[index].RecallDate = new Date($scope.assignmentData[index].RecallDate).toLocaleString();
                             $scope.assignmentData[index].TypeItem = $scope.ItemTypes.find(x => x.Value === value.ItemType);
 
