@@ -4,6 +4,12 @@
         var nowDate = new Date();
         $scope.RegisterCount = 0;
         $scope.Pop = [];
+        $scope.Reports = [];
+
+        $scope.viewItem = function (id) {
+            var url = `/Fixture/ViewItem?id= + ${id}`;
+            window.open(url, "_blank");
+        }
 
         $scope.GetReports = function () {
             ReportService.GetReports(

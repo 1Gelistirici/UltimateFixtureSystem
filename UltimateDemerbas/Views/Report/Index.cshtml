@@ -5,6 +5,13 @@
 
 <div ng-controller="ReportController">
 
+    <div class="portlet light portlet-fit bordered col-md-12" ng-hide="Reports.length>0">
+        <div ng-show="RegisterCount==0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+    </div>
+
+
     <div ng-repeat="_ in Reports">
         <div class="col-md-4">
             <!-- BEGIN WIDGET THUMB -->
@@ -31,7 +38,7 @@
 
                     <a href="" class="btn btn-icon-only btn-primary" title="Open Item">
                         @*ToDo : Farklı bir pencerede item açılacak*@
-                        <i class="fa fa-share-square-o"></i>
+                        <i class="fa fa-share-square-o" ng-click="viewItem(_.ItemId);"></i>
                     </a>
                 </div>
             </div>

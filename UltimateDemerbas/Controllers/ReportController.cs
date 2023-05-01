@@ -32,6 +32,12 @@ namespace UltimateDemerbas.Controllers
         }
 
         [CheckAuthorize]
+        public IActionResult ReportHistory()
+        {
+            return View();
+        }
+
+        [CheckAuthorize]
         public IActionResult PassiveReports()
         {
             return View();
@@ -46,6 +52,12 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetReportedAssetsByCompany()
         {
             var result = report.GetReportedAssetsByCompany(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
+        public IActionResult GetReportsByUserRefId()
+        {
+            var result = report.GetReportsByUserRefId(new ReferansParameter() { RefId = WorkingUser });
             return Content(result.Result);
         }
 

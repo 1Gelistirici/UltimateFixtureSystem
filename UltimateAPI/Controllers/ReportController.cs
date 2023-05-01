@@ -30,6 +30,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetReportsByUserRefId")]
+        public IActionResult GetReportsByUserRefId(ReferansParameter parameter)
+        {
+            var result = ReportCallManager.Instance.GetReportsByUserRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpGet("GetPassiveReports")]
         public IActionResult GetPassiveReports()
         {

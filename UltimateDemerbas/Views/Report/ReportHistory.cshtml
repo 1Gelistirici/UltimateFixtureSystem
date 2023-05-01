@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="ReportHistoryController">
+
+    <div class="portlet light portlet-fit bordered col-md-12">
+        <div class="portlet-title">
+            <div class="caption font-dark-gray" style="color:#678098">
+                <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
+                <span class="caption-subject bold uppercase">
+                    Report History
+                </span>
+            </div>
+        </div>
+
+        <div ng-show="registerCount===0">
+            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+        </div>
+
+        <!--Table Body-->
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless" ng-show="registerCount>0">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-light" ng-table="TableParams" style="margin-bottom: 50px !important;">
+
+                            <colgroup>
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                           
+                            </colgroup>
+
+                            <tbody>
+                                <tr ng-repeat="_ in $data">
+                                    <td data-title="TableCol.Comment" filter="{ Comment: 'text'}" sortable="'Comment'">
+                                        <span>{{_.Comment}}</span>
+                                    </td>
+                                    <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                        <span>{{_.InsertDate}}</span>
+                                    </td>
+                                    <td data-title="TableCol.ReportSubject" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
+                                        <span>{{_.ReportSubject}}</span>
+                                    </td>
+                                    <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
+                                        <span>{{_.ReportDetail}}</span>
+                                    </td>
+                                    <td data-title="TableCol.Statu" filter="{ Statu: 'text'}" sortable="'Statu'">
+                                        <span>{{_.Statu}}</span>
+                                    </td>
+                                    <td data-title="TableCol.ItemId" filter="{ ItemId: 'text'}" sortable="'ItemId'">
+                                        <span>{{_.ItemId}}</span>
+                                    </td>
+                                    <td data-title="TableCol.TypeItem" filter="{ TypeItem: 'text'}" sortable="'TypeItem'">
+                                        <span>{{_.TypeItem.Text}}</span>
+                                    </td>
+                                    <td data-title="TableCol.AssignmentId" filter="{ AssignmentId: 'text'}" sortable="'AssignmentId'">
+                                        <span>{{_.AssignmentId}}</span>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="no-margin no-padding">
+                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section PageScript
+    {
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/EnumService.js"></script>
+    <script src="~/AngularControllers/Services/ReportService.js"></script>
+    <script src="~/AngularControllers/Controllers/Report/ReportHistoryController.js"></script>
+}
