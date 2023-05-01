@@ -3,19 +3,7 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
     function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService, $confirm) {
 
         $scope.todayDate = formatDate(new Date);
-        $scope.registerCount = 0;
-        $scope.ItemTypesFilter = [];
         $scope.assignmentData = [];
-        $scope.TableCol = {
-            Name: "Component Name",
-            ItemType: "Item Type",
-            ModelNo: "Model",
-            CategoryNo: "Category",
-            Piece: "Piece",
-            BillNo: "Bill",
-            Recall: "Recall",
-            UserName: "User Name"
-        };
 
         $scope.GetAssignmentsByCompany = function () {
             AssignmentService.GetAssignmentsByCompany(
@@ -25,7 +13,6 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
 
                         $.each($scope.assignmentData, function (index, value) {
 
-                            $scope.assignmentData[index].User = $scope.Users.find(x => x.Id === value.UserId);
                             $scope.assignmentData[index].RecallDate = new Date($scope.assignmentData[index].RecallDate).toLocaleString();
                             $scope.assignmentData[index].TypeItem = $scope.ItemTypes.find(x => x.Value === value.ItemType);
 
@@ -48,7 +35,7 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                                 $scope.assignmentData[index].Item = $scope.assignmentData[index].Accessories
                             }
                         });
-                        refreshAssignmentTable();
+                        console.log("$scope.assignmentData", $scope.assignmentData);
 
                     } else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -58,41 +45,27 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                 });
         }
 
-        function refreshAssignmentTable() {
-            $scope.TableParams = new NgTableParams({
-                sorting: { name: 'adc' },
-                count: 20
-            }, {
-                counts: [10, 20, 50],
-                dataset: $scope.assignmentData
-            });
-            $scope.registerCount = $scope.assignmentData.length;
-        }
-
-        $scope.GetUsers = function () {
-            UserService.GetUsers(
+        $scope.GetUser = function () {
+            UserService.GetUser(
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.Users = result.Data;
-                    } else {
+                        $scope.User = result.Data;
+                        console.log("user", result.Data);
+                    }
+                    else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
                 }, function error() {
                     toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetUsers();
+        $scope.GetUser();
 
         $scope.GetItemTypeTypes = function () {
             enumService.GetItemTypeTypes(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.ItemTypes = result.Data;
-
-                        $.each($scope.ItemTypes, function (index, value) {
-                            var parameter = { id: value.Value, title: value.Text };
-                            $scope.ItemTypesFilter.push(parameter);
-                        });
 
                         $scope.GetAssignmentsByCompany();
                     } else {
@@ -103,35 +76,6 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                 });
         }
         $scope.GetItemTypeTypes();
-
-        $scope.Assign = function () {
-
-            if ($scope.Pop.checkRecallDate === undefined) {
-                $scope.Pop.checkRecallDate = false;
-            }
-
-            var parameter = {
-                UserId: parseInt($scope.Pop.user),
-                RecallDate: $scope.Pop.recallDate,
-                ItemType: $scope.Pop.ItemType,
-                ItemId: $scope.Pop.Id,
-                Piece: $scope.Pop.piece,
-                IsRecall: $scope.Pop.checkRecallDate,
-            }
-
-            AssignmentService.AddAssignment(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                        $('#AddAssignment').modal('hide');
-                        $scope.$parent.Refresh();
-                    } else {
-                        toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("AddAssignment", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
 
         $scope.GetAccessoryModels = function () {
             AccessoryModelService.GetAccessoryModels(
@@ -146,28 +90,6 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                 });
         }
         $scope.GetAccessoryModels();
-
-        function deleteAssignment(item) {
-            var parameter = {
-                Id: item.Id
-                , ItemType: item.ItemType
-                , ItemId: item.ItemId
-                , Piece: item.Piece
-            };
-
-            AssignmentService.DeleteAssignment(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        toaster.success("Başarılı", "Atama geri alındı.");
-                        $scope.GetAssignmentsByCompany();
-                    }
-                    else {
-                        toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                    }
-                }, function error() {
-                    toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
-                });
-        }
 
         $scope.GetCategoryNo = function (x) {
             $scope.Categories.forEach(function (item) {
@@ -198,13 +120,4 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                 });
         }
         $scope.GetCategories();
-
-        $scope.CheckRecallDate = function (recalDate) {
-            return new Date(recalDate).toLocaleString() > new Date().toLocaleString() ? false : true;
-        }
-
-        $scope.undoConfirm = function (item) {
-            $confirm.Show("Onay", "Silmek istediğinize emin misiniz?", function () { deleteAssignment(item) });
-        }
-
     }]);
