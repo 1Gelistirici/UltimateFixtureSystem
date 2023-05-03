@@ -9,6 +9,6 @@ namespace UltimateAPI.Entities
         public string Name { get; set; }
         public string LogoUrl { get; set; }
         public DateTime InsertDate { get; set; }
-        public DateTime EstablishmentDate { get; set; }
+        public DateTime? EstablishmentDate { get; set; }
     }
 }

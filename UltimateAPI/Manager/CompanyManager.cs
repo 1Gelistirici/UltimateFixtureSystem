@@ -125,7 +125,7 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@ParentId", parameter.RefId);
+                        sqlCommand.Parameters.AddWithValue("@ParentRefId", parameter.RefId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
@@ -137,9 +137,12 @@ namespace UltimateAPI.Manager
                                     data.Id = Convert.ToInt32(read["id"]);
                                     data.Name = Convert.ToString(read["Company"]);
                                     data.ParentRefId = Convert.ToInt32(read["ParentRefId"]);
-                                    data.LogoUrl = Convert.ToString(read["LogoUrl"].ToString());
-                                    data.EstablishmentDate = Convert.ToDateTime(read["EstablishmentDate"].ToString());
-                                    data.InsertDate = Convert.ToDateTime(read["InsertDate"].ToString());
+                                    data.LogoUrl = Convert.ToString(read["LogoUrl"]);
+                                    data.InsertDate = Convert.ToDateTime(read["InsertDate"]);
+                                    data.EstablishmentDate = read.IsDBNull(read.GetOrdinal("EstablishmentDate"))
+                       ? (DateTime?)null
+                       : read.GetDateTime(read.GetOrdinal("EstablishmentDate"));
+
 
                                     datas.Add(data);
                                 }

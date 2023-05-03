@@ -1,16 +1,16 @@
 ﻿MainApp.service("CompanyService", ["$http",
     function ($http) {
 
-        this.GetComponents = function (success, error) {
-            $http.get("/Company/GetComponents").then(
+        this.GetCompanies = function (success, error) {
+            $http.get("/Company/GetCompanies").then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
         }
 
-        this.GetCompanyGroup = function (parameter, success, error) {
-            $http.post('/Company/GetCompanyGroup', JSON.stringify(parameter)).then(
+        this.GetCompanyGroup = function (success, error) {
+            $http.get('/Company/GetCompanyGroup').then(
                 function (response) {
                     if (success)
                         success(response.data);

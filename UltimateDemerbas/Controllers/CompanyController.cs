@@ -24,15 +24,15 @@ namespace UltimateDemerbas.Controllers
         }
 
 
-        public IActionResult GetComponents()
+        public IActionResult GetCompanies()
         {
             var result = company.GetCompanies();
             return Content(result.Result);
         }
 
-        public IActionResult GetCompanyGroup([FromBody] ReferansParameter parameter)
+        public IActionResult GetCompanyGroup()
         {
-            var result = company.GetCompanyGroup(parameter);
+            var result = company.GetCompanyGroup(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 
