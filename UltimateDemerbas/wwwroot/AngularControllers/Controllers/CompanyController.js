@@ -11,6 +11,12 @@
             Name: "Name",
         };
 
+        $scope.openUpdatePopup = function (_) {
+            $scope.Pop = [];
+            $scope.Pop = _;
+            $("#companyUpdatePartial").modal("show");
+        }
+
         $scope.GetCompanyGroup = function () {
             companyService.GetCompanyGroup(
                 function success(result) {
