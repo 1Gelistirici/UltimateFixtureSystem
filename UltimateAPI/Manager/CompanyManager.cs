@@ -260,7 +260,6 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@Id", parameter.Id);
                         sqlCommand.Parameters.AddWithValue("@Name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@LogoUrl", parameter.LogoUrl);
-                        sqlCommand.Parameters.AddWithValue("@EstablishmentDate", parameter.EstablishmentDate);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

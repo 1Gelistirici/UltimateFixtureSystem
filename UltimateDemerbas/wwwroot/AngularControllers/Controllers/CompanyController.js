@@ -3,6 +3,7 @@
 
         $scope.registerCount = 0;
         $scope.Pop = [];
+        $scope.files = [];
 
         $scope.TableCol = {
             EstablishmentDate: "Establishment Date",
@@ -11,9 +12,8 @@
             Name: "Name",
         };
 
-        $scope.openUpdatePopup = function (_) {
-            $scope.Pop = [];
-            $scope.Pop = _;
+        $scope.openUpdatePopup = function (data) {
+            $scope.Pop = jQuery.extend(true, {}, data);
             $("#companyUpdatePartial").modal("show");
         }
 
@@ -30,7 +30,6 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.companyGroup = result.Data;
-                        console.log("$scope.companyGroup", $scope.companyGroup);
 
                         $.each($scope.companyGroup, function (index, value) {
                             value.InsertDate = formatDate(new Date(value.InsertDate));
@@ -61,12 +60,12 @@
             $scope.registerCount = $scope.companyGroup.length;
         }
 
-        $scope.UpdateUser = function () {
+        $scope.updateCompany = function () {
 
             var parameter = {
+                Id: $scope.Pop.Id,
                 file: $scope.files,
-                Name: $scope.Pop.Name,
-                LogoUrl: $scope.Pop.LogoUrl
+                Name: $scope.Pop.Name
             };
 
             companyService.UpdateCompany(parameter,

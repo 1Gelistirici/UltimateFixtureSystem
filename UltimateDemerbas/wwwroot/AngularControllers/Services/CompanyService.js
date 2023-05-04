@@ -41,7 +41,7 @@
                 }, error);
         };
 
-        this.UpdateComponent = function (parameter, success, error) {
+        this.UpdateCompany = function (parameter, success, error) {
             var fd = new FormData();
 
             fd.append(parameter.file.name, parameter.file);
@@ -49,7 +49,7 @@
 
             var request = {
                 method: 'POST',
-                url: '/Comoany/UpdateCompany',
+                url: '/Company/UpdateCompany',
                 data: fd,
                 headers: {
                     'Content-Type': undefined

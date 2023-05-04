@@ -99,7 +99,7 @@ namespace UltimateDemerbas.Controllers
                 if (Request.Form.Files.Count > 0)
                 {
                     var file = Request.Form.Files[0];
-                    string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+                    string folder = fileHelper.GetSaveURL(SaveFile.Company, WorkingCompany);
 
                     string fileGuId = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                     folderUrl = Path.Combine(folder, fileGuId);
