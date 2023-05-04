@@ -6,5 +6,8 @@ namespace UltimateAPI.Entities.Enums
     {
         [Description("User")]
         User = 0,
+
+        [Description("Company")]
+        Company = 0,
     }
 }
