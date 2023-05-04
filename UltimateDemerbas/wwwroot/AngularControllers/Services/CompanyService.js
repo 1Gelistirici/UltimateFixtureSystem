@@ -42,10 +42,25 @@
         };
 
         this.UpdateComponent = function (parameter, success, error) {
-            $http.post('/Company/UpdateComponent', JSON.stringify(parameter)).then(
+            var fd = new FormData();
+
+            fd.append(parameter.file.name, parameter.file);
+            fd.append("parameter", JSON.stringify(parameter));
+
+            var request = {
+                method: 'POST',
+                url: '/Comoany/UpdateCompany',
+                data: fd,
+                headers: {
+                    'Content-Type': undefined
+                }
+            };
+
+            $http(request).then(
                 function (response) {
-                    if (success)
+                    if (success) {
                         success(response.data);
+                    }
                 }, error);
         };
 

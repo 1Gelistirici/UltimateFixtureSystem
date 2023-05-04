@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" />
 
 <div ng-controller="CompanyController">
 
@@ -94,6 +95,8 @@
 
 @section PageScript
     {
+    <script src="~/assets1/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+
     <script src="~/AngularControllers/Services/UserRoleService.js"></script>
     <script src="~/AngularControllers/Services/MenuService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>

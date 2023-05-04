@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Functions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -85,10 +86,63 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult UpdateComponent([FromBody] Company parameter)
+        public IActionResult UpdateCompany()
         {
-            var result = company.UpdateCompany(parameter);
-            return Content(result.Result);
+            string folderUrl = "";
+
+            try
+            {
+                FileHelper fileHelper = new FileHelper(Configuration);
+
+                Company parameter = JsonHelper.JsonConvert<Company>(Request.Form["parameter"]);
+
+                if (Request.Form.Files.Count > 0)
+                {
+                    var file = Request.Form.Files[0];
+                    string folder = fileHelper.GetSaveURL(SaveFile.User, WorkingCompany);
+
+                    string fileGuId = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    folderUrl = Path.Combine(folder, fileGuId);
+
+                    if (file != null)
+                    {
+                        if (System.IO.File.Exists(parameter.LogoUrl))
+                        {
+                            System.IO.File.Delete(parameter.LogoUrl);
+                        }
+
+                        UltimateResult<Company> result = new UltimateResult<Company>();
+                        parameter.LogoUrl = folderUrl;
+
+                        var response = company.UpdateCompany(parameter).Result;
+                        result = JsonSerializer.Deserialize<UltimateResult<Company>>(response);
+
+                        if (result.IsSuccess)
+                        {
+                            using (FileStream fs = System.IO.File.Create(folderUrl))
+                            {
+                                file.CopyTo(fs);
+                            }
+                        }
+
+                        return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+                    }
+                }
+                else
+                {
+                    var result = company.UpdateCompany(parameter);
+                    return Content(result.Result);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (folderUrl != "")
+                {
+                    System.IO.File.Delete(folderUrl);
+                }
+            }
+
+            return Content("");
         }
 
     }

@@ -17,6 +17,14 @@
             $("#companyUpdatePartial").modal("show");
         }
 
+        $scope.fileNameChanged = function (file) {
+            if (file.files !== undefined && file.files.length > 0) {
+                for (var i = 0; i < file.files.length; i++) {
+                    $scope.files = file.files[0];
+                }
+            }
+        };
+
         $scope.GetCompanyGroup = function () {
             companyService.GetCompanyGroup(
                 function success(result) {
@@ -53,5 +61,27 @@
             $scope.registerCount = $scope.companyGroup.length;
         }
 
+        $scope.UpdateUser = function () {
+
+            var parameter = {
+                file: $scope.files,
+                Name: $scope.Pop.Name,
+                LogoUrl: $scope.Pop.LogoUrl
+            };
+
+            companyService.UpdateCompany(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı", "Company güncellendi.");
+                        $scope.Pop = [];
+                        $("#companyUpdatePartial").modal("hide");
+                        $scope.GetCompanyGroup();
+                    } else {
+                        toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Kullanıcı güncellenirken bir hata oluştu.");
+                });
+        }
 
     }]);
