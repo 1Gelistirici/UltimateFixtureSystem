@@ -17,8 +17,8 @@
                 }, error);
         };
 
-        this.GetCompany = function (parameter, success, error) {
-            $http.post('/Company/GetCompany', JSON.stringify(parameter)).then(
+        this.GetCompany = function (success, error) {
+            $http.post('/Company/GetCompany').then(
                 function (response) {
                     if (success)
                         success(response.data);

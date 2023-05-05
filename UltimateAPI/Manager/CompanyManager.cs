@@ -87,8 +87,10 @@ namespace UltimateAPI.Manager
                                     data.Name = Convert.ToString(read["Company"]);
                                     data.ParentRefId = Convert.ToInt32(read["ParentRefId"]);
                                     data.LogoUrl = Convert.ToString(read["LogoUrl"].ToString());
-                                    data.EstablishmentDate = Convert.ToDateTime(read["EstablishmentDate"].ToString());
                                     data.InsertDate = Convert.ToDateTime(read["InsertDate"].ToString());
+                                    data.EstablishmentDate = read.IsDBNull(read.GetOrdinal("EstablishmentDate"))
+                          ? (DateTime?)null
+                          : read.GetDateTime(read.GetOrdinal("EstablishmentDate"));
                                 }
                             }
                             read.Close();
@@ -102,6 +104,7 @@ namespace UltimateAPI.Manager
             catch (Exception ex)
             {
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.Message = ex.Message;
                 result.IsSuccess = false;
                 return result;
             }

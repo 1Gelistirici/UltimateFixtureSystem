@@ -34,8 +34,9 @@
                         $.each($scope.companyGroup, function (index, value) {
                             value.InsertDate = formatDate(new Date(value.InsertDate));
 
-                            //var establishmentDate = new Date(value.InsertDate)
-                            //value.EstablishmentDate = formatDate();
+                            if (value.EstablishmentDate) {
+                                value.EstablishmentDate = new Date(value.EstablishmentDate)
+                            }
                         });
 
                         refreshtable();

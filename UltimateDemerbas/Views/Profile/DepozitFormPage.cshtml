@@ -7,15 +7,16 @@
     <div class="invoice">
         <div class="row invoice-logo">
             <div class="col-xs-6 invoice-logo-space">
-                <img src="~/Images/walmart.png" class="img-responsive" alt="" />
+                @*<img src="~/Images/walmart.png" class="img-responsive" alt="" />*@
+                <img class="img-responsive" src="data:image/jpg;base64, {{company.LogoUrl}}" width="150" height="150" alt="" />
             </div>
 
             <div class="col-xs-6">
                 <h5 class="muted Bold">Asset Deposit Form</h5>
 
                 @*<span class="pull-right">
-                    {{todayDate}}
-                </span>*@
+                        {{todayDate}}
+                    </span>*@
             </div>
         </div>
         <hr />
@@ -86,6 +87,7 @@
 
 @section PageScript
     {
+    <script src="~/AngularControllers/Services/CompanyService.js"></script>
     <script src="~/AngularControllers/Services/CategoryService.js"></script>
     <script src="~/AngularControllers/Services/AccessoryModelService.js"></script>
     <script src="~/AngularControllers/Services/EnumService.js"></script>

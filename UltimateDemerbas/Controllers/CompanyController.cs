@@ -68,10 +68,33 @@ namespace UltimateDemerbas.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        public IActionResult GetCompany([FromBody] ReferansParameter parameter)
+        public IActionResult GetCompany()
         {
-            var result = company.GetCompany(parameter);
-            return Content(result.Result);
+            FileHelper fileHelper = new FileHelper(Configuration);
+            string folder = fileHelper.GetSaveURL(SaveFile.Company, WorkingCompany);
+
+            var response = company.GetCompany(new ReferansParameter() { RefId = WorkingCompany });
+
+            UltimateResult<Company> result = JsonSerializer.Deserialize<UltimateResult<Company>>(response.Result);
+            if (result.IsSuccess)
+            {
+                if (result.Data.LogoUrl != "")
+                {
+                    result.Data.LogoUrl = Path.Combine(folder, result.Data.LogoUrl);
+
+                    byte[] imageData = System.IO.File.ReadAllBytes(result.Data.LogoUrl);
+                    string base64ImageRepresentation = Convert.ToBase64String(imageData);
+
+                    result.Data.LogoUrl = base64ImageRepresentation;
+
+                }
+                else
+                {
+                    result.Data.LogoUrl = "";
+                }
+            }
+
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
         public IActionResult DeleteCompany([FromBody] ReferansParameter parameter)

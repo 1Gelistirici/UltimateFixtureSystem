@@ -1,6 +1,6 @@
 ﻿
-MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", "UserService", "toaster", "EnumService", "NgTableParams", "AccessoryModelService", "CategoryService", "$confirm",
-    function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService, $confirm) {
+MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", "UserService", "toaster", "EnumService", "NgTableParams", "AccessoryModelService", "CategoryService", "$confirm", "CompanyService",
+    function ($scope, AssignmentService, UserService, toaster, enumService, NgTableParams, AccessoryModelService, categoryService, $confirm, companyService) {
 
         //$scope.todayDate = formatDate(new Date);
         $scope.assignmentData = [];
@@ -36,7 +36,6 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                                 $scope.assignmentData[index].Item = $scope.assignmentData[index].Accessories
                             }
                         });
-                        console.log("$scope.assignmentData", $scope.assignmentData);
 
                     } else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -46,12 +45,27 @@ MainApp.controller("DepozitFormPageController", ["$scope", "AssignmentService", 
                 });
         }
 
+        $scope.GetCompany = function () {
+            companyService.GetCompany(
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $scope.company = result.Data;
+                        console.log("company", result.Data);
+                    }
+                    else {
+                        toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
+        }
+        $scope.GetCompany();
+
         $scope.GetUser = function () {
             UserService.GetUser(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.User = result.Data;
-                        console.log("user", result.Data);
                     }
                     else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
