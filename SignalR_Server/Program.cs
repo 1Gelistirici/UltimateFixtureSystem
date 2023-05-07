@@ -8,8 +8,7 @@ namespace SignalR_Server
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine($"Started {DateTime.Now}");
-            Console.ReadLine(); CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

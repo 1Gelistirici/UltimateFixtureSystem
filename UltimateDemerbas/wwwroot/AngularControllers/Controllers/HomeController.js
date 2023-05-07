@@ -21,8 +21,20 @@
             $scope.Pop.count = 0;
         }
 
-        $scope.GetReportsByStatu = function () {
+        $scope.DateCalc = function (startDate, endDate) {
+            var MS_one_day = 1000 * 60 * 60 * 24;
+            var x = new Date();
+            var y = new Date(endDate);
 
+            var date1 = Date.UTC(x.getFullYear(), x.getMonth(), x.getDate());
+            var date2 = Date.UTC(y.getFullYear(), y.getMonth(), y.getDate());
+
+            var result = Math.floor((date2 - date1) / MS_one_day);
+
+            return result;
+        }
+
+        $scope.GetReportsByStatu = function () {
             ReportService.GetReportsByStatu(0,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -173,13 +185,16 @@
 
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("https://localhost:5001/chathub")
+            .withAutomaticReconnect()
             .build();
 
-        //connection.start();
+        jQuery(document).ready(function () {
+            connection.start();
+        });
 
         connection.on("receiveMessageOther", (message, id, nickName) => {
             var d = new Date();
-            var data = { "UserId": id, "MessageDetail": message, "Time": d.toUTCString(), "UserName": nickName };
+            var data = { "UserId": parseInt(id), "MessageDetail": message.toString(), "Time": d.toUTCString(), "UserName": nickName.toString() };
 
             $scope.$apply(function () {
                 $scope.Messages.push(data);
@@ -190,7 +205,7 @@
             var d = new Date();
             var data = { "UserId": $scope.UserId, "MessageDetail": $scope.MessageDetail, "Time": d.toUTCString(), "UserName": $scope.NowUser.UserName };
             $scope.Messages.push(data);
-            connection.invoke("SendAllMessageAsync", $scope.MessageDetail, $scope.UserId, $scope.NowUser.UserName);
+            connection.invoke("SendAllMessageAsync", $scope.MessageDetail.toString(), parseInt($scope.UserId), $scope.NowUser.UserName.toString());
 
             var parameter = {
                 "MessageDetail": $scope.MessageDetail,
@@ -282,18 +297,7 @@
 
 
 
-        $scope.DateCalc = function (startDate, endDate) {
-            var MS_one_day = 1000 * 60 * 60 * 24;
-            var x = new Date();
-            var y = new Date(endDate);
 
-            var date1 = Date.UTC(x.getFullYear(), x.getMonth(), x.getDate());
-            var date2 = Date.UTC(y.getFullYear(), y.getMonth(), y.getDate());
-
-            var result = Math.floor((date2 - date1) / MS_one_day);
-
-            return result;
-        }
 
 
 

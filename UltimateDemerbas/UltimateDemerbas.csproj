@@ -33,11 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\AngularControllers\Controllers\_LayoutController.js" />
-    <None Include="wwwroot\AngularControllers\root.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AngularJS.Core" Version="1.8.2" />
     <PackageReference Include="AngularJS.Route" Version="1.8.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
@@ -54,6 +49,85 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\ThirdParty\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\AngularControllers\Common.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\AccessoryAssignmentsController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\AccessoryController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\AccessoryModelController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\AssignmentController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\BillController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\BillTypeController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\BillTypesController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\CategoryController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\CompanyController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\CompanyUserEditController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\ComponentController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\ComponentModelController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\DepartmentController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\DepreciationController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\FixLicController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\FixtureController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\FixtureModelController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\HomeController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\LicenseController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\LicensesTypesController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\LogController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\MenuController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\MenuUpdatePartial.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\PageMapController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\PassiveReportController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\ProfileController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\Profile\DepozitFormPageController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\RelevantPersonnelController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\ReportController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\Report\ReportedAssetsController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\Report\ReportHistoryController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\SituationController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\TaskController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\TonerController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\UsedTonerConroller.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\UserController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\ViewItemController.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\_LayoutController.js" />
+    <None Include="wwwroot\AngularControllers\Login.js" />
+    <None Include="wwwroot\AngularControllers\LoginController.js" />
+    <None Include="wwwroot\AngularControllers\root.js" />
+    <None Include="wwwroot\AngularControllers\Services\AccessoryModelService.js" />
+    <None Include="wwwroot\AngularControllers\Services\AccessoryService.js" />
+    <None Include="wwwroot\AngularControllers\Services\AssignmentService.js" />
+    <None Include="wwwroot\AngularControllers\Services\BillService.js" />
+    <None Include="wwwroot\AngularControllers\Services\BillTypeService.js" />
+    <None Include="wwwroot\AngularControllers\Services\CategoryService.js" />
+    <None Include="wwwroot\AngularControllers\Services\CompanyService.js" />
+    <None Include="wwwroot\AngularControllers\Services\ComponentModelService.js" />
+    <None Include="wwwroot\AngularControllers\Services\ComponentService.js" />
+    <None Include="wwwroot\AngularControllers\Services\DepartmentService.js" />
+    <None Include="wwwroot\AngularControllers\Services\DepreciationService.js" />
+    <None Include="wwwroot\AngularControllers\Services\EnumService.js" />
+    <None Include="wwwroot\AngularControllers\Services\FixLicService.js" />
+    <None Include="wwwroot\AngularControllers\Services\FixtureModelService.js" />
+    <None Include="wwwroot\AngularControllers\Services\FixtureService.js" />
+    <None Include="wwwroot\AngularControllers\Services\ItemHistoryService.js" />
+    <None Include="wwwroot\AngularControllers\Services\LicenseService.js" />
+    <None Include="wwwroot\AngularControllers\Services\LicenseTypeService.js" />
+    <None Include="wwwroot\AngularControllers\Services\LoginService.js" />
+    <None Include="wwwroot\AngularControllers\Services\LogService.js" />
+    <None Include="wwwroot\AngularControllers\Services\MenuService.js" />
+    <None Include="wwwroot\AngularControllers\Services\MessageService.js" />
+    <None Include="wwwroot\AngularControllers\Services\ProfileService.js" />
+    <None Include="wwwroot\AngularControllers\Services\RelevantPersonnelService.js" />
+    <None Include="wwwroot\AngularControllers\Services\ReportService.js" />
+    <None Include="wwwroot\AngularControllers\Services\SituationService.js" />
+    <None Include="wwwroot\AngularControllers\Services\TaskService.js" />
+    <None Include="wwwroot\AngularControllers\Services\TonerService.js" />
+    <None Include="wwwroot\AngularControllers\Services\UsedTonerService.js" />
+    <None Include="wwwroot\AngularControllers\Services\UserRoleService.js" />
+    <None Include="wwwroot\AngularControllers\Services\UserService.js" />
+    <None Include="wwwroot\AngularControllers\Services\_LayoutService.js" />
+    <None Include="wwwroot\AngularControllers\Shared\Partial\CompanyUserMenuTreePartial.js" />
+    <None Include="wwwroot\AngularControllers\Shared\Partial\UserMenuTree.js" />
   </ItemGroup>
 
 </Project>

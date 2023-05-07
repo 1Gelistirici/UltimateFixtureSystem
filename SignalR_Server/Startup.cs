@@ -19,10 +19,10 @@ namespace SignalR_Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options => options.AddDefaultPolicy(policy => policy
-                .AllowCredentials()
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .SetIsOriginAllowed(x => true)));
+             .AllowCredentials()
+             .AllowAnyHeader()
+             .AllowAnyMethod()
+             .SetIsOriginAllowed(x => true)));
             services.AddSignalR();
         }
 
