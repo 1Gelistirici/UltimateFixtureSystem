@@ -21,6 +21,11 @@ namespace UltimateAPI.CallManager
             return AccessoryManager.Instance.GetAccessoryByUser(parameter);
         }
 
+        public UltimateResult<List<Accessory>> GetAccessoryByCompanyRefId(ReferansParameter parameter)
+        {
+            return AccessoryManager.Instance.GetAccessoryByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<Accessory>> DeleteAccessory(Accessory parameter)
         {
             return AccessoryManager.Instance.DeleteAccessory(parameter);

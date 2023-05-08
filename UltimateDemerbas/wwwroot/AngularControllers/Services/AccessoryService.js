@@ -24,6 +24,15 @@
                         success(response.data);
                 }, error);
         };
+        
+
+        this.GetAccessoryByCompanyRefId = function (success, error) {
+            $http.post("/Accessory/GetAccessoryByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
 
         this.DeleteAccessory = function (Id, success, error) {
             $http.post('/Accessory/DeleteAccessory', { Id: Id }).then(

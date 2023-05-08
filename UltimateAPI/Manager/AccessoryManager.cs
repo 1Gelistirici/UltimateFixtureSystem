@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class AccessoryManager:BaseManager
+    public class AccessoryManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile AccessoryManager _instance;
@@ -172,6 +172,64 @@ namespace UltimateAPI.Manager
                                     accessory.BillNo = Convert.ToInt32(read["bill_no"]);
                                     accessory.StatuNo = Convert.ToInt32(read["statu_no"]);
                                     accessory.CategoryNo = Convert.ToInt32(read["category_no"]);
+
+                                    accessories.Add(accessory);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = accessories;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public UltimateResult<List<Accessory>> GetAccessoryByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Accessory> accessories = new List<Accessory>();
+            UltimateResult<List<Accessory>> result = new UltimateResult<List<Accessory>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[accessories_GetAccessoryByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Accessory accessory = new Accessory();
+                                    accessory.Id = Convert.ToInt32(read["id"]);
+                                    accessory.Name = read["name"].ToString();
+                                    accessory.Piece = Convert.ToInt32(read["piece"]);
+                                    accessory.Price = Convert.ToDouble(read["price"]);
+                                    accessory.ModelNo = Convert.ToInt32(read["model_no"]);
+                                    accessory.UserNo = Convert.ToInt32(read["user_no"]);
+                                    accessory.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    accessory.StatuNo = Convert.ToInt32(read["statu_no"]);
+                                    accessory.CategoryNo = Convert.ToInt32(read["category_no"]);
+                                    accessory.CompanyRefId = Convert.ToInt32(read["CompanyrefId"]);
 
                                     accessories.Add(accessory);
                                 }

@@ -53,6 +53,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetAccessoryByCompanyRefId()
+        {
+            var result = accessory.GetAccessoryByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteAccessory([FromBody] Accessory parameter)
         {
             parameter.UserId = WorkingUser;
