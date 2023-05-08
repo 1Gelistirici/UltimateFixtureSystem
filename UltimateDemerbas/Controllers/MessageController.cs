@@ -35,6 +35,13 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+
+        public IActionResult GetMessageByCompanyRefId()
+        {
+            var result = message.GetMessageByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteMessage([FromBody] Message parameter)
         {
             parameter.UserId = WorkingUser;

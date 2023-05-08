@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetMessageByCompanyRefId = function (success, error) {
+            $http.get("/Message/GetMessageByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteMessage = function (Id, success, error) {
             $http.post('/Message/DeleteMessage', { Id: Id }).then(
                 function (response) {

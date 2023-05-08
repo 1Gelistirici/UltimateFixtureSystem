@@ -84,6 +84,61 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+        
+        public UltimateResult<List<Message>> GetMessageByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Message> messages = new List<Message>();
+            UltimateResult<List<Message>> result = new UltimateResult<List<Message>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[messages_GetMessageByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Message message = new Message();
+                                    message.Id = Convert.ToInt32(read["id"]);
+                                    message.UserName = read["username"].ToString();
+                                    message.Time = Convert.ToDateTime(read["time"]);
+                                    message.Name = read["name"].ToString();
+                                    message.Surname = read["surname"].ToString();
+                                    message.MessageDetail = read["message"].ToString();
+                                    message.UserId =Convert.ToInt32(read["userNo"]);
+
+                                    messages.Add(message);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = messages;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
         public UltimateResult<List<Message>> AddMessage(Message parameter)
         {

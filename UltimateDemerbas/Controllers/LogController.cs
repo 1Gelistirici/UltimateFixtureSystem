@@ -40,6 +40,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetLogByCompanyRefId()
+        {
+            var result = log.GetLogByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult AddLog([FromBody] Log parameter)
         {
             var result = log.AddLog(parameter);

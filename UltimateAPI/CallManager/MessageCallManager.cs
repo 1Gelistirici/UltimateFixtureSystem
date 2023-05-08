@@ -32,6 +32,11 @@ namespace UltimateAPI.CallManager
             return MessageManager.Instance.GetMessages(parameter);
         }
 
+        public UltimateResult<List<Message>> GetMessageByCompanyRefId(ReferansParameter parameter)
+        {
+            return MessageManager.Instance.GetMessageByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<Message>> DeleteMessage(Message parameter)
         {
             return MessageManager.Instance.DeleteMessage(parameter);

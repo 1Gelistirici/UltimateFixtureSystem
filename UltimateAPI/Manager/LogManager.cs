@@ -89,6 +89,64 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Log>> GetLogByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Log> componentModels = new List<Log>();
+            UltimateResult<List<Log>> result = new UltimateResult<List<Log>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[logs_GetLogByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Log log = new Log();
+                                    log.Id = Convert.ToInt32(read["id"]);
+                                    log.Detail = read["detail"].ToString();
+                                    log.Icon = read["icon"].ToString();
+                                    log.Time = Convert.ToDateTime(read["time"]);
+                                    log.Type = (LogType)Convert.ToInt32(read["logType"]);
+                                    log.IncorrectPassword = read["incorrectPassword"].ToString();
+                                    log.IncorrectUserName = read["incorrectUserName"].ToString();
+                                    log.IncorrectCompany = read["incorrectCompany"].ToString();
+                                    log.CompanyRefId = Convert.ToInt32(read["CompanyRefId"]);
+
+                                    componentModels.Add(log);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = componentModels;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                result.Message = ex.Message;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<Log>> AddLog(Log parameter)
         {
             UltimateResult<List<Log>> result = new UltimateResult<List<Log>>();

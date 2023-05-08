@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetLogByCompanyRefId")]
+        public IActionResult GetLogByCompanyRefId(ReferansParameter parameter)
+        {
+            LogCallManager log = new LogCallManager();
+            var result = log.GetLogByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteLog")]
         public IActionResult DeleteLog(Log parameter)
         {

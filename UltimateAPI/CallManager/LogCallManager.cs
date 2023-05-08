@@ -33,6 +33,11 @@ namespace UltimateAPI.CallManager
             return LogManager.Instance.GetLogs(parameter);
         }
 
+        public UltimateResult<List<Log>> GetLogByCompanyRefId(ReferansParameter parameter)
+        {
+            return LogManager.Instance.GetLogByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<Log>> DeleteLog(Log parameter)
         {
             return LogManager.Instance.DeleteLog(parameter);

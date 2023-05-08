@@ -49,7 +49,7 @@
         $scope.GetReportsByStatu();
 
         $scope.GetLogs = function () {
-            LogService.GetLogs(
+            LogService.GetLogByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Logs = result.Data;
@@ -70,7 +70,7 @@
         $scope.GetLogs();
 
         $scope.GetMessages = function () {
-            MessageService.GetMessages(
+            MessageService.GetMessageByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Messages = result.Data;

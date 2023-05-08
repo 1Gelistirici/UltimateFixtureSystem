@@ -16,6 +16,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Message>("Message/GetMessages", parameter);
         }
 
+        public Task<string> GetMessageByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Message/GetMessageByCompanyRefId", parameter);
+        }
+
         public Task<string> DeleteMessage(Message parameter)
         {
             return GetApiParameter<Message>("Message/DeleteMessage", parameter);

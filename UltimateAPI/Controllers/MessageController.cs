@@ -22,6 +22,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetMessageByCompanyRefId")]
+        public IActionResult GetMessageByCompanyRefId(ReferansParameter parameter)
+        {
+            var result = MessageCallManager.Instance.GetMessageByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteMessage")]
         public IActionResult DeleteMessage(Message parameter)
         {

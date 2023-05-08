@@ -11,7 +11,7 @@
         $scope.logTypeFilter = [];
 
         $scope.GetLogs = function () {
-            logService.GetLogs(
+            logService.GetLogByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;

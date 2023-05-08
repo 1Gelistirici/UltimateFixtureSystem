@@ -20,6 +20,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Log>("Log/DeleteLog", parameter);
         }
 
+        public Task<string> GetLogByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Log/GetLogByCompanyRefId", parameter);
+        }
+
         public Task<string> AddLog(Log parameter)
         {
             return GetApiParameter<Log>("Log/AddLog", parameter);

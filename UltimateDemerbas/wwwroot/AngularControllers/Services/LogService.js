@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetLogByCompanyRefId = function (success, error) {
+            $http.get("/Log/GetLogByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteLog = function (Id, success, error) {
             $http.post('/Log/DeleteLog', { Id: Id }).then(
                 function (response) {
