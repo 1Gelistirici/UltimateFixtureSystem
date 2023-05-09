@@ -23,6 +23,12 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        [CheckAuthorize]
+        public IActionResult InfoPage()
+        {
+            return View();
+        }
+
 
         public IActionResult Error()
         {
