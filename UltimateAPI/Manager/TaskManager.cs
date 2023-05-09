@@ -303,5 +303,61 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<Tasks>> GetTaskByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Tasks> tasks = new List<Tasks>();
+            UltimateResult<List<Tasks>> result = new UltimateResult<List<Tasks>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[tasks_GetTaskByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Tasks task = new Tasks();
+                                    task.Id = Convert.ToInt32(read["id"]);
+                                    task.UserId = Convert.ToInt32(read["UserId"]);
+                                    task.StartDate = Convert.ToDateTime(read["startDate"]);
+                                    task.EndDate = Convert.ToDateTime(read["endDate"]);
+                                    task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
+                                    task.TaskDetail = read["task"].ToString();
+                                    task.Count = (TaskCount)Convert.ToInt32(read["count"]);
+                                    task.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
+
+                                    tasks.Add(task);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = tasks;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

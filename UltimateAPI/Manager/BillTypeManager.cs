@@ -54,6 +54,7 @@ namespace UltimateAPI.Manager
                                     BillType billType = new BillType();
                                     billType.Id = Convert.ToInt32(read["id"]);
                                     billType.Name = read["typeName"].ToString();
+                                    billType.CompanyId = Convert.ToInt32(read["CompanyRefId"].ToString());
 
                                     billTypes.Add(billType);
                                 }
@@ -109,7 +110,7 @@ namespace UltimateAPI.Manager
                 result.IsSuccess = false;
                 return result;
             }
-            
+
             AddLog(parameter.UserId, "Fatura Tipi Eklendi");
 
             return result;
@@ -192,5 +193,56 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<BillType>> GetBillTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            List<BillType> billTypes = new List<BillType>();
+            UltimateResult<List<BillType>> result = new UltimateResult<List<BillType>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[billTypes_GetBillTypeByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    BillType billType = new BillType();
+                                    billType.Id = Convert.ToInt32(read["id"]);
+                                    billType.Name = read["typeName"].ToString();
+                                    billType.CompanyId = Convert.ToInt32(read["CompanyRefId"].ToString());
+
+                                    billTypes.Add(billType);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = billTypes;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

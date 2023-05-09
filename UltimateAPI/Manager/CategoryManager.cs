@@ -192,5 +192,55 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<Category>> GetCategoryByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Category> categories = new List<Category>();
+            UltimateResult<List<Category>> result = new UltimateResult<List<Category>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[categories_GetCategoryByCompany]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Category category = new Category();
+                                    category.Id = Convert.ToInt32(read["id"]);
+                                    category.Name = read["categoryName"].ToString();
+
+                                    categories.Add(category);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = categories;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

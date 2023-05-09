@@ -208,5 +208,60 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Toner>> GetTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Toner> toners = new List<Toner>();
+            UltimateResult<List<Toner>> result = new UltimateResult<List<Toner>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[toners_GetTonerByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Toner toner = new Toner();
+                                    toner.Id = Convert.ToInt32(read["id"]);
+                                    toner.Name = read["name"].ToString();
+                                    toner.Piece = Convert.ToInt32(read["piece"]);
+                                    toner.Price = Convert.ToInt32(read["price"]);
+                                    toner.Boundary = Convert.ToInt32(read["boundary"]);
+                                    toner.MinStock = Convert.ToInt32(read["minStock"]);
+                                    toner.BillRefId = Convert.ToInt32(read["billRefId"]);
+                                    toner.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
+
+                                    toners.Add(toner);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = toners;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class ComponentModelManager:BaseManager
+    public class ComponentModelManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile ComponentModelManager _instance;
@@ -192,5 +192,56 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<ComponentModel>> GetComponentModelByCompanyRefId(ReferansParameter parameter)
+        {
+            List<ComponentModel> componentModels = new List<ComponentModel>();
+            UltimateResult<List<ComponentModel>> result = new UltimateResult<List<ComponentModel>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[companentModel_GetCompanentModelByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    ComponentModel componentModel = new ComponentModel();
+                                    componentModel.Id = Convert.ToInt32(read["id"]);
+                                    componentModel.Name = read["modelName"].ToString();
+                                    componentModel.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
+
+                                    componentModels.Add(componentModel);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = componentModels;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }

@@ -62,7 +62,7 @@ namespace UltimateAPI.Manager
                                     bill.Price = Convert.ToInt32(read["price"]);
                                     bill.Comment = read["comment"].ToString();
                                     bill.Department = Convert.ToInt32(read["department"]);
-                                    //bill.Items = GetBillItems(bill.Id);
+                                    bill.CompanyId = Convert.ToInt32(read["CompanyrefId"]);
 
                                     bills.Add(bill);
                                 }
@@ -308,6 +308,60 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Bill>> GetBillByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Bill> bills = new List<Bill>();
+            UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[bill_GetBillByCompany]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Bill bill = new Bill();
+                                    bill.Id = Convert.ToInt32(read["id"]);
+                                    bill.BillNo = read["billNo"].ToString();
+                                    bill.BillDate = Convert.ToDateTime(read["billDate"]);
+                                    bill.InsertDate = Convert.ToDateTime(read["insertDate"]);
+                                    bill.Price = Convert.ToInt32(read["price"]);
+                                    bill.Comment = read["comment"].ToString();
+                                    bill.Department = Convert.ToInt32(read["department"]);
+                                    bill.CompanyId = Convert.ToInt32(read["CompanyrefId"]);
+
+                                    bills.Add(bill);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = bills;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
     }
 }

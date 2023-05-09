@@ -253,5 +253,58 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<UsedToner>> GetUsedTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            List<UsedToner> departments = new List<UsedToner>();
+            UltimateResult<List<UsedToner>> result = new UltimateResult<List<UsedToner>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[components_GetUsedTonerByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    UsedToner department = new UsedToner();
+                                    department.Id = Convert.ToInt32(read["id"]);
+                                    department.DepartmentNo = Convert.ToInt32(read["DepartmentNo"]);
+                                    department.TonerNo = Convert.ToInt32(read["TonerNo"]);
+                                    department.Piece = Convert.ToInt32(read["UsedPiece"]);
+                                    department.InsertDate = Convert.ToDateTime(read["InsertDate"]);
+
+                                    departments.Add(department);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = departments;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
     }
 }
