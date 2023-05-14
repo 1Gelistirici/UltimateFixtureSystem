@@ -45,6 +45,13 @@ namespace UltimateAPI.Controllers
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
+        [HttpPost("AddCompanyV1")]
+        public IActionResult AddCompanyV1(CompanyUser parameter)
+        {
+            var result = CompanyCallManager.Instance.AddCompanyV1(parameter);
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
+        }
+
         [HttpPost("UpdateCompany")]
         public IActionResult UpdateCompany(Company parameter)
         {

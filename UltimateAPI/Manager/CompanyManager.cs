@@ -206,6 +206,45 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateSetResult AddCompanyV1(CompanyUser parameter)
+        {
+            UltimateSetResult result = new UltimateSetResult();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[companies_AddCompany]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@Name", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateSetResult AddCompany(Company parameter)
         {
             UltimateSetResult result = new UltimateSetResult();

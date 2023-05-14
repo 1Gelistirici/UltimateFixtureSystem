@@ -26,6 +26,10 @@ namespace UltimateAPI.CallManager
             }
         }
 
+        public UltimateResult<List<Menu>> GetMenus()
+        {
+            return MenuManager.Instance.GetMenus();
+        }
 
         public UltimateResult<List<Menu>> GetMenu()
         {

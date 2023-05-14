@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
@@ -76,7 +77,7 @@ namespace UltimateAPI.Manager
                         Log log = new Log();
                         log.Time = DateTime.Now;
 
-                        if (userData != null)
+                        if (userData != null && userData.Id > 0)
                         {
                             log.UserNo = user.UserId;
 
@@ -568,9 +569,12 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@lock", parameter.Lock);
                         sqlCommand.Parameters.AddWithValue("@ImageName", parameter.ImageName);
                         sqlCommand.Parameters.AddWithValue("@ImageUrl", parameter.ImageUrl);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
+
 
                         if (effectedRow == -1)
                         {

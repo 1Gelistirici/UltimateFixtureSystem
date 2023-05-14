@@ -100,7 +100,7 @@ namespace UltimateDemerbas.Controllers
                     Response.Cookies.Append("userId", resultUser.Data.Id.ToString(), cookie);
                 }
 
-                Response.Cookies.Append("companyName", resultUser.Data.Company, cookie);
+                Response.Cookies.Append("companyName", parameter.Company, cookie);
                 Response.Cookies.Append("userName", resultUser.Data.UserName, cookie);
                 Response.Cookies.Append("userImage", resultUser.Data.ImageUrl, cookie);
             }

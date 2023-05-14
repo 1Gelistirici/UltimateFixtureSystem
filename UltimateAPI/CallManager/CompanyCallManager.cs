@@ -54,6 +54,36 @@ namespace UltimateAPI.CallManager
             return companyManager.AddCompany(parameter);
         }
 
+        public UltimateSetResult AddCompanyV1(CompanyUser parameter)
+        {
+            UltimateSetResult result = companyManager.AddCompanyV1(parameter);
+
+            if (result.IsSuccess)
+            {
+                UserCallManager userCallManager = new UserCallManager();
+                parameter.User.CompanyId = result.ReturnId;
+                parameter.User.Title = "";
+                parameter.User.ImageName = "";
+                parameter.User.ImageUrl = "";
+
+                UltimateSetResult userResult = userCallManager.AddUser(parameter.User);
+                if (userResult.IsSuccess)
+                {
+                    UltimateResult<List<Menu>> menuList = MenuCallManager.Instance.GetMenus();
+                    UserRole userRole = new UserRole();
+                    userRole.UserRefId = userResult.ReturnId;
+
+                    foreach (Menu item in menuList.Data)
+                    {
+                        userRole.MenuRefId = item.Id;
+                        UserRoleCallManager.Instance.AddRole(userRole);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public UltimateSetResult UpdateCompany(Company parameter)
         {
             return companyManager.UpdateCompany(parameter);

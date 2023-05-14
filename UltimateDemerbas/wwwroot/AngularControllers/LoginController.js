@@ -88,52 +88,22 @@
                 });
         }
 
-
         $scope.addCompany = function () {
-            var parameter = {
-                Name: $scope.register.CompanyName
-            }
 
-            //$.ajax({
-            //    type: "POST",
-            //    url: "/Company/AddCompany",
-            //    contentType: "application/json; charset=utf-8",
-            //    data: JSON.stringify(parameter),
-            //    dataType: "json",
-            //    async: false,
-            //    success: function (data) {
-            //        console.log("12", data);
-            //    },
-            //    error: function (ex) {
-            //        console.log("Hata", ex);
-            //    }
-            //});
-
-            LoginService.AddCompany(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        console.log("qwe", result);
-                        //addUser(result.ResultId);
-                    }
-                    else {
-                        toaster.error("Başarısız", result.Message);
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
-                });
-        }
-
-        function addUser(companyRefId) {
-            var parameter = {
+            var user = {
                 Name: $scope.register.Name,
                 Surname: $scope.register.Surname,
                 UserName: $scope.register.UserName,
                 Password: $scope.register.Password,
-                MailAdress: $scope.register.Email,
-                CompanyId: companyRefId
+                MailAdress: $scope.register.Email
             }
 
-            LoginService.AddUser(parameter,
+            var parameter = {
+                Name: $scope.register.CompanyName
+                , User: user
+            }
+
+            LoginService.AddCompanyV1(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı");
@@ -146,9 +116,6 @@
                     toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
                 });
         }
-
-
-
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {

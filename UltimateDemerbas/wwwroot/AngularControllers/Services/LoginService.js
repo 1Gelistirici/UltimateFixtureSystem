@@ -41,15 +41,8 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
-        this.AddCompany = function (parameter, success, error) {
-            $http.post("/Company/AddCompany", JSON.stringify(parameter)).then(
-                function (response) {
-                    if (success)
-                        success(response.data);
-                }, error);
-        }
-        this.AddUser = function (parameter, success, error) {
-            $http.post("/Company/AddUser", JSON.stringify(parameter)).then(
+        this.AddCompanyV1 = function (parameter, success, error) {
+            $http.post("/Login/AddCompanyV1", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

@@ -25,23 +25,12 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        public IActionResult AddCompany([FromBody] Company parameter)
+        [HttpPost]
+        public IActionResult AddCompanyV1([FromBody] CompanyUser parameter)
         {
-            var result = company.AddCompany(parameter);
+            var result = company.AddCompanyV1(parameter);
             return Content(result.Result);
         }
-
-
-
-        public IActionResult AddUser()
-        {
-            User parameter = JsonHelper.JsonConvert<User>(Request.Form["parameter"]);
-
-            var result = user.UpdateUser(parameter);
-            return Content(result.Result);
-        }
-
-
 
     }
 }
