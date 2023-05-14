@@ -109,6 +109,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        //public async Task<IActionResult> AddCompany([FromBody] Company parameter)
+        //{
+        //    var result = await company.AddCompanyAsync(parameter);
+        //    return Content(result);
+        //}
+
         public IActionResult UpdateCompany()
         {
             string folderUrl = "";

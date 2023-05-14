@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
 
@@ -224,12 +225,14 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@Name", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@LogoUrl", parameter.LogoUrl);
                         sqlCommand.Parameters.AddWithValue("@EstablishmentDate", parameter.EstablishmentDate);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
+
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
-
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }

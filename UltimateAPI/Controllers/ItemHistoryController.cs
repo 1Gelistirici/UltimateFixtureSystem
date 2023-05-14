@@ -13,7 +13,7 @@ namespace UltimateAPI.Controllers
         public IActionResult AddItemHistory(ItemHistory parameter)
         {
             UltimateSetResult result = ItemHistoryCallManager.Instance.AddItemHistory(parameter);
-            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message));
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
         [HttpPost("GetItemHistoryByCompany")]

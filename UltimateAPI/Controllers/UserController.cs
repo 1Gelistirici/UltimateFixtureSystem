@@ -69,7 +69,7 @@ namespace UltimateAPI.Controllers
         public IActionResult AddUser(User parameter)
         {
             var result = UserCallManager.Instance.AddUser(parameter);
-            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
         [HttpPost("DeleteUser")]

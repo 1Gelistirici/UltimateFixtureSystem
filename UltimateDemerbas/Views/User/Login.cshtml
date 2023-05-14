@@ -40,17 +40,22 @@
     <toaster-container toaster-options="{ 'time-out': 10000, 'close-button':true, 'close-button':true, 'position-class': 'toast-top-right' }">
     </toaster-container>
 
+
+
     <!-- BEGIN LOGO -->
     <div class="logo">
+        <h4 class="bold" style="color:white;">
+            ULTIMATE FIXTURE SYSTEM
+        </h4>
     </div>
     <!-- END LOGO -->
-    <!-- BEGIN LOGIN -->
+
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
-        <form name="LoginForm">
+        <form name="LoginForm" class="login-form">
             <div class="form-title">
-                @*<span class="form-title">Welcome.</span>*@
-                @*<span class="form-subtitle">Please login.</span>*@
+                <span class="form-title">Welcome.</span>
+                <span class="form-subtitle">Please login.</span>
             </div>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
@@ -85,12 +90,14 @@
                     <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
                 </div>
             </div>
+
+            <div class="create-account">
+                <p>
+                    <a href="javascript:;" class="btn-primary btn" id="register-btn">Create an account</a>
+                </p>
+            </div>
         </form>
         <!-- END LOGIN FORM -->
-        <br />
-        <br />
-        <br />
-        <br />
         <!-- BEGIN FORGOT PASSWORD FORM -->
         <form name="ForgetForm" class="forget-form" ng-show="forgetForm">
             <div class="form-title">
@@ -130,9 +137,57 @@
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
-
+        <!-- BEGIN REGISTRATION FORM -->
+        <form name="registerForm" class="register-form">
+            <div class="form-title">
+                <span class="form-title">Sign Up</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Company Name</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Company Name" ng-model="register.CompanyName" required />
+            </div>
+            <p class="hint"> Enter your account details below: </p>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Username</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Username" ng-model="register.UserName" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Name</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Name" ng-model="register.Name" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Surname</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Surname" ng-model="register.Surname" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Email" ng-model="register.Email" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <input class="form-control placeholder-no-fix" type="password" placeholder="Password" ng-model="register.Password" required />
+            </div>
+            <div class="form-group margin-top-20 margin-bottom-20">
+                <label class="mt-checkbox mt-checkbox-outline">
+                    <input type="checkbox" name="tnc" required /> I agree to the
+                    <a href="javascript:;">Terms of Service </a> &
+                    <a href="javascript:;">Privacy Policy </a>
+                    <span></span>
+                </label>
+                <div id="register_tnc_error"> </div>
+            </div>
+            <div>
+                <button class="btn btn-default">Back</button>
+                <a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid" ng-click="addCompany();">Submit</a>
+            </div>
+        </form>
+        <!-- END REGISTRATION FORM -->
 
     </div>
+
+
+
+
 
     <script src="~/assets/global/plugins/jquery.min.js"></script>
     <script src="~/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>

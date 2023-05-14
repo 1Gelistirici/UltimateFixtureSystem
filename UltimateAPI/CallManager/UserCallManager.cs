@@ -59,7 +59,7 @@ namespace UltimateAPI.CallManager
         {
             return UserManager.Instance.UpdateProfile(parameter);
         }
-        public UltimateResult<User> AddUser(User parameter)
+        public UltimateSetResult AddUser(User parameter)
         {
             return UserManager.Instance.AddUser(parameter);
         }

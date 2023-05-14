@@ -541,9 +541,9 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<User> AddUser(User parameter)
+        public UltimateSetResult AddUser(User parameter)
         {
-            UltimateResult<User> result = new UltimateResult<User>();
+            UltimateSetResult result = new UltimateSetResult();
             SqlConnection sqlConnection = null;
             string Proc = "[dbo].[user_AddUser]";
 
@@ -630,7 +630,6 @@ namespace UltimateAPI.Manager
 
             return result;
         }
-
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 
@@ -41,14 +42,15 @@ namespace UltimateAPI.Controllers
         public IActionResult AddCompany(Company parameter)
         {
             var result = CompanyCallManager.Instance.AddCompany(parameter);
-            return Content(ResultData.Get(result.IsSuccess, result.Message, null));
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
         [HttpPost("UpdateCompany")]
         public IActionResult UpdateCompany(Company parameter)
         {
             var result = CompanyCallManager.Instance.UpdateCompany(parameter);
-            return Content(ResultData.Get(result.IsSuccess, result.Message, null));
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.ReturnId));
+
         }
 
     }

@@ -4,6 +4,7 @@
         $scope.LoginButton = false;
         $scope.forgetForm = true;
         $scope.resetPasswordForm = false;
+        $scope.register = [];
 
         $scope.CheckUser = function () {
             $scope.LoginButton = true;
@@ -86,6 +87,68 @@
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
+
+
+        $scope.addCompany = function () {
+            var parameter = {
+                Name: $scope.register.CompanyName
+            }
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Company/AddCompany",
+            //    contentType: "application/json; charset=utf-8",
+            //    data: JSON.stringify(parameter),
+            //    dataType: "json",
+            //    async: false,
+            //    success: function (data) {
+            //        console.log("12", data);
+            //    },
+            //    error: function (ex) {
+            //        console.log("Hata", ex);
+            //    }
+            //});
+
+            LoginService.AddCompany(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log("qwe", result);
+                        //addUser(result.ResultId);
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
+        }
+
+        function addUser(companyRefId) {
+            var parameter = {
+                Name: $scope.register.Name,
+                Surname: $scope.register.Surname,
+                UserName: $scope.register.UserName,
+                Password: $scope.register.Password,
+                MailAdress: $scope.register.Email,
+                CompanyId: companyRefId
+            }
+
+            LoginService.AddUser(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        toaster.success("Başarılı");
+                        location.reload();
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
+        }
+
+
+
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {

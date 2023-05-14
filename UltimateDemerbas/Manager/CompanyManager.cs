@@ -35,6 +35,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Company>("Company/AddCompany", parameter);
         }
 
+        //public async Task<string> AddCompany(Company parameter)
+        //{
+        //    return await GetApiParameter<Company>("Company/AddCompanyAsync", parameter);
+        //}
+
         public Task<string> UpdateCompany(Company parameter)
         {
             return GetApiParameter<Company>("Company/UpdateCompany", parameter);
