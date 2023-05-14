@@ -49,7 +49,7 @@ LoginApp.service("LoginService", ["$http",
                 }, error);
         }
         this.AddUser = function (parameter, success, error) {
-            $http.post("/User/AddUser", JSON.stringify(parameter)).then(
+            $http.post("/Company/AddUser", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
