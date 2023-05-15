@@ -229,6 +229,12 @@ namespace UltimateAPI.Manager
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
                         result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
+
+                        if (result.ReturnId == -1)
+                        {
+                            result.Message = "Farklı bir şirket ismi giriniz.";
+                        }
+
                         sqlConnection.Close();
                         sqlCommand.Dispose();
                     }
