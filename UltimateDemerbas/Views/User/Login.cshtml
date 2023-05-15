@@ -33,6 +33,8 @@
     <link href="~/Content/toaster.css" rel="stylesheet" />
     <script src="~/Content/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
 
+
+
 </head>
 <!-- END HEAD -->
 
@@ -138,6 +140,7 @@
         </form>
         <!-- END FORGOT PASSWORD FORM -->
         <!-- BEGIN REGISTRATION FORM -->
+
         <form name="registerForm" class="register-form">
             <div class="form-title">
                 <span class="form-title">Sign Up</span>
@@ -178,23 +181,26 @@
             </div>
             <div>
                 <button type="button" id="register-back-btn" class="btn btn-default">Back</button>
-                <a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid" ng-click="addCompany();">Submit</a>
+                @*<a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid" ng-click="addCompany();">Submit</a>*@
+                <a class="btn red uppercase pull-right" @*ng-disabled="registerForm.$invalid"*@ data-toggle="modal" data-target="#AddUser" ng-click="nextValidation();">Next</a>
             </div>
         </form>
         <!-- END REGISTRATION FORM -->
+
+
+
+
+
+
+   
+
+        <partial name="~/Views/Shared/Partials/User/LoginEmailPhoneValidationPopup.cshtml" />
 
     </div>
 
 
 
 
-
-    <script src="~/assets/global/plugins/jquery.min.js"></script>
-    <script src="~/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/assets/global/plugins/js.cookie.min.js"></script>
-    <script src="~/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="~/assets/global/plugins/jquery.blockui.min.js"></script>
-    <script src="~/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <!-- END LOGIN -->
     <!-- BEGIN CORE PLUGINS -->
     <script src="~/assets/global/plugins/jquery.min.js"></script>

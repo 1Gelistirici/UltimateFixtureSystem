@@ -117,6 +117,10 @@
                 });
         }
 
+        $scope.nextValidation = function () {
+
+        }
+
         //Enter'a basıldığında
         $(document).keypress(function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
