@@ -156,6 +156,7 @@
                     if (result.IsSuccess) {
                         startRemainingTimeInterval();
                         toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
+                        $("#emailValidationPopup").modal("show");
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
