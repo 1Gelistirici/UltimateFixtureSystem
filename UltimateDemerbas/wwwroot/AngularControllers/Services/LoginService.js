@@ -48,6 +48,13 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
+        this.SetEmailValidation = function (parameter, success, error) {
+            $http.post("/Login/SetEmailValidation", JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
 
     }]);
 

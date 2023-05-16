@@ -146,7 +146,23 @@
 
         function sendEmailValidationMessage() {
 
-            startRemainingTimeInterval();
+
+            var parameter = {
+                MailAdress: $scope.register.Email
+            };
+
+            LoginService.SetEmailValidation(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        startRemainingTimeInterval();
+                        toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
 
         }
 
@@ -161,11 +177,6 @@
                 this.$apply(fn);
             }
         };
-
-
-
-
-
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {
