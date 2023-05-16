@@ -1,18 +1,27 @@
 ﻿
-<div id="AddUser" @*class="modal fade" aria-hidden="true"*@>
-    <div class="modal-dialog" style="width: 500px;z-index:10052!important;">
-        <div class="modal-content">
-            <div class="scroller" style="height:350px" data-always-visible="0" data-rail-visible1="1">
+<div id="AddUser" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px; z-index: 10052 !important;">
+        <div class="modal-content" style="background-color: #5C97BD;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger pull-left" style="color:snow;">Email Validation</h4>
+                <h4 class="modal-title danger pull-right" style="color:snow;">
+                    {{remainingTime}}
+                </h4>
+            </div>
+            <div class="scroller" style="height:80px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form name="AddUserForm" class="col-md-12">
-
-
+                        <div class="form-group">
+                            <label class="control-label visible-ie8 visible-ie9">Email</label>
+                            <input class="form-control placeholder-no-fix" type="text" placeholder="Email" ng-model="register.Email" required />
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="AddUser()">Save</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal" style="color:snow;">Cancel</button>
+                <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="AddUser();">Submit</button>
             </div>
         </div>
     </div>

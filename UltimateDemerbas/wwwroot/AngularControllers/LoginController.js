@@ -119,7 +119,53 @@
 
         $scope.nextValidation = function () {
 
+            sendEmailValidationMessage();
+
         }
+
+
+        $scope.remainingTime = "5:00";
+        var remainingTimeInterval = null;
+
+        function startRemainingTimeInterval() {
+
+            var remainingTimeSecond = 300;
+            if (remainingTimeInterval) {
+                clearInterval(remainingTimeInterval);
+            }
+
+            remainingTimeInterval = setInterval(function () {
+                remainingTimeSecond--;
+                $scope.safeApply(function () {
+                    $scope.remainingTime = formatDateSecondV1(remainingTimeSecond);
+                });
+            }, 1000);
+
+        }
+
+
+        function sendEmailValidationMessage() {
+
+            startRemainingTimeInterval();
+
+        }
+
+
+        $scope.safeApply = function (fn) {
+            var phase = this.$root.$$phase;
+            if (phase === '$apply' || phase === '$digest') {
+                if (fn && typeof fn === 'function') {
+                    fn();
+                }
+            } else {
+                this.$apply(fn);
+            }
+        };
+
+
+
+
+
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {
