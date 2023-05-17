@@ -37,6 +37,13 @@ namespace UltimateDemerbas.Controllers
         }
 
         [HttpPost]
+        public IActionResult IsValidateCode([FromBody] CompanyUser parameter)
+        {
+            var result = company.IsValidateCode(parameter);
+            return Content(result.Result);
+        }
+
+        [HttpPost]
         public IActionResult SetEmailValidation([FromBody] User parameter)
         {
             UltimateSetResult result = new UltimateSetResult();

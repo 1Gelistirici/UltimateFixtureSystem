@@ -77,6 +77,59 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<Code> GetCodeV1(Code parameter)
+        {
+            UltimateResult<Code> result = new UltimateResult<Code>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[codes_GetCodeV1]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@Code", parameter.CodeString);
+                        sqlCommand.Parameters.AddWithValue("@SessionId", parameter.SessionId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Code code = new Code();
+                                    code.Id = Convert.ToInt32(read["Id"]);
+                                    code.UserRefId = Convert.ToInt32(read["UserRefId"]);
+                                    code.CodeString = read["Code"].ToString();
+                                    code.InsertDate = Convert.ToDateTime(read["InsertDate"]);
+                                    code.EndDate = Convert.ToDateTime(read["EndDate"]);
+
+                                    result.Data = code;
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
+
         public bool AddCode(Code parameter)
         {
             bool result = false;

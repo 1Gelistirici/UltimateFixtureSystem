@@ -21,5 +21,20 @@ namespace UltimateAPI.Controllers
             var result = CodeCallManager.Instance.GetCode(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("GetCodeV1")]
+        public IActionResult GetCodeV1(Code parameter)
+        {
+            var result = CodeCallManager.Instance.GetCodeV1(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("IsValidateCode")]
+        public IActionResult IsValidateCode(Code parameter)
+        {
+            var result = CodeCallManager.Instance.IsValidateCode(parameter);
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
+        }
+
     }
 }

@@ -32,6 +32,21 @@ namespace UltimateAPI.CallManager
             return CodeManager.Instance.GetCode(parameter);
         }
 
+        public UltimateResult<Code> GetCodeV1(Code parameter)
+        {
+            return CodeManager.Instance.GetCodeV1(parameter);
+        }
+
+        public UltimateSetResult IsValidateCode(Code parameter)
+        {
+            UltimateSetResult result = new UltimateSetResult();
+            UltimateResult<Code> code = CodeManager.Instance.GetCodeV1(parameter);
+
+            result.IsSuccess = code.Data != null;
+
+            return result;
+        }
+
         public bool AddCode(Code parameter)
         {
             return CodeManager.Instance.AddCode(parameter);

@@ -88,6 +88,25 @@
                 });
         }
 
+        function isValidateCode() {
+
+            var result = false;
+
+            LoginService.IsValidateCode(
+                function success(result) {
+                    if (result.IsSuccess) {
+
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
+
+            return result;
+        }
+
         $scope.addCompany = function () {
 
             var user = {
