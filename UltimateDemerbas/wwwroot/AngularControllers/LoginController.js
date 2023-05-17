@@ -126,7 +126,7 @@
 
             var parameter = {
                 SessionId: sessionId,
-                Code: $scope.register.EmailValidationCode
+                CodeString: $scope.register.EmailValidationCode
             };
 
             LoginService.IsValidateCode(parameter,
@@ -147,7 +147,7 @@
                 MailAdress: $scope.register.Email
             };
 
-            LoginService.SetEmailValidation(parameter,
+            LoginService.SetEmailValidation(parameter, sessionId,
                 function success(result) {
                     if (result.IsSuccess) {
                         startRemainingTimeInterval();

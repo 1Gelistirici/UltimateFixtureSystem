@@ -45,15 +45,15 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
-        this.SetEmailValidation = function (parameter, success, error) {
-            $http.post("/Login/SetEmailValidation", JSON.stringify(parameter)).then(
+        this.SetEmailValidation = function (parameter, sessionId, success, error) {
+            $http.post("/Login/SetEmailValidation", JSON.stringify(parameter), { sessionId: sessionId }).then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
         }
         this.IsValidateCode = function (parameter, success, error) {
-            $http.post('/Code/IsValidateCode', JSON.stringify(parameter)).then(
+            $http.post('/Login/IsValidateCode', JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

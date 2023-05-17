@@ -21,6 +21,7 @@ namespace UltimateDemerbas.Controllers
             _httpClientFactory = httpClientFactory;
             company = new CompanyManager(_httpClientFactory);
             user = new UserManager(_httpClientFactory);
+            code = new CodeManager(_httpClientFactory);
             Configuration = _configuration;
         }
 
@@ -45,7 +46,7 @@ namespace UltimateDemerbas.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetEmailValidation([FromBody] User parameter)
+        public IActionResult SetEmailValidation([FromBody] User parameter, string sessionId)
         {
             UltimateSetResult result = new UltimateSetResult();
             Mailer mailler = new Mailer(Configuration);
@@ -64,6 +65,7 @@ namespace UltimateDemerbas.Controllers
                 Code code = new Code();
                 code.UserRefId = 0;
                 code.CodeString = newCode;
+                code.SessionId = sessionId;
 
                 codeManager.AddCode(code);
             }
