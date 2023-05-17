@@ -55,6 +55,13 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
+        this.IsValidateCode = function (parameter, success, error) {
+            $http.post('/Code/IsValidateCode', JSON.stringify(parameter)).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
 
     }]);
 

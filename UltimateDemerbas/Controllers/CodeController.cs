@@ -2,7 +2,6 @@
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
-using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -10,11 +9,11 @@ namespace UltimateDemerbas.Controllers
     {
         protected override int PageNumber { get; set; } = 0;
         private readonly IHttpClientFactory _httpClientFactory;
-        CodeController category;
+        CodeManager codeManager;
         public CodeController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            category = new CodeController(_httpClientFactory);
+            codeManager = new CodeManager(_httpClientFactory);
         }
 
 
@@ -23,23 +22,21 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
-        public IActionResult GetCategories()
+        public IActionResult GetCode([FromBody] Code parameter)
         {
-            var result = category.GetCategories();
+            var result = codeManager.GetCode(parameter);
             return Content(result.Result);
         }
 
-        public IActionResult DeleteCategory([FromBody] Category parameter)
+        public IActionResult GetCodeV1([FromBody] Code parameter)
         {
-            parameter.UserId = WorkingUser;
-            var result = category.DeleteCategory(parameter);
+            var result = codeManager.GetCodeV1(parameter);
             return Content(result.Result);
         }
 
-        public IActionResult AddCategory([FromBody] Category parameter)
+        public IActionResult AddCode([FromBody] Code parameter)
         {
-            parameter.UserId = WorkingUser;
-            var result = category.AddCategory(parameter);
+            var result = codeManager.AddCode(parameter);
             return Content(result.Result);
         }
     }

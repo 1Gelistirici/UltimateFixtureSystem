@@ -5,6 +5,9 @@
         $scope.forgetForm = true;
         $scope.resetPasswordForm = false;
         $scope.register = [];
+        $scope.remainingTime = "5:00";
+        var remainingTimeInterval = null;
+        var sessionId = sessionStorage.getItem('sessionId');
 
         $scope.CheckUser = function () {
             $scope.LoginButton = true;
@@ -29,7 +32,6 @@
                     toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
                 });
         }
-
         $scope.ForgetPassword = function () {
             $scope.forgetSendButton = true;
 
@@ -64,7 +66,6 @@
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
-
         $scope.ForgetPasswordChange = function () {
             $scope.resetSendButton = false;
             var parameter = {
@@ -87,28 +88,14 @@
                     toaster.error("Başarısız", "Sorgu esnasında bir hata ile karşılaşıldı");
                 });
         }
-
-        function isValidateCode() {
-
-            var result = false;
-
-            LoginService.IsValidateCode(
-                function success(result) {
-                    if (result.IsSuccess) {
-
-                    }
-                    else {
-                        toaster.error("Başarısız", result.Message);
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
-                });
-
-            return result;
+        $scope.addCompany = function () {
+            isValidateCode()
+        }
+        $scope.nextValidation = function () {
+            sendEmailValidationMessage();
         }
 
-        $scope.addCompany = function () {
-
+        function addCompany() {
             var user = {
                 Name: $scope.register.Name,
                 Surname: $scope.register.Surname,
@@ -135,16 +122,52 @@
                     toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
                 });
         }
+        function isValidateCode() {
 
-        $scope.nextValidation = function () {
+            var parameter = {
+                SessionId: sessionId,
+                Code: $scope.register.EmailValidationCode
+            };
 
-            sendEmailValidationMessage();
+            LoginService.IsValidateCode(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        addCompany();
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
+        }
+        function sendEmailValidationMessage() {
+
+            var parameter = {
+                MailAdress: $scope.register.Email
+            };
+
+            LoginService.SetEmailValidation(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        startRemainingTimeInterval();
+                        toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
+                        $("#emailValidationPopup").modal("show");
+
+                        if (!sessionId) {
+                            sessionId = generateUUID();
+                            sessionStorage.setItem('sessionId', sessionId);
+                        }
+
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
 
         }
-
-
-        $scope.remainingTime = "5:00";
-        var remainingTimeInterval = null;
 
         function startRemainingTimeInterval() {
 
@@ -161,32 +184,6 @@
             }, 1000);
 
         }
-
-
-        function sendEmailValidationMessage() {
-
-
-            var parameter = {
-                MailAdress: $scope.register.Email
-            };
-
-            LoginService.SetEmailValidation(parameter,
-                function success(result) {
-                    if (result.IsSuccess) {
-                        startRemainingTimeInterval();
-                        toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
-                        $("#emailValidationPopup").modal("show");
-                    }
-                    else {
-                        toaster.error("Başarısız", result.Message);
-                    }
-                }, function error() {
-                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
-                });
-
-        }
-
-
         $scope.safeApply = function (fn) {
             var phase = this.$root.$$phase;
             if (phase === '$apply' || phase === '$digest') {

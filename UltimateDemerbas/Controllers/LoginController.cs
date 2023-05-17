@@ -15,6 +15,7 @@ namespace UltimateDemerbas.Controllers
         private IConfiguration Configuration;
         CompanyManager company;
         UserManager user;
+        CodeManager code;
         public LoginController(IHttpClientFactory httpClientFactory, IConfiguration _configuration)
         {
             _httpClientFactory = httpClientFactory;
@@ -37,9 +38,9 @@ namespace UltimateDemerbas.Controllers
         }
 
         [HttpPost]
-        public IActionResult IsValidateCode([FromBody] CompanyUser parameter)
+        public IActionResult IsValidateCode([FromBody] Code parameter)
         {
-            var result = company.IsValidateCode(parameter);
+            var result = code.IsValidateCode(parameter);
             return Content(result.Result);
         }
 
