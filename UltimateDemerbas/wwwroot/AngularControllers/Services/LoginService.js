@@ -10,7 +10,6 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         };
-
         this.ForgetPassword = function (parameter, success, error) {
             $http.post('/User/ForgetPassword/', JSON.stringify(parameter)).then(
                 function (response) {
@@ -18,7 +17,6 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         };
-
         this.ForgetPasswordChange = function (parameter, success, error) {
             $http.post('/User/ForgetPasswordChange/', JSON.stringify(parameter)).then(
                 function (response) {
@@ -26,7 +24,6 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         };
-
         this.RemoveActiveUserSession = function (success, error) {
             $http.get("/User/RemoveActiveUserSession").then(
                 function (response) {
