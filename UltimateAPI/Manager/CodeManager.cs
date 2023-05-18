@@ -148,6 +148,7 @@ namespace UltimateAPI.Manager
 
                         sqlCommand.Parameters.AddWithValue("@UserRefId", parameter.UserRefId);
                         sqlCommand.Parameters.AddWithValue("@Code", parameter.CodeString);
+                        sqlCommand.Parameters.AddWithValue("@SessionId", parameter.SessionId);
                         sqlCommand.Parameters.AddWithValue("@InsertDate", DateTime.Now);
                         sqlCommand.Parameters.AddWithValue("@EndDate", DateTime.Now.AddMinutes(5));
 
