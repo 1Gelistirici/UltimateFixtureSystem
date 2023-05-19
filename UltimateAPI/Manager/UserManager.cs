@@ -374,6 +374,68 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<User>> GetAllUser()
+        {
+            List<User> users = new List<User>();
+            UltimateResult<List<User>> result = new UltimateResult<List<User>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[user_GetAllUser]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    User user = new User();
+                                    user.Name = read["name"].ToString();
+                                    user.Surname = read["surname"].ToString();
+                                    user.UserName = read["username"].ToString();
+                                    user.MailAdress = read["mailAdress"].ToString();
+                                    user.Telephone = read["telNo"].ToString();
+                                    user.Company = read["company"].ToString();
+                                    user.Title = read["title"].ToString();
+                                    user.Department = Convert.ToInt32(read["departmentId"]);
+                                    user.Linkedin = read["linkedin"].ToString();
+                                    user.Facebook = read["facebook"].ToString();
+                                    user.Twitter = read["twitter"].ToString();
+                                    user.About = read["about"].ToString();
+                                    user.Id = Convert.ToInt32(read["id"]);
+                                    user.Lock = Convert.ToBoolean(read["lock"]);
+                                    user.ImageUrl = Convert.ToString(read["ImageUrl"]);
+                                    user.ImageName = read["ImageName"].ToString();
+
+                                    users.Add(user);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = users;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<User>> ChangePassword(User parameter)
         {
             List<User> users = new List<User>();
