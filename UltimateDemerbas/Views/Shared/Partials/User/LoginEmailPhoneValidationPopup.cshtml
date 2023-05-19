@@ -1,5 +1,5 @@
 ﻿
-<div id="emailValidationPopup" class="modal fade" aria-hidden="true">
+<div id="emailValidationPopup" class="modal fade" aria-hidden="true" tabindex="-1" data-backdrop="static">
     <div class="modal-dialog" style="width: 400px; z-index: 10052 !important;">
         <div class="modal-content" style="background-color: #5C97BD;">
             <div class="modal-header">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn dark btn-outline" data-dismiss="modal" style="color:snow;">Cancel</button>
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal" style="color:snow;" ng-click="cancelEmailValidation();">Cancel</button>
                 <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="addCompany();">Submit</button>
             </div>
         </div>

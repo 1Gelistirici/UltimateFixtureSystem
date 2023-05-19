@@ -125,8 +125,8 @@
         function isValidateCode() {
 
             var parameter = {
-                SessionId: sessionId,
-                CodeString: $scope.register.EmailValidationCode
+                CodeString: $scope.register.EmailValidationCode,
+                SessionId: sessionId
             };
 
             LoginService.IsValidateCode(parameter,
@@ -194,6 +194,32 @@
                 this.$apply(fn);
             }
         };
+
+        $scope.cancelEmailValidation = function () {
+            var parameter = {
+                MailAdress: $scope.register.Email
+            };
+
+            LoginService.Set(parameter, sessionId,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        startRemainingTimeInterval();
+                        toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
+                        $("#emailValidationPopup").modal("show");
+
+                        if (!sessionId) {
+                            sessionId = generateUUID();
+                            sessionStorage.setItem('sessionId', sessionId);
+                        }
+
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
+                });
+        }
 
         //Enter'a basıldığında
         $(document).keypress(function (event) {

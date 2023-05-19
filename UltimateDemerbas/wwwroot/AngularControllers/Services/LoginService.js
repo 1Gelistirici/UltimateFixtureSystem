@@ -46,7 +46,7 @@ LoginApp.service("LoginService", ["$http",
                 }, error);
         }
         this.SetEmailValidation = function (parameter, sessionId, success, error) {
-            $http.post("/Login/SetEmailValidation", JSON.stringify(parameter), { sessionId: sessionId }).then(
+            $http.post("/Login/SetEmailValidation?sessionId=" + sessionId, JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);

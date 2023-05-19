@@ -15,6 +15,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result, "", ""));
         }
 
+        [HttpPost("DeleteCodeBySessionId")]
+        public IActionResult DeleteCodeBySessionId(string sessionId)
+        {
+            var result = CodeCallManager.Instance.DeleteCodeBySessionId(sessionId);
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
+        }
+
         [HttpPost("GetCode")]
         public IActionResult GetCode(Code parameter)
         {

@@ -47,6 +47,11 @@ namespace UltimateAPI.CallManager
             return result;
         }
 
+        public UltimateSetResult DeleteCodeBySessionId(string sessionId)
+        {
+            return CodeManager.Instance.DeleteCodeBySessionId(sessionId);
+        }
+
         public bool AddCode(Code parameter)
         {
             return CodeManager.Instance.AddCode(parameter);

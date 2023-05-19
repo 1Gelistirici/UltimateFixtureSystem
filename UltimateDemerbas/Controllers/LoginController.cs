@@ -46,7 +46,7 @@ namespace UltimateDemerbas.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetEmailValidation([FromBody] User parameter, string sessionId)
+        public IActionResult SetEmailValidation([FromBody] User parameter, [FromQuery] string sessionId)
         {
             UltimateSetResult result = new UltimateSetResult();
             Mailer mailler = new Mailer(Configuration);

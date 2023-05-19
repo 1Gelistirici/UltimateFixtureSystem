@@ -129,6 +129,42 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateSetResult DeleteCodeBySessionId(string sessionId)
+        {
+            UltimateSetResult result = new UltimateSetResult();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[code_DeleteCodeBySessionId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@SessionId", sessionId);
+
+                        int effectedRow = sqlCommand.ExecuteNonQuery();
+                        result.IsSuccess = effectedRow > 0;
+                        sqlConnection.Close();
+                        sqlCommand.Dispose();
+
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
 
         public bool AddCode(Code parameter)
         {
