@@ -22,6 +22,13 @@ namespace UltimateAPI.Controllers
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
+        [HttpPost("IsBlockedBySessionId")]
+        public IActionResult IsBlockedBySessionId(string sessionId)
+        {
+            var result = CodeCallManager.Instance.IsBlockedBySessionId(sessionId);
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
+        }
+
         [HttpPost("GetCode")]
         public IActionResult GetCode(Code parameter)
         {

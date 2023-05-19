@@ -47,7 +47,7 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        private void isUnicInfo(User parameter, ref UltimateSetResult unicResult)
+        private void IsUnicInfo(User parameter, ref UltimateSetResult unicResult)
         {
             var responseUser = user.GetAllUser();
             List<User> users = JsonSerializer.Deserialize<UltimateResult<List<User>>>(responseUser.Result).Data;
@@ -61,11 +61,6 @@ namespace UltimateDemerbas.Controllers
                     unicResult.Message = "Bu email adresi zaten kullanılmaktadır. Farklı bir email adresi deneyiniz.";
                     unicResult.IsSuccess = false;
                 }
-                //else if (!isHaveUsername)
-                //{
-                //    unicResult.Message = "Bu username zaten kullanılmaktadır. Farklı bir username deneyiniz.";
-                //    unicResult.IsSuccess = false;
-                //}
             }
 
             var responseCompany = company.GetCompanies();
@@ -89,12 +84,18 @@ namespace UltimateDemerbas.Controllers
             Mail mail = new Mail();
 
             UltimateSetResult unicResult = new UltimateSetResult();
-            isUnicInfo(parameter, ref unicResult);
+            IsUnicInfo(parameter, ref unicResult);
             if (!unicResult.IsSuccess)
             {
                 return Content(ResultData.Get(unicResult.IsSuccess, unicResult.Message, null));
             }
 
+            var responseBlocked = code.IsBlockedBySessionId(sessionId);
+            UltimateSetResult blockedResult = JsonSerializer.Deserialize<UltimateSetResult>(responseBlocked.Result);
+            if (blockedResult.IsSuccess)
+            {
+                return Content(ResultData.Get(blockedResult.IsSuccess, blockedResult.Message, null));
+            }
 
 
             string newCode = CodeCreator.CreateCode(10);

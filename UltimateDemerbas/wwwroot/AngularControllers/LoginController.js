@@ -143,17 +143,17 @@
                 });
         }
         function sendEmailValidationMessage() {
-            $scope.isDisabledSubmitBtn = false
+            $scope.isDisabledSubmitBtn = true
 
             var parameter = {
                 MailAdress: $scope.register.Email,
                 Company: $scope.register.CompanyName,
-                UserName: $scope.register.UserName
+                UserName: $scope.register.UserName,
+                SessionId: sessionId
             };
 
             LoginService.SetEmailValidation(parameter, sessionId,
                 function success(result) {
-                    $scope.isDisabledSubmitBtn = false
                     if (result.IsSuccess) {
                         startRemainingTimeInterval();
                         toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
@@ -166,6 +166,7 @@
 
                     }
                     else {
+                        $scope.isDisabledSubmitBtn = false
                         toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
@@ -205,6 +206,7 @@
         };
 
         $scope.cancelEmailValidation = function () {
+            $scope.isDisabledSubmitBtn = false
 
             LoginService.DeleteCodeBySessionId(sessionId,
                 function success(result) {

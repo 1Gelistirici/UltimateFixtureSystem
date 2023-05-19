@@ -52,6 +52,11 @@ namespace UltimateAPI.CallManager
             return CodeManager.Instance.DeleteCodeBySessionId(sessionId);
         }
 
+        public UltimateSetResult IsBlockedBySessionId(string sessionId)
+        {
+            return CodeManager.Instance.IsBlockedBySessionId(sessionId);
+        }
+
         public bool AddCode(Code parameter)
         {
             return CodeManager.Instance.AddCode(parameter);
