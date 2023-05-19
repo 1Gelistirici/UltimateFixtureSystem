@@ -146,7 +146,9 @@
             $scope.isDisabledSubmitBtn = false
 
             var parameter = {
-                MailAdress: $scope.register.Email
+                MailAdress: $scope.register.Email,
+                Company: register.CompanyName,
+                UserName: register.UserName
             };
 
             LoginService.SetEmailValidation(parameter, sessionId,

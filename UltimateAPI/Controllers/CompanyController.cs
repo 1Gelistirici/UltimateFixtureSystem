@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 

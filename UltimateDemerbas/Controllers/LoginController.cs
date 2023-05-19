@@ -6,6 +6,8 @@ using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Mailer;
 using UltimateDemerbas.Models.Tool;
+using System.Collections.Generic;
+using System.Text.Json;
 
 namespace UltimateDemerbas.Controllers
 {
@@ -45,12 +47,55 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        private void isUnicInfo(User parameter, ref UltimateSetResult unicResult)
+        {
+            var responseUser = user.GetAllUser();
+            List<User> users = JsonSerializer.Deserialize<UltimateResult<List<User>>>(responseUser.Result).Data;
+            if (users != null)
+            {
+                bool isHaveEmail = users.Find(x => x.MailAdress == parameter.MailAdress) == null;
+                bool isHaveUsername = users.Find(x => x.UserName == parameter.UserName) == null;
+
+                if (!isHaveEmail)
+                {
+                    unicResult.Message = "Bu email adresi zaten kullanılmaktadır. Farklı bir email adresi deneyiniz.";
+                    unicResult.IsSuccess = false;
+                }
+                else if (!isHaveUsername)
+                {
+                    unicResult.Message = "Bu username zaten kullanılmaktadır. Farklı bir username deneyiniz.";
+                    unicResult.IsSuccess = false;
+                }
+            }
+
+            var responseCompany = company.GetCompanies();
+            List<Company> companyList = JsonSerializer.Deserialize<UltimateResult<List<Company>>>(responseCompany.Result).Data;
+            if (company != null)
+            {
+                bool isHaveCompanyname = companyList.Find(x => x.Name == parameter.Company) == null;
+                if (!isHaveCompanyname)
+                {
+                    unicResult.Message = "Farklı bir companyname deneyiniz. Bu companyname zaten kullanılmaktadır.";
+                    unicResult.IsSuccess = false;
+                }
+            }
+        }
+
         [HttpPost]
         public IActionResult SetEmailValidation([FromBody] User parameter, [FromQuery] string sessionId)
         {
             UltimateSetResult result = new UltimateSetResult();
             Mailer mailler = new Mailer(Configuration);
             Mail mail = new Mail();
+
+            UltimateSetResult unicResult = new UltimateSetResult();
+            isUnicInfo(parameter, ref unicResult);
+            if (!unicResult.IsSuccess)
+            {
+                return Content(ResultData.Get(unicResult.IsSuccess, unicResult.Message, null));
+            }
+
+
 
             string newCode = CodeCreator.CreateCode(10);
 
