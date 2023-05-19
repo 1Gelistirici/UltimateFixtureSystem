@@ -100,8 +100,23 @@ function getParameterInUrlByName(name) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function GetIpAddress() {
-    $.get("https://ipinfo.io", function (response) {
-     return response.ip;
-    }, "json")
+//function getIpAddress() {
+//    //$.get("https://ipinfo.io", function (response) {
+//    // return response.ip;
+//    //}, "json")
+
+//    $.get("https://api.ipify.org?format=json", function (response) {
+//        return response.ip;
+//    });
+//}
+
+function getIpAddress() {
+    return new Promise((resolve, reject) => {
+        $.get("https://api.ipify.org?format=json", function (response) {
+            resolve(response.ip);
+        }).fail(function (error) {
+            reject(error);
+        });
+    });
 }
+

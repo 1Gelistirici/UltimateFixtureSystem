@@ -45,13 +45,20 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         }
-        this.SetEmailValidation = function (parameter, sessionId, success, error) {
-            $http.post("/Login/SetEmailValidation?sessionId=" + sessionId, JSON.stringify(parameter)).then(
+        this.SetEmailValidation = function (parameter, sessionId, ipAddress, success, error) {
+            var url = "/Login/SetEmailValidation";
+            url += "?sessionId=" + sessionId;
+            url += "&ipAddress=" + ipAddress;
+
+            $http.post(url, JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
-                }, error);
+                },
+                error
+            );
         }
+
         this.IsValidateCode = function (parameter, success, error) {
             $http.post('/Login/IsValidateCode', JSON.stringify(parameter)).then(
                 function (response) {

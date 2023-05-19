@@ -79,6 +79,11 @@ namespace UltimateDemerbas.Controllers
         [HttpPost]
         public IActionResult SetEmailValidation([FromBody] User parameter, [FromQuery] string sessionId, [FromQuery] string ipAddress)
         {
+            if (sessionId is null && ipAddress is null)
+            {
+                return Content(ResultData.Get(false, "Eksik bilgiler", null));
+            }
+
             UltimateSetResult result = new UltimateSetResult();
             Mailer mailler = new Mailer(Configuration);
             Mail mail = new Mail();

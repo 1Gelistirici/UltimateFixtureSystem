@@ -8,6 +8,17 @@
         $scope.remainingTime = "5:00";
         var remainingTimeInterval = null;
         var sessionId = sessionStorage.getItem('sessionId');
+        var ipAddress;
+
+        async function getIp() {
+            try {
+                ipAddress = await getIpAddress();
+            } catch (error) {
+                toaster.error("Ulaşılamayan ıp adresi");
+            }
+        }
+        getIp();
+
         $scope.isDisabledSubmitBtn = false;
 
         $scope.CheckUser = function () {
@@ -127,7 +138,8 @@
 
             var parameter = {
                 CodeString: $scope.register.EmailValidationCode,
-                SessionId: sessionId
+                SessionId: sessionId,
+                ipAddress: ipAddress
             };
 
             LoginService.IsValidateCode(parameter,
@@ -152,7 +164,7 @@
                 SessionId: sessionId
             };
 
-            LoginService.SetEmailValidation(parameter, sessionId,
+            LoginService.SetEmailValidation(parameter, sessionId, ipAddress,
                 function success(result) {
                     if (result.IsSuccess) {
                         startRemainingTimeInterval();
