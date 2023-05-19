@@ -7,9 +7,14 @@
         $scope.register = [];
         $scope.remainingTime = "5:00";
         var remainingTimeInterval = null;
-        var sessionId = sessionStorage.getItem('sessionId');
-        var ipAddress;
 
+        var sessionId = sessionStorage.getItem('sessionId');
+        if (!sessionId) {
+            sessionId = generateUUID();
+            sessionStorage.setItem('sessionId', sessionId);
+        }
+
+        var ipAddress;
         async function getIp() {
             try {
                 ipAddress = await getIpAddress();
@@ -171,10 +176,10 @@
                         toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
                         $("#emailValidationPopup").modal("show");
 
-                        if (!sessionId) {
-                            sessionId = generateUUID();
-                            sessionStorage.setItem('sessionId', sessionId);
-                        }
+                        //if (!sessionId) {
+                        //    sessionId = generateUUID();
+                        //    sessionStorage.setItem('sessionId', sessionId);
+                        //}
 
                     }
                     else {

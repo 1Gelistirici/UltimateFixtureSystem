@@ -32,7 +32,7 @@ namespace UltimateAPI.Controllers
         [HttpPost("IsBlockedByIpAddress")]
         public IActionResult IsBlockedByIpAddress(Code parameter)
         {
-            var result = CodeCallManager.Instance.IsBlockedByIpAddress(parameter.SessionId);
+            var result = CodeCallManager.Instance.IsBlockedByIpAddress(parameter.IpAddress);
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 

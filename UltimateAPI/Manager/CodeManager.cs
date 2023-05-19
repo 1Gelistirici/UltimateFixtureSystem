@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
 namespace UltimateAPI.Manager
@@ -185,12 +186,15 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@IpAddress", ipAddress);
+                        sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
+                        result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
 
-                        if (!result.IsSuccess)
+                        if (result.ReturnId == 1)
                         {
+                            result.IsSuccess = false;
                             result.Message = "5 dakika içerisinde en fazla 5 doğrulama mesajı atılabilir.";
                         }
 

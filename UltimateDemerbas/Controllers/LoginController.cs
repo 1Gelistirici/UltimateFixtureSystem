@@ -97,7 +97,7 @@ namespace UltimateDemerbas.Controllers
 
             var responseBlocked = code.IsBlockedByIpAddress(new Code() { IpAddress = ipAddress });
             UltimateSetResult blockedResult = JsonSerializer.Deserialize<UltimateSetResult>(responseBlocked.Result);
-            if (blockedResult.IsSuccess)
+            if (!blockedResult.IsSuccess)
             {
                 return Content(ResultData.Get(blockedResult.IsSuccess, blockedResult.Message, null));
             }
