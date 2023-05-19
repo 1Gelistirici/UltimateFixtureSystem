@@ -147,8 +147,8 @@
 
             var parameter = {
                 MailAdress: $scope.register.Email,
-                Company: register.CompanyName,
-                UserName: register.UserName
+                Company: $scope.register.CompanyName,
+                UserName: $scope.register.UserName
             };
 
             LoginService.SetEmailValidation(parameter, sessionId,

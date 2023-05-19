@@ -30,6 +30,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetUser")]
+        public IActionResult GetUser()
+        {
+            var result = UserCallManager.Instance.GetAllUser();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("GetUserCompany")]
         public IActionResult GetUserCompany(User parameter)
         {
