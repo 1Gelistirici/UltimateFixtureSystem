@@ -70,7 +70,7 @@ namespace UltimateDemerbas.Controllers
 
             var responseCompany = company.GetCompanies();
             List<Company> companyList = JsonSerializer.Deserialize<UltimateResult<List<Company>>>(responseCompany.Result).Data;
-            if (company != null)
+            if (companyList != null)
             {
                 bool isHaveCompanyname = companyList.Find(x => x.Name == parameter.Company) == null;
                 if (!isHaveCompanyname)

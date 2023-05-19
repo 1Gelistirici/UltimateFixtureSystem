@@ -30,8 +30,8 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpPost("GetAllUser")]
-        public IActionResult GetUser()
+        [HttpGet("GetAllUser")]
+        public IActionResult GetAllUser()
         {
             var result = UserCallManager.Instance.GetAllUser();
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
