@@ -61,11 +61,11 @@ namespace UltimateDemerbas.Controllers
                     unicResult.Message = "Bu email adresi zaten kullanılmaktadır. Farklı bir email adresi deneyiniz.";
                     unicResult.IsSuccess = false;
                 }
-                else if (!isHaveUsername)
-                {
-                    unicResult.Message = "Bu username zaten kullanılmaktadır. Farklı bir username deneyiniz.";
-                    unicResult.IsSuccess = false;
-                }
+                //else if (!isHaveUsername)
+                //{
+                //    unicResult.Message = "Bu username zaten kullanılmaktadır. Farklı bir username deneyiniz.";
+                //    unicResult.IsSuccess = false;
+                //}
             }
 
             var responseCompany = company.GetCompanies();
