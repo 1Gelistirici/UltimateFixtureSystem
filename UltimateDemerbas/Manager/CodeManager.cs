@@ -30,14 +30,14 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Code>("Code/AddCode", parameter);
         }
 
-        public Task<string> DeleteCodeBySessionId(string sessionId)
+        public Task<string> DeleteCodeBySessionId(Code parameter)
         {
-            return GetApiParameter<string>("Code/DeleteCodeBySessionId", sessionId);
+            return GetApiParameter<Code>("Code/DeleteCodeBySessionId", parameter);
         }
 
-        public Task<string> IsBlockedBySessionId(string sessionId)
+        public Task<string> IsBlockedBySessionId(Code sessionId)
         {
-            return GetApiParameter<string>("Code/IsBlockedBySessionId", sessionId);
+            return GetApiParameter<Code>("Code/IsBlockedBySessionId", sessionId);
         }
 
     }

@@ -90,7 +90,7 @@ namespace UltimateDemerbas.Controllers
                 return Content(ResultData.Get(unicResult.IsSuccess, unicResult.Message, null));
             }
 
-            var responseBlocked = code.IsBlockedBySessionId(sessionId);
+            var responseBlocked = code.IsBlockedBySessionId(new Code() { SessionId = sessionId });
             UltimateSetResult blockedResult = JsonSerializer.Deserialize<UltimateSetResult>(responseBlocked.Result);
             if (blockedResult.IsSuccess)
             {

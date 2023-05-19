@@ -16,16 +16,16 @@ namespace UltimateAPI.Controllers
         }
 
         [HttpPost("DeleteCodeBySessionId")]
-        public IActionResult DeleteCodeBySessionId(string sessionId)
+        public IActionResult DeleteCodeBySessionId(Code parameter)
         {
-            var result = CodeCallManager.Instance.DeleteCodeBySessionId(sessionId);
+            var result = CodeCallManager.Instance.DeleteCodeBySessionId(parameter.SessionId);
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
         [HttpPost("IsBlockedBySessionId")]
-        public IActionResult IsBlockedBySessionId(string sessionId)
+        public IActionResult IsBlockedBySessionId(Code parameter)
         {
-            var result = CodeCallManager.Instance.IsBlockedBySessionId(sessionId);
+            var result = CodeCallManager.Instance.IsBlockedBySessionId(parameter.SessionId);
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 

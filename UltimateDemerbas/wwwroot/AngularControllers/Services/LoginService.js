@@ -59,13 +59,13 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         };
-        this.DeleteCodeBySessionId = function (sessionId, success, error) {
-            $http.post('/Code/DeleteCodeBySessionId', { sessionId: sessionId }).then(
+        this.DeleteCodeBySessionId = function (parameter, success, error) {
+            $http.post("/Code/DeleteCodeBySessionId", JSON.stringify(parameter)).then(
                 function (response) {
                     if (success)
                         success(response.data);
                 }, error);
-        };
+        }
 
     }]);
 

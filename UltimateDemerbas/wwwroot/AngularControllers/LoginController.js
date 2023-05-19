@@ -208,7 +208,11 @@
         $scope.cancelEmailValidation = function () {
             $scope.isDisabledSubmitBtn = false
 
-            LoginService.DeleteCodeBySessionId(sessionId,
+            var parameter = {
+                SessionId: sessionId
+            }
+
+            LoginService.DeleteCodeBySessionId(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
                         stopRemainingTimeInterval();

@@ -35,11 +35,11 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
-        public IActionResult DeleteCodeBySessionId([FromBody] string sessionId)
+        public IActionResult DeleteCodeBySessionId([FromBody] Code parameter)
         {
-            var result = codeManager.DeleteCodeBySessionId(sessionId);
+            var result = codeManager.DeleteCodeBySessionId(parameter);
             return Content(result.Result);
         }
-    
+
     }
 }
