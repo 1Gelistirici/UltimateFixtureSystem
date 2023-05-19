@@ -77,7 +77,7 @@ namespace UltimateDemerbas.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetEmailValidation([FromBody] User parameter, [FromQuery] string sessionId)
+        public IActionResult SetEmailValidation([FromBody] User parameter, [FromQuery] string sessionId, [FromQuery] string ipAddress)
         {
             UltimateSetResult result = new UltimateSetResult();
             Mailer mailler = new Mailer(Configuration);
@@ -90,7 +90,7 @@ namespace UltimateDemerbas.Controllers
                 return Content(ResultData.Get(unicResult.IsSuccess, unicResult.Message, null));
             }
 
-            var responseBlocked = code.IsBlockedBySessionId(new Code() { SessionId = sessionId });
+            var responseBlocked = code.IsBlockedByIpAddress(new Code() { IpAddress = ipAddress });
             UltimateSetResult blockedResult = JsonSerializer.Deserialize<UltimateSetResult>(responseBlocked.Result);
             if (blockedResult.IsSuccess)
             {
@@ -112,6 +112,7 @@ namespace UltimateDemerbas.Controllers
                 code.UserRefId = 0;
                 code.CodeString = newCode;
                 code.SessionId = sessionId;
+                code.IpAddress = ipAddress;
 
                 codeManager.AddCode(code);
             }

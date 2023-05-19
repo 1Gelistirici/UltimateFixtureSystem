@@ -57,6 +57,11 @@ namespace UltimateAPI.CallManager
             return CodeManager.Instance.IsBlockedBySessionId(sessionId);
         }
 
+        public UltimateSetResult IsBlockedByIpAddress(string sessionId)
+        {
+            return CodeManager.Instance.IsBlockedByIpAddress(sessionId);
+        }
+
         public bool AddCode(Code parameter)
         {
             return CodeManager.Instance.AddCode(parameter);

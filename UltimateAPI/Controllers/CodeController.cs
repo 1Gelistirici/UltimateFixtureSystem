@@ -29,6 +29,13 @@ namespace UltimateAPI.Controllers
             return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
         }
 
+        [HttpPost("IsBlockedByIpAddress")]
+        public IActionResult IsBlockedByIpAddress(Code parameter)
+        {
+            var result = CodeCallManager.Instance.IsBlockedByIpAddress(parameter.SessionId);
+            return Content(UltimateSetResult.Get(result.IsSuccess, result.Message, result.ReturnId));
+        }
+
         [HttpPost("GetCode")]
         public IActionResult GetCode(Code parameter)
         {

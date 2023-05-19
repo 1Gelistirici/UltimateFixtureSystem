@@ -35,9 +35,14 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Code>("Code/DeleteCodeBySessionId", parameter);
         }
 
-        public Task<string> IsBlockedBySessionId(Code sessionId)
+        public Task<string> IsBlockedBySessionId(Code parameter)
         {
-            return GetApiParameter<Code>("Code/IsBlockedBySessionId", sessionId);
+            return GetApiParameter<Code>("Code/IsBlockedBySessionId", parameter);
+        }
+
+        public Task<string> IsBlockedByIpAddress(Code parameter)
+        {
+            return GetApiParameter<Code>("Code/IsBlockedByIpAddress", parameter);
         }
 
     }

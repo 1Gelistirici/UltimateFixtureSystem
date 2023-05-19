@@ -13,5 +13,6 @@ namespace UltimateAPI.Entities
         public bool IsActive { get; set; }
         public string Password { get; set; }
         public string TryPassword { get; set; }
+        public string IpAddress { get; set; }
     }
 }

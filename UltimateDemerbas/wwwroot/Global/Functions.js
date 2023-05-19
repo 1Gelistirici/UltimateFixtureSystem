@@ -100,3 +100,8 @@ function getParameterInUrlByName(name) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+function GetIpAddress() {
+    $.get("https://ipinfo.io", function (response) {
+     return response.ip;
+    }, "json")
+}
