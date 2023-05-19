@@ -133,7 +133,7 @@ namespace UltimateAPI.Manager
         {
             UltimateSetResult result = new UltimateSetResult();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[code_DeleteCodeBySessionId]";
+            string Proc = "[dbo].[codes_DeleteCodeBySessionId]";
 
             try
             {

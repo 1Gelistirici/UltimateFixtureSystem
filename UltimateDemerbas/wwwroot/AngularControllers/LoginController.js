@@ -8,6 +8,7 @@
         $scope.remainingTime = "5:00";
         var remainingTimeInterval = null;
         var sessionId = sessionStorage.getItem('sessionId');
+        $scope.isDisabledSubmitBtn = false;
 
         $scope.CheckUser = function () {
             $scope.LoginButton = true;
@@ -142,6 +143,7 @@
                 });
         }
         function sendEmailValidationMessage() {
+            $scope.isDisabledSubmitBtn = false
 
             var parameter = {
                 MailAdress: $scope.register.Email
@@ -149,6 +151,7 @@
 
             LoginService.SetEmailValidation(parameter, sessionId,
                 function success(result) {
+                    $scope.isDisabledSubmitBtn = false
                     if (result.IsSuccess) {
                         startRemainingTimeInterval();
                         toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
@@ -164,9 +167,9 @@
                         toaster.error("Başarısız", result.Message);
                     }
                 }, function error() {
+                    $scope.isDisabledSubmitBtn = false
                     toaster.error("Başarısız", "Beklenmeyen bir hata ile karşılaşıldı");
                 });
-
         }
 
         function startRemainingTimeInterval() {
@@ -184,6 +187,10 @@
             }, 1000);
 
         }
+        function stopRemainingTimeInterval() {
+            clearInterval(remainingTimeInterval);
+        }
+
         $scope.safeApply = function (fn) {
             var phase = this.$root.$$phase;
             if (phase === '$apply' || phase === '$digest') {
@@ -196,22 +203,12 @@
         };
 
         $scope.cancelEmailValidation = function () {
-            var parameter = {
-                MailAdress: $scope.register.Email
-            };
 
-            LoginService.Set(parameter, sessionId,
+            LoginService.DeleteCodeBySessionId(sessionId,
                 function success(result) {
                     if (result.IsSuccess) {
-                        startRemainingTimeInterval();
-                        toaster.success("Kod gönderildi. 5 dakika içerimde kodu giriniz.");
-                        $("#emailValidationPopup").modal("show");
-
-                        if (!sessionId) {
-                            sessionId = generateUUID();
-                            sessionStorage.setItem('sessionId', sessionId);
-                        }
-
+                        stopRemainingTimeInterval();
+                        toaster.warning("İşlem iptal edildi.");
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
@@ -221,17 +218,17 @@
                 });
         }
 
-        //Enter'a basıldığında
-        $(document).keypress(function (event) {
-            var keycode = (event.keyCode ? event.keyCode : event.which);
-            if (keycode === 13) //Enter
-            {
-                $scope.CheckUser();
-            }
-            //else if (keycode === 32) //Space
-            //{
-            //    $scope.User.RememberMe = !$scope.User.RememberMe;
-            //}
-        });
+        ////Enter'a basıldığında
+        //$(document).keypress(function (event) {
+        //    var keycode = (event.keyCode ? event.keyCode : event.which);
+        //    if (keycode === 13) //Enter
+        //    {
+        //        $scope.CheckUser();
+        //    }
+        //    //else if (keycode === 32) //Space
+        //    //{
+        //    //    $scope.User.RememberMe = !$scope.User.RememberMe;
+        //    //}
+        //});
 
     }]);

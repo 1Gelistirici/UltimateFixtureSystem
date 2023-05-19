@@ -59,6 +59,13 @@ LoginApp.service("LoginService", ["$http",
                         success(response.data);
                 }, error);
         };
+        this.DeleteCodeBySessionId = function (sessionId, success, error) {
+            $http.post('/Code/DeleteCodeBySessionId', { sessionId: sessionId }).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
 
     }]);
 

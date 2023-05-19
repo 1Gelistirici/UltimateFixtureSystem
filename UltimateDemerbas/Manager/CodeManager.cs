@@ -24,10 +24,15 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<Code>("Code/IsValidateCode", parameter);
         }
-    
+
         public Task<string> AddCode(Code parameter)
         {
             return GetApiParameter<Code>("Code/AddCode", parameter);
+        }
+
+        public Task<string> DeleteCodeBySessionId(string sessionId)
+        {
+            return GetApiParameter<string>("Code/DeleteCodeBySessionId", sessionId);
         }
 
     }

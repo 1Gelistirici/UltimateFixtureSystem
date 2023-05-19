@@ -17,11 +17,6 @@ namespace UltimateDemerbas.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult GetCode([FromBody] Code parameter)
         {
             var result = codeManager.GetCode(parameter);
@@ -39,5 +34,12 @@ namespace UltimateDemerbas.Controllers
             var result = codeManager.AddCode(parameter);
             return Content(result.Result);
         }
+
+        public IActionResult DeleteCodeBySessionId([FromBody] string sessionId)
+        {
+            var result = codeManager.DeleteCodeBySessionId(sessionId);
+            return Content(result.Result);
+        }
+    
     }
 }

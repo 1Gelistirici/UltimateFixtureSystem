@@ -21,15 +21,19 @@
     <Compile Remove="Views\Layout\**" />
     <Compile Remove="Views\Shared\Partials\Profile\**" />
     <Compile Remove="wwwroot\assets1\test\**" />
+    <Compile Remove="wwwroot\ThirdParty\**" />
     <Content Remove="Views\Layout\**" />
     <Content Remove="Views\Shared\Partials\Profile\**" />
     <Content Remove="wwwroot\assets1\test\**" />
+    <Content Remove="wwwroot\ThirdParty\**" />
     <EmbeddedResource Remove="Views\Layout\**" />
     <EmbeddedResource Remove="Views\Shared\Partials\Profile\**" />
     <EmbeddedResource Remove="wwwroot\assets1\test\**" />
+    <EmbeddedResource Remove="wwwroot\ThirdParty\**" />
     <None Remove="Views\Layout\**" />
     <None Remove="Views\Shared\Partials\Profile\**" />
     <None Remove="wwwroot\assets1\test\**" />
+    <None Remove="wwwroot\ThirdParty\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,10 +49,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UltimateAPI\UltimateAPI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\ThirdParty\" />
   </ItemGroup>
 
   <ItemGroup>
