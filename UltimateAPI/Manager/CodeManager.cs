@@ -189,7 +189,6 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
-                        result.IsSuccess = effectedRow > 0;
                         result.ReturnId = (int)sqlCommand.Parameters["@ResultId"].Value;
 
                         if (result.ReturnId == 1)
