@@ -204,6 +204,15 @@
                 $scope.safeApply(function () {
                     $scope.remainingTime = formatDateSecondV1(remainingTimeSecond);
                 });
+
+                if (remainingTimeSecond === 0) {
+                    stopRemainingTimeInterval();
+                    $("#emailValidationPopup").modal("hide");
+                    $scope.safeApply(function () {
+                        $scope.isDisabledSubmitBtn = false;
+                    });
+                }
+
             }, 1000);
 
         }
