@@ -33,5 +33,13 @@
                 }, error);
         };
 
+        this.GetLicenseTypeByCompanyRefId = function (success, error) {
+            $http.post('/LicensesTypes/GetLicenseTypeByCompanyRefId').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

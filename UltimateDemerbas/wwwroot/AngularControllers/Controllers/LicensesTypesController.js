@@ -26,7 +26,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Lisans tipi silindi.");
-                        $scope.GetLicensesTypes();
+                        $scope.GetLicenseTypeByCompanyRefId();
                     } else {
                         toaster.error("Başarısız", "Lisins tipi silme işlemi yapılırken bir hata oluştu");
                     }
@@ -42,7 +42,7 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Lisans tipi eklendi.");
                         $("#AddLicenseType").modal("hide");
-                        $scope.GetLicensesTypes();
+                        $scope.GetLicenseTypeByCompanyRefId();
                     } else {
                         toaster.error("Başarısız", "Lisins tipi ekleme işlemi yapılırken bir hata oluştu");
                     }
@@ -51,8 +51,8 @@
                 });
         };
 
-        $scope.GetLicensesTypes = function () {
-            LicenseTypeService.GetLicensesTypes(
+        $scope.GetLicenseTypeByCompanyRefId = function () {
+            LicenseTypeService.GetLicenseTypeByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -71,7 +71,7 @@
                     toaster.error("Başarısız", "Lisans tipi listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetLicensesTypes();
+        $scope.GetLicenseTypeByCompanyRefId();
 
 
         $scope.UpdateLicensesTypesConfirm = function (x) {
