@@ -44,6 +44,11 @@ namespace UltimateAPI.CallManager
             return BillManager.Instance.AddBill(parameter);
         }
 
+        public UltimateResult<List<Bill>> GetBillByCompanyRefId(ReferansParameter parameter)
+        {
+            return BillManager.Instance.GetBillByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<Bill>> UpdateBill(Bill parameter)
         {
             return BillManager.Instance.UpdateBill(parameter);

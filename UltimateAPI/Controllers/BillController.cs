@@ -33,6 +33,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetBillByCompanyRefId")]
+        public IActionResult GetBillByCompanyRefId(ReferansParameter parameter)
+        {
+            BillCallManager bill = new BillCallManager();
+            var result = bill.GetBillByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("UpdateBill")]
         public IActionResult UpdateBill(Bill parameter)
         {
