@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetDepartmentByCompanyRefId = function (success, error) {
+            $http.get("/Department/GetDepartmentByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.AddDepartment = function (parameter, success, error) {
             $http.post('/Department/AddDepartment', JSON.stringify(parameter)).then(
                 function (response) {

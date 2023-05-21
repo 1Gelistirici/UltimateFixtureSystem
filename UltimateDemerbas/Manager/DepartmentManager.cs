@@ -15,6 +15,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Department>("Department/GetDepartments", parameter);
         }
 
+        public Task<string> GetDepartmentByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Department/GetDepartmentByCompanyRefId", parameter);
+        }
+
         public Task<string> AddDepartment(Department parameter)
         {
             return GetApiParameter<Department>("Department/AddDepartment", parameter);

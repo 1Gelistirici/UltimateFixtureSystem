@@ -15,6 +15,13 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetDepartmentByCompanyRefId")]
+        public IActionResult GetDepartmentByCompanyRefId(ReferansParameter parameter)
+        {
+            var result = DepartmentCallManager.Instance.GetDepartmentByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("AddDepartment")]
         public IActionResult AddDepartment(Department parameter)
         {

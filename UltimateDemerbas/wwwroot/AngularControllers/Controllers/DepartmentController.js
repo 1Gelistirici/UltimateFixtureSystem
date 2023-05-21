@@ -7,8 +7,8 @@
             Name: "Departman Name",
         };
 
-        $scope.GetDepartments = function () {
-            DepartmentService.GetDepartments(
+        $scope.GetDepartmentByCompanyRefId = function () {
+            DepartmentService.GetDepartmentByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,7 +27,7 @@
                     toaster.error("GetDepartments", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetDepartments();
+        $scope.GetDepartmentByCompanyRefId();
 
         $scope.DeleteDepartment = function (data) {
             DepartmentService.DeleteDepartment(data.Id,

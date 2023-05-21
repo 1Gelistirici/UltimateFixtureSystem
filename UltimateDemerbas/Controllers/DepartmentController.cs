@@ -33,6 +33,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetDepartmentByCompanyRefId()
+        {
+            var result = department.GetDepartmentByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult AddDepartment([FromBody] Department parameter)
         {
             parameter.CompanyId = WorkingCompany;

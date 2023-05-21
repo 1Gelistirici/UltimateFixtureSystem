@@ -13,8 +13,8 @@
             BillNo: "Bill",
         };
 
-        $scope.GetComponentByCompanyRefId = function () {
-            CategoryService.GetComponentByCompanyRefId(
+        $scope.GetCategorys = function () {
+            CategoryService.GetCategories(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Categorys = result.Data;
@@ -25,7 +25,7 @@
                     toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetComponentByCompanyRefId();
+        $scope.GetCategorys();
 
         $scope.GetBills = function () {
             BillService.GetBills(
@@ -55,8 +55,8 @@
         }
         $scope.GetComponentModels();
 
-        $scope.GetComponents = function () {
-            ComponentService.GetComponents(
+        $scope.GetComponentByCompanyRefId = function () {
+            ComponentService.GetComponentByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -75,7 +75,7 @@
                     toaster.error("GetComponents", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetComponents();
+        $scope.GetComponentByCompanyRefId();
 
         $scope.DeleteComponent = function (data) {
             ComponentService.DeleteComponent(data.Id,

@@ -31,6 +31,11 @@ namespace UltimateAPI.CallManager
         {
             return DepartmentManager.Instance.GetDepartments(parameter);
         }
+
+        public UltimateResult<List<Department>> GetDepartmentByCompanyRefId(ReferansParameter parameter)
+        {
+            return DepartmentManager.Instance.GetDepartmentByCompanyRefId(parameter);
+        }
         public UltimateResult<List<Department>> AddDepartment(Department parameter)
         {
             return DepartmentManager.Instance.AddDepartment(parameter);

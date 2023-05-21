@@ -202,7 +202,7 @@ namespace UltimateAPI.Manager
             List<Department> departments = new List<Department>();
             UltimateResult<List<Department>> result = new UltimateResult<List<Department>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[components_GetDepartmentByCompanyRefId]";
+            string Proc = "[dbo].[departments_GetDepartmentByCompanyRefId]";
 
             try
             {
