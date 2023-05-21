@@ -11,6 +11,11 @@ namespace UltimateAPI.CallManager
             return AccessoryModelManager.Instance.GetAccessoryModels();
         }
 
+        public UltimateResult<List<AccessoryModel>> GetAccessoryModelByCompanyRefId(ReferansParameter parameter)
+        {
+            return AccessoryModelManager.Instance.GetAccessoryModelByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<AccessoryModel>> DeleteAccessoryModel(AccessoryModel parameter)
         {
             return AccessoryModelManager.Instance.DeleteAccessoryModel(parameter);

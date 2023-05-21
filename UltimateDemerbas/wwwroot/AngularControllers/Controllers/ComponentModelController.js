@@ -7,8 +7,8 @@
             Name: "Component Model Name",
         };
 
-        $scope.GetComponentModels = function () {
-            ComponentModelService.GetComponentModels(
+        $scope.GetComponentModelByCompanyRefId = function () {
+            ComponentModelService.GetComponentModelByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,7 +27,7 @@
                     toaster.error("GetComponentModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetComponentModels();
+        $scope.GetComponentModelByCompanyRefId();
 
         $scope.DeleteComponentModel = function (data) {
             ComponentModelService.DeleteComponentModel(data.Id,

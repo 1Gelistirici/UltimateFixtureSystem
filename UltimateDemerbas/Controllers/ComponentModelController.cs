@@ -32,6 +32,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetComponentModelByCompanyRefId()
+        {
+            var result = componentModel.GetComponentModelByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteComponentModel([FromBody] ComponentModel parameter)
         {
             parameter.UserId = WorkingUser;

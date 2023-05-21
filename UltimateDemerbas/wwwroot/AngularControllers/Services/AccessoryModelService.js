@@ -17,6 +17,14 @@
                 }, error);
         };
 
+        this.GetAccessoryModelByCompanyRefId = function (success, error) {
+            $http.get('/AccessoryModel/GetAccessoryModelByCompanyRefId').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.UpdateAccessoryModel = function (data, success, error) {
             $http.post('/AccessoryModel/UpdateAccessoryModel', JSON.stringify(data)).then(
                 function (response) {

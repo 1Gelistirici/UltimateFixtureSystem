@@ -21,6 +21,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<ComponentModel>("ComponentModel/DeleteComponentModel", parameter);
         }
 
+        public Task<string> GetComponentModelByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("ComponentModel/GetComponentModelByCompanyRefId", parameter);
+        }
+
         public Task<string> UpdateComponentModel(ComponentModel parameter)
         {
             return GetApiParameter<ComponentModel>("ComponentModel/UpdateComponentModel", parameter);

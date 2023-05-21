@@ -76,6 +76,55 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<AccessoryModel>> GetAccessoryModelByCompanyRefId(ReferansParameter parameter)
+        {
+            List<AccessoryModel> accessoryModels = new List<AccessoryModel>();
+            UltimateResult<List<AccessoryModel>> result = new UltimateResult<List<AccessoryModel>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[accessoryModel_GetAccessoryModelByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    AccessoryModel accessoryModel = new AccessoryModel();
+                                    accessoryModel.Id = Convert.ToInt32(read["id"]);
+                                    accessoryModel.Name = read["modelName"].ToString();
+
+                                    accessoryModels.Add(accessoryModel);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = accessoryModels;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<AccessoryModel>> AddAccessoryModel(AccessoryModel parameter)
         {
             UltimateResult<List<AccessoryModel>> result = new UltimateResult<List<AccessoryModel>>();

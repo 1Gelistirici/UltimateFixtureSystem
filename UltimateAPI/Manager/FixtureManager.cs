@@ -201,6 +201,64 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Fixture>> GetFixtureByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Fixture> fixtures = new List<Fixture>();
+            UltimateResult<List<Fixture>> result = new UltimateResult<List<Fixture>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[fixtures_GetFixtureByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Fixture fixture = new Fixture();
+                                    fixture.Id = Convert.ToInt32(read["id"]);
+                                    fixture.Name = read["name"].ToString();
+                                    fixture.ModelNo = Convert.ToInt32(read["model_No"]);
+                                    fixture.LoginSystem = read["loginSystem"].ToString();
+                                    fixture.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    fixture.StatuNo = Convert.ToInt32(read["statu_No"]);
+                                    fixture.CategoryNo = Convert.ToInt32(read["category_No"]);
+                                    fixture.UserNo = Convert.ToInt32(read["user_No"]);
+                                    fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.Price = Convert.ToInt32(read["price"]);
+
+                                    fixtures.Add(fixture);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = fixtures;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<Fixture>> DeleteFixture(Fixture parameter)
         {
             UltimateResult<List<Fixture>> result = new UltimateResult<List<Fixture>>();

@@ -33,5 +33,13 @@
                 }, error);
         };
 
+        this.GetFixtureModelByCompanyRefId = function (success, error) {
+            $http.post('/FixtureModel/GetFixtureModelByCompanyRefId').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

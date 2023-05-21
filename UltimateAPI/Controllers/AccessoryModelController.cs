@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetAccessoryModelByCompanyRefId")]
+        public IActionResult GetAccessoryModelByCompanyRefId(ReferansParameter parameter)
+        {
+            AccessoryModelCallManager accessoryModel = new AccessoryModelCallManager();
+            var result = accessoryModel.GetAccessoryModelByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteAccessoryModel")]
         public IActionResult DeleteAccessoryModel(AccessoryModel parameter)
         {

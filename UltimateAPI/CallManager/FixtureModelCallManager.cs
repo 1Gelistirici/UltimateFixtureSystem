@@ -21,6 +21,11 @@ namespace UltimateAPI.CallManager
             return FixtureModelManager.Instance.AddFixtureModel(parameter);
         }
 
+        public UltimateResult<List<FixtureModel>> GetFixtureModelByCompanyRefId(ReferansParameter parameter)
+        {
+            return FixtureModelManager.Instance.GetFixtureModelByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<FixtureModel>> UpdateFixtureModel(FixtureModel parameter)
         {
             return FixtureModelManager.Instance.UpdateFixtureModel(parameter);

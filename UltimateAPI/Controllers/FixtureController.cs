@@ -31,6 +31,14 @@ namespace UltimateAPI.Controllers
             var result = fixture.GetFixtureByUser(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("GetFixtureByCompanyRefId")]
+        public IActionResult GetFixtureByCompanyRefId(ReferansParameter parameter)
+        {
+            FixtureCallManager fixture = new FixtureCallManager();
+            var result = fixture.GetFixtureByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
         
         [HttpPost("AddFixture")]
         public IActionResult AddFixture(Fixture parameter)

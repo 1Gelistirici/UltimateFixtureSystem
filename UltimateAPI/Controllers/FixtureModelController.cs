@@ -16,6 +16,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetFixtureModelByCompanyRefId")]
+        public IActionResult GetFixtureModelByCompanyRefId(ReferansParameter parameter)
+        {
+            FixtureModelCallManager fixtureModel = new FixtureModelCallManager();
+            var result = fixtureModel.GetFixtureModelByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpGet("GetFixtureModels")]
         public IActionResult GetFixtureModels()
         {

@@ -61,6 +61,11 @@ namespace UltimateAPI.CallManager
             return FixtureManager.Instance.GetFixtureByUser(parameter);
         }
 
+        public UltimateResult<List<Fixture>> GetFixtureByCompanyRefId(ReferansParameter parameter)
+        {
+            return FixtureManager.Instance.GetFixtureByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<Fixture>> DeleteFixture(Fixture parameter)
         {
             return FixtureManager.Instance.DeleteFixture(parameter);

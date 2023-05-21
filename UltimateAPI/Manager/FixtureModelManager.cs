@@ -5,7 +5,7 @@ using UltimateAPI.Entities;
 
 namespace UltimateAPI.Manager
 {
-    public class FixtureModelManager:BaseManager
+    public class FixtureModelManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile FixtureModelManager _instance;
@@ -53,6 +53,7 @@ namespace UltimateAPI.Manager
                                 {
                                     FixtureModel fixtureModel = new FixtureModel();
                                     fixtureModel.Id = Convert.ToInt32(read["id"]);
+                                    fixtureModel.CompanyRefId = Convert.ToInt32(read["CompanyRefId"]);
                                     fixtureModel.Name = read["modelName"].ToString();
 
                                     fixtureModels.Add(fixtureModel);
@@ -93,6 +94,7 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@modelName", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -189,6 +191,56 @@ namespace UltimateAPI.Manager
             }
 
             AddLog(parameter.UserId, "Demirbaş Modeli Güncellendi");
+
+            return result;
+        }
+
+        public UltimateResult<List<FixtureModel>> GetFixtureModelByCompanyRefId(ReferansParameter parameter)
+        {
+            List<FixtureModel> componentModels = new List<FixtureModel>();
+            UltimateResult<List<FixtureModel>> result = new UltimateResult<List<FixtureModel>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[companentModel_GetFixtureModelByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    FixtureModel fixtureModel = new FixtureModel();
+                                    fixtureModel.Id = Convert.ToInt32(read["id"]);
+                                    fixtureModel.Name = read["modelName"].ToString();
+                                    fixtureModel.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
+
+                                    componentModels.Add(fixtureModel);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = componentModels;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
 
             return result;
         }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Net.Http;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Manager;
@@ -44,7 +43,14 @@ namespace UltimateDemerbas.Controllers
         public IActionResult AddFixtureModel([FromBody] FixtureModel data)
         {
             data.UserId = WorkingUser;
+            data.CompanyRefId = WorkingCompany;
             var result = fixtureModel.AddFixtureModel(data);
+            return Content(result.Result);
+        }
+
+        public IActionResult GetFixtureModelByCompanyRefId()
+        {
+            var result = fixtureModel.GetFixtureModelByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 

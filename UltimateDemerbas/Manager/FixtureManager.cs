@@ -26,6 +26,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Fixture>("Fixture/GetFixtureByUser", parameter);
         }
 
+        public Task<string> GetFixtureByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Fixture/GetFixtureByCompanyRefId", parameter);
+        }
+
         public Task<string> AddFixture(Fixture parameter)
         {
             return GetApiParameter<Fixture>("Fixture/AddFixture", parameter);

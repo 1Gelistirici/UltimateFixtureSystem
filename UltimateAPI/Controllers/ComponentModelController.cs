@@ -16,6 +16,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetComponentModelByCompanyRefId")]
+        public IActionResult GetComponentModelByCompanyRefId(ReferansParameter parameter)
+        {
+            ComponentModelCallManager componentModel = new ComponentModelCallManager();
+            var result = componentModel.GetComponentModelByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpGet("GetComponentModels")]
         public IActionResult GetComponentModels()
         {

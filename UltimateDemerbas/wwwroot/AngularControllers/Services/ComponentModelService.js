@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetComponentModelByCompanyRefId = function (success, error) {
+            $http.get("/ComponentModel/GetComponentModelByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteComponentModel = function (Id, success, error) {
             $http.post('/ComponentModel/DeleteComponentModel', { Id: Id }).then(
                 function (response) {

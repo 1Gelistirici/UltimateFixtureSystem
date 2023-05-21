@@ -7,8 +7,8 @@
             Name: "Fixture Model Name",
         };
 
-        $scope.GetSituations = function () {
-            FixtureModelService.GetFixtureModels(
+        $scope.GetFixtureModelByCompanyRefId = function () {
+            FixtureModelService.GetFixtureModelByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,14 +27,14 @@
                     toaster.error("GetFixtureModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetSituations();
+        $scope.GetFixtureModelByCompanyRefId();
 
         $scope.DeleteFixtureModel = function (data) {
             FixtureModelService.DeleteFixtureModel(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Fixture model silme işlemi yapılırken bir hata oluştu");
-                        $scope.GetSituations();
+                        $scope.GetFixtureModelByCompanyRefId();
                     } else {
                         toaster.success("Başarısız", "Fixture model silme işlemi yapılırken bir hata oluştu");
                     }
@@ -67,7 +67,7 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Fixture model ekleme işlemi yapılırken bir hata oluştu");
                         $('#AddSituation').modal('hide');
-                        $scope.GetSituations();
+                        $scope.GetFixtureModelByCompanyRefId();
                     } else {
                         toaster.error("Başarısız", "Fixture model ekleme işlemi yapılırken bir hata oluştu");
                     }

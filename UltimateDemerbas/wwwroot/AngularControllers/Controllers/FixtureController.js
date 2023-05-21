@@ -102,8 +102,8 @@
         }
         $scope.GetUsers();
 
-        $scope.GetFixtures = function () {
-            FixtureService.GetFixtures(
+        $scope.GetFixtureByCompanyRefId = function () {
+            FixtureService.GetFixtureByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -122,7 +122,7 @@
                     toaster.error("GetFixtures", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetFixtures();
+        $scope.GetFixtureByCompanyRefId();
 
         function DeleteFixture(data) {
             FixtureService.DeleteFixture(data.Id,

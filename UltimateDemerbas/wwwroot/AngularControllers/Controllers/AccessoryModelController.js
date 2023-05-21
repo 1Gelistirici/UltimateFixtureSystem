@@ -7,8 +7,8 @@
             Name: "Accessory Model Name",
         };
 
-        $scope.GetAccessoryModels = function () {
-            AccessoryModelService.GetAccessoryModels(
+        $scope.GetAccessoryModelByCompanyRefId = function () {
+            AccessoryModelService.GetAccessoryModelByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,7 +27,7 @@
                     toaster.error("GetAccessoryModels", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetAccessoryModels();
+        $scope.GetAccessoryModelByCompanyRefId();
 
         $scope.DeleteAccessoryModel = function (data) {
             AccessoryModelService.DeleteAccessoryModel(data.Id,

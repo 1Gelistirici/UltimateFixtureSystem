@@ -11,6 +11,11 @@ namespace UltimateAPI.CallManager
             return ComponentModelManager.Instance.GetComponentModels();
         }
 
+        public UltimateResult<List<ComponentModel>> GetComponentModelByCompanyRefId(ReferansParameter parameter)
+        {
+            return ComponentModelManager.Instance.GetComponentModelByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<ComponentModel>> DeleteComponentModel(ComponentModel parameter)
         {
             return ComponentModelManager.Instance.DeleteComponentModel(parameter);

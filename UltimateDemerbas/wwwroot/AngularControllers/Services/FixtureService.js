@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetFixtureByCompanyRefId = function (success, error) {
+            $http.get("/Fixture/GetFixtureByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.GetFixture = function (parameter, success, error) {
             $http.post("/Fixture/GetFixture", JSON.stringify(parameter)).then(
                 function (response) {
