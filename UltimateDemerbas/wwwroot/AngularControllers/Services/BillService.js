@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetBillByCompanyRefId = function (success, error) {
+            $http.get("/Bill/GetBillByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteBill = function (Id, success, error) {
             $http.post('/Bill/DeleteBill', { Id: Id }).then(
                 function (response) {

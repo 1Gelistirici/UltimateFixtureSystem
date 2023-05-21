@@ -46,6 +46,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetBillByCompanyRefId()
+        {
+            var result = bill.GetBillByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult UpdateBill([FromBody] Bill parameter)
         {
             parameter.UserId = WorkingUser;
