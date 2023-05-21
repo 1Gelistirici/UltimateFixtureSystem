@@ -11,6 +11,11 @@ namespace UltimateAPI.CallManager
             return SituationManager.Instance.GetSituations();
         }
 
+        public UltimateResult<List<Situation>> GetSituationByCompanyRefId()
+        {
+            return SituationManager.Instance.GetSituationByCompanyRefId();
+        }
+
         public UltimateResult<List<Situation>> DeleteSituation(Situation parameter)
         {
             return SituationManager.Instance.DeleteSituation(parameter);

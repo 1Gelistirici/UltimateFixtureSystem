@@ -28,7 +28,12 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetSituations()
         {
             var result = situation.GetSituations();
+            return Content(result.Result);
+        }
 
+        public IActionResult GetSituationByCompanyRefId()
+        {
+            var result = situation.GetSituationByCompanyRefId();
             return Content(result.Result);
         }
 
@@ -37,7 +42,6 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = situation.DeleteSituation(parameter);
-
             return Content(result.Result);
         }
 
@@ -46,7 +50,6 @@ namespace UltimateDemerbas.Controllers
             data.UserId = WorkingUser;
 
             var result = situation.UpdateSituation(data);
-
             return Content(result.Result);
         }
 
@@ -55,7 +58,6 @@ namespace UltimateDemerbas.Controllers
             data.UserId = WorkingUser;
 
             var result = situation.AddSituation(data);
-
             return Content(result.Result);
         }
     }

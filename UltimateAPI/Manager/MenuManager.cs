@@ -60,6 +60,7 @@ namespace UltimateAPI.Manager
                                     menu.Dependency = Convert.ToInt16(read["dependency"]);
                                     menu.Order = Convert.ToInt16(read["order"]);
                                     menu.IsHaveProblem = Convert.ToBoolean(read["isHaveProblem"]);
+                                    menu.IsSpecial = Convert.ToBoolean(read["IsSpecial"]);
 
                                     menus.Add(menu);
                                 }

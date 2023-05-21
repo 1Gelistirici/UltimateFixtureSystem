@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpGet("GetSituationByCompanyRefId")]
+        public IActionResult GetSituationByCompanyRefId()
+        {
+            SituationCallManager situation = new SituationCallManager();
+            var result = situation.GetSituationByCompanyRefId();
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteSituation")]
         public IActionResult DeleteLicense(Situation parameter)
         {

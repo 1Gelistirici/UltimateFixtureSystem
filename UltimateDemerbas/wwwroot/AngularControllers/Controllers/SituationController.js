@@ -7,8 +7,8 @@
             Name: "Status Name",
         };
 
-        $scope.GetSituations = function () {
-            SituationService.GetSituations(
+        $scope.GetSituationByCompanyRefId = function () {
+            SituationService.GetSituationByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,7 +27,29 @@
                     toaster.error("GetSituations", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetSituations();
+        $scope.GetSituationByCompanyRefId();
+
+        //$scope.GetSituations = function () {
+        //    SituationService.GetSituations(
+        //        function success(result) {
+        //            if (result.IsSuccess) {
+        //                $scope.Data = result.Data;
+        //                $scope.RegisterCount = $scope.Data.length;
+        //                $scope.TableParams = new NgTableParams({
+        //                    sorting: { name: 'adc' },
+        //                    count: 20
+        //                }, {
+        //                    counts: [10, 20, 50],
+        //                    dataset: $scope.Data
+        //                });
+        //            } else {
+        //                toaster.error("GetSituations", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //            }
+        //        }, function error() {
+        //            toaster.error("GetSituations", "Kat listeleme işlemi yapılırken bir hata oluştu");
+        //        });
+        //}
+        //$scope.GetSituations();
 
         $scope.DeleteSituation = function (data) {
             SituationService.DeleteSituation(data.Id,

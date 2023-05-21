@@ -84,6 +84,9 @@ namespace UltimateAPI.CallManager
 
                     foreach (Menu item in menuList.Data)
                     {
+                        if (item.IsSpecial)
+                            continue;
+
                         userRole.MenuRefId = item.Id;
                         UserRoleCallManager.Instance.AddRole(userRole);
                     }

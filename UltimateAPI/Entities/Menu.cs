@@ -14,5 +14,6 @@ namespace UltimateAPI.Entities
         public int Order { get; set; }
         public List<Menu> Children { get; set; }
         public bool IsHaveProblem { get; set; }
+        public bool IsSpecial { get; set; }
     }
 }
