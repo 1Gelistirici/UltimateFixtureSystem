@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetCategoryByCompanyRefId = function (success, error) {
+            $http.get("/Category/GetCategoryByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteCategory = function (Id, success, error) {
             $http.post('/Category/DeleteCategory', { Id: Id }).then(
                 function (response) {

@@ -20,6 +20,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Category>("Category/DeleteCategory", parameter);
         }
 
+        public Task<string> GetCategoryByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Category/GetCategoryByCompanyRefId", parameter);
+        }
+
         public Task<string> UpdateCategory(Category parameter)
         {
             return GetApiParameter<Category>("Category/UpdateCategory", parameter);

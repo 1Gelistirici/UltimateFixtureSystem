@@ -32,6 +32,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetCategoryByCompanyRefId()
+        {
+            var result = category.GetCategoryByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteCategory([FromBody] Category parameter)
         {
             parameter.UserId = WorkingUser;

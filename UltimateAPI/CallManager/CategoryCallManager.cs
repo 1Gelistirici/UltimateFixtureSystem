@@ -10,6 +10,10 @@ namespace UltimateAPI.CallManager
         {
             return CategoryManager.Instance.GetCategories();
         }
+        public UltimateResult<List<Category>> GetCategoryByCompanyRefId(ReferansParameter parameter)
+        {
+            return CategoryManager.Instance.GetCategoryByCompanyRefId(parameter);
+        }
 
         public UltimateResult<List<Category>> DeleteCategory(Category parameter)
         {

@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetCategoryByCompanyRefId")]
+        public IActionResult GetCategoryByCompanyRefId(ReferansParameter parameter)
+        {
+            CategoryCallManager category = new CategoryCallManager();
+            var result = category.GetCategoryByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteCategory")]
         public IActionResult DeleteCategory(Category parameter)
         {

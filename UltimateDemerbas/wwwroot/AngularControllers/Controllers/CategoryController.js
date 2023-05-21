@@ -8,8 +8,8 @@
             Name: "Component Name",
         };
 
-        $scope.GetCategories = function () {
-            CategoryService.GetCategories(
+        $scope.GetCategoryByCompanyRefId = function () {
+            CategoryService.GetCategoryByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -28,7 +28,7 @@
                     toaster.error("GetCategories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetCategories();
+        $scope.GetCategoryByCompanyRefId();
 
         $scope.DeleteCategory = function (data) {
             CategoryService.DeleteCategory(data.Id,
