@@ -13,8 +13,8 @@
             BillNo: "Bill",
         };
 
-        $scope.GetCategorys = function () {
-            CategoryService.GetCategories(
+        $scope.GetComponentByCompanyRefId = function () {
+            CategoryService.GetComponentByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Categorys = result.Data;
@@ -25,7 +25,7 @@
                     toaster.error("GetCategorys", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetCategorys();
+        $scope.GetComponentByCompanyRefId();
 
         $scope.GetBills = function () {
             BillService.GetBills(
