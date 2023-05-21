@@ -27,6 +27,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<ReferansParameter>("Report/GetReportsByUserRefId", parameter);
         }
 
+        public Task<string> GetReportsByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Report/GetReportsByCompanyRefId", parameter);
+        }
+
         public Task<string> GetReportsByStatu(ReportStatu reportStatu)
         {
             return GetApiParameter<ReportStatu>("Report/GetReportsByStatu", reportStatu);

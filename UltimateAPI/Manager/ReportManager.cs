@@ -144,6 +144,65 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<List<Report>> GetReportsByCompanyRefId(ReferansParameter parameter)
+        {
+            List<Report> reports = new List<Report>();
+            UltimateResult<List<Report>> result = new UltimateResult<List<Report>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[reports_GetReportsByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Report report = new Report();
+                                    report.Id = Convert.ToInt32(read["id"]);
+                                    report.UserId = Convert.ToInt32(read["userId"]);
+                                    report.ReportDetail = read["reportDetail"].ToString();
+                                    report.InsertDate = Convert.ToDateTime(read["insertDate"]);
+                                    report.ItemId = Convert.ToInt32(read["itemId"]);
+                                    report.ItemType = (ItemType)Convert.ToInt32(read["ItemType"]);
+                                    report.ReportSubject = read["reportSubject"].ToString();
+                                    report.AssignmentId = Convert.ToInt32(read["assignmentId"]);
+                                    report.Statu = Convert.ToInt32(read["deleted"]);
+                                    report.Comment = read["comment"].ToString();
+
+                                    reports.Add(report);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = reports;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                result.Message = ex.Message;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<Report>> GetReportsByStatu(ReportStatu reportStatu)
         {
             List<Report> reports = new List<Report>();

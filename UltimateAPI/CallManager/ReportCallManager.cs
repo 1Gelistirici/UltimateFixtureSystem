@@ -47,6 +47,11 @@ namespace UltimateAPI.CallManager
         {
             return ReportManager.Instance.GetReportsByUserRefId(parameter);
         }
+        
+        public UltimateResult<List<Report>> GetReportsByCompanyRefId(ReferansParameter parameter)
+        {
+            return ReportManager.Instance.GetReportsByCompanyRefId(parameter);
+        }
 
         public UltimateResult<List<Report>> GetPassiveReports()
         {

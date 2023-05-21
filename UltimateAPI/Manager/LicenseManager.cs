@@ -218,7 +218,7 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {

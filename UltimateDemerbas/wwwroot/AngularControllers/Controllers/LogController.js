@@ -10,7 +10,7 @@
 
         $scope.logTypeFilter = [];
 
-        $scope.GetLogs = function () {
+        $scope.GetLogByCompanyRefId = function () {
             logService.GetLogByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
@@ -35,7 +35,7 @@
                     toaster.error("Başarısız", "Lisans tipi listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetLogs();
+        $scope.GetLogByCompanyRefId();
 
         $scope.GetLogTypes = function () {
             enumService.GetLogTypes(

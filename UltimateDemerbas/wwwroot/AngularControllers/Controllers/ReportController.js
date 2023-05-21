@@ -11,8 +11,8 @@
             window.open(url, "_blank");
         }
 
-        $scope.GetReports = function () {
-            ReportService.GetReports(
+        $scope.GetReportsByCompanyRefId = function () {
+            ReportService.GetReportsByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Reports = result.Data;
@@ -40,7 +40,7 @@
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-                        $scope.GetReports();
+                        $scope.GetReportsByCompanyRefId();
                     } else {
                         toaster.error("GetUsers", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -85,7 +85,7 @@
             ReportService.UpdateReportStatu(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetReports();
+                        $scope.GetReportsByCompanyRefId();
                         toaster.success("Başarılı", "Rapor başarıyla sonuçlandırıldı.");
                         $("#Conclude").modal("hide");
                     } else {
