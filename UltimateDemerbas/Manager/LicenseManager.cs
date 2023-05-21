@@ -26,6 +26,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<License>("License/UpdateLicense", parameter);
         }
 
+        public Task<string> GetLicenceByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("License/GetLicenceByCompanyRefId", parameter);
+        }
+
         public Task<string> AddLicense(License parameter)
         {
             return GetApiParameter<License>("License/AddLicense", parameter);

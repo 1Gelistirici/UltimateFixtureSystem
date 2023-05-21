@@ -7,5 +7,6 @@ namespace UltimateAPI.Entities
         public string TypeNo { get; set; }
         public int TypeNo1 { get; set; }
         public int Piece { get; set; }
+        public int CompanyRefId { get; set; }
     }
 }

@@ -26,6 +26,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<LicensesType>("LicanseType/DeleteLicensesType", parameter);
         }
 
+        public Task<string> GetLicenseTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("LicanseType/GetLicenseTypeByCompanyRefId", parameter);
+        }
+
         public Task<string> AddLicenseType(LicensesType parameter)
         {
             return GetApiParameter<LicensesType>("LicanseType/AddLicenseType", parameter);

@@ -35,7 +35,6 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetLicensesType([FromBody] LicensesType parameter)
         {
             var result = licensesTypeManager.GetLicensesType(parameter);
-
             return Content(result.Result);
         }
 
@@ -44,23 +43,27 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = licensesTypeManager.DeleteLicensesType(parameter);
+            return Content(result.Result);
+        }
 
+        public IActionResult GetLicenseTypeByCompanyRefId()
+        {
+            var result = licensesTypeManager.GetLicenseTypeByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 
         public IActionResult GetLicensesTypes()
         {
             var result = licensesTypeManager.GetLicensesTypes();
-
             return Content(result.Result);
         }
 
         public IActionResult AddLicenseType([FromBody] LicensesType data)
         {
             data.UserId = WorkingUser;
+            data.CompanyRefId = WorkingCompany;
 
             var result = licensesTypeManager.AddLicenseType(data);
-
             return Content(result.Result);
         }
 
@@ -69,7 +72,6 @@ namespace UltimateDemerbas.Controllers
             data.UserId = WorkingUser;
 
             var result = licensesTypeManager.UpdateLicenseType(data);
-
             return Content(result.Result);
         }
     }

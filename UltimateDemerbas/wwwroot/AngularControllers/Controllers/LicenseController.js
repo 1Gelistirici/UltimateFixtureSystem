@@ -11,8 +11,8 @@
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
         //toaster.error("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
 
-        $scope.GetLicenses = function () {
-            LicenseService.GetLicenses(
+        $scope.GetLicenceByCompanyRefId = function () {
+            LicenseService.GetLicenceByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -32,14 +32,14 @@
                     toaster.error("GetLicenses", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetLicenses();
+        $scope.GetLicenceByCompanyRefId();
 
         function DeleteLicense(data) {
             LicenseService.DeleteLicense(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Delete License", "Lisans silme işlemi başarılı");
-                        $scope.GetLicenses();
+                        $scope.GetLicenceByCompanyRefId();
                     } else {
                         toaster.error("Delete License", "Lisans silme işlemi yapılırken bir hata oluştu");
                     }
@@ -74,7 +74,7 @@
                     if (result.IsSuccess) {
                         //toaster.success("Kat listeleme", "Kat listeleme işlemi yapılırken bir hata oluştu");
                         $("#AddLicense").modal("hide");
-                        $scope.GetLicenses();
+                        $scope.GetLicenceByCompanyRefId();
                     } else {
                         toaster.error("AddLicense", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }

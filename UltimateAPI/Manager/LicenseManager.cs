@@ -45,6 +45,7 @@ namespace UltimateAPI.Manager
                     {
                         ConnectionManager.Instance.CmdOperations();
 
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
                         sqlCommand.Parameters.AddWithValue("@license", parameter.Name);
                         sqlCommand.Parameters.AddWithValue("@typeNo", parameter.TypeNo);
                         sqlCommand.Parameters.AddWithValue("@piece", parameter.Piece);
@@ -200,6 +201,59 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<License>> GetLicenceByCompanyRefId(ReferansParameter parameter)
+        {
+            List<License> licenses = new List<License>();
+            UltimateResult<List<License>> result = new UltimateResult<List<License>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[licanses_GetLicenceByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    License license = new License();
+                                    license.Id = Convert.ToInt32(read["id"]);
+                                    license.Name = read["license"].ToString();
+                                    license.TypeNo = read["type_no"].ToString();
+                                    license.Type = read["licanceTypeName"].ToString();
+                                    license.Piece = Convert.ToInt32(read["piece"]);
+
+                                    licenses.Add(license);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = licenses;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
 
     }
 }

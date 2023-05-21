@@ -16,6 +16,11 @@ namespace UltimateAPI.CallManager
             return LicenseTypesManager.Instance.GetLicensesType(parameter);
         }
 
+        public UltimateResult<List<LicensesType>> GetLicenseTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            return LicenseTypesManager.Instance.GetLicenseTypeByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<LicensesType>> DeleteLicensesType(LicensesType parameter)
         {
             return LicenseTypesManager.Instance.DeleteLicensesType(parameter);

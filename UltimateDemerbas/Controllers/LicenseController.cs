@@ -36,7 +36,6 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = licence.DeleteLicense(parameter);
-
             return Content(result.Result);
         }
 
@@ -45,16 +44,21 @@ namespace UltimateDemerbas.Controllers
             data.UserId = WorkingUser;
 
             var result = licence.UpdateLicense(data);
+            return Content(result.Result);
+        }
 
+        public IActionResult GetLicenceByCompanyRefId()
+        {
+            var result = licence.GetLicenceByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 
         public IActionResult AddLicense([FromBody] License data)
         {
             data.UserId = WorkingUser;
+            data.CompanyRefId = WorkingCompany;
 
             var result = licence.AddLicense(data);
-
             return Content(result.Result);
         }
     }

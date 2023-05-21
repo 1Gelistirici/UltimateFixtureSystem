@@ -21,6 +21,11 @@ namespace UltimateAPI.CallManager
             return LicenseManager.Instance.AddLicense(parameter);
         }
 
+        public UltimateResult<List<License>> GetLicenceByCompanyRefId(ReferansParameter parameter)
+        {
+            return LicenseManager.Instance.GetLicenceByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<License>> UpdateLicense(License parameter)
         {
             return LicenseManager.Instance.UpdateLicense(parameter);

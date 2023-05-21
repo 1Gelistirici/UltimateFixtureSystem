@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetLicenceByCompanyRefId = function (success, error) {
+            $http.get("/License/GetLicenceByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteLicense = function (Id, success, error) {
             $http.post('/License/DeleteLicense', { Id: Id }).then(
                 function (response) {

@@ -17,6 +17,15 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+
+        [HttpPost("GetLicenceByCompanyRefId")]
+        public IActionResult GetLicenceByCompanyRefId(ReferansParameter parameter)
+        {
+            LicenseCallManager license = new LicenseCallManager();
+            var result = license.GetLicenceByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpGet("GetLicenses")]
         public IActionResult GetLicenses()
         {

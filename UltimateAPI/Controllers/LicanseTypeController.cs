@@ -24,6 +24,14 @@ namespace UltimateAPI.Controllers
             var result = licenseTypes.GetLicensesType(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
+
+        [HttpPost("GetLicenseTypeByCompanyRefId")]
+        public IActionResult GetLicenseTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            LicenseTypesCallManager licenseTypes = new LicenseTypesCallManager();
+            var result = licenseTypes.GetLicenseTypeByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
         
         [HttpPost("DeleteLicensesType")]
         public IActionResult DeleteLicensesType(LicensesType parameter)

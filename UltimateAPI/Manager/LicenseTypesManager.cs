@@ -183,6 +183,7 @@ namespace UltimateAPI.Manager
                         ConnectionManager.Instance.CmdOperations();
 
                         sqlCommand.Parameters.AddWithValue("@licenseTypeName", parameter.Name);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyRefId);
                
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;
@@ -244,6 +245,56 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
+        public UltimateResult<List<LicensesType>> GetLicenseTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            List<LicensesType> licensesTypes = new List<LicensesType>();
+            UltimateResult<List<LicensesType>> result = new UltimateResult<List<LicensesType>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[licenseType_GetLicenseTypeByCompanyRefId]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    LicensesType licensesType = new LicensesType();
+                                    licensesType.Id = Convert.ToInt32(read["id"]);
+                                    licensesType.Name = read["licanceTypeName"].ToString();
+
+                                    licensesTypes.Add(licensesType);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = licensesTypes;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
 
     }
 }
