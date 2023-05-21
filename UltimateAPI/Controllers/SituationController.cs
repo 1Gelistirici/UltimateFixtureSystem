@@ -25,10 +25,10 @@ namespace UltimateAPI.Controllers
         }
 
         [HttpGet("GetSituationByCompanyRefId")]
-        public IActionResult GetSituationByCompanyRefId()
+        public IActionResult GetSituationByCompanyRefId(ReferansParameter parameter)
         {
             SituationCallManager situation = new SituationCallManager();
-            var result = situation.GetSituationByCompanyRefId();
+            var result = situation.GetSituationByCompanyRefId(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

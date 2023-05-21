@@ -16,9 +16,9 @@ namespace UltimateDemerbas.Manager
             return GetApi("Situation/GetSituations");
         }
 
-        public Task<string> GetSituationByCompanyRefId()
+        public Task<string> GetSituationByCompanyRefId(ReferansParameter parameter)
         {
-            return GetApi("Situation/GetSituationByCompanyRefId");
+            return GetApiParameter<ReferansParameter>("Situation/GetSituationByCompanyRefId", parameter);
         }
 
         public Task<string> DeleteSituation(Situation parameter)

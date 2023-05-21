@@ -33,7 +33,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetSituationByCompanyRefId()
         {
-            var result = situation.GetSituationByCompanyRefId();
+            var result = situation.GetSituationByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 
