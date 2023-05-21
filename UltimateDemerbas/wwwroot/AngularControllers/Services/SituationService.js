@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetSituationByCompanyRefId = function (success, error) {
+            $http.get("/Situation/GetSituationByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteSituation = function (Id, success, error) {
             $http.post('/Situation/DeleteSituation', { Id: Id }).then(
                 function (response) {

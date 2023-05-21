@@ -24,7 +24,7 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
-        [HttpGet("GetSituationByCompanyRefId")]
+        [HttpPost("GetSituationByCompanyRefId")]
         public IActionResult GetSituationByCompanyRefId(ReferansParameter parameter)
         {
             SituationCallManager situation = new SituationCallManager();

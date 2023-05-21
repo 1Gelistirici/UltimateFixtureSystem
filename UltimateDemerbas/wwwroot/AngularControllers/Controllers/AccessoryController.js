@@ -54,8 +54,8 @@
         }
         $scope.GetAccessoryModels();
 
-        $scope.GetAccessories = function () {
-            AccessoryService.GetAccessories(
+        $scope.GetAccessoryByCompanyRefId = function () {
+            AccessoryService.GetAccessoryByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -74,9 +74,9 @@
                     toaster.error("GetAccessories", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetAccessories();
+        $scope.GetAccessoryByCompanyRefId();
 
-        function DeleteAccessory (data) {
+        function DeleteAccessory(data) {
             AccessoryService.DeleteAccessory(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
@@ -90,7 +90,7 @@
                 });
         }
 
-        function   UpdateAccessory  (data) {
+        function UpdateAccessory(data) {
             AccessoryService.UpdateAccessory(data,
                 function success(result) {
                     if (result.IsSuccess) {

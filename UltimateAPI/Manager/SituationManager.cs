@@ -198,7 +198,7 @@ namespace UltimateAPI.Manager
             List<Situation> situations = new List<Situation>();
             UltimateResult<List<Situation>> result = new UltimateResult<List<Situation>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[tasks_GetSituationByCompanyRefId]";
+            string Proc = "[dbo].[situations_GetSituationByCompnayRefId]";
 
             try
             {
