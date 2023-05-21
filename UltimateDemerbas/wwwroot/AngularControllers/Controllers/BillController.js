@@ -42,8 +42,8 @@
         }
         $scope.GetBillTypes();
 
-        $scope.GetBills = function () {
-            BillService.GetBills(
+        $scope.GetBillByCompanyRefId = function () {
+            BillService.GetBillByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -69,7 +69,7 @@
                     toaster.error("Başarısız", "Faturalisteleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetBills();
+        $scope.GetBillByCompanyRefId();
 
         $scope.DeleteBill = function (data) {
             BillService.DeleteBill(data.Id,
@@ -130,7 +130,7 @@
                     if (result.IsSuccess) {
                         $scope.InsertedId = result.Data[0].Id;
                         //$scope.Save();
-                        $scope.GetBills();
+                        $scope.GetBillByCompanyRefId();
                         toaster.success("Başarılı", "Fatura kaydedildi.");
                         $("#AddBillDetail").modal("hide");
                         $("#AddBill").modal("hide");
@@ -444,7 +444,7 @@
             BillService.AddBillItem(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetBills();
+                        $scope.GetBillByCompanyRefId();
 
                         setTimeout(function () {
                             $scope.selectedBill = $scope.bills.find(x => x.Id === $scope.selectedBill.Id);
