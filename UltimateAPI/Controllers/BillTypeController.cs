@@ -32,6 +32,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetBillTypeByCompanyRefId")]
+        public IActionResult GetBillTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            BillTypeCallManager billType = new BillTypeCallManager();
+            var result = billType.GetBillTypeByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("UpdateBillType")]
         public IActionResult UpdateBillType(BillType parameter)
         {

@@ -313,7 +313,7 @@ namespace UltimateAPI.Manager
             List<Bill> bills = new List<Bill>();
             UltimateResult<List<Bill>> result = new UltimateResult<List<Bill>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[bill_GetBillByCompany]";
+            string Proc = "[dbo].[bills_GetBillByCompanyRefId]";
 
             try
             {

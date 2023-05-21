@@ -33,5 +33,13 @@
                 }, error);
         };
 
+        this.GetBillTypeByCompanyRefId = function (success, error) {
+            $http.post('/BillType/GetBillTypeByCompanyRefId').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
     }]);
 

@@ -16,6 +16,11 @@ namespace UltimateAPI.CallManager
             return BillTypeManager.Instance.DeleteBillType(parameter);
         }
 
+        public UltimateResult<List<BillType>> GetBillTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            return BillTypeManager.Instance.GetBillTypeByCompanyRefId(parameter);
+        }
+
         public UltimateResult<List<BillType>> AddBillType(BillType parameter)
         {
             return BillTypeManager.Instance.AddBillType(parameter);

@@ -7,8 +7,8 @@
             Name: "Bill Type Name",
         };
 
-        $scope.GetBillTypes = function () {
-            BillTypeService.GetBillTypes(
+        $scope.GetBillTypeByCompanyRefId = function () {
+            BillTypeService.GetBillTypeByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -27,14 +27,14 @@
                     toaster.error("GetBillTypes", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetBillTypes();
+        $scope.GetBillTypeByCompanyRefId();
 
         $scope.DeleteBillType = function (data) {
             BillTypeService.DeleteBillType(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Bill type silme işlemi yapılırken bir hata oluştu");
-                        $scope.GetBillTypes();
+                        $scope.GetBillTypeByCompanyRefId();
                     } else {
                         toaster.success("Başarısız", "Bill type silme işlemi yapılırken bir hata oluştu");
                     }
@@ -66,7 +66,7 @@
                     if (result.IsSuccess) {
                         toaster.success("Başarılı", "Bill type ekleme işlemi yapılırken bir hata oluştu");
                         $('#AddSituation').modal('hide');
-                        $scope.GetBillTypes();
+                        $scope.GetBillTypeByCompanyRefId();
                         $scope.Pop = [];
                     } else {
                         toaster.success("Başarısız", "Bill type ekleme işlemi yapılırken bir hata oluştu");

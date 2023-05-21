@@ -26,6 +26,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<BillType>("BillType/UpdateBillType", parameter);
         }
 
+        public Task<string> GetBillTypeByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("BillType/GetBillTypeByCompanyRefId", parameter);
+        }
+
         public Task<string> AddBillType(BillType parameter)
         {
             return GetApiParameter<BillType>("BillType/AddBillType", parameter);
