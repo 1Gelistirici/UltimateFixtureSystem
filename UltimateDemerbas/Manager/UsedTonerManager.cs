@@ -34,5 +34,11 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<UsedToner>("UsedToner/DeleteUsedToner", parameter);
         }
+
+        public Task<string> GetUsedTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("UsedToner/GetUsedTonerByCompanyRefId", parameter);
+        }
+
     }
 }

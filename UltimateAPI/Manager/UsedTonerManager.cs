@@ -259,7 +259,7 @@ namespace UltimateAPI.Manager
             List<UsedToner> departments = new List<UsedToner>();
             UltimateResult<List<UsedToner>> result = new UltimateResult<List<UsedToner>>();
             SqlConnection sqlConnection = null;
-            string Proc = "[dbo].[components_GetUsedTonerByCompanyRefId]";
+            string Proc = "[dbo].[usedToners_GetUsedTonerByCompanyRefId]";
 
             try
             {

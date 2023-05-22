@@ -41,6 +41,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpPost("GetTonerByCompanyRefId")]
+        public IActionResult GetTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            TonerCallManager toner = new TonerCallManager();
+            var result = toner.GetTonerByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
 
         //[HttpGet("GetToners")]
         //public IActionResult GetToners()

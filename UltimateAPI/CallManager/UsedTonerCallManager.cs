@@ -47,5 +47,10 @@ namespace UltimateAPI.CallManager
         {
             return UsedTonerManager.Instance.UpdateUsedToner(parameter);
         }
+        public UltimateResult<List<UsedToner>> GetUsedTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            return UsedTonerManager.Instance.GetUsedTonerByCompanyRefId(parameter);
+        }
+
     }
 }

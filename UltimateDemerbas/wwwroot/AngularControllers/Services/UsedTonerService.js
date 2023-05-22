@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetUsedTonerByCompanyRefId = function (success, error) {
+            $http.get("/UsedToner/GetUsedTonerByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.GetUsedToner = function (success, error) {
             $http.get("/UsedToner/GetUsedToner").then(
                 function (response) {

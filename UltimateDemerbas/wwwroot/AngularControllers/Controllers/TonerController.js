@@ -27,8 +27,8 @@
         }
         $scope.GetBills();
 
-        $scope.GetToners = function () {
-            TonerService.GetToners(
+        $scope.GetTonerByCompanyRefId = function () {
+            TonerService.GetTonerByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Data = result.Data;
@@ -47,7 +47,7 @@
                     toaster.error("Toner listeleme", "Toner listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetToners();
+        $scope.GetTonerByCompanyRefId();
 
         $scope.GetDepartments = function () {
             DepartmentService.GetDepartments(
@@ -67,7 +67,7 @@
             TonerService.DeleteToner(data.Id,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetToners();
+                        $scope.GetTonerByCompanyRefId();
                         toaster.success("Başarılı", "Toner silindi.");
                     } else {
                         toaster.error("Başarısız", "Toner silme işlemi yapılırken bir hata oluştu");
@@ -103,7 +103,7 @@
             TonerService.AddToner(data,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetToners();
+                        $scope.GetTonerByCompanyRefId();
                         $('#AddTonerPopup').modal('hide');
                         toaster.success("Başarılı", "Toner eklendi.");
                         $scope.Pop = [];
@@ -131,7 +131,7 @@
                     if (result.IsSuccess) {
                         $('#AddUsedTonerPopup').modal('hide');
                         $scope.Pop = [];
-                        $scope.GetToners();
+                        $scope.GetTonerByCompanyRefId();
                         toaster.success("Başarılı", "UsedToner  eklendi.");
                     } else {
                         toaster.error("Başarısız", "UsedToner ekleme işlemi yapılırken bir hata oluştu");

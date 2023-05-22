@@ -87,7 +87,7 @@
     <None Include="wwwroot\AngularControllers\Controllers\SituationController.js" />
     <None Include="wwwroot\AngularControllers\Controllers\TaskController.js" />
     <None Include="wwwroot\AngularControllers\Controllers\TonerController.js" />
-    <None Include="wwwroot\AngularControllers\Controllers\UsedTonerConroller.js" />
+    <None Include="wwwroot\AngularControllers\Controllers\UsedTonerController.js" />
     <None Include="wwwroot\AngularControllers\Controllers\UserController.js" />
     <None Include="wwwroot\AngularControllers\Controllers\ViewItemController.js" />
     <None Include="wwwroot\AngularControllers\Controllers\_LayoutController.js" />

@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetTonerByCompanyRefId = function (success, error) {
+            $http.get("/Toner/GetTonerByCompanyRefId").then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        }
+
         this.DeleteToner = function (Id, success, error) {
             $http.post('/Toner/DeleteToner', { Id: Id }).then(
                 function (response) {

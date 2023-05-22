@@ -28,7 +28,6 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetToners()
         {
             var result = toner.GetToners();
-
             return Content(result.Result);
         }
 
@@ -37,7 +36,6 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = toner.DeleteToner(parameter);
-
             return Content(result.Result);
         }
 
@@ -46,7 +44,6 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = toner.AddToner(parameter);
-
             return Content(result.Result);
         }
 
@@ -55,7 +52,12 @@ namespace UltimateDemerbas.Controllers
             parameter.UserId = WorkingUser;
 
             var result = toner.UpdateToner(parameter);
+            return Content(result.Result);
+        }
 
+        public IActionResult GetTonerByCompanyRefId()
+        {
+            var result = toner.GetTonerByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 

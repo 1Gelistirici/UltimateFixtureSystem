@@ -27,39 +27,41 @@ namespace UltimateDemerbas.Controllers
         public IActionResult GetUsedToners()
         {
             var result = usedToner.GetUsedToners();
+            return Content(result.Result);
+        }
 
+        public IActionResult GetUsedTonerByCompanyRefId()
+        {
+            var result = usedToner.GetUsedTonerByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
             return Content(result.Result);
         }
 
         public IActionResult GetUsedToner()
         {
             UsedToner parameter = new UsedToner();
-            parameter.CompanyId = 1; // ToDO : WorkingCompany'den alıncaktır
+            parameter.CompanyId = WorkingCompany;
 
             var result = usedToner.GetUsedToner(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult AddUsedToner([FromBody] UsedToner parameter)
         {
             var result = usedToner.AddUsedToner(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult UpdateUsedToner([FromBody] UsedToner parameter)
         {
             var result = usedToner.UpdateUsedToner(parameter);
-
             return Content(result.Result);
         }
 
         public IActionResult DeleteUsedToner([FromBody] UsedToner parameter)
         {
             var result = usedToner.DeleteUsedToner(parameter);
-
             return Content(result.Result);
         }
+
     }
 }

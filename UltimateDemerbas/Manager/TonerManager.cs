@@ -29,5 +29,11 @@ namespace UltimateDemerbas.Manager
         {
             return GetApiParameter<Toner>("Toner/AddToner", parameter);
         }
+
+        public Task<string> GetTonerByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Toner/GetTonerByCompanyRefId", parameter);
+        }
+
     }
 }
