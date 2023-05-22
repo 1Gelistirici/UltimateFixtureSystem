@@ -32,7 +32,7 @@
                         $scope.Data = result.Data;
 
                         $.each($scope.Data, function (index, value) {
-                            $scope.Data.filter(x => x.Id == value.Id)[0].InsertDate = new Date(value.InsertDate).toLocaleString();
+                            $scope.Data.filter(x => x.Id === value.Id)[0].InsertDate = new Date(value.InsertDate).toLocaleString();
                         });
 
                         $scope.RegisterCount = $scope.Data.length;
@@ -83,7 +83,7 @@
 
         $scope.AddUsedToner = function () {
 
-            if ($scope.Pop.AssignPiece > $scope.Toners.filter(x => x.Id == $scope.Pop.TonerId)[0].NewPiece) {
+            if ($scope.Pop.AssignPiece > $scope.Toners.filter(x => x.Id === $scope.Pop.TonerId)[0].NewPiece) {
                 toaster.warning("Başarısız", "Toner sayısı yetersiz");
                 return;
             }
@@ -121,7 +121,7 @@
                 data.NewPiece = data.Piece;
             }
 
-            if (piece > $scope.Toners.filter(x => x.Id == data.TonerNo)[0].Piece) {
+            if (piece > $scope.Toners.filter(x => x.Id === data.TonerNo)[0].Piece) {
                 toaster.warning("Başarısız", "Toner sayısı yetersiz");
                 return;
             }
