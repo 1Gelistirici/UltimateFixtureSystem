@@ -21,6 +21,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<Tasks>("Task/GetTasks", parameter);
         }
 
+        public Task<string> GetTaskByCompanyRefId(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Task/GetTaskByCompanyRefId", parameter);
+        }
+
         public Task<string> DeleteTask(Tasks parameter)
         {
             return GetApiParameter<Tasks>("Task/DeleteTask", parameter);

@@ -15,12 +15,20 @@ namespace UltimateAPI.Controllers
             var result = task.AddTask(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-        
+
         [HttpPost("AddStatu")]
         public IActionResult AddStatu(Tasks parameter)
         {
             TaskCallManager task = new TaskCallManager();
             var result = task.AddStatu(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
+        [HttpPost("GetTaskByCompanyRefId")]
+        public IActionResult GetTaskByCompanyRefId(ReferansParameter parameter)
+        {
+            TaskCallManager task = new TaskCallManager();
+            var result = task.GetTaskByCompanyRefId(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
@@ -31,7 +39,7 @@ namespace UltimateAPI.Controllers
             var result = task.GetTasks(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
-        
+
         [HttpPost("GetTask")]
         public IActionResult GetTask(Tasks parameter)
         {

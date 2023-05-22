@@ -33,9 +33,9 @@ namespace UltimateAPI.CallManager
             return ReportManager.Instance.GetReports();
         }
         
-        public UltimateResult<List<Report>> GetReportsByStatu(ReportStatu reportStatu)
+        public UltimateResult<List<Report>> GetReportsByStatu(ReferansParameter parameter)
         {
-            return ReportManager.Instance.GetReportsByStatu(reportStatu);
+            return ReportManager.Instance.GetReportsByStatu(parameter);
         }
         
         public UltimateResult<List<Report>> GetReportedAssetsByCompany(ReferansParameter parameter)

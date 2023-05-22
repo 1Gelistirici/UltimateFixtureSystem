@@ -203,7 +203,7 @@ namespace UltimateAPI.Manager
             return result;
         }
 
-        public UltimateResult<List<Report>> GetReportsByStatu(ReportStatu reportStatu)
+        public UltimateResult<List<Report>> GetReportsByStatu(ReferansParameter parameter)
         {
             List<Report> reports = new List<Report>();
             UltimateResult<List<Report>> result = new UltimateResult<List<Report>>();
@@ -220,7 +220,8 @@ namespace UltimateAPI.Manager
                     {
                         ConnectionManager.Instance.CmdOperations();
 
-                        sqlCommand.Parameters.AddWithValue("@statu", reportStatu);
+                        sqlCommand.Parameters.AddWithValue("@statu", parameter.RefId);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {

@@ -8,8 +8,8 @@
                         success(response.data);
                 }, error);
         }
-        
-        this.GetTask = function (Id,success, error) {
+
+        this.GetTask = function (Id, success, error) {
             $http.post("/Task/GetTask", { Id: Id }).then(
                 function (response) {
                     if (success)
@@ -24,7 +24,15 @@
                         success(response.data);
                 }, error);
         };
-        
+
+        this.GetTaskByCompanyRefId = function (success, error) {
+            $http.post('/Task/GetTaskByCompanyRefId').then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.UpdateTask = function (parameter, success, error) {
             $http.post('/Task/UpdateTask', JSON.stringify(parameter)).then(
                 function (response) {

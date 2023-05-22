@@ -48,7 +48,7 @@
         }
         $scope.GetReportsByStatu();
 
-        $scope.GetLogs = function () {
+        $scope.GetLogByCompanyRefId = function () {
             LogService.GetLogByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
@@ -67,9 +67,9 @@
                     toaster.error("GetLogs", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetLogs();
+        $scope.GetLogByCompanyRefId();
 
-        $scope.GetMessages = function () {
+        $scope.GetMessageByCompanyRefId = function () {
             MessageService.GetMessageByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
@@ -84,10 +84,10 @@
                     toaster.error("GetMessages", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetMessages();
+        $scope.GetMessageByCompanyRefId();
 
-        $scope.GetToners = function () {
-            TonerService.GetToners(
+        $scope.GetTonerByCompanyRefId = function () {
+            TonerService.GetTonerByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.TonerAlert = 0;
@@ -104,10 +104,10 @@
                     toaster.error("GetToners", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetToners();
+        $scope.GetTonerByCompanyRefId();
 
-        $scope.GetTasks = function () {
-            TaskService.GetTasks(
+        $scope.GetTaskByCompanyRefId = function () {
+            TaskService.GetTaskByCompanyRefId(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Tasks = [];
@@ -130,7 +130,7 @@
                     toaster.error("GetTasks", "Kat listeleme işlemi yapılırken bir hata oluştu");
                 });
         }
-        $scope.GetTasks();
+        $scope.GetTaskByCompanyRefId();
 
         $scope.GetUser = function () {
             UserService.GetUser(
@@ -213,7 +213,7 @@
             MessageService.AddMessage(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetMessages();
+                        $scope.GetMessageByCompanyRefId();
                         $scope.MessageDetail = '';
                     } else {
                         toaster.error("AddMessage", "Kat listeleme işlemi yapılırken bir hata oluştu");
@@ -242,7 +242,7 @@
             TaskService.UpdateTask(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetTasks();
+                        $scope.GetTaskByCompanyRefId();
                         toaster.success("Başarılı", "Güncelleme gerçekleştirildi.");
 
                         $("#UpdateTask").modal("hide");
@@ -266,7 +266,7 @@
             TaskService.AddTask(parameter,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetTasks();
+                        $scope.GetTaskByCompanyRefId();
 
                         $("#AddTask").modal("hide");
                     } else {
@@ -281,7 +281,7 @@
             TaskService.DeleteTask(Id,
                 function success(result) {
                     if (result.IsSuccess) {
-                        $scope.GetTasks();
+                        $scope.GetTaskByCompanyRefId();
                     } else {
                         toaster.error("DeleteTask", "Kat listeleme işlemi yapılırken bir hata oluştu");
                     }
@@ -294,12 +294,6 @@
         $scope.GetDetail = function (x) {
             $scope.TaskDetail = x;
         }
-
-
-
-
-
-
 
 
         $scope.DeleteTaskConfirm = function (parameter) {

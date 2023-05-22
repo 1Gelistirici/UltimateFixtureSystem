@@ -69,7 +69,7 @@ namespace UltimateDemerbas.Controllers
 
         public IActionResult GetReportsByStatu([FromBody] ReportStatu reportStatu)
         {
-            var result = report.GetReportsByStatu(reportStatu);
+            var result = report.GetReportsByStatu(new ReferansParameter() { RefId = (int)reportStatu, CompanyId = WorkingCompany });
             return Content(result.Result);
         }
 

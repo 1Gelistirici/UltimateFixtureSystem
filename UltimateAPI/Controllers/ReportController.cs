@@ -17,9 +17,9 @@ namespace UltimateAPI.Controllers
         }
 
         [HttpPost("GetReportsByStatu")]
-        public IActionResult GetReportsByStatu(ReportStatu reportStatu)
+        public IActionResult GetReportsByStatu(ReferansParameter parameter)
         {
-            var result = ReportCallManager.Instance.GetReportsByStatu(reportStatu);
+            var result = ReportCallManager.Instance.GetReportsByStatu(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

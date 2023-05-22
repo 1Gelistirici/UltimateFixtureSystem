@@ -39,6 +39,12 @@ namespace UltimateDemerbas.Controllers
             return Content(result.Result);
         }
 
+        public IActionResult GetTaskByCompanyRefId()
+        {
+            var result = task.GetTaskByCompanyRefId(new ReferansParameter() { RefId = WorkingCompany });
+            return Content(result.Result);
+        }
+
         public IActionResult DeleteTask([FromBody] Tasks parameter)
         {
             parameter.UserId = WorkingUser;

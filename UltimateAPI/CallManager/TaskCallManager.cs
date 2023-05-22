@@ -56,5 +56,11 @@ namespace UltimateAPI.CallManager
         {
             return TaskManager.Instance.AddStatu(parameter);
         }
+
+        public UltimateResult<List<Tasks>> GetTaskByCompanyRefId(ReferansParameter parameter)
+        {
+            return TaskManager.Instance.GetTaskByCompanyRefId(parameter);
+        }
+
     }
 }
