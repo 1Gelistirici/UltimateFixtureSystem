@@ -1,6 +1,19 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<_Views_Home_Index> Localizer
+
+
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+@localizer["Hello"];
+----------------
+@Localizer["Hello"];
+
+<partial name="_Culture" />
 
 <div ng-controller="HomeController">
 
@@ -21,7 +34,7 @@
 
 @section PageScript
     {
- <script src="~/js/SignalR/signalr.min.js"></script>
+    <script src="~/js/SignalR/signalr.min.js"></script>
     <script src="~/AngularControllers/Services/ReportService.js"></script>
     <script src="~/AngularControllers/Services/TonerService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>

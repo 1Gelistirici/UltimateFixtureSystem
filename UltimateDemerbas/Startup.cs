@@ -1,9 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Tool;
 
@@ -21,6 +26,25 @@ namespace UltimateDemerbas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            #region Localization and Globalization
+            services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(opt =>
+            {
+                var supportedCulteres = new List<CultureInfo>
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("es"),
+                    new CultureInfo("fr")
+                };
+                opt.DefaultRequestCulture = new RequestCulture("en");
+                opt.SupportedCultures = supportedCulteres;
+                opt.SupportedUICultures = supportedCulteres;
+            });
+            #endregion
+
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession(options =>
                   {
@@ -70,6 +94,10 @@ namespace UltimateDemerbas
             app.UseRouting();
 
             app.UseAuthorization();
+
+            #region Localization and Globalization
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+            #endregion
 
             app.UseSession();
 
