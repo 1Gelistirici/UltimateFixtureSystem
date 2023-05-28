@@ -1,12 +1,26 @@
-﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+﻿@using Microsoft.AspNetCore.Localization
+@using MultiLanguage.ExtensionMethods
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@*@localizer["Hello"];*@
-@localizer["Hello"]
 
-<partial name="_Culture" />
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    List<SelectListItem> cultureList = Html.GetCultures();
+}
+
+<form id="selectLanguage" asp-controller="Home"
+      asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path"
+      method="post" role="form" style="width: 100%">
+    <select class="form-control" name="culture"
+            asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureList" onchange="this.form.submit()"></select>
+</form>
+
+<p>Label : @Html.Translate("LB_WELCOME")</p>
+
+
+
 
 <div ng-controller="HomeController">
 

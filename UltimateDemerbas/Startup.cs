@@ -1,14 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MultiLanguage.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas
@@ -25,23 +26,26 @@ namespace UltimateDemerbas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
 
-            #region Localization and Globalization
+            #region Localization
             services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
-            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+            //services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
-            services.Configure<RequestLocalizationOptions>(opt =>
+            services.Configure<RequestLocalizationOptions>(options =>
             {
-                var supportedCulteres = new List<CultureInfo>
+                var supportedCultures = new List<CultureInfo>()
                 {
-                    new CultureInfo("en"),
-                    new CultureInfo("es"),
-                    new CultureInfo("tr")
+                    new CultureInfo("tr-TR"),
+                    new CultureInfo("en-US"),
                 };
-                opt.DefaultRequestCulture = new RequestCulture("en");
-                opt.SupportedCultures = supportedCulteres;
-                opt.SupportedUICultures = supportedCulteres;
+
+                options.DefaultRequestCulture = new RequestCulture(supportedCultures.First());
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
             });
+
+            services.AddSingleton<SharedViewLocalizer>();
             #endregion
 
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
@@ -50,7 +54,6 @@ namespace UltimateDemerbas
                       options.IdleTimeout = TimeSpan.FromDays(1);
                   });
 
-            services.AddControllersWithViews();
             services.AddHttpClient("CoreSession", c =>
              {
                  c.BaseAddress = new Uri("https://localhost:44354/api");
@@ -74,6 +77,11 @@ namespace UltimateDemerbas
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            #region Localization
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+            #endregion
+
             app.UseCookiePolicy();
 
             if (env.IsDevelopment())
@@ -93,10 +101,6 @@ namespace UltimateDemerbas
             app.UseRouting();
 
             app.UseAuthorization();
-
-            #region Localization and Globalization
-            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
-            #endregion
 
             app.UseSession();
 
