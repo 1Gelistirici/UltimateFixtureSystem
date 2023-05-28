@@ -1,17 +1,10 @@
 ﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
-
-@inject Microsoft.Extensions.Localization.IStringLocalizer<_Views_Home_Index> Localizer
-
-
-
-
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@localizer["Hello"];
-----------------
-@Localizer["Hello"];
+@*@localizer["Hello"];*@
+@localizer["Hello"]
 
 <partial name="_Culture" />
 

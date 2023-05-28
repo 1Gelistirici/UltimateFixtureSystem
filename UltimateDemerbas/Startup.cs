@@ -9,7 +9,6 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas
@@ -37,7 +36,7 @@ namespace UltimateDemerbas
                 {
                     new CultureInfo("en"),
                     new CultureInfo("es"),
-                    new CultureInfo("fr")
+                    new CultureInfo("tr")
                 };
                 opt.DefaultRequestCulture = new RequestCulture("en");
                 opt.SupportedCultures = supportedCulteres;

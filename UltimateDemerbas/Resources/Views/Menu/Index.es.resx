@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="en" xml:space="preserve">
-    <value>Anglais</value>
-  </data>
-  <data name="es" xml:space="preserve">
-    <value>Espanol</value>
-  </data>
-  <data name="fr" xml:space="preserve">
-    <value>Français</value>
+  <data name="addNewMenu" xml:space="preserve">
+    <value>Agregar Nuevo Menú</value>
   </data>
 </root>
