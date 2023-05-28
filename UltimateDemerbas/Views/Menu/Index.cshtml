@@ -35,15 +35,8 @@
                             </a>
                         </li>
 
-
                         <li>
-
-
                             <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" id="sortable" ng-repeat="menu in menuItems">
-
-
-
-
                                 <li class="nav-item" id="{{menu.Id}}{{menu.Dependency}}{{menu.Name}}"
                                     order="{{menu.Order}}">
                                     <a href="" class="nav-link nav-toggle">
@@ -112,20 +105,15 @@
                             </ul>
                         </li>
 
-
                     </ul>
                     <div id="btnUpdateMenuOrder" style="display: none;">
                         <input type="button" value="Güncelle" class="btn btn-success"
                                ng-click="UpdateOrder()" />
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
     <div id="menuInsertPopup" class="modal fade" tabindex="-1" aria-hidden="true">
         @Html.Partial("~/Views/Shared/Partials/Menu/MenuInsertPartialView.cshtml")
@@ -136,11 +124,6 @@
     </div>
 
 </div>
-
-
-
-
-
 
 
 @section PageScript
@@ -160,4 +143,3 @@
     <script src="~/AngularControllers/Controllers/MenuInsertPartialView.js"></script>
     <script src="~/AngularControllers/Controllers/MenuController.js"></script>
 }
-
