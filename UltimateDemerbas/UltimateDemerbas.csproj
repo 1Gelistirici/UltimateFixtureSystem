@@ -133,10 +133,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middlewares\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Resourcestr-TR.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
