@@ -13,34 +13,36 @@
     </form>*@
 
 
-        <li class="dropdown dropdown-language">
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                <img alt="" src="../assets/global/img/flags/us.png">
-                <span class="langname"> US </span>
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a href="javascript:;">
-                        <img alt="" src="../assets/global/img/flags/es.png"> Spanish
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <img alt="" src="../assets/global/img/flags/de.png"> German
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <img alt="" src="../assets/global/img/flags/ru.png"> Russian
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <img alt="" src="../assets/global/img/flags/fr.png"> French
-                    </a>
-                </li>
-            </ul>
-        </li>
+<li class="dropdown dropdown-language">
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <img alt="" src="../assets/global/img/flags/us.png">
+        <span class="langname"> US </span>
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
 
-    @*<p>Label : @Html.Translate("LB_WELCOME")</p>*@
+        @foreach (var item in cultureList)
+        {
+            if (item == cultureList[0])
+            {
+                <li>
+                    <a href="javascript:;">
+                        <img alt="" src="../assets/global/img/flags/@(item.Value).png"> @item.Text
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="javascript:;">
+                        <img alt="" src="../assets/global/img/flags/@(item.Value).png"> @item.Text
+                    </a>
+                </li>
+            }
+
+        }
+
+    </ul>
+</li>
+
+@*<p>Label : @Html.Translate("LB_WELCOME")</p>*@
