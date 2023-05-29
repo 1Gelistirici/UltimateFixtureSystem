@@ -92,8 +92,11 @@
 
     <!-- BEGIN HEADER -->
     <div class="page-header navbar navbar-fixed-top">
+
         <!-- BEGIN HEADER INNER -->
         <div class="page-header-inner ">
+
+
             <!-- BEGIN LOGO -->
             <div class="page-logo">
                 <a href="/Home/Index">
@@ -105,6 +108,7 @@
                 </div>
             </div>
 
+
             <button type="button" class="btn btn-default red margin-top-20" style="">
                 <i class="fa fa-building-o"></i> {{layoutCompanyName}}
             </button>
@@ -112,18 +116,22 @@
             <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
 
             <div class="page-top">
+
                 <form class="search-form" action="page_general_search_2.html" method="GET">
+
                     @*<div class="input-group">
-                    <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
-                    <span class="input-group-btn">
-                        <a href="javascript:;" class="btn submit">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </span>
-                </div>*@
+            <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+            <span class="input-group-btn">
+                <a href="javascript:;" class="btn submit">
+                    <i class="fa fa-search"></i>
+                </a>
+            </span>
+        </div>*@
                 </form>
                 <div class="top-menu">
                     <ul class="nav navbar-nav pull-right">
+                        <partial name="~/Views/Shared/Partials/Layout/_Culture.cshtml" />
+
                         <li class="separator hide"> </li>
                         <li class="separator hide"> </li>
 
