@@ -1,4 +1,6 @@
-﻿<html lang="en">
+﻿@using MultiLanguage.ExtensionMethods
+
+<html lang="en">
 <!--<![endif]--><!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
@@ -129,37 +131,37 @@
                         </div>*@
                 </form>
                 <div class="top-menu">
-                        <ul class="nav navbar-nav pull-right">
-                            <partial name="~/Views/Shared/Partials/Layout/_Culture.cshtml" />
+                    <ul class="nav navbar-nav pull-right">
+                        <partial name="~/Views/Shared/Partials/Layout/_Culture.cshtml" />
 
-                            <li class="separator hide"> </li>
-                            <li class="separator hide"> </li>
+                        <li class="separator hide"> </li>
+                        <li class="separator hide"> </li>
 
-                            <li class="separator hide"> </li>
+                        <li class="separator hide"> </li>
 
-                            <li class="dropdown dropdown-user dropdown-dark">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <span class="username username-hide-on-mobile"> {{layoutUserName}} </span>
-                                    <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <img alt="" class="img-circle hide" src="../assets/layouts/layout4/img/avatar9.jpg" id="unknownImage">
-                                    <img alt="" class="img-circle hide" src="{{layoutImage}}" id="knownImage">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-default">
-                                    <li>
-                                        <a href="/Profile/Index">
-                                            <i class="fa fa-user"></i> My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/User/Login" ng-click="Exit();">
-                                            <i class="fa fa-sign-out"></i> Exit
-                                        </a>
-                                    </li>
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="username username-hide-on-mobile"> {{layoutUserName}} </span>
+                                <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                <img alt="" class="img-circle hide" src="../assets/layouts/layout4/img/avatar9.jpg" id="unknownImage">
+                                <img alt="" class="img-circle hide" src="{{layoutImage}}" id="knownImage">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/Profile/Index">
+                                        <i class="fa fa-user"></i> @Html.Translate("myProfile")
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/User/Login" ng-click="Exit();">
+                                        <i class="fa fa-sign-out"></i> @Html.Translate("exit")
+                                    </a>
+                                </li>
 
-                                </ul>
-                            </li>
+                            </ul>
+                        </li>
 
-                        </ul>
+                    </ul>
                 </div>
             </div>
 

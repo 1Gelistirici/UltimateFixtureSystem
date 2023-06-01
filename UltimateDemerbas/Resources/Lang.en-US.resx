@@ -147,6 +147,12 @@
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="myProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
   </data>
