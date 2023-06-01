@@ -123,6 +123,9 @@
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
   </data>
+  <data name="addNewSituation" xml:space="preserve">
+    <value>Add New Situation</value>
+  </data>
   <data name="addNewUser" xml:space="preserve">
     <value>Add New User</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="relatedIndividuals" xml:space="preserve">
     <value>Related Individuals</value>
+  </data>
+  <data name="situation" xml:space="preserve">
+    <value>Situation</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Total Number of Records</value>

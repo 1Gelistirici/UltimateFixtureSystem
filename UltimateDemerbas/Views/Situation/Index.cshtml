@@ -1,4 +1,4 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,13 +12,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Situation
+                    @Html.Translate("situation")
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddSituation">
-                        Add Situation
+                        @Html.Translate("addNewSituation")
                     </a>
                 </div>
 
@@ -26,7 +26,7 @@
         </div>
 
         <div ng-show="RegisterCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+            <h3 style="text-align: center;color:#678098">@Html.Translate("addtheRelevantPerson")</h3>
         </div>
 
         <!--Table Body-->
@@ -56,18 +56,18 @@
                                     <td>
                                         <div class="btn-group absoluteitem">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>@Html.Translate("transactions")
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li class="ms-hover">
                                                     <a class="viewuserbtn" data-toggle="modal" ng-click="UpdateSituation(_)" ng-disabled="situationForm.$invalid">
-                                                        <i class="fa fa-edit "></i>Update
+                                                        <i class="fa fa-edit "></i>@Html.Translate("update")
                                                     </a>
                                                 </li>
                                                 <li class="ms-hover">
                                                     <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteSituation(_)">
-                                                        <i class="fa fa-phone "></i>Delete
+                                                        <i class="fa fa-phone "></i>@Html.Translate("delete")
                                                     </a>
                                                 </li>
                                             </ul>
@@ -79,7 +79,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="6" class="no-margin no-padding">
-                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{RegisterCount}}</span>
+                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{RegisterCount}}</span>
                                     </td>
                                 </tr>
 

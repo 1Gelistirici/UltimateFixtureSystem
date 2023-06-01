@@ -123,6 +123,9 @@
   <data name="addNewMenu" xml:space="preserve">
     <value>Yeni Menü Ekle</value>
   </data>
+  <data name="addNewSituation" xml:space="preserve">
+    <value>Yeni Durum Ekle</value>
+  </data>
   <data name="addNewUser" xml:space="preserve">
     <value>Yeni Kullanıcı Ekle</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="relatedIndividuals" xml:space="preserve">
     <value>İlgili Kişiler</value>
+  </data>
+  <data name="situation" xml:space="preserve">
+    <value>Durum</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>Toplam Kayit Sayisi</value>
