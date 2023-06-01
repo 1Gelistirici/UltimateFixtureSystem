@@ -1,4 +1,4 @@
-﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+﻿@using MultiLanguage.ExtensionMethods
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-map-signs font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    @localizer["addNewMenu"]
+                    @Html.Translate("addNewMenu")
                 </span>
             </div>
             <div class="actions">

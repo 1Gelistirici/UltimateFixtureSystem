@@ -30,14 +30,13 @@ namespace UltimateDemerbas
 
             #region Localization
             services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
-            //services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new List<CultureInfo>()
                 {
-                    new CultureInfo("tr-TR"),
                     new CultureInfo("en-US"),
+                    new CultureInfo("tr-TR"),
                 };
 
                 options.DefaultRequestCulture = new RequestCulture(supportedCultures.First());

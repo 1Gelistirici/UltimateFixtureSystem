@@ -67,7 +67,7 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
                 method: "POST",
                 data: { culture: culture, returnUrl: returnUrl },
                 success: function (response) {
-                    //location.reload();
+                    location.reload();
                 },
                 error: function (error) {
                     console.log("İstek sırasında hata oluştu");

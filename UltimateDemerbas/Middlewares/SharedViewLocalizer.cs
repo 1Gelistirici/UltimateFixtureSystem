@@ -10,8 +10,7 @@ namespace MultiLanguage.Utilities
         public SharedViewLocalizer(IStringLocalizerFactory factory)
         {
             var assembly = Assembly.GetEntryAssembly();
-            var assemblyName = assembly.GetName().Name;
-            var projectName = assemblyName;
+            var projectName = assembly.GetName().Name;
 
             _localizer = factory.Create("Lang", projectName);
         }
