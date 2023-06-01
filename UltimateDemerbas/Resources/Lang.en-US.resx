@@ -120,6 +120,9 @@
   <data name="add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="addComponentModel" xml:space="preserve">
+    <value>Add Component Model</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
   </data>
@@ -135,11 +138,20 @@
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Add to Root Directory</value>
   </data>
+  <data name="close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="componentModels" xml:space="preserve">
+    <value>Component Models</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
+  </data>
+  <data name="pageMap" xml:space="preserve">
+    <value>Page Map</value>
   </data>
   <data name="recordNotFoundforListing" xml:space="preserve">
     <value>Record Not Found for Listing</value>
@@ -149,6 +161,9 @@
   </data>
   <data name="situation" xml:space="preserve">
     <value>Situation</value>
+  </data>
+  <data name="tasks" xml:space="preserve">
+    <value>Tasks</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Total Number of Records</value>

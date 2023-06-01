@@ -120,6 +120,9 @@
   <data name="add" xml:space="preserve">
     <value>Ekle</value>
   </data>
+  <data name="addComponentModel" xml:space="preserve">
+    <value>Bileşen Modeli Ekle</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Yeni Menü Ekle</value>
   </data>
@@ -135,11 +138,20 @@
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Kök Dizine Ekle</value>
   </data>
+  <data name="close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="componentModels" xml:space="preserve">
+    <value>Bileşen Modelleri</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Sil</value>
   </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>No Records Found to List</value>
+  </data>
+  <data name="pageMap" xml:space="preserve">
+    <value>Sayfa Haritası</value>
   </data>
   <data name="recordNotFoundforListing" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
@@ -150,8 +162,8 @@
   <data name="situation" xml:space="preserve">
     <value>Durum</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>Toplam Kayit Sayisi</value>
+  <data name="tasks" xml:space="preserve">
+    <value>Görevler</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Toplam Kayit Sayisi</value>
