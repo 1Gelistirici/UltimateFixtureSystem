@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
+  </data>
+  <data name="addNewUser" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="addtheRelevantPerson" xml:space="preserve">
+    <value>Add the Relevant Person</value>
+  </data>
+  <data name="addtoRootDirectory" xml:space="preserve">
+    <value>Add to Root Directory</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="noRecordsFoundtoList" xml:space="preserve">
+    <value>Listelenecek Kayit Bulunamadi</value>
+  </data>
+  <data name="recordNotFoundforListing" xml:space="preserve">
+    <value>Record Not Found for Listing</value>
+  </data>
+  <data name="relatedIndividuals" xml:space="preserve">
+    <value>Related Individuals</value>
+  </data>
+  <data name="totalNumberofRecords" xml:space="preserve">
+    <value>Total Number of Records</value>
+  </data>
+  <data name="transactions" xml:space="preserve">
+    <value>Transactions</value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

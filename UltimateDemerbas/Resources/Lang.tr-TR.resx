@@ -117,7 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Yeni Menü Ekle</value>
+  </data>
+  <data name="addNewUser" xml:space="preserve">
+    <value>Yeni Kullanıcı Ekle</value>
+  </data>
+  <data name="addtheRelevantPerson" xml:space="preserve">
+    <value>İlgili Kişi Ekle</value>
+  </data>
+  <data name="addtoRootDirectory" xml:space="preserve">
+    <value>Kök Dizine Ekle</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="noRecordsFoundtoList" xml:space="preserve">
+    <value>No Records Found to List</value>
+  </data>
+  <data name="recordNotFoundforListing" xml:space="preserve">
+    <value>Listelenecek Kayit Bulunamadi</value>
+  </data>
+  <data name="relatedIndividuals" xml:space="preserve">
+    <value>İlgili Kişiler</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Toplam Kayit Sayisi</value>
+  </data>
+  <data name="totalNumberofRecords" xml:space="preserve">
+    <value>Toplam Kayit Sayisi</value>
+  </data>
+  <data name="transactions" xml:space="preserve">
+    <value>Islemler</value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
+  <data name="users" xml:space="preserve">
+    <value>Kullanıcılar</value>
   </data>
 </root>

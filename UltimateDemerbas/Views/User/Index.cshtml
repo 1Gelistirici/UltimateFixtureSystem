@@ -1,4 +1,5 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -22,13 +23,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-users font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Users
+                    @Html.Translate("users")
                 </span>
             </div>
             <div class="actions">
                 <div class="btn-group btn-group-devided" data-toggle="buttons">
                     <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddUser">
-                        Add New User
+                        @Html.Translate("addNewUser")
                     </a>
                 </div>
 
@@ -36,7 +37,9 @@
         </div>
 
         <div ng-show="RegisterCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+            <h3 style="text-align: center;color:#678098">
+                @Html.Translate("addNewUser")
+            </h3>
         </div>
 
         <!--Table Body-->
