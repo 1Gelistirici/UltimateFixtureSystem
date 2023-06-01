@@ -25,7 +25,7 @@
         {
             if (item == cultureList[0])
             {
-                <li>
+                <li ng-click="setLanguage('@item.Value', '@Context.Request.Path')">
                     <a href="javascript:;">
                         <img alt="" src="../assets/global/img/flags/@(item.Value).png"> @item.Text
                     </a>
@@ -33,7 +33,7 @@
             }
             else
             {
-                <li>
+                <li ng-click="setLanguage('@item.Value', '@Context.Request.Path')">
                     <a href="javascript:;">
                         <img alt="" src="../assets/global/img/flags/@(item.Value).png"> @item.Text
                     </a>
@@ -44,5 +44,3 @@
 
     </ul>
 </li>
-
-@*<p>Label : @Html.Translate("LB_WELCOME")</p>*@

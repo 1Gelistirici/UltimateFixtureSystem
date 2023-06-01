@@ -58,4 +58,21 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
             });
         }
 
+        $scope.setLanguage = function (culture, returnUrl) {
+            console.log(culture);
+            console.log(returnUrl);
+
+            $.ajax({
+                url: "/Home/SetLanguage",
+                method: "POST",
+                data: { culture: culture, returnUrl: returnUrl },
+                success: function (response) {
+                    //location.reload();
+                },
+                error: function (error) {
+                    console.log("İstek sırasında hata oluştu");
+                }
+            });
+        }
+
     }]);
