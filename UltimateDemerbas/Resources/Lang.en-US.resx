@@ -153,6 +153,12 @@
   <data name="addFixtureModel" xml:space="preserve">
     <value>Add Fixture Model</value>
   </data>
+  <data name="addLicense" xml:space="preserve">
+    <value>Add License</value>
+  </data>
+  <data name="addLicenseType" xml:space="preserve">
+    <value>Add License Type</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
   </data>
@@ -165,11 +171,17 @@
   <data name="addtheRelevantPerson" xml:space="preserve">
     <value>Add the Relevant Person</value>
   </data>
+  <data name="addToner" xml:space="preserve">
+    <value>Add Toner</value>
+  </data>
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Add to Root Directory</value>
   </data>
   <data name="assign" xml:space="preserve">
     <value>Assign</value>
+  </data>
+  <data name="assignedLicenses" xml:space="preserve">
+    <value>Assigned Licenses</value>
   </data>
   <data name="assignment" xml:space="preserve">
     <value>Assignment</value>
@@ -210,6 +222,12 @@
   <data name="items" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="license" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="licensesTypes" xml:space="preserve">
+    <value>Licenses Types</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>My Profile</value>
   </data>
@@ -225,11 +243,23 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>Related Individuals</value>
   </data>
+  <data name="reportedAssets" xml:space="preserve">
+    <value>Reported Assets</value>
+  </data>
+  <data name="reportHistory" xml:space="preserve">
+    <value>Report History</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Situation</value>
   </data>
+  <data name="systemLogs" xml:space="preserve">
+    <value>System Logs</value>
+  </data>
   <data name="tasks" xml:space="preserve">
     <value>Tasks</value>
+  </data>
+  <data name="toner" xml:space="preserve">
+    <value>Toner</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Total Number of Records</value>
@@ -239,6 +269,9 @@
   </data>
   <data name="update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="usedToners" xml:space="preserve">
+    <value>Used Toners</value>
   </data>
   <data name="users" xml:space="preserve">
     <value>Users</value>

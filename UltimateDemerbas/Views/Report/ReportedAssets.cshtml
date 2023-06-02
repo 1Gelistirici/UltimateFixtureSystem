@@ -1,4 +1,5 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,13 +13,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-bookmark font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Reported Assets
+                    @Html.Translate("reportedAssets")
                 </span>
             </div>
         </div>
 
         <div ng-show="registerCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+            <h3 style="text-align: center;color:#678098">@Html.Translate("recordNotFoundforListing")</h3>
         </div>
 
         <!--Table Body-->
@@ -42,27 +43,27 @@
                                 <td data-title="TableCol.ItemName" filter="{ ItemName: 'text'}" sortable="'ItemName'">
                                     <span>{{_.Item.Name}}</span>
                                 </td>
-                               
+
                                 <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
                                     <span>{{_.InsertDate}}</span>
                                 </td>
-                              
+
                                 <td data-title="TableCol.ReportSubject" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
                                     <span>{{_.ReportSubject}}</span>
                                 </td>
-                              
+
                                 <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
                                     <span>{{_.ReportDetail}}</span>
                                 </td>
-                              
+
                                 <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
                                     <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
                                 </td>
-                              
+
                                 <td data-title="TableCol.AssignmentName" filter="{ AssignmentName: 'text'}" sortable="'AssignmentName'">
                                     <span>{{_.Assignment.Name}}</span>
                                 </td>
-                              
+
                                 <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
                                     <span>{{_.User.Name}}</span>
                                 </td>
@@ -72,7 +73,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{registerCount}}</span>
                                 </td>
                             </tr>
                         </tfoot>

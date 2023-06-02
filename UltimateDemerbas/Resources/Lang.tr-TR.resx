@@ -153,6 +153,12 @@
   <data name="addFixtureModel" xml:space="preserve">
     <value>Demirbaş Modeli Ekle</value>
   </data>
+  <data name="addLicense" xml:space="preserve">
+    <value>Add License</value>
+  </data>
+  <data name="addLicenseType" xml:space="preserve">
+    <value>Lisans Tip Ekle</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Yeni Menü Ekle</value>
   </data>
@@ -165,11 +171,17 @@
   <data name="addtheRelevantPerson" xml:space="preserve">
     <value>İlgili Kişi Ekle</value>
   </data>
+  <data name="addToner" xml:space="preserve">
+    <value>Toner Ekle</value>
+  </data>
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Kök Dizine Ekle</value>
   </data>
   <data name="assign" xml:space="preserve">
     <value>Ata</value>
+  </data>
+  <data name="assignedLicenses" xml:space="preserve">
+    <value>Lisans Ata</value>
   </data>
   <data name="assignment" xml:space="preserve">
     <value>Atama</value>
@@ -210,6 +222,12 @@
   <data name="items" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="license" xml:space="preserve">
+    <value>Lisans</value>
+  </data>
+  <data name="licensesTypes" xml:space="preserve">
+    <value>Lisans Tipi</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>Profilim</value>
   </data>
@@ -225,11 +243,23 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>İlgili Kişiler</value>
   </data>
+  <data name="reportedAssets" xml:space="preserve">
+    <value>Raportlanan Varlıklar</value>
+  </data>
+  <data name="reportHistory" xml:space="preserve">
+    <value>Rapor Geçmişi</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Durum</value>
   </data>
+  <data name="systemLogs" xml:space="preserve">
+    <value>Sistem Logları</value>
+  </data>
   <data name="tasks" xml:space="preserve">
     <value>Görevler</value>
+  </data>
+  <data name="toner" xml:space="preserve">
+    <value>Toner</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Toplam Kayit Sayisi</value>
@@ -242,6 +272,9 @@
   </data>
   <data name="update" xml:space="preserve">
     <value>Güncelle</value>
+  </data>
+  <data name="usedToners" xml:space="preserve">
+    <value>Kullanılan Tonerler</value>
   </data>
   <data name="users" xml:space="preserve">
     <value>Kullanıcılar</value>
