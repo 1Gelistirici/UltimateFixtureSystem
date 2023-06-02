@@ -1,4 +1,5 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,13 +13,13 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-asterisk font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Assignment
+                    @Html.Translate("assignment")
                 </span>
             </div>
         </div>
 
         <div ng-show="registerCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+            <h3 style="text-align: center;color:#678098">@Html.Translate("recordNotFoundforListing")</h3>
         </div>
 
         <!--Table Body-->
@@ -83,7 +84,7 @@
                                 </td>
 
                                 <td>
-                                        <button class="btn red" ng-click="undoConfirm(_);">Undo</button>
+                                    <button class="btn red" ng-click="undoConfirm(_);">@Html.Translate("undo")</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -91,7 +92,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6" class="no-margin no-padding">
-                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                    <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{registerCount}}</span>
                                 </td>
                             </tr>
                         </tfoot>

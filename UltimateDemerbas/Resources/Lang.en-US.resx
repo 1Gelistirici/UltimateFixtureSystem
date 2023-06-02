@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="accessories" xml:space="preserve">
+    <value>Accessories</value>
+  </data>
   <data name="add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="addAccessory" xml:space="preserve">
+    <value>Add Accessory</value>
+  </data>
+  <data name="addCategory" xml:space="preserve">
+    <value>Add Category</value>
+  </data>
+  <data name="addComponent" xml:space="preserve">
+    <value>Add Component</value>
+  </data>
   <data name="addComponentModel" xml:space="preserve">
     <value>Add Component Model</value>
+  </data>
+  <data name="addDepartment" xml:space="preserve">
+    <value>Add Department</value>
+  </data>
+  <data name="addFixture" xml:space="preserve">
+    <value>Add Fixture</value>
   </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
@@ -138,17 +156,35 @@
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Add to Root Directory</value>
   </data>
+  <data name="assign" xml:space="preserve">
+    <value>Assign</value>
+  </data>
+  <data name="assignment" xml:space="preserve">
+    <value>Assignment</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="close" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="componentModels" xml:space="preserve">
     <value>Component Models</value>
   </data>
+  <data name="components" xml:space="preserve">
+    <value>Components</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="department" xml:space="preserve">
+    <value>Department</value>
+  </data>
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="fixtures" xml:space="preserve">
+    <value>Fixtures</value>
   </data>
   <data name="myProfile" xml:space="preserve">
     <value>My Profile</value>
@@ -177,10 +213,16 @@
   <data name="transactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
+  <data name="undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
   <data name="update" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="users" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>View</value>
   </data>
 </root>
