@@ -120,11 +120,20 @@
   <data name="accessories" xml:space="preserve">
     <value>Accessories</value>
   </data>
+  <data name="accessoryModels" xml:space="preserve">
+    <value>Accessory Models</value>
+  </data>
   <data name="add" xml:space="preserve">
     <value>Add</value>
   </data>
   <data name="addAccessory" xml:space="preserve">
     <value>Add Accessory</value>
+  </data>
+  <data name="addAccessoryModel" xml:space="preserve">
+    <value>Add Accessory Model</value>
+  </data>
+  <data name="addBill" xml:space="preserve">
+    <value>Add Bill</value>
   </data>
   <data name="addCategory" xml:space="preserve">
     <value>Add Category</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="addFixture" xml:space="preserve">
     <value>Add Fixture</value>
+  </data>
+  <data name="addFixtureModel" xml:space="preserve">
+    <value>Add Fixture Model</value>
   </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
@@ -162,6 +174,12 @@
   <data name="assignment" xml:space="preserve">
     <value>Assignment</value>
   </data>
+  <data name="bill" xml:space="preserve">
+    <value>Bill</value>
+  </data>
+  <data name="billTypes" xml:space="preserve">
+    <value>Bill Types</value>
+  </data>
   <data name="categories" xml:space="preserve">
     <value>Categories</value>
   </data>
@@ -183,8 +201,14 @@
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="fixtureModels" xml:space="preserve">
+    <value>Fixture Models</value>
+  </data>
   <data name="fixtures" xml:space="preserve">
     <value>Fixtures</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>Items</value>
   </data>
   <data name="myProfile" xml:space="preserve">
     <value>My Profile</value>
@@ -212,9 +236,6 @@
   </data>
   <data name="transactions" xml:space="preserve">
     <value>Transactions</value>
-  </data>
-  <data name="undo" xml:space="preserve">
-    <value>Undo</value>
   </data>
   <data name="update" xml:space="preserve">
     <value>Update</value>
