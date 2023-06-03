@@ -120,8 +120,17 @@
   <data name="accessories" xml:space="preserve">
     <value>Accessories</value>
   </data>
+  <data name="accessoryModelName" xml:space="preserve">
+    <value>Accessory Model Name</value>
+  </data>
   <data name="accessoryModels" xml:space="preserve">
     <value>Accessory Models</value>
+  </data>
+  <data name="active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="activeReports" xml:space="preserve">
+    <value>Active Reports</value>
   </data>
   <data name="add" xml:space="preserve">
     <value>Add</value>
@@ -134,6 +143,12 @@
   </data>
   <data name="addBill" xml:space="preserve">
     <value>Add Bill</value>
+  </data>
+  <data name="addBillItem" xml:space="preserve">
+    <value>Add Bill Item</value>
+  </data>
+  <data name="addBillType" xml:space="preserve">
+    <value>Add Bill Type</value>
   </data>
   <data name="addCategory" xml:space="preserve">
     <value>Add Category</value>
@@ -159,6 +174,12 @@
   <data name="addLicenseType" xml:space="preserve">
     <value>Add License Type</value>
   </data>
+  <data name="addMenu" xml:space="preserve">
+    <value>Add Menu</value>
+  </data>
+  <data name="addNew" xml:space="preserve">
+    <value>Add New</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Add New Menu</value>
   </data>
@@ -167,6 +188,15 @@
   </data>
   <data name="addNewUser" xml:space="preserve">
     <value>Add New User</value>
+  </data>
+  <data name="addRelevantPersonnel" xml:space="preserve">
+    <value>Add Relevant Personnel</value>
+  </data>
+  <data name="addSituation" xml:space="preserve">
+    <value>Add Situation</value>
+  </data>
+  <data name="addTask" xml:space="preserve">
+    <value>Add Task</value>
   </data>
   <data name="addtheRelevantPerson" xml:space="preserve">
     <value>Add the Relevant Person</value>
@@ -177,8 +207,26 @@
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Add to Root Directory</value>
   </data>
+  <data name="addUsedToner" xml:space="preserve">
+    <value>Add Used Toner</value>
+  </data>
+  <data name="addUser" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="assetsOwned" xml:space="preserve">
+    <value>Assets Owned</value>
+  </data>
   <data name="assign" xml:space="preserve">
     <value>Assign</value>
+  </data>
+  <data name="assignedAccessory" xml:space="preserve">
+    <value>Assigned Accessory</value>
   </data>
   <data name="assignedLicenses" xml:space="preserve">
     <value>Assigned Licenses</value>
@@ -186,17 +234,68 @@
   <data name="assignment" xml:space="preserve">
     <value>Assignment</value>
   </data>
+  <data name="assignmentLicense" xml:space="preserve">
+    <value>Assignment License</value>
+  </data>
   <data name="bill" xml:space="preserve">
     <value>Bill</value>
+  </data>
+  <data name="billItems" xml:space="preserve">
+    <value>Bill Items</value>
+  </data>
+  <data name="billNo" xml:space="preserve">
+    <value>Bill No</value>
+  </data>
+  <data name="billTypeName" xml:space="preserve">
+    <value>Bill Type Name</value>
   </data>
   <data name="billTypes" xml:space="preserve">
     <value>Bill Types</value>
   </data>
+  <data name="boundary" xml:space="preserve">
+    <value>Boundary</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="categories" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="categoryNo" xml:space="preserve">
+    <value>Category No</value>
+  </data>
+  <data name="change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="choosePicture" xml:space="preserve">
+    <value>Choose Picture</value>
+  </data>
   <data name="close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="closedReports" xml:space="preserve">
+    <value>Closed Reports</value>
+  </data>
+  <data name="code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="componentModelName" xml:space="preserve">
+    <value>Component Model Name</value>
   </data>
   <data name="componentModels" xml:space="preserve">
     <value>Component Models</value>
@@ -204,14 +303,62 @@
   <data name="components" xml:space="preserve">
     <value>Components</value>
   </data>
+  <data name="conclude" xml:space="preserve">
+    <value>Conclude</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="count" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="currentBalance" xml:space="preserve">
+    <value>Current Balance</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>Day</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="deleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="deletedReports" xml:space="preserve">
+    <value>Deleted Reports</value>
   </data>
   <data name="department" xml:space="preserve">
     <value>Department</value>
   </data>
+  <data name="departmentName" xml:space="preserve">
+    <value>Department Name</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="emailValidation" xml:space="preserve">
+    <value>Email Validation</value>
+  </data>
+  <data name="endDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="findMenu" xml:space="preserve">
+    <value>Find Menu</value>
+  </data>
+  <data name="fixture" xml:space="preserve">
+    <value>Fixture</value>
+  </data>
+  <data name="fixtureModelName" xml:space="preserve">
+    <value>Fixture Model Name</value>
   </data>
   <data name="fixtureModels" xml:space="preserve">
     <value>Fixture Models</value>
@@ -219,8 +366,14 @@
   <data name="fixtures" xml:space="preserve">
     <value>Fixtures</value>
   </data>
+  <data name="importanceLevels" xml:space="preserve">
+    <value>Importance Levels</value>
+  </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
+  </data>
+  <data name="lateTasks" xml:space="preserve">
+    <value>Late Tasks</value>
   </data>
   <data name="license" xml:space="preserve">
     <value>License</value>
@@ -228,14 +381,101 @@
   <data name="licensesTypes" xml:space="preserve">
     <value>Licenses Types</value>
   </data>
+  <data name="licenseTypeName" xml:space="preserve">
+    <value>License Type Name</value>
+  </data>
+  <data name="lock" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="mailAdress" xml:space="preserve">
+    <value>Mail Adress</value>
+  </data>
+  <data name="man" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="menuIcon" xml:space="preserve">
+    <value>Menu Icon</value>
+  </data>
+  <data name="menuLink" xml:space="preserve">
+    <value>Menu Link</value>
+  </data>
+  <data name="menuName" xml:space="preserve">
+    <value>Menu Name</value>
+  </data>
+  <data name="menus" xml:space="preserve">
+    <value>Menus</value>
+  </data>
+  <data name="menuSelectPermission" xml:space="preserve">
+    <value>Menu Select Permission</value>
+  </data>
+  <data name="menuUpdate" xml:space="preserve">
+    <value>Menu Update</value>
+  </data>
+  <data name="minStock" xml:space="preserve">
+    <value>Min Stock</value>
+  </data>
+  <data name="model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="modelNo" xml:space="preserve">
+    <value>Model No</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>More</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>My Profile</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="newTask" xml:space="preserve">
+    <value>New Task</value>
   </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
   </data>
+  <data name="note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="overdue" xml:space="preserve">
+    <value>Overdue</value>
+  </data>
   <data name="pageMap" xml:space="preserve">
     <value>Page Map</value>
+  </data>
+  <data name="passiveReports" xml:space="preserve">
+    <value>Passive Reports</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="personnelEdit" xml:space="preserve">
+    <value>Personnel Edit</value>
+  </data>
+  <data name="piece" xml:space="preserve">
+    <value>Piece</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="printer" xml:space="preserve">
+    <value>Printer</value>
+  </data>
+  <data name="productType" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="reCallActive" xml:space="preserve">
+    <value>ReCall Active</value>
+  </data>
+  <data name="reCallDate" xml:space="preserve">
+    <value>ReCall Date</value>
+  </data>
+  <data name="recentActivities" xml:space="preserve">
+    <value>Recent Activities</value>
   </data>
   <data name="recordNotFoundforListing" xml:space="preserve">
     <value>Record Not Found for Listing</value>
@@ -243,23 +483,89 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>Related Individuals</value>
   </data>
+  <data name="remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="report" xml:space="preserve">
+    <value>Report</value>
+  </data>
   <data name="reportedAssets" xml:space="preserve">
     <value>Reported Assets</value>
   </data>
   <data name="reportHistory" xml:space="preserve">
     <value>Report History</value>
   </data>
+  <data name="resolved" xml:space="preserve">
+    <value>Resolved</value>
+  </data>
+  <data name="resolvedReports" xml:space="preserve">
+    <value>Resolved Reports</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="seeAllRecords" xml:space="preserve">
+    <value>See All Records</value>
+  </data>
+  <data name="setTaskStatu" xml:space="preserve">
+    <value>Set Task Statu</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Situation</value>
+  </data>
+  <data name="solved" xml:space="preserve">
+    <value>Solved</value>
+  </data>
+  <data name="startDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="statusName" xml:space="preserve">
+    <value>Status Name</value>
+  </data>
+  <data name="subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Surname</value>
   </data>
   <data name="systemLogs" xml:space="preserve">
     <value>System Logs</value>
   </data>
+  <data name="taskActiveStatus" xml:space="preserve">
+    <value>Task Active Status</value>
+  </data>
+  <data name="taskDetail" xml:space="preserve">
+    <value>Task Detail</value>
+  </data>
+  <data name="taskEndDate" xml:space="preserve">
+    <value>Task End Date</value>
+  </data>
   <data name="tasks" xml:space="preserve">
     <value>Tasks</value>
   </data>
+  <data name="tasksSummary" xml:space="preserve">
+    <value>Tasks Summary</value>
+  </data>
+  <data name="taskStartDate" xml:space="preserve">
+    <value>Task Start Date</value>
+  </data>
+  <data name="telephone" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="toner" xml:space="preserve">
     <value>Toner</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Total Number of Records</value>
@@ -267,16 +573,34 @@
   <data name="transactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
+  <data name="tryPassword" xml:space="preserve">
+    <value>Try Password</value>
+  </data>
+  <data name="unSolved" xml:space="preserve">
+    <value>UnSolved</value>
+  </data>
   <data name="update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="updateCompany" xml:space="preserve">
+    <value>Update Company</value>
+  </data>
   <data name="usedToners" xml:space="preserve">
     <value>Used Toners</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="userName" xml:space="preserve">
+    <value>User Name</value>
   </data>
   <data name="users" xml:space="preserve">
     <value>Users</value>
   </data>
   <data name="view" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="women" xml:space="preserve">
+    <value>Women</value>
   </data>
 </root>

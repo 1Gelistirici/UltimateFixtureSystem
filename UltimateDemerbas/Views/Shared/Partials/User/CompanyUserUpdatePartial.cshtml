@@ -1,4 +1,4 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
 @model UltimateDemerbas.Controllers.UserController.MenuListResult
 
 
@@ -12,7 +12,7 @@
                     <div>
                         <div class="col-md-4">
 
-                            <h4 class="modal-title">Menüler</h4>
+                            <h4 class="modal-title">@Html.Translate("menus")</h4>
                         </div>
                     </div>
                 </div>
@@ -20,15 +20,15 @@
                     <div class="form-group">
                         <div class="input-group" style="position: fixed; top: 55px; z-index: 10052 !important; margin-left: -2px; margin-right: 9px;">
                             <span class="input-group-addon">
-                                <label><span class="label bg-green">Menu Bul</span></label>
+                                <label><span class="label bg-green">@Html.Translate("findMenu")</span></label>
                             </span>
                             <input type="text" data-menuValueList="" class="form-control" id="txtUserMenue" onkeyup="" style="width: 60%;" />
                             <div class="col-md-2">
-                                <button type="button" class="btn green" aria-hidden="true" ng-click="selectAllUserMenuCheckbox()">Tümü</button>
+                                <button type="button" class="btn green" aria-hidden="true" ng-click="selectAllUserMenuCheckbox()">@Html.Translate("all")</button>
                             </div>
 
                             <div class="col-md-2">
-                                <button type="button" class="btn dark btn-outline" aria-hidden="true" ng-click="deselectAllUserMenuCheckbox()">Kaldır</button>
+                                <button type="button" class="btn dark btn-outline" aria-hidden="true" ng-click="deselectAllUserMenuCheckbox()">@Html.Translate("remove")</button>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" ng-click="userMenuCancelPopup()">Vazgeç</button>
-                    <button type="button" class="btn green" ng-disabled="generalValidation" ng-click="userMenuApprove()">Onayla</button>
+                    <button type="button" class="btn dark btn-outline" ng-click="userMenuCancelPopup()">@Html.Translate("cancel")</button>
+                    <button type="button" class="btn green" ng-disabled="generalValidation" ng-click="userMenuApprove()">@Html.Translate("confirm")</button>
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Personel Düzenleme - {{$parent.AssignPopup.Name}}</h4>
+            <h4 class="modal-title">@Html.Translate("personnelEdit") - {{$parent.AssignPopup.Name}}</h4>
         </div>
         <div class="scroller" style="height:320px" data-always-visible="0" data-rail-visible1="1">
             <br />
             <div class="tab-pane" id="userMenuTabs">
                 <div data-toggle="modal" data-target="#userMenuUpdatePopup_">
-                    <label class="control-label col-md-3">Menü İzin Seç <span class="required"> *</span></label>
+                    <label class="control-label col-md-3">@Html.Translate("menuSelectPermission") <span class="required"> *</span></label>
                     <div class="col-md-9">
                         <textarea disabled id="menuUserUpdateNameList_" style="width: 100%" class="form-control" rows="10"></textarea>
                         <input type="hidden" disabled id="menuValueList_" style="width: 100%" class="form-control" />
@@ -64,8 +64,8 @@
 
 
             <div class="modal-footer col-md-12 ">
-                <button type="button" data-dismiss="modal" class="btn dark btn-outline" ng-click="ClearCompanyUserInsertPopup()">Kapat</button>
-                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="UpdateCompanyUser($parent.AssignPopup)">Kaydet</button>
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline" ng-click="ClearCompanyUserInsertPopup()">@Html.Translate("cancel")</button>
+                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="UpdateCompanyUser($parent.AssignPopup)">@Html.Translate("save")</button>
             </div>
         </div>
 

@@ -1,22 +1,24 @@
-﻿<!--Add Popup-->
+﻿@using MultiLanguage.ExtensionMethods
+
+<!--Add Popup-->
 <div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Add Situation</h4>
+                <h4 class="modal-title danger">@Html.Translate("addSituation")</h4>
             </div>
             <div class="scroller" style="height:160px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <span>Status Name</span>
-                            <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control" maxlength="50" placeholder="Removed">
+                        <span>@Html.Translate("statusName")</span>
+                        <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control" maxlength="50" placeholder="Removed">
                     </div>
                 </div>
                 <div class="modal-footer" style="margin-top:11%;">
                     <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-click="AddSituation()">Save</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-click="AddSituation()">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>

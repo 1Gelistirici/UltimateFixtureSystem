@@ -1,10 +1,11 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div id="AddUser" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 800px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Add New User</h4>
+                <h4 class="modal-title danger">@Html.Translate("addUser")</h4>
 
                 <div class="md-checkbox-list pull-right">
                     <div class="md-checkbox">
@@ -12,7 +13,7 @@
                         <label for="checkbox2_1">
                             <span></span>
                             <span class="check"></span>
-                            <span class="box"></span> Lock
+                            <span class="box"></span> @Html.Translate("lock")
                         </label>
                     </div>
                 </div>
@@ -31,8 +32,8 @@
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                 <div>
                                     <span class="btn default btn-file">
-                                        <span class="fileinput-new">   Resim seç </span>
-                                        <span class="fileinput-exists"> Değiştir </span>
+                                        <span class="fileinput-new">   @Html.Translate("choosePicture") </span>
+                                        <span class="fileinput-exists"> @Html.Translate("chane") </span>
                                         <input type="file" name="" ng-model="ImagePath" id="ImagePath" onchange="angular.element(this).scope().fileNameChanged(this)">
                                     </span>
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput" ng-model="ImagePath"> Sil </a>
@@ -41,28 +42,28 @@
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Name.$invalid && !AddUserForm.Name.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Name</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("name")</label>
                             <div class="col-md-9">
                                 <input type="text" name="Name" class="form-control" ng-model="Pop.Name" placeholder="john" required>
                             </div>
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Surname.$invalid && !AddUserForm.Surname.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Surname</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("surname")</label>
                             <div class="col-md-9">
                                 <input type="text" name="Surname" class="form-control" ng-model="Pop.Surname" placeholder="doe" required>
                             </div>
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Username.$invalid && !AddUserForm.Username.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Username</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("username")</label>
                             <div class="col-md-9">
                                 <input type="text" name="Username" class="form-control" ng-model="Pop.Username" placeholder="johndoe" required>
                             </div>
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.Department.$invalid && !AddUserForm.Department.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Department</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("department")</label>
                             <div class="col-md-9">
                                 <select class="form-control" name="Department" ng-model="Pop.Department" required>
                                     <option ng-repeat="x in Departments" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
@@ -71,21 +72,21 @@
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Password.$invalid && !AddUserForm.Password.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Password</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("password")</label>
                             <div class="col-md-9">
                                 <input type="password" name="Password" class="form-control" ng-model="Pop.Password" placeholder="******" required>
                             </div>
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-right" ng-class="{ 'has-error' : AddUserForm.TryPassword.$invalid && !AddUserForm.TryPassword.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Try Password</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("tryPassword")</label>
                             <div class="col-md-9">
                                 <input type="password" name="TryPassword" class="form-control" ng-model="Pop.TryPassword" placeholder="******" required>
                             </div>
                         </div>
 
                         <div class="form-group form-md-line-input has-success col-md-6 pull-left" ng-class="{ 'has-error' : AddUserForm.Title.$invalid && !AddUserForm.Title.$pristine}">
-                            <label class="col-md-3 control-label" for="form_control_1">Title</label>
+                            <label class="col-md-3 control-label" for="form_control_1">@Html.Translate("title")</label>
                             <div class="col-md-9">
                                 <input type="text" name="Title" class="form-control" ng-model="Pop.Title" required>
                             </div>
@@ -99,7 +100,7 @@
                                     <label for="checkbox2_11">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> Women
+                                        <span class="box"></span> @Html.Translate("women")
                                     </label>
                                 </div>
                                 <div class="md-radio">
@@ -107,7 +108,7 @@
                                     <label for="checkbox2_10">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> Man
+                                        <span class="box"></span> @Html.Translate("man")
                                     </label>
                                 </div>
                             </div>
@@ -116,8 +117,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="AddUser()">Save</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="AddUserForm.$invalid" ng-click="AddUser()">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>

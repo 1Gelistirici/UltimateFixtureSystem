@@ -1,16 +1,17 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div id="Conclude" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Conclude - {{Pop.Subject}}</h4>
+                <h4 class="modal-title danger">@Html.Translate("conclude") - {{Pop.Subject}}</h4>
             </div>
             <div style="height:300px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="ConcludeForm">
                         <div class="col-md-9">
-                            <span>Statu</span>
+                            <span>@Html.Translate("state")</span>
                             <select class="form-control" ng-model="Pop.Statu">
                                 <option ng-repeat="x in ReportStatus" value="{{x.Value}}">{{x.Text}}</option>
                             </select>
@@ -20,15 +21,15 @@
                         <br />
                         <br />
                         <div class="col-md-9">
-                            <span>Comment</span>
+                            <span>@Html.Translate("comment")</span>
                             <textarea class="form-control" rows="4" ng-model="Pop.Comment" style="font-size: 14px; resize:none" min="0"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer" style="margin-top:30%;">
                     <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="ConcludeForm.$invalid || Pop.Comment=='' ||Pop.Comment==null || Pop.Statu==null" ng-click="Conclude();">Save</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="ConcludeForm.$invalid || Pop.Comment=='' ||Pop.Comment==null || Pop.Statu==null" ng-click="Conclude();">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>

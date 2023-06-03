@@ -1,4 +1,6 @@
-﻿<style>
+﻿@using MultiLanguage.ExtensionMethods
+
+<style>
     .tester {
         background-color: lightblue;
         width: 110px;
@@ -11,7 +13,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-share font-dark hide"></i>
-                <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
+                <span class="caption-subject font-dark bold uppercase">@Html.Translate("recentActivities")</span>
             </div>
         </div>
         <div class="portlet-body">
@@ -47,7 +49,7 @@
             </div>
             <div class="scroller-footer">
                 <div class="btn-arrow-link pull-right">
-                    <a href="\Log\">See All Records</a>
+                    <a href="\Log\">@Html.Translate("seeAllRecords")</a>
                     <i class="fa fa-file-text-o"></i>
                 </div>
             </div>

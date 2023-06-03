@@ -1,22 +1,23 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div class="col-lg-6 col-xs-12 col-sm-12">
     <div class="portlet light tasks-widget bordered">
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-share font-dark hide"></i>
-                <span class="caption-subject font-dark bold uppercase">Tasks</span>
-                <span class="caption-helper">tasks summary...</span>
+                <span class="caption-subject font-dark bold uppercase">@Html.Translate("tasks")</span>
+                <span class="caption-helper">@Html.Translate("tasksSummary")...</span>
             </div>
             <div class="actions">
                 <div class="btn-group">
 
                     <a class="btn blue-oleo btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        More
+                        @Html.Translate("more")
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu pull-right">
                         <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#AddTask" ng-click="openInsertTaskPopup();"> Add Task </a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#AddTask" ng-click="openInsertTaskPopup();"> @Html.Translate("addTask") </a>
                         </li>
                         @*<li class="divider"> </li>
                             <li>
@@ -64,7 +65,7 @@
                                     </label>
                                 </div>*@
                             <div class="task-title">
-                                <span ng-class="DateCalc(x.StartDate,x.EndDate) <= 0 ? 'label label-sm label-danger' : (DateCalc(x.StartDate,x.EndDate) <= 3 ? 'label label-sm label-warning' : 'label label-sm label-success')">{{DateCalc(x.StartDate,x.EndDate)}} Day</span>
+                                <span ng-class="DateCalc(x.StartDate,x.EndDate) <= 0 ? 'label label-sm label-danger' : (DateCalc(x.StartDate,x.EndDate) <= 3 ? 'label label-sm label-warning' : 'label label-sm label-success')">{{DateCalc(x.StartDate,x.EndDate)}} @Html.Translate("day")</span>
                                 <span class="task-title-sp"> {{x.TaskDetail}} </span>
                                 @*<span class="task-bell">
                                         <i class="fa fa-bell-o"></i>
@@ -79,7 +80,7 @@
                                     <ul class="dropdown-menu pull-right">
                                         <li>
                                             <a href="javascript:;" data-toggle="modal" data-target="#DetailTask" ng-click="GetDetail(x)">
-                                                <i class="fa fa-external-link"></i> Detail
+                                                <i class="fa fa-external-link"></i> @Html.Translate("detail")
                                             </a>
                                         </li>
                                         @*<li>
@@ -89,12 +90,12 @@
                                             </li>*@
                                         <li>
                                             <a href="javascript:;" data-toggle="modal" data-target="#UpdateTask" ng-click="GetTask(x)">
-                                                <i class="fa fa-pencil"></i> Edit
+                                                <i class="fa fa-pencil"></i> @Html.Translate("edit")
                                             </a>
                                         </li>
                                         <li>
                                             <a href="javascript:;" ng-click="DeleteTaskConfirm(x.Id)">
-                                                <i class="fa fa-trash-o"></i> Delete
+                                                <i class="fa fa-trash-o"></i> @Html.Translate("delete")
                                             </a>
                                         </li>
                                     </ul>
@@ -107,7 +108,7 @@
             </div>
             <div class="task-footer">
                 <div class="btn-arrow-link pull-right">
-                    <a href="/Task">See All Records</a>
+                    <a href="/Task">@Html.Translate("seeAllRecords")</a>
                     <i class="fa fa-tasks"></i>
                 </div>
             </div>

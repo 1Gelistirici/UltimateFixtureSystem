@@ -1,28 +1,30 @@
-﻿<div id="ReportPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+﻿@using MultiLanguage.ExtensionMethods
+
+<div id="ReportPopup" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 350px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Report - {{Pop.Name}}</h4>
+                <h4 class="modal-title danger">@Html.Translate("report") - {{Pop.Name}}</h4>
             </div>
             <div class="scroller" style="height:350px" data-always-visible="0" data-rail-visible1="1">
                 <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="ReportForm">
                     <div class="modal-body">
                         <div class="col-md-12">
-                            <label>Subject</label>
+                            <label>@Html.Translate("subject")</label>
                             <input ng-model="Pop.reportSubject" style="font-size: 14px;" type="text" class="form-control" placeholder="subject..." required>
 
                             <br />
 
-                            <label>Content</label>
+                            <label>@Html.Translate("content")</label>
                             <textarea ng-model="Pop.reportDetail" rows="6" style="font-size: 16px;" type="text" class="form-control" placeholder="content..." required></textarea>
                         </div>
                     </div>
                 </form>
                 <div class="modal-footer" style="margin-top:70%;">
                     <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="ReportForm.$invalid" ng-click="AddReport()">Report</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="ReportForm.$invalid" ng-click="AddReport()">@Html.Translate("report")</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+
+@{
     ViewData["Title"] = "Report";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,7 +9,7 @@
 
     <div class="portlet light portlet-fit bordered col-md-12" ng-hide="Reports.length>0">
         <div ng-show="RegisterCount==0">
-            <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+            <h3 style="text-align: center;color:#678098">@Html.Translate("recordNotFoundforListing")</h3>
         </div>
     </div>
 

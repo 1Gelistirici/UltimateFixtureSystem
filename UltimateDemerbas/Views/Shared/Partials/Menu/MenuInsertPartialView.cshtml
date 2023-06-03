@@ -1,10 +1,11 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div id="menuInsertPopup">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Menü Ekleme</h4>
+                <h4 class="modal-title">@Html.Translate("addMenu")</h4>
             </div>
             <div class="modal-body">
                 <div class="scroller" style="height:290px" data-always-visible="1" data-rail-visible1="1">
@@ -13,7 +14,7 @@
 
                             <div ng-class="menuNameSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
                                 <label class="control-label col-md-4" for="inputMenuNameError">
-                                    Menü Adı <span class="required"></span>
+                                    @Html.Translate("menuName") <span class="required"></span>
                                 </label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder=" Menü adı giriniz" class="form-control" for="inputMenuNameError"
@@ -22,7 +23,7 @@
                             </div>
                             <div ng-class="menuLinkSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
                                 <label class="control-label col-md-4" for="inputMenuLinkError">
-                                    Menü Linki
+                                    @Html.Translate("menuLink")
                                     <span class="required"></span>
                                 </label>
                                 <div class="col-md-8">
@@ -33,7 +34,7 @@
 
                             <div ng-class="menuIconSituation ? 'form-group form-md-line-input has-error' : 'form-group form-md-line-input'">
                                 <label class="control-label col-md-4">
-                                    Menü İkon
+                                    @Html.Translate("menuIcon")
                                     <span class="required"></span>
                                 </label>
                                 <div class="col-md-8">
@@ -48,8 +49,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
-                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="SaveMenu(Menu)">Kaydet</button>
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline"> @Html.Translate("cancel")</button>
+                <button type="submit" class="btn green" ng-disabled="generalValidation" ng-click="SaveMenu(Menu)"> @Html.Translate("save")</button>
             </div>
         </div>
     </div>
@@ -57,9 +58,9 @@
 
 @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
-@section PageScript
-    {
-    <script src="~/AngularControllers/Services/MenuService.js"></script>
-    <script src="~/AngularControllers/Controllers/MenuInsertPartialView.js"></script>
-}*@
+    @section PageScript
+        {
+        <script src="~/AngularControllers/Services/MenuService.js"></script>
+        <script src="~/AngularControllers/Controllers/MenuInsertPartialView.js"></script>
+    }*@
 

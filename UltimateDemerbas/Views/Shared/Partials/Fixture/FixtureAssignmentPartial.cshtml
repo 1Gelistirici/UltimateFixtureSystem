@@ -1,36 +1,38 @@
-﻿<!--Add Popup-->
-    <div id="FixtureAssignmentPopup" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" style="width: 500px;z-index:10052!important;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title danger">Assignment - {{Assign.Name}}</h4>
+﻿@using MultiLanguage.ExtensionMethods
+
+<!--Add Popup-->
+<div id="FixtureAssignmentPopup" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 500px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">@Html.Translate("assignment") - {{Assign.Name}}</h4>
+            </div>
+            <div class="scroller" style="height:300px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="AssignmentForm">
+                        <div class="col-md-9">
+                            <span>User</span>
+                            <select class="form-control" ng-model="Assign.user">
+                                <option ng-repeat="x in Users" value="{{x.Id}}">{{x.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-9">
+                            <span>@Html.Translate("reCallActive")</span>
+                            <input ng-model="Assign.checkRecallDate" type="checkbox" class="form-control">
+                        </div>
+                        <div class="col-md-9">
+                            <span>">@Html.Translate("reCallDate")</span>
+                            <input ng-model="Assign.recallDate" ng-disabled="Assign.checkRecallDate!==true" style="font-size: 14px;" type="date" class="form-control col-md-7">
+                        </div>
+                    </form>
                 </div>
-                <div class="scroller" style="height:300px" data-always-visible="0" data-rail-visible1="1">
-                    <div class="modal-body">
-                        <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="AssignmentForm">
-                            <div class="col-md-9">
-                                <span>User</span>
-                                <select class="form-control" ng-model="Assign.user">
-                                    <option ng-repeat="x in Users" value="{{x.Id}}">{{x.Name}}</option>
-                                </select>
-                            </div>
-                            <div class="col-md-9">
-                                <span>ReCall Active</span>
-                                <input ng-model="Assign.checkRecallDate" type="checkbox" class="form-control">
-                            </div>
-                            <div class="col-md-9">
-                                <span>ReCall Date</span>
-                                <input ng-model="Assign.recallDate" ng-disabled="Assign.checkRecallDate!==true" style="font-size: 14px;" type="date" class="form-control col-md-7">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer" style="margin-top:38%;">
-                        <input type="hidden" />
-                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn red" ng-disabled="AssignmentForm.$invalid || Assign.user==null " ng-click="AssignFixture()">Save</button>
-                    </div>
+                <div class="modal-footer" style="margin-top:38%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="AssignmentForm.$invalid || Assign.user==null " ng-click="AssignFixture()">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>
     </div>
+</div>

@@ -1,8 +1,10 @@
-﻿<div class="row widget-row">
+﻿@using MultiLanguage.ExtensionMethods
+
+<div class="row widget-row">
     <div class="col-md-3">
         <!-- BEGIN WIDGET THUMB -->
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Current Balance</h4>
+            <h4 class="widget-thumb-heading">@Html.Translate("currentBalance")</h4>
             <div class="widget-thumb-wrap">
                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                 <div class="widget-thumb-body">
@@ -16,11 +18,11 @@
     <div class="col-md-3">
         <!-- BEGIN WIDGET THUMB -->
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Late Tasks</h4>
+            <h4 class="widget-thumb-heading">@Html.Translate("lateTasks")</h4>
             <div class="widget-thumb-wrap">
                 <i class="widget-thumb-icon bg-red icon-layers"></i>
                 <div class="widget-thumb-body">
-                    <span class="widget-thumb-subtitle">Task</span>
+                    <span class="widget-thumb-subtitle">@Html.Translate("task")</span>
                     <a href="/Task"><span class="widget-thumb-body-stat">{{lateTask}}</span></a>
                 </div>
             </div>
@@ -30,11 +32,11 @@
     <div class="col-md-3">
         <!-- BEGIN WIDGET THUMB -->
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Active Reports</h4>
+            <h4 class="widget-thumb-heading">@Html.Translate("activeReports")</h4>
             <div class="widget-thumb-wrap">
                 <i class="widget-thumb-icon bg-purple icon-screen-desktop"></i>
                 <div class="widget-thumb-body">
-                    <span class="widget-thumb-subtitle">Report</span>
+                    <span class="widget-thumb-subtitle">@Html.Translate("report")</span>
                     <a href="/Report"> <span class="widget-thumb-body-stat">{{totalActiveReport}}</span></a>
                 </div>
             </div>
@@ -44,11 +46,11 @@
     <div class="col-md-3">
         <!-- BEGIN WIDGET THUMB -->
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Toner</h4>
+            <h4 class="widget-thumb-heading">@Html.Translate("toner")</h4>
             <div class="widget-thumb-wrap">
                 <i class="widget-thumb-icon bg-blue icon-bar-chart"></i>
                 <div class="widget-thumb-body">
-                    <span class="widget-thumb-subtitle">Alert</span>
+                    <span class="widget-thumb-subtitle">@Html.Translate("alert")</span>
                     <a href="/Toner"><span class="widget-thumb-body-stat">{{TonerAlert}}</span></a>
                 </div>
             </div>

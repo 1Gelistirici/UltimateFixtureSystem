@@ -1,22 +1,23 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div id="AddTaskStatuPopup" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 450px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">{{Pop.Id}} - Set Task Statu</h4>
+                <h4 class="modal-title danger">{{Pop.Id}} - @Html.Translate("setTaskStatu")</h4>
             </div>
             <div class="scroller" style="height: 230px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="TaskStatuForm">
 
                         <div class="col-md-12">
-                            <span>Note</span>
+                            <span>@Html.Translate("note")</span>
                             <textarea ng-model="Pop.Note" rows="3" type="text" class="form-control" required></textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <span>Task Active Status</span>
+                            <span>@Html.Translate("taskActiveStatus")</span>
                             <select class="form-control" ng-model="Pop.IsActive" required>
                                 <option ng-repeat="x in TaskActiveStatus" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                             </select>
@@ -26,8 +27,8 @@
                 </div>
                 <div class="modal-footer" style="margin-top:27%;">
                     <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="TaskStatuForm.$invalid" ng-click="AddStatu()">Save</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="TaskStatuForm.$invalid" ng-click="AddStatu()">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>

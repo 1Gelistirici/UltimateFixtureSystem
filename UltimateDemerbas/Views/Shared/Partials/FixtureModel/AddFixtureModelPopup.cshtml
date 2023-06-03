@@ -1,24 +1,26 @@
-﻿<!--Add Popup-->
+﻿@using MultiLanguage.ExtensionMethods
+
+<!--Add Popup-->
 <div id="AddSituation" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title danger">Add Fixture Model</h4>
+                <h4 class="modal-title danger">@Html.Translate("addFixtureModel")</h4>
             </div>
             <div class="scroller" style="height:160px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
                     <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" name="FixtureModelForm">
                         <div class="col-md-9">
-                            <span>Fixture Model Name</span>
+                            <span>@Html.Translate("fixtureModelName")</span>
                             <input ng-model="Pop.Name" style="font-size: 14px;" type="text" class="form-control" required>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer" style="margin-top:11%;">
                     <input type="hidden" />
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn red" ng-disabled="FixtureModelForm.$invalid" ng-click="AddFixtureModel()">Save</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">@Html.Translate("cancel")</button>
+                    <button type="submit" class="btn red" ng-disabled="FixtureModelForm.$invalid" ng-click="AddFixtureModel()">@Html.Translate("save")</button>
                 </div>
             </div>
         </div>

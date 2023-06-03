@@ -28,22 +28,22 @@
             </div>
             <div class="actions">
                 <div class="material-switch">
-                    Active &nbsp;
+                    @Html.Translate("active") &nbsp;
                     <input id="{{4000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckActive" ng-model="CheckActive" ng-change="ChangeCheck();" />
                     <label for="{{4000}}" class="label-success" style=""></label> &nbsp;&nbsp;&nbsp;
-                    Closed &nbsp;
+                    @Html.Translate("closed") &nbsp;
                     <input id="{{3000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckClosed" ng-model="CheckClosed" ng-change="ChangeCheck();" />
                     <label for="{{3000}}" class="label-danger"></label>&nbsp;&nbsp;&nbsp;
-                    Solved &nbsp;
+                    @Html.Translate("solved") &nbsp;
                     <input id="{{2000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckSolved" ng-model="CheckSolved" ng-change="ChangeCheck();" />
                     <label for="{{2000}}" class="label-primary"></label>&nbsp;&nbsp;&nbsp;
-                    UnSolved &nbsp;
+                    @Html.Translate("unSolved") &nbsp;
                     <input id="{{1000}}" name="someSwitchOption001" type="checkbox" ng-checked="CheckUnSolved" ng-model="CheckUnSolved" ng-change="ChangeCheck();" />
                     <label for="{{1000}}" class="label-warning"></label>
                     &nbsp;&nbsp;&nbsp;
                     <div class="btn-group btn-group-devided" data-toggle="buttons">
                         <a class="btn blue addnewuserbtn" data-toggle="modal" data-target="#AddTaskPopup" ng-click="OpenTaskPopup();">
-                            Add Task
+                            @Html.Translate("addTask")
                         </a>
                     </div>
 

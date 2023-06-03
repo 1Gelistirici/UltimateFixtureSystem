@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+
+@{
     ViewData["Title"] = "PassiveReports";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,23 +12,23 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="icon-settings font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Passive Reports
+                    @Html.Translate("passiveReports")
                 </span>
             </div>
             <div class="actions">
 
                 <button type="button" class="btn red mt-ladda-btn ladda-button" ng-click="GetPassiveReports(2)" data-style="slide-right">
-                    <span class="ladda-label">Closed Reports</span>
+                    <span class="ladda-label">@Html.Translate("closedReports")</span>
                     <span class="ladda-spinner"></span>
                 </button>
 
                 <button type="button" class="btn btn-success mt-ladda-btn ladda-button" ng-click="GetPassiveReports(3)" data-style="expand-up">
-                    <span class="ladda-label">Resolved Reports</span>
+                    <span class="ladda-label">@Html.Translate("resolvedReports")</span>
                     <span class="ladda-spinner"></span>
                 </button>
 
                 <button type="button" class="btn btn-warning mt-ladda-btn ladda-button" ng-click="GetPassiveReports(1)" data-style="zoom-in">
-                    <span class="ladda-label">Deleted Reports</span>
+                    <span class="ladda-label">@Html.Translate("deletedReports")</span>
                     <span class="ladda-spinner"></span>
                 </button>
 
@@ -59,17 +61,17 @@
                         <button type="button" class="btn btn-primary red" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==2" ng-click="GetDetail(_);">
                             <span class="ladda-label">
                                 <i class="icon-arrow-up"></i>
-                            </span>Closed
+                            </span>@Html.Translate("closed")
                         </button>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==3" ng-click="GetDetail(_);">
                             <span class="ladda-label">
                                 <i class="icon-arrow-up"></i>
-                            </span>Resolved
+                            </span>@Html.Translate("resolved")
                         </button>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ReportDetail" ng-if="_.Statu==1" ng-click="GetDetail(_);">
                             <span class="ladda-label">
                                 <i class="icon-arrow-up"></i>
-                            </span>Deleted
+                            </span>@Html.Translate("deleted")
                         </button>
                     </div>
                 </div>

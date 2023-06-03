@@ -1,4 +1,5 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 <div id="AddBill" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog" style="width:1400px">
         <div class="modal-content">
@@ -6,14 +7,14 @@
 
                 <div class="caption">
                     <i class="fa fa-map font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Add Bill Item</span>
+                    <span class="caption-subject font-red sbold uppercase">@Html.Translate("addBillItem")</span>
 
                     <div class="btn-group btn-group-devided pull-right" data-toggle="buttons">
                         <label class="btn btn-transparent red btn-outline btn-circle btn-sm active" data-dismiss="modal">
-                            <input type="radio" name="options" class="toggle" id="option1">Cancel
+                            <input type="radio" name="options" class="toggle" id="option1">@Html.Translate("cancel")
                         </label>
 
-                        <button class="btn btn-transparent blue btn-outline btn-circle btn-sm" ng-click="AddBill();" ng-disabled="AddedData.length<=0">Save</button>
+                        <button class="btn btn-transparent blue btn-outline btn-circle btn-sm" ng-click="AddBill();" ng-disabled="AddedData.length<=0">@Html.Translate("save")</button>
                     </div>
                 </div>
 
@@ -29,31 +30,31 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="col-md-2">
-                                                    <label>Name</label>
+                                                    <label>@Html.Translate("name")</label>
                                                     <input ng-model="Added.Name" type="text" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Piece</label>
+                                                    <label>@Html.Translate("piece")</label>
                                                     <input ng-model="Added.Piece" type="number" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Price</label>
+                                                    <label>@Html.Translate("price")</label>
                                                     <input ng-model="Added.Price" type="number" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Product Type</label>
+                                                    <label>@Html.Translate("productType")</label>
                                                     <select class="form-control select2" ng-model="Added.ProductTypeNo" ng-change="GetModal();" required>
                                                         <option ng-repeat="x in ProductTypes" type="number" ng-value="{{x.Value}}">{{x.Text}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Model</label>
+                                                    <label>@Html.Translate("model")</label>
                                                     <select class="form-control select2" ng-model="Added.Model">
                                                         <option ng-repeat="x in Models" type="number" ng-value="{{x}}">{{x.Name}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Category</label>
+                                                    <label>@Html.Translate("category")</label>
                                                     <select class="form-control select2" ng-model="Added.CategoryNo" required>
                                                         <option ng-repeat="x in Categories" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                     </select>
@@ -63,7 +64,7 @@
                                         <br />
                                         <div class="btn-group pull-right">
                                             <button id="sample_editable_1_new" class="btn green" ng-click="AddNewItem();" ng-disabled="BillAddForm.$invalid">
-                                                Add New
+                                                @Html.Translate("addNew")
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -116,13 +117,13 @@
                                                     <td>
                                                         <div class="btn-group absoluteitem">
                                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>@Html.Translate("transactions")
                                                                 <i class="fa fa-angle-down"></i>
                                                             </button>
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li class="ms-hover">
                                                                     <a class="addphone" title="Update" data-toggle="modal" ng-click="DeleteAddedBill(_.Id)">
-                                                                        <i class="fa fa-phone "></i>Delete
+                                                                        <i class="fa fa-phone "></i>@Html.Translate("delete")
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -134,7 +135,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <td colspan="6" class="no-margin no-padding">
-                                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{PopupRegisterCount}}</span>
+                                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{PopupRegisterCount}}</span>
                                                     </td>
                                                 </tr>
 

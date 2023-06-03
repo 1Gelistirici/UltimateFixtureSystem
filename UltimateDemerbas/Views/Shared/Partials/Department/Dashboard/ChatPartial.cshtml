@@ -1,19 +1,21 @@
-﻿<div class="col-lg-6 col-xs-12 col-sm-12">
+﻿@using MultiLanguage.ExtensionMethods
+
+<div class="col-lg-6 col-xs-12 col-sm-12">
     <!-- BEGIN PORTLET-->
     <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-bubble font-hide hide"></i>
-                <span class="caption-subject font-hide bold uppercase">Chat</span>
+                <span class="caption-subject font-hide bold uppercase">@Html.Translate("chat")</span>
             </div>
             @*<div class="actions">
-                <div class="portlet-input input-inline">
-                    <div class="input-icon right">
-                        <i class="icon-magnifier"></i>
-                        <input type="text" class="form-control input-circle" placeholder="search...">
+                    <div class="portlet-input input-inline">
+                        <div class="input-icon right">
+                            <i class="icon-magnifier"></i>
+                            <input type="text" class="form-control input-circle" placeholder="search...">
+                        </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
         </div>
         <div class="portlet-body" id="chats">
             <div class="scroller downScrool" style="height: 525px;" data-always-visible="1" data-rail-visible1="1">

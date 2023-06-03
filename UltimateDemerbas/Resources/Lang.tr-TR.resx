@@ -120,8 +120,17 @@
   <data name="accessories" xml:space="preserve">
     <value>Aksesuarlar</value>
   </data>
+  <data name="accessoryModelName" xml:space="preserve">
+    <value>Aksesuar Modeli Ekle</value>
+  </data>
   <data name="accessoryModels" xml:space="preserve">
     <value>Aksesuar Modelleri</value>
+  </data>
+  <data name="active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="activeReports" xml:space="preserve">
+    <value>Aktif Raporlar</value>
   </data>
   <data name="add" xml:space="preserve">
     <value>Ekle</value>
@@ -134,6 +143,12 @@
   </data>
   <data name="addBill" xml:space="preserve">
     <value>Add Bill</value>
+  </data>
+  <data name="addBillItem" xml:space="preserve">
+    <value>Fature Item Ekle</value>
+  </data>
+  <data name="addBillType" xml:space="preserve">
+    <value>Fatura Tipi Ekle</value>
   </data>
   <data name="addCategory" xml:space="preserve">
     <value>Kategori Ekle</value>
@@ -159,6 +174,12 @@
   <data name="addLicenseType" xml:space="preserve">
     <value>Lisans Tip Ekle</value>
   </data>
+  <data name="addMenu" xml:space="preserve">
+    <value>Menü Ekle</value>
+  </data>
+  <data name="addNew" xml:space="preserve">
+    <value>Yeni Ekle</value>
+  </data>
   <data name="addNewMenu" xml:space="preserve">
     <value>Yeni Menü Ekle</value>
   </data>
@@ -167,6 +188,15 @@
   </data>
   <data name="addNewUser" xml:space="preserve">
     <value>Yeni Kullanıcı Ekle</value>
+  </data>
+  <data name="addRelevantPersonnel" xml:space="preserve">
+    <value>İlişikili Personel Ekle</value>
+  </data>
+  <data name="addSituation" xml:space="preserve">
+    <value>Durum Ekle</value>
+  </data>
+  <data name="addTask" xml:space="preserve">
+    <value>Task Ekle</value>
   </data>
   <data name="addtheRelevantPerson" xml:space="preserve">
     <value>İlgili Kişi Ekle</value>
@@ -177,8 +207,26 @@
   <data name="addtoRootDirectory" xml:space="preserve">
     <value>Kök Dizine Ekle</value>
   </data>
+  <data name="addUsedToner" xml:space="preserve">
+    <value>Add Used Toner</value>
+  </data>
+  <data name="addUser" xml:space="preserve">
+    <value>Kullanıcı Ekle</value>
+  </data>
+  <data name="alert" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>Tümü</value>
+  </data>
+  <data name="assetsOwned" xml:space="preserve">
+    <value>Varlıkların</value>
+  </data>
   <data name="assign" xml:space="preserve">
     <value>Ata</value>
+  </data>
+  <data name="assignedAccessory" xml:space="preserve">
+    <value>Aksesuar Ata</value>
   </data>
   <data name="assignedLicenses" xml:space="preserve">
     <value>Lisans Ata</value>
@@ -186,17 +234,68 @@
   <data name="assignment" xml:space="preserve">
     <value>Atama</value>
   </data>
+  <data name="assignmentLicense" xml:space="preserve">
+    <value>Lisans Ata</value>
+  </data>
   <data name="bill" xml:space="preserve">
     <value>Fatura</value>
+  </data>
+  <data name="billItems" xml:space="preserve">
+    <value>Fatura Öğeleri</value>
+  </data>
+  <data name="billNo" xml:space="preserve">
+    <value>Fatura No</value>
+  </data>
+  <data name="billTypeName" xml:space="preserve">
+    <value>Fatura Tip İsmi</value>
   </data>
   <data name="billTypes" xml:space="preserve">
     <value>Fatura Tipleri</value>
   </data>
+  <data name="boundary" xml:space="preserve">
+    <value>Sınır</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>İptal Et</value>
+  </data>
   <data name="categories" xml:space="preserve">
     <value>Kategoriler</value>
   </data>
+  <data name="category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="categoryNo" xml:space="preserve">
+    <value>Kategori No</value>
+  </data>
+  <data name="change" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="chat" xml:space="preserve">
+    <value>Sohbet</value>
+  </data>
+  <data name="choosePicture" xml:space="preserve">
+    <value>Resim Seç</value>
+  </data>
   <data name="close" xml:space="preserve">
     <value>Kapat</value>
+  </data>
+  <data name="closed" xml:space="preserve">
+    <value>Kapatıldı</value>
+  </data>
+  <data name="closedReports" xml:space="preserve">
+    <value>Kapatılmış Raporlar</value>
+  </data>
+  <data name="code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Yorum</value>
+  </data>
+  <data name="completed" xml:space="preserve">
+    <value>Tamamlanmış</value>
+  </data>
+  <data name="componentModelName" xml:space="preserve">
+    <value>Bileşen Model İsmi</value>
   </data>
   <data name="componentModels" xml:space="preserve">
     <value>Bileşen Modelleri</value>
@@ -204,14 +303,62 @@
   <data name="components" xml:space="preserve">
     <value>Bileşenler</value>
   </data>
+  <data name="conclude" xml:space="preserve">
+    <value>Sonuçlandır</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Onayla</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>İçerilk</value>
+  </data>
+  <data name="count" xml:space="preserve">
+    <value>Sıra</value>
+  </data>
+  <data name="currentBalance" xml:space="preserve">
+    <value>Güncel Bakiye</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>Gün</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Sil</value>
+  </data>
+  <data name="deleted" xml:space="preserve">
+    <value>Silinmiş</value>
+  </data>
+  <data name="deletedReports" xml:space="preserve">
+    <value>Silinmiş Raporlar</value>
   </data>
   <data name="department" xml:space="preserve">
     <value>Departman</value>
   </data>
+  <data name="departmentName" xml:space="preserve">
+    <value>Departman İsim</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>Detay</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="emailValidation" xml:space="preserve">
+    <value>E-posta Doğrulaması</value>
+  </data>
+  <data name="endDate" xml:space="preserve">
+    <value>Bitiş Tarihi</value>
+  </data>
   <data name="exit" xml:space="preserve">
     <value>Çıkış</value>
+  </data>
+  <data name="findMenu" xml:space="preserve">
+    <value>Menü Bul</value>
+  </data>
+  <data name="fixture" xml:space="preserve">
+    <value>Demirbaş</value>
+  </data>
+  <data name="fixtureModelName" xml:space="preserve">
+    <value>Demirbaş Model İsmi</value>
   </data>
   <data name="fixtureModels" xml:space="preserve">
     <value>Demirbaş Modelleri</value>
@@ -219,8 +366,14 @@
   <data name="fixtures" xml:space="preserve">
     <value>Demirbaşlar</value>
   </data>
+  <data name="importanceLevels" xml:space="preserve">
+    <value>Önem Düzeyleri</value>
+  </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
+  </data>
+  <data name="lateTasks" xml:space="preserve">
+    <value>Geciken FGörevler</value>
   </data>
   <data name="license" xml:space="preserve">
     <value>Lisans</value>
@@ -228,14 +381,101 @@
   <data name="licensesTypes" xml:space="preserve">
     <value>Lisans Tipi</value>
   </data>
+  <data name="licenseTypeName" xml:space="preserve">
+    <value>Lisans Tipi İsmi</value>
+  </data>
+  <data name="lock" xml:space="preserve">
+    <value>Kilitle</value>
+  </data>
+  <data name="mailAdress" xml:space="preserve">
+    <value>Mail Adresi</value>
+  </data>
+  <data name="man" xml:space="preserve">
+    <value>Erkek</value>
+  </data>
+  <data name="menuIcon" xml:space="preserve">
+    <value>Menü İcon</value>
+  </data>
+  <data name="menuLink" xml:space="preserve">
+    <value>Menü Link</value>
+  </data>
+  <data name="menuName" xml:space="preserve">
+    <value>Menü İsim</value>
+  </data>
+  <data name="menus" xml:space="preserve">
+    <value>Menüler</value>
+  </data>
+  <data name="menuSelectPermission" xml:space="preserve">
+    <value>Menü İzin Seç</value>
+  </data>
+  <data name="menuUpdate" xml:space="preserve">
+    <value>Menü Güncelle</value>
+  </data>
+  <data name="minStock" xml:space="preserve">
+    <value>Min Stok</value>
+  </data>
+  <data name="model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="modelNo" xml:space="preserve">
+    <value>Model No</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>Daha</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>Profilim</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="newTask" xml:space="preserve">
+    <value>Yeni Görev</value>
   </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>No Records Found to List</value>
   </data>
+  <data name="note" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="overdue" xml:space="preserve">
+    <value>Gecikmiş</value>
+  </data>
   <data name="pageMap" xml:space="preserve">
     <value>Sayfa Haritası</value>
+  </data>
+  <data name="passiveReports" xml:space="preserve">
+    <value>Pasif Raporlar</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="pending" xml:space="preserve">
+    <value>Askıda</value>
+  </data>
+  <data name="personnelEdit" xml:space="preserve">
+    <value>Personel Düzenleme</value>
+  </data>
+  <data name="piece" xml:space="preserve">
+    <value>Adet</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Fiyat</value>
+  </data>
+  <data name="printer" xml:space="preserve">
+    <value>Yazıcı</value>
+  </data>
+  <data name="productType" xml:space="preserve">
+    <value>Ürün Tipi</value>
+  </data>
+  <data name="reCallActive" xml:space="preserve">
+    <value>Geri Çağır</value>
+  </data>
+  <data name="reCallDate" xml:space="preserve">
+    <value>Geri Çağırma Tarihi</value>
+  </data>
+  <data name="recentActivities" xml:space="preserve">
+    <value>Son Aktiviteler</value>
   </data>
   <data name="recordNotFoundforListing" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
@@ -243,23 +483,89 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>İlgili Kişiler</value>
   </data>
+  <data name="remove" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
+  <data name="report" xml:space="preserve">
+    <value>Rapor</value>
+  </data>
   <data name="reportedAssets" xml:space="preserve">
     <value>Raportlanan Varlıklar</value>
   </data>
   <data name="reportHistory" xml:space="preserve">
     <value>Rapor Geçmişi</value>
   </data>
+  <data name="resolved" xml:space="preserve">
+    <value>Çözülmüş</value>
+  </data>
+  <data name="resolvedReports" xml:space="preserve">
+    <value>Çözülmüş Raporlar</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="seeAllRecords" xml:space="preserve">
+    <value>Tüm Kayıtları Gör</value>
+  </data>
+  <data name="setTaskStatu" xml:space="preserve">
+    <value>Görev Durumu Ayarla</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="solved" xml:space="preserve">
+    <value>Çözüldü</value>
+  </data>
+  <data name="startDate" xml:space="preserve">
+    <value>Başlangıç Tarihi</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>Statu</value>
+  </data>
+  <data name="statusName" xml:space="preserve">
+    <value>Durum İsmi</value>
+  </data>
+  <data name="subject" xml:space="preserve">
+    <value>Konu</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Soyisim</value>
   </data>
   <data name="systemLogs" xml:space="preserve">
     <value>Sistem Logları</value>
   </data>
+  <data name="taskActiveStatus" xml:space="preserve">
+    <value>Görev Aktif Durumu</value>
+  </data>
+  <data name="taskDetail" xml:space="preserve">
+    <value>Görev Detayı</value>
+  </data>
+  <data name="taskEndDate" xml:space="preserve">
+    <value>Task Bitiş Tarihi</value>
+  </data>
   <data name="tasks" xml:space="preserve">
     <value>Görevler</value>
   </data>
+  <data name="tasksSummary" xml:space="preserve">
+    <value>Yaklaşan Görevler</value>
+  </data>
+  <data name="taskStartDate" xml:space="preserve">
+    <value>Task Başlangıç Tarihi</value>
+  </data>
+  <data name="telephone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
   <data name="toner" xml:space="preserve">
     <value>Toner</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="totalNumberofRecords" xml:space="preserve">
     <value>Toplam Kayit Sayisi</value>
@@ -267,19 +573,37 @@
   <data name="transactions" xml:space="preserve">
     <value>Islemler</value>
   </data>
+  <data name="tryPassword" xml:space="preserve">
+    <value>Şifre Tekrarı</value>
+  </data>
   <data name="undo" xml:space="preserve">
     <value>Geri Al</value>
+  </data>
+  <data name="unSolved" xml:space="preserve">
+    <value>Çözülmemiş</value>
   </data>
   <data name="update" xml:space="preserve">
     <value>Güncelle</value>
   </data>
+  <data name="updateCompany" xml:space="preserve">
+    <value>Şirket Güncelle</value>
+  </data>
   <data name="usedToners" xml:space="preserve">
     <value>Kullanılan Tonerler</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>Kullanıcı</value>
+  </data>
+  <data name="userName" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
   </data>
   <data name="users" xml:space="preserve">
     <value>Kullanıcılar</value>
   </data>
   <data name="view" xml:space="preserve">
     <value>Görüntüle</value>
+  </data>
+  <data name="women" xml:space="preserve">
+    <value>Kadın</value>
   </data>
 </root>
