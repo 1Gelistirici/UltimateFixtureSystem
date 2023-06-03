@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -11,7 +13,7 @@
             </div>
 
             <div class="col-xs-6">
-                <h5 class="muted Bold">Asset Deposit Form</h5>
+                <h5 class="muted Bold">@Html.Translate("assetDepositForm")</h5>
 
                 @*<span class="pull-right">
                         {{todayDate}}
@@ -21,7 +23,7 @@
         <hr />
         <div class="row">
             <div class="col-xs-12 invoice-payment">
-                <h4>I certify that the above-mentioned assets have been received in good order and are the property of the company. I understand that it is my responsibility to ensure that the assets are used for official business only and are returned to the company in the same condition as they were received. I also understand that any loss or damage to the assets due to my negligence or misuse will be my responsibility and that appropriate action may be taken against me.</h4>
+                <h4>@Html.Translate("depozitFormContent")</h4>
             </div>
         </div>
         <br />
@@ -31,12 +33,12 @@
                     <thead>
                         <tr>
                             <th> # </th>
-                            <th> Item </th>
-                            <th> Type </th>
-                            <th> Piece </th>
-                            <th> Date </th>
-                            <th> Category </th>
-                            <th> Model </th>
+                            <th> @Html.Translate("item") </th>
+                            <th> @Html.Translate("type") </th>
+                            <th> @Html.Translate("piece") </th>
+                            <th> @Html.Translate("date") </th>
+                            <th> @Html.Translate("category") </th>
+                            <th> @Html.Translate("model") </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,7 +71,7 @@
             <div class="col-xs-8 invoice-block">
                 <br />
                 <a class="btn btn-lg blue hidden-print margin-bottom-5" onclick="javascript:window.print();">
-                    Print
+                    @Html.Translate("print")
                     <i class="fa fa-print"></i>
                 </a>
             </div>
@@ -77,7 +79,7 @@
                 <h4 class="bold">{{User.Name}} {{User.Surname}}</h4>
                 <hr style="border-top: 2px solid black;" />
                 <p>
-                    Signature:
+                    @Html.Translate("signature"):
                 </p>
             </div>
         </div>

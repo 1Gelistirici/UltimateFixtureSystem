@@ -225,6 +225,9 @@
   <data name="asset" xml:space="preserve">
     <value>Varlık</value>
   </data>
+  <data name="assetDepositForm" xml:space="preserve">
+    <value>Varlık Depozito Formu</value>
+  </data>
   <data name="assetsOwned" xml:space="preserve">
     <value>Varlıkların</value>
   </data>
@@ -333,6 +336,9 @@
   <data name="currentPassword" xml:space="preserve">
     <value>Şimdiki Şifre</value>
   </data>
+  <data name="date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
   <data name="day" xml:space="preserve">
     <value>Gün</value>
   </data>
@@ -353,6 +359,9 @@
   </data>
   <data name="depositForm" xml:space="preserve">
     <value>Depozito Form</value>
+  </data>
+  <data name="depozitFormContent" xml:space="preserve">
+    <value>Bu formda belirtilen demirbaşların, görevi gereği kullanılması veya kullanılmasına ihtiyaç duyulması durumunda, zimmetli kişilerin sorumluluğunda ve kullanımına mahsus olarak kullanılacağı kabul edilir. Zimmetli kişiler, söz konusu demirbaşların kaybolması, hasar görmesi, kullanımının dışında başka amaçlarla kullanılması veya herhangi bir şekilde zarar görmesi durumunda sorumluluğu üstlenir ve gerekli tazminatı ödemeyi kabul eder. Bu beyanname, demirbaşların kullanımı için gerekli olan bilgilerin doğru ve eksiksiz olarak sağlandığını göstermektedir.</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>Detay</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Önem Düzeyleri</value>
+  </data>
+  <data name="item" xml:space="preserve">
+    <value>Item</value>
   </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
@@ -486,11 +498,17 @@
   <data name="price" xml:space="preserve">
     <value>Fiyat</value>
   </data>
+  <data name="print" xml:space="preserve">
+    <value>Yazdır</value>
+  </data>
   <data name="printer" xml:space="preserve">
     <value>Yazıcı</value>
   </data>
   <data name="productType" xml:space="preserve">
     <value>Ürün Tipi</value>
+  </data>
+  <data name="profileAccount" xml:space="preserve">
+    <value>Profil Hesabı</value>
   </data>
   <data name="reCallActive" xml:space="preserve">
     <value>Geri Çağır</value>
@@ -536,6 +554,9 @@
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Görev Durumu Ayarla</value>
+  </data>
+  <data name="signature" xml:space="preserve">
+    <value>İmza</value>
   </data>
   <data name="situation" xml:space="preserve">
     <value>Durum</value>
@@ -605,6 +626,9 @@
   </data>
   <data name="tryPassword" xml:space="preserve">
     <value>Şifre Tekrarı</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Tip</value>
   </data>
   <data name="undo" xml:space="preserve">
     <value>Geri Al</value>

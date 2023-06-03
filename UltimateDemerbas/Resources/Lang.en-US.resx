@@ -225,6 +225,9 @@
   <data name="asset" xml:space="preserve">
     <value>Asset</value>
   </data>
+  <data name="assetDepositForm" xml:space="preserve">
+    <value>Asset Deposit Form</value>
+  </data>
   <data name="assetsOwned" xml:space="preserve">
     <value>Assets Owned</value>
   </data>
@@ -333,6 +336,9 @@
   <data name="currentPassword" xml:space="preserve">
     <value>Current Password</value>
   </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="day" xml:space="preserve">
     <value>Day</value>
   </data>
@@ -353,6 +359,9 @@
   </data>
   <data name="depositForm" xml:space="preserve">
     <value>Deposit Form</value>
+  </data>
+  <data name="depozitFormContent" xml:space="preserve">
+    <value>I certify that the above-mentioned assets have been received in good order and are the property of the company. I understand that it is my responsibility to ensure that the assets are used for official business only and are returned to the company in the same condition as they were received. I also understand that any loss or damage to the assets due to my negligence or misuse will be my responsibility and that appropriate action may be taken against me.</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>Detail</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Importance Levels</value>
+  </data>
+  <data name="item" xml:space="preserve">
+    <value>Item</value>
   </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
@@ -486,11 +498,17 @@
   <data name="price" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="print" xml:space="preserve">
+    <value>Print</value>
+  </data>
   <data name="printer" xml:space="preserve">
     <value>Printer</value>
   </data>
   <data name="productType" xml:space="preserve">
     <value>Product Type</value>
+  </data>
+  <data name="profileAccount" xml:space="preserve">
+    <value>Profile Account</value>
   </data>
   <data name="reCallActive" xml:space="preserve">
     <value>ReCall Active</value>
@@ -536,6 +554,9 @@
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Set Task Statu</value>
+  </data>
+  <data name="signature" xml:space="preserve">
+    <value>Signature</value>
   </data>
   <data name="situation" xml:space="preserve">
     <value>Situation</value>
@@ -605,6 +626,9 @@
   </data>
   <data name="tryPassword" xml:space="preserve">
     <value>Try Password</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="unSolved" xml:space="preserve">
     <value>UnSolved</value>
