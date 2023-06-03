@@ -378,6 +378,9 @@
   <data name="exit" xml:space="preserve">
     <value>Çıkış</value>
   </data>
+  <data name="feedBack" xml:space="preserve">
+    <value>Geribildirim</value>
+  </data>
   <data name="findMenu" xml:space="preserve">
     <value>Menü Bul</value>
   </data>
@@ -551,6 +554,9 @@
   </data>
   <data name="seeAllRecords" xml:space="preserve">
     <value>Tüm Kayıtları Gör</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Gönder</value>
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Görev Durumu Ayarla</value>

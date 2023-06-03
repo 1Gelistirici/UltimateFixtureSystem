@@ -1,0 +1,35 @@
+﻿@using MultiLanguage.ExtensionMethods
+
+<div id="FeedBack" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;z-index:10052!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title danger">@Html.Translate("feedBack")</h4>
+            </div>
+            <div style="height:300px" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body">
+                    <form name="feedBackForm">
+                        <div class="col-md-12">
+                            <span>Title</span>
+                            <input class="form-control" ng-model="feedBackTitle" />
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <div class="col-md-12">
+                            <span>@Html.Translate("comment")</span>
+                            <textarea class="form-control" rows="4" ng-model="feedBackComment" style="font-size: 14px; resize:none" min="0"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="margin-top:30%;">
+                    <input type="hidden" />
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">@Html.Translate("cancel")</button>
+                    <button type="button" class="btn green btn-outline" ng-click="feedBackSubmit();">@Html.Translate("send")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

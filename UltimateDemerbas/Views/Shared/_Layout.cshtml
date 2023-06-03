@@ -136,7 +136,6 @@
 
                         <li class="separator hide"> </li>
                         <li class="separator hide"> </li>
-
                         <li class="separator hide"> </li>
 
                         <li class="dropdown dropdown-user dropdown-dark">
@@ -147,6 +146,11 @@
                                 <img alt="" class="img-circle hide" src="{{layoutImage}}" id="knownImage">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
+                                <li data-toggle="modal" data-target="#FeedBack">
+                                    <a href="#">
+                                        <i class="fa fa-paper-plane-o"></i> @Html.Translate("feedBack")
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="/Profile/Index">
                                         <i class="fa fa-user"></i> @Html.Translate("myProfile")
@@ -173,6 +177,7 @@
             <div class="page-sidebar-wrapper">
                 <div class="page-sidebar navbar-collapse collapse">
                     <partial name="~/Views/Shared/Partials/Global/SlideMenu.cshtml" />
+                    <partial name="~/Views/Shared/Partials/Global/FeedBack.cshtml" />
                 </div>
             </div>
 

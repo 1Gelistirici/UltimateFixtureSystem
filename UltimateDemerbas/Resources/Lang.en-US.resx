@@ -378,6 +378,9 @@
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="feedBack" xml:space="preserve">
+    <value>FeedBack</value>
+  </data>
   <data name="findMenu" xml:space="preserve">
     <value>Find Menu</value>
   </data>
@@ -551,6 +554,9 @@
   </data>
   <data name="seeAllRecords" xml:space="preserve">
     <value>See All Records</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Set Task Statu</value>
