@@ -213,11 +213,17 @@
   <data name="addUser" xml:space="preserve">
     <value>Add User</value>
   </data>
+  <data name="adress" xml:space="preserve">
+    <value>Adress</value>
+  </data>
   <data name="alert" xml:space="preserve">
     <value>Alert</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>All</value>
+  </data>
+  <data name="asset" xml:space="preserve">
+    <value>Asset</value>
   </data>
   <data name="assetsOwned" xml:space="preserve">
     <value>Assets Owned</value>
@@ -236,6 +242,9 @@
   </data>
   <data name="assignmentLicense" xml:space="preserve">
     <value>Assignment License</value>
+  </data>
+  <data name="assignments" xml:space="preserve">
+    <value>Assignments</value>
   </data>
   <data name="bill" xml:space="preserve">
     <value>Bill</value>
@@ -269,6 +278,9 @@
   </data>
   <data name="change" xml:space="preserve">
     <value>Change</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Change Password</value>
   </data>
   <data name="chat" xml:space="preserve">
     <value>Chat</value>
@@ -318,6 +330,9 @@
   <data name="currentBalance" xml:space="preserve">
     <value>Current Balance</value>
   </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
   <data name="day" xml:space="preserve">
     <value>Day</value>
   </data>
@@ -335,6 +350,9 @@
   </data>
   <data name="departmentName" xml:space="preserve">
     <value>Department Name</value>
+  </data>
+  <data name="depositForm" xml:space="preserve">
+    <value>Deposit Form</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>Detail</value>
@@ -429,6 +447,9 @@
   <data name="name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
   <data name="newTask" xml:space="preserve">
     <value>New Task</value>
   </data>
@@ -452,6 +473,9 @@
   </data>
   <data name="pending" xml:space="preserve">
     <value>Pending</value>
+  </data>
+  <data name="personalInfo" xml:space="preserve">
+    <value>Personal Info</value>
   </data>
   <data name="personnelEdit" xml:space="preserve">
     <value>Personnel Edit</value>
@@ -503,6 +527,9 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>Save Changes</value>
   </data>
   <data name="seeAllRecords" xml:space="preserve">
     <value>See All Records</value>
@@ -572,6 +599,9 @@
   </data>
   <data name="transactions" xml:space="preserve">
     <value>Transactions</value>
+  </data>
+  <data name="tryNewPassword" xml:space="preserve">
+    <value>Try New Password</value>
   </data>
   <data name="tryPassword" xml:space="preserve">
     <value>Try Password</value>

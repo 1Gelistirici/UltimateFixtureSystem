@@ -213,11 +213,17 @@
   <data name="addUser" xml:space="preserve">
     <value>Kullanıcı Ekle</value>
   </data>
+  <data name="adress" xml:space="preserve">
+    <value>Adres</value>
+  </data>
   <data name="alert" xml:space="preserve">
     <value>Uyarı</value>
   </data>
   <data name="all" xml:space="preserve">
     <value>Tümü</value>
+  </data>
+  <data name="asset" xml:space="preserve">
+    <value>Varlık</value>
   </data>
   <data name="assetsOwned" xml:space="preserve">
     <value>Varlıkların</value>
@@ -236,6 +242,9 @@
   </data>
   <data name="assignmentLicense" xml:space="preserve">
     <value>Lisans Ata</value>
+  </data>
+  <data name="assignments" xml:space="preserve">
+    <value>Atamalar</value>
   </data>
   <data name="bill" xml:space="preserve">
     <value>Fatura</value>
@@ -269,6 +278,9 @@
   </data>
   <data name="change" xml:space="preserve">
     <value>Değiştir</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Şifre Değiştir</value>
   </data>
   <data name="chat" xml:space="preserve">
     <value>Sohbet</value>
@@ -318,6 +330,9 @@
   <data name="currentBalance" xml:space="preserve">
     <value>Güncel Bakiye</value>
   </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>Şimdiki Şifre</value>
+  </data>
   <data name="day" xml:space="preserve">
     <value>Gün</value>
   </data>
@@ -335,6 +350,9 @@
   </data>
   <data name="departmentName" xml:space="preserve">
     <value>Departman İsim</value>
+  </data>
+  <data name="depositForm" xml:space="preserve">
+    <value>Depozito Form</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>Detay</value>
@@ -373,7 +391,7 @@
     <value>Items</value>
   </data>
   <data name="lateTasks" xml:space="preserve">
-    <value>Geciken FGörevler</value>
+    <value>Geciken Görevler</value>
   </data>
   <data name="license" xml:space="preserve">
     <value>Lisans</value>
@@ -421,13 +439,16 @@
     <value>Model No</value>
   </data>
   <data name="more" xml:space="preserve">
-    <value>Daha</value>
+    <value>Daha Fazla</value>
   </data>
   <data name="myProfile" xml:space="preserve">
     <value>Profilim</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>İsim</value>
+  </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>Yeni Şifre</value>
   </data>
   <data name="newTask" xml:space="preserve">
     <value>Yeni Görev</value>
@@ -452,6 +473,9 @@
   </data>
   <data name="pending" xml:space="preserve">
     <value>Askıda</value>
+  </data>
+  <data name="personalInfo" xml:space="preserve">
+    <value>Personel Bilgisi</value>
   </data>
   <data name="personnelEdit" xml:space="preserve">
     <value>Personel Düzenleme</value>
@@ -503,6 +527,9 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Kaydet</value>
+  </data>
+  <data name="saveChanges" xml:space="preserve">
+    <value>Değişiklikleri Kaydet</value>
   </data>
   <data name="seeAllRecords" xml:space="preserve">
     <value>Tüm Kayıtları Gör</value>
@@ -572,6 +599,9 @@
   </data>
   <data name="transactions" xml:space="preserve">
     <value>Islemler</value>
+  </data>
+  <data name="tryNewPassword" xml:space="preserve">
+    <value>Yeni Şifre Tekrar</value>
   </data>
   <data name="tryPassword" xml:space="preserve">
     <value>Şifre Tekrarı</value>

@@ -320,7 +320,7 @@ namespace UltimateAPI.Manager
                     using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
                     {
                         ConnectionManager.Instance.CmdOperations();
-                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.CompanyId);
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
@@ -336,7 +336,7 @@ namespace UltimateAPI.Manager
                                     task.IsActive = (ActiveStatu)Convert.ToInt32(read["isActive"]);
                                     task.TaskDetail = read["task"].ToString();
                                     task.Count = (TaskCount)Convert.ToInt32(read["count"]);
-                                    task.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
+                                    //task.CompanyId = Convert.ToInt32(read["CompanyRefId"]);
 
                                     tasks.Add(task);
                                 }

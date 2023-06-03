@@ -28,6 +28,59 @@ namespace UltimateAPI.Manager
         }
 
 
+        public UltimateResult<List<UserRole>> GetRoleCompanyUsers(ReferansParameter parameter)
+        {
+            List<UserRole> roles = new List<UserRole>();
+            UltimateResult<List<UserRole>> result = new UltimateResult<List<UserRole>>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[userRole_GetRoleCompanyUsers]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@CompanyRefId", parameter.RefId);
+
+                        SqlDataReader read =sqlCommand.ExecuteReader();
+                        using (read)
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    UserRole userRole = new UserRole();
+                                    userRole.Id = Convert.ToInt32(read["Id"]);
+                                    userRole.MenuRefId = Convert.ToInt32(read["MenuRefId"]);
+                                    userRole.UserRefId = Convert.ToInt32(read["UserRefId"]);
+
+                                    roles.Add(userRole);
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                        result.Data = roles;
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+        
+
         public UltimateResult<List<UserRole>> GetRole(UserRole parameter)
         {
             List<UserRole> roles = new List<UserRole>();
@@ -50,7 +103,7 @@ namespace UltimateAPI.Manager
 
                         using (SqlDataReader read = sqlCommand.ExecuteReader())
                         {
-                            if (read.HasRows)
+                            if (read != null && read.HasRows)
                             {
                                 while (read.Read())
                                 {

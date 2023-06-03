@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using UltimateAPI.CallManager;
 using UltimateAPI.Entities;
 using UltimateAPI.Entities.Enums;
@@ -166,7 +167,7 @@ namespace UltimateAPI.Manager
                                     user.About = read["about"].ToString();
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["ImageUrl"]);
-                                    user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
+                                    //user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
                                     user.ImageName = read["ImageName"].ToString();
 
                                     result.IsSuccess = true;
@@ -175,6 +176,13 @@ namespace UltimateAPI.Manager
                             read.Close();
                         }
                         sqlCommand.Dispose();
+
+                        if (result.IsSuccess)
+                        {
+                            List<UserRole> userRoles = UserRoleCallManager.Instance.GetRoleCompanyUsers(new ReferansParameter() { RefId = parameter.CompanyId }).Data;
+                            user.Role = userRoles.Where(x => x.UserRefId == user.Id).ToList();
+                        }
+
                         result.Data = user;
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
@@ -286,7 +294,7 @@ namespace UltimateAPI.Manager
                                     user.Gender = Convert.ToBoolean(read["gender"]);
                                     user.Lock = Convert.ToBoolean(read["lock"]);
                                     user.ImageUrl = Convert.ToString(read["ImageUrl"]);
-                                    user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
+                                    //user.Role = UserRoleCallManager.Instance.GetRole(new UserRole { UserRefId = user.Id }).Data;
                                     user.ImageName = read["ImageName"].ToString();
 
                                     users.Add(user);
@@ -295,9 +303,19 @@ namespace UltimateAPI.Manager
                             read.Close();
                         }
                         sqlCommand.Dispose();
-                        result.Data = users;
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
+
+                    if (result.IsSuccess && result.Data != null)
+                    {
+                        List<UserRole> userRoles = UserRoleCallManager.Instance.GetRoleCompanyUsers(new ReferansParameter() { RefId = parameter.CompanyId }).Data;
+                        foreach (User user in result.Data)
+                        {
+                            user.Role = userRoles.Where(x => x.UserRefId == user.Id).ToList();
+                        }
+                    }
+
+                    result.Data = users;
                 }
             }
             catch (Exception ex)

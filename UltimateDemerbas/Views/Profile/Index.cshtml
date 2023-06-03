@@ -1,4 +1,6 @@
-﻿<link href="~/assets/pages/css/profile.min.css" rel="stylesheet" />
+﻿@using MultiLanguage.ExtensionMethods
+
+<link href="~/assets/pages/css/profile.min.css" rel="stylesheet" />
 <div class="row" ng-controller="ProfileController">
     <div class="col-md-12">
         <!-- BEGIN PROFILE SIDEBAR -->
@@ -18,7 +20,7 @@
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-circle green btn-sm" onclick="window.open('/Profile/DepozitFormPage', '_blank');">Depozit Form</button>
+                    <button type="button" class="btn btn-circle green btn-sm" onclick="window.open('/Profile/DepozitFormPage', '_blank');">@Html.Translate("depositForm")</button>
                     @*<button type="button" class="btn btn-circle red btn-sm">Message</button>*@
                 </div>
 
@@ -54,15 +56,15 @@
                 <div class="row list-separated profile-stat">
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="uppercase profile-stat-title"> {{AssetLenngth}} </div>
-                        <div class="uppercase profile-stat-text"> Asset </div>
+                        <div class="uppercase profile-stat-text"> @Html.Translate("asset") </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="uppercase profile-stat-title"> {{TaskLength}} </div>
-                        <div class="uppercase profile-stat-text"> Task </div>
+                        <div class="uppercase profile-stat-text"> @Html.Translate("task") </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="uppercase profile-stat-title"> {{FixtureLength}} </div>
-                        <div class="uppercase profile-stat-text"> Fixture </div>
+                        <div class="uppercase profile-stat-text"> @Html.Translate("fixture") </div>
                     </div>
                 </div>
                 <!-- END STAT -->
@@ -98,13 +100,13 @@
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">Personal Info</a>
+                                    <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">@Html.Translate("personalInfo")</a>
                                 </li>
                                 <li class="">
-                                    <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">Assignments</a>
+                                    <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">@Html.Translate("assignments")</a>
                                 </li>
                                 <li class="">
-                                    <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">Change Password</a>
+                                    <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">@Html.Translate("changePassword")</a>
                                 </li>
                             </ul>
                         </div>
@@ -115,24 +117,24 @@
                                     <form role="form" action="#">
 
                                         <div class="form-group">
-                                            <label class="control-label">Linkedin Adress</label>
+                                            <label class="control-label">Linkedin @Html.Translate("adress")</label>
                                             <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Linkedin">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Twitter Adress</label>
+                                            <label class="control-label">Twitter @Html.Translate("adress")</label>
                                             <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Twitter">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Facebook Adress</label>
+                                            <label class="control-label">Facebook @Html.Translate("adress")</label>
                                             <input type="text" placeholder="mywebsite.com" class="form-control" ng-model="Facebook">
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">About</label>
+                                            <label class="control-label">@Html.Translate("about")</label>
                                             <textarea class="form-control" rows="3" placeholder="About Yourself" ng-model="About"></textarea>
                                         </div>
                                         <div class="margiv-top-10">
-                                            <a href="javascript:;" class="btn green" ng-click="UpdateProfileConfirm()"> Save Changes </a>
-                                            <a href="javascript:;" class="btn default"> Cancel </a>
+                                            <a href="javascript:;" class="btn green" ng-click="UpdateProfileConfirm()"> @Html.Translate("saveChanges") </a>
+                                            <a href="javascript:;" class="btn default"> @Html.Translate("cancel") </a>
                                         </div>
                                     </form>
                                 </div>
@@ -141,7 +143,7 @@
                                 <div class="tab-pane" id="tab_1_2">
 
                                     <div ng-show="AccessoryData.length==0">
-                                        <h3 style="text-align: center;color:#678098">Listelenecek Kayit Bulunamadi</h3>
+                                        <h3 style="text-align: center;color:#678098">@Html.Translate("recordNotFoundforListing")</h3>
                                     </div>
 
                                     <!--Table Body-->
@@ -220,7 +222,7 @@
                                                     <tfoot>
                                                         <tr>
                                                             <td colspan="6" class="no-margin no-padding">
-                                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{AccessoryData.length}}</span>
+                                                                <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{AccessoryData.length}}</span>
                                                             </td>
                                                         </tr>
 
@@ -236,20 +238,20 @@
                                 <div class="tab-pane" id="tab_1_3">
                                     <form name="passwordForm">
                                         <div class="form-group">
-                                            <label class="control-label">Current Password</label>
+                                            <label class="control-label">@Html.Translate("currentPassword")</label>
                                             <input type="text" ng-model="OldPassword" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">New Password</label>
+                                            <label class="control-label">@Html.Translate("newPassword")</label>
                                             <input type="text" ng-model="Password" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label">Try New Password</label>
+                                            <label class="control-label">@Html.Translate("tryNewPassword")</label>
                                             <input type="text" ng-model="PasswordTry" class="form-control" required>
                                         </div>
                                         <div class="margin-top-10">
-                                            <a href="javascript:;" ng-click="ChangePasswordConfirm()" class="btn green" ng-disabled="passwordForm.$invalid"> Change Password </a>
-                                            <a href="javascript:;" class="btn default"> Cancel </a>
+                                            <a href="javascript:;" ng-click="ChangePasswordConfirm()" class="btn green" ng-disabled="passwordForm.$invalid"> @Html.Translate("changePassword") </a>
+                                            <a href="javascript:;" class="btn default"> @Html.Translate("cancel") </a>
                                         </div>
                                     </form>
                                 </div>

@@ -27,6 +27,11 @@ namespace UltimateAPI.CallManager
 
         }
 
+        public UltimateResult<List<UserRole>> GetRoleCompanyUsers(ReferansParameter parameter)
+        {
+            return UserRoleManager.Instance.GetRoleCompanyUsers(parameter);
+        }
+
         public UltimateResult<List<UserRole>> GetRole(UserRole parameter)
         {
             return UserRoleManager.Instance.GetRole(parameter);
