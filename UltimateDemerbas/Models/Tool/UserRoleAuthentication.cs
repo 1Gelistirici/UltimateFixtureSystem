@@ -36,7 +36,12 @@ namespace UltimateDemerbas.Models.Tool
         public bool CheckMenuUserRole(int userRefId, int pageNumber)
         {
             UltimateResult<List<UserRole>> userRoles = getUserRoles(userRefId);
-            bool isAuthorized = userRoles.Data.Find(x => x.MenuRefId == pageNumber) != null;
+            bool isAuthorized = false;
+
+            if (userRoles.IsSuccess && userRoles.Data != null)
+            {
+                isAuthorized = userRoles.Data.Find(x => x.MenuRefId == pageNumber) != null;
+            }
             //userRoles.Data?.Find(x => x.MenuRefId == pageNumber) != null;
 
             return isAuthorized;

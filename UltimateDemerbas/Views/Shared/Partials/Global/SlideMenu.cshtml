@@ -36,7 +36,7 @@
                 <li class="nav-item">
                     @if (menuItem.Dependency == 0)
                     {
-                        <a href="" ng-click="Nav(@menuItem.Url);" class="nav-link nav-toggle">
+                        <a href="" ng-click="Nav('@menuItem.Url');" class="nav-link nav-toggle">
                             <i class="@menuItem.Icon"></i>
                             <span class="title">@Html.Translate(@menuItem.Name)</span>
                             @if (string.IsNullOrEmpty(@menuItem.Url))
@@ -46,19 +46,23 @@
                         </a>
                     }
 
-                    <ul class="sub-menu" ng-hide="@menuItem.Url">
-                        @foreach (Menu subItem in menuList)
-                        {
-                            @if (subItem.Dependency == menuItem.Id)
+                    @if (string.IsNullOrEmpty(@menuItem.Url))
+                    {
+                        <ul class="sub-menu">
+                            @foreach (Menu subItem in menuList)
                             {
-                                <li class="nav-item">
-                                    <a href="@subItem.Url" class="nav-link">
-                                        <span class="title">@Html.Translate(@subItem.Name)</span>
-                                    </a>
-                                </li>
+                                @if (subItem.Dependency == menuItem.Id)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@subItem.Url" class="nav-link">
+                                            <span class="title">@Html.Translate(@subItem.Name)</span>
+                                        </a>
+                                    </li>
+                                }
                             }
-                        }
-                    </ul>
+                        </ul>
+                    }
+
                 </li>
             }
         }
