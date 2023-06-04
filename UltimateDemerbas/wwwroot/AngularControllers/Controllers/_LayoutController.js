@@ -59,9 +59,6 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster", "
         }
 
         $scope.setLanguage = function (culture, returnUrl) {
-            console.log(culture);
-            console.log(returnUrl);
-
             $.ajax({
                 url: "/Home/SetLanguage",
                 method: "POST",

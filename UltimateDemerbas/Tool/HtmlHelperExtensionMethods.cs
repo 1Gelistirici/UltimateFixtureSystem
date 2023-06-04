@@ -12,6 +12,9 @@ namespace MultiLanguage.ExtensionMethods
     {
         public static string Translate(this IHtmlHelper helper, string key)
         {
+            key = key.Replace(" ", "");
+            key = key.Substring(0, 1).ToLower() + key.Substring(1);
+
             IServiceProvider services = helper.ViewContext.HttpContext.RequestServices;
             SharedViewLocalizer localizer = services.GetRequiredService<SharedViewLocalizer>();
             string result = localizer[key];
@@ -32,7 +35,6 @@ namespace MultiLanguage.ExtensionMethods
                 .ToList();
 
             return cultureItems;
-
         }
 
     }

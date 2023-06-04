@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using UltimateDemerbas.Manager;
 using UltimateDemerbas.Models.Tool;
 
 namespace UltimateDemerbas
@@ -70,6 +71,7 @@ namespace UltimateDemerbas
 
 
             services.AddScoped<CheckAuthorize>();
+            services.AddScoped<LayoutManager>();
 
         }
 

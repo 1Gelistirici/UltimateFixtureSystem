@@ -120,6 +120,12 @@
   <data name="accessories" xml:space="preserve">
     <value>Aksesuarlar</value>
   </data>
+  <data name="accessory" xml:space="preserve">
+    <value>Aksesuar</value>
+  </data>
+  <data name="accessoryModel" xml:space="preserve">
+    <value>Aksesuar Modeli</value>
+  </data>
   <data name="accessoryModelName" xml:space="preserve">
     <value>Aksesuar Modeli Ekle</value>
   </data>
@@ -234,6 +240,9 @@
   <data name="assign" xml:space="preserve">
     <value>Ata</value>
   </data>
+  <data name="Assigned Licenses" xml:space="preserve">
+    <value>Atanmış Lisanslar</value>
+  </data>
   <data name="assignedAccessory" xml:space="preserve">
     <value>Aksesuar Ata</value>
   </data>
@@ -257,6 +266,12 @@
   </data>
   <data name="billNo" xml:space="preserve">
     <value>Fatura No</value>
+  </data>
+  <data name="billOperations" xml:space="preserve">
+    <value>Fatura İşlemleri</value>
+  </data>
+  <data name="billType" xml:space="preserve">
+    <value>Fature Tipi</value>
   </data>
   <data name="billTypeName" xml:space="preserve">
     <value>Fatura Tip İsmi</value>
@@ -306,8 +321,17 @@
   <data name="comment" xml:space="preserve">
     <value>Yorum</value>
   </data>
+  <data name="companyManager" xml:space="preserve">
+    <value>Şirket Yönetimi</value>
+  </data>
   <data name="completed" xml:space="preserve">
     <value>Tamamlanmış</value>
+  </data>
+  <data name="component" xml:space="preserve">
+    <value>Bileşen</value>
+  </data>
+  <data name="componentModel" xml:space="preserve">
+    <value>Bileşen Modeli</value>
   </data>
   <data name="componentModelName" xml:space="preserve">
     <value>Bileşen Model İsmi</value>
@@ -363,6 +387,9 @@
   <data name="depozitFormContent" xml:space="preserve">
     <value>Bu formda belirtilen demirbaşların, görevi gereği kullanılması veya kullanılmasına ihtiyaç duyulması durumunda, zimmetli kişilerin sorumluluğunda ve kullanımına mahsus olarak kullanılacağı kabul edilir. Zimmetli kişiler, söz konusu demirbaşların kaybolması, hasar görmesi, kullanımının dışında başka amaçlarla kullanılması veya herhangi bir şekilde zarar görmesi durumunda sorumluluğu üstlenir ve gerekli tazminatı ödemeyi kabul eder. Bu beyanname, demirbaşların kullanımı için gerekli olan bilgilerin doğru ve eksiksiz olarak sağlandığını göstermektedir.</value>
   </data>
+  <data name="depreciation" xml:space="preserve">
+    <value>Amortisman</value>
+  </data>
   <data name="detail" xml:space="preserve">
     <value>Detay</value>
   </data>
@@ -387,6 +414,9 @@
   <data name="fixture" xml:space="preserve">
     <value>Demirbaş</value>
   </data>
+  <data name="fixtureModel" xml:space="preserve">
+    <value>Demirbaş Modeli</value>
+  </data>
   <data name="fixtureModelName" xml:space="preserve">
     <value>Demirbaş Model İsmi</value>
   </data>
@@ -395,6 +425,9 @@
   </data>
   <data name="fixtures" xml:space="preserve">
     <value>Demirbaşlar</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Ana Sayfa</value>
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Önem Düzeyleri</value>
@@ -408,8 +441,14 @@
   <data name="lateTasks" xml:space="preserve">
     <value>Geciken Görevler</value>
   </data>
+  <data name="licanses" xml:space="preserve">
+    <value>Lisanslar</value>
+  </data>
   <data name="license" xml:space="preserve">
     <value>Lisans</value>
+  </data>
+  <data name="licensesType" xml:space="preserve">
+    <value>Lisans Tipi</value>
   </data>
   <data name="licensesTypes" xml:space="preserve">
     <value>Lisans Tipi</value>
@@ -417,8 +456,14 @@
   <data name="licenseTypeName" xml:space="preserve">
     <value>Lisans Tipi İsmi</value>
   </data>
+  <data name="lisense" xml:space="preserve">
+    <value>Lisans</value>
+  </data>
   <data name="lock" xml:space="preserve">
     <value>Kilitle</value>
+  </data>
+  <data name="log" xml:space="preserve">
+    <value>Log</value>
   </data>
   <data name="mailAdress" xml:space="preserve">
     <value>Mail Adresi</value>
@@ -431,6 +476,9 @@
   </data>
   <data name="menuLink" xml:space="preserve">
     <value>Menü Link</value>
+  </data>
+  <data name="menuManager" xml:space="preserve">
+    <value>Menü Yönetimi</value>
   </data>
   <data name="menuName" xml:space="preserve">
     <value>Menü İsim</value>
@@ -453,6 +501,9 @@
   <data name="modelNo" xml:space="preserve">
     <value>Model No</value>
   </data>
+  <data name="modelOperations" xml:space="preserve">
+    <value>Model İşlemleri</value>
+  </data>
   <data name="more" xml:space="preserve">
     <value>Daha Fazla</value>
   </data>
@@ -474,8 +525,14 @@
   <data name="note" xml:space="preserve">
     <value>Not</value>
   </data>
+  <data name="operations" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
   <data name="overdue" xml:space="preserve">
     <value>Gecikmiş</value>
+  </data>
+  <data name="Page Map" xml:space="preserve">
+    <value>Sayfa Haritası</value>
   </data>
   <data name="pageMap" xml:space="preserve">
     <value>Sayfa Haritası</value>
@@ -528,17 +585,29 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>İlgili Kişiler</value>
   </data>
+  <data name="relevantPersonnel" xml:space="preserve">
+    <value>İlişkili Personel</value>
+  </data>
   <data name="remove" xml:space="preserve">
     <value>Kaldır</value>
   </data>
   <data name="report" xml:space="preserve">
     <value>Rapor</value>
   </data>
+  <data name="Report History" xml:space="preserve">
+    <value>Geçmiş Raporu</value>
+  </data>
+  <data name="Reported Assets" xml:space="preserve">
+    <value>Reporlanmış Varlıklar</value>
+  </data>
   <data name="reportedAssets" xml:space="preserve">
     <value>Raportlanan Varlıklar</value>
   </data>
   <data name="reportHistory" xml:space="preserve">
     <value>Rapor Geçmişi</value>
+  </data>
+  <data name="reports" xml:space="preserve">
+    <value>Raporlar</value>
   </data>
   <data name="resolved" xml:space="preserve">
     <value>Çözülmüş</value>
@@ -560,6 +629,9 @@
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Görev Durumu Ayarla</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Ayarlar</value>
   </data>
   <data name="signature" xml:space="preserve">
     <value>İmza</value>
@@ -590,6 +662,9 @@
   </data>
   <data name="systemLogs" xml:space="preserve">
     <value>Sistem Logları</value>
+  </data>
+  <data name="task" xml:space="preserve">
+    <value>Görev</value>
   </data>
   <data name="taskActiveStatus" xml:space="preserve">
     <value>Görev Aktif Durumu</value>
@@ -648,11 +723,17 @@
   <data name="updateCompany" xml:space="preserve">
     <value>Şirket Güncelle</value>
   </data>
+  <data name="usedToner" xml:space="preserve">
+    <value>Kullanılmış Toner</value>
+  </data>
   <data name="usedToners" xml:space="preserve">
     <value>Kullanılan Tonerler</value>
   </data>
   <data name="user" xml:space="preserve">
     <value>Kullanıcı</value>
+  </data>
+  <data name="userManager" xml:space="preserve">
+    <value>Kullanıcı Yönetimi</value>
   </data>
   <data name="userName" xml:space="preserve">
     <value>Kullanıcı Adı</value>

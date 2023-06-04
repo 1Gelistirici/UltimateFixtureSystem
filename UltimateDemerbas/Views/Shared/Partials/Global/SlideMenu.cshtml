@@ -1,19 +1,70 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+@using UltimateAPI.Entities;
+@using System.Text.Json;
+@inject UltimateDemerbas.Manager.LayoutManager LayoutManager
+
+@{
+    var response = LayoutManager.GetMenus();
+    List<Menu> menuList = JsonSerializer.Deserialize<UltimateResult<List<Menu>>>(response.Result).Data;
+}
+
+
+@*<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+        <li class="nav-item" ng-repeat="menuItem in Menus">
+            <a href="" ng-click="Nav(menuItem.Url);" class="nav-link nav-toggle" ng-if="menuItem.Dependency===0">
+                <i ng-class="menuItem.Icon"></i>
+                <span class="title">{{menuItem.Name}}</span>
+                <span class="arrow" ng-hide="menuItem.Url"></span>
+            </a>
+            <ul class="sub-menu" ng-hide="menuItem.Url">
+                <li class="nav-item " ng-repeat="subItem in Menus" ng-if="subItem.Dependency === menuItem.Id">
+                    <a href="{{subItem.Url}}" class="nav-link">
+                        <span class="title">{{subItem.Name}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>*@
+
+
 <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    @{
+        if (menuList != null)
+        {
+            foreach (Menu menuItem in menuList)
+            {
+                <li class="nav-item">
+                    @if (menuItem.Dependency == 0)
+                    {
+                        <a href="" ng-click="Nav(@menuItem.Url);" class="nav-link nav-toggle">
+                            <i class="@menuItem.Icon"></i>
+                            <span class="title">@Html.Translate(@menuItem.Name)</span>
+                            @if (string.IsNullOrEmpty(@menuItem.Url))
+                            {
+                                <span class="arrow"></span>
+                            }
+                        </a>
+                    }
 
-    <li class="nav-item" ng-repeat="menuItem in Menus">
-        <a href="" ng-click="Nav(menuItem.Url);" class="nav-link nav-toggle" ng-if="menuItem.Dependency===0">
-            <i ng-class="menuItem.Icon"></i>
-            <span class="title">{{menuItem.Name}}</span>
-            <span class="arrow" ng-hide="menuItem.Url"></span>
-        </a>
-        <ul class="sub-menu" ng-hide="menuItem.Url">
-            <li class="nav-item " ng-repeat="subItem in Menus" ng-if="subItem.Dependency === menuItem.Id">
-                <a href="{{subItem.Url}}" class="nav-link">
-                    <span class="title">{{subItem.Name}}</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-
+                    <ul class="sub-menu" ng-hide="@menuItem.Url">
+                        @foreach (Menu subItem in menuList)
+                        {
+                            @if (subItem.Dependency == menuItem.Id)
+                            {
+                                <li class="nav-item">
+                                    <a href="@subItem.Url" class="nav-link">
+                                        <span class="title">@Html.Translate(@subItem.Name)</span>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    }
 </ul>
+
+
+
+

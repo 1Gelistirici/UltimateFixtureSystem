@@ -120,6 +120,12 @@
   <data name="accessories" xml:space="preserve">
     <value>Accessories</value>
   </data>
+  <data name="accessory" xml:space="preserve">
+    <value>Accessory</value>
+  </data>
+  <data name="accessoryModel" xml:space="preserve">
+    <value>Accessory Model</value>
+  </data>
   <data name="accessoryModelName" xml:space="preserve">
     <value>Accessory Model Name</value>
   </data>
@@ -234,6 +240,9 @@
   <data name="assign" xml:space="preserve">
     <value>Assign</value>
   </data>
+  <data name="Assigned Licenses" xml:space="preserve">
+    <value>Assigned Licenses</value>
+  </data>
   <data name="assignedAccessory" xml:space="preserve">
     <value>Assigned Accessory</value>
   </data>
@@ -257,6 +266,12 @@
   </data>
   <data name="billNo" xml:space="preserve">
     <value>Bill No</value>
+  </data>
+  <data name="billOperations" xml:space="preserve">
+    <value>Bill Operations</value>
+  </data>
+  <data name="billType" xml:space="preserve">
+    <value>Bill Type</value>
   </data>
   <data name="billTypeName" xml:space="preserve">
     <value>Bill Type Name</value>
@@ -306,8 +321,17 @@
   <data name="comment" xml:space="preserve">
     <value>Comment</value>
   </data>
+  <data name="companyManager" xml:space="preserve">
+    <value>Company Manager</value>
+  </data>
   <data name="completed" xml:space="preserve">
     <value>Completed</value>
+  </data>
+  <data name="component" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="componentModel" xml:space="preserve">
+    <value>Component Model</value>
   </data>
   <data name="componentModelName" xml:space="preserve">
     <value>Component Model Name</value>
@@ -363,6 +387,9 @@
   <data name="depozitFormContent" xml:space="preserve">
     <value>I certify that the above-mentioned assets have been received in good order and are the property of the company. I understand that it is my responsibility to ensure that the assets are used for official business only and are returned to the company in the same condition as they were received. I also understand that any loss or damage to the assets due to my negligence or misuse will be my responsibility and that appropriate action may be taken against me.</value>
   </data>
+  <data name="depreciation" xml:space="preserve">
+    <value>Depreciation</value>
+  </data>
   <data name="detail" xml:space="preserve">
     <value>Detail</value>
   </data>
@@ -387,6 +414,9 @@
   <data name="fixture" xml:space="preserve">
     <value>Fixture</value>
   </data>
+  <data name="fixtureModel" xml:space="preserve">
+    <value>Fixture Model</value>
+  </data>
   <data name="fixtureModelName" xml:space="preserve">
     <value>Fixture Model Name</value>
   </data>
@@ -395,6 +425,9 @@
   </data>
   <data name="fixtures" xml:space="preserve">
     <value>Fixtures</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Importance Levels</value>
@@ -408,8 +441,14 @@
   <data name="lateTasks" xml:space="preserve">
     <value>Late Tasks</value>
   </data>
+  <data name="licanses" xml:space="preserve">
+    <value>Licanses</value>
+  </data>
   <data name="license" xml:space="preserve">
     <value>License</value>
+  </data>
+  <data name="licensesType" xml:space="preserve">
+    <value>Licenses Type</value>
   </data>
   <data name="licensesTypes" xml:space="preserve">
     <value>Licenses Types</value>
@@ -417,8 +456,14 @@
   <data name="licenseTypeName" xml:space="preserve">
     <value>License Type Name</value>
   </data>
+  <data name="lisense" xml:space="preserve">
+    <value>Lisense</value>
+  </data>
   <data name="lock" xml:space="preserve">
     <value>Lock</value>
+  </data>
+  <data name="log" xml:space="preserve">
+    <value>Log</value>
   </data>
   <data name="mailAdress" xml:space="preserve">
     <value>Mail Adress</value>
@@ -431,6 +476,9 @@
   </data>
   <data name="menuLink" xml:space="preserve">
     <value>Menu Link</value>
+  </data>
+  <data name="menuManager" xml:space="preserve">
+    <value>Menu Manager</value>
   </data>
   <data name="menuName" xml:space="preserve">
     <value>Menu Name</value>
@@ -453,6 +501,9 @@
   <data name="modelNo" xml:space="preserve">
     <value>Model No</value>
   </data>
+  <data name="modelOperations" xml:space="preserve">
+    <value>Model Operations</value>
+  </data>
   <data name="more" xml:space="preserve">
     <value>More</value>
   </data>
@@ -474,8 +525,14 @@
   <data name="note" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="operations" xml:space="preserve">
+    <value>Operations</value>
+  </data>
   <data name="overdue" xml:space="preserve">
     <value>Overdue</value>
+  </data>
+  <data name="Page Map" xml:space="preserve">
+    <value>Page Map</value>
   </data>
   <data name="pageMap" xml:space="preserve">
     <value>Page Map</value>
@@ -528,17 +585,29 @@
   <data name="relatedIndividuals" xml:space="preserve">
     <value>Related Individuals</value>
   </data>
+  <data name="relevantPersonnel" xml:space="preserve">
+    <value>Relevant Personnel</value>
+  </data>
   <data name="remove" xml:space="preserve">
     <value>Remove</value>
   </data>
   <data name="report" xml:space="preserve">
     <value>Report</value>
   </data>
+  <data name="Report History" xml:space="preserve">
+    <value>Report History</value>
+  </data>
+  <data name="Reported Assets" xml:space="preserve">
+    <value>Reported Assets</value>
+  </data>
   <data name="reportedAssets" xml:space="preserve">
     <value>Reported Assets</value>
   </data>
   <data name="reportHistory" xml:space="preserve">
     <value>Report History</value>
+  </data>
+  <data name="reports" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="resolved" xml:space="preserve">
     <value>Resolved</value>
@@ -560,6 +629,9 @@
   </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Set Task Statu</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="signature" xml:space="preserve">
     <value>Signature</value>
@@ -590,6 +662,9 @@
   </data>
   <data name="systemLogs" xml:space="preserve">
     <value>System Logs</value>
+  </data>
+  <data name="task" xml:space="preserve">
+    <value>Task</value>
   </data>
   <data name="taskActiveStatus" xml:space="preserve">
     <value>Task Active Status</value>
@@ -645,11 +720,17 @@
   <data name="updateCompany" xml:space="preserve">
     <value>Update Company</value>
   </data>
+  <data name="usedToner" xml:space="preserve">
+    <value>Used Toner</value>
+  </data>
   <data name="usedToners" xml:space="preserve">
     <value>Used Toners</value>
   </data>
   <data name="user" xml:space="preserve">
     <value>User</value>
+  </data>
+  <data name="userManager" xml:space="preserve">
+    <value>User Manager</value>
   </data>
   <data name="userName" xml:space="preserve">
     <value>User Name</value>
