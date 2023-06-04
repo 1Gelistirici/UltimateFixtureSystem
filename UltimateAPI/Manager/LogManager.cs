@@ -176,7 +176,6 @@ namespace UltimateAPI.Manager
                         result.IsSuccess = effectedRow > 0;
                         sqlConnection.Close();
                         sqlCommand.Dispose();
-
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }

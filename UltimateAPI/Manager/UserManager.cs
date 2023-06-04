@@ -94,6 +94,9 @@ namespace UltimateAPI.Manager
                             }
 
                             log.Type = LogType.LoginSucess;
+                            log.Detail = "Giriş yapıldı.";
+                            log.UserNo = userData.Id;
+                            log.IpAddress = user.IpAddress;
                             LogManager.Instance.AddLog(log);
 
                             result.IsSuccess = true;
@@ -105,6 +108,9 @@ namespace UltimateAPI.Manager
                             log.IncorrectPassword = user.Password;
                             log.IncorrectUserName = user.UserName;
                             log.IncorrectCompany = user.Company;
+                            log.IpAddress = user.IpAddress;
+                            log.UserNo = userData.Id;
+                            log.Detail = "Başarısız giriş denemesi.";
                             LogManager.Instance.AddLog(log);
 
                             result.IsSuccess = false;

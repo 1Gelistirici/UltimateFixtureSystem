@@ -68,16 +68,6 @@ namespace UltimateAPI.Manager
                         }
                         sqlCommand.Dispose();
                         result.Data = users;
-
-                        if (result.IsSuccess)
-                        {
-                            Log log = new Log();
-                            log.Detail = "Giriş yapıldı.";
-                            log.UserNo = users[0].UserId;
-                            log.Type = LogType.LoginSucess;
-                            log.IpAddress = user.IpAddress;
-                            LogManager.Instance.AddLog(log);
-                        }
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
