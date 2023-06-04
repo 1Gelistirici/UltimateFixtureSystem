@@ -9,10 +9,10 @@
             </div>
             <div style="height:300px" data-always-visible="0" data-rail-visible1="1">
                 <div class="modal-body">
-                    <form name="feedBackForm">
+                    <form name="feedbackForm">
                         <div class="col-md-12">
-                            <span>Title</span>
-                            <input class="form-control" ng-model="feedBackTitle" />
+                            <span>@Html.Translate("title")</span>
+                            <input class="form-control" ng-model="feedBackTitle" maxlength="300" required />
                         </div>
                         <br />
                         <br />
@@ -20,14 +20,14 @@
                         <br />
                         <div class="col-md-12">
                             <span>@Html.Translate("comment")</span>
-                            <textarea class="form-control" rows="4" ng-model="feedBackComment" style="font-size: 14px; resize:none" min="0"></textarea>
+                            <textarea class="form-control" rows="4" ng-model="feedBackComment" style="font-size: 14px; resize:none" maxlength="100" required></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer" style="margin-top:30%;">
                     <input type="hidden" />
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">@Html.Translate("cancel")</button>
-                    <button type="button" class="btn green btn-outline" ng-click="feedBackSubmit();">@Html.Translate("send")</button>
+                    <button type="button" class="btn green btn-outline" ng-disabled="feedbackForm.$invalid" ng-click="feedBackSubmit();">@Html.Translate("send")</button>
                 </div>
             </div>
         </div>

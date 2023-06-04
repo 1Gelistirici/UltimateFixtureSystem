@@ -1,7 +1,7 @@
 ﻿var themplateMode = 0;
 
-MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
-    function ($scope, $http, $window, toaster) {
+MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster", "FeedbackService",
+    function ($scope, $http, $window, toaster, feedbackService) {
 
         $scope.layoutCompanyName = Cookies.get('companyName');
         $scope.layoutUserName = Cookies.get('userName');
@@ -73,6 +73,27 @@ MainApp.controller("BodyController", ["$scope", "$http", "$window", "toaster",
                     console.log("İstek sırasında hata oluştu");
                 }
             });
+        }
+
+        $scope.feedBackSubmit = function () {
+            var parameter = {
+                Title: $scope.feedBackTitle,
+                Comment: $scope.feedBackComment
+            }
+
+            feedbackService.AddFeedback(parameter,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        $("#FeedBack").modal("hide");
+                        $scope.feedBackTitle = "";
+                        $scope.feedBackComment = "";
+                        toaster.success("Thank You");
+                    } else {
+                        toaster.error("Feedback", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                    }
+                }, function error() {
+                    toaster.error("Feedback", "Kat listeleme işlemi yapılırken bir hata oluştu");
+                });
         }
 
     }]);
