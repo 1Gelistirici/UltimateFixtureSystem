@@ -170,6 +170,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@incorrectPassword", parameter.IncorrectPassword == null ? "" : parameter.IncorrectPassword);
                         sqlCommand.Parameters.AddWithValue("@incorrectUserName", parameter.IncorrectUserName == null ? "" : parameter.IncorrectUserName);
                         sqlCommand.Parameters.AddWithValue("@incorrectCompany", parameter.IncorrectCompany == null ? "" : parameter.IncorrectCompany);
+                        sqlCommand.Parameters.AddWithValue("@IpAddress", parameter.IpAddress == null ? "" : parameter.IpAddress);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
                         result.IsSuccess = effectedRow > 0;

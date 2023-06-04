@@ -32,7 +32,8 @@
                 UserName: $scope.User.Username,
                 Password: $scope.User.Password,
                 Company: $scope.User.Company,
-                RememberMe: $scope.User.RememberMe
+                RememberMe: $scope.User.RememberMe,
+                IpAddress: ipAddress
             }
 
             LoginService.CheckUser(parameter,

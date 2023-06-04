@@ -14,5 +14,6 @@ namespace UltimateAPI.Entities
         public int UserNo { get; set; }
         public LogType Type { get; set; }
         public int CompanyRefId { get; set; }
+        public string IpAddress { get; set; }
     }
 }

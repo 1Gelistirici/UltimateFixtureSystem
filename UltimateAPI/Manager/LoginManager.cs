@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using UltimateAPI.Entities;
+using UltimateAPI.Entities.Enums;
 
 namespace UltimateAPI.Manager
 {
-    public class LoginManager:BaseManager
+    public class LoginManager : BaseManager
     {
         private static readonly object Lock = new object();
         private static volatile LoginManager _instance;
@@ -67,6 +68,16 @@ namespace UltimateAPI.Manager
                         }
                         sqlCommand.Dispose();
                         result.Data = users;
+
+                        if (result.IsSuccess)
+                        {
+                            Log log = new Log();
+                            log.Detail = "Giriş yapıldı.";
+                            log.UserNo = users[0].UserId;
+                            log.Type = LogType.LoginSucess;
+                            log.IpAddress = user.IpAddress;
+                            LogManager.Instance.AddLog(log);
+                        }
                     }
                     ConnectionManager.Instance.Dispose(sqlConnection);
                 }
