@@ -174,6 +174,7 @@
         //        });
         //}
 
+        //#region SignalR
         $scope.GetTask = function (task) {
             $scope.Task.startDate = new Date(task.StartDate);
             $scope.Task.endDate = new Date(task.EndDate);
@@ -200,6 +201,7 @@
                 $scope.Messages.push(data);
             });
         });
+        //#endregion
 
         $scope.AddMessage = function () {
             var d = new Date();

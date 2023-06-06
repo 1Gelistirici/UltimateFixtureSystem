@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using UltimateAPI.Entities;
 using UltimateDemerbas.Models.Tool;
 
@@ -40,7 +34,7 @@ namespace UltimateDemerbas.Controllers
                 {
                     ReferansParameter referansParameter = new ReferansParameter();
                     referansParameter.Id = Convert.ToInt32(userId);
-                    referansParameter.CompanyId = Convert.ToInt32(userId);
+                    referansParameter.CompanyId = Convert.ToInt32(companyId);
                     SetSession(referansParameter);
 
                     return;
