@@ -11,6 +11,7 @@
             Bill: "Bill",
             Statu: "Statu",
             User: "User",
+            SerialNumber: "Serial Number",
         };
 
         $scope.openPopup = function () {
@@ -158,7 +159,8 @@
                 "BillNo": $scope.Pop.BillNo,
                 "StatuNo": $scope.Pop.StatuNo,
                 "CategoryNo": $scope.Pop.CategoryNo,
-                "UserNo": $scope.Pop.UserNo
+                "UserNo": $scope.Pop.UserNo,
+                "SerialNumber": $scope.Pop.SerialNumber
             }
 
             FixtureService.AddFixture(parameter,

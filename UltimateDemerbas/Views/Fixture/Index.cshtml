@@ -44,6 +44,7 @@
                             <col />
                             <col />
                             <col />
+                            <col />
                         </colgroup>
 
                         <tbody>
@@ -83,6 +84,12 @@
                                     <select class="form-control" ng-model="_.UserNo" ng-show="_.UserNo>0" disabled>
                                         <option ng-repeat="x in Users" type="number" ng-value="{{x.Id}}">{{x.Name}}</option>
                                     </select>
+                                </td>
+
+                                <td data-title="TableCol.SerialNumber" filter="{ SerialNumber: 'text'}" sortable="'SerialNumber'">
+                                    <div class="input-icon">
+                                        <input ng-model="_.SerialNumber" type="text" class="form-control">
+                                    </div>
                                 </td>
 
                                 <td>
