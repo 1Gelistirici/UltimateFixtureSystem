@@ -651,6 +651,9 @@
   <data name="send" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="serialNumber" xml:space="preserve">
+    <value>Serial Number</value>
+  </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Set Task Statu</value>
   </data>

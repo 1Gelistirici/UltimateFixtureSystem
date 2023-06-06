@@ -651,6 +651,9 @@
   <data name="send" xml:space="preserve">
     <value>Gönder</value>
   </data>
+  <data name="serialNumber" xml:space="preserve">
+    <value>Seri Numarası</value>
+  </data>
   <data name="setTaskStatu" xml:space="preserve">
     <value>Görev Durumu Ayarla</value>
   </data>
