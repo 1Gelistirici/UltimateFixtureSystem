@@ -228,6 +228,9 @@
   <data name="all" xml:space="preserve">
     <value>Tümü</value>
   </data>
+  <data name="asignedUser" xml:space="preserve">
+    <value>Atanan Kullanıcı</value>
+  </data>
   <data name="asset" xml:space="preserve">
     <value>Varlık</value>
   </data>
@@ -393,6 +396,9 @@
   <data name="detail" xml:space="preserve">
     <value>Detay</value>
   </data>
+  <data name="details" xml:space="preserve">
+    <value>Detaylar</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>Düzenle</value>
   </data>
@@ -432,8 +438,17 @@
   <data name="importanceLevels" xml:space="preserve">
     <value>Önem Düzeyleri</value>
   </data>
+  <data name="insertDate" xml:space="preserve">
+    <value>Kayıt Tarihi</value>
+  </data>
   <data name="item" xml:space="preserve">
     <value>Item</value>
+  </data>
+  <data name="itemDetails" xml:space="preserve">
+    <value>Item Detayları</value>
+  </data>
+  <data name="itemHistory" xml:space="preserve">
+    <value>Item Geçmişi</value>
   </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
@@ -564,6 +579,15 @@
   <data name="printer" xml:space="preserve">
     <value>Yazıcı</value>
   </data>
+  <data name="processedUser" xml:space="preserve">
+    <value>İşlem Yapılan Kullanıcı</value>
+  </data>
+  <data name="processingUser" xml:space="preserve">
+    <value>İşlem Yapan Kullanıcı</value>
+  </data>
+  <data name="processType" xml:space="preserve">
+    <value>İşlem Tipi</value>
+  </data>
   <data name="productType" xml:space="preserve">
     <value>Ürün Tipi</value>
   </data>
@@ -648,8 +672,14 @@
   <data name="state" xml:space="preserve">
     <value>Statu</value>
   </data>
+  <data name="statu" xml:space="preserve">
+    <value>Durum</value>
+  </data>
   <data name="statusName" xml:space="preserve">
     <value>Durum İsmi</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Detaylar</value>
   </data>
   <data name="subject" xml:space="preserve">
     <value>Konu</value>
@@ -731,6 +761,9 @@
   </data>
   <data name="user" xml:space="preserve">
     <value>Kullanıcı</value>
+  </data>
+  <data name="userInformation" xml:space="preserve">
+    <value>Kullanıcı Bilgileri</value>
   </data>
   <data name="userManager" xml:space="preserve">
     <value>Kullanıcı Yönetimi</value>

@@ -65,6 +65,8 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_no"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
+                                    fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
                                     fixtures.Add(fixture);
                                 }
@@ -122,6 +124,8 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
+                                    fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
                                     result.Data = fixture;
                                 }
@@ -179,6 +183,8 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
+                                    fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
                                     fixtures.Add(fixture);
                                 }
@@ -237,6 +243,8 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
+                                    fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
                                     fixtures.Add(fixture);
                                 }
@@ -391,6 +399,8 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@QRCode", parameter.QRCode);
+                        sqlCommand.Parameters.AddWithValue("@Barcode", parameter.Barcode);
                         //sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
@@ -412,5 +422,6 @@ namespace UltimateAPI.Manager
 
             return result;
         }
+
     }
 }

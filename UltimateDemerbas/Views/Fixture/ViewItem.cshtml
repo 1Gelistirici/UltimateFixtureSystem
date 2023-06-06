@@ -1,4 +1,5 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,7 +25,7 @@
                     <div class="tabbable-line">
                         <ul class="nav nav-tabs nav-tabs-lg">
                             <li class="active">
-                                <a href="#tab_1" data-toggle="tab"> Details </a>
+                                <a href="#tab_1" data-toggle="tab"> @Html.Translate("details") </a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -34,41 +35,41 @@
                                         <div class="portlet yellow-crusta box">
                                             <div class="portlet-title">
                                                 <div class="caption">
-                                                    <i class="fa fa-cogs"></i>Item Details
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("itemDetails")
                                                 </div>
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Name: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("name"): </div>
                                                     <div class="col-md-7 value">
                                                         {{Item.Name}}
                                                         @*<span class="label label-info label-sm"> Email confirmation was sent </span>*@
                                                     </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Inser Date: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("insertDate"): </div>
                                                     <div class="col-md-7 value"> {{Item.LoginSystem}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Statu: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("statu"): </div>
                                                     <div class="col-md-7 value">
                                                         <span class="label label-success"> {{Item.ItemStatu.Text}} </span>
                                                     </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Model: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("model"): </div>
                                                     <div class="col-md-7 value"> {{Item.Model.Name}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Category: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("category"): </div>
                                                     <div class="col-md-7 value"> {{Item.Category.Name}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Bill: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("bill"): </div>
                                                     <div class="col-md-7 value"> {{Item.Bill.BillNo}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Asigned User: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("asignedUser"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.Name}} {{Item.AsignedUser.Surname}} ({{Item.AsignedUser.UserName}})</div>
                                                 </div>
                                             </div>
@@ -78,28 +79,28 @@
                                         <div class="portlet blue-hoki box">
                                             <div class="portlet-title">
                                                 <div class="caption">
-                                                    <i class="fa fa-cogs"></i>User Information
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("userInformation")
                                                 </div>
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Name: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("name"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.Name}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Surname: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("surname"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.Surname}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Username: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("userName"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.UserName}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Title: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("title"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.Title}} </div>
                                                 </div>
                                                 <div class="row static-info">
-                                                    <div class="col-md-5 name"> Mail Adress: </div>
+                                                    <div class="col-md-5 name"> @Html.Translate("mailAdress"): </div>
                                                     <div class="col-md-7 value"> {{Item.AsignedUser.MailAdress}} </div>
                                                 </div>
                                                 <div class="row static-info">
@@ -123,7 +124,7 @@
                                         <div class="portlet grey-cascade box">
                                             <div class="portlet-title">
                                                 <div class="caption">
-                                                    <i class="fa fa-cogs"></i>Item History
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("itemHistory")
                                                 </div>
                                             </div>
                                             <div class="portlet-body">
@@ -131,10 +132,10 @@
                                                     <table class="table table-hover table-bordered table-striped" ng-table="TableParams">
                                                         <thead>
                                                             <tr>
-                                                                <th> ProcessTypeTextValue </th>
-                                                                <th> TransactionUser </th>
-                                                                <th> CommittedUser </th>
-                                                                <th> Date </th>
+                                                                <th> @Html.Translate("processType") </th>
+                                                                <th> @Html.Translate("processedUser") </th>
+                                                                <th> @Html.Translate("processingUser") </th>
+                                                                <th> @Html.Translate("date") </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>

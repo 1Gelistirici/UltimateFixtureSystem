@@ -18,5 +18,7 @@ namespace UltimateAPI.Entities
         public Double Price { get; set; }
         public int CompanyRefId { get; set; }
         public TextValue ItemStatu { get; set; }
+        public string QRCode { get; set; }
+        public string Barcode { get; set; }
     }
 }
