@@ -65,6 +65,7 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_no"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.SerialNumber = Convert.ToString(read["SerialNumber"]);
                                     fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
                                     fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
@@ -124,6 +125,7 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
+                                    fixture.SerialNumber = Convert.ToString(read["SerialNumber"]);
                                     fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
                                     fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
@@ -183,6 +185,7 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.SerialNumber = Convert.ToString(read["SerialNumber"]);
                                     fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
                                     fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
@@ -243,6 +246,7 @@ namespace UltimateAPI.Manager
                                     fixture.UserNo = Convert.ToInt32(read["user_No"]);
                                     fixture.CompanyRefId = Convert.ToInt32(read["companyRefId"]);
                                     fixture.Price = Convert.ToInt32(read["price"]);
+                                    fixture.SerialNumber = Convert.ToString(read["SerialNumber"]);
                                     fixture.Barcode = read["Barcode"] != DBNull.Value ? read["Barcode"].ToString() : string.Empty;
                                     fixture.QRCode = read["QRCode"] != DBNull.Value ? read["QRCode"].ToString() : string.Empty;
 
@@ -340,6 +344,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@user_no", (ItemStatu)parameter.StatuNo == ItemStatu.Assigned ? parameter.UserNo : 0);
                         sqlCommand.Parameters.AddWithValue("@price", parameter.Price);
                         sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@SerialNumber", parameter.SerialNumber);
                         sqlCommand.Parameters.AddWithValue("@ResultId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         int effectedRow = sqlCommand.ExecuteNonQuery();
@@ -399,6 +404,7 @@ namespace UltimateAPI.Manager
                         sqlCommand.Parameters.AddWithValue("@category_no", parameter.CategoryNo);
                         sqlCommand.Parameters.AddWithValue("@user_no", parameter.UserNo);
                         sqlCommand.Parameters.AddWithValue("@companyRefId", parameter.CompanyRefId);
+                        sqlCommand.Parameters.AddWithValue("@SerialNumber", parameter.SerialNumber);
                         sqlCommand.Parameters.AddWithValue("@QRCode", parameter.QRCode);
                         sqlCommand.Parameters.AddWithValue("@Barcode", parameter.Barcode);
                         //sqlCommand.Parameters.AddWithValue("@price", parameter.Price);

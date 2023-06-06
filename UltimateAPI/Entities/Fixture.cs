@@ -1,5 +1,4 @@
 ﻿using System;
-using UltimateAPI.Entities.Enums;
 using UltimateDemerbas.Models;
 
 namespace UltimateAPI.Entities
@@ -20,5 +19,7 @@ namespace UltimateAPI.Entities
         public TextValue ItemStatu { get; set; }
         public string QRCode { get; set; }
         public string Barcode { get; set; }
+        public string SerialNumber { get; set; }
+
     }
 }
