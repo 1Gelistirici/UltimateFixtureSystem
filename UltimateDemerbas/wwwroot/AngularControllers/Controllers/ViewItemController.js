@@ -119,7 +119,7 @@
 
         $scope.generateQRCode = function () {
             var qrcode = new QRCode("qrcode",
-                "https://www.geeksforgeeks.org");
+                `serialNumber:${$scope.Item.SerialNumber}-id:${$scope.Item.Id}`);
 
             downloadQRCode();
         }
