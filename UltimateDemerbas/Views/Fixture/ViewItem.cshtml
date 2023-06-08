@@ -7,11 +7,13 @@
 
 <div ng-controller="ViewItemController">
 
+    <div id="qrcode" class="hidden"></div>
 
     <div class="row">
         <div class="col-md-12">
             <!-- Begin: life time stats -->
             <div class="portlet light portlet-fit portlet-datatable bordered">
+
                 @*<div class="portlet-title">
                         <div class="caption">
                             <i class="icon-settings font-dark"></i>
@@ -22,13 +24,20 @@
                         </div>
                     </div>*@
                 <div class="portlet-body">
+
                     <div class="tabbable-line">
+                        <a href="javascript:;" class="btn btn-icon-only blue pull-right" title="Generate QRCode" ng-click="generateQRCode();">
+                            <i class="fa fa-qrcode"></i>
+                        </a>
+
                         <ul class="nav nav-tabs nav-tabs-lg">
                             <li class="active">
                                 <a href="#tab_1" data-toggle="tab"> @Html.Translate("details") </a>
                             </li>
                         </ul>
+
                         <div class="tab-content">
+
                             <div class="tab-pane active" id="tab_1">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
@@ -186,6 +195,7 @@
 
 @section PageScript
     {
+    <script src="~/Scripts/ThirdParty/qrcode.min.js"></script>
     <script src="~/AngularControllers/Services/ItemHistoryService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>
     <script src="~/AngularControllers/Services/FixtureService.js"></script>
