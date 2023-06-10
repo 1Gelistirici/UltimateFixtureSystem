@@ -519,6 +519,9 @@
   <data name="itemType" xml:space="preserve">
     <value>Item Type</value>
   </data>
+  <data name="itemViewer" xml:space="preserve">
+    <value>Item Görüntüleyici</value>
+  </data>
   <data name="lateTasks" xml:space="preserve">
     <value>Geciken Görevler</value>
   </data>
@@ -680,6 +683,9 @@
   </data>
   <data name="profileAccount" xml:space="preserve">
     <value>Profil Hesabı</value>
+  </data>
+  <data name="qrCodeGenarate" xml:space="preserve">
+    <value>Qr Kod Oluştur</value>
   </data>
   <data name="reCallActive" xml:space="preserve">
     <value>Geri Çağır</value>
@@ -905,5 +911,8 @@
   </data>
   <data name="women" xml:space="preserve">
     <value>Kadın</value>
+  </data>
+  <data name="ıtemViewer" xml:space="preserve">
+    <value>Item Görüntüleyici</value>
   </data>
 </root>

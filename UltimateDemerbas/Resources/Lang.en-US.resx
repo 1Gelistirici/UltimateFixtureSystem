@@ -519,6 +519,9 @@
   <data name="itemType" xml:space="preserve">
     <value>Item Type</value>
   </data>
+  <data name="itemViewer" xml:space="preserve">
+    <value>Item Viewer</value>
+  </data>
   <data name="lateTasks" xml:space="preserve">
     <value>Late Tasks</value>
   </data>
@@ -680,6 +683,9 @@
   </data>
   <data name="profileAccount" xml:space="preserve">
     <value>Profile Account</value>
+  </data>
+  <data name="qrCodeGenarate" xml:space="preserve">
+    <value>QR Code Genarator</value>
   </data>
   <data name="reCallActive" xml:space="preserve">
     <value>ReCall Active</value>
@@ -896,5 +902,8 @@
   </data>
   <data name="women" xml:space="preserve">
     <value>Women</value>
+  </data>
+  <data name="ıtemViewer" xml:space="preserve">
+    <value>Item Viewer</value>
   </data>
 </root>

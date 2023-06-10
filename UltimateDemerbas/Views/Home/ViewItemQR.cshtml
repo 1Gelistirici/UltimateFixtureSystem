@@ -1,0 +1,198 @@
+﻿@using MultiLanguage.ExtensionMethods
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="ViewItemQRController">
+
+    <div style="width: 500px" id="video-preview"></div>
+
+    <div id="qrcode" class="hidden"></div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Begin: life time stats -->
+            <div class="portlet light portlet-fit portlet-datatable bordered">
+
+                <div class="portlet-body">
+
+                    <div class="tabbable-line">
+                        <a href="javascript:;" class="btn btn-icon-only blue pull-right" title="Generate QRCode" ng-click="generateQRCode();">
+                            <i class="fa fa-qrcode"></i>
+                        </a>
+
+                        <ul class="nav nav-tabs nav-tabs-lg">
+                            <li class="active">
+                                <a href="#tab_1" data-toggle="tab"> @Html.Translate("details") </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="portlet yellow-crusta box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("itemDetails")
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("name"): </div>
+                                                    <div class="col-md-7 value">
+                                                        {{Item.Name}}
+                                                        @*<span class="label label-info label-sm"> Email confirmation was sent </span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("insertDate"): </div>
+                                                    <div class="col-md-7 value"> {{Item.LoginSystem}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("statu"): </div>
+                                                    <div class="col-md-7 value">
+                                                        <span class="label label-success"> {{Item.ItemStatu.Text}} </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("model"): </div>
+                                                    <div class="col-md-7 value"> {{Item.Model.Name}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("category"): </div>
+                                                    <div class="col-md-7 value"> {{Item.Category.Name}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("bill"): </div>
+                                                    <div class="col-md-7 value"> {{Item.Bill.BillNo}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("asignedUser"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.Name}} {{Item.AsignedUser.Surname}} ({{Item.AsignedUser.UserName}})</div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("serialNumber"): </div>
+                                                    <div class="col-md-7 value"> {{Item.SerialNumber}} </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12" ng-if="Item.AsignedUser!==null">
+                                        <div class="portlet blue-hoki box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("userInformation")
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("name"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.Name}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("surname"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.Surname}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("userName"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.UserName}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("title"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.Title}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                    <div class="col-md-5 name"> @Html.Translate("mailAdress"): </div>
+                                                    <div class="col-md-7 value"> {{Item.AsignedUser.MailAdress}} </div>
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                                <div class="row static-info">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="portlet grey-cascade box">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-cogs"></i>@Html.Translate("itemHistory")
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-bordered table-striped" ng-table="TableParams">
+                                                        <thead>
+                                                            <tr>
+                                                                <th> @Html.Translate("processType") </th>
+                                                                <th> @Html.Translate("processedUser") </th>
+                                                                <th> @Html.Translate("processingUser") </th>
+                                                                <th> @Html.Translate("date") </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="_ in $data">
+                                                                <td>
+                                                                    <span>{{_.ProcessTypeTextValue.Text}}</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span ng-if="_.TransactionUser">{{_.TransactionUser.Name}} {{_.TransactionUser.Surname}} ({{_.TransactionUser.UserName}}) </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span ng-if="_.CommittedUser">{{_.CommittedUser.Name}} {{_.CommittedUser.Surname}} ({{_.CommittedUser.UserName}})</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span>{{_.InsertDate}}</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: life time stats -->
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section PageScript
+    {
+    <script src="~/Scripts/ThirdParty/html5-qrcode.min.js"></script>
+    <script src="~/Scripts/ThirdParty/qrcode.min.js"></script>
+    <script src="~/AngularControllers/Services/ItemHistoryService.js"></script>
+    <script src="~/AngularControllers/Services/UserService.js"></script>
+    <script src="~/AngularControllers/Services/FixtureService.js"></script>
+    <script src="~/AngularControllers/Controllers/Home/ViewItemQRController.js"></script>
+}

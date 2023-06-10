@@ -32,6 +32,12 @@ namespace UltimateDemerbas.Controllers
             return View();
         }
 
+        [CheckAuthorize]
+        public IActionResult ViewItemQR()
+        {
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
