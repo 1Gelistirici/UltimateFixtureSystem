@@ -1,4 +1,5 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,7 +14,7 @@
             <div class="caption font-dark-gray" style="color:#678098">
                 <i class="fa fa-building font-dark-gray" style="color:#678098"></i>
                 <span class="caption-subject bold uppercase">
-                    Company
+                    @Html.Translate("company")
                 </span>
             </div>
         </div>
@@ -40,17 +41,17 @@
 
                             <tbody>
                                 <tr ng-repeat="_ in $data">
-                                    <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <td data-title="'@Html.Raw(Html.Translate("name"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.Name}}</label>
                                         </div>
                                     </td>
-                                    <td data-title="TableCol.EstablishmentDate" filter="{ EstablishmentDate: 'text'}" sortable="'EstablishmentDate'">
+                                    <td data-title="'@Html.Raw(Html.Translate("establishmentDate"))'" filter="{ EstablishmentDate: 'text'}" sortable="'EstablishmentDate'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.EstablishmentDate}}</label>
                                         </div>
                                     </td>
-                                    <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                    <td data-title="'@Html.Raw(Html.Translate("insertDate"))'" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.InsertDate}}</label>
                                         </div>
@@ -58,13 +59,13 @@
                                     <td>
                                         <div class="btn-group absoluteitem">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>@Html.Translate("transactions")
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li class="ms-hover">
                                                     <a class="viewuserbtn" title="Update" data-toggle="modal" ng-click="openUpdatePopup(_)">
-                                                        <i class="fa fa-edit"></i>Update
+                                                        <i class="fa fa-edit"></i>@Html.Translate("update")
                                                     </a>
                                                 </li>
                                             </ul>
@@ -76,7 +77,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="6" class="no-margin no-padding">
-                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> Toplam Kayit Sayisi: {{registerCount}}</span>
+                                        <span class="label label-primary" style="margin-left: -20px; font-size: 11px;"> @Html.Translate("totalNumberofRecords"): {{registerCount}}</span>
                                     </td>
                                 </tr>
                             </tfoot>

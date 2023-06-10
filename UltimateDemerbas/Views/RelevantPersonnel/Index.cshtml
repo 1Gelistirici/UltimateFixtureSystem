@@ -42,13 +42,13 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
+                                <td data-title="'@Html.Raw(Html.Translate("userName"))'" filter="{ UserName: 'text'}" sortable="'UserName'">
                                     <div class="col-md-9">
                                         {{_.User.Name}} {{_.User.Surname}}
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("mailAddress"))'" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
                                     <div class="col-md-9">
                                         {{_.User.MailAdress}}
                                     </div>

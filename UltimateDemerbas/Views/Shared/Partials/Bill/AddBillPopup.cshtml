@@ -88,27 +88,27 @@
                                             <tbody>
                                                 <tr ng-repeat="_ in $data">
 
-                                                    <td data-title="PopupTableCol.Name" sortable="'Name'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("name"))'"  sortable="'Name'">
                                                         <input ng-model="_.Name" type="text" class="form-control" required>
                                                     </td>
-                                                    <td data-title="PopupTableCol.Piece" sortable="'Piece'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("piece"))'" sortable="'Piece'">
                                                         <input ng-model="_.Piece" type="number" class="form-control" required>
                                                     </td>
-                                                    <td data-title="PopupTableCol.Price" sortable="'Price'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("price"))'"  sortable="'Price'">
                                                         <input ng-model="_.Price" type="number" class="form-control" required>
                                                     </td>
-                                                    <td data-title="PopupTableCol.ProductType" sortable="'ProductType'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("productType"))'"  sortable="'ProductType'">
                                                         <select class="form-control" ng-model="_.ProductTypeNo" disabled required>
                                                             <option ng-repeat="x in ProductTypes" ng-value="{{x.Value}}">{{x.Text}}</option>
                                                         </select>
                                                     </td>
-                                                    <td data-title="PopupTableCol.Model" sortable="'Model'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("model"))'"  sortable="'Model'">
                                                         <input ng-model="_.Model.Name" type="text" class="form-control" disabled required>
                                                         @*<select class="form-control" ng-model="_.ModelNo" required>
                                                                 <option ng-repeat="x in Models" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                             </select>*@
                                                     </td>
-                                                    <td data-title="PopupTableCol.Category" sortable="'Category'">
+                                                    <td data-title="'@Html.Raw(Html.Translate("category"))'"  sortable="'Category'">
                                                         <select class="form-control" ng-model="_.CategoryNo" required>
                                                             <option ng-repeat="x in Categories" ng-value="{{x.Id}}">{{x.Name}}</option>
                                                         </select>

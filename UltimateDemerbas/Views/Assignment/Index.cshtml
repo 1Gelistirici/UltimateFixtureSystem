@@ -43,43 +43,43 @@
                         <tbody>
                             <tr ng-repeat="_ in $data" ng-class="CheckRecallDate(_.RecallDate) && _.IsRecall==true ? 'bg-warning':''">
 
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                <td data-title="'@Html.Raw(Html.Translate("componentName"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="input-icon">
                                         <span>{{_.Item.Name}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                <td data-title="'@Html.Raw(Html.Translate("itemType"))'" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
                                     <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
                                 </td>
 
-                                <td data-title="TableCol.Piece" filter="{ Piece: 'text'}" sortable="'Piece'">
+                                <td data-title="'@Html.Raw(Html.Translate("piece"))'" filter="{ Piece: 'text'}" sortable="'Piece'">
                                     <div class="input-icon">
                                         <span>{{_.Piece}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.BillNo" filter="{ BillNo: 'text'}" sortable="'BillNo'">
+                                <td data-title="'@Html.Raw(Html.Translate("bill"))'" filter="{ BillNo: 'text'}" sortable="'BillNo'">
                                     <div class="input-icon">
                                         <span>{{_.Item.BillNo}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Recall" sortable="'BillNo'">
+                                <td data-title="'@Html.Raw(Html.Translate("recall"))'" sortable="'BillNo'">
                                     <div class="input-icon" ng-show="_.IsRecall==true">
                                         <span>{{_.RecallDate}}</span>
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.ModelNo" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
+                                <td data-title="'@Html.Raw(Html.Translate("model"))'" filter="{ ModelNo: 'number'}" sortable="'ModelNo'">
                                     <span>{{GetAccessoryModels(_.Item.ModelNo)}} {{AccessoryModelreturn}}</span>
                                 </td>
 
-                                <td data-title="TableCol.CategoryNo" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
+                                <td data-title="'@Html.Raw(Html.Translate("category"))'" filter="{ CategoryNo: 'number'}" sortable="'CategoryNo'">
                                     <span>{{GetCategoryNo(_.Item.CategoryNo)}} {{CategoryNoreturn}}</span>
                                 </td>
 
-                                <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
+                                <td data-title="'@Html.Raw(Html.Translate("userName"))'" filter="{ UserName: 'text'}" sortable="'UserName'">
                                     <span>{{_.User.Name}}</span>
                                 </td>
 

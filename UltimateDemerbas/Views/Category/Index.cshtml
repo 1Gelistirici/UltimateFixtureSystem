@@ -48,7 +48,7 @@
                         <tbody>
                             <tr ng-repeat="_ in $data">
 
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                <td data-title="'@Html.Raw(Html.Translate("componentName"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                     <input ng-model="_.Name" type="text" class="form-control">
                                 </td>
 

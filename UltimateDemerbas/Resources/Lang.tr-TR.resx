@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="accessDenied" xml:space="preserve">
+    <value>Erişim Engellendi</value>
+  </data>
   <data name="accessories" xml:space="preserve">
     <value>Aksesuarlar</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="addBill" xml:space="preserve">
     <value>Add Bill</value>
+  </data>
+  <data name="addBillDetail" xml:space="preserve">
+    <value>Fatura Detayı Ekle</value>
   </data>
   <data name="addBillItem" xml:space="preserve">
     <value>Fature Item Ekle</value>
@@ -258,11 +264,29 @@
   <data name="assignmentLicense" xml:space="preserve">
     <value>Lisans Ata</value>
   </data>
+  <data name="assignmentName" xml:space="preserve">
+    <value>Atayan İsmi</value>
+  </data>
   <data name="assignments" xml:space="preserve">
     <value>Atamalar</value>
   </data>
+  <data name="assignmentUser" xml:space="preserve">
+    <value>Atayan Kullanıcı</value>
+  </data>
+  <data name="assignRole" xml:space="preserve">
+    <value>Yetki Atama</value>
+  </data>
+  <data name="authorizationMessage" xml:space="preserve">
+    <value>Bu sayfaya erişmek için gerekli yetkiye sahip değilsiniz.</value>
+  </data>
+  <data name="back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
   <data name="bill" xml:space="preserve">
     <value>Fatura</value>
+  </data>
+  <data name="billDate" xml:space="preserve">
+    <value>Fatura Tarihi</value>
   </data>
   <data name="billItems" xml:space="preserve">
     <value>Fatura Öğeleri</value>
@@ -324,8 +348,14 @@
   <data name="comment" xml:space="preserve">
     <value>Yorum</value>
   </data>
+  <data name="company" xml:space="preserve">
+    <value>Şirket</value>
+  </data>
   <data name="companyManager" xml:space="preserve">
     <value>Şirket Yönetimi</value>
+  </data>
+  <data name="companyName" xml:space="preserve">
+    <value>Şirket İsmi</value>
   </data>
   <data name="completed" xml:space="preserve">
     <value>Tamamlanmış</value>
@@ -342,6 +372,9 @@
   <data name="componentModels" xml:space="preserve">
     <value>Bileşen Modelleri</value>
   </data>
+  <data name="componentName" xml:space="preserve">
+    <value>Bileşen İsmi</value>
+  </data>
   <data name="components" xml:space="preserve">
     <value>Bileşenler</value>
   </data>
@@ -356,6 +389,9 @@
   </data>
   <data name="count" xml:space="preserve">
     <value>Sıra</value>
+  </data>
+  <data name="createAnAccount" xml:space="preserve">
+    <value>Bir Hesap Oluştur</value>
   </data>
   <data name="currentBalance" xml:space="preserve">
     <value>Güncel Bakiye</value>
@@ -402,11 +438,23 @@
   <data name="edit" xml:space="preserve">
     <value>Düzenle</value>
   </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="emailValidation" xml:space="preserve">
     <value>E-posta Doğrulaması</value>
   </data>
   <data name="endDate" xml:space="preserve">
     <value>Bitiş Tarihi</value>
+  </data>
+  <data name="enterAnyUsernameAndPassword." xml:space="preserve">
+    <value>Herhangi bir kullanıcı adı ve şifre girin.</value>
+  </data>
+  <data name="enterYourE-mailToResetIt." xml:space="preserve">
+    <value>Sıfırlamak için e-postanızı girin.</value>
+  </data>
+  <data name="establishmentDate" xml:space="preserve">
+    <value>Kuruluş Tarihi</value>
   </data>
   <data name="exit" xml:space="preserve">
     <value>Çıkış</value>
@@ -429,11 +477,23 @@
   <data name="fixtureModels" xml:space="preserve">
     <value>Demirbaş Modelleri</value>
   </data>
+  <data name="fixtureName" xml:space="preserve">
+    <value>Demirbaş İsmi</value>
+  </data>
   <data name="fixtures" xml:space="preserve">
     <value>Demirbaşlar</value>
   </data>
+  <data name="forgotPassword" xml:space="preserve">
+    <value>Şifremi Unuttum</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>Cinsiyet</value>
+  </data>
   <data name="home" xml:space="preserve">
     <value>Ana Sayfa</value>
+  </data>
+  <data name="iAgreeToThe" xml:space="preserve">
+    <value>Katılıyorum</value>
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Önem Düzeyleri</value>
@@ -450,8 +510,14 @@
   <data name="itemHistory" xml:space="preserve">
     <value>Item Geçmişi</value>
   </data>
+  <data name="itemName" xml:space="preserve">
+    <value>Item İsmi</value>
+  </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
+  </data>
+  <data name="itemType" xml:space="preserve">
+    <value>Item Type</value>
   </data>
   <data name="lateTasks" xml:space="preserve">
     <value>Geciken Görevler</value>
@@ -461,6 +527,9 @@
   </data>
   <data name="license" xml:space="preserve">
     <value>Lisans</value>
+  </data>
+  <data name="licenseName" xml:space="preserve">
+    <value>Lisans İsmi</value>
   </data>
   <data name="licensesType" xml:space="preserve">
     <value>Lisans Tipi</value>
@@ -479,6 +548,12 @@
   </data>
   <data name="log" xml:space="preserve">
     <value>Log</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="mailAddress" xml:space="preserve">
+    <value>Mail Adresi</value>
   </data>
   <data name="mailAdress" xml:space="preserve">
     <value>Mail Adresi</value>
@@ -534,6 +609,12 @@
   <data name="newTask" xml:space="preserve">
     <value>Yeni Görev</value>
   </data>
+  <data name="next" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Numara</value>
+  </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>No Records Found to List</value>
   </data>
@@ -570,6 +651,9 @@
   <data name="piece" xml:space="preserve">
     <value>Adet</value>
   </data>
+  <data name="pleaseLogin" xml:space="preserve">
+    <value>Lütfen Giriş Yapın</value>
+  </data>
   <data name="price" xml:space="preserve">
     <value>Fiyat</value>
   </data>
@@ -578,6 +662,9 @@
   </data>
   <data name="printer" xml:space="preserve">
     <value>Yazıcı</value>
+  </data>
+  <data name="privacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
   </data>
   <data name="processedUser" xml:space="preserve">
     <value>İşlem Yapılan Kullanıcı</value>
@@ -612,6 +699,9 @@
   <data name="relevantPersonnel" xml:space="preserve">
     <value>İlişkili Personel</value>
   </data>
+  <data name="rememberMe" xml:space="preserve">
+    <value>Beni Hatırla</value>
+  </data>
   <data name="remove" xml:space="preserve">
     <value>Kaldır</value>
   </data>
@@ -620,6 +710,9 @@
   </data>
   <data name="Report History" xml:space="preserve">
     <value>Geçmiş Raporu</value>
+  </data>
+  <data name="reportDetail" xml:space="preserve">
+    <value>Rapor Detayı</value>
   </data>
   <data name="Reported Assets" xml:space="preserve">
     <value>Reporlanmış Varlıklar</value>
@@ -633,11 +726,23 @@
   <data name="reports" xml:space="preserve">
     <value>Raporlar</value>
   </data>
+  <data name="reportSubject" xml:space="preserve">
+    <value>Rapor Konusu</value>
+  </data>
+  <data name="resetPassword" xml:space="preserve">
+    <value>Şifreyi Yenile</value>
+  </data>
   <data name="resolved" xml:space="preserve">
     <value>Çözülmüş</value>
   </data>
   <data name="resolvedReports" xml:space="preserve">
     <value>Çözülmüş Raporlar</value>
+  </data>
+  <data name="respondingUser" xml:space="preserve">
+    <value>Yanıtlayan Kullanıcı</value>
+  </data>
+  <data name="returnHome" xml:space="preserve">
+    <value>Ana Sayfaya Dön</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Kaydet</value>
@@ -663,6 +768,9 @@
   <data name="signature" xml:space="preserve">
     <value>İmza</value>
   </data>
+  <data name="signUp" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Durum</value>
   </data>
@@ -677,6 +785,9 @@
   </data>
   <data name="statu" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="statuName" xml:space="preserve">
+    <value>Durum İsmi</value>
   </data>
   <data name="statusName" xml:space="preserve">
     <value>Durum İsmi</value>
@@ -720,11 +831,20 @@
   <data name="telephone" xml:space="preserve">
     <value>Telefon</value>
   </data>
+  <data name="termsOfService" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>Zaman</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Başlık</value>
   </data>
   <data name="toner" xml:space="preserve">
     <value>Toner</value>
+  </data>
+  <data name="tonerName" xml:space="preserve">
+    <value>Toner İsmi</value>
   </data>
   <data name="total" xml:space="preserve">
     <value>Total</value>
@@ -779,6 +899,9 @@
   </data>
   <data name="view" xml:space="preserve">
     <value>Görüntüle</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Hoşgeldiniz</value>
   </data>
   <data name="women" xml:space="preserve">
     <value>Kadın</value>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using MultiLanguage.ExtensionMethods
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -57,46 +58,46 @@
         <!-- BEGIN LOGIN FORM -->
         <form name="LoginForm" class="login-form">
             <div class="form-title">
-                <span class="form-title">Welcome.</span>
-                <span class="form-subtitle">Please login.</span>
+                <span class="form-title">@Html.Translate("welcome").</span>
+                <span class="form-subtitle">@Html.Translate("pleaseLogin").</span>
             </div>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
-                <span> Enter any username and password. </span>
+                <span> @Html.Translate("enterAnyUsernameAndPassword.") </span>
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Company</label>
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("company")</label>
                 <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Company" name="company" ng-model="User.Company" required />
             </div>
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                <label class="control-label visible-ie8 visible-ie9">Username</label>
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("username")</label>
                 <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" ng-model="User.Username" required />
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("password")</label>
                 <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" ng-model="User.Password" required />
             </div>
 
             <div>
-                <button class="btn red btn-block uppercase" ng-disabled="LoginForm.$invalid || LoginButton" ng-click="CheckUser()">Login</button>
+                <button class="btn red btn-block uppercase" ng-disabled="LoginForm.$invalid || LoginButton" ng-click="CheckUser()">@Html.Translate("login")</button>
                 @*<button class="btn yellow btn-block uppercase" onclick="location.href='/Home/InfoPage'">Back Info Page</button>*@
             </div>
             <div class="form-actions">
                 <div class="pull-left">
                     <label class="rememberme mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" value="1" ng-model="User.RememberMe" /> Remember me
+                        <input type="checkbox" name="remember" value="1" ng-model="User.RememberMe" /> @Html.Translate("rememberMe")
                         <span></span>
                     </label>
                 </div>
                 <div class="pull-right forget-password-block">
-                    <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+                    <a href="javascript:;" id="forget-password" class="forget-password">@Html.Translate("forgotPassword")</a>
                 </div>
             </div>
 
             <div class="create-account">
                 <p>
-                    <a href="javascript:;" class="btn-primary btn" id="register-btn">Create an account</a>
+                    <a href="javascript:;" class="btn-primary btn" id="register-btn">@Html.Translate("createAnAccount")</a>
                 </p>
             </div>
         </form>
@@ -104,18 +105,18 @@
         <!-- BEGIN FORGOT PASSWORD FORM -->
         <form name="ForgetForm" class="forget-form" ng-show="forgetForm">
             <div class="form-title">
-                <span class="form-title">Forget Password ?</span>
-                <span class="form-subtitle">Enter your e-mail to reset it.</span>
+                <span class="form-title">@Html.Translate("forgetPassword")</span>
+                <span class="form-subtitle">@Html.Translate("enterYourE-mailToResetIt.")</span>
             </div>
             <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Company" ng-model="forgetCompany" required />
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="'@Html.Raw(Html.Translate("company"))'" ng-model="forgetCompany" required />
             </div>
             <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" ng-model="forgetUsername" required />
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="'@Html.Raw(Html.Translate("username"))'" ng-model="forgetUsername" required />
             </div>
             <div>
-                <button type="button" id="back-btn" class="btn btn-default">Back</button>
-                <button type="button" ng-disabled="ForgetForm.$invalid || forgetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPassword();">Send</button>
+                <button type="button" id="back-btn" class="btn btn-default">@Html.Translate("back")</button>
+                <button type="button" ng-disabled="ForgetForm.$invalid || forgetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPassword();">@Html.Translate("send")</button>
                 @*<b ng-if="forgetSendButton">{{second}} can be resent after seconds.</b>*@
             </div>
         </form>
@@ -123,20 +124,20 @@
         <!-- BEGIN FORGOT PASSWORD FORM -->
         <form name="ResetPasswordForm" class="forget-form" ng-show="resetPasswordForm">
             <div class="form-title">
-                <span class="form-title">Reset Password ?</span>
-                <span class="form-subtitle">Enter your e-mail to reset it.</span>
+                <span class="form-title">@Html.Translate("resetPassword")</span>
+                <span class="form-subtitle">@Html.Translate("Enter your e-mail to reset it.")</span>
             </div>
             <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" ng-model="password" required />
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="'@Html.Raw(Html.Translate("password"))'" ng-model="password" required />
             </div>
             <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Try Password" ng-model="tryPassword" required />
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="'@Html.Raw(Html.Translate("tryPassword"))'" ng-model="tryPassword" required />
             </div>
             <div class="form-group">
                 <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Code" ng-model="code" required />
             </div>
             <div>
-                <button type="button" ng-disabled="resetPasswordForm.$invalid || resetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPasswordChange();">Change Password</button>
+                <button type="button" ng-disabled="resetPasswordForm.$invalid || resetSendButton" class="btn btn-primary uppercase pull-right" ng-click="ForgetPasswordChange();">@Html.Translate("changePassword")</button>
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
@@ -144,61 +145,52 @@
 
         <form name="registerForm" class="register-form">
             <div class="form-title">
-                <span class="form-title">Sign Up</span>
+                <span class="form-title">@Html.Translate("signUp")</span>
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Company Name</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Company Name" ng-model="register.CompanyName" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("companyName")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="'@Html.Raw(Html.Translate("companyName"))'" ng-model="register.CompanyName" required />
             </div>
             <p class="hint"> Enter your account details below: </p>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Username</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Username" ng-model="register.UserName" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("userName")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="'@Html.Raw(Html.Translate("userName"))'" ng-model="register.UserName" required />
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Name</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Name" ng-model="register.Name" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("name")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="'@Html.Raw(Html.Translate("name"))'" ng-model="register.Name" required />
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Surname</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Surname" ng-model="register.Surname" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("surname")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="'@Html.Raw(Html.Translate("surname"))'" ng-model="register.Surname" required />
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Email</label>
-                <input class="form-control placeholder-no-fix" type="email" placeholder="Email" ng-model="register.Email" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("email")</label>
+                <input class="form-control placeholder-no-fix" type="email" placeholder="'@Html.Raw(Html.Translate("email"))'" ng-model="register.Email" required />
             </div>
             <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">Password</label>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="Password" ng-model="register.Password" required />
+                <label class="control-label visible-ie8 visible-ie9">@Html.Translate("password")</label>
+                <input class="form-control placeholder-no-fix" type="password" placeholder="'@Html.Raw(Html.Translate("password"))'" ng-model="register.Password" required />
             </div>
             <div class="form-group margin-top-20 margin-bottom-20">
                 <label class="mt-checkbox mt-checkbox-outline">
-                    <input type="checkbox" name="tnc" required /> I agree to the
-                    <a href="javascript:;">Terms of Service </a> &
-                    <a href="javascript:;">Privacy Policy </a>
+                    <input type="checkbox" name="tnc" required /> @Html.Translate("iAgreeToThe")
+                    <a href="javascript:;">@Html.Translate("termsOfService")</a> &
+                    <a href="javascript:;">@Html.Translate("privacyPolicy")</a>
                     <span></span>
                 </label>
                 <div id="register_tnc_error"> </div>
             </div>
             <div>
-                <button type="button" id="register-back-btn" class="btn btn-default">Back</button>
+                <button type="button" id="register-back-btn" class="btn btn-default">@Html.Translate("back")</button>
                 @*<a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid" ng-click="addCompany();">Submit</a>*@
-                <a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid || isDisabledSubmitBtn" ng-click="nextValidation();">Submit</a>
+                <a class="btn red uppercase pull-right" ng-disabled="registerForm.$invalid || isDisabledSubmitBtn" ng-click="nextValidation();">@Html.Translate("submit")</a>
             </div>
         </form>
         <!-- END REGISTRATION FORM -->
 
-
-
-
-
-
-
-
         <partial name="~/Views/Shared/Partials/User/LoginEmailPhoneValidationPopup.cshtml" />
-
     </div>
-
 
     <script src="~/Global/Functions.js"></script>
 

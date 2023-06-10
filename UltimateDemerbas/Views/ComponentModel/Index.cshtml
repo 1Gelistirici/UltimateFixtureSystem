@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div ng-show="RegisterCount==0">
+        <div ng-show="RegisterCount===0">
             <h3 style="text-align: center;color:#678098">@Html.Translate("recordNotFoundforListing")</h3>
         </div>
 
@@ -42,7 +42,7 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                <td data-title="'@Html.Raw(Html.Translate("componentModelController"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
                                         <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>

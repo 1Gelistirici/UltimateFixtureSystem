@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="accessDenied" xml:space="preserve">
+    <value>Access Denied</value>
+  </data>
   <data name="accessories" xml:space="preserve">
     <value>Accessories</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="addBill" xml:space="preserve">
     <value>Add Bill</value>
+  </data>
+  <data name="addBillDetail" xml:space="preserve">
+    <value>Add Bill Detail</value>
   </data>
   <data name="addBillItem" xml:space="preserve">
     <value>Add Bill Item</value>
@@ -258,11 +264,29 @@
   <data name="assignmentLicense" xml:space="preserve">
     <value>Assignment License</value>
   </data>
+  <data name="assignmentName" xml:space="preserve">
+    <value>Assignment Name</value>
+  </data>
   <data name="assignments" xml:space="preserve">
     <value>Assignments</value>
   </data>
+  <data name="assignmentUser" xml:space="preserve">
+    <value>Assignment User</value>
+  </data>
+  <data name="assignRole" xml:space="preserve">
+    <value>Assign Role</value>
+  </data>
+  <data name="authorizationMessage" xml:space="preserve">
+    <value>You do not have the necessary authorization to access this page.</value>
+  </data>
+  <data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="bill" xml:space="preserve">
     <value>Bill</value>
+  </data>
+  <data name="billDate" xml:space="preserve">
+    <value>Bill Date</value>
   </data>
   <data name="billItems" xml:space="preserve">
     <value>Bill Items</value>
@@ -324,8 +348,14 @@
   <data name="comment" xml:space="preserve">
     <value>Comment</value>
   </data>
+  <data name="company" xml:space="preserve">
+    <value>Company</value>
+  </data>
   <data name="companyManager" xml:space="preserve">
     <value>Company Manager</value>
+  </data>
+  <data name="companyName" xml:space="preserve">
+    <value>Company Name</value>
   </data>
   <data name="completed" xml:space="preserve">
     <value>Completed</value>
@@ -342,6 +372,9 @@
   <data name="componentModels" xml:space="preserve">
     <value>Component Models</value>
   </data>
+  <data name="componentName" xml:space="preserve">
+    <value>Component Name</value>
+  </data>
   <data name="components" xml:space="preserve">
     <value>Components</value>
   </data>
@@ -356,6 +389,9 @@
   </data>
   <data name="count" xml:space="preserve">
     <value>Count</value>
+  </data>
+  <data name="createAnAccount" xml:space="preserve">
+    <value>Create an Account</value>
   </data>
   <data name="currentBalance" xml:space="preserve">
     <value>Current Balance</value>
@@ -402,11 +438,23 @@
   <data name="edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="emailValidation" xml:space="preserve">
     <value>Email Validation</value>
   </data>
   <data name="endDate" xml:space="preserve">
     <value>End Date</value>
+  </data>
+  <data name="enterAnyUsernameAndPassword" xml:space="preserve">
+    <value>Enter any username and password.</value>
+  </data>
+  <data name="enterYourE-mailToResetIt." xml:space="preserve">
+    <value>Enter your e-mail to reset it.</value>
+  </data>
+  <data name="establishmentDate" xml:space="preserve">
+    <value>Establishment Date</value>
   </data>
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
@@ -429,11 +477,23 @@
   <data name="fixtureModels" xml:space="preserve">
     <value>Fixture Models</value>
   </data>
+  <data name="fixtureName" xml:space="preserve">
+    <value>Fixture Name</value>
+  </data>
   <data name="fixtures" xml:space="preserve">
     <value>Fixtures</value>
   </data>
+  <data name="forgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
   <data name="home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="iAgreeToThe" xml:space="preserve">
+    <value>I agree to the</value>
   </data>
   <data name="importanceLevels" xml:space="preserve">
     <value>Importance Levels</value>
@@ -450,8 +510,14 @@
   <data name="itemHistory" xml:space="preserve">
     <value>Item History</value>
   </data>
+  <data name="itemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
   <data name="items" xml:space="preserve">
     <value>Items</value>
+  </data>
+  <data name="itemType" xml:space="preserve">
+    <value>Item Type</value>
   </data>
   <data name="lateTasks" xml:space="preserve">
     <value>Late Tasks</value>
@@ -461,6 +527,9 @@
   </data>
   <data name="license" xml:space="preserve">
     <value>License</value>
+  </data>
+  <data name="licenseName" xml:space="preserve">
+    <value>License Name</value>
   </data>
   <data name="licensesType" xml:space="preserve">
     <value>Licenses Type</value>
@@ -479,6 +548,12 @@
   </data>
   <data name="log" xml:space="preserve">
     <value>Log</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="mailAddress" xml:space="preserve">
+    <value>Mail Address</value>
   </data>
   <data name="mailAdress" xml:space="preserve">
     <value>Mail Adress</value>
@@ -534,6 +609,12 @@
   <data name="newTask" xml:space="preserve">
     <value>New Task</value>
   </data>
+  <data name="next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="noRecordsFoundtoList" xml:space="preserve">
     <value>Listelenecek Kayit Bulunamadi</value>
   </data>
@@ -570,6 +651,9 @@
   <data name="piece" xml:space="preserve">
     <value>Piece</value>
   </data>
+  <data name="pleaseLogin" xml:space="preserve">
+    <value>Please Login</value>
+  </data>
   <data name="price" xml:space="preserve">
     <value>Price</value>
   </data>
@@ -578,6 +662,9 @@
   </data>
   <data name="printer" xml:space="preserve">
     <value>Printer</value>
+  </data>
+  <data name="privacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
   </data>
   <data name="processedUser" xml:space="preserve">
     <value>Processed User</value>
@@ -612,6 +699,9 @@
   <data name="relevantPersonnel" xml:space="preserve">
     <value>Relevant Personnel</value>
   </data>
+  <data name="rememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
   <data name="remove" xml:space="preserve">
     <value>Remove</value>
   </data>
@@ -620,6 +710,9 @@
   </data>
   <data name="Report History" xml:space="preserve">
     <value>Report History</value>
+  </data>
+  <data name="reportDetail" xml:space="preserve">
+    <value>Report Detail</value>
   </data>
   <data name="Reported Assets" xml:space="preserve">
     <value>Reported Assets</value>
@@ -633,11 +726,23 @@
   <data name="reports" xml:space="preserve">
     <value>Reports</value>
   </data>
+  <data name="reportSubject" xml:space="preserve">
+    <value>Report Subject</value>
+  </data>
+  <data name="resetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
   <data name="resolved" xml:space="preserve">
     <value>Resolved</value>
   </data>
   <data name="resolvedReports" xml:space="preserve">
     <value>Resolved Reports</value>
+  </data>
+  <data name="respondingUser" xml:space="preserve">
+    <value>Responding User</value>
+  </data>
+  <data name="returnHome" xml:space="preserve">
+    <value>Return Home</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Save</value>
@@ -663,6 +768,9 @@
   <data name="signature" xml:space="preserve">
     <value>Signature</value>
   </data>
+  <data name="signUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
   <data name="situation" xml:space="preserve">
     <value>Situation</value>
   </data>
@@ -677,6 +785,9 @@
   </data>
   <data name="statu" xml:space="preserve">
     <value>Statu</value>
+  </data>
+  <data name="statuName" xml:space="preserve">
+    <value>Statu Name</value>
   </data>
   <data name="statusName" xml:space="preserve">
     <value>Status Name</value>
@@ -717,11 +828,17 @@
   <data name="telephone" xml:space="preserve">
     <value>Telephone</value>
   </data>
+  <data name="time" xml:space="preserve">
+    <value>Time</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Title</value>
   </data>
   <data name="toner" xml:space="preserve">
     <value>Toner</value>
+  </data>
+  <data name="tonerName" xml:space="preserve">
+    <value>Toner Name</value>
   </data>
   <data name="total" xml:space="preserve">
     <value>Total</value>
@@ -773,6 +890,9 @@
   </data>
   <data name="view" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Welcome</value>
   </data>
   <data name="women" xml:space="preserve">
     <value>Women</value>

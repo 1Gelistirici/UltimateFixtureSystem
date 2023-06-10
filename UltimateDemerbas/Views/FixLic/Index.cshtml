@@ -35,7 +35,7 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Fixture" filter="{ Fixture: 'text'}" sortable="'Fixture'">
+                                <td data-title="'@Html.Raw(Html.Translate("fixture"))'" filter="{ Fixture: 'text'}" sortable="'Fixture'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.FixtureId" disabled>
                                             <option ng-repeat="x in Fixtures" ng-value="{{x.Id}}">{{x.Name}}</option>
@@ -43,7 +43,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.License" filter="{ License: 'text'}" sortable="'License'">
+                                <td data-title="'@Html.Raw(Html.Translate("license"))'" filter="{ License: 'text'}" sortable="'License'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.LicanseId" disabled>
                                             <option ng-repeat="x in Licenses" ng-value="{{x.Id}}">{{x.Name}}</option>

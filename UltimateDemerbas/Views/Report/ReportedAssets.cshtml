@@ -40,31 +40,31 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.ItemName" filter="{ ItemName: 'text'}" sortable="'ItemName'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("itemName"))'" filter="{ ItemName: 'text'}" sortable="'ItemName'">
                                     <span>{{_.Item.Name}}</span>
                                 </td>
 
-                                <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("insertDate"))'" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
                                     <span>{{_.InsertDate}}</span>
                                 </td>
 
-                                <td data-title="TableCol.ReportSubject" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("reportSubject"))'" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
                                     <span>{{_.ReportSubject}}</span>
                                 </td>
 
-                                <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("reportDetail"))'" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
                                     <span>{{_.ReportDetail}}</span>
                                 </td>
 
-                                <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                <td ddata-title="'@Html.Raw(Html.Translate("itemType"))'" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
                                     <select class="form-control" ng-model="_.TypeItem" ng-options="item.Text for item in ItemTypes" disabled></select>
                                 </td>
 
-                                <td data-title="TableCol.AssignmentName" filter="{ AssignmentName: 'text'}" sortable="'AssignmentName'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("assignmentName"))'" filter="{ AssignmentName: 'text'}" sortable="'AssignmentName'">
                                     <span>{{_.Assignment.Name}}</span>
                                 </td>
 
-                                <td data-title="TableCol.UserName" filter="{ UserName: 'text'}" sortable="'UserName'">
+                                <td ddata-title="'@Html.Raw(Html.Translate("userName"))'" filter="{ UserName: 'text'}" sortable="'UserName'">
                                     <span>{{_.User.Name}}</span>
                                 </td>
                             </tr>

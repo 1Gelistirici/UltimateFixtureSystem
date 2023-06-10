@@ -51,13 +51,13 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data" ng-class="{'backRed':_.Piece<=_.MinStock}">
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                <td data-title="'@Html.Raw(Html.Translate("tonerName"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
                                         <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control">
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
+                                <td data-title="'@Html.Raw(Html.Translate("piece"))'" filter="{ Piece: 'number'}" sortable="'Piece'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
                                             <i class="fa fa-ellipsis-v"></i>
@@ -66,7 +66,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Boundary" filter="{ Boundary: 'number'}" sortable="'Boundary'">
+                                <td data-title="'@Html.Raw(Html.Translate("boundary"))'" filter="{ Boundary: 'number'}" sortable="'Boundary'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
                                             <i class="fa fa-chevron-up"></i>
@@ -75,7 +75,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.MinStock" filter="{ MinStock: 'number'}" sortable="'MinStock'">
+                                <td data-title="'@Html.Raw(Html.Translate("minStock"))'" filter="{ MinStock: 'number'}" sortable="'MinStock'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
                                             <i class="fa fa-chevron-down"></i>
@@ -84,7 +84,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Price" filter="{ Price: 'number'}" sortable="'Price'">
+                                <td data-title="'@Html.Raw(Html.Translate("price"))'" filter="{ Price: 'number'}" sortable="'Price'">
                                     <div class="col-md-9">
                                         <div class="input-icon">
                                             <i class="fa fa-money"></i>

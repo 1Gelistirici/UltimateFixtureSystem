@@ -42,31 +42,31 @@
 
                             <tbody>
                                 <tr ng-repeat="_ in $data">
-                                    <td data-title="TableCol.Comment" filter="{ Comment: 'text'}" sortable="'Comment'">
+                                    <td data-title="'@Html.Raw(Html.Translate("comment"))'" filter="{ Comment: 'text'}" sortable="'Comment'">
                                         <span>{{_.Comment}}</span>
                                     </td>
-                                    <td data-title="TableCol.InsertDate" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
+                                    <td data-title="'@Html.Raw(Html.Translate("insertDate"))'" filter="{ InsertDate: 'text'}" sortable="'InsertDate'">
                                         <span>{{_.InsertDate}}</span>
                                     </td>
-                                    <td data-title="TableCol.ReportSubject" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
+                                    <td data-title="'@Html.Raw(Html.Translate("reportSubject"))'" filter="{ ReportSubject: 'text'}" sortable="'ReportSubject'">
                                         <span>{{_.ReportSubject}}</span>
                                     </td>
-                                    <td data-title="TableCol.ReportDetail" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
+                                    <td data-title="'@Html.Raw(Html.Translate("reportDetail"))'" filter="{ ReportDetail: 'text'}" sortable="'ReportDetail'">
                                         <span>{{_.ReportDetail}}</span>
                                     </td>
-                                    <td data-title="TableCol.Statu" filter="{ Statu: 'select'}" sortable="'Statu'" filter-data="reportStatusFilter">
+                                    <td data-title="'@Html.Raw(Html.Translate("statu"))'" filter="{ Statu: 'select'}" sortable="'Statu'" filter-data="reportStatusFilter">
                                         <span>{{_.ReportStatu.Text}}</span>
                                     </td>
-                                    <td data-title="TableCol.ItemId" filter="{ ItemId: 'text'}" sortable="'ItemId'">
+                                    <td data-title="'@Html.Raw(Html.Translate("itemName"))'" filter="{ ItemId: 'text'}" sortable="'ItemId'">
                                         <span>{{_.Item.Name}}</span>
                                     </td>
-                                    <td data-title="TableCol.ItemType" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
+                                    <td data-title="'@Html.Raw(Html.Translate("itemType"))'" filter="{ ItemType: 'select'}" sortable="'ItemType'" filter-data="ItemTypesFilter">
                                         <span>{{_.ItemTypeTextValue.Text}}</span>
                                     </td>
-                                    <td data-title="TableCol.AssignmentId" filter="{ AssignmentId: 'text'}" sortable="'AssignmentId'">
+                                    <td data-title="'@Html.Raw(Html.Translate("assignmentUser"))'" filter="{ AssignmentId: 'text'}" sortable="'AssignmentId'">
                                         <span>{{_.Assignment.UserName}}</span>
                                     </td>
-                                    <td data-title="TableCol.UserId" filter="{ UserId: 'text'}" sortable="'UserId'">
+                                    <td data-title="'@Html.Raw(Html.Translate("respondingUser"))'" filter="{ UserId: 'text'}" sortable="'UserId'">
                                         <span>{{_.User.UserName}}</span>
                                     </td>
 

@@ -36,15 +36,15 @@
 
                         <tbody>
                             <tr ng-repeat="_ in $data">
-                                <td data-title="TableCol.Detail" filter="{ Detail: 'text'}" sortable="'Detail'">
+                                <td data-title="'@Html.Raw(Html.Translate("detail"))'" filter="{ Detail: 'text'}" sortable="'Detail'">
                                     <span>{{_.Detail}}</span>
                                 </td>
 
-                                <td data-title="TableCol.Time" filter="{ Time: 'text'}" sortable="'Time'">
+                                <td data-title="'@Html.Raw(Html.Translate("time"))'" filter="{ Time: 'text'}" sortable="'Time'">
                                     <span>{{_.Time}}</span>
                                 </td>
 
-                                <td data-title="TableCol.Type" filter="{ Type: 'select'}" sortable="'Type'" filter-data="logTypeFilter">
+                                <td data-title="'@Html.Raw(Html.Translate("type"))'" filter="{ Type: 'select'}" sortable="'Type'" filter-data="logTypeFilter">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.Type" disabled>
                                             <option ng-repeat="x in logTypeList" ng-value="x.Value">{{x.Text}}</option>

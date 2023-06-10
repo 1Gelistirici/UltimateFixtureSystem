@@ -1,4 +1,4 @@
-﻿
+﻿@using MultiLanguage.ExtensionMethods
 @{
     Layout = null;
 }
@@ -39,15 +39,15 @@
             <div class=" number font-red"> 403 </div>
             <div class=" details">
                 <h3>
-                    Oops! Access denied.
+                    Oops! @Html.Translate("accessDenied")
                 </h3>
                 <p>
-                    You do not have the necessary authorization to access this page.
+                    @Html.Translate("authorizationMessage")
                     <br />
                 </p>
                 <p>
-                    <a href="/Home/Index" class="btn red btn-outline"> Return home </a>
-                    <a class="btn green btn-outline" onclick="exit();"> Exit </a>
+                    <a href="/Home/Index" class="btn red btn-outline"> @Html.Translate("returnHome") </a>
+                    <a class="btn green btn-outline" onclick="exit();"> @Html.Translate("exit") </a>
                     <br>
                 </p>
             </div>

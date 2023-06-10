@@ -66,54 +66,54 @@
                                     <td>
                                         <div class="btn-group absoluteitem">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span>Islemler
+                                                <span class="md-click-circle md-click-animate" style="height: 105px; width: 105px; top: -47.45px; left: 37.5px;"></span> @Html.Translate("transactions")
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li class="ms-hover" ng-if="_.Id!==3">
                                                     <a class="viewuserbtn" data-toggle="modal" ng-click="OpenAssignPopup(_)" data-target="#companyUserUpdatePopupGetir">
-                                                        <i class="fa fa-group"></i>Assign Role
+                                                        <i class="fa fa-group"></i> @Html.Translate("assignRole")
                                                     </a>
                                                 </li>
                                                 <li class="ms-hover">
                                                     <a class="viewuserbtn" data-toggle="modal" ng-click="OpenPopup(_)" data-target="#UpdateUser">
-                                                        <i class="fa fa-edit"></i>Update
+                                                        <i class="fa fa-edit"></i> @Html.Translate("update")
                                                     </a>
                                                 </li>
                                                 <li class="ms-hover" ng-if="_.Id!==3">
                                                     <a class="addphone" title="Update" data-toggle="modal" ng-click="deleteUserConfirm(_)">
-                                                        <i class="fa fa-trash"></i>Delete
+                                                        <i class="fa fa-trash"></i> @Html.Translate("delete")
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                    <td data-title="'@Html.Raw(Html.Translate("name"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.Name}}</label>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Surname" filter="{ Surname: 'text'}" sortable="'Surname'">
+                                    <td data-title="'@Html.Raw(Html.Translate("surname"))'" filter="{ Surname: 'text'}" sortable="'Surname'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.Surname}}</label>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Telephone" filter="{ Telephone: 'text'}" sortable="'Telephone'">
+                                    <td data-title="'@Html.Raw(Html.Translate("telephone"))'" filter="{ Telephone: 'text'}" sortable="'Telephone'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.Telephone}}</label>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.MailAdress" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
+                                    <td data-title="'@Html.Raw(Html.Translate("mailAddress"))'" filter="{ MailAdress: 'text'}" sortable="'MailAdress'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.MailAdress}}</label>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Gender" filter="{ Gender: 'text'}" sortable="'Gender'">
+                                    <td data-title="'@Html.Raw(Html.Translate("gender"))'" filter="{ Gender: 'text'}" sortable="'Gender'">
                                         <div class="col-md-9">
                                             <button type="button" class="btn btn-sm mt-ladda-btn ladda-button btn-circle" ng-class="_.Gender.Value===0?'btn-warning ':'btn-success '"
                                                     data-style="expand-right" data-size="s">
@@ -122,13 +122,13 @@
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Title" filter="{ Title: 'text'}" sortable="'Title'">
+                                    <td data-title="'@Html.Raw(Html.Translate("title"))'" filter="{ Title: 'text'}" sortable="'Title'">
                                         <div class="col-md-9">
                                             <label style="font-size: 14px;"> {{_.Title}}</label>
                                         </div>
                                     </td>
 
-                                    <td data-title="TableCol.Lock" filter="{ Lock: 'text'}" sortable="'Lock'">
+                                    <td data-title="'@Html.Raw(Html.Translate("lock"))'" filter="{ Lock: 'text'}" sortable="'Lock'">
                                         <div class="col-md-9">
 
                                             <div class="md-checkbox-list pull-right" ng-show="_.Lock">

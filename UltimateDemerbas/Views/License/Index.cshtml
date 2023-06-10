@@ -46,13 +46,13 @@
                         <tbody>
                             <tr ng-repeat="_ in $data">
 
-                                <td data-title="TableCol.Name" filter="{ Name: 'text'}" sortable="'Name'">
+                                <td data-title="'@Html.Raw(Html.Translate("licenseName"))'" filter="{ Name: 'text'}" sortable="'Name'">
                                     <div class="col-md-9">
                                         <input ng-model="_.Name" style="font-size: 14px;" type="text" class="form-control" value="{{ _.Name }}">
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Type" filter="{ Type: 'text'}" sortable="'Type'">
+                                <td data-title="'@Html.Raw(Html.Translate("type"))'" filter="{ Type: 'text'}" sortable="'Type'">
                                     <div class="col-md-9">
                                         <select class="form-control" ng-model="_.TypeNo">
                                             <option ng-repeat="x in LicenseTypes" value="{{x.Id}}">{{x.Name}}</option>
@@ -60,7 +60,7 @@
                                     </div>
                                 </td>
 
-                                <td data-title="TableCol.Piece" filter="{ Piece: 'number'}" sortable="'Piece'">
+                                <td data-title="'@Html.Raw(Html.Translate("piece"))'" filter="{ Piece: 'number'}" sortable="'Piece'">
                                     <div class="col-md-9">
                                         <input ng-model="_.Piece" style="font-size: 14px;" type="number" class="form-control" value="{{ _.Piece }}">
                                     </div>
