@@ -120,3 +120,48 @@ function getIpAddress() {
     });
 }
 
+
+function downloadQRCode(serialNumber, itemId, itemType) {
+    generateQRCode(`serialNumber:${serialNumber}-id:${itemId}-itemType:${itemType}`);
+
+    downloadQRCodeImage();
+}
+function downloadQRCodeV1(itemId, itemType) {
+    generateQRCode(`id:${itemId}-itemType:${itemType}`);
+
+    downloadQRCodeImage();
+}
+function generateQRCode(qrCodeText) {
+    var qrcode = new QRCode("qrcode", qrCodeText);
+}
+function downloadQRCodeImage() {
+    var qrCodeImage = document.querySelector("#qrcode img");
+
+    qrCodeImage.onload = function () {
+        var qrcodeDiv = document.getElementById('qrcode');
+        var linkElement = qrcodeDiv.querySelector('img');
+        var srcValue = linkElement.getAttribute('src');
+
+        var img = new Image();
+        img.src = srcValue;
+
+        img.onload = function () {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+
+            var dataURL = canvas.toDataURL("image/png");
+
+            var link = document.createElement("a");
+            link.href = dataURL;
+            //link.download = `${$scope.Item.Name}-qrcode.png`;
+            link.download = `qrcode.png`;
+            link.click();
+
+            $("#qrcode").empty();
+        };
+    };
+}
+

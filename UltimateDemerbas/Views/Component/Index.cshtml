@@ -7,6 +7,8 @@
 
 <div ng-controller="ComponentController">
 
+    <div id="qrcode" class="hidden"></div>
+
     <!--Header-->
     <div class="portlet light portlet-fit bordered col-md-12">
         <div class="portlet-title">
@@ -98,6 +100,11 @@
                                                     <i class="fa fa-trash "></i>@Html.Translate("delete")
                                                 </a>
                                             </li>
+                                            <li class="ms-hover">
+                                                <a class="addphone" title="Generate QRCode" ng-click="generateQRCode(_.Id)">
+                                                    <i class="fa fa-qrcode"></i>@Html.Translate("generateQRCode")
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
@@ -126,6 +133,7 @@
 
 @section PageScript
     {
+    <script src="~/Scripts/ThirdParty/qrcode.min.js"></script>
     <script src="~/AngularControllers/Services/BillService.js"></script>
     <script src="~/AngularControllers/Services/AssignmentService.js"></script>
     <script src="~/AngularControllers/Services/UserService.js"></script>

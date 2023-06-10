@@ -143,6 +143,10 @@
             $scope.Pop.recallDate = new Date();
         }
 
+        $scope.generateQRCode = function (id) {
+            downloadQRCodeV1(id, 3);
+        }
+
         $scope.UpdateComponentConfirm = function (x) {
             $confirm.Show("Onay", "Güncellemek istediğinize emin misiniz?", function () { $scope.UpdateComponent(x); });
         }
