@@ -687,6 +687,12 @@
   <data name="qrCodeGenarate" xml:space="preserve">
     <value>Qr Kod Oluştur</value>
   </data>
+  <data name="qrCodeReader" xml:space="preserve">
+    <value>QR Kod Okuyucu</value>
+  </data>
+  <data name="readerQrCode" xml:space="preserve">
+    <value>QR Kod Oku</value>
+  </data>
   <data name="reCallActive" xml:space="preserve">
     <value>Geri Çağır</value>
   </data>

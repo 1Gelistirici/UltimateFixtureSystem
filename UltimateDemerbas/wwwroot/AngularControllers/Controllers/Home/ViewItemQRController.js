@@ -119,15 +119,33 @@
             }
         });
 
-
+        //video-preview
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
             console.log(`Scan result: ${decodedText}`, decodedResult);
         }
 
+        function onScanError(errorMessage) {
+            // handle on error condition, with error message
+        }
+
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "video-preview", { fps: 10, qrbox: 250 });
-        html5QrcodeScanner.render(onScanSuccess);
+    
+
+        $scope.readerQrCode = function () {
+            html5QrcodeScanner.render(onScanSuccess, onScanError);
+            $("#video-preview__dashboard_section").addClass("hidden");
+        }
+
+        $scope.closeQRCodePopup = function () {
+            console.log(html5QrcodeScanner);
+            html5QrcodeScanner.pause();
+            html5QrcodeScanner.clear();
+        }
+
+
+
 
 
 

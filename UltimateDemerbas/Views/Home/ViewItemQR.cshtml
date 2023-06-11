@@ -7,10 +7,7 @@
 
 <div ng-controller="ViewItemQRController">
 
-    <div style="width: 500px" id="video-preview"></div>
-
     <div id="qrcode" class="hidden"></div>
-
 
     <div class="row">
         <div class="col-md-12">
@@ -20,8 +17,8 @@
                 <div class="portlet-body">
 
                     <div class="tabbable-line">
-                        <a href="javascript:;" class="btn btn-icon-only blue pull-right" title="Generate QRCode" ng-click="generateQRCode();">
-                            <i class="fa fa-qrcode"></i>
+                        <a href="javascript:;" class="btn blue pull-right" title="readerQrCode" data-toggle="modal" data-target="#qrCodePopup" ng-click="readerQrCode();">
+                            <i class="fa fa-qrcode"></i>@Html.Translate("readerQrCode")
                         </a>
 
                         <ul class="nav nav-tabs nav-tabs-lg">
@@ -182,7 +179,7 @@
         </div>
     </div>
 
-
+    <partial name="~/Views\Shared\Partials\ViewItem\QRCodePopup.cshtml" />
 </div>
 
 

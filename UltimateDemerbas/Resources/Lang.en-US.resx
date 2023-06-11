@@ -687,6 +687,12 @@
   <data name="qrCodeGenarate" xml:space="preserve">
     <value>QR Code Genarator</value>
   </data>
+  <data name="qrCodeReader" xml:space="preserve">
+    <value>QR Code Reader</value>
+  </data>
+  <data name="readerQrCode" xml:space="preserve">
+    <value>Reader Qr Code</value>
+  </data>
   <data name="reCallActive" xml:space="preserve">
     <value>ReCall Active</value>
   </data>

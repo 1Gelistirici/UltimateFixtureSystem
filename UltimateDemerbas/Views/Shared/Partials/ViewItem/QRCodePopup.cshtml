@@ -1,0 +1,24 @@
+﻿@using MultiLanguage.ExtensionMethods
+
+
+<div id="qrCodePopup" class="modal fade" tabindex="-1" aria-hidden="true" data-backdrop="static">
+
+    <div class="modal-dialog" style="width: 370px; z-index: 10052 !important;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a href="javascript:;" class="btn btn-icon-only red pull-right" title="Close" data-dismiss="modal" aria-hidden="true" ng-click="closeQRCodePopup()">
+                    <i class="fa fa-close"></i>
+                </a>
+
+                <h4 class="modal-title danger">@Html.Translate("qrCodeReader")</h4>
+            </div>
+            <div style="height: 30%" data-always-visible="0" data-rail-visible1="1">
+                <div class="modal-body" style="padding:0px;">
+                    <div style="width: 100%; height:100%; padding:0px;" id="video-preview"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
