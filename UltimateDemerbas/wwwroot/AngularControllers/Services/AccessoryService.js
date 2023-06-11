@@ -42,6 +42,14 @@
                 }, error);
         };
 
+        this.getAccessoryById = function (id, success, error) {
+            $http.post('/Accessory/getAccessoryById', { id: id }).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.UpdateAccessory = function (parameter, success, error) {
             $http.post('/Accessory/UpdateAccessory', JSON.stringify(parameter)).then(
                 function (response) {

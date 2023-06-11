@@ -9,6 +9,14 @@
                 }, error);
         }
 
+        this.GetComponent = function (id, success, error) {
+            $http.post('/Component/GetComponent', { id: id }).then(
+                function (response) {
+                    if (success)
+                        success(response.data);
+                }, error);
+        };
+
         this.GetComponentByCompanyRefId = function (success, error) {
             $http.get("/Component/GetComponentByCompanyRefId").then(
                 function (response) {

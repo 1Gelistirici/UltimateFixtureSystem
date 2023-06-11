@@ -32,6 +32,14 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 
+        [HttpGet("GetComponent")]
+        public IActionResult GetComponent(ReferansParameter parameter)
+        {
+            ComponentCallManager component = new ComponentCallManager();
+            var result = component.GetComponent(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+
         [HttpPost("DeleteComponent")]
         public IActionResult DeleteComponent(Component parameter)
         {

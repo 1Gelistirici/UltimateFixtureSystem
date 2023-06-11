@@ -41,12 +41,19 @@ namespace UltimateAPI.Controllers
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
         
-
         [HttpPost("GetAccessoryByCompanyRefId")]
         public IActionResult GetAccessoryByCompanyRefId(ReferansParameter parameter)
         {
             AccessoryCallManager accessory = new AccessoryCallManager();
             UltimateResult<List<Accessory>> result = accessory.GetAccessoryByCompanyRefId(parameter);
+            return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
+        }
+        
+        [HttpPost("GetAccessoryById")]
+        public IActionResult GetAccessoryById(ReferansParameter parameter)
+        {
+            AccessoryCallManager accessory = new AccessoryCallManager();
+            UltimateResult<Accessory> result = accessory.GetAccessoryById(parameter);
             return Content(ResultData.Get(result.IsSuccess, result.Message, result.Data));
         }
 

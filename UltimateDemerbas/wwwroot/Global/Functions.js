@@ -122,12 +122,23 @@ function getIpAddress() {
 
 
 function downloadQRCode(serialNumber, itemId, itemType) {
-    generateQRCode(`serialNumber:${serialNumber}-id:${itemId}-itemType:${itemType}`);
+    //generateQRCode(`serialNumber:${serialNumber}-id:${itemId}-itemType:${itemType}`);
+    var parameter = {
+        SerialNumber: serialNumber,
+        ItemId: itemId,
+        ItemType: itemType
+    }
+    generateQRCode(JSON.stringify(parameter));
 
     downloadQRCodeImage();
 }
 function downloadQRCodeV1(itemId, itemType) {
-    generateQRCode(`id:${itemId}-itemType:${itemType}`);
+    //generateQRCode(`id:${itemId}-itemType:${itemType}`);
+    var parameter = {
+        ItemId: itemId,
+        ItemType: itemType
+    }
+    generateQRCode(JSON.stringify(parameter));
 
     downloadQRCodeImage();
 }

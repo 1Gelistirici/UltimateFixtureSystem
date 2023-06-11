@@ -15,6 +15,11 @@ namespace UltimateDemerbas.Manager
             return GetApi("Component/GetComponents");
         }
 
+        public Task<string> GetComponent(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Component/GetComponent", parameter);
+        }
+
         public Task<string> GetComponentByCompanyRefId(ReferansParameter parameter)
         {
             return GetApiParameter<ReferansParameter>("Component/GetComponentByCompanyRefId", parameter);

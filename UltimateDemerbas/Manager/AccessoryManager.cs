@@ -30,6 +30,11 @@ namespace UltimateDemerbas.Manager
             return GetApiParameter<ReferansParameter>("Accessory/GetAccessoryByCompanyRefId", parameter);
         }
 
+        public Task<string> GetAccessoryById(ReferansParameter parameter)
+        {
+            return GetApiParameter<ReferansParameter>("Accessory/GetAccessoryById", parameter);
+        }
+
         public Task<string> DeleteAccessory(Accessory parameter)
         {
             return GetApiParameter<Accessory>("Accessory/DeleteAccessory", parameter);

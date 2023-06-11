@@ -252,6 +252,62 @@ namespace UltimateAPI.Manager
             return result;
         }
 
+        public UltimateResult<Accessory> GetAccessoryById(ReferansParameter parameter)
+        {
+            UltimateResult<Accessory> result = new UltimateResult<Accessory>();
+            SqlConnection sqlConnection = null;
+            string Proc = "[dbo].[accessories_GetAccessoryById]";
+
+            try
+            {
+                using (sqlConnection = Global.GetSqlConnection())
+                {
+                    ConnectionManager.Instance.SqlConnect(sqlConnection);
+
+                    using (SqlCommand sqlCommand = ConnectionManager.Instance.Command(Proc, sqlConnection))
+                    {
+                        ConnectionManager.Instance.CmdOperations();
+
+                        sqlCommand.Parameters.AddWithValue("@Id", parameter.RefId);
+
+                        using (SqlDataReader read = sqlCommand.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    Accessory data = new Accessory();
+                                    data.Id = Convert.ToInt32(read["id"]);
+                                    data.Name = read["name"].ToString();
+                                    data.Piece = Convert.ToInt32(read["piece"]);
+                                    data.Price = Convert.ToDouble(read["price"]);
+                                    data.ModelNo = Convert.ToInt32(read["model_no"]);
+                                    data.UserNo = Convert.ToInt32(read["user_no"]);
+                                    data.BillNo = Convert.ToInt32(read["bill_no"]);
+                                    data.StatuNo = Convert.ToInt32(read["statu_no"]);
+                                    data.CategoryNo = Convert.ToInt32(read["category_no"]);
+                                    data.CompanyRefId = Convert.ToInt32(read["CompanyrefId"]);
+
+                                    result.Data = data;
+                                }
+                            }
+                            read.Close();
+                        }
+                        sqlCommand.Dispose();
+                    }
+                    ConnectionManager.Instance.Dispose(sqlConnection);
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectionManager.Instance.Excep(ex, sqlConnection);
+                result.IsSuccess = false;
+                return result;
+            }
+
+            return result;
+        }
+
         public UltimateResult<List<Accessory>> AddAccessory(Accessory parameter)
         {
             UltimateResult<List<Accessory>> result = new UltimateResult<List<Accessory>>();

@@ -1,10 +1,9 @@
-﻿MainApp.controller("ViewItemQRController", ["$scope", "toaster", "FixtureService", "UserService", "ItemHistoryService", "NgTableParams",
-    function ($scope, toaster, fixtureService, userService, itemHistoryService, NgTableParams) {
+﻿MainApp.controller("ViewItemQRController", ["$scope", "toaster", "FixtureService", "UserService", "ComponentService", "AccessoryService", "ItemHistoryService", "NgTableParams",
+    function ($scope, toaster, fixtureService, userService, componentService, accessoryService, itemHistoryService, NgTableParams) {
 
         //#region Parameters
         $scope.Item = [];
         $scope.registerCount = 0;
-        var routeId = 0;
 
         $scope.TableCol = {
             Name: "Name",
@@ -19,9 +18,37 @@
 
 
         //#region GETS
-        $scope.GetFixture = function () {
+        function getComponent(id) {
+            componentService.getComponent(id,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log(result);
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
+                });
+        }
+
+        function getAccessoryById(id) {
+            accessoryService.getAccessoryById(id,
+                function success(result) {
+                    if (result.IsSuccess) {
+                        console.log(result);
+                    }
+                    else {
+                        toaster.error("Başarısız", result.Message);
+                    }
+                }, function error() {
+                    toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
+                });
+        }
+
+        function getFixture(id) {
             var parameter = {
-                Id: routeId
+                Id: id
             };
 
             fixtureService.GetFixture(parameter,
@@ -38,14 +65,11 @@
                     toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
                 });
         }
-
-        $scope.GetUsers = function () {
+        function getUsers() {
             userService.GetUsers(
                 function success(result) {
                     if (result.IsSuccess) {
                         $scope.Users = result.Data;
-
-                        $scope.GetFixture();
                     }
                     else {
                         toaster.error("Başarısız", result.Message);
@@ -54,8 +78,7 @@
                     toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
                 });
         }
-
-        $scope.GetItemHistoryByCompany = function () {
+        function getItemHistoryByCompany() {
             itemHistoryService.GetItemHistoryByCompany(
                 function success(result) {
                     if (result.IsSuccess) {
@@ -101,7 +124,6 @@
                     toaster.error("Başarısız", "Beklenmedik bir hata oluştu.");
                 });
         }
-
         //#endregion
 
         $scope.generateQRCode = function () {
@@ -109,20 +131,25 @@
         }
 
         $(document).ready(function () {
-            routeId = getParameterInUrlByName('id');
-            if (routeId !== undefined || routeId !== null)
-                routeId = parseInt(routeId);
-
-            if (routeId > 0) {
-                $scope.GetUsers();
-                $scope.GetItemHistoryByCompany();
-            }
+            getUsers();
+            //getItemHistoryByCompany();
         });
 
         //video-preview
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
             console.log(`Scan result: ${decodedText}`, decodedResult);
+
+            //var parameter = {
+            //    SerialNumber: serialNumber,
+            //    ItemId: itemId,
+            //    ItemType: itemType
+            //}
+
+            //getProductInfo(parameter);
+            //$("#qrCodePopup").model("hide");
+            //$scope.closeQRCodePopup();
+
         }
 
         function onScanError(errorMessage) {
@@ -131,7 +158,7 @@
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "video-preview", { fps: 10, qrbox: 250 });
-    
+
 
         $scope.readerQrCode = function () {
             html5QrcodeScanner.render(onScanSuccess, onScanError);
@@ -144,7 +171,23 @@
             html5QrcodeScanner.clear();
         }
 
+        function getProductInfo(parameter) {
 
+            if (parater.ItemType === 2) {
+                getAccessoryById(parameter.Id);
+            }
+            else if (parater.ItemType === 3) {
+                getComponent(parameter.Id);
+            }
+            else if (parater.ItemType === 4) {
+                getFixture(parameter.Id);
+            }
+            else {
+                toaster.error("Tanımsız");
+            }
+
+
+        }
 
 
 
