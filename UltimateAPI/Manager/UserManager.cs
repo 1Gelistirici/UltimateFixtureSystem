@@ -89,8 +89,9 @@ namespace UltimateAPI.Manager
 
                                 result.Message = "Hesap kilitlidir.";
                                 result.IsSuccess = false;
+
+                                sqlCommand.Dispose();
                                 return result;
-                                //return nereye dönüyort - sql bağlantısını kapat
                             }
 
                             log.Type = LogType.LoginSucess;
@@ -120,7 +121,7 @@ namespace UltimateAPI.Manager
                         result.Data = userData;
                         sqlCommand.Dispose();
                     }
-                    ConnectionManager.Instance.Dispose(sqlConnection);
+
                 }
             }
             catch (Exception ex)
@@ -128,6 +129,10 @@ namespace UltimateAPI.Manager
                 ConnectionManager.Instance.Excep(ex, sqlConnection);
                 result.IsSuccess = false;
                 return result;
+            }
+            finally
+            {
+                ConnectionManager.Instance.Dispose(sqlConnection);
             }
 
             return result;
