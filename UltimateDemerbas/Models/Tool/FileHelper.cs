@@ -15,7 +15,7 @@ namespace UltimateDemerbas.Models.Tool
         public string GetSaveURL(SaveFile saveFile, int companyRefId)
         {
             var saveUrl = configuration.GetSection("FileSaveDebug").Value;
-            if (saveFile == null)
+            if (saveUrl == null)
             {
                 return "";
             }
